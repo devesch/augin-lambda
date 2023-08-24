@@ -1,0 +1,13 @@
+﻿{{header}}
+<form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" id="form">
+    <div class="input-default">
+        <input type="email" name="user_email" value="{{user_email_val}}" placeholder="name@email.com" required minlength="3" maxlength="255">
+    </div>
+    <span class="error" style="{{error_msg_visibility_val}}">
+        {{error_msg_val}}
+    </span>
+    <div class="button login-buttons-container">
+        <button type="submit">{{Próximo}}</button>
+    </div>
+</form>
+{{footer}}

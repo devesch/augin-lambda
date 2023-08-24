@@ -1,0 +1,304 @@
+.measureSlider-target,
+.measureSlider-target * {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.measureSlider-target {
+    position: relative
+}
+
+.measureSlider-base,
+.measureSlider-connects {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1
+}
+
+.measureSlider-connects {
+    overflow: hidden;
+    z-index: 0
+}
+
+.measureSlider-connect,
+.measureSlider-origin {
+    will-change: transform;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    -ms-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform-style: preserve-3d;
+    transform-origin: 0 0;
+    transform-style: flat
+}
+
+.measureSlider-txt-dir-rtl.measureSlider-horizontal .measureSlider-origin {
+    left: 0;
+    right: auto
+}
+
+.measureSlider-vertical .measureSlider-origin {
+    top: -100%;
+    width: 0
+}
+
+.measureSlider-horizontal .measureSlider-origin {
+    height: 0
+}
+
+.measureSlider-handle {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute
+}
+
+.measureSlider-touch-area {
+    height: 100%;
+    width: 100%
+}
+
+.measureSlider-state-tap .measureSlider-connect,
+.measureSlider-state-tap .measureSlider-origin {
+    -webkit-transition: transform .3s;
+    transition: transform .3s
+}
+
+.measureSlider-state-drag * {
+    cursor: inherit !important
+}
+
+.measureSlider-horizontal {
+    height: 4px;
+    width: 267px;
+}
+
+.measureSlider-horizontal .measureSlider-handle {
+    width: 20px;
+    height: 20px;
+    right: -15px;
+    top: -8px
+}
+
+.measureSlider-vertical {
+    width: 18px
+}
+
+.measureSlider-vertical .measureSlider-handle {
+    width: 20;
+    height: 20px;
+    right: -3px;
+    bottom: -15px
+}
+
+.measureSlider-txt-dir-rtl.measureSlider-horizontal .measureSlider-handle {
+    left: -17px;
+    right: auto
+}
+
+.measureSlider-target {
+    background: #D5D7DB;
+    border-radius: 4px;
+    border: 1px solid #D5D7DB;
+}
+
+.measureSlider-connects {
+    border-radius: 3px
+}
+
+.measureSlider-connect {
+    background: #309EF2
+}
+
+.measureSlider-draggable {
+    cursor: ew-resize
+}
+
+.measureSlider-vertical .measureSlider-draggable {
+    cursor: ns-resize
+}
+
+.measureSlider-handle {
+    border: 1px solid #006DC0;
+    border-radius: 50%;
+    background: #006DC0;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.measureSlider-active {
+    box-shadow: inset 0 0 1px #006DC0, inset 0 1px 7px #006DC0, 0 3px 6px -3px #006DC0
+}
+
+.measureSlider-vertical .measureSlider-handle:after,
+.measureSlider-vertical .measureSlider-handle:before {
+    width: 14px;
+    height: 1px;
+    left: 6px;
+    top: 14px
+}
+
+.measureSlider-vertical .measureSlider-handle:after {
+    top: 17px
+}
+
+[disabled] .measureSlider-connect {
+    background: #B8B8B8
+}
+
+[disabled] .measureSlider-handle,
+[disabled].measureSlider-handle,
+[disabled].measureSlider-target {
+    cursor: not-allowed
+}
+
+.measureSlider-pips,
+.measureSlider-pips * {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.measureSlider-pips {
+    position: absolute;
+    color: #999
+}
+
+.measureSlider-value {
+    position: absolute;
+    white-space: nowrap;
+    text-align: center
+}
+
+.measureSlider-value-sub {
+    color: #ccc;
+    font-size: 10px
+}
+
+.measureSlider-marker {
+    position: absolute;
+    background: #CCC
+}
+
+.measureSlider-marker-sub {
+    background: #AAA
+}
+
+.measureSlider-marker-large {
+    background: #AAA
+}
+
+.measureSlider-pips-horizontal {
+    padding: 10px 0;
+    height: 80px;
+    top: 100%;
+    left: 0;
+    width: 100%
+}
+
+.measureSlider-value-horizontal {
+    -webkit-transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%)
+}
+
+.measureSlider-rtl .measureSlider-value-horizontal {
+    -webkit-transform: translate(50%, 50%);
+    transform: translate(50%, 50%)
+}
+
+.measureSlider-marker-horizontal.measureSlider-marker {
+    margin-left: -1px;
+    width: 2px;
+    height: 5px
+}
+
+.measureSlider-marker-horizontal.measureSlider-marker-sub {
+    height: 10px
+}
+
+.measureSlider-marker-horizontal.measureSlider-marker-large {
+    height: 15px
+}
+
+.measureSlider-pips-vertical {
+    padding: 0 10px;
+    height: 100%;
+    top: 0;
+    left: 100%
+}
+
+.measureSlider-value-vertical {
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    padding-left: 25px
+}
+
+.measureSlider-rtl .measureSlider-value-vertical {
+    -webkit-transform: translate(0, 50%);
+    transform: translate(0, 50%)
+}
+
+.measureSlider-marker-vertical.measureSlider-marker {
+    width: 5px;
+    height: 2px;
+    margin-top: -1px
+}
+
+.measureSlider-marker-vertical.measureSlider-marker-sub {
+    width: 10px
+}
+
+.measureSlider-marker-vertical.measureSlider-marker-large {
+    width: 15px
+}
+
+.measureSlider-tooltip {
+    display: block;
+    position: absolute;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    background: #fff;
+    color: #000;
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap
+}
+
+.measureSlider-horizontal .measureSlider-tooltip {
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    left: 50%;
+    bottom: 120%
+}
+
+.measureSlider-vertical .measureSlider-tooltip {
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    top: 50%;
+    right: 120%
+}
+
+.measureSlider-horizontal .measureSlider-origin>.measureSlider-tooltip {
+    -webkit-transform: translate(50%, 0);
+    transform: translate(50%, 0);
+    left: auto;
+    bottom: 10px
+}
+
+.measureSlider-vertical .measureSlider-origin>.measureSlider-tooltip {
+    -webkit-transform: translate(0, -18px);
+    transform: translate(0, -18px);
+    top: auto;
+    right: 28px
+}

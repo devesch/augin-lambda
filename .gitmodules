@@ -1,0 +1,4 @@
+[submodule "src/js/augin-webgl"]
+	path = src/js/augin-webgl
+	url = https://github.com/augin-development/augin-webgl.git
+	branch = tqs

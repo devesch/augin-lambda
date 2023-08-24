@@ -1,0 +1,28 @@
+﻿{{header}}
+{{menu_no_icons}}
+<div class="main-container">
+    <h1 class="main-title">Acessar a TQS Cloud</h1>
+    <h2 class="sub-title">Entre com os seus dados de usuário para acessar o serviço.</h2>
+    <form class="main-form" action="{{domain_name_url_val}}/{{user_url_val}}" id="form" method="POST">
+        <div class="box-inputs">
+            <div class="input-default none">
+                <input type="email" name="user_email" value="{{user_email_val}}" id="user_email" hidden minlength="3" maxlength="255">
+            </div>
+            <div class="input-default input-password">
+                <input placeholder="Senha" type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" required autocapitalize="off" autocorrect="off">
+                <button type="button" class="toggle-password-button" onclick="js.index.togglePasswordText(this, 'user_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
+                    <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/icon-password-show-off-resized.svg" alt="Icone de olho" width="24" height="24">
+                </button>
+            </div>
+            <a class="input-link" onclick="js.index.userSendResetPassEmail();">Esqueceu sua senha?</a>
+        </div>
+        <span class="error" style="{{error_msg_visibility_val}}" id="error_msg_span">
+            {{error_msg_val}}
+        </span>
+        <div class="button login-buttons-container">
+            <a class="link--button" href="{{domain_name_url_val}}/user_login">Voltar</a>
+            <button id="submit-user-password" type="submit">Avançar</button>
+        </div>
+    </form>
+</div>
+{{footer}}

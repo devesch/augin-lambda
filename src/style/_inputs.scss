@@ -1,0 +1,87 @@
+@use '_colors.scss' as colors;
+
+.input,
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"] {
+    outline: none;
+    background-color: colors.color("color-neutral-50");
+    border: 2px solid colors.color("color-neutral-500");
+    color: colors.color("color-neutral-900");
+    border-radius: .25rem;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.input + label,
+input[type="text"] + label,
+input[type="search"] + label,
+input[type="email"] + label,
+input[type="password"] + label {
+    color: colors.color("color-neutral-700");
+}
+
+.input:focus,
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: colors.color("color-primary-500");
+}
+
+.input:focus + label,
+input[type="text"]:focus + label,
+input[type="search"]:focus + label,
+input[type="email"]:focus + label,
+input[type="password"]:focus + label {
+    color: colors.color("color-primary-500");
+    font-size: .9rem;
+    // transform: translateY(calc(-50% + -1rem));
+    transform: translateY(calc(-50% - 1.5rem));
+}
+
+.input:not(:placeholder-shown) + label,
+input[type="text"]:not(:placeholder-shown) + label,
+input[type="search"]:not(:placeholder-shown) + label,
+input[type="email"]:not(:placeholder-shown) + label,
+input[type="password"]:not(:placeholder-shown) + label {
+    font-size: .9rem;
+    // transform: translateY(calc(-50% + -1rem));
+    transform: translateY(calc(-50% - 1.5rem));
+}
+
+.input:required:invalid:not(:placeholder-shown),
+input[type="text"]:required:invalid:not(:placeholder-shown),
+input[type="search"]:required:invalid:not(:placeholder-shown),
+input[type="email"]:required:invalid:not(:placeholder-shown),
+input[type="password"]:required:invalid:not(:placeholder-shown) {
+    border-color: colors.color("color-error-500");
+}
+
+.input:required:invalid:not(:placeholder-shown) + label,
+input[type="text"]:required:invalid:not(:placeholder-shown) + label,
+input[type="search"]:required:invalid:not(:placeholder-shown) + label,
+input[type="email"]:required:invalid:not(:placeholder-shown) + label,
+input[type="password"]:required:invalid:not(:placeholder-shown) + label {
+    color: colors.color("color-error-500");
+}
+
+.floating-input {
+    margin-top: 1rem;
+    position: relative;
+}
+
+.floating-input label {
+    position: absolute;
+    top: 50%;
+    transform: translateY((-50%));
+    // top: calc(50% - 24px);
+    // transform: translateY(calc(-50% - 1rem));
+    left: .25rem;
+    margin-left: 2rem;
+    background-color: colors.color("color-neutral-50");
+    transition: font-size .25s ease-in-out, transform .25s ease-in-out;
+    pointer-events: none;
+    padding: 0 .25rem;
+}

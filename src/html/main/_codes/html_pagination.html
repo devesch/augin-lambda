@@ -1,0 +1,21 @@
+<div class="pagination" style="{{pagination_visibility_val}}">
+    <p class="count-pagination"> Exibindo
+        <span id="pagination_actual_itens_count_span">{{itens_actual_count_val}}</span>
+        de
+        <span id="pagination_total_itens_count_span">{{itens_total_count_val}}</span>
+        resultados
+    </p>
+    <div id="progress_upload_bar">
+        <div class="progress-pagination upload-bar">-</div>
+    </div>
+    <div class="load-more-pagination-button-container button-magipix">
+        <button onclick="js.index.loadMoreCallApiPagination()" id="load_more_pagination_button" class="load-more-pagination-button" aria-label="Ver mais">
+            Ver Mais
+        </button>
+    </div>
+    <input type="hidden" name="last_evaluated_key" id="last_evaluated_key" value='{{last_evaluated_key_val}}'>
+    <input type="hidden" name="query" id="query" value="{{query_val}}">
+    <input type="hidden" name="query_filter" id="query_filter" value='{{query_filter_val}}'>
+    <input type="text" name="showing_total_count" id="showing_total_count" value="{{itens_actual_count_val}}" hidden readonly required>
+    <input type="text" name="last_scroll_position" id="last_scroll_position" value="{{last_scroll_position_val}}" hidden readonly required>
+</div>

@@ -1,0 +1,42 @@
+{
+    "A senha deve ter no mínimo 8 caracteres": {
+        "en": "The password must have at least 8 characters",
+        "es": "La contraseña debe tener al menos 8 caracteres",
+        "pt": "A senha deve ter no mínimo 8 caracteres"
+    },
+    "Bem vindo ao Augin, para prosseguir precisamos seus dados de login.": {
+        "en": "Welcome to Augin, to proceed we need your login data.",
+        "es": "Bienvenido a Augin, para continuar necesitamos sus datos de inicio de sesión.",
+        "pt": "Bem vindo ao Augin, para prosseguir precisamos seus dados de login."
+    },
+    "Criar uma conta": {
+        "en": "Create an account",
+        "es": "Crear una cuenta",
+        "pt": "Criar uma conta"
+    },
+    "Email": {
+        "en": "Email",
+        "es": "Correo electrónico",
+        "pt": "Email"
+    },
+    "Insira seu email de usuário Augin": {
+        "en": "Enter your augin user email",
+        "es": "Ingrese su correo electrónico de usuario de Augin",
+        "pt": "Insira seu email de usuário Augin"
+    },
+    "Login": {
+        "en": "Login",
+        "es": "Acceso",
+        "pt": "Login"
+    },
+    "Prosseguir": {
+        "en": "Proceed",
+        "es": "Proceder",
+        "pt": "Prosseguir"
+    },
+    "Próximo": {
+        "en": "Next",
+        "es": "Próximo",
+        "pt": "Próximo"
+    }
+}

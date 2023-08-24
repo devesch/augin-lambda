@@ -1,0 +1,197 @@
+@use '_colors.scss' as colors;
+@use '_fonts.scss' as fonts;
+
+/* Buttons - Start */
+/* Orange/Default Button - Start */
+button,
+.button {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: fonts.$font-paragraph-3-size;
+    color: colors.color("color-white");
+    background-color: colors.color("color-primary-700");
+    border: 2px solid colors.color("color-primary-500");
+    font-weight: bold;
+    transition: background-color .5s ease-in-out,
+     color .5s ease-in-out,
+     border-color .5s ease-in-out;
+
+    svg,
+    img {
+        vertical-align: middle;
+        transition: filter .25s linear;
+    }
+
+}
+
+button:hover,
+.button:hover {
+    background-color: colors.color("color-primary-900");
+    border-color: colors.color("color-primary-900");
+}
+
+button:active,
+.button:active,
+.button.active {
+    background-color: colors.color("color-primary-500");
+    border-color: colors.color("color-primary-500");
+}
+
+button.ghost,
+.button.ghost {
+    color: colors.color("color-primary-900");
+    background-color: transparent;
+    border-color: colors.color("color-primary-700");
+}
+
+button.ghost:hover,
+.button.ghost:hover {
+    color: colors.color("color-white");
+    background-color: colors.color("color-primary-700");
+    border-color: colors.color("color-primary-700");
+
+    svg,
+    img {
+        filter: grayscale(100) brightness(100);
+    }
+
+}
+
+button.ghost:active,
+.button.ghost:active {
+    color: colors.color("color-white");
+    background-color: colors.color("color-primary-500");
+    border-color: colors.color("color-primary-500");
+
+    svg,
+    img {
+        filter: grayscale(100) brightness(100);
+    }
+
+}
+/* Orange/Default Button - End */
+
+button.medium,
+.button.medium {
+    padding: 0.625rem 1.875rem;
+    font-size: fonts.$font-paragraph-2-size;
+}
+
+/* Ghost Button - Start */
+button.black,
+.button.black {
+    color: colors.color("color-white");
+    background-color: colors.color("color-neutral-900");
+    border-color: colors.color("color-neutral-900");
+}
+
+button.black:hover,
+.button.black:hover {
+    background-color: colors.color("color-black");
+    border-color: colors.color("color-black");
+}
+
+button.black:active,
+.button.black:active,
+.button.black.active {
+    background-color: colors.color("color-neutral-800");
+    border-color: colors.color("color-neutral-800");
+}
+
+button.black.ghost,
+.button.black.ghost {
+    color: colors.color("color-black");
+    background-color: transparent;
+    border-color: colors.color("color-neutral-900");
+}
+
+button.black.ghost:hover,
+.button.black.ghost:hover {
+    color: colors.color("color-white");
+    background-color: colors.color("color-black");
+    border-color: colors.color("color-black");
+}
+
+button.black.ghost:active,
+.button.black.ghost:active {
+    color: colors.color("color-white");
+    background-color: colors.color("color-neutral-900");
+    border-color: colors.color("color-neutral-900");
+}
+/* Ghost Button - End */
+
+/* Home Header - Start */
+.button.home__header__button,
+button.home__header__button {
+    background-color: transparent;
+    border-color: currentColor;
+    border-radius: 2rem;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    transition: background-color .5s ease-in-out,
+     color .5s ease-in-out,
+     border-color .5s ease-in-out;
+}
+
+.button.home__header__button:hover,
+button.home__header__button:hover {
+    color: colors.color("color-black");
+    background-color: colors.color("color-white");
+    border-color: colors.color("color-white");
+}
+
+.header--home__icon-button {
+    background-color: transparent;
+    border: none;
+    padding: .5rem;
+    border-radius: 2rem;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.header--home__icon-button img {
+    vertical-align: middle;
+}
+
+.header--home__icon-button:hover {
+    background-color: colors.color("color-neutral-900");
+}
+
+.header--home__trial-container__button {
+    background-color: colors.color("color-secondary-700");
+    border-color: colors.color("color-secondary-700");
+    border-radius: 2rem;
+    width: 100%;
+    max-width: 20rem;
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-weight: normal;
+    transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+}
+
+.header--home__trial-container__button:hover {
+    background-color: colors.color("color-secondary-900");
+    border-color: colors.color("color-secondary-900");
+}
+
+.header--home__trial-container__button:active {
+    background-color: colors.color("color-secondary-500");
+    border-color: colors.color("color-secondary-500");
+}
+/* Home Header - End */
+
+.my-plan__title-container__button {
+    &.black {
+        padding: 0.25rem 2rem;
+    }
+
+    &.ghost {
+        padding: .25rem;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+}
+
+/* Buttons - End */

@@ -1,0 +1,12 @@
+{
+    "name": "augin",
+    "version": "1.0.0",
+    "description": "Augin",
+    "main": "index.js",
+    "scripts": {
+        "dev": "webpack --config webpack.prod.js",
+        "prod": "webpack --config webpack.prod.js --env production"
+    },
+    "author": "Augin",
+    "license": "ISC"
+}

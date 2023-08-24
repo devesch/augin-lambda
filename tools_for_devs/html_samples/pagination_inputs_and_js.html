@@ -1,0 +1,8 @@
+<script>
+    window.onload = async function () {
+        js.index.updatePaginationProgressBar();
+        js.index.loadMoreOnScroll();
+    };
+</script>
+<input id="last_evaluated_key" value='{{last_evaluated_key_val}}' hidden>
+<input name="last_scroll_position" id="last_scroll_position" value="{{last_scroll_position_val}}" hidden readonly required>

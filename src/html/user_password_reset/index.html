@@ -1,0 +1,27 @@
+﻿{{header}}
+{{menu_no_icons}}
+<div class="main-container">
+    <h1 class="main-title">Atualize a sua senha na TQS Cloud</h1>
+    <h2 class="sub-title">Insira uma nova senha para sua conta.</h2>
+    <form class="main-form" action="{{domain_name_url_val}}/{{user_url_val}}" id="form" method="POST">
+        <div class="box-inputs">
+            <div class="input-default input-password">
+                <input type="password" name="user_password" value="{{user_password_val}}" placeholder="Digite uma senha forte" required autocapitalize="off" autocorrect="off">
+                <img class="input-password__icon-show-password-off" src="{{cdn_val}}/assets/icons/icon-password-show-off-resized.svg" alt="Icone de olho">
+            </div>
+            <p class="sub-description text-align-center">A senha deve ter no mínimo 8 caracteres.</p>
+            <div class="input-default input-password">
+                <input type="password" name="user_password_confirm" value="{{user_password_confirm_val}}" placeholder="Repita a senha" required autocapitalize="off" autocorrect="off">
+                <img class="input-password__icon-show-password-off" src="{{cdn_val}}/assets/icons/icon-password-show-off-resized.svg" alt="Icone de olho">
+            </div>
+        </div>
+        <span class="error" style="{{error_msg_visibility_val}}">
+            {{error_msg_val}}
+        </span>
+        <div class="button login-buttons-container">
+            <a class="link--button" href="{{domain_name_url_val}}/user_login">Voltar</a>
+            <button type="submit">Avançar</button>
+        </div>
+    </form>
+</div>
+{{footer}}

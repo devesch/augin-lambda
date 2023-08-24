@@ -1,0 +1,114 @@
+/* Color Variables - Start */
+$color-neutral-50: #F7F2F0;
+$color-neutral-100: #EBE6E4;
+$color-neutral-200: #DBD6D5;
+$color-neutral-300: #BFBBBA;
+$color-neutral-400: #A6A2A1;
+$color-neutral-500: #8C8988;
+$color-neutral-600: #73706F;
+$color-neutral-700: #595757;
+$color-neutral-800: #403E3E;
+$color-neutral-900: #262525;
+
+$color-primary-50: #FFD9B2;
+$color-primary-300: #FFB973;
+$color-primary-500: #F29D49;
+$color-primary-700: #F28B24;
+$color-primary-900: #CC751E;
+
+$color-secondary-50: #FFBFB2;
+$color-secondary-300: #FF8A73;
+$color-secondary-500: #F26549;
+$color-secondary-700: #F24624;
+$color-secondary-900: #CC3B1E;
+
+$color-success-50: #4EFF6A;
+$color-success-300: #30F251;
+$color-success-500: #15D936;
+$color-success-700: #00C020;
+$color-success-900: #008015;
+
+$color-warning-50: #FFE14D;
+$color-warning-300: #F2D231;
+$color-warning-500: #D9B817;
+$color-warning-700: #C0A102;
+$color-warning-900: #806A00;
+
+$color-error-50: #FF5B4D;
+$color-error-300: #F24130;
+$color-error-500: #D92616;
+$color-error-700: #C01000;
+$color-error-900: #800B00;
+
+$color-status-green-50: #D7F7C2;
+$color-status-green-700: #086F10;
+
+$color-status-red-50: #FFE7F2;
+$color-status-red-700: #C3184F;
+
+$color-status-blue-50: #CFF5F6;
+$color-status-blue-700: #0055BC;
+
+$color-white: #F8FAFF;
+$color-black: #0C0C0D;
+/* Color Variables - End */
+
+/* Color Map - Start */
+// Map to loop over and create variables
+$colors: (
+    "color-neutral-50": $color-neutral-50,
+    "color-neutral-100": $color-neutral-100,
+    "color-neutral-200": $color-neutral-200,
+    "color-neutral-300": $color-neutral-300,
+    "color-neutral-400": $color-neutral-400,
+    "color-neutral-500": $color-neutral-500,
+    "color-neutral-600": $color-neutral-600,
+    "color-neutral-700": $color-neutral-700,
+    "color-neutral-800": $color-neutral-800,
+    "color-neutral-900": $color-neutral-900,
+    "color-primary-50": $color-primary-50,
+    "color-primary-300": $color-primary-300,
+    "color-primary-500": $color-primary-500,
+    "color-primary-700": $color-primary-700,
+    "color-primary-900": $color-primary-900,
+    "color-secondary-50": $color-secondary-50,
+    "color-secondary-300": $color-secondary-300,
+    "color-secondary-500": $color-secondary-500,
+    "color-secondary-700": $color-secondary-700,
+    "color-secondary-900": $color-secondary-900,
+    "color-success-50": $color-success-50,
+    "color-success-300": $color-success-300,
+    "color-success-500": $color-success-500,
+    "color-success-700": $color-success-700,
+    "color-success-900": $color-success-900,
+    "color-warning-50": $color-warning-50,
+    "color-warning-300": $color-warning-300,
+    "color-warning-500": $color-warning-500,
+    "color-warning-700": $color-warning-700,
+    "color-warning-900": $color-warning-900,
+    "color-error-50": $color-error-50,
+    "color-error-300": $color-error-300,
+    "color-error-500": $color-error-500,
+    "color-error-700": $color-error-700,
+    "color-error-900": $color-error-900,
+    "color-status-green-50": $color-status-green-50,
+    "color-status-green-700": $color-status-green-700,
+    "color-status-red-50": $color-status-red-50,
+    "color-status-red-700": $color-status-red-700,
+    "color-status-blue-50": $color-status-blue-50,
+    "color-status-blue-700": $color-status-blue-700,
+    "color-white": $color-white,
+    "color-black": $color-black,
+);
+
+:root {
+    @each $name, $color in $colors {
+        --#{$name}: #{$color};
+    }
+}
+
+// Function to get CSS variable with SASS fallback
+@function color($color-name) {
+    @return var(--#{$color-name}, #{map-get($colors, $color-name)});
+}
+/* Color Map - End */

@@ -1,0 +1,27 @@
+@use '_colors.scss' as colors;
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: colors.color("color-primary-50");
+    color: colors.color("color-black");
+    border-radius: 1rem;
+    padding: 5px 1rem;
+    z-index: 10;
+    width: fit-content;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+.tooltip-container:hover .tooltip-content {
+    display: block;
+}

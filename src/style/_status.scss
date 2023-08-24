@@ -1,0 +1,36 @@
+@use '_colors.scss' as colors;
+
+.status {
+    width: fit-content;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+    border-radius: .25rem;
+}
+
+.status--paid,
+.status--succeeded {
+    background-color: colors.color("color-status-green-50");
+    color: colors.color("color-status-green-700");
+}
+
+.status--retrying,
+.status--failed,
+.status--blocked {
+    background-color: colors.color("color-status-red-50");
+    color: colors.color("color-status-red-700");
+}
+
+.status--void,
+.status--canceled,
+.status--incomplete,
+.status--refunded,
+.status--partially-refunded {
+    background-color: colors.color("color-neutral-50");
+    color: colors.color("color-neutral-700");
+}
+
+.status--open {
+    background-color: colors.color("color-status-blue-50");
+    color: colors.color("color-status-blue-700");
+}

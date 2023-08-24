@@ -1,0 +1,15 @@
+<div class="projects-customer-container">
+    <button class="projects-customer-dropdown-toggle-button" onclick="js.index.toggleProfileDropdown(this, event)" aria-controls="projects_customer_dropdown" aria-expanded="false">
+        <span class="{{projects_customer_active_val}}">Empresa</span>
+    </button>
+    <div id="projects_customer_dropdown" class="projects-customer-dropdown">
+        <div class="projects-customer-dropdown-row">
+            <div class="projects-customer-dropdown-column">
+                <img src="{{cdn_val}}/assets/icons/account_box.svg" alt="" width="18" height="18">
+            </div>
+            <div class="projects-customer-dropdown-column">
+                {{html_projects_customers_options}}
+            </div>
+        </div>
+    </div>
+</div>
