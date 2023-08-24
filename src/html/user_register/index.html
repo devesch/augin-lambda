@@ -1,37 +1,29 @@
 ﻿{{header}}
-{{menu_no_icons}}
-<div class="main-container">
-    <h1 class="main-title">Crie sua conta na TQS Cloud</h1>
-    <h4 class="sub-title">Parece que você ainda não tem uma conta, então vamos criar uma pra você.</h4>
-    <form class="main-form" action="{{domain_name_url_val}}/{{user_url_val}}" id="form" method="POST">
-        <div class="box-inputs">
-            <div class="input-default">
-                <input type="text" name="user_name" value="{{user_name_val}}" placeholder="Digite o seu nome" required>
-            </div>
-            <div class="input-default input-password">
-                <input type="password" name="user_password" id="user_password_input" value="{{user_password_val}}" placeholder="Digite uma senha forte" required autocapitalize="off" autocorrect="off" minlength="8">
-                <button type="button" class="toggle-password-button" onclick="js.index.togglePasswordText(this, 'user_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
-                    <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/icon-password-show-off-resized.svg" alt="Icone de olho" width="24" height="24">
-                </button>
-            </div>
-            <p class="sub-description text-align-center">{{A senha deve ter no mínimo 8 caracteres}}.</p>
-            <div class="input-default input-password">
-                <input type="password" name="user_password_confirm" id="user_password_confirm_input" value="{{user_password_confirm_val}}" placeholder="Repita a senha" required autocapitalize="off" autocorrect="off" minlength="8">
-                <button type="button" class="toggle-password-button" onclick="js.index.togglePasswordText(this, 'user_password_confirm_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
-                    <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/icon-password-show-off-resized.svg" alt="Icone de olho" width="24" height="24">
-                </button>
-            </div>
-            <div class="checkbox-default">
-                <input type="checkbox" id="user_aggre_with_terms" name="user_aggre_with_terms" required {{user_aggre_with_terms_checked_val}}>
-                <label for="user_aggre_with_terms">Eu li e concordo com o contrato de <a href="{{domain_name_url_val}}/user_terms" target="_blank">Termos e Política de Privacidade</a></label>
-            </div>
+{{menu_panel_no_icons}}
+<main class="my-plan__main">
+    <div class="my-plan__title-container">
+        <h1 class="my-plan__title">{{Criar conta}}</h1>
+    </div>
+    <div class="create-account__title-container">
+        <h2>{{Bem vindo ao Augin, para criar sua conta precisamos algumas informações.}}</h2>
+    </div>
+    <form class="create-account__form-container">
+        <div class="create-account__input-container floating-input">
+            <input type="text" name="user_name" value="{{user_name_val}}" id="name-account_input" placeholder="" required autofocus maxlength="500">
+            <label for="name-account_input">{{Nome completo}}</label>
         </div>
-        <span class="error" style="{{error_msg_visibility_val}}">
-            {{error_msg_val}}
-        </span>
-        <div class="button login-buttons-container">
-            <button type="submit">Avançar</button>
+        <p class="error none">{{Deve conter apenas letras}}</p>
+        <div class="create-account__input-container floating-input">
+            <input type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder="" required pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" maxlength="500">
+            <label for="email-account_input">{{Email}}</label>
         </div>
+        <p class="error none">{{Email inválido}}</p>
+        <div class="create-account__input-container floating-input">
+            <input type="password" name="user_password" value="{{user_password_val}}" id="password-account_input" placeholder="" required minlength="8" maxlength="500">
+            <label for="password-account_input">{{Senha}}</label>
+        </div>
+        <p class="input-hint">{{8 caracteres ou mais. Pode conter letras, números e símbolos.}}</p>
+        <p class="error none">{{Senha inválida}}</p>
     </form>
-</div>
+</main>
 {{footer}}

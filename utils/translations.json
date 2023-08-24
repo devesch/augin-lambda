@@ -1,23 +1,48 @@
 {
+    "8 caracteres ou mais. Pode conter letras, números e símbolos.": {
+        "en": "8 characters or more.It may contain letters, numbers and symbols.",
+        "es": "8 caracteres o más.Puede contener letras, números y símbolos.",
+        "pt": "8 caracteres ou mais. Pode conter letras, números e símbolos."
+    },
     "A senha deve ter no mínimo 8 caracteres": {
         "en": "The password must have at least 8 characters",
         "es": "La contraseña debe tener al menos 8 caracteres",
         "pt": "A senha deve ter no mínimo 8 caracteres"
+    },
+    "Bem vindo ao Augin, para criar sua conta precisamos algumas informações.": {
+        "en": "Welcome to Augin, to create your account we need some information.",
+        "es": "Bienvenido a Augin, para crear su cuenta, necesitamos información.",
+        "pt": "Bem vindo ao Augin, para criar sua conta precisamos algumas informações."
     },
     "Bem vindo ao Augin, para prosseguir precisamos seus dados de login.": {
         "en": "Welcome to Augin, to proceed we need your login data.",
         "es": "Bienvenido a Augin, para continuar necesitamos sus datos de inicio de sesión.",
         "pt": "Bem vindo ao Augin, para prosseguir precisamos seus dados de login."
     },
+    "Criar conta": {
+        "en": "Create an account",
+        "es": "Crea una cuenta",
+        "pt": "Criar conta"
+    },
     "Criar uma conta": {
         "en": "Create an account",
         "es": "Crear una cuenta",
         "pt": "Criar uma conta"
     },
+    "Deve conter apenas letras": {
+        "en": "Should contain only letters",
+        "es": "Debe contener solo letras",
+        "pt": "Deve conter apenas letras"
+    },
     "Email": {
         "en": "Email",
         "es": "Correo electrónico",
         "pt": "Email"
+    },
+    "Email inválido": {
+        "en": "Invalid email",
+        "es": "Email inválido",
+        "pt": "Email inválido"
     },
     "Insira seu email de usuário Augin": {
         "en": "Enter your augin user email",
@@ -29,6 +54,11 @@
         "es": "Acceso",
         "pt": "Login"
     },
+    "Nome completo": {
+        "en": "Full name",
+        "es": "Nombre completo",
+        "pt": "Nome completo"
+    },
     "Prosseguir": {
         "en": "Proceed",
         "es": "Proceder",
@@ -38,5 +68,15 @@
         "en": "Next",
         "es": "Próximo",
         "pt": "Próximo"
+    },
+    "Senha": {
+        "en": "Password",
+        "es": "Contraseña",
+        "pt": "Senha"
+    },
+    "Senha inválida": {
+        "en": "invalid password",
+        "es": "contraseña invalida",
+        "pt": "Senha inválida"
     }
 }
