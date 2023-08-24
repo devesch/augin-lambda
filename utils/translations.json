@@ -9,6 +9,11 @@
         "es": "La contraseña debe tener al menos 8 caracteres",
         "pt": "A senha deve ter no mínimo 8 caracteres"
     },
+    "Adicionar método de pagamento": {
+        "en": "Add payment method",
+        "es": "Añadir método de pago",
+        "pt": "Adicionar método de pagamento"
+    },
     "Afghanistan": {
         "en": "AFGHANISTAN",
         "es": "AFGANISTÁN",
@@ -54,20 +59,60 @@
         "es": "Antigua y Barbuda",
         "pt": "Antigua and Barbuda"
     },
+    "Ao prosseguir, este dispositivo não estará mais vinculado a sua conta.": {
+        "en": "By proceeding, this device will no longer be linked to your account.",
+        "es": "Al continuar, este dispositivo ya no estará vinculado a su cuenta.",
+        "pt": "Ao prosseguir, este dispositivo não estará mais vinculado a sua conta."
+    },
+    "Apagar": {
+        "en": "To switch off",
+        "es": "Apagar",
+        "pt": "Apagar"
+    },
     "Argentina": {
         "en": "Argentina",
         "es": "Argentina",
         "pt": "Argentina"
+    },
+    "Armazenamento": {
+        "en": "Storage",
+        "es": "Almacenamiento",
+        "pt": "Armazenamento"
     },
     "Armenia": {
         "en": "Armenia",
         "es": "Armenia",
         "pt": "Armenia"
     },
+    "Arraste e solte seu arquivo (IFC ou FBX) aqui ou": {
+        "en": "Drag and drop your file (IFC or FBX) here or",
+        "es": "Arrastre y suelte su archivo (IFC o FBX) aquí o",
+        "pt": "Arraste e solte seu arquivo (IFC ou FBX) aqui ou"
+    },
     "Aruba": {
         "en": "Aruba",
         "es": "Aruba",
         "pt": "Aruba"
+    },
+    "Ativado em": {
+        "en": "Activated on",
+        "es": "Activado el",
+        "pt": "Ativado em"
+    },
+    "Atualizar": {
+        "en": "To update",
+        "es": "Actualizar",
+        "pt": "Atualizar"
+    },
+    "Atualizar forma de pagamento": {
+        "en": "Update payment method",
+        "es": "Actualizar método de pago",
+        "pt": "Atualizar forma de pagamento"
+    },
+    "Atualmente você tem": {
+        "en": "currently you have",
+        "es": "actualmente tienes",
+        "pt": "Atualmente você tem"
     },
     "Australia": {
         "en": "Australia",
@@ -93,6 +138,16 @@
         "en": "Bahrain",
         "es": "Bahrain",
         "pt": "Bahrain"
+    },
+    "Baixar": {
+        "en": "To go down",
+        "es": "Bajar",
+        "pt": "Baixar"
+    },
+    "Baixe seus IFCs em qualquer lugar": {
+        "en": "Download your IFCs anywhere",
+        "es": "Descarga tus IFC en cualquier lugar",
+        "pt": "Baixe seus IFCs em qualquer lugar"
     },
     "Bangladesh": {
         "en": "Bangladesh",
@@ -219,6 +274,21 @@
         "es": "Canadá",
         "pt": "Canada"
     },
+    "Cancelar": {
+        "en": "Cancel",
+        "es": "Cancelar",
+        "pt": "Cancelar"
+    },
+    "Cancelar assinatura": {
+        "en": "unsubscribe",
+        "es": "darse de baja",
+        "pt": "Cancelar assinatura"
+    },
+    "Categoria": {
+        "en": "Category",
+        "es": "Categoría",
+        "pt": "Categoria"
+    },
     "Cayman Islands": {
         "en": "Cayman Islands",
         "es": "Islas Caimán",
@@ -254,6 +324,11 @@
         "es": "Isla de Navidad",
         "pt": "Christmas Island"
     },
+    "Cobrança e pagamento": {
+        "en": "billing and payment",
+        "es": "facturación y pago",
+        "pt": "Cobrança e pagamento"
+    },
     "Cocos (Keeling) Islands": {
         "en": "Cocos (Keeling) Islands",
         "es": "Islas Cocos (Keeling)",
@@ -273,6 +348,16 @@
         "en": "Dwelling",
         "es": "Vivienda",
         "pt": "Comoros"
+    },
+    "Compartilhar": {
+        "en": "To share",
+        "es": "Para compartir",
+        "pt": "Compartilhar"
+    },
+    "Compartilhe por QR Code ou link": {
+        "en": "Share by QR Code or link",
+        "es": "Compartir por código QR o enlace",
+        "pt": "Compartilhe por QR Code ou link"
     },
     "Congo": {
         "en": "Congo",
@@ -294,6 +379,11 @@
         "es": "Costa Rica",
         "pt": "Costa Rica"
     },
+    "Criar": {
+        "en": "To create",
+        "es": "Crear",
+        "pt": "Criar"
+    },
     "Criar conta": {
         "en": "Create an account",
         "es": "Crea una cuenta",
@@ -303,6 +393,11 @@
         "en": "Create an account",
         "es": "Crear una cuenta",
         "pt": "Criar uma conta"
+    },
+    "Criação": {
+        "en": "Creation",
+        "es": "Creación",
+        "pt": "Criação"
     },
     "Croatia": {
         "en": "Croatia",
@@ -334,10 +429,25 @@
         "es": "Cantas d'Iffioir",
         "pt": "Côte d'Ivoire"
     },
+    "DISPONÍVEL": {
+        "en": "AVAILABLE",
+        "es": "DISPONIBLE",
+        "pt": "DISPONÍVEL"
+    },
+    "Data de renovação": {
+        "en": "renewal date",
+        "es": "Fecha de renovación",
+        "pt": "Data de renovação"
+    },
     "Denmark": {
         "en": "Denmark",
         "es": "Dinamarca",
         "pt": "Denmark"
+    },
+    "Desvincular": {
+        "en": "Unbind",
+        "es": "Desatar",
+        "pt": "Desvincular"
     },
     "Deve conter apenas letras": {
         "en": "Should contain only letters",
@@ -439,6 +549,11 @@
         "es": "Error 500",
         "pt": "Erro 500"
     },
+    "Esqueci minha senha": {
+        "en": "I forgot my password",
+        "es": "Olvide mi contraseña",
+        "pt": "Esqueci minha senha"
+    },
     "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível.": {
         "en": "We are facing a setback on our website, which is temporarily unavailable.",
         "es": "Nos enfrentamos a un revés en nuestro sitio web, que no está disponible temporalmente.",
@@ -469,6 +584,21 @@
         "es": "Demostración",
         "pt": "Exibindo"
     },
+    "Exibir senha": {
+        "en": "show password",
+        "es": "mostrar contraseña",
+        "pt": "Exibir senha"
+    },
+    "Explorar": {
+        "en": "To explore",
+        "es": "Para explorar",
+        "pt": "Explorar"
+    },
+    "Failed": {
+        "en": "",
+        "es": "",
+        "pt": "Failed"
+    },
     "Falkland Islands (Malvinas)": {
         "en": "FALKLAND ISLANDS (Falklands)",
         "es": "Islas Malvinas (Malvinas)",
@@ -479,6 +609,16 @@
         "es": "Islas Faroe",
         "pt": "Faroe Islands"
     },
+    "Favoritar": {
+        "en": "favorite",
+        "es": "favorito",
+        "pt": "Favoritar"
+    },
+    "Federado": {
+        "en": "Federated",
+        "es": "federado",
+        "pt": "Federado"
+    },
     "Fiji": {
         "en": "Fiji",
         "es": "Fiji",
@@ -488,6 +628,11 @@
         "en": "Row",
         "es": "Fila",
         "pt": "Fila"
+    },
+    "Fila de processamento": {
+        "en": "processing queue",
+        "es": "cola de procesamiento",
+        "pt": "Fila de processamento"
     },
     "Finland": {
         "en": "Finland",
@@ -528,6 +673,11 @@
         "en": "Georgia",
         "es": "Georgia",
         "pt": "Georgia"
+    },
+    "Gerencie seus dispositivos": {
+        "en": "manage your devices",
+        "es": "administra tus dispositivos",
+        "pt": "Gerencie seus dispositivos"
     },
     "Germany": {
         "en": "Germany",
@@ -604,6 +754,11 @@
         "es": "Escuché Island y Islas McDonald",
         "pt": "Heard Island and McDonald Islands"
     },
+    "Histórico de pagamento": {
+        "en": "payment history",
+        "es": "historial de pagos",
+        "pt": "Histórico de pagamento"
+    },
     "Holy See (Vatican City State)": {
         "en": "Holy See (Vatican City State)",
         "es": "Santa Sede (Estado de la Ciudad del Vaticano)",
@@ -628,6 +783,21 @@
         "en": "Iceland",
         "es": "Islandia",
         "pt": "Iceland"
+    },
+    "Importar arquivo": {
+        "en": "import file",
+        "es": "importar archivo",
+        "pt": "Importar arquivo"
+    },
+    "Importar novo projeto": {
+        "en": "import new project",
+        "es": "importar nuevo proyecto",
+        "pt": "Importar novo projeto"
+    },
+    "Importe seu arquivo": {
+        "en": "import your file",
+        "es": "importa tu archivo",
+        "pt": "Importe seu arquivo"
     },
     "India": {
         "en": "India",
@@ -764,6 +934,16 @@
         "es": "Liechtenstein",
         "pt": "Liechtenstein"
     },
+    "Limite de dispositivos": {
+        "en": "device limit",
+        "es": "límite de dispositivo",
+        "pt": "Limite de dispositivos"
+    },
+    "Limite mensal de desvinculações": {
+        "en": "Monthly limit of unlinks",
+        "es": "Límite mensual de desvinculaciones",
+        "pt": "Limite mensal de desvinculações"
+    },
     "Lithuania": {
         "en": "Lithuania",
         "es": "Lituania",
@@ -889,6 +1069,11 @@
         "es": "Marruecos",
         "pt": "Morocco"
     },
+    "Mover": {
+        "en": "To move",
+        "es": "Para mover",
+        "pt": "Mover"
+    },
     "Mozambique": {
         "en": "Mozambique",
         "es": "Mozambique",
@@ -899,6 +1084,11 @@
         "es": "Myanmar",
         "pt": "Myanmar"
     },
+    "Métodos de pagamento": {
+        "en": "Payment methods",
+        "es": "Métodos de pago",
+        "pt": "Métodos de pagamento"
+    },
     "Namibia": {
         "en": "Namibia",
         "es": "Namibia",
@@ -908,6 +1098,11 @@
         "en": "Nauru",
         "es": "Nauru",
         "pt": "Nauru"
+    },
+    "Necessário upgrade de plano": {
+        "en": "Plan upgrade needed",
+        "es": "Se necesita una actualización del plan",
+        "pt": "Necessário upgrade de plano"
     },
     "Nepal": {
         "en": "Nepal",
@@ -949,10 +1144,20 @@
         "es": "Niue",
         "pt": "Niue"
     },
+    "Nome": {
+        "en": "Name",
+        "es": "Nombre",
+        "pt": "Nome"
+    },
     "Nome completo": {
         "en": "Full name",
         "es": "Nombre completo",
         "pt": "Nome completo"
+    },
+    "Nome do federado": {
+        "en": "federate name",
+        "es": "nombre federado",
+        "pt": "Nome do federado"
     },
     "Norfolk Island": {
         "en": "Norfolk Island",
@@ -978,6 +1183,11 @@
         "en": "Our team is working to resolve the situation as soon as possible.",
         "es": "Nuestro equipo está trabajando para resolver la situación lo antes posible.",
         "pt": "Nossa equipe está trabalhando para resolver a situação o mais rápido possível."
+    },
+    "Olá": {
+        "en": "Hello",
+        "es": "Hola",
+        "pt": "Olá"
     },
     "Oman": {
         "en": "Oman",
@@ -1014,6 +1224,11 @@
         "es": "Paraguay",
         "pt": "Paraguay"
     },
+    "Pasta": {
+        "en": "Folder",
+        "es": "Carpeta",
+        "pt": "Pasta"
+    },
     "Pendências": {
         "en": "Pendencies",
         "es": "Pendencias",
@@ -1023,6 +1238,11 @@
         "en": "Peru",
         "es": "Perú",
         "pt": "Peru"
+    },
+    "Período de cobrança": {
+        "en": "billing period",
+        "es": "período de facturación",
+        "pt": "Período de cobrança"
     },
     "Philippines": {
         "en": "Philippines",
@@ -1059,10 +1279,25 @@
         "es": "Portugal",
         "pt": "Portugal"
     },
+    "Preço": {
+        "en": "Price",
+        "es": "Precio",
+        "pt": "Preço"
+    },
     "Problema temporário": {
         "en": "Temporary problem",
         "es": "Problema temporal",
         "pt": "Problema temporário"
+    },
+    "Projeto": {
+        "en": "Project",
+        "es": "Proyecto",
+        "pt": "Projeto"
+    },
+    "Projetos federados": {
+        "en": "federated projects",
+        "es": "proyectos federados",
+        "pt": "Projetos federados"
     },
     "Prosseguir": {
         "en": "Proceed",
@@ -1083,6 +1318,16 @@
         "en": "Qatar",
         "es": "Katar",
         "pt": "Qatar"
+    },
+    "Quantidade de dispositivos": {
+        "en": "number of devices",
+        "es": "número de dispositivos",
+        "pt": "Quantidade de dispositivos"
+    },
+    "Renomear": {
+        "en": "rename",
+        "es": "rebautizar",
+        "pt": "Renomear"
     },
     "Romania": {
         "en": "Romania",
@@ -1164,6 +1409,11 @@
         "es": "Arabia Saudita",
         "pt": "Saudi Arabia"
     },
+    "Selecionar categoria": {
+        "en": "select category",
+        "es": "selecciona una categoría",
+        "pt": "Selecionar categoria"
+    },
     "Senegal": {
         "en": "Senegal",
         "es": "Senegal",
@@ -1189,6 +1439,21 @@
         "es": "Su código de verificación por correo electrónico",
         "pt": "Seu código de verficação de email"
     },
+    "Seu plano": {
+        "en": "your plan",
+        "es": "tu plan",
+        "pt": "Seu plano"
+    },
+    "Seu plano permite conectar até ": {
+        "en": "Your plan allows you to connect up to",
+        "es": "Tu plan te permite conectarte hasta",
+        "pt": "Seu plano permite conectar até "
+    },
+    "Seu plano permite importar arquivos até": {
+        "en": "Your plan allows you to import files up to",
+        "es": "Su plan le permite importar archivos hasta",
+        "pt": "Seu plano permite importar arquivos até"
+    },
     "Seychelles": {
         "en": "Seychelles",
         "es": "Seychelles",
@@ -1198,6 +1463,11 @@
         "en": "Sierra Leone",
         "es": "Sierra Leona",
         "pt": "Sierra Leone"
+    },
+    "Sim": {
+        "en": "Yes",
+        "es": "Sí",
+        "pt": "Sim"
     },
     "Singapore": {
         "en": "Singapore",
@@ -1294,10 +1564,25 @@
         "es": "Tayikistán",
         "pt": "Tajikistan"
     },
+    "Tamanho": {
+        "en": "Size",
+        "es": "Tamaño",
+        "pt": "Tamanho"
+    },
+    "Tamanho de projeto": {
+        "en": "project size",
+        "es": "tamaño del proyecto",
+        "pt": "Tamanho de projeto"
+    },
     "Tanzania, United Republic of": {
         "en": "Tanzania, United Republic of",
         "es": "Tanzania, República Unida de",
         "pt": "Tanzania, United Republic of"
+    },
+    "Tem certeza que deseja continuar?": {
+        "en": "Are you sure you want to continue?",
+        "es": "Estás seguro de que quieres continuar?",
+        "pt": "Tem certeza que deseja continuar?"
     },
     "Termos e condiçōes": {
         "en": "Terms and conditions",
@@ -1404,6 +1689,16 @@
         "es": "Vanuatu",
         "pt": "Vanuatu"
     },
+    "Veja seus dispositivos conectados ao Augin.": {
+        "en": "View your devices connected to Augin.",
+        "es": "Visualiza tus dispositivos conectados a Augin.",
+        "pt": "Veja seus dispositivos conectados ao Augin."
+    },
+    "Vence": {
+        "en": "wins",
+        "es": "gana",
+        "pt": "Vence"
+    },
     "Venezuela, Bolivarian Republic of": {
         "en": "Venezuela, Bolivarian Republic of",
         "es": "Venezuela, República Bolíva de",
@@ -1428,6 +1723,21 @@
         "en": "Virgin Islands, U.S.",
         "es": "Islas Vírgenes, EE. UU.",
         "pt": "Virgin Islands, U.S."
+    },
+    "Visto por último": {
+        "en": "last seen",
+        "es": "ultima vez visto",
+        "pt": "Visto por último"
+    },
+    "Você pode conectar um novo dispositivo quando quiser.": {
+        "en": "You can connect a new device whenever you want.",
+        "es": "Puedes conectar un nuevo dispositivo cuando quieras.",
+        "pt": "Você pode conectar um novo dispositivo quando quiser."
+    },
+    "Você utilizou": {
+        "en": "you used",
+        "es": "usaste",
+        "pt": "Você utilizou"
     },
     "Wallis and Futuna": {
         "en": "Wallis and Futuna",
@@ -1454,10 +1764,95 @@
         "es": "Zimbabue",
         "pt": "Zimbabwe"
     },
+    "até 5": {
+        "en": "up to 5",
+        "es": "hasta 5",
+        "pt": "até 5"
+    },
+    "de": {
+        "en": "in",
+        "es": "en",
+        "pt": "de"
+    },
+    "desativações de": {
+        "en": "deactivations of",
+        "es": "desactivaciones de",
+        "pt": "desativações de"
+    },
+    "desvinculações este mês.": {
+        "en": "releases this month.",
+        "es": "lanzamientos este mes.",
+        "pt": "desvinculações este mês."
+    },
+    "dias atrás": {
+        "en": "days ago",
+        "es": "dias atras",
+        "pt": "dias atrás"
+    },
+    "dispositivos conectados de": {
+        "en": "connected devices from",
+        "es": "dispositivos conectados desde",
+        "pt": "dispositivos conectados de"
+    },
+    "dispositivos. Faça um upgrade para aumentar esse limite.": {
+        "en": "devices.Upgrade to increase this limit.",
+        "es": "dispositivos.Actualice para aumentar este límite.",
+        "pt": "dispositivos. Faça um upgrade para aumentar esse limite."
+    },
+    "do seu plano": {
+        "en": "of your plan",
+        "es": "de tu plan",
+        "pt": "do seu plano"
+    },
+    "faça um upgrade": {
+        "en": "upgrade",
+        "es": "mejora",
+        "pt": "faça um upgrade"
+    },
+    "isponíveis e realizou": {
+        "en": "available and performed",
+        "es": "disponible y realizado",
+        "pt": "isponíveis e realizou"
+    },
+    "ou": {
+        "en": "or",
+        "es": "o",
+        "pt": "ou"
+    },
+    "para aumentar esse limite.": {
+        "en": "to increase this limit.",
+        "es": "para aumentar este límite.",
+        "pt": "para aumentar esse limite."
+    },
+    "para ser visualizado  no Augin.": {
+        "en": "to be viewed in Augin.",
+        "es": "para ver en Augin.",
+        "pt": "para ser visualizado  no Augin."
+    },
+    "por projeto": {
+        "en": "per project",
+        "es": "por proyecto",
+        "pt": "por projeto"
+    },
+    "possíveis": {
+        "en": "possible",
+        "es": "posible",
+        "pt": "possíveis"
+    },
     "resultados": {
         "en": "results",
         "es": "resultados",
         "pt": "resultados"
+    },
+    "selecione um em seu computador": {
+        "en": "select one on your computer",
+        "es": "seleccione uno en su computadora",
+        "pt": "selecione um em seu computador"
+    },
+    "seu plano é o": {
+        "en": "your plan is",
+        "es": "tu plan es",
+        "pt": "seu plano é o"
     },
     "Åland Islands": {
         "en": "Åland Islands",
