@@ -9,7 +9,7 @@
     </div>
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" class="create-account__form-container">
         <div class="create-account__input-container floating-input">
-            <input readonly type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder="" required pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" maxlength="500">
+            <input readonly type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder="" required maxlength="500">
             <label for="email-account_input">{{Email}}</label>
         </div>
         <p class="error none">{{Email inválido}}</p>
