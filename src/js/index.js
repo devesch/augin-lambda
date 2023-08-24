@@ -1,3 +1,5 @@
+"use strict";
+
 import "../style/style.scss";
 import {
     ProjectData
@@ -114,3 +116,178 @@ export function verifySendEmailCode(inputs_array) {
         form.submit();
     }
 }
+
+export function detectClickOutsideElement() {
+    let main = document.querySelector(".body--my-plan");
+    let openMobileMenuButton = document.querySelector(".menu-mobile-open-button");
+    let closeMobileMenuButton = document.querySelector(".header__mobile-close-button");
+
+    let buttons = document.querySelectorAll(".button--explore-more-options");
+    let buttonsLength = buttons.length;
+
+    let exploreCreateButton = document.querySelector(".explore-create-more-options");
+
+    document.addEventListener("click", function(event) {
+        // console.log(event);
+        // console.log(openMobileMenuButton);
+        // console.log(closeMobileMenuButton);
+        if (openMobileMenuButton && closeMobileMenuButton) {
+            let mobileMenu = document.querySelector(".header--my-plan");
+            // console.log(mobileMenu);
+            if (mobileMenu) {
+                // console.log(event.target);
+                if (openMobileMenuButton.contains(event.target)) {
+                    mobileMenu.classList.add("open");
+                    openMobileMenuButton.setAttribute("aria-expanded", "true");
+                }
+
+                if (closeMobileMenuButton.contains(event.target)) {
+                    mobileMenu.classList.remove("open");
+                    openMobileMenuButton.setAttribute("aria-expanded", "false");
+                }
+
+            }
+        }
+
+        if (buttonsLength > 0) {
+            activateExploreMenuButton(event.target, buttons, buttonsLength);
+        }
+
+        if (exploreCreateButton) {
+            let currentMenu = document.getElementById(exploreCreateButton.getAttribute("aria-controls"));
+            activateExploreCreateMenu(event.target, exploreCreateButton, currentMenu);
+        }
+
+    });
+}
+
+/**
+ * 
+ * @param {HTMLButtonElement} button 
+ */
+export function togglePasswordVisibility(button) {
+    let image = button.querySelector("img");
+    let input = document.getElementById(button.getAttribute("aria-controls"));
+    if (image.src.includes("visibility_off")) {
+        image.src = image.src.replace("visibility_off", "visibility");
+        input.setAttribute("type", "text");
+        button.setAttribute("aria-label", "Ocultar senha");
+        button.setAttribute("title", "Ocultar senha");
+    } else {
+        image.src = image.src.replace("visibility", "visibility_off");
+        input.setAttribute("type", "password");
+        button.setAttribute("aria-label", "Exibir senha");
+        button.setAttribute("title", "Exibir senha");
+    }
+}
+
+/**
+ * 
+ * @param {HTMLElement} element 
+ */
+export function hideHtmlElement(element) {
+    element.classList.add("none");
+    element.setAttribute("aria-hidden", "true");
+    element.setAttribute("hidden", "hidden");
+}
+
+/**
+ * 
+ * @param {HTMLElement} element 
+ */
+export function showHtmlElement(element) {
+    element.classList.remove("none");
+    element.setAttribute("aria-hidden", "false");
+    element.removeAttribute("hidden");
+}
+
+export function activateAuginSubscriptionSelection() {
+    let monthlyRadioButton = document.getElementById("monthly_augin_plan");
+    let yearlyRadioButton = document.getElementById("yearly_augin_plan");
+
+    if (monthlyRadioButton && yearlyRadioButton) {
+        let monthlySubscriptionContainer = document.getElementById("monthly_subscription_container");
+        let yearlySubscriptionContainer = document.getElementById("yearly_subscription_container");
+
+        if (monthlySubscriptionContainer && yearlySubscriptionContainer) {
+            if (monthlyRadioButton.checked) {
+                showHtmlElement(monthlySubscriptionContainer);
+                hideHtmlElement(yearlySubscriptionContainer);
+            }
+            
+            if (yearlyRadioButton.checked) {
+                hideHtmlElement(monthlySubscriptionContainer);
+                showHtmlElement(yearlySubscriptionContainer);
+            }
+
+            monthlyRadioButton.addEventListener("change", function() {
+                if (monthlyRadioButton.checked) {
+                    showHtmlElement(monthlySubscriptionContainer);
+                    hideHtmlElement(yearlySubscriptionContainer);
+                }
+            });
+
+            yearlyRadioButton.addEventListener("change", function() {
+                if (yearlyRadioButton.checked) {
+                    hideHtmlElement(monthlySubscriptionContainer);
+                    showHtmlElement(yearlySubscriptionContainer);
+                }
+            });
+        } else {
+            console.warn("monthlySubscriptionContainer and yearlySubscriptionContainer are not defined.");
+        }
+    }
+}
+
+/**
+ * 
+ * @param {NodeListOf HTMLButtonElement} buttons 
+ * @param {int} buttonsLength 
+ */
+export function activateExploreMenuButton(clickTarget, buttons, buttonsLength) {
+    let i = 0;
+    while (i < buttonsLength) {
+        let currentMenu = document.getElementById(buttons[i].getAttribute("aria-controls"));
+        if (buttons[i].contains(clickTarget)) {
+            if (currentMenu.classList.contains("none")) {
+                currentMenu.classList.remove("none");
+                buttons[i].setAttribute("aria-expanded", "true");
+            } else {
+                currentMenu.classList.add("none");
+                buttons[i].setAttribute("aria-expanded", "false");
+            }
+        } else {
+            currentMenu.classList.add("none");
+            buttons[i].setAttribute("aria-expanded", "false");
+        }
+        i++;
+    }
+}
+
+/**
+ * 
+ * @param {event.target} clickTarget 
+ * @param {HTMLButtonElement} button 
+ * @param {HTMLMenuElement} currentMenu 
+ */
+export function activateExploreCreateMenu(clickTarget, button, currentMenu) {
+    if (button.contains(clickTarget)) {
+        if (currentMenu.classList.contains("none")) {
+            currentMenu.classList.remove("none");
+            button.setAttribute("aria-expanded", "true");
+        } else {
+            currentMenu.classList.add("none");
+            button.setAttribute("aria-expanded", "false");
+        }
+    } else {
+        currentMenu.classList.add("none");
+        button.setAttribute("aria-expanded", "false");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(event){
+    // your code here
+    detectClickOutsideElement();
+    activateAuginSubscriptionSelection();
+    // activateExploreMenuButton();
+});
