@@ -1,0 +1,54 @@
+{{header}}
+{{menu_panel}}
+<main class="my-plan__main">
+    <div class="my-plan__title-container">
+        <h1 class="my-plan__title">{{Importar novo projeto}}</h1>
+        <div class="my-plan__title-container__button-container">
+            <button class="black my-plan__title-container__button">
+                Upgrade
+            </button>
+            <button class="ghost my-plan__title-container__button">
+                <img src="../assets/icons/notifications.svg" alt="Notificações" width="24" height="24">
+            </button>
+        </div>
+    </div>
+
+    <div class="new-project__sub-title-container">
+        <h2 class="new-project__sub-title">
+            {{Importe seu arquivo}} <strong>IFC</strong> {{ou}} <strong>FBX</strong> {{para ser visualizado  no Augin.}}
+        </h2>
+        <p>{{Seu plano permite importar arquivos até}} <strong>100Mb</strong>, <a class="link--primary" href="">{{faça um upgrade}}</a> {{para aumentar esse limite.}}</p>
+    </div>
+
+    <form action="">
+        <div class="upload-file-container">
+            <label class="upload-file-label" for="upload_new_project">
+                <img src="../assets/icons/upload_file.svg" alt="" width="115" height="144">
+                <p>{{Arraste e solte seu arquivo (IFC ou FBX) aqui ou}} <a href="" class="link--primary">{{selecione um em seu computador}}</a></p>
+            </label>
+            <input class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX">
+        </div>
+
+        <div class="form-container">
+            <div class="floating-input">
+                <input type="text" name="upload_new_project_federated_name" id="upload_new_project_federated_name" placeholder="" required>
+                <label for="upload_new_project_federated_name">{{Nome do federado}}</label>
+            </div>
+            <select name="upload_new_project_category" id="upload_new_project_category" required>
+                <option value="" disabled selected hidden>{{Categoria}}</option>
+                <option value="">teste 1</option>
+                <option value="">teste 2</option>
+                <option value="">teste 3</option>
+                <option value="">teste 4</option>
+            </select>
+        </div>
+
+        <div class="form-main-button-container">
+            <button class="form-main-button">
+                {{Importar arquivo}}
+            </button>
+        </div>
+    </form>
+    
+</main>
+{{footer}}
