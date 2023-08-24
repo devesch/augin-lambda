@@ -1,28 +1,24 @@
 ﻿{{header}}
 {{menu_no_icons}}
-<div class="main-container">
-    <h1 class="main-title">Acessar a TQS Cloud</h1>
-    <h2 class="sub-title">Entre com os seus dados de usuário para acessar o serviço.</h2>
-    <form class="main-form" action="{{domain_name_url_val}}/{{user_url_val}}" id="form" method="POST">
-        <div class="box-inputs">
-            <div class="input-default none">
-                <input type="email" name="user_email" value="{{user_email_val}}" id="user_email" hidden minlength="3" maxlength="255">
-            </div>
-            <div class="input-default input-password">
-                <input placeholder="Senha" type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" required autocapitalize="off" autocorrect="off">
-                <button type="button" class="toggle-password-button" onclick="js.index.togglePasswordText(this, 'user_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
-                    <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/icon-password-show-off-resized.svg" alt="Icone de olho" width="24" height="24">
-                </button>
-            </div>
-            <a class="input-link" onclick="js.index.userSendResetPassEmail();">Esqueceu sua senha?</a>
+<main class="my-plan__main">
+    <div class="my-plan__title-container">
+        <h1 class="my-plan__title">{{Login}}</h1>
+    </div>
+    <div class="login__title-container">
+        <h2>{{Bem vindo ao Augin, para prosseguir precisamos seus dados de login.}}</h2>
+    </div>
+    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <div class="login__input-container floating-input">
+            <input type="password" name="password_input" id="password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+            <label for="password_input">{{Senha}}</label>
+            <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
+            </button>
         </div>
-        <span class="error" style="{{error_msg_visibility_val}}" id="error_msg_span">
-            {{error_msg_val}}
-        </span>
-        <div class="button login-buttons-container">
-            <a class="link--button" href="{{domain_name_url_val}}/user_login">Voltar</a>
-            <button id="submit-user-password" type="submit">Avançar</button>
+        <div class="login__button-container">
+            <button class="ghost" type="button" onclick="js.index.userSendResetPassEmail();">{{Esqueci minha senha}}</button>
+            <button type="submit">{{Prosseguir}}</button>
         </div>
     </form>
-</div>
+</main>
 {{footer}}
