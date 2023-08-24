@@ -1,11 +1,11 @@
-﻿from python_web_frame.base_page import BasePage
+﻿from python_web_frame.user_page import UserPage
 from utils.utils.Http import Http
 from utils.utils.Validation import Validation
 from utils.utils.EncodeDecode import EncodeDecode
 
 
-class UserLogin(BasePage):
-    name = "TQS Cloud - Entrar"
+class UserLogin(UserPage):
+    name = "Login"
     public = True
     bypass = True
     admin = False
@@ -27,4 +27,5 @@ class UserLogin(BasePage):
         if user:
             return Http().redirect("user_password/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.post["user_email"]))
         else:
-            return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.post["user_email"]))
+            self.generate_and_send_email_verification_code()
+            return Http().redirect("user_verify_email/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.post["user_email"]))

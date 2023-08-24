@@ -7,23 +7,47 @@
     <div class="create-account__title-container">
         <h2>{{Bem vindo ao Augin, para criar sua conta precisamos algumas informações.}}</h2>
     </div>
-    <form class="create-account__form-container">
+    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" class="create-account__form-container">
+        <div class="create-account__input-container floating-input">
+            <input readonly type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder="" required pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" maxlength="500">
+            <label for="email-account_input">{{Email}}</label>
+        </div>
+        <p class="error none">{{Email inválido}}</p>
         <div class="create-account__input-container floating-input">
             <input type="text" name="user_name" value="{{user_name_val}}" id="name-account_input" placeholder="" required autofocus maxlength="500">
             <label for="name-account_input">{{Nome completo}}</label>
         </div>
         <p class="error none">{{Deve conter apenas letras}}</p>
         <div class="create-account__input-container floating-input">
-            <input type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder="" required pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" maxlength="500">
-            <label for="email-account_input">{{Email}}</label>
-        </div>
-        <p class="error none">{{Email inválido}}</p>
-        <div class="create-account__input-container floating-input">
             <input type="password" name="user_password" value="{{user_password_val}}" id="password-account_input" placeholder="" required minlength="8" maxlength="500">
             <label for="password-account_input">{{Senha}}</label>
         </div>
         <p class="input-hint">{{8 caracteres ou mais. Pode conter letras, números e símbolos.}}</p>
         <p class="error none">{{Senha inválida}}</p>
+
+        <div class="create-account__input-container floating-input">
+            <select name="user_country" id="user_country" value="{{user_country_val}}" required>
+                {{html_user_country_options}}
+            </select>
+        </div>
+
+        <div class="checkbox-default">
+            <input type="checkbox" id="user_aggre_with_terms" name="user_aggre_with_terms" required {{user_aggre_with_terms_checked_val}}>
+            <label for="user_aggre_with_terms">{{Eu li e concordo com o contrato de}} <a href="{{domain_name_url_val}}/user_terms" target="_blank">{{Termos e condiçōes}}</a></label>
+        </div>
+        <div class="checkbox-default">
+            <input type="checkbox" id="user_aggre_with_privacy_policy" name="user_aggre_with_privacy_policy" required {{user_aggre_with_privacy_policy_checked_val}}>
+            <label for="user_aggre_with_privacy_policy">{{Eu li e concordo com o contrato de}} <a href="{{domain_name_url_val}}/user_privacy_policy" target="_blank">{{Política de privacidade}}</a></label>
+        </div>
+        <div class="checkbox-default">
+            <input type="checkbox" id="user_aggre_with_cookies_policy" name="user_aggre_with_cookies_policy" required {{user_aggre_with_cookies_policy_checked_val}}>
+            <label for="user_aggre_with_cookies_policy">{{Eu li e concordo com o contrato de}} <a href="{{domain_name_url_val}}/user_cookies_policy" target="_blank">{{Política de cookies}}</a></label>
+        </div>
+
+        <span class="error" style="{{error_msg_visibility_val}}">
+            {{error_msg_val}}
+        </span>
+        <button type="submit">{{Prosseguir}}</button>
     </form>
 </main>
 {{footer}}

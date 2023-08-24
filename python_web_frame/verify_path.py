@@ -8,6 +8,11 @@ def get_path_data(path, user):
         if not path["user_email"]:
             return {"error": "error"}
 
+    if path.get("verify_email_code"):
+        path["verify_email"] = Dynamo().get_verify_email(path["user_email"], path["verify_email_code"])
+        if not path["verify_email"]:
+            return {"error": "error"}
+
     if path.get("reverse"):
         if "rue" in path["reverse"]:
             path["reverse"] = True

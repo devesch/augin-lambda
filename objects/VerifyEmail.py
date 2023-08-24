@@ -1,4 +1,4 @@
-from time import time
+import time
 
 
 class VerifyEmail:
@@ -7,5 +7,5 @@ class VerifyEmail:
         self.sk = "verify_email#" + verify_email_code
         self.verify_email_user_email = user_email
         self.verify_email_code = verify_email_code
-        self.created_at = str(time())
+        self.created_at = str(time.time())
         self.entity = "verify_email"
