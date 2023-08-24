@@ -1,11 +1,11 @@
-﻿from python_web_frame.base_page import BasePage
+﻿from python_web_frame.user_page import UserPage
 from utils.utils.Http import Http
 from utils.utils.Validation import Validation
 from utils.utils.EncodeDecode import EncodeDecode
 
 
-class UserEmailRegister(BasePage):
-    name = "Login"
+class UserEmailRegister(UserPage):
+    name = "Registro"
     public = True
     bypass = True
     admin = False
@@ -22,8 +22,10 @@ class UserEmailRegister(BasePage):
             return self.render_get_with_error("Informe um email.")
         if not Validation().check_if_email(self.post["user_email"]):
             return self.render_get_with_error("Email inválido.")
+
         user = self.load_user(self.post["user_email"])
         if user:
-            return self.render_get_with_error("Já existe um usuário cadastrado com este email.")
+            return self.render_get_with_error("Já existe uma conta com este email cadastrado.")
         else:
-            return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.post["user_email"]))
+            self.generate_and_send_email_verification_code()
+            return Http().redirect("user_verify_email/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.post["user_email"]))

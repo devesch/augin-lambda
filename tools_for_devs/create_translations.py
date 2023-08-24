@@ -17,6 +17,11 @@ filtered_placeholders = []
 
 
 translations = json.load(open("utils/translations.json", "r", encoding="utf-8"))
+country_data = json.load(open("utils/utils/country_data.json", "r", encoding="utf-8"))
+
+for key, val in country_data.items():
+    filtered_placeholders.append(val["name"])
+
 for sub_dirs in os.listdir(html_source_path):
     if sub_dirs[0] != ".":
         for file in os.listdir(html_source_path + "/" + sub_dirs):

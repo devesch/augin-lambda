@@ -9,6 +9,116 @@
         "es": "La contraseña debe tener al menos 8 caracteres",
         "pt": "A senha deve ter no mínimo 8 caracteres"
     },
+    "Afghanistan": {
+        "en": "AFGHANISTAN",
+        "es": "AFGANISTÁN",
+        "pt": "Afghanistan"
+    },
+    "Albania": {
+        "en": "Albania",
+        "es": "Albania",
+        "pt": "Albania"
+    },
+    "Algeria": {
+        "en": "Library",
+        "es": "Biblioteca",
+        "pt": "Algeria"
+    },
+    "American Samoa": {
+        "en": "American Samoa",
+        "es": "Samoa Americana",
+        "pt": "American Samoa"
+    },
+    "Andorra": {
+        "en": "Andorra",
+        "es": "Andorra",
+        "pt": "Andorra"
+    },
+    "Angola": {
+        "en": "Angola",
+        "es": "Angola",
+        "pt": "Angola"
+    },
+    "Anguilla": {
+        "en": "Anguilla",
+        "es": "Anguila",
+        "pt": "Anguilla"
+    },
+    "Antarctica": {
+        "en": "Antarctic",
+        "es": "antártico",
+        "pt": "Antarctica"
+    },
+    "Antigua and Barbuda": {
+        "en": "Antigua and Barbuda",
+        "es": "Antigua y Barbuda",
+        "pt": "Antigua and Barbuda"
+    },
+    "Argentina": {
+        "en": "Argentina",
+        "es": "Argentina",
+        "pt": "Argentina"
+    },
+    "Armenia": {
+        "en": "Armenia",
+        "es": "Armenia",
+        "pt": "Armenia"
+    },
+    "Aruba": {
+        "en": "Aruba",
+        "es": "Aruba",
+        "pt": "Aruba"
+    },
+    "Australia": {
+        "en": "Australia",
+        "es": "Australia",
+        "pt": "Australia"
+    },
+    "Austria": {
+        "en": "Austria",
+        "es": "Austria",
+        "pt": "Austria"
+    },
+    "Azerbaijan": {
+        "en": "Azerbaijan",
+        "es": "Azerbaiyán",
+        "pt": "Azerbaijan"
+    },
+    "Bahamas": {
+        "en": "Bahamas",
+        "es": "Bahamas",
+        "pt": "Bahamas"
+    },
+    "Bahrain": {
+        "en": "Bahrain",
+        "es": "Bahrain",
+        "pt": "Bahrain"
+    },
+    "Bangladesh": {
+        "en": "Bangladesh",
+        "es": "Bangladesh",
+        "pt": "Bangladesh"
+    },
+    "Barbados": {
+        "en": "Barbados",
+        "es": "Barbados",
+        "pt": "Barbados"
+    },
+    "Belarus": {
+        "en": "Belarus",
+        "es": "Bielorrusia",
+        "pt": "Belarus"
+    },
+    "Belgium": {
+        "en": "Belgium",
+        "es": "Bélgica",
+        "pt": "Belgium"
+    },
+    "Belize": {
+        "en": "Belize",
+        "es": "Belgo",
+        "pt": "Belize"
+    },
     "Bem vindo ao Augin, para criar sua conta precisamos algumas informações.": {
         "en": "Welcome to Augin, to create your account we need some information.",
         "es": "Bienvenido a Augin, para crear su cuenta, necesitamos información.",
@@ -18,6 +128,171 @@
         "en": "Welcome to Augin, to proceed we need your login data.",
         "es": "Bienvenido a Augin, para continuar necesitamos sus datos de inicio de sesión.",
         "pt": "Bem vindo ao Augin, para prosseguir precisamos seus dados de login."
+    },
+    "Benin": {
+        "en": "Benin",
+        "es": "Benin",
+        "pt": "Benin"
+    },
+    "Bermuda": {
+        "en": "Shorts",
+        "es": "Bermudas",
+        "pt": "Bermuda"
+    },
+    "Bhutan": {
+        "en": "Bhutan",
+        "es": "Bután",
+        "pt": "Bhutan"
+    },
+    "Bolivia, Plurinational State of": {
+        "en": "Bolivia, Plurinational State of",
+        "es": "Bolivia, estado plurinacional de",
+        "pt": "Bolivia, Plurinational State of"
+    },
+    "Bonaire, Sint Eustatius and Saba": {
+        "en": "Bonaire, Sint Eustatius and Saba",
+        "es": "Bonaire, Sint Eustatius y Saba",
+        "pt": "Bonaire, Sint Eustatius and Saba"
+    },
+    "Bosnia and Herzegovina": {
+        "en": "Bosnia and Herzegovina",
+        "es": "Bosnia y Herzegovina",
+        "pt": "Bosnia and Herzegovina"
+    },
+    "Botswana": {
+        "en": "Botswana",
+        "es": "Botswana",
+        "pt": "Botswana"
+    },
+    "Bouvet Island": {
+        "en": "Bouvet Island",
+        "es": "Isla bouvet",
+        "pt": "Bouvet Island"
+    },
+    "Brazil": {
+        "en": "Brazil",
+        "es": "Brasil",
+        "pt": "Brazil"
+    },
+    "British Indian Ocean Territory": {
+        "en": "British Indian Ocean Territory",
+        "es": "Territorio Británico del Océano Índico",
+        "pt": "British Indian Ocean Territory"
+    },
+    "Brunei Darussalam": {
+        "en": "Brunei Darussalam",
+        "es": "Brunei Darussalam",
+        "pt": "Brunei Darussalam"
+    },
+    "Bulgaria": {
+        "en": "Bulgaria",
+        "es": "Bulgaria",
+        "pt": "Bulgaria"
+    },
+    "Burkina Faso": {
+        "en": "Burkina Faso",
+        "es": "Burkina Faso",
+        "pt": "Burkina Faso"
+    },
+    "Burundi": {
+        "en": "Burundi",
+        "es": "Burundi",
+        "pt": "Burundi"
+    },
+    "Cabo Verde": {
+        "en": "Cape Green",
+        "es": "Cabo Verde",
+        "pt": "Cabo Verde"
+    },
+    "Cambodia": {
+        "en": "Carabody",
+        "es": "Carabía",
+        "pt": "Cambodia"
+    },
+    "Cameroon": {
+        "en": "Cameroon",
+        "es": "Camerún",
+        "pt": "Cameroon"
+    },
+    "Canada": {
+        "en": "Canada",
+        "es": "Canadá",
+        "pt": "Canada"
+    },
+    "Cayman Islands": {
+        "en": "Cayman Islands",
+        "es": "Islas Caimán",
+        "pt": "Cayman Islands"
+    },
+    "Central African Republic": {
+        "en": "Central African Republic",
+        "es": "República Centroafricana",
+        "pt": "Central African Republic"
+    },
+    "Chad": {
+        "en": "Chad",
+        "es": "Chad",
+        "pt": "Chad"
+    },
+    "Chegou o seu código de verificação, copie e cole para finalizar o seu cadastro": {
+        "en": "Your verification code has arrived, copy and paste to finish your registration",
+        "es": "Su código de verificación ha llegado, copia y pegue para finalizar su registro",
+        "pt": "Chegou o seu código de verificação, copie e cole para finalizar o seu cadastro"
+    },
+    "Chile": {
+        "en": "Chile",
+        "es": "Chile",
+        "pt": "Chile"
+    },
+    "China": {
+        "en": "China",
+        "es": "Porcelana",
+        "pt": "China"
+    },
+    "Christmas Island": {
+        "en": "Christmas Island",
+        "es": "Isla de Navidad",
+        "pt": "Christmas Island"
+    },
+    "Cocos (Keeling) Islands": {
+        "en": "Cocos (Keeling) Islands",
+        "es": "Islas Cocos (Keeling)",
+        "pt": "Cocos (Keeling) Islands"
+    },
+    "Cole (ou digite) seu código de 6 dígitos": {
+        "en": "Cole (or type) your 6 -digit code",
+        "es": "Cole (o escriba) su código de 6 dígitos",
+        "pt": "Cole (ou digite) seu código de 6 dígitos"
+    },
+    "Colombia": {
+        "en": "Colombia",
+        "es": "Colombia",
+        "pt": "Colombia"
+    },
+    "Comoros": {
+        "en": "Dwelling",
+        "es": "Vivienda",
+        "pt": "Comoros"
+    },
+    "Congo": {
+        "en": "Congo",
+        "es": "Congo",
+        "pt": "Congo"
+    },
+    "Congo, The Democratic Republic of the": {
+        "en": "Congo, The Democratic Republic of the",
+        "es": "Congo, la República Democrática del",
+        "pt": "Congo, The Democratic Republic of the"
+    },
+    "Cook Islands": {
+        "en": "Cook Islands",
+        "es": "Islas Cook",
+        "pt": "Cook Islands"
+    },
+    "Costa Rica": {
+        "en": "Costa Rica",
+        "es": "Costa Rica",
+        "pt": "Costa Rica"
     },
     "Criar conta": {
         "en": "Create an account",
@@ -29,10 +304,105 @@
         "es": "Crear una cuenta",
         "pt": "Criar uma conta"
     },
+    "Croatia": {
+        "en": "Croatia",
+        "es": "Croacia",
+        "pt": "Croatia"
+    },
+    "Cuba": {
+        "en": "Cuba",
+        "es": "Cuba",
+        "pt": "Cuba"
+    },
+    "Curaçao": {
+        "en": "",
+        "es": "",
+        "pt": "Curaçao"
+    },
+    "Cyprus": {
+        "en": "Cyprus",
+        "es": "Chipre",
+        "pt": "Cyprus"
+    },
+    "Czechia": {
+        "en": "Czechia",
+        "es": "Chequia",
+        "pt": "Czechia"
+    },
+    "Côte d'Ivoire": {
+        "en": "Côte d'Ivoire",
+        "es": "Cantas d'Iffioir",
+        "pt": "Côte d'Ivoire"
+    },
+    "Denmark": {
+        "en": "Denmark",
+        "es": "Dinamarca",
+        "pt": "Denmark"
+    },
     "Deve conter apenas letras": {
         "en": "Should contain only letters",
         "es": "Debe contener solo letras",
         "pt": "Deve conter apenas letras"
+    },
+    "Digite o primeiro dígito do código de verificação que foi enviado ao seu e-mail.": {
+        "en": "Enter the first digit of the verification code that was sent to your email.",
+        "es": "Ingrese el primer dígito del código de verificación que se envió a su correo electrónico.",
+        "pt": "Digite o primeiro dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Digite o quarto dígito do código de verificação que foi enviado ao seu e-mail.": {
+        "en": "Enter the fourth digit of the verification code that was sent to your email.",
+        "es": "Ingrese el cuarto dígito del código de verificación que se envió a su correo electrónico.",
+        "pt": "Digite o quarto dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Digite o quinto dígito do código de verificação que foi enviado ao seu e-mail.": {
+        "en": "Enter the fifth digit of the verification code that was sent to your email.",
+        "es": "Ingrese el quinto dígito del código de verificación que se envió a su correo electrónico.",
+        "pt": "Digite o quinto dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Digite o segundo dígito do código de verificação que foi enviado ao seu e-mail.": {
+        "en": "Enter the second digit of the verification code that was sent to your email.",
+        "es": "Ingrese el segundo dígito del código de verificación que se envió a su correo electrónico.",
+        "pt": "Digite o segundo dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Digite o sexto dígito do código de verificação que foi enviado ao seu e-mail.": {
+        "en": "Enter the sixth digit of the verification code that was sent to your email.",
+        "es": "Ingrese el sexto dígito del código de verificación que se envió a su correo electrónico.",
+        "pt": "Digite o sexto dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Digite o terceiro dígito do código de verificação que foi enviado ao seu e-mail.": {
+        "en": "Enter the third digit of the verification code that was sent to your email.",
+        "es": "Ingrese el tercer dígito del código de verificación que se envió a su correo electrónico.",
+        "pt": "Digite o terceiro dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Djibouti": {
+        "en": "Djibouti",
+        "es": "Djibouti",
+        "pt": "Djibouti"
+    },
+    "Dominica": {
+        "en": "Dominated",
+        "es": "Dominado",
+        "pt": "Dominica"
+    },
+    "Dominican Republic": {
+        "en": "Dominican Republic",
+        "es": "República Dominicana",
+        "pt": "Dominican Republic"
+    },
+    "Ecuador": {
+        "en": "Ecurator",
+        "es": "Ecurador",
+        "pt": "Ecuador"
+    },
+    "Egypt": {
+        "en": "Egypt",
+        "es": "Egipto",
+        "pt": "Egypt"
+    },
+    "El Salvador": {
+        "en": "El Salvador",
+        "es": "El Salvador",
+        "pt": "El Salvador"
     },
     "Email": {
         "en": "Email",
@@ -44,20 +414,655 @@
         "es": "Email inválido",
         "pt": "Email inválido"
     },
+    "Empresa": {
+        "en": "Company",
+        "es": "Empresa",
+        "pt": "Empresa"
+    },
+    "Enviamos um código de acesso temporário para": {
+        "en": "We send a temporary access code to",
+        "es": "Enviamos un código de acceso temporal a",
+        "pt": "Enviamos um código de acesso temporário para"
+    },
+    "Equatorial Guinea": {
+        "en": "Equatorial Guinea",
+        "es": "Guinea Ecuatorial",
+        "pt": "Equatorial Guinea"
+    },
+    "Eritrea": {
+        "en": "Erytrea",
+        "es": "Erytrea",
+        "pt": "Eritrea"
+    },
+    "Erro 500": {
+        "en": "Error 500",
+        "es": "Error 500",
+        "pt": "Erro 500"
+    },
+    "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível.": {
+        "en": "We are facing a setback on our website, which is temporarily unavailable.",
+        "es": "Nos enfrentamos a un revés en nuestro sitio web, que no está disponible temporalmente.",
+        "pt": "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível."
+    },
+    "Estonia": {
+        "en": "Estonia",
+        "es": "Estonia",
+        "pt": "Estonia"
+    },
+    "Eswatini": {
+        "en": "Eswatini",
+        "es": "Eswatini",
+        "pt": "Eswatini"
+    },
+    "Ethiopia": {
+        "en": "Ethiopia",
+        "es": "Etiopía",
+        "pt": "Ethiopia"
+    },
+    "Eu li e concordo com o contrato de": {
+        "en": "I read and agree with the contract of",
+        "es": "He leído y acepto el contrato de",
+        "pt": "Eu li e concordo com o contrato de"
+    },
+    "Exibindo": {
+        "en": "Showing",
+        "es": "Demostración",
+        "pt": "Exibindo"
+    },
+    "Falkland Islands (Malvinas)": {
+        "en": "FALKLAND ISLANDS (Falklands)",
+        "es": "Islas Malvinas (Malvinas)",
+        "pt": "Falkland Islands (Malvinas)"
+    },
+    "Faroe Islands": {
+        "en": "Faroe Islands",
+        "es": "Islas Faroe",
+        "pt": "Faroe Islands"
+    },
+    "Fiji": {
+        "en": "Fiji",
+        "es": "Fiji",
+        "pt": "Fiji"
+    },
+    "Fila": {
+        "en": "Row",
+        "es": "Fila",
+        "pt": "Fila"
+    },
+    "Finland": {
+        "en": "Finland",
+        "es": "Finlandia",
+        "pt": "Finland"
+    },
+    "France": {
+        "en": "France",
+        "es": "Francia",
+        "pt": "France"
+    },
+    "French Guiana": {
+        "en": "French Guyana",
+        "es": "Guyana francesa",
+        "pt": "French Guiana"
+    },
+    "French Polynesia": {
+        "en": "FRENCH POLYNESIA",
+        "es": "POLINESIA FRANCÉS",
+        "pt": "French Polynesia"
+    },
+    "French Southern Territories": {
+        "en": "French Southern Territories",
+        "es": "Territorios Franceses del Sur",
+        "pt": "French Southern Territories"
+    },
+    "Gabon": {
+        "en": "Gabon",
+        "es": "Gabón",
+        "pt": "Gabon"
+    },
+    "Gambia": {
+        "en": "Gambia",
+        "es": "Gambia",
+        "pt": "Gambia"
+    },
+    "Georgia": {
+        "en": "Georgia",
+        "es": "Georgia",
+        "pt": "Georgia"
+    },
+    "Germany": {
+        "en": "Germany",
+        "es": "Alemania",
+        "pt": "Germany"
+    },
+    "Ghana": {
+        "en": "Ghana",
+        "es": "Ghana",
+        "pt": "Ghana"
+    },
+    "Gibraltar": {
+        "en": "Gibraltar",
+        "es": "Gibraltar",
+        "pt": "Gibraltar"
+    },
+    "Greece": {
+        "en": "Greece",
+        "es": "Grecia",
+        "pt": "Greece"
+    },
+    "Greenland": {
+        "en": "Greenland",
+        "es": "Groenlandia",
+        "pt": "Greenland"
+    },
+    "Grenada": {
+        "en": "Grenad",
+        "es": "Granado",
+        "pt": "Grenada"
+    },
+    "Guadeloupe": {
+        "en": "Gadeloupe",
+        "es": "Gadeloupo",
+        "pt": "Guadeloupe"
+    },
+    "Guam": {
+        "en": "Guam",
+        "es": "Guam",
+        "pt": "Guam"
+    },
+    "Guatemala": {
+        "en": "Guatemala",
+        "es": "Guatemala",
+        "pt": "Guatemala"
+    },
+    "Guernsey": {
+        "en": "Guernsey",
+        "es": "Guía",
+        "pt": "Guernsey"
+    },
+    "Guinea": {
+        "en": "Guinea",
+        "es": "Guinea",
+        "pt": "Guinea"
+    },
+    "Guinea-Bissau": {
+        "en": "Guinea-bissau",
+        "es": "Guinea-Bissau",
+        "pt": "Guinea-Bissau"
+    },
+    "Guyana": {
+        "en": "Guyana",
+        "es": "Guayana",
+        "pt": "Guyana"
+    },
+    "Haiti": {
+        "en": "Haiti",
+        "es": "Haití",
+        "pt": "Haiti"
+    },
+    "Heard Island and McDonald Islands": {
+        "en": "Heard Island and McDonald Islands",
+        "es": "Escuché Island y Islas McDonald",
+        "pt": "Heard Island and McDonald Islands"
+    },
+    "Holy See (Vatican City State)": {
+        "en": "Holy See (Vatican City State)",
+        "es": "Santa Sede (Estado de la Ciudad del Vaticano)",
+        "pt": "Holy See (Vatican City State)"
+    },
+    "Honduras": {
+        "en": "Honduras",
+        "es": "Honduras",
+        "pt": "Honduras"
+    },
+    "Hong Kong": {
+        "en": "Hong Kong",
+        "es": "Hong Kong",
+        "pt": "Hong Kong"
+    },
+    "Hungary": {
+        "en": "Hungary",
+        "es": "Hungría",
+        "pt": "Hungary"
+    },
+    "Iceland": {
+        "en": "Iceland",
+        "es": "Islandia",
+        "pt": "Iceland"
+    },
+    "India": {
+        "en": "India",
+        "es": "India",
+        "pt": "India"
+    },
+    "Indonesia": {
+        "en": "Indonesia",
+        "es": "Indonesia",
+        "pt": "Indonesia"
+    },
     "Insira seu email de usuário Augin": {
         "en": "Enter your augin user email",
         "es": "Ingrese su correo electrónico de usuario de Augin",
         "pt": "Insira seu email de usuário Augin"
+    },
+    "Iran, Islamic Republic of": {
+        "en": "Iran, Islamic Republic of",
+        "es": "Irán (República Islámica de",
+        "pt": "Iran, Islamic Republic of"
+    },
+    "Iraq": {
+        "en": "Iraq",
+        "es": "Irak",
+        "pt": "Iraq"
+    },
+    "Ireland": {
+        "en": "Ireland",
+        "es": "Irlanda",
+        "pt": "Ireland"
+    },
+    "Isle of Man": {
+        "en": "Isle of man",
+        "es": "Isla del hombre",
+        "pt": "Isle of Man"
+    },
+    "Israel": {
+        "en": "Israel",
+        "es": "Israel",
+        "pt": "Israel"
+    },
+    "Italy": {
+        "en": "Italy",
+        "es": "Italia",
+        "pt": "Italy"
+    },
+    "Jamaica": {
+        "en": "Jamaica",
+        "es": "Jamaica",
+        "pt": "Jamaica"
+    },
+    "Japan": {
+        "en": "",
+        "es": "",
+        "pt": "Japan"
+    },
+    "Jersey": {
+        "en": "Jersey",
+        "es": "Jersey",
+        "pt": "Jersey"
+    },
+    "Jordan": {
+        "en": "Jordan",
+        "es": "Jordán",
+        "pt": "Jordan"
+    },
+    "Kazakhstan": {
+        "en": "Kazakhstan",
+        "es": "Kazajstán",
+        "pt": "Kazakhstan"
+    },
+    "Kenya": {
+        "en": "Kenya",
+        "es": "Kenia",
+        "pt": "Kenya"
+    },
+    "Kiribati": {
+        "en": "Kiribati",
+        "es": "Kiribati",
+        "pt": "Kiribati"
+    },
+    "Korea, Democratic People's Republic of": {
+        "en": "Korea, Democratic People's Republic of",
+        "es": "República de Corea, Popular Democrática de",
+        "pt": "Korea, Democratic People's Republic of"
+    },
+    "Korea, Republic of": {
+        "en": "Korea, Republic of",
+        "es": "Corea, república de",
+        "pt": "Korea, Republic of"
+    },
+    "Kuwait": {
+        "en": "Kuwait",
+        "es": "Kuwait",
+        "pt": "Kuwait"
+    },
+    "Kyrgyzstan": {
+        "en": "Kyrgyzstan",
+        "es": "Kirguistán",
+        "pt": "Kyrgyzstan"
+    },
+    "Lao People's Democratic Republic": {
+        "en": "Lao People's Democratic Republic",
+        "es": "República Democrática Popular de Lao",
+        "pt": "Lao People's Democratic Republic"
+    },
+    "Latvia": {
+        "en": "Latvia",
+        "es": "Letonia",
+        "pt": "Latvia"
+    },
+    "Lebanon": {
+        "en": "Lebanon",
+        "es": "Líbano",
+        "pt": "Lebanon"
+    },
+    "Lesotho": {
+        "en": "Lesotho",
+        "es": "Lesoto",
+        "pt": "Lesotho"
+    },
+    "Liberia": {
+        "en": "Liberia",
+        "es": "Liberia",
+        "pt": "Liberia"
+    },
+    "Libya": {
+        "en": "Libya",
+        "es": "Libia",
+        "pt": "Libya"
+    },
+    "Liechtenstein": {
+        "en": "Liechtenstein",
+        "es": "Liechtenstein",
+        "pt": "Liechtenstein"
+    },
+    "Lithuania": {
+        "en": "Lithuania",
+        "es": "Lituania",
+        "pt": "Lithuania"
     },
     "Login": {
         "en": "Login",
         "es": "Acceso",
         "pt": "Login"
     },
+    "Logo Augin": {
+        "en": "Logo Augin",
+        "es": "Logotipo augin",
+        "pt": "Logo Augin"
+    },
+    "Luxembourg": {
+        "en": "Luxembourg",
+        "es": "Luxemburgo",
+        "pt": "Luxembourg"
+    },
+    "Macao": {
+        "en": "Macao",
+        "es": "Macao",
+        "pt": "Macao"
+    },
+    "Madagascar": {
+        "en": "Madagascar",
+        "es": "Madagascar",
+        "pt": "Madagascar"
+    },
+    "Malawi": {
+        "en": "Malawi",
+        "es": "Malawi",
+        "pt": "Malawi"
+    },
+    "Malaysia": {
+        "en": "Malaysia",
+        "es": "Malasia",
+        "pt": "Malaysia"
+    },
+    "Maldives": {
+        "en": "Mulling",
+        "es": "Mullido",
+        "pt": "Maldives"
+    },
+    "Mali": {
+        "en": "Mali",
+        "es": "Malí",
+        "pt": "Mali"
+    },
+    "Malta": {
+        "en": "Malta",
+        "es": "Malta",
+        "pt": "Malta"
+    },
+    "Marshall Islands": {
+        "en": "Marshall Islands",
+        "es": "Islas Marshall",
+        "pt": "Marshall Islands"
+    },
+    "Martinique": {
+        "en": "Martinique",
+        "es": "Martinica",
+        "pt": "Martinique"
+    },
+    "Mauritania": {
+        "en": "Mauritania",
+        "es": "Mauritania",
+        "pt": "Mauritania"
+    },
+    "Mauritius": {
+        "en": "Mauritius",
+        "es": "Mauricio",
+        "pt": "Mauritius"
+    },
+    "Mayotte": {
+        "en": "Mayotte",
+        "es": "Mayotte",
+        "pt": "Mayotte"
+    },
+    "Meus projetos": {
+        "en": "My projects",
+        "es": "Mis proyectos",
+        "pt": "Meus projetos"
+    },
+    "Mexico": {
+        "en": "Mexico",
+        "es": "México",
+        "pt": "Mexico"
+    },
+    "Micronesia, Federated States of": {
+        "en": "Microesia, Federated States of",
+        "es": "Microesia, estados federados de",
+        "pt": "Micronesia, Federated States of"
+    },
+    "Moldova, Republic of": {
+        "en": "MOLDOVA, Republic of",
+        "es": "Moldavia, República de",
+        "pt": "Moldova, Republic of"
+    },
+    "Monaco": {
+        "en": "Monaco",
+        "es": "Mónaco",
+        "pt": "Monaco"
+    },
+    "Mongolia": {
+        "en": "Mongolia",
+        "es": "Mongolia",
+        "pt": "Mongolia"
+    },
+    "Montenegro": {
+        "en": "Montenegro",
+        "es": "Montenegro",
+        "pt": "Montenegro"
+    },
+    "Montserrat": {
+        "en": "Montserrat",
+        "es": "Montserrat",
+        "pt": "Montserrat"
+    },
+    "Morocco": {
+        "en": "Morocco",
+        "es": "Marruecos",
+        "pt": "Morocco"
+    },
+    "Mozambique": {
+        "en": "Mozambique",
+        "es": "Mozambique",
+        "pt": "Mozambique"
+    },
+    "Myanmar": {
+        "en": "Myanmar",
+        "es": "Myanmar",
+        "pt": "Myanmar"
+    },
+    "Namibia": {
+        "en": "Namibia",
+        "es": "Namibia",
+        "pt": "Namibia"
+    },
+    "Nauru": {
+        "en": "Nauru",
+        "es": "Nauru",
+        "pt": "Nauru"
+    },
+    "Nepal": {
+        "en": "Nepal",
+        "es": "Nepal",
+        "pt": "Nepal"
+    },
+    "Netherlands": {
+        "en": "Netherlands",
+        "es": "Países Bajos",
+        "pt": "Netherlands"
+    },
+    "New Caledonia": {
+        "en": "New Caledonia",
+        "es": "Nueva Caledonia",
+        "pt": "New Caledonia"
+    },
+    "New Zealand": {
+        "en": "New Zealand",
+        "es": "Nueva Zelanda",
+        "pt": "New Zealand"
+    },
+    "Nicaragua": {
+        "en": "Nicaragua",
+        "es": "Nicaragua",
+        "pt": "Nicaragua"
+    },
+    "Niger": {
+        "en": "Niger",
+        "es": "Níger",
+        "pt": "Niger"
+    },
+    "Nigeria": {
+        "en": "Nigeria",
+        "es": "Nigeria",
+        "pt": "Nigeria"
+    },
+    "Niue": {
+        "en": "Niue",
+        "es": "Niue",
+        "pt": "Niue"
+    },
     "Nome completo": {
         "en": "Full name",
         "es": "Nombre completo",
         "pt": "Nome completo"
+    },
+    "Norfolk Island": {
+        "en": "Norfolk Island",
+        "es": "Isla Norfolk",
+        "pt": "Norfolk Island"
+    },
+    "North Macedonia": {
+        "en": "North Macedonia",
+        "es": "Macedonia del Norte",
+        "pt": "North Macedonia"
+    },
+    "Northern Mariana Islands": {
+        "en": "Northern Mariana Islands",
+        "es": "Islas Marianas del Norte",
+        "pt": "Northern Mariana Islands"
+    },
+    "Norway": {
+        "en": "Norway",
+        "es": "Noruega",
+        "pt": "Norway"
+    },
+    "Nossa equipe está trabalhando para resolver a situação o mais rápido possível.": {
+        "en": "Our team is working to resolve the situation as soon as possible.",
+        "es": "Nuestro equipo está trabajando para resolver la situación lo antes posible.",
+        "pt": "Nossa equipe está trabalhando para resolver a situação o mais rápido possível."
+    },
+    "Oman": {
+        "en": "Oman",
+        "es": "Omán",
+        "pt": "Oman"
+    },
+    "Pakistan": {
+        "en": "Pakistan",
+        "es": "Pakistán",
+        "pt": "Pakistan"
+    },
+    "Palau": {
+        "en": "Palau",
+        "es": "Palau",
+        "pt": "Palau"
+    },
+    "Palestine, State of": {
+        "en": "Palestine, State of",
+        "es": "Palestina, estado de",
+        "pt": "Palestine, State of"
+    },
+    "Panama": {
+        "en": "Panama",
+        "es": "Panamá",
+        "pt": "Panama"
+    },
+    "Papua New Guinea": {
+        "en": "PAPUA NEW GUINEA",
+        "es": "PAPÚA NUEVA GUINEA",
+        "pt": "Papua New Guinea"
+    },
+    "Paraguay": {
+        "en": "Paraguay",
+        "es": "Paraguay",
+        "pt": "Paraguay"
+    },
+    "Pendências": {
+        "en": "Pendencies",
+        "es": "Pendencias",
+        "pt": "Pendências"
+    },
+    "Peru": {
+        "en": "Peru",
+        "es": "Perú",
+        "pt": "Peru"
+    },
+    "Philippines": {
+        "en": "Philippines",
+        "es": "Filipinas",
+        "pt": "Philippines"
+    },
+    "Pitcairn": {
+        "en": "Pitcairn",
+        "es": "Pitcairn",
+        "pt": "Pitcairn"
+    },
+    "Poland": {
+        "en": "Poland",
+        "es": "Polonia",
+        "pt": "Poland"
+    },
+    "Política de cookies": {
+        "en": "Cookies policy",
+        "es": "Política de cookies",
+        "pt": "Política de cookies"
+    },
+    "Política de privacidade": {
+        "en": "Privacy Policy",
+        "es": "Política de privacidad",
+        "pt": "Política de privacidade"
+    },
+    "Por favor, tente novamente mais tarde.": {
+        "en": "Please try again later.",
+        "es": "Por favor, inténtelo de nuevo más tarde.",
+        "pt": "Por favor, tente novamente mais tarde."
+    },
+    "Portugal": {
+        "en": "Portugal",
+        "es": "Portugal",
+        "pt": "Portugal"
+    },
+    "Problema temporário": {
+        "en": "Temporary problem",
+        "es": "Problema temporal",
+        "pt": "Problema temporário"
     },
     "Prosseguir": {
         "en": "Proceed",
@@ -69,6 +1074,101 @@
         "es": "Próximo",
         "pt": "Próximo"
     },
+    "Puerto Rico": {
+        "en": "Puerto Rico",
+        "es": "Puerto Rico",
+        "pt": "Puerto Rico"
+    },
+    "Qatar": {
+        "en": "Qatar",
+        "es": "Katar",
+        "pt": "Qatar"
+    },
+    "Romania": {
+        "en": "Romania",
+        "es": "Rumania",
+        "pt": "Romania"
+    },
+    "Russian Federation": {
+        "en": "Russian Federation",
+        "es": "Federación Rusa",
+        "pt": "Russian Federation"
+    },
+    "Rwanda": {
+        "en": "Rwanda",
+        "es": "Ruanda",
+        "pt": "Rwanda"
+    },
+    "Réunion": {
+        "en": "Reunion",
+        "es": "Reunión",
+        "pt": "Réunion"
+    },
+    "Saint Barthélemy": {
+        "en": "Saint Barthélemy",
+        "es": "Santa Barthélemy",
+        "pt": "Saint Barthélemy"
+    },
+    "Saint Helena, Ascension and Tristan da Cunha": {
+        "en": "Saint Helena, Ascension and Tristan da Cunha",
+        "es": "Santa Helena, Ascensión y Tristan da Cunha",
+        "pt": "Saint Helena, Ascension and Tristan da Cunha"
+    },
+    "Saint Kitts and Nevis": {
+        "en": "Saint Kitts and Nevis",
+        "es": "Saint Kitts y Nevis",
+        "pt": "Saint Kitts and Nevis"
+    },
+    "Saint Lucia": {
+        "en": "Saint Lucia",
+        "es": "Santa Lucía",
+        "pt": "Saint Lucia"
+    },
+    "Saint Martin (French part)": {
+        "en": "Saint Martin (French Part)",
+        "es": "San Martín (parte francesa)",
+        "pt": "Saint Martin (French part)"
+    },
+    "Saint Pierre and Miquelon": {
+        "en": "Saint Pierre and Miquelon",
+        "es": "Saint Pierre y Miquelon",
+        "pt": "Saint Pierre and Miquelon"
+    },
+    "Saint Vincent and the Grenadines": {
+        "en": "Saint Vincent and the Grenadines",
+        "es": "San Vicente y las Granadinas",
+        "pt": "Saint Vincent and the Grenadines"
+    },
+    "Sair": {
+        "en": "To go out",
+        "es": "Salir",
+        "pt": "Sair"
+    },
+    "Samoa": {
+        "en": "Samoa",
+        "es": "Samoa",
+        "pt": "Samoa"
+    },
+    "San Marino": {
+        "en": "San Marino",
+        "es": "San Marino",
+        "pt": "San Marino"
+    },
+    "Sao Tome and Principe": {
+        "en": "Sao tome and prince",
+        "es": "Sao tomo y príncipe",
+        "pt": "Sao Tome and Principe"
+    },
+    "Saudi Arabia": {
+        "en": "Saudi Arabia",
+        "es": "Arabia Saudita",
+        "pt": "Saudi Arabia"
+    },
+    "Senegal": {
+        "en": "Senegal",
+        "es": "Senegal",
+        "pt": "Senegal"
+    },
     "Senha": {
         "en": "Password",
         "es": "Contraseña",
@@ -78,5 +1178,290 @@
         "en": "invalid password",
         "es": "contraseña invalida",
         "pt": "Senha inválida"
+    },
+    "Serbia": {
+        "en": "Serbia",
+        "es": "Serbia",
+        "pt": "Serbia"
+    },
+    "Seu código de verficação de email": {
+        "en": "Your Email Verification Code",
+        "es": "Su código de verificación por correo electrónico",
+        "pt": "Seu código de verficação de email"
+    },
+    "Seychelles": {
+        "en": "Seychelles",
+        "es": "Seychelles",
+        "pt": "Seychelles"
+    },
+    "Sierra Leone": {
+        "en": "Sierra Leone",
+        "es": "Sierra Leona",
+        "pt": "Sierra Leone"
+    },
+    "Singapore": {
+        "en": "Singapore",
+        "es": "Singapur",
+        "pt": "Singapore"
+    },
+    "Sint Maarten (Dutch part)": {
+        "en": "Sint Maarten (Dutch Part)",
+        "es": "Sint Maarten (parte holandesa)",
+        "pt": "Sint Maarten (Dutch part)"
+    },
+    "Slovakia": {
+        "en": "Slovakia",
+        "es": "Eslovaquia",
+        "pt": "Slovakia"
+    },
+    "Slovenia": {
+        "en": "Slovenia",
+        "es": "Eslovenia",
+        "pt": "Slovenia"
+    },
+    "Solomon Islands": {
+        "en": "Solomon Islands",
+        "es": "Islas Salomón",
+        "pt": "Solomon Islands"
+    },
+    "Somalia": {
+        "en": "Somalia",
+        "es": "Somalia",
+        "pt": "Somalia"
+    },
+    "South Africa": {
+        "en": "South Africa",
+        "es": "Sudáfrica",
+        "pt": "South Africa"
+    },
+    "South Georgia and the South Sandwich Islands": {
+        "en": "South Georgia and the South Sandwich Islands",
+        "es": "Georgia del sur y las islas Sandwich del sur",
+        "pt": "South Georgia and the South Sandwich Islands"
+    },
+    "South Sudan": {
+        "en": "South Sudan",
+        "es": "Sudán del Sur",
+        "pt": "South Sudan"
+    },
+    "Spain": {
+        "en": "Spain",
+        "es": "España",
+        "pt": "Spain"
+    },
+    "Sri Lanka": {
+        "en": "Sri Lanka",
+        "es": "Sri Lanka",
+        "pt": "Sri Lanka"
+    },
+    "Sudan": {
+        "en": "Sudan",
+        "es": "Sudán",
+        "pt": "Sudan"
+    },
+    "Suriname": {
+        "en": "Suriname",
+        "es": "Surinam",
+        "pt": "Suriname"
+    },
+    "Svalbard and Jan Mayen": {
+        "en": "Svalbard and Jan Mayen",
+        "es": "Svalbard y Jan Mayen",
+        "pt": "Svalbard and Jan Mayen"
+    },
+    "Sweden": {
+        "en": "Sweden",
+        "es": "Suecia",
+        "pt": "Sweden"
+    },
+    "Switzerland": {
+        "en": "Switzerland",
+        "es": "Suiza",
+        "pt": "Switzerland"
+    },
+    "Syrian Arab Republic": {
+        "en": "Syrian Arab Republic",
+        "es": "República Árabe Siria",
+        "pt": "Syrian Arab Republic"
+    },
+    "Taiwan, Province of China": {
+        "en": "Taiwan, Province of China",
+        "es": "Taiwan, provincia de China",
+        "pt": "Taiwan, Province of China"
+    },
+    "Tajikistan": {
+        "en": "Tajikistan",
+        "es": "Tayikistán",
+        "pt": "Tajikistan"
+    },
+    "Tanzania, United Republic of": {
+        "en": "Tanzania, United Republic of",
+        "es": "Tanzania, República Unida de",
+        "pt": "Tanzania, United Republic of"
+    },
+    "Termos e condiçōes": {
+        "en": "Terms and conditions",
+        "es": "Términos y Condiciones",
+        "pt": "Termos e condiçōes"
+    },
+    "Thailand": {
+        "en": "Thailand",
+        "es": "Tailandia",
+        "pt": "Thailand"
+    },
+    "Timor-Leste": {
+        "en": "Timor-Leste",
+        "es": "Timor-Leste",
+        "pt": "Timor-Leste"
+    },
+    "Togo": {
+        "en": "Togo",
+        "es": "Ir",
+        "pt": "Togo"
+    },
+    "Tokelau": {
+        "en": "Tokelau",
+        "es": "Tokelau",
+        "pt": "Tokelau"
+    },
+    "Tonga": {
+        "en": "Tong",
+        "es": "Pintura",
+        "pt": "Tonga"
+    },
+    "Trinidad and Tobago": {
+        "en": "Trinidad and Tobago",
+        "es": "Trinidad y Tobago",
+        "pt": "Trinidad and Tobago"
+    },
+    "Tunisia": {
+        "en": "Tunisia",
+        "es": "Túnez",
+        "pt": "Tunisia"
+    },
+    "Turkey": {
+        "en": "",
+        "es": "",
+        "pt": "Turkey"
+    },
+    "Turkmenistan": {
+        "en": "Turkmenistan",
+        "es": "Turkmenistán",
+        "pt": "Turkmenistan"
+    },
+    "Turks and Caicos Islands": {
+        "en": "Turks and Caicos Islands",
+        "es": "Islas Turcas y Caicos",
+        "pt": "Turks and Caicos Islands"
+    },
+    "Tuvalu": {
+        "en": "Tuval",
+        "es": "Tuval",
+        "pt": "Tuvalu"
+    },
+    "Uganda": {
+        "en": "Uganda",
+        "es": "Uganda",
+        "pt": "Uganda"
+    },
+    "Ukraine": {
+        "en": "Ukraine",
+        "es": "Ucrania",
+        "pt": "Ukraine"
+    },
+    "United Arab Emirates": {
+        "en": "United Arab Emirates",
+        "es": "Emiratos Árabes Unidos",
+        "pt": "United Arab Emirates"
+    },
+    "United Kingdom": {
+        "en": "United Kingdom",
+        "es": "Reino Unido",
+        "pt": "United Kingdom"
+    },
+    "United States": {
+        "en": "United States",
+        "es": "Estados Unidos",
+        "pt": "United States"
+    },
+    "United States Minor Outlying Islands": {
+        "en": "United States Minor Outlying Islands",
+        "es": "Islas menores de los Estados Unidos.",
+        "pt": "United States Minor Outlying Islands"
+    },
+    "Uruguay": {
+        "en": "Uruguay",
+        "es": "Uruguay",
+        "pt": "Uruguay"
+    },
+    "Uzbekistan": {
+        "en": "Uzbekistan",
+        "es": "Uzbekistán",
+        "pt": "Uzbekistan"
+    },
+    "Vanuatu": {
+        "en": "Vanuatu",
+        "es": "Vanuatu",
+        "pt": "Vanuatu"
+    },
+    "Venezuela, Bolivarian Republic of": {
+        "en": "Venezuela, Bolivarian Republic of",
+        "es": "Venezuela, República Bolíva de",
+        "pt": "Venezuela, Bolivarian Republic of"
+    },
+    "Ver Mais": {
+        "en": "View more",
+        "es": "Ver más",
+        "pt": "Ver Mais"
+    },
+    "Viet Nam": {
+        "en": "Viet Nam",
+        "es": "Vietnam",
+        "pt": "Viet Nam"
+    },
+    "Virgin Islands, British": {
+        "en": "Virgin Islands, British",
+        "es": "Islas Vírgenes, Británica",
+        "pt": "Virgin Islands, British"
+    },
+    "Virgin Islands, U.S.": {
+        "en": "Virgin Islands, U.S.",
+        "es": "Islas Vírgenes, EE. UU.",
+        "pt": "Virgin Islands, U.S."
+    },
+    "Wallis and Futuna": {
+        "en": "Wallis and Futuna",
+        "es": "Wallis y Futuna",
+        "pt": "Wallis and Futuna"
+    },
+    "Western Sahara": {
+        "en": "Western Sahara",
+        "es": "Sahara Occidental",
+        "pt": "Western Sahara"
+    },
+    "Yemen": {
+        "en": "Yemen",
+        "es": "Yemen",
+        "pt": "Yemen"
+    },
+    "Zambia": {
+        "en": "Zambia",
+        "es": "Zambia",
+        "pt": "Zambia"
+    },
+    "Zimbabwe": {
+        "en": "Zimbabwe",
+        "es": "Zimbabue",
+        "pt": "Zimbabwe"
+    },
+    "resultados": {
+        "en": "results",
+        "es": "resultados",
+        "pt": "resultados"
+    },
+    "Åland Islands": {
+        "en": "Åland Islands",
+        "es": "Islas Aland",
+        "pt": "Åland Islands"
     }
 }

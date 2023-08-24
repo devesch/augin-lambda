@@ -12,9 +12,8 @@ class UserPassword(BasePage):
     def render_get(self):
         if not self.path.get("user_email"):
             return Http().redirect("user_login")
-        user = User(self.path["user_email"])
-        user.load_information()
-        if user.user_status != "created":
+        user = self.load_user(self.path["user_email"])
+        if not user:
             return Http().redirect("user_login")
 
         html = super().parse_html()
@@ -27,15 +26,14 @@ class UserPassword(BasePage):
     def render_post(self):
         if not self.path.get("user_email"):
             return Http().redirect("user_login")
-
         user = self.load_user(self.path["user_email"])
         if not user:
             return Http().redirect("user_login")
 
         if not self.post.get("user_password"):
             return self.render_get_with_error("Por favor informe a sua senha.")
-        # if not user.check_if_password_is_corrected(self.post["user_password"]):
-        #     return self.render_get_with_error("Senha incorreta.")
+        if not user.check_if_password_is_corrected(self.post["user_password"]):
+            return self.render_get_with_error("Senha incorreta.")
 
         user.update_auth_token()
-        return {"html": Http().redirect("user_set_auth_token/?user_auth_token=" + user.user_auth_token)}
+        return {"html": Http().redirect(""), "command": "login", "user_auth_token": user.user_auth_token}
