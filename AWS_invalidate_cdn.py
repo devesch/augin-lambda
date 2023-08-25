@@ -30,7 +30,7 @@ def create_invalidation(distribution_id):
 list_distributions_response = cloudfront_client.list_distributions()
 for distribution in list_distributions_response["DistributionList"]["Items"]:
     if "AliasICPRecordals" in distribution:
-        if "integratebim" in distribution["AliasICPRecordals"][0]["CNAME"]:
+        if "augin" in distribution["AliasICPRecordals"][0]["CNAME"]:
             if "cdn.augin" in distribution["AliasICPRecordals"][0]["CNAME"] or "upload.augin" in distribution["AliasICPRecordals"][0]["CNAME"]:
                 print("Invalidating " + distribution["AliasICPRecordals"][0]["CNAME"])
                 create_invalidation(distribution["Id"])

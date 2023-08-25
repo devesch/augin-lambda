@@ -8,6 +8,7 @@
         <h2>{{Bem vindo ao Augin, para prosseguir precisamos seus dados de login.}}</h2>
     </div>
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <input hidden id="user_email" value="{{user_email_val}}">
         <div class="login__input-container floating-input">
             <input type="password" name="password_input" id="password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
             <label for="password_input">{{Senha}}</label>
@@ -15,6 +16,9 @@
                 <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
             </button>
         </div>
+        <span style="{{error_msg_visibility_val}}" id="error_msg">
+            {{error_msg_val}}
+        </span>
         <div class="login__button-container">
             <button class="ghost" type="button" onclick="js.index.userSendResetPassEmail();">{{Esqueci minha senha}}</button>
             <button type="submit">{{Prosseguir}}</button>

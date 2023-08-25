@@ -3,11 +3,16 @@ import {
 } from "./classes/ProjectData.js";
 
 export async function apiCaller(apiFunction, postData) {
-    // console.log("Calling Url: ", ProjectData.props.domainNameUrlVal);
-    // console.log("Sending this post data ", postData);
-    const response = await request(ProjectData.props.domainNameUrlVal + "/api/" + apiFunction, "POST", {
+    var response = await request(ProjectData.props.domainNameUrlVal + "/api/" + apiFunction, "POST", {
         "Content-Type": "application/x-www-form-urlencoded"
     }, postData, true);
+    if ("success" in response) {
+        console.log(apiFunction + " RESPONSE SUCCESS -> " + response["success"])
+    }
+    if ("error" in response) {
+        console.log(apiFunction + " RESPONSE ERROR -> " + response["error"])
+    }
+    console.log(apiFunction + " RESPONSE EVENT -> " + response["event"])
     return response
 }
 

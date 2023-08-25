@@ -439,6 +439,11 @@
         "es": "Fecha de renovación",
         "pt": "Data de renovação"
     },
+    "Definir nova senha": {
+        "en": "set new password",
+        "es": "establecer nueva contraseña",
+        "pt": "Definir nova senha"
+    },
     "Denmark": {
         "en": "Denmark",
         "es": "Dinamarca",
@@ -1728,6 +1733,11 @@
         "en": "last seen",
         "es": "ultima vez visto",
         "pt": "Visto por último"
+    },
+    "Você não está conseguindo se lembrar da sua senha? Não se preocupe": {
+        "en": "Are you having trouble remembering your password?Don't worry",
+        "es": "¿Tiene problemas para recordar su contraseña?No se preocupe",
+        "pt": "Você não está conseguindo se lembrar da sua senha? Não se preocupe"
     },
     "Você pode conectar um novo dispositivo quando quiser.": {
         "en": "You can connect a new device whenever you want.",

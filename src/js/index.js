@@ -21,6 +21,29 @@ export function getWebView() {
     return _webView;
 }
 
+
+
+export async function userSendResetPassEmail() {
+    console.log("Running userSendResetPassEmail");
+    let error_msg = document.getElementById("error_msg");
+    let user_email = document.getElementById("user_email");
+    let user_send_reset_password_email_response = await apiCaller("user_send_reset_password_email", {
+        'user_email': user_email.value
+    });
+
+    if ("success" in user_send_reset_password_email_response) {
+        error_msg.innerHTML = user_send_reset_password_email_response["success"]
+        error_msg.style = ""
+        return
+    }
+    if ("error" in user_send_reset_password_email_response) {
+        error_msg.innerHTML = user_send_reset_password_email_response["error"]
+        error_msg.style = ""
+        return
+    }
+}
+
+
 export function addEventListenerToVerificationCodeInputs() {
     console.log("Running addEventListenerToVerificationCodeInputs")
     let inputs = document.querySelectorAll('.page__box-email-verify__form__entry__box-code__code');
@@ -127,7 +150,7 @@ export function detectClickOutsideElement() {
 
     let exploreCreateButton = document.querySelector(".explore-create-more-options");
 
-    document.addEventListener("click", function(event) {
+    document.addEventListener("click", function (event) {
         // console.log(event);
         // console.log(openMobileMenuButton);
         // console.log(closeMobileMenuButton);
@@ -214,20 +237,20 @@ export function activateAuginSubscriptionSelection() {
                 showHtmlElement(monthlySubscriptionContainer);
                 hideHtmlElement(yearlySubscriptionContainer);
             }
-            
+
             if (yearlyRadioButton.checked) {
                 hideHtmlElement(monthlySubscriptionContainer);
                 showHtmlElement(yearlySubscriptionContainer);
             }
 
-            monthlyRadioButton.addEventListener("change", function() {
+            monthlyRadioButton.addEventListener("change", function () {
                 if (monthlyRadioButton.checked) {
                     showHtmlElement(monthlySubscriptionContainer);
                     hideHtmlElement(yearlySubscriptionContainer);
                 }
             });
 
-            yearlyRadioButton.addEventListener("change", function() {
+            yearlyRadioButton.addEventListener("change", function () {
                 if (yearlyRadioButton.checked) {
                     hideHtmlElement(monthlySubscriptionContainer);
                     showHtmlElement(yearlySubscriptionContainer);
@@ -285,7 +308,7 @@ export function activateExploreCreateMenu(clickTarget, button, currentMenu) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(event){
+document.addEventListener("DOMContentLoaded", function (event) {
     // your code here
     detectClickOutsideElement();
     activateAuginSubscriptionSelection();

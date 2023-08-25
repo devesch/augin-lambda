@@ -5,16 +5,15 @@ import {
 import environment_variables from "../../../.vscode/enviroment_variables.json"
 
 var props = {
-    domainNameUrlVal: `https://cloudviewer.tqs.com.br`,
-    // domainNameUrlVal: `https://tqs.${environment_variables.domain_name}${environment_variables.sufix_name}`,
-    cdnVal: `https://tqs-cdn.${environment_variables.domain_name}${environment_variables.sufix_name}`,
+    domainNameUrlVal: `https://web.augin.app`,
+    cdnVal: `https://cdn.augin.app`,
 }
 
 
 if (location.href.includes("dev-")) {
     props = {
-        domainNameUrlVal: `https://dev-tqs.${environment_variables.domain_name}${environment_variables.sufix_name}`,
-        cdnVal: `https://dev-tqs-cdn.${environment_variables.domain_name}${environment_variables.sufix_name}`,
+        domainNameUrlVal: `https://web.augin.app`,
+        cdnVal: `https://cdn.augin.app`,
     }
 }
 
