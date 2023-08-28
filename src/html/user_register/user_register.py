@@ -96,4 +96,4 @@ class UserRegister(UserPage):
         all_users_verify_email = Dynamo().query_users_verify_email(self.path["user_email"])
         for user_verify_email in all_users_verify_email:
             Dynamo().delete_entity(user_verify_email)
-        return {"html": Http().redirect(""), "command": "login", "user_auth_token": user.user_auth_token}
+        return {"html": Http().redirect("panel_home"), "command": "login", "user_auth_token": user.user_auth_token}

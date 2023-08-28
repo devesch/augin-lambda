@@ -36,4 +36,4 @@ class UserPassword(BasePage):
             return self.render_get_with_error("Senha incorreta.")
 
         user.update_auth_token()
-        return {"html": Http().redirect(""), "command": "login", "user_auth_token": user.user_auth_token}
+        return {"html": Http().redirect("panel_home"), "command": "login", "user_auth_token": user.user_auth_token}
