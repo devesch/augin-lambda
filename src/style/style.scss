@@ -1037,19 +1037,19 @@ input[list]::-ms-clear {
     gap: 1rem;
     justify-content: center;
 
-    label {
-        font-weight: bold;
-    }
+    // label {
+    //     font-weight: bold;
+    // }
 
-    select, input {
-        border: 1px solid colors.color("color-black");
-        color: colors.color("color-black");
-        border-radius: .25rem;
-        font-weight: bold;
-        padding: .5rem 2rem;
-        width: 100%;
-        font-size: 1rem;
-    }
+    // select, input {
+    //     border: 1px solid colors.color("color-black");
+    //     color: colors.color("color-black");
+    //     border-radius: .25rem;
+    //     font-weight: bold;
+    //     padding: .5rem 2rem;
+    //     width: 100%;
+    //     font-size: 1rem;
+    // }
 
 }
 
