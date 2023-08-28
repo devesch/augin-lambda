@@ -180,6 +180,7 @@ q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    overflow: auto;
 }
 
 input {
@@ -449,6 +450,8 @@ input[list]::-ms-clear {
 .header--my-plan {
     display: none;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1;
     background-color: colors.color("color-neutral-900");
     color: colors.color("color-white");
@@ -499,9 +502,11 @@ input[list]::-ms-clear {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: start;
+    padding-top: 2rem;
 
     @media only screen and (min-width: breakpoints.$large) {
         flex-wrap: nowrap;
+        padding-top: unset;
     }
 
 }
@@ -584,7 +589,8 @@ input[list]::-ms-clear {
 }
 
 .my-plan__try-pro-10 {
-    max-width: 20rem;
+    margin: auto;
+    width: min(30rem, 100%);
     padding: 1rem;
     background-color: colors.color("color-neutral-200");
     border-radius: 1rem;
@@ -796,7 +802,8 @@ input[list]::-ms-clear {
     background-color: colors.color("color-neutral-50");
     border-radius: 1rem;
     font-size: 1.1rem;
-
+    width: 100%;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
