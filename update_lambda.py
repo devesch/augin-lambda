@@ -40,15 +40,6 @@ with open(".vscode/enviroment_variables.json", "r", encoding="utf-8") as read_fi
     region = env_var["region"]
 
 if not path.exists("src/dist"):
-    system("npm install webpack-cli")
-    system("npm install sass")
-    system("npm install webpack")
-    system("npm install clean-webpack-plugin")
-    system("npm install mini-css-extract-plugin")
-    system("npm install css-loader")
-    system("npm install sass-loader")
-    system("npm install css-minimizer-webpack-plugin")
-
     ### WEBPACK.PROD.TEMPLATE ###
     package_json = {"name": domain_name.title(), "version": "1.0.0", "description": "Projeto " + domain_name.title(), "main": "index.js", "scripts": {"dev": "webpack --config webpack.prod.js"}, "author": "Devesch", "license": "ISC"}
     with open("package.json", "w") as json_file:

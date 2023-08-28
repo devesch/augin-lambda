@@ -21,7 +21,10 @@ export function getWebView() {
     return _webView;
 }
 
-
+export function openModal(css_class) {
+    let modal = document.querySelector(css_class);
+    modal.classList.add('active');
+}
 
 export async function userSendResetPassEmail() {
     console.log("Running userSendResetPassEmail");
