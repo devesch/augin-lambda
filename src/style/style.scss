@@ -1612,4 +1612,12 @@ progress::-moz-progress-bar {
 .relative {
     position: relative !important;
 }
+
+.error {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 1rem;
+}
 /* Overwrittes - End */
