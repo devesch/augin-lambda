@@ -1,0 +1,110 @@
+<button class="menu-mobile-open-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+    <img src="{{cdn_val}}/assets/icons/menu.svg" alt="" width="24" height="24">
+</button>
+
+<header class="header--my-plan" id="menu">
+    <div class="header__title-close-container">
+        <picture>
+            <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
+            <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
+            <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43">
+        </picture>
+        <button class="header__mobile-close-button" aria-label="Fechar menu" aria-expanded="true" aria-controls="menu">
+            <img src="{{cdn_val}}/assets/icons/close.svg" alt="" width="24" height="24">
+        </button>
+    </div>
+    <nav class="my-plan__nav">
+        <strong>{{Projetos}}</strong>
+        <ul class="my-plan__nav__ul">
+            <li class="{{panel_project_create_active_val}}">
+                <a href="{{domain_name_url_val}}/panel_project_create">
+                    <img src="{{cdn_val}}/assets/icons/cloud_upload.svg" alt="" width="24" height="24" />
+                    <span>{{Criar}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="{{cdn_val}}/assets/icons/account_tree.svg" alt="" width="24" height="24" />
+                    <span>{{Explorar}}</span>
+                </a>
+            </li>
+        </ul>
+
+        <strong>{{Assinatura}}</strong>
+        <ul class="my-plan__nav__ul">
+            <li>
+                <a href="">
+                    <img src="{{cdn_val}}/assets/icons/account_balance_wallet.svg" alt="" width="24" height="24" />
+                    <span>{{Seu plano}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="{{cdn_val}}/assets/icons/devices.svg" alt="" width="24" height="24" />
+                    <span>{{Dispositivos}}</span>
+                </a>
+            </li>
+        </ul>
+
+        <strong>{{Suporte}}</strong>
+        <ul class="my-plan__nav__ul">
+            <li>
+                <a href="">
+                    <img src="{{cdn_val}}/assets/icons/help_center.svg" alt="" width="24" height="24" />
+                    <span>{{Central de ajuda}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="{{cdn_val}}/assets/icons/support.svg" alt="" width="24" height="24" />
+                    <span>{{Contato}}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="my-plan__header-footer-container">
+        <section class="my-plan__try-pro-10">
+            <h2 class="my-plan__try-pro-10__title">Conheça o PRO10</h2>
+            <h3 class="my-plan__try-pro-10__description">
+                Teste por 10 dias
+                e libere todas as
+                funções PRO10.
+            </h3>
+            <button class="my-plan__try-pro-10__button">
+                Teste grátis
+            </button>
+        </section>
+        <section class="my-plan__profile">
+            <div class="my-plan__profile__container">
+                <div class="my-plan__profile__container__image">
+                    <picture>
+                        <img src="{{cdn_val}}/assets/icons/person.svg" alt="" width="28" height="28">
+                    </picture>
+                </div>
+                <div>
+                    <strong>{{user_name_val}}</strong>
+                    <p>{{user_email_val}}</p>
+                </div>
+            </div>
+            <menu class="my-plan__profile-menu">
+                <li>
+                    <button>
+                        <img src="{{cdn_val}}/assets/icons/settings_account_box.svg" alt="Configurações" width="24" height="24">
+                    </button>
+                </li>
+                <li>
+                    <a href="{{domain_name_url_val}}/user_exit" class="button">
+                        <img src="{{cdn_val}}/assets/icons/logout.svg" alt="Sair da conta" width="24" height="24">
+                    </a>
+                </li>
+                <li>
+                    <button>
+                        <img src="{{cdn_val}}/assets/icons/translate.svg" alt="Trocar idioma" width="24" height="24">
+                    </button>
+                </li>
+            </menu>
+        </section>
+    </div>
+
+</header>
