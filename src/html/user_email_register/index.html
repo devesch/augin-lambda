@@ -13,11 +13,14 @@
                 <input type="email" name="user_email" value="{{user_email_val}}" id="login_input" placeholder="" required autofocus maxlength="500">
                 <label for="login_input">{{Email}}</label>
             </div>
-            <p class="input-hint">{{Insira seu email de usuário Augin}}</p>
+            <p class="input-hint">{{Insira um email válido para criar sua conta}}</p>
         </div>
+        <span class="error" style="{{error_msg_visibility_val}}">
+            {{error_msg_val}}
+        </span>
         <div class="login__button-container">
-            <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Criar uma conta}}</a>
-            <button type="submit">{{Prosseguir}}</button>
+            <a href="{{domain_name_url_val}}/user_login" class="button ghost">{{Voltar}}</a>
+            <button type="submit">{{Validar Email}}</button>
         </div>
     </form>
 </main>

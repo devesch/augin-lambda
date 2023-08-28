@@ -82,8 +82,6 @@ for placeholder in filtered_placeholders:
     if not "_val" in placeholder and not "html_" in placeholder and not "js." in placeholder and not "_" in placeholder and not "<" in placeholder and not "header" in placeholder and not "menu" in placeholder and not "footer" in placeholder:
         if placeholder not in translations:
             print("getting translation for: " + placeholder)
-            if placeholder in ["Paid"]:
-                continue
             translations[placeholder] = {"pt": placeholder, "es": "", "en": ""}
             translations[placeholder]["es"] = translator.translate(text=placeholder, src="pt", dest="es").text
             translations[placeholder]["en"] = translator.translate(text=placeholder, src="pt", dest="en").text

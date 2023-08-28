@@ -64,24 +64,10 @@ class Dynamo:
         return None
 
     def query_user_models_from_state(self, user, model_state):
-        query = []
-        query.extend(self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#d8ac1 = :d8ac1", "ExpressionAttributeNames": {"#d8ac1": "pk"}, "ExpressionAttributeValues": {":d8ac1": {"S": "user#" + user.user_email + "#model_state#" + model_state}}}))
-        if user.user_is_tqs:
-            if user.user_tqs_customers:
-                for customer in user.user_tqs_customers:
-                    query.extend(self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#d8ac1 = :d8ac1", "ExpressionAttributeNames": {"#d8ac1": "pk"}, "ExpressionAttributeValues": {":d8ac1": {"S": "user#" + customer["id"] + "#model_state#" + model_state}}}))
-        return query
+        return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#d8ac1 = :d8ac1", "ExpressionAttributeNames": {"#d8ac1": "pk"}, "ExpressionAttributeValues": {":d8ac1": {"S": "user#" + user.user_email + "#model_state#" + model_state}}})
 
     def query_user_last_created_models(self, user, limit=10000):
-        query = []
-        new_items, last_evaluated_key = self.query_paginated_user_models_by_created_at(user.user_email, "completed", last_evaluated_key=None, limit=limit)
-        query.extend(new_items)
-        if user.user_is_tqs:
-            if user.user_tqs_customers:
-                for customer in user.user_tqs_customers:
-                    new_items, last_evaluated_key = self.query_paginated_user_models_by_created_at(customer["id"], "completed", last_evaluated_key=None, limit=limit)
-                    query.extend(new_items)
-        return query
+        return self.query_paginated_user_models_by_created_at(user.user_email, "completed", last_evaluated_key=None, limit=limit)
 
     def query_paginated_user_models_by_name(self, user_email, model_state, last_evaluated_key=None, limit=20, reverse=False):
         key_schema = {"model_name": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}

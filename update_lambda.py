@@ -22,10 +22,15 @@ def run_threaded(func):
     return thread
 
 
+# Running translations
+subprocess.run(["python", "tools_for_devs/create_translations.py"])
+
+
 print("Running UPDATE LAMBDA")
 root_folder = getcwd().replace("\\", "/") + "/"
 last_update_data = json.load(open("last_update_data.json", "r", encoding="utf-8"))
 clean_js_css = False
+
 
 with open(".vscode/enviroment_variables.json", "r", encoding="utf-8") as read_file:
     env_var = json.load(read_file)
@@ -283,7 +288,7 @@ def run():
     assets_change = assets_folder_change_queue.get()
     web_pack_change = web_pack_change_queue.get()
 
-    if web_pack_change or True:
+    if web_pack_change:
         system("npm run prod")
 
     upload_index_thread = run_threaded(lambda: upload_index(s3_client, new_version))

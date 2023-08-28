@@ -1,11 +1,11 @@
-﻿from python_web_frame.user_page import UserPage
+﻿from python_web_frame.backoffice_page import BackofficePage
 
 
-class UserTerms(UserPage):
-    name = "Termos de Uso"
-    public = True
+class BackofficeHome(BackofficePage):
+    name = "Backoffice - Home"
+    public = False
     bypass = False
-    admin = False
+    admin = True
 
     def render_get(self):
         html = super().parse_html()

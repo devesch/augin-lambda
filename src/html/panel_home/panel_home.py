@@ -1,9 +1,9 @@
-﻿from python_web_frame.user_page import UserPage
+from python_web_frame.panel_page import PanelPage
 
 
-class UserTerms(UserPage):
-    name = "Termos de Uso"
-    public = True
+class PanelHome(PanelPage):
+    name = "Painel"
+    public = False
     bypass = False
     admin = False
 

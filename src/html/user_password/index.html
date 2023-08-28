@@ -10,7 +10,7 @@
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
         <input hidden id="user_email" value="{{user_email_val}}">
         <div class="login__input-container floating-input">
-            <input type="password" name="password_input" id="password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+            <input type="password" name="user_password" value="{{user_password_val}}" id="password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
             <label for="password_input">{{Senha}}</label>
             <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
                 <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">

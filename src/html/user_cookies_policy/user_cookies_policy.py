@@ -1,8 +1,8 @@
 ﻿from python_web_frame.user_page import UserPage
 
 
-class UserTerms(UserPage):
-    name = "Termos de Uso"
+class UserCookiesPolicy(UserPage):
+    name = "Política de Cookies"
     public = True
     bypass = False
     admin = False

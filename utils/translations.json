@@ -29,6 +29,11 @@
         "es": "Biblioteca",
         "pt": "Algeria"
     },
+    "Alterar email": {
+        "en": "Change e-mail",
+        "es": "Cambiar e-mail",
+        "pt": "Alterar email"
+    },
     "American Samoa": {
         "en": "American Samoa",
         "es": "Samoa Americana",
@@ -284,6 +289,11 @@
         "es": "darse de baja",
         "pt": "Cancelar assinatura"
     },
+    "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.": {
+        "en": "If you do not receive the code, check the email address entered and check your SPAM box.",
+        "es": "Si no recibes el código, revisa la dirección de correo electrónico ingresada y revisa tu carpeta de SPAM.",
+        "pt": "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM."
+    },
     "Categoria": {
         "en": "Category",
         "es": "Categoría",
@@ -438,6 +448,16 @@
         "en": "renewal date",
         "es": "Fecha de renovación",
         "pt": "Data de renovação"
+    },
+    "Definir Nova Senha": {
+        "en": "Set New Password",
+        "es": "Establecer nueva contraseña",
+        "pt": "Definir Nova Senha"
+    },
+    "Definir Nova Senha.": {
+        "en": "Set New Password.",
+        "es": "Establecer nueva contraseña.",
+        "pt": "Definir Nova Senha."
     },
     "Definir nova senha": {
         "en": "set new password",
@@ -603,6 +623,11 @@
         "en": "",
         "es": "",
         "pt": "Failed"
+    },
+    "Falhou": {
+        "en": "Failed",
+        "es": "Fallido",
+        "pt": "Falhou"
     },
     "Falkland Islands (Malvinas)": {
         "en": "FALKLAND ISLANDS (Falklands)",
@@ -814,10 +839,20 @@
         "es": "Indonesia",
         "pt": "Indonesia"
     },
+    "Insira abaixo o código que enviamos para o email": {
+        "en": "Insert below the code we sent to the email",
+        "es": "Inserte debajo el código que le enviamos al correo electrónico",
+        "pt": "Insira abaixo o código que enviamos para o email"
+    },
     "Insira seu email de usuário Augin": {
         "en": "Enter your augin user email",
         "es": "Ingrese su correo electrónico de usuario de Augin",
         "pt": "Insira seu email de usuário Augin"
+    },
+    "Insira um email válido para criar sua conta": {
+        "en": "Enter a valid email to create your account",
+        "es": "Ingrese un correo electrónico válido para crear su cuenta",
+        "pt": "Insira um email válido para criar sua conta"
     },
     "Iran, Islamic Republic of": {
         "en": "Iran, Islamic Republic of",
@@ -1189,6 +1224,11 @@
         "es": "Nuestro equipo está trabajando para resolver la situación lo antes posible.",
         "pt": "Nossa equipe está trabalhando para resolver a situação o mais rápido possível."
     },
+    "Nova Senha": {
+        "en": "New Password",
+        "es": "Nueva contraseña",
+        "pt": "Nova Senha"
+    },
     "Olá": {
         "en": "Hello",
         "es": "Hola",
@@ -1198,6 +1238,11 @@
         "en": "Oman",
         "es": "Omán",
         "pt": "Oman"
+    },
+    "Pago": {
+        "en": "Paid out",
+        "es": "Pagado",
+        "pt": "Pago"
     },
     "Pakistan": {
         "en": "Pakistan",
@@ -1689,6 +1734,11 @@
         "es": "Uzbekistán",
         "pt": "Uzbekistan"
     },
+    "Validar Email": {
+        "en": "Validate Email",
+        "es": "Validar correo electrónico",
+        "pt": "Validar Email"
+    },
     "Vanuatu": {
         "en": "Vanuatu",
         "es": "Vanuatu",
@@ -1748,6 +1798,11 @@
         "en": "you used",
         "es": "usaste",
         "pt": "Você utilizou"
+    },
+    "Voltar": {
+        "en": "To go back",
+        "es": "para volver",
+        "pt": "Voltar"
     },
     "Wallis and Futuna": {
         "en": "Wallis and Futuna",
