@@ -1,5 +1,9 @@
 @use '_colors.scss' as colors;
 
+label {
+    cursor: pointer;
+}
+
 .input,
 input[type="text"],
 input[type="search"],
@@ -13,6 +17,11 @@ select {
     border-radius: .25rem;
     padding: 1rem 2rem;
     width: 100%;
+    font-size: 1rem;
+}
+
+select {
+    cursor: pointer;
 }
 
 .input + label,
@@ -124,4 +133,16 @@ input[readonly] + label {
 .verify-code-button-container {
     text-align: center;
     margin-top: 4rem;
+}
+
+.checkbox-default {
+    display: flex;
+    flex-direction: row;
+    gap: .25rem;
+    flex-wrap: wrap;
+}
+
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
 }
