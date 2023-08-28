@@ -625,12 +625,14 @@ input[list]::-ms-clear {
         font-weight: bold;
     }
 
-    button {
+    button,
+    .button {
         background-color: transparent;
         border-radius: .25rem;
     }
 
-    button:hover {
+    button:hover,
+    .button:hover {
         background-color: colors.color("color-primary-700");
         border-color: colors.color("color-primary-700");
 
@@ -641,7 +643,8 @@ input[list]::-ms-clear {
 
     }
 
-    button:active {
+    button:active,
+    .button:active {
         background-color: colors.color("color-primary-500");
         border-color: colors.color("color-primary-500");
 
