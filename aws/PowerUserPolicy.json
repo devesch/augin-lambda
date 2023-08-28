@@ -1,0 +1,11 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": ["logs:*", "servicecatalog:*","rum:*", "evidently:*", "cloudformation:*", "kms:*", "ses:*","sqs:*", "route53:*", "acm:*", "dynamodb:*", "lambda:*", "cloudwatch:*", "s3:*", "cloudfront:*", "apigateway:*", "iam:*", "dynamodb:*", "elasticloadbalancing:*"],
+            "Resource": "*"
+        }
+    ]
+}

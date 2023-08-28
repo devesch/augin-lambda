@@ -7,7 +7,6 @@ test_html.html
 /src/dist
 .DS_Store
 /src/.DS_Store
-aws/
 
 
 # Byte-compiled / optimized / DLL files

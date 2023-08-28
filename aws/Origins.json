@@ -1,0 +1,1 @@
+{"Quantity": 1, "Items": [{"Id": "S3-visiteimoveis.com", "DomainName": "visiteimoveis.com.s3.amazonaws.com", "OriginPath": "", "CustomHeaders": {"Quantity": 0}, "S3OriginConfig": {"OriginAccessIdentity": "origin-access-identity/cloudfront/E3K78DNHJYQT7F"}, "ConnectionAttempts": 3, "ConnectionTimeout": 10, "OriginShield": {"Enabled": false}}]}
