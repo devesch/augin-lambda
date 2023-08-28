@@ -4,7 +4,8 @@
 input[type="text"],
 input[type="search"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+select {
     outline: none;
     background-color: colors.color("color-neutral-50");
     border: 2px solid colors.color("color-neutral-500");
@@ -18,7 +19,8 @@ input[type="password"] {
 input[type="text"] + label,
 input[type="search"] + label,
 input[type="email"] + label,
-input[type="password"] + label {
+input[type="password"] + label,
+select + label {
     color: colors.color("color-neutral-700");
 }
 
@@ -26,7 +28,8 @@ input[type="password"] + label {
 input[type="text"]:focus,
 input[type="search"]:focus,
 input[type="email"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+select:focus {
     border-color: colors.color("color-primary-500");
 }
 
