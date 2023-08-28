@@ -99,6 +99,11 @@
         "es": "Aruba",
         "pt": "Aruba"
     },
+    "Assinatura": {
+        "en": "Signature",
+        "es": "Firma",
+        "pt": "Assinatura"
+    },
     "Ativado em": {
         "en": "Activated on",
         "es": "Activado el",
@@ -309,6 +314,11 @@
         "es": "República Centroafricana",
         "pt": "Central African Republic"
     },
+    "Central de ajuda": {
+        "en": "Help Center",
+        "es": "Centro de ayuda",
+        "pt": "Central de ajuda"
+    },
     "Chad": {
         "en": "Chad",
         "es": "Chad",
@@ -378,6 +388,11 @@
         "en": "Congo, The Democratic Republic of the",
         "es": "Congo, la República Democrática del",
         "pt": "Congo, The Democratic Republic of the"
+    },
+    "Contato": {
+        "en": "Contact",
+        "es": "Contacto",
+        "pt": "Contato"
     },
     "Cook Islands": {
         "en": "Cook Islands",
@@ -508,6 +523,11 @@
         "en": "Enter the third digit of the verification code that was sent to your email.",
         "es": "Ingrese el tercer dígito del código de verificación que se envió a su correo electrónico.",
         "pt": "Digite o terceiro dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Dispositivos": {
+        "en": "Devices",
+        "es": "Dispositivos",
+        "pt": "Dispositivos"
     },
     "Djibouti": {
         "en": "Djibouti",
@@ -1344,6 +1364,11 @@
         "es": "Proyecto",
         "pt": "Projeto"
     },
+    "Projetos": {
+        "en": "Projects",
+        "es": "Proyectos",
+        "pt": "Projetos"
+    },
     "Projetos federados": {
         "en": "federated projects",
         "es": "proyectos federados",
@@ -1578,6 +1603,11 @@
         "en": "Sudan",
         "es": "Sudán",
         "pt": "Sudan"
+    },
+    "Suporte": {
+        "en": "Support",
+        "es": "Soporte",
+        "pt": "Suporte"
     },
     "Suriname": {
         "en": "Suriname",
