@@ -2,21 +2,21 @@
 {{menu_panel_no_icons}}
 <div class="container page page-center" id="userVerifyEmail">
     <div class="my-plan__title-container">
-        <h1>{{Validar seu email}}</h1>
+        <h1 class="my-plan__title">{{Validar seu email}}</h1>
     </div>
     <div class="login__title-container">
-        <h2 class="my-plan__title">{{Insira abaixo o código que enviamos para o email}}</h2>
-        <h2 class="my-plan__title"><strong>{{user_email_val}}</strong></h2>
-        <h2>{{Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.}}</h2>
+        <h2>{{Insira abaixo o código que enviamos para o email}}</h2>
+        <strong>{{user_email_val}}</strong>
+        <p>{{Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.}}</p>
     </div>
     <form class="page__box-email-verify__form" method="POST" action="{{domain_name_url_val}}/{{user_url_val}}">
         <div class="page__box-email-verify__form__entry__box-code">
-            <input id="verify_email_code_1" aria-label="{{Digite o primeiro dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_1" value="{{verify_email_code_1_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" required />
-            <input id="verify_email_code_2" aria-label="{{Digite o segundo dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_2" value="{{verify_email_code_2_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" required />
-            <input id="verify_email_code_3" aria-label="{{Digite o terceiro dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_3" value="{{verify_email_code_3_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" required />
-            <input id="verify_email_code_4" aria-label="{{Digite o quarto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_4" value="{{verify_email_code_4_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" required />
-            <input id="verify_email_code_5" aria-label="{{Digite o quinto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_5" value="{{verify_email_code_5_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" required />
-            <input id="verify_email_code_6" aria-label="{{Digite o sexto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_6" value="{{verify_email_code_6_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" required />
+            <input id="verify_email_code_1" aria-label="{{Digite o primeiro dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_1" value="{{verify_email_code_1_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" inputmode="numeric" required />
+            <input id="verify_email_code_2" aria-label="{{Digite o segundo dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_2" value="{{verify_email_code_2_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" inputmode="numeric" required />
+            <input id="verify_email_code_3" aria-label="{{Digite o terceiro dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_3" value="{{verify_email_code_3_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" inputmode="numeric" required />
+            <input id="verify_email_code_4" aria-label="{{Digite o quarto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_4" value="{{verify_email_code_4_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" inputmode="numeric" required />
+            <input id="verify_email_code_5" aria-label="{{Digite o quinto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_5" value="{{verify_email_code_5_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" inputmode="numeric" required />
+            <input id="verify_email_code_6" aria-label="{{Digite o sexto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_6" value="{{verify_email_code_6_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" inputmode="numeric" required />
         </div>
         <span class="error" style="{{error_msg_visibility_val}}">{{error_msg_val}}</span>
         <div>
