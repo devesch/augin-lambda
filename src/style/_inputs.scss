@@ -85,3 +85,11 @@ input[type="password"]:required:invalid:not(:placeholder-shown) + label {
     pointer-events: none;
     padding: 0 .25rem;
 }
+
+.page__box-email-verify__form__entry__box-code {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
