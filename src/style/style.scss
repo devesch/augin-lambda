@@ -707,6 +707,7 @@ input[list]::-ms-clear {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem;
     width: 100%;
 }
@@ -718,6 +719,12 @@ input[list]::-ms-clear {
     justify-content: end;
     flex-wrap: wrap;
     gap: 1rem;
+
+    @media only screen and (max-width: breakpoints.$x-large) {
+        order: -1;
+        width: 100%;
+    }
+
 }
 
 .my-plan__sub-title-container,
@@ -1546,6 +1553,27 @@ progress::-moz-progress-bar {
 
 .button--explore-more-options[aria-expanded="true"] {
     background-color: colors.color("color-neutral-200");
+}
+
+.panel-explore-filters-container {
+    $gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: right;
+    flex-grow: 1;
+    gap: $gap;
+
+    select,
+    input {
+        // flex-basis: calc(50% - ($gap / 2));
+        flex-grow: unset;
+        @media only screen and (min-width: breakpoints.$large) {
+            width: 25%;
+        }
+    }
+
 }
 /* Explore - End */
 

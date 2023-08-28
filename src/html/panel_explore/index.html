@@ -3,10 +3,12 @@
 <main class="my-plan__main">
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Explorar}}</h1>
-        <select name="explore_filter" id="explore_filter" required>
-            <option value="" disabled selected hidden>Filtrar</option>
-        </select>
-        <input type="search" name="explore_input_search" id="explore_input_search">
+        <section class="panel-explore-filters-container">
+            <select name="explore_filter" id="explore_filter" required>
+                <option value="" disabled selected hidden>Filtrar</option>
+            </select>
+            <input type="search" name="explore_input_search" id="explore_input_search">
+        </section>
         <div class="my-plan__title-container__button-container">
             <button class="black my-plan__title-container__button">
                 Upgrade
