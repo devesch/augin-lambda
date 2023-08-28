@@ -145,18 +145,17 @@ input[readonly] + label {
     flex-direction: row;
     gap: .25rem;
     flex-wrap: wrap;
-
-    label {
-        background-color: none;
-    }
-
 }
 
 .checkbox-default + .checkbox-default {
-    margin-top: .25rem;
+    margin-top: .5rem;
 }
 
 input[type="checkbox"] {
     width: 1.2rem;
     height: 1.2rem;
+}
+
+input[type="checkbox"] + label {
+    background-color: none;
 }
