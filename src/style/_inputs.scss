@@ -92,4 +92,13 @@ input[type="password"]:required:invalid:not(:placeholder-shown) + label {
     gap: .5rem;
     justify-content: center;
     align-items: center;
+
+    input {
+        padding: 1rem;
+        font-size: 1rem;
+        width: fit-content;
+        color: color.colors("color-black");
+        text-align: center;
+    }
+
 }
