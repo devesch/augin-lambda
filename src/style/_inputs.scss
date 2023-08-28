@@ -130,9 +130,14 @@ input[readonly] + label {
 
 }
 
-.verify-code-button-container {
+.verify-code-button-container,
+.user-register-container {
     text-align: center;
     margin-top: 4rem;
+}
+
+.checkbox-container {
+    margin-top: 1rem;
 }
 
 .checkbox-default {
@@ -140,6 +145,10 @@ input[readonly] + label {
     flex-direction: row;
     gap: .25rem;
     flex-wrap: wrap;
+}
+
+.checkbox-default + .checkbox-default {
+    margin-top: .25rem;
 }
 
 input[type="checkbox"] {
