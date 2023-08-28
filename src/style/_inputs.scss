@@ -97,7 +97,7 @@ input[type="password"]:required:invalid:not(:placeholder-shown) + label {
         padding: 1rem;
         font-size: 1rem;
         width: fit-content;
-        color: color.colors("color-black");
+        color: colors.color("color-black");
         text-align: center;
     }
 
