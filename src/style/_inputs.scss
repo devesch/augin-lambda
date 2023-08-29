@@ -153,8 +153,9 @@ input[readonly] + label {
 
 input[type="checkbox"],
 input[type="radio"] {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: .15rem;
 }
 
 input[type="checkbox"] + label {
@@ -168,7 +169,7 @@ input[type="checkbox"] + label {
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
-        border: 1px solid colors.color("color-error-500");
+        border: 2px solid colors.color("color-error-500");
         background: none;
         background-color: transparent;
         padding: .5rem;
@@ -182,13 +183,31 @@ input[type="checkbox"] + label {
 
     input[type="checkbox"]:checked::after,
     input[type="radio"]:checked::after {
-        content: '\2714';
-        font-size: 1rem;
-        top: 0px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: colors.color("color-success-900");
+        content: '';
+        top: 50%;
+        border-bottom: 2px solid colors.color("color-success-900");
+        border-right: 2px solid colors.color("color-success-900");
         position: absolute;
+    }
+
+    input[type="checkbox"]:checked::after {
+        left: 25%;
+        transform: rotate(45deg) translate(-50%, -50%);
+        -o-transform: rotate(45deg) translate(-50%, -50%);
+        -ms-transform: rotate(45deg) translate(-50%, -50%);
+        -webkit-transform: rotate(45deg) translate(-50%, -50%);
+        width: 0.45rem;
+        height: 0.9rem;
+    }
+
+    input[type="radio"]:checked::after {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        width: 90%;
+        height: 90%;
     }
 
 }
