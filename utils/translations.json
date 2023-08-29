@@ -744,6 +744,11 @@
         "es": "Gibraltar",
         "pt": "Gibraltar"
     },
+    "Gostaria de gerar um projeto federado com os arquivos enviados?": {
+        "en": "Would you like to generate a federated project with the uploaded files?",
+        "es": "¿Te gustaría generar un proyecto federado con los archivos subidos?",
+        "pt": "Gostaria de gerar um projeto federado com os arquivos enviados?"
+    },
     "Greece": {
         "en": "Greece",
         "es": "Grecia",
@@ -1248,6 +1253,11 @@
         "en": "New Password",
         "es": "Nueva contraseña",
         "pt": "Nova Senha"
+    },
+    "Não": {
+        "en": "No",
+        "es": "No",
+        "pt": "Não"
     },
     "Olá": {
         "en": "Hello",

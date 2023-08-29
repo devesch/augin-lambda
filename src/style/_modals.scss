@@ -28,6 +28,7 @@
     padding: 20px;
     box-shadow: shadows.$shadow-md;
     border-radius: 5px;
+    max-width: 600px;
 }
 
 .modal-content {
@@ -46,10 +47,9 @@
     h3 {
         font-weight: bold;
     }
+}
 
-    button,
-    .button {
-        text-align: center;
-        margin-top: 2rem;
-    }
+.modal-button-container {
+    text-align: center;
+    margin-top: 2rem;
 }
