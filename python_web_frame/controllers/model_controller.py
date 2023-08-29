@@ -149,6 +149,7 @@ class ModelController:
 
             # ec2_instances["ec2_instances"].remove(choose_ec2_instance)
             # Dynamo().put_entity(ec2_instances)
+            model["model_processing_started"] = True
             Dynamo().put_entity(model)
             data = {"model_id": model["model_id"], "output_format": "process_started"}
             Http().request("POST", "https://" + lambda_constants["prefix_name"] + lambda_constants["domain_name"] + lambda_constants["sufix_name"] + "/api/update_model_process", headers={}, data=data)

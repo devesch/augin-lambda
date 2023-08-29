@@ -69,7 +69,7 @@ class Config:
             cls._instance = super(Config, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
-    def update_lambda_contants(self, prefix, post):
+    def update_lambda_contants(self, prefix, post={}):
         global lambda_constants
 
         if "pagination_size" in post:
