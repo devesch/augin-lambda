@@ -1,0 +1,49 @@
+@use '_colors.scss' as colors;
+@use '_shadows.scss' as shadows;
+
+.modal {
+    opacity: 0;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    display: none;
+    z-index: 9999;
+}
+
+.content-modal {
+    background-color: colors.color("color-neutral-100");
+    margin: 2rem auto;
+    padding: 20px;
+    box-shadow: shadows.$shadow-md;
+    border-radius: 5px;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 2rem;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 400;
+        font-size: 1.5625rem;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    button,
+    .button {
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
