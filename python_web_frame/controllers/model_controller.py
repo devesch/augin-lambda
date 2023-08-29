@@ -53,6 +53,8 @@ class ModelController:
         if self.is_zip_using_magic_number(lambda_constants["tmp_path"] + "original_file"):
             self.extract_zip_file(lambda_constants["tmp_path"] + "original_file", lambda_constants["tmp_path"] + "unzip")
             ifc_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
+            if not ifc_location:
+                return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
             if self.is_zip_using_magic_number(ifc_location):
                 self.extract_zip_file(ifc_location, lambda_constants["tmp_path"] + "unzipunzip")
                 ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzipunzip", ["ifc", "fbx"])
@@ -65,6 +67,8 @@ class ModelController:
         response = {"models_ids": []}
 
         for index, ifc_location in enumerate(ifcs_locations):
+            if os.path.getsize(ifc_location) > int(lambda_constants["maxium_ifc_project_filesize"]):
+                return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
             if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location):
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
 
