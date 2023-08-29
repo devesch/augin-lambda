@@ -105,7 +105,7 @@ export async function checkUploadModelFile(post_data) {
         has_error.value = "True";
         checkIfCreateProjectSubmitButtonIsAvailable(false);
     } else {
-        model_id.value = panel_create_project_check_file_response["model"]["model_id"];
+        model_id.value = panel_create_project_check_file_response["models_ids"];
         message.innerHTML = "Upload realizado com sucesso";
         checkIfCreateProjectSubmitButtonIsAvailable();
     }
@@ -113,6 +113,21 @@ export async function checkUploadModelFile(post_data) {
 
 }
 
+
+export async function checkIfCreateProjectIsFederated() {
+    let federated_switch = document.getElementById("federated_switch");
+
+    let uploading_element_has_more_than_one_file = document.querySelectorAll(".uploading_element_has_more_than_one_file");
+    let uploading_element_message = document.querySelectorAll(".uploading_element_message");
+
+    if (uploading_element_message.length > 1) {
+        federated_switch.setAttribute("active");
+    } else {
+        federated_switch.setAttribute("not_active");
+    }
+
+
+}
 export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable = true) {
     let submit_form_button = document.getElementById("submit_form_button");
     let uploading_div = document.getElementById("uploading_div");
@@ -132,7 +147,6 @@ export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable 
     for (let element_message of uploading_element_message) {
         if (element_message.innerHTML === "") {
             submit_form_button.setAttribute("disabled", "disabled");
-            console.log("HAS EMPTY MESSAGE");
             return;
         }
     }
@@ -163,6 +177,7 @@ const uploadWithProgressBar = (url, post_data) =>
         });
         xhr.addEventListener('load', () => {
             checkUploadModelFile(post_data);
+            checkIfCreateProjectIsFederated()
             resolve({
                 status: xhr.status,
                 body: xhr.responseText

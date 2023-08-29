@@ -37,7 +37,7 @@ class ModelController:
         Dynamo().put_entity(new_model)
         return new_model
 
-    def check_if_file_uploaded_is_valid(self, uploaded_file):
+    def check_if_file_uploaded_is_valid(self, uploaded_file, user):
         if not uploaded_file:
             return {"error": "no uploaded_file"}
 
@@ -49,48 +49,58 @@ class ModelController:
         S3().download_file(lambda_constants["upload_bucket"], uploaded_file, lambda_constants["tmp_path"] + "original_file")
 
         ifc_location = None
+        ifcs_locations = []
         if self.is_zip_using_magic_number(lambda_constants["tmp_path"] + "original_file"):
             self.extract_zip_file(lambda_constants["tmp_path"] + "original_file", lambda_constants["tmp_path"] + "unzip")
-            ifc_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", "ifc")
+            ifc_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
             if self.is_zip_using_magic_number(ifc_location):
                 self.extract_zip_file(ifc_location, lambda_constants["tmp_path"] + "unzipunzip")
-                ifc_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzipunzip", "ifc")
+                ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzipunzip", ["ifc", "fbx"])
+            else:
+                ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
         else:
             ifc_location = lambda_constants["tmp_path"] + "original_file"
+            ifcs_locations = [ifc_location]
 
-        response = {}
-        if self.is_ifc_file(ifc_location):
-            response["file_format"] = "ifc"
-        elif self.is_fbx_file(ifc_location):
-            response["file_format"] = "fbx"
-        else:
-            return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
+        response = {"models_ids": []}
 
-        new_ifc_location = ifc_location + "." + response["file_format"]
-        os.rename(ifc_location, new_ifc_location)
-        ifc_location = new_ifc_location
+        for index, ifc_location in enumerate(ifcs_locations):
+            if self.is_ifc_file(ifc_location):
+                response["file_format"] = "ifc"
+            elif self.is_fbx_file(ifc_location):
+                response["file_format"] = "fbx"
+            else:
+                return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
 
-        model = Dynamo().get_model_by_id(self.get_model_id_from_uploaded_file(uploaded_file))
+        for index, ifc_location in enumerate(ifcs_locations):
+            new_ifc_location = ifc_location + "." + response["file_format"]
+            os.rename(ifc_location, new_ifc_location)
+            ifc_location = new_ifc_location
 
-        self.zip_file(ifc_location, lambda_constants["tmp_path"] + "file_ok.zip")
+            if index == 0:
+                model = Dynamo().get_model_by_id(self.get_model_id_from_uploaded_file(uploaded_file))
+            else:
+                model = self.generate_new_model(user.user_email, os.path.basename(ifc_location))
 
-        model["model_filename_zip"] = Generate().generate_short_id() + ".zip"
-        model["model_upload_path_zip"] = model["model_upload_path"] + model["model_filename_zip"]
+            self.zip_file(ifc_location, lambda_constants["tmp_path"] + "file_ok.zip")
 
-        S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"], lambda_constants["tmp_path"] + "file_ok.zip")
-        Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(".zip", ".png"))
+            model["model_filename_zip"] = Generate().generate_short_id() + ".zip"
+            model["model_upload_path_zip"] = model["model_upload_path"] + model["model_filename_zip"]
 
-        model["model_format"] = response["file_format"]
-        model["model_filesize_ifc"] = str(os.path.getsize(ifc_location))
-        model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
-        model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
-        model["model_upload_path_xml"] = model["model_upload_path_zip"].replace(".zip", "-xml.zip")
-        model["model_upload_path_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug.zip")
-        model["model_upload_path_sd_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug-sd.zip")
-        model["model_share_link_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(".zip", ".png")
+            S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"], lambda_constants["tmp_path"] + "file_ok.zip")
+            Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(".zip", ".png"))
 
-        response["model"] = model
-        Dynamo().put_entity(model)
+            model["model_format"] = response["file_format"]
+            model["model_filesize_ifc"] = str(os.path.getsize(ifc_location))
+            model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
+            model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
+            model["model_upload_path_xml"] = model["model_upload_path_zip"].replace(".zip", "-xml.zip")
+            model["model_upload_path_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug.zip")
+            model["model_upload_path_sd_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug-sd.zip")
+            model["model_share_link_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(".zip", ".png")
+
+            response["models_ids"].append(model["model_id"])
+            Dynamo().put_entity(model)
         return response
 
     def process_model_file_uploaded(self, model):
@@ -263,15 +273,29 @@ class ModelController:
             magic_number = f.read(4)
         return magic_number in [b"\x50\x4B\x03\x04", b"\x50\x4B\x05\x06", b"\x50\x4B\x07\x08"]
 
-    def find_file_with_extension_in_directory(self, root_directory, extension):
+    def find_file_with_extension_in_directory(self, root_directory, extensions):
         import os
 
         for root, dirs, files in os.walk(root_directory):
             for file in files:
-                if file.lower().endswith("." + extension.lower()):
-                    return os.path.join(root, file).replace("\\", "/")
+                for extension in extensions:
+                    if file.lower().endswith("." + extension.lower()):
+                        return os.path.join(root, file).replace("\\", "/")
 
         return None
+
+    def find_all_files_with_extension_in_directory(self, root_directory, extensions):
+        import os
+
+        files_with_extension = []
+
+        for root, dirs, files in os.walk(root_directory):
+            for file in files:
+                for extension in extensions:
+                    if file.lower().endswith("." + extension.lower()):
+                        files_with_extension.append(os.path.join(root, file).replace("\\", "/"))
+
+        return files_with_extension
 
     def check_if_model_in_processing_is_with_error(self, model_created_at):
         import time
