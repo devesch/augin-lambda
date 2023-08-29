@@ -19,14 +19,14 @@ class Dynamo:
             cls._instance = super(Dynamo, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
-    # def update_dynamo_constants(self):
-    #     from utils.Config import lambda_constants
+    def update_dynamo_constants(self):
+        from utils.Config import lambda_constants
 
-    #     global table
-    #     global dynamodb_client
+        global table
+        global dynamodb_client
 
-    #     dynamodb_client = client("dynamodb", region_name=lambda_constants["region"])
-    #     table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
+        dynamodb_client = client("dynamodb", region_name=lambda_constants["region"])
+        table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
 
     ### USER ###
     def get_user(self, user_email):

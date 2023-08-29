@@ -38,7 +38,7 @@ lambda_constants = {
     "s3_put_user_secret_access_key": s3_put_user_secret_access_key,
     "email_sender": "eugenio@devesch.com.br",
     "cloudfront_img_resizer": "",
-    # "sqs_queue_url_json5000": "https://sqs.sa-east-1.amazonaws.com/847154778207/web-data-5000-json",
+    "sqs_queue_url_json5000": "https://sqs.us-east-1.amazonaws.com/847154778207/web-data-5000-json",
     "sqs_queue_url_process_xml_to_dynamo": "https://sqs.us-east-1.amazonaws.com/847154778207/process_xml_to_dynamo",
     "sqs_queue_url_process_in_ec2": "https://sqs.us-east-1.amazonaws.com/847154778207/ifc-ec2-process",
     "stepfunction_arn": "arn:aws:states:us-east-1:847154778207:stateMachine:IFC-processor-state-machine",
@@ -94,6 +94,10 @@ class Config:
             lambda_constants["region"] = region
             lambda_constants["cdn_bucket"] = cdn_bucket
             lambda_constants["cdn"] = cdn_base_url
+
+        if "web-data" in prefix:
+            lambda_constants["table_web_data"] = f"web-data"
+            lambda_constants["table_project"] = f"web-data"
 
     def get_region(self):
         if os.environ.get("AWS_EXECUTION_ENV") is None:

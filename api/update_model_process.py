@@ -1,6 +1,7 @@
 import time
 from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.model_controller import ModelController
+from python_web_frame.controllers.project_controller import ProjectController
 from utils.AWS.Dynamo import Dynamo
 
 
@@ -42,7 +43,7 @@ class UpdateModelProcess(BasePage):
             Dynamo().update_entity(model, "model_xml_memory_usage", model["model_xml_memory_usage"])
             Dynamo().update_entity(model, "model_xml_completed", model["model_xml_completed"])
             Dynamo().update_entity(model, "model_xml_to_dynamo_start", model["model_xml_to_dynamo_start"])
-            # ProjectController().add_project_to_process_xml_to_dynamo(self.post["model_id"], self.post["output_bucket"], self.post["output_key"], self.event.requestContext["domainName"])
+            ProjectController().add_project_to_process_xml_to_dynamo(self.post["model_id"], self.post["output_bucket"], self.post["output_key"], self.event.requestContext["domainName"])
         if self.post["output_format"] == "aug":
             model["model_aug_completed"] = str(time.time())
             model["model_aug_memory_usage"] = str(self.post["max_memory_usage"])
