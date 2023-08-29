@@ -185,8 +185,6 @@ input[type="checkbox"] + label {
     input[type="radio"]:checked::after {
         content: '';
         top: 50%;
-        border-bottom: 2px solid colors.color("color-success-900");
-        border-right: 2px solid colors.color("color-success-900");
         position: absolute;
     }
 
@@ -198,6 +196,8 @@ input[type="checkbox"] + label {
         -webkit-transform: rotate(45deg) translate(-50%, -50%);
         width: 0.45rem;
         height: 0.9rem;
+        border-bottom: 2px solid colors.color("color-success-900");
+        border-right: 2px solid colors.color("color-success-900");
     }
 
     input[type="radio"]:checked::after {
@@ -206,8 +206,15 @@ input[type="checkbox"] + label {
         -o-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
-        width: 90%;
-        height: 90%;
+        width: 80%;
+        height: 80%;
+        border: unset;
+        border-radius: 100%;
+        background-color: colors.color("color-success-900");
+    }
+
+    input[type="radio"] {
+        border-radius: 100%;
     }
 
 }
