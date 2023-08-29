@@ -28,6 +28,23 @@ export function getWebView() {
 // }
 
 
+export async function uploadModel(input) {
+    const process_to_bucket = "upload.augin.app";
+    const process_to_bucket_url = "https://upload.augin.app";
+
+
+    var file_name_array = input.files[0]["name"].split(".")
+    var file_name_extension = file_name_array[file_name_array.length - 1];
+
+    let panel_get_aws_upload_keys_response = await apiCaller("panel_get_aws_upload_keys", {
+        "create_model": "create_model",
+        "key_extension": file_name_extension,
+        "bucket": process_to_bucket
+    });
+
+}
+
+
 export function openModal(css_class) {
     let modal = document.querySelector(css_class);
     modal.classList.add('active');

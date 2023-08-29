@@ -26,7 +26,7 @@
                 <img src="{{cdn_val}}/assets/icons/upload_file.svg" alt="" width="115" height="144">
                 <p>{{Arraste e solte seu arquivo (IFC ou FBX) aqui ou}} <span class="link--primary">{{selecione um em seu computador}}</span></p>
             </label>
-            <input class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX">
+            <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX">
         </div>
 
         <!-- <div class="form-container">
@@ -49,6 +49,6 @@
             </button>
         </div>
     </form>
-    
+
 </main>
 {{footer}}

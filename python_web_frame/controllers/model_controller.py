@@ -23,7 +23,10 @@ class ModelController:
         return cls._instance
 
     def generate_new_model(self, email):
+        import datetime
+
         model_id = Dynamo().get_next_model_id()
         new_model = Model(email, model_id, model_id, "not_created").__dict__
+        new_model["model_upload_path"] = datetime.datetime.fromtimestamp(int(float(new_model["created_at"]))).strftime("%Y/%m/%d") + "/" + model_id
         Dynamo().put_entity(new_model)
         return new_model
