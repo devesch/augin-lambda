@@ -95,6 +95,7 @@ export async function checkUploadModelFile(post_data, progress_element) {
     let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
     let model_id = document.getElementById("model_id_" + post_data["element_index"]);
     let has_error = document.getElementById("has_error_" + post_data["element_index"]);
+    let has_more_than_one_file = document.getElementById("has_more_than_one_file_" + post_data["element_index"]);
 
     let panel_create_project_check_file_response = await apiCaller("panel_create_project_check_file", {
         "key": post_data["key"]
@@ -108,8 +109,10 @@ export async function checkUploadModelFile(post_data, progress_element) {
     } else {
         progress_element.classList.add("success");
         model_id.value = panel_create_project_check_file_response["models_ids"];
+        has_more_than_one_file.value = panel_create_project_check_file_response["has_more_than_one_file"];
         message.innerHTML = "Upload realizado com sucesso";
         checkIfCreateProjectSubmitButtonIsAvailable();
+        checkIfCreateProjectIsFederated();
     }
 
 
@@ -117,19 +120,27 @@ export async function checkUploadModelFile(post_data, progress_element) {
 
 
 export async function checkIfCreateProjectIsFederated() {
-    let federated_switch = document.getElementById("federated_switch");
-
+    let federated_switch_div = document.getElementById("federated_switch_div");
     let uploading_element_has_more_than_one_file = document.querySelectorAll(".uploading_element_has_more_than_one_file");
     let uploading_element_message = document.querySelectorAll(".uploading_element_message");
 
     if (uploading_element_message.length > 1) {
-        federated_switch.setAttribute("active");
+        federated_switch_div.style.display = "";
+        return;
     } else {
-        federated_switch.setAttribute("not_active");
+        if (uploading_element_message.length === 1) {
+            for (let has_more_than_one_file_input of uploading_element_has_more_than_one_file) {
+                console.log("has_more_than_one_file_input", has_more_than_one_file_input.value);
+                if (has_more_than_one_file_input.value === "true") {
+                    federated_switch_div.style.display = "";
+                    return;
+                }
+            }
+        }
     }
-
-
+    federated_switch_div.style.display = "none;";
 }
+
 export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable = true) {
     let submit_form_button = document.getElementById("submit_form_button");
     let uploading_div = document.getElementById("uploading_div");

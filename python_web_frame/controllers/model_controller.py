@@ -72,6 +72,11 @@ class ModelController:
             if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location):
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
 
+        if len(ifcs_locations) > 1:
+            response["has_more_than_one_file"] = True
+        else:
+            response["has_more_than_one_file"] = False
+
         for index, ifc_location in enumerate(ifcs_locations):
             if self.is_ifc_file(ifc_location):
                 file_format = "ifc"

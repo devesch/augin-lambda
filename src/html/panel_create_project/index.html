@@ -31,22 +31,9 @@
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
         <input hidden id="uploading_index_input" value="1">
         <article id="uploading_div" class="panel-create-project-uploading-container"></article>
-        <!-- <div class="form-container">
-            <div class="floating-input">
-                <input type="text" name="upload_new_project_federated_name" id="upload_new_project_federated_name" placeholder="" required>
-                <label for="upload_new_project_federated_name">{{Nome do federado}}</label>
-            </div>
-            <select name="upload_new_project_category" id="upload_new_project_category" required>
-                <option value="" disabled selected hidden>{{Categoria}}</option>
-                <option value="">teste 1</option>
-                <option value="">teste 2</option>
-                <option value="">teste 3</option>
-                <option value="">teste 4</option>
-            </select>
-        </div> -->
 
         <div class="form-main-button-container">
-            <div class="switch-container">
+            <div class="switch-container" id="federated_switch_div" style="display:none;">
                 <div class="input-container">
                     <input type="checkbox" name="create_federated_project_with_processed_files" id="create_federated_project_with_processed_files">
                     <label class="switch" for="create_federated_project_with_processed_files">
