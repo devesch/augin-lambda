@@ -68,6 +68,14 @@ export function openModal(css_class) {
     modal.classList.add('active');
 }
 
+
+export function closeModal(css_class) {
+    let modal = document.querySelector(css_class);
+    modal.classList.remove('active');
+}
+
+
+
 export async function userSendResetPassEmail() {
     console.log("Running userSendResetPassEmail");
     let error_msg = document.getElementById("error_msg");
