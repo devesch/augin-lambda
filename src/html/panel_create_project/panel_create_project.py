@@ -30,5 +30,10 @@ class PanelCreateProject(PanelPage):
         if self.post:
             for param, value in self.post.items():
                 if "model_id" in param:
-                    models_ids.append(value)
+                    if not "," in value:
+                        models_ids.append(value)
+                    else:
+                        ids = value.split(",")
+                        for id in ids:
+                            models_ids.append(id)
         return models_ids
