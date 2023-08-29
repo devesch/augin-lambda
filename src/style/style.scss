@@ -1104,6 +1104,32 @@ input[list]::-ms-clear {
     border-radius: .25rem;
 }
 
+.panel-create-project-uploading-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    @media only screen and (min-width: breakpoints.$x-large) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media only screen and (min-width: breakpoints.$xx-large) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    section {
+        background-color: var(--color-neutral-100);
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    progress {
+        width: 100%;
+    }
+
+}
+
 /* Change plan - Start */
 .change-plan__payment-radio-tabs-container {
     margin: auto;
