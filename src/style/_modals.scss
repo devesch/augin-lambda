@@ -25,7 +25,7 @@
 .content-modal {
     background-color: colors.color("color-neutral-100");
     margin: 2rem auto;
-    padding: 20px;
+    padding: 6rem 2rem 4rem;
     box-shadow: shadows.$shadow-md;
     border-radius: 5px;
     max-width: 600px;
@@ -50,6 +50,11 @@
 }
 
 .modal-button-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
     text-align: center;
     margin-top: 2rem;
 }
