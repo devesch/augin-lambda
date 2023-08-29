@@ -21,7 +21,7 @@
 
     <section class="explore__title-container">
         <h3>{{Fila de processamento}}</h3>
-        <ul>
+        <ul id="models_in_process_ul">
             {{html_models_in_processing}}
         </ul>
     </section>
@@ -258,4 +258,14 @@
     </section>
 
 </main>
+
+<script>
+    window.onload = async function () {
+        while (true) {
+            await js.index.sleep(4000);
+            await js.index.processingProjectsUpdateUl();
+        }
+    };
+</script>
+
 {{footer}}

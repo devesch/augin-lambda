@@ -35,6 +35,18 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def increase_total_count(self, param):
+        current_value = int(getattr(self, param))
+        new_value = current_value + 1
+        setattr(self, param, str(new_value))
+        Dynamo().update_entity(self.__dict__, param, str(new_value))
+
+    def decrease_total_count(self, param):
+        current_value = int(getattr(self, param))
+        new_value = current_value - 1
+        setattr(self, param, str(new_value))
+        Dynamo().update_entity(self.__dict__, param, str(new_value))
+
     def update_last_login_at(self):
         if int(float(self.user_last_login_at)) + 3000 < int(time()):
             self.user_last_login_at = str(time())
