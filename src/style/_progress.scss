@@ -9,12 +9,13 @@ progress {
     border: 2px solid colors.color("color-neutral-600");
     color: colors.color("color-primary-700");
     accent-color: colors.color("color-primary-700");
-    background-color: transparent;
+    background-color: colors.color("color-primary-50");
     height: 1rem;
     width: 100%;
     vertical-align: unset;
     block-size: unset;
     inline-size: unset;
+    border-radius: .25rem;
 }
 
 progress::after {
@@ -47,7 +48,7 @@ progress::after {
 }
 
 progress::-webkit-progress-bar {
-    background: transparent;
+    background: colors.color("color-primary-50");
     border-radius: 0;
     height: 1rem;
 }
