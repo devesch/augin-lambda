@@ -10,9 +10,9 @@ filtered_plan = {}
 for plan in old_plans:
     for key, val in plan.items():
         filtered_plan["plan_" + key] = val
-        if val == "1" and (key not in ["id", "order", "plan_limit_days_offline"]):
+        if val == "1" and (key not in ["id", "order", "plan_limit_days_offline", "plan_installments", "plan_limit_teamplay", "plan_version"]):
             filtered_plan["plan_" + key] = True
-        if val == "0" and (key not in ["id", "order", "plan_limit_days_offline"]):
+        if val == "0" and (key not in ["id", "order", "plan_limit_days_offline", "plan_installments", "plan_limit_teamplay", "plan_version"]):
             filtered_plan["plan_" + key] = False
         if val == "NULL" or val == "NONE":
             filtered_plan["plan_" + key] = ""

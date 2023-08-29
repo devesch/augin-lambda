@@ -30,23 +30,23 @@ class Plan:
         self.plan_paypal_plan_id = ""
         self.plan_iugu_plan_code = ""
         self.plan_s2p_code = ""
-        self.plan_limit_federated_create = ""
-        self.plan_limit_federated_filesize = ""
-        self.plan_limit_ifc_download = ""
-        self.plan_limit_ifc_open_filesize = ""
-        self.plan_update_project = ""
-        self.plan_limit_qr = ""
-        self.plan_limit_share = ""
-        self.plan_multiple_reference_trackers = ""
-        self.plan_limit_teamplay = ""
-        self.plan_limit_total_devices = ""
-        self.plan_limit_device_changes_30d = ""
-        self.plan_limit_account_per_device = ""
-        self.plan_limit_days_offline = ""
+        self.plan_limit_federated_create = ""  # se o cara pode ou não criar um projeto federado
+        self.plan_limit_federated_filesize = ""  # limite do tamanho do federado
+        self.plan_limit_ifc_download = ""  # se o cara pode baixar o arquivo IFC que ele fez o upload
+        self.plan_limit_ifc_open_filesize = ""  # limite do tamanho que o cara pode abrir ou não TODO LIMITAR NO UPLOAD
+        self.plan_update_project = ""  # se o user pode atualizar o projeto com outro modelo uploadado
+        self.plan_limit_qr = ""  # se pode ou não ver o qrcode do modelo
+        self.plan_limit_share = ""  # se pode ou não dar share no modelo
+        self.plan_multiple_reference_trackers = ""  # se pode ter os trackers no modelo /
+        self.plan_limit_teamplay = ""  # se pode ter os trackers no modelo / plan_teamplay_available_slots = "0"
+        self.plan_limit_total_devices = ""  # plan_total_devices_slots = "0"
+        self.plan_limit_device_changes_30d = ""  # plan_device_changes_30d_slots = "0"
+        self.plan_limit_account_per_device = ""  # plan_maxium_differrent_acounts_per_device = "0"
+        self.plan_limit_days_offline = ""  # plan_maxium_offline_days = "0"
         self.plan_start_date = ""
         self.plan_end_date = ""
-        self.plan_order = ""
-        self.plan_version = ""
+        self.plan_order = "0"
+        self.plan_version = "0"
         self.plan_show_countdown = ""
 
         self.created_at = str(time.time())

@@ -21,6 +21,13 @@ export function getWebView() {
     return _webView;
 }
 
+
+
+// export async function uploadProjectFileToS3(project_target_index, project_target_type) {
+
+// }
+
+
 export function openModal(css_class) {
     let modal = document.querySelector(css_class);
     modal.classList.add('active');

@@ -57,6 +57,13 @@ class Dynamo:
     def get_model(self, user_email, model_id):
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "user#" + user_email}, "sk": {"S": "model#" + model_id}}})
 
+    def get_next_model_id(self):
+        last_model = self.get_last_from_entity("model")
+        if last_model:
+            return str(int(last_model["model_id"]) + 1)
+        else:
+            return "500000"
+
     def get_model_by_id(self, model_id):
         query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "sk-pk-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "sk"}, "ExpressionAttributeValues": {":0b430": {"S": "model#" + model_id}}})
         if query:
@@ -189,6 +196,11 @@ class Dynamo:
 
     #     del decompressed_python_obj["data"]
     #     return decompressed_python_obj
+    def get_last_from_entity(self, entity):
+        last_from_entity, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": entity}}}, 1, None, None)
+        if last_from_entity:
+            return self.get_entity(last_from_entity[0]["pk"], last_from_entity[0]["sk"])
+        return None
 
     def dynamo_obj_to_python_obj(self, dynamo_obj: dict) -> dict:
         deserializer = TypeDeserializer()
