@@ -172,8 +172,9 @@ export async function deleteUploadingElement(index) {
 const uploadWithProgressBar = (url, post_data) =>
     new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
+        let progress_element;
         xhr.upload.addEventListener('progress', (e) => {
-            let progress_element = document.getElementById("progress_" + post_data["element_index"]);
+            progress_element = document.getElementById("progress_" + post_data["element_index"]);
             progress_element.value = Math.round((e.loaded / e.total) * 100);
             checkIfCreateProjectSubmitButtonIsAvailable(false);
         });
