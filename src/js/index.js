@@ -21,11 +21,25 @@ export function getWebView() {
     return _webView;
 }
 
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+export async function deleteModelProcessing(model_id) {
+    console.log("Running deleteModelProcessing");
+    let model_delete_response = await apiCaller("model_delete", {
+        "model_id": model_id
+    });
+    await js.index.processingProjectsUpdateUl();
+}
 
-// export async function uploadProjectFileToS3(project_target_index, project_target_type) {
-
-// }
+export async function processingProjectsUpdateUl() {
+    console.log("Running processingProjectsUpdateUl");
+    let models_in_process_ul = document.getElementById("models_in_process_ul");
+    let panel_explore_projects_models_in_processing_html_response = await apiCaller("panel_explore_projects_models_in_processing_html", {});
+    models_in_process_ul.innerHTML = panel_explore_projects_models_in_processing_html_response["success"];
+    // await animatingProgressBar();
+}
 
 
 export async function uploadModel(input) {

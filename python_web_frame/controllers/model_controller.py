@@ -22,6 +22,10 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def delete_model(self, model):
+        S3().delete_folder(lambda_constants["processed_bucket"], model["model_upload_path"])
+        Dynamo().delete_entity(model)
+
     def generate_new_model(self, email, filename=""):
         import datetime
 
