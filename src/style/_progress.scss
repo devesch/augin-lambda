@@ -93,17 +93,17 @@ progress.success::-moz-progress-bar {
 }
 /**/
 
-/* Error */
-progress.error {
+/* Failed */
+progress.failed {
     color: colors.color("color-error-300");
     accent-color: colors.color("color-error-300");
 }
 
-progress.error::-webkit-progress-value {
+progress.failed::-webkit-progress-value {
     background: colors.color("color-error-300");
 }
 
-progress.error::-moz-progress-bar {
+progress.failed::-moz-progress-bar {
     background: colors.color("color-error-300");
 }
 /**/
