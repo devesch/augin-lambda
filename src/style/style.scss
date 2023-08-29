@@ -6,6 +6,7 @@
 @use '_status.scss' as status;
 @use '_inputs.scss' as inputs;
 @use '_tooltips.scss' as tooltips;
+@use '_modals.scss' as modals;
 
 @mixin font-face($font-family, $font-path, $font-weight, $font-style) {
     @font-face {
