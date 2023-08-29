@@ -89,7 +89,7 @@ export async function uploadModel(input) {
     }
 }
 
-export async function checkUploadModelFile(post_data) {
+export async function checkUploadModelFile(post_data, progress_element) {
     console.log("Running checkUploadModelFile")
     let message = document.getElementById("message_" + post_data["element_index"]);
     let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
@@ -100,11 +100,13 @@ export async function checkUploadModelFile(post_data) {
         "key": post_data["key"]
     });
     if ("error" in panel_create_project_check_file_response) {
+        progress_element.classList.add("failed");
         message.innerHTML = panel_create_project_check_file_response["error"];
         delete_button.style = "";
         has_error.value = "True";
         checkIfCreateProjectSubmitButtonIsAvailable(false);
     } else {
+        progress_element.classList.add("success");
         model_id.value = panel_create_project_check_file_response["models_ids"];
         message.innerHTML = "Upload realizado com sucesso";
         checkIfCreateProjectSubmitButtonIsAvailable();
@@ -176,15 +178,21 @@ const uploadWithProgressBar = (url, post_data) =>
             checkIfCreateProjectSubmitButtonIsAvailable(false);
         });
         xhr.addEventListener('load', () => {
-            checkUploadModelFile(post_data);
+            checkUploadModelFile(post_data, progress_element);
             checkIfCreateProjectIsFederated()
             resolve({
                 status: xhr.status,
                 body: xhr.responseText
             });
         });
-        xhr.addEventListener('error', () => reject(new Error('File upload failed')));
-        xhr.addEventListener('abort', () => reject(new Error('File upload aborted')));
+        xhr.addEventListener('error', () => {
+            progress_element.classList.add("failed");
+            reject(new Error('File upload failed'))
+        });
+        xhr.addEventListener('abort', () => {
+            progress_element.classList.add("failed");
+            reject(new Error('File upload aborted'))
+        });
         xhr.open('POST', url, true);
         let formData = new FormData();
         for (let property in post_data) {
