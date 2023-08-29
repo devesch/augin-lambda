@@ -42,6 +42,24 @@ export async function uploadModel(input) {
         "bucket": process_to_bucket
     });
 
+
+    let onProgress = progress => {
+        console.log(Math.round(progress * 100) + "%");
+    }
+
+    let post_data = {
+        "key": panel_get_aws_upload_keys_response["success"]['key'],
+        "AWSAccessKeyId": panel_get_aws_upload_keys_response["success"]['AWSAccessKeyId'],
+        "policy": panel_get_aws_upload_keys_response["success"]['policy'],
+        "signature": panel_get_aws_upload_keys_response["success"]['signature'],
+        "file": input.files[0]
+    }
+
+    await uploadWithProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data, onProgress);
+
+
+
+
 }
 
 
@@ -341,3 +359,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
     activateAuginSubscriptionSelection();
     // activateExploreMenuButton();
 });
+
+const uploadWithProgressBar = (url, post_data, onProgress) =>
+    new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.upload.addEventListener('progress', (e) => {
+            onProgress(e.loaded / e.total)
+
+        });
+        xhr.addEventListener('load', () => resolve({
+            status: xhr.status,
+            body: xhr.responseText
+        }));
+        xhr.addEventListener('error', () => reject(new Error('File upload failed')));
+        xhr.addEventListener('abort', () => reject(new Error('File upload aborted')));
+        xhr.open('POST', url, true);
+        let formData = new FormData();
+        for (let property in post_data) {
+            formData.append(property, post_data[property]);
+        }
+        xhr.send(formData);
+    });
