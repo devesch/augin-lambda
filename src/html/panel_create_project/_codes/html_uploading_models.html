@@ -1,0 +1,8 @@
+<div id="uploading_element_{{index_val}}">
+    <input hidden name="has_error_{{index_val}}" id="has_error_{{index_val}}">
+    <input hidden name="model_id_{{index_val}}" id="model_id_{{index_val}}">
+    <p>{{model_filename_val}}</p>
+    <progress id="progress_{{index_val}}" value="0" max="100"></progress>
+    <p id="message_{{index_val}}"></p>
+    <button onclick="js.index.deleteUploadingElement('{{index_val}}')" id="delete_button_{{index_val}}" style="display: none;">Remover</button>
+</div>

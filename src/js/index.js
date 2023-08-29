@@ -43,45 +43,128 @@ export async function processingProjectsUpdateUl() {
 
 
 export async function uploadModel(input) {
+    const files = input.files;
     const process_to_bucket = "upload.augin.app";
-    const process_to_bucket_url = "https://upload.augin.app";
 
-    var uploaded_file_input = document.getElementById("uploaded_file_input");
-    var uploading_div = document.getElementById("uploading_div");
-    var uploading_index_input = document.getElementById("uploading_index_input");
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        let uploading_div = document.getElementById("uploading_div");
+        let uploading_index_input = document.getElementById("uploading_index_input");
 
-    var file_name_array = input.files[0]["name"].split(".")
-    var file_name_extension = file_name_array[file_name_array.length - 1];
+        // Create a unique identifier for this upload, could also be a timestamp or UUID
+        let current_index = uploading_index_input.value;
 
-    let panel_get_aws_upload_keys_response = await apiCaller("panel_get_aws_upload_keys", {
-        "create_model": input.files[0]["name"],
-        "key_extension": file_name_extension,
-        "bucket": process_to_bucket
-    });
+        console.warn("current_index", current_index);
 
-    let onProgress = progress => {
-        console.log(Math.round(progress * 100) + "%");
+        let file_name_array = file["name"].split(".");
+        let file_name_extension = file_name_array[file_name_array.length - 1];
+
+        let panel_get_aws_upload_keys_response = await apiCaller("panel_get_aws_upload_keys", {
+            "create_model": file["name"],
+            "key_extension": file_name_extension,
+            "bucket": process_to_bucket
+        });
+
+        let post_data = {
+            "key": panel_get_aws_upload_keys_response["success"]['key'],
+            "AWSAccessKeyId": panel_get_aws_upload_keys_response["success"]['AWSAccessKeyId'],
+            "policy": panel_get_aws_upload_keys_response["success"]['policy'],
+            "signature": panel_get_aws_upload_keys_response["success"]['signature'],
+            "file": file,
+            "element_index": current_index
+
+        };
+
+        let panel_create_project_uploading_html_response = await apiCaller("panel_create_project_uploading_html", {
+            "model_filename": file["name"],
+            "index": current_index,
+        });
+
+        uploading_div.innerHTML += panel_create_project_uploading_html_response["success"];
+
+        // Increment the index for the next upload
+        uploading_index_input.value = parseInt(current_index) + 1;
+        uploadWithProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
     }
-
-    let post_data = {
-        "key": panel_get_aws_upload_keys_response["success"]['key'],
-        "AWSAccessKeyId": panel_get_aws_upload_keys_response["success"]['AWSAccessKeyId'],
-        "policy": panel_get_aws_upload_keys_response["success"]['policy'],
-        "signature": panel_get_aws_upload_keys_response["success"]['signature'],
-        "file": input.files[0]
-    }
-
-    let panel_create_project_uploading_html_response = await apiCaller("panel_create_project_uploading_html", {
-        "create_model": input.files[0]["name"],
-        "index": uploading_index_input.value,
-    });
-
-    uploading_div.innerHTML += panel_create_project_uploading_html_response["success"];
-
-    await uploadWithProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data, onProgress);
-
-    uploaded_file_input.value = panel_get_aws_upload_keys_response["success"]['key'];
 }
+
+export async function checkUploadModelFile(post_data) {
+    console.log("Running checkUploadModelFile")
+    let message = document.getElementById("message_" + post_data["element_index"]);
+    let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
+    let model_id = document.getElementById("model_id_" + post_data["element_index"]);
+    let has_error = document.getElementById("has_error_" + post_data["element_index"]);
+
+    let panel_create_project_check_file_response = await apiCaller("panel_create_project_check_file", {
+        "key": post_data["key"]
+    });
+    if ("error" in panel_create_project_check_file_response) {
+        message.innerHTML = panel_create_project_check_file_response["error"];
+        delete_button.style = "";
+        has_error.value = "True";
+    } else {
+        model_id.value = panel_create_project_check_file_response["model"]["model_id"];
+        message.innerHTML = "Upload realizado com sucesso";
+    }
+
+    checkIfCreateProjectSubmitButtonIsAvailable()
+}
+
+export async function checkIfCreateProjectSubmitButtonIsAvailable() {
+    console.log("Running checkIfCreateProjectSubmitButtonIsAvailable");
+    let submit_form_button = document.getElementById("submit_form_button");
+    let uploading_div = document.getElementById("uploading_div");
+    let uploading_element_errors = document.querySelectorAll("uploading_element_with_error");
+
+    if (uploading_div.innerHTML.length < 1) {
+        submit_form_button.setAttribute("disabled", "disabled");
+        return
+    }
+    for (let error_input in uploading_element_errors) {
+        if (error_input.value == "True") {
+            submit_form_button.setAttribute("disabled", "disabled");
+            return
+        }
+    }
+    submit_form_button.removeAttribute("disabled");
+    return
+
+}
+
+
+
+export async function deleteUploadingElement(index) {
+    console.log("Running deleteUploadingElement")
+    let uploading_element = document.getElementById("uploading_element_" + index);
+    uploading_element.remove();
+    checkIfCreateProjectSubmitButtonIsAvailable()
+}
+
+
+
+const uploadWithProgressBar = (url, post_data) =>
+    new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.upload.addEventListener('progress', (e) => {
+            let progress_element = document.getElementById("progress_" + post_data["element_index"]);
+            progress_element.value = Math.round((e.loaded / e.total) * 100);
+        });
+        xhr.addEventListener('load', () => {
+            checkUploadModelFile(post_data);
+            resolve({
+                status: xhr.status,
+                body: xhr.responseText
+            });
+        });
+        xhr.addEventListener('error', () => reject(new Error('File upload failed')));
+        xhr.addEventListener('abort', () => reject(new Error('File upload aborted')));
+        xhr.open('POST', url, true);
+        let formData = new FormData();
+        for (let property in post_data) {
+            formData.append(property, post_data[property]);
+        }
+        xhr.send(formData);
+    });
 
 export function openModal(css_class) {
     let modal = document.querySelector(css_class);
@@ -379,31 +462,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
     activateAuginSubscriptionSelection();
     // activateExploreMenuButton();
 });
-
-
-/**
- * Updates progress bar values through file upload
- * @param {string} url 
- * @param {object} post_data 
- * @param {function} onProgress 
- * @returns 
- */
-const uploadWithProgressBar = (url, post_data, onProgress) =>
-    new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        xhr.upload.addEventListener('progress', (e) => {
-            onProgress(e.loaded / e.total)
-        });
-        xhr.addEventListener('load', () => resolve({
-            status: xhr.status,
-            body: xhr.responseText
-        }));
-        xhr.addEventListener('error', () => reject(new Error('File upload failed')));
-        xhr.addEventListener('abort', () => reject(new Error('File upload aborted')));
-        xhr.open('POST', url, true);
-        let formData = new FormData();
-        for (let property in post_data) {
-            formData.append(property, post_data[property]);
-        }
-        xhr.send(formData);
-    });

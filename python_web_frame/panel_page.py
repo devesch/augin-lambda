@@ -24,3 +24,9 @@ class PanelPage(BasePage):
                 html.esc("model_processing_percentage_val", model["model_processing_percentage"])
                 full_html.append(str(html))
         return "".join(full_html)
+
+    def show_html_uploading_models(self, model_filename, index):
+        html = ReadWrite().read_html("panel_create_project/_codes/html_uploading_models")
+        html.esc("model_filename_val", model_filename)
+        html.esc("index_val", index)
+        return str(html)

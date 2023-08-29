@@ -1,5 +1,6 @@
 from python_web_frame.panel_page import PanelPage
 from python_web_frame.controllers.model_controller import ModelController
+from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 
 
@@ -14,9 +15,20 @@ class PanelCreateProject(PanelPage):
         return str(html)
 
     def render_post(self):
-        check_file = ModelController().check_if_file_uploaded_is_valid(self.post.get("uploaded_file"))
-        if "error" in check_file:
-            return self.render_get_with_error(check_file["error"])
+        models_ids = self.generate_models_ids_from_post()
+        if not models_ids:
+            return self.render_get_with_error("É necessário fazer o envio dos arquivos")
 
-        process_file = ModelController().process_model_file_uploaded(check_file["model"], check_file["file_format"])
+        for model_id in models_ids:
+            model = Dynamo().get_model_by_id(model_id)
+            ModelController().process_model_file_uploaded(model)
+
         return Http().redirect("panel_explore_project")
+
+    def generate_models_ids_from_post(self):
+        models_ids = []
+        if self.post:
+            for param, value in self.post.items():
+                if "model_id" in param:
+                    models_ids.append(value)
+        return models_ids

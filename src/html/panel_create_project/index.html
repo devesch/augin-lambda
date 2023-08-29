@@ -25,12 +25,13 @@
             <img src="{{cdn_val}}/assets/icons/upload_file.svg" alt="" width="115" height="144">
             <p>{{Arraste e solte seu arquivo (IFC ou FBX) aqui ou}} <span class="link--primary">{{selecione um em seu computador}}</span></p>
         </label>
-        <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX">
+        <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX" multiple>
     </div>
 
-    <input hidden id="uploading_index_input" value="1">
-    <div id="uploading_div"></div>
-    <!-- <div class="form-container">
+    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <input hidden id="uploading_index_input" value="1">
+        <div id="uploading_div"></div>
+        <!-- <div class="form-container">
             <div class="floating-input">
                 <input type="text" name="upload_new_project_federated_name" id="upload_new_project_federated_name" placeholder="" required>
                 <label for="upload_new_project_federated_name">{{Nome do federado}}</label>
@@ -44,10 +45,8 @@
             </select>
         </div> -->
 
-    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
-        <input hidden name="uploaded_file" id="uploaded_file_input" value="{{uploaded_file_val}}">
         <div class="form-main-button-container">
-            <button type="submit" class="form-main-button">
+            <button type="submit" class="form-main-button" id="submit_form_button" disabled>
                 {{Importar arquivo}}
             </button>
         </div>

@@ -80,6 +80,7 @@ class ModelController:
         S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"], lambda_constants["tmp_path"] + "file_ok.zip")
         Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(".zip", ".png"))
 
+        model["model_format"] = response["file_format"]
         model["model_filesize_ifc"] = str(os.path.getsize(ifc_location))
         model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
         model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
@@ -89,16 +90,17 @@ class ModelController:
         model["model_share_link_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(".zip", ".png")
 
         response["model"] = model
+        Dynamo().put_entity(model)
         return response
 
-    def process_model_file_uploaded(self, model, file_format):
+    def process_model_file_uploaded(self, model):
         if not S3().check_if_file_exists(lambda_constants["processed_bucket"], model["model_upload_path_zip"]):
             return {"error": "Este model não foi enviado/transferido para a AWS."}
 
         if not Validation().check_if_local_env():
             Dynamo().delete_entity(model)
 
-        if file_format == "ifc":
+        if model["model_format"] == "ifc":
             model = self.change_model_status(model, "not_created", "in_processing")
             model_filesize_ifc_in_megabytes = StrFormat().format_bytes_to_megabytes(model["model_filesize_ifc"])
             ec_requested_gbs = self.generate_ec_requested_gbs(model_filesize_ifc_in_megabytes)

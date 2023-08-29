@@ -11,6 +11,7 @@ class Model:
 
         self.model_filename = ""
         self.model_filename_zip = ""
+        self.model_format = ""
 
         self.model_filesize = ""
         self.model_filesize_zip = ""
