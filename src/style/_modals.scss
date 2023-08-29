@@ -16,6 +16,12 @@
     z-index: 9999;
 }
 
+.modal.active {
+    opacity: 1;
+    display: block;
+    transition-delay: 0s;
+}
+
 .content-modal {
     background-color: colors.color("color-neutral-100");
     margin: 2rem auto;
