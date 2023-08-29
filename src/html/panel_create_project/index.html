@@ -20,16 +20,15 @@
         <p>{{Seu plano permite importar arquivos até}} <strong>100Mb</strong>, <a class="link--primary" href="">{{faça um upgrade}}</a> {{para aumentar esse limite.}}</p>
     </div>
 
-    <form action="">
-        <div class="upload-file-container">
-            <label class="upload-file-label" for="upload_new_project">
-                <img src="{{cdn_val}}/assets/icons/upload_file.svg" alt="" width="115" height="144">
-                <p>{{Arraste e solte seu arquivo (IFC ou FBX) aqui ou}} <span class="link--primary">{{selecione um em seu computador}}</span></p>
-            </label>
-            <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX">
-        </div>
+    <div class="upload-file-container">
+        <label class="upload-file-label" for="upload_new_project">
+            <img src="{{cdn_val}}/assets/icons/upload_file.svg" alt="" width="115" height="144">
+            <p>{{Arraste e solte seu arquivo (IFC ou FBX) aqui ou}} <span class="link--primary">{{selecione um em seu computador}}</span></p>
+        </label>
+        <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX">
+    </div>
 
-        <!-- <div class="form-container">
+    <!-- <div class="form-container">
             <div class="floating-input">
                 <input type="text" name="upload_new_project_federated_name" id="upload_new_project_federated_name" placeholder="" required>
                 <label for="upload_new_project_federated_name">{{Nome do federado}}</label>
@@ -43,14 +42,14 @@
             </select>
         </div> -->
 
-        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
-            <input name="uploaded_file" id="uploaded_file_input" value="{{uploaded_file_val}}">
-            <div class="form-main-button-container">
-                <button type="submit" class="form-main-button">
-                    {{Importar arquivo}}
-                </button>
-            </div>
-        </form>
+    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <input hidden name="uploaded_file" id="uploaded_file_input" value="{{uploaded_file_val}}">
+        <div class="form-main-button-container">
+            <button type="submit" class="form-main-button">
+                {{Importar arquivo}}
+            </button>
+        </div>
+    </form>
 
 </main>
 
