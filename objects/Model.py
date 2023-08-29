@@ -8,13 +8,20 @@ class Model:
         self.model_id = model_id
         self.model_project_id = model_project_id
         self.model_user_email = user_email
+
         self.model_filename = ""
-        self.model_filename_external = ""
-        self.model_filesize_zip = "0"
-        self.model_filesize_ifc = "0"
-        self.model_upload_path_sd_aug = ""
+        self.model_filename_zip = ""
+
+        self.model_filesize = ""
+        self.model_filesize_zip = ""
+
+        self.model_upload_path_zip = ""
+        self.model_upload_path_xml = ""
         self.model_upload_path_aug = ""
+        self.model_upload_path_sd_aug = ""
+
         self.model_upload_path = ""
+
         self.model_sw_version = ""
         self.model_plugin_version = ""
         self.model_thumb_filename = ""

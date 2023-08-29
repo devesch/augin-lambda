@@ -65,7 +65,7 @@ class Dynamo:
             return "500000"
 
     def get_model_by_id(self, model_id):
-        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "sk-pk-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "sk"}, "ExpressionAttributeValues": {":0b430": {"S": "model#" + model_id}}})
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "model_id-sk-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "model_id"}, "ExpressionAttributeValues": {":0b430": {"S": model_id}}})
         if query:
             return self.get_entity(query[0]["pk"], query[0]["sk"])
         return None
