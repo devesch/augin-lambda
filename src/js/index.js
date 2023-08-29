@@ -43,6 +43,7 @@ export async function processingProjectsUpdateUl() {
 
 
 export async function uploadModel(input) {
+    checkIfCreateProjectSubmitButtonIsAvailable(false);
     const files = input.files;
     const process_to_bucket = "upload.augin.app";
 
@@ -102,35 +103,45 @@ export async function checkUploadModelFile(post_data) {
         message.innerHTML = panel_create_project_check_file_response["error"];
         delete_button.style = "";
         has_error.value = "True";
+        checkIfCreateProjectSubmitButtonIsAvailable(false);
     } else {
         model_id.value = panel_create_project_check_file_response["model"]["model_id"];
         message.innerHTML = "Upload realizado com sucesso";
+        checkIfCreateProjectSubmitButtonIsAvailable();
     }
 
-    checkIfCreateProjectSubmitButtonIsAvailable()
+
 }
 
-export async function checkIfCreateProjectSubmitButtonIsAvailable() {
-    console.log("Running checkIfCreateProjectSubmitButtonIsAvailable");
+export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable = true) {
     let submit_form_button = document.getElementById("submit_form_button");
     let uploading_div = document.getElementById("uploading_div");
-    let uploading_element_errors = document.querySelectorAll("uploading_element_with_error");
+    let uploading_element_errors = document.querySelectorAll(".uploading_element_with_error");
+    let uploading_element_message = document.querySelectorAll(".uploading_element_message");
 
     if (uploading_div.innerHTML.length < 1) {
         submit_form_button.setAttribute("disabled", "disabled");
-        return
+        return;
     }
-    for (let error_input in uploading_element_errors) {
-        if (error_input.value == "True") {
+    for (let error_input of uploading_element_errors) {
+        if (error_input.value === "True") {
             submit_form_button.setAttribute("disabled", "disabled");
-            return
+            return;
         }
     }
-    submit_form_button.removeAttribute("disabled");
-    return
-
+    for (let element_message of uploading_element_message) {
+        if (element_message.innerHTML === "") {
+            submit_form_button.setAttribute("disabled", "disabled");
+            console.log("HAS EMPTY MESSAGE");
+            return;
+        }
+    }
+    if (is_submitable) {
+        submit_form_button.removeAttribute("disabled");
+    } else {
+        submit_form_button.setAttribute("disabled", "disabled");
+    }
 }
-
 
 
 export async function deleteUploadingElement(index) {
@@ -148,6 +159,7 @@ const uploadWithProgressBar = (url, post_data) =>
         xhr.upload.addEventListener('progress', (e) => {
             let progress_element = document.getElementById("progress_" + post_data["element_index"]);
             progress_element.value = Math.round((e.loaded / e.total) * 100);
+            checkIfCreateProjectSubmitButtonIsAvailable(false);
         });
         xhr.addEventListener('load', () => {
             checkUploadModelFile(post_data);
