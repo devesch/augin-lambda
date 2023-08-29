@@ -198,4 +198,12 @@ button.home__header__button:hover {
 
 }
 
+input:disabled,
+button:disabled,
+.button:disabled {
+    border-color: colors.color("color-neutral-400");
+    background-color: colors.color("color-neutral-400");
+    color: colors.color("color-white");
+}
+
 /* Buttons - End */
