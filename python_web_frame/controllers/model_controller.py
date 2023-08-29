@@ -271,9 +271,13 @@ class ModelController:
             return first_line in ["ISO-10303-21", "ISO-10303-21;"]
 
     def is_fbx_file(self, file_path):
-        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-            first_line = f.readline().strip()
-            return first_line in ["ISO-10303-21", "ISO-10303-21;"]
+        try:
+            with open(file_path, "rb") as f:  # Read as binary
+                header = f.read(20)  # Read first 20 bytes
+                return b"Kaydara FBX Binary" in header
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return False
 
     def is_zip_using_magic_number(self, filename):
         with open(filename, "rb") as f:
