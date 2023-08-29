@@ -65,17 +65,19 @@ class ModelController:
         response = {"models_ids": []}
 
         for index, ifc_location in enumerate(ifcs_locations):
-            if self.is_ifc_file(ifc_location):
-                response["file_format"] = "ifc"
-            elif self.is_fbx_file(ifc_location):
-                response["file_format"] = "fbx"
-            else:
+            if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location):
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
 
         for index, ifc_location in enumerate(ifcs_locations):
-            new_ifc_location = ifc_location + "." + response["file_format"]
-            os.rename(ifc_location, new_ifc_location)
-            ifc_location = new_ifc_location
+            if self.is_ifc_file(ifc_location):
+                file_format = "ifc"
+            elif self.is_fbx_file(ifc_location):
+                file_format = "fbx"
+
+            if not "." + file_format in ifc_location:
+                new_ifc_location = ifc_location + "." + file_format
+                os.rename(ifc_location, new_ifc_location)
+                ifc_location = new_ifc_location
 
             if index == 0:
                 model = Dynamo().get_model_by_id(self.get_model_id_from_uploaded_file(uploaded_file))
@@ -90,7 +92,7 @@ class ModelController:
             S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"], lambda_constants["tmp_path"] + "file_ok.zip")
             Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(".zip", ".png"))
 
-            model["model_format"] = response["file_format"]
+            model["model_format"] = file_format
             model["model_filesize_ifc"] = str(os.path.getsize(ifc_location))
             model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
             model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
