@@ -32,6 +32,7 @@ export async function uploadModel(input) {
     const process_to_bucket = "upload.augin.app";
     const process_to_bucket_url = "https://upload.augin.app";
 
+    var uploaded_file_input = document.getElementById("uploaded_file_input");
 
     var file_name_array = input.files[0]["name"].split(".")
     var file_name_extension = file_name_array[file_name_array.length - 1];
@@ -41,7 +42,6 @@ export async function uploadModel(input) {
         "key_extension": file_name_extension,
         "bucket": process_to_bucket
     });
-
 
     let onProgress = progress => {
         console.log(Math.round(progress * 100) + "%");
@@ -57,24 +57,13 @@ export async function uploadModel(input) {
 
     await uploadWithProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data, onProgress);
 
-
-
-
+    uploaded_file_input.value = panel_get_aws_upload_keys_response["success"]['key'];
 }
-
 
 export function openModal(css_class) {
     let modal = document.querySelector(css_class);
     modal.classList.add('active');
 }
-
-
-export function closeModal(css_class) {
-    let modal = document.querySelector(css_class);
-    modal.classList.remove('active');
-}
-
-
 
 export async function userSendResetPassEmail() {
     console.log("Running userSendResetPassEmail");
@@ -368,12 +357,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // activateExploreMenuButton();
 });
 
+
+/**
+ * Updates progress bar values through file upload
+ * @param {string} url 
+ * @param {object} post_data 
+ * @param {function} onProgress 
+ * @returns 
+ */
 const uploadWithProgressBar = (url, post_data, onProgress) =>
     new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
         xhr.upload.addEventListener('progress', (e) => {
             onProgress(e.loaded / e.total)
-
         });
         xhr.addEventListener('load', () => resolve({
             status: xhr.status,
