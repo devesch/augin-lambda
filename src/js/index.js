@@ -47,6 +47,8 @@ export async function uploadModel(input) {
     const process_to_bucket_url = "https://upload.augin.app";
 
     var uploaded_file_input = document.getElementById("uploaded_file_input");
+    var uploading_div = document.getElementById("uploading_div");
+    var uploading_index_input = document.getElementById("uploading_index_input");
 
     var file_name_array = input.files[0]["name"].split(".")
     var file_name_extension = file_name_array[file_name_array.length - 1];
@@ -68,6 +70,13 @@ export async function uploadModel(input) {
         "signature": panel_get_aws_upload_keys_response["success"]['signature'],
         "file": input.files[0]
     }
+
+    let panel_create_project_uploading_html_response = await apiCaller("panel_create_project_uploading_html", {
+        "create_model": input.files[0]["name"],
+        "index": uploading_index_input.value,
+    });
+
+    uploading_div.innerHTML += panel_create_project_uploading_html_response["success"];
 
     await uploadWithProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data, onProgress);
 

@@ -28,6 +28,8 @@
         <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX">
     </div>
 
+    <input hidden id="uploading_index_input" value="1">
+    <div id="uploading_div"></div>
     <!-- <div class="form-container">
             <div class="floating-input">
                 <input type="text" name="upload_new_project_federated_name" id="upload_new_project_federated_name" placeholder="" required>
