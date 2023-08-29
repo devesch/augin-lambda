@@ -9,7 +9,7 @@ class PanelGetAwsUploadKeys(BasePage):
         if self.post.get("create_model"):
             if not self.user:
                 return {"error": "no user in request"}
-            new_model = ModelController().generate_new_model(self.user.user_email)
+            new_model = ModelController().generate_new_model(self.user.user_email, self.post.get("create_model"))
             self.post["key_path"] = new_model["model_upload_path"]
 
         if self.post.get("key_extension"):

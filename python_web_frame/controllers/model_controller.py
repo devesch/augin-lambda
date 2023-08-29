@@ -22,12 +22,14 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
-    def generate_new_model(self, email):
+    def generate_new_model(self, email, filename=""):
         import datetime
 
         model_id = Dynamo().get_next_model_id()
         new_model = Model(email, model_id, model_id, "not_created").__dict__
         new_model["model_upload_path"] = datetime.datetime.fromtimestamp(int(float(new_model["created_at"]))).strftime("%Y/%m/%d") + "/" + model_id + "/"
+        if filename:
+            new_model["model_filename"] = filename
         Dynamo().put_entity(new_model)
         return new_model
 
@@ -264,3 +266,10 @@ class ModelController:
                     return os.path.join(root, file).replace("\\", "/")
 
         return None
+
+    def check_if_model_in_processing_is_with_error(self, model_created_at):
+        import time
+
+        if (int(time.time()) - int(float(model_created_at))) > 28800:
+            return True
+        return False

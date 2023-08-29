@@ -38,7 +38,7 @@ export async function uploadModel(input) {
     var file_name_extension = file_name_array[file_name_array.length - 1];
 
     let panel_get_aws_upload_keys_response = await apiCaller("panel_get_aws_upload_keys", {
-        "create_model": "create_model",
+        "create_model": input.files[0]["name"],
         "key_extension": file_name_extension,
         "bucket": process_to_bucket
     });
