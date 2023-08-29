@@ -1,0 +1,108 @@
+@use '_colors.scss' as colors;
+
+progress {
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    flex-grow: 2;
+    border: 2px solid colors.color("color-neutral-600");
+    color: colors.color("color-primary-700");
+    accent-color: colors.color("color-primary-700");
+    background-color: transparent;
+    height: 1rem;
+    width: 100%;
+    vertical-align: unset;
+    block-size: unset;
+    inline-size: unset;
+}
+
+progress::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    // background-image: linear-gradient( -45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent );
+    z-index: 1;
+    background-size: 25px 25px;
+    // border-top-right-radius: 8px;
+    // border-bottom-right-radius: 8px;
+    // border-top-left-radius: 20px;
+    // border-bottom-left-radius: 20px;
+    border-radius: 0;
+    overflow: hidden;
+    animation: progress-bar 3s linear infinite;
+    width: var(--progress-bar-after-width, 0%);
+}
+
+@keyframes progress-bar {
+    0% {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100px 100px;
+    }
+}
+
+progress::-webkit-progress-bar {
+    background: transparent;
+    border-radius: 0;
+    height: 1rem;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 0;
+    background: colors.color("color-primary-700");
+    height: 1rem;
+    // transition: width 0.4s ease-in;
+}
+
+progress::-moz-progress-bar {
+    background: colors.color("color-primary-700");
+    border-radius: 0;
+    height: 1rem;
+    background-image: linear-gradient( -45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent );
+    z-index: 1;
+    background-size: 25px 25px;
+    // border-top-right-radius: 8px;
+    // border-bottom-right-radius: 8px;
+    // border-top-left-radius: 20px;
+    // border-bottom-left-radius: 20px;
+    border-radius: 0;
+    overflow: hidden;
+    animation: progress-bar 3s linear infinite;
+    width: var(--progress-bar-after-width, 0%);
+    // transition: width 0.4s ease-in;
+}
+
+/* Success */
+progress.success {
+    color: colors.color("color-success-500");
+    accent-color: colors.color("color-success-500");
+}
+
+progress.success::-webkit-progress-value {
+    background: colors.color("color-success-500");
+}
+
+progress.success::-moz-progress-bar {
+    background: colors.color("color-success-500");
+}
+/**/
+
+/* Error */
+progress.error {
+    color: colors.color("color-error-300");
+    accent-color: colors.color("color-error-300");
+}
+
+progress.error::-webkit-progress-value {
+    background: colors.color("color-error-300");
+}
+
+progress.error::-moz-progress-bar {
+    background: colors.color("color-error-300");
+}
+/**/
