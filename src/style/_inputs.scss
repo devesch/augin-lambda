@@ -244,7 +244,7 @@ input[type="checkbox"] + label {
 
     .switch {
         display: inline-block;
-        width: 1.25rem;
+        width: 2.25rem;
         height: .75rem;
         position: relative;
         align-self: center;
@@ -259,14 +259,14 @@ input[type="checkbox"] + label {
             background-color: colors.color("color-neutral-200");
             -webkit-transition: .4s;
             transition: .4s;
-            border-radius: 50%;
+            border-radius: 1rem;
         }
 
         .slider:before {
             background-color: colors.color("color-neutral-700");
             content: "";
-            height: 1.25rem;
-            width: 0.625rem;
+            height: 1.5rem;
+            width: 1.5rem;
             left: 0;
             bottom: 50%;
             transform: translateY(50%) translateX(0);
