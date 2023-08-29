@@ -218,30 +218,36 @@ input[type="checkbox"] + label {
     }
 
     .switch-container {
+        position: relative;
         display: flex;
         flex-direction: row;
         gap: .25rem;
         flex-wrap: wrap;
         align-items: center;
         justify-content: left;
-    }
-
-    .switch {
-        display: inline-block;
-        width: 2.5rem;
-        height: .75rem;
-        position: relative;
-        align-self: center;
 
         input {
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            left: 0;
+            top: 0;
             opacity: 0;
             width: 0.1;
             height: 0.1;
         }
+
+        input:checked + .switch .slider:before {
+            background-color: colors.color("color-primary-500");
+            transform: translateY(50%) translateX(100%);
+        }
+
+    }
+
+    .switch {
+        display: inline-block;
+        width: 1.25rem;
+        height: .75rem;
+        position: relative;
+        align-self: center;
 
         .slider {
             position: absolute;
@@ -260,7 +266,7 @@ input[type="checkbox"] + label {
             background-color: colors.color("color-neutral-700");
             content: "";
             height: 1.25rem;
-            width: 1.25rem;
+            width: 0.625rem;
             left: 0;
             bottom: 50%;
             transform: translateY(50%) translateX(0);
@@ -268,12 +274,6 @@ input[type="checkbox"] + label {
             transition: 0.4s;
             border-radius: 50%;
         }
-
-        input:checked + .slider:before {
-            background-color: color("color-primary-500");
-            transform: translateY(50%) translateX(100%);
-        }
-
     }
 
 }
