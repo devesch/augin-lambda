@@ -511,9 +511,50 @@ export function activateExploreCreateMenu(clickTarget, button, currentMenu) {
     }
 }
 
+export function activateDraggableItems() {
+    const draggableItems = document.getElementsByClassName("draggable");
+    const draggableItemsLength = draggableItems.length;
+    const container = document.getElementsByClassName("explore__table")[0];
+
+    if (draggableItemsLength > 0) {
+   
+        for (var i = 0; i < draggableItemsLength; i++) {
+            const currentItem = draggableItems[i];
+            currentItem.addEventListener("dragstart", function() {
+                currentItem.classList.add("dragging");
+            });
+            
+            currentItem.addEventListener("dragend", function() {
+                currentItem.classList.remove("dragging");
+            });
+        }
+        
+    }
+    
+    function initSortableList(event) {
+        const draggingItem = container.querySelector(".dragging");
+        let notDraggingItems = container.querySelectorAll("tbody tr:not(.dragging)");
+
+        if (notDraggingItems.length() > 0) {
+            const nextSibling = notDraggingItems.find(sibling => {
+                return event.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+            });
+            
+            container.insertBefore(draggingItem)
+        }
+    }
+
+
+    if (container) {
+        container.addEventListener("dragover", initSortableList);
+    }
+
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
     // your code here
     detectClickOutsideElement();
     activateAuginSubscriptionSelection();
     // activateExploreMenuButton();
+    activateDraggableItems();
 });
