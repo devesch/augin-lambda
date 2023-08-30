@@ -1779,6 +1779,11 @@
         "es": "Islas menores de los Estados Unidos.",
         "pt": "United States Minor Outlying Islands"
     },
+    "Upload realizado com sucesso": {
+        "en": "Upload done successfully",
+        "es": "Carga realizada exitosamente",
+        "pt": "Upload realizado com sucesso"
+    },
     "Uruguay": {
         "en": "Uruguay",
         "es": "Uruguay",

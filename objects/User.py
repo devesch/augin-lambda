@@ -24,16 +24,21 @@ class User:
         self.user_credential = ""
         self.user_ip = ""
         self.user_cart_currency = ""
+        self.user_dicts = {"folders": [], "files": []}
 
-        self.user_completed_models_total_count = "0"
-        self.user_model_datalist_builder = []
-        self.user_model_datalist_work = []
-        self.user_model_datalist_city_region = []
-        self.user_model_datalist_category = []
+        # self.user_completed_models_total_count = "0"
+        # self.user_model_datalist_builder = []
+        # self.user_model_datalist_work = []
+        # self.user_model_datalist_city_region = []
+        # self.user_model_datalist_category = []
 
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def add_model_to_user_dicts(self, model):
+        self.user_dicts["files"].append(model["model_id"])
+        Dynamo().put_entity(self.__dict__)
 
     def increase_total_count(self, param):
         current_value = int(getattr(self, param))

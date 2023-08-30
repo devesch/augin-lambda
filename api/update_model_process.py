@@ -69,7 +69,8 @@ class UpdateModelProcess(BasePage):
             model = ModelController().calculate_model_memory_usage_in_gbs(model)
             model = ModelController().calculate_model_total_time(model)
             Dynamo().delete_entity(model)
-            model = ModelController().change_model_status(model, model["model_state"], "waiting_for_data")
+            model = ModelController().change_model_status(model, model["model_state"], "completed")
             Dynamo().put_entity(model)
+            self.user.add_model_to_user_dicts(model)
 
         return {"success": "Model " + self.post["model_id"] + " updated successfully to percentage " + model["model_processing_percentage"]}
