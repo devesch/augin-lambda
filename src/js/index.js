@@ -226,6 +226,12 @@ export function openModal(css_class) {
     modal.classList.add('active');
 }
 
+export function closeModal(css_class) {
+    let modal = document.querySelector(css_class);
+    modal.classList.remove('active');
+}
+
+
 export async function userSendResetPassEmail() {
     console.log("Running userSendResetPassEmail");
     let error_msg = document.getElementById("error_msg");
@@ -517,20 +523,20 @@ export function activateDraggableItems() {
     const container = document.getElementsByClassName("explore__table")[0];
 
     if (draggableItemsLength > 0) {
-   
+
         for (var i = 0; i < draggableItemsLength; i++) {
             const currentItem = draggableItems[i];
-            currentItem.addEventListener("dragstart", function() {
+            currentItem.addEventListener("dragstart", function () {
                 currentItem.classList.add("dragging");
             });
-            
-            currentItem.addEventListener("dragend", function() {
+
+            currentItem.addEventListener("dragend", function () {
                 currentItem.classList.remove("dragging");
             });
         }
-        
+
     }
-    
+
     function initSortableList(event) {
         const draggingItem = container.querySelector(".dragging");
         let notDraggingItems = container.querySelectorAll("tbody tr:not(.dragging)");
@@ -539,7 +545,7 @@ export function activateDraggableItems() {
             const nextSibling = notDraggingItems.find(sibling => {
                 return event.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
             });
-            
+
             container.insertBefore(draggingItem)
         }
     }
@@ -558,3 +564,71 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // activateExploreMenuButton();
     activateDraggableItems();
 });
+
+
+export async function openModalShareProject(model_id, model_name, model_share_link, model_share_link_qrcode, model_is_password_protected, model_password) {
+    let share_project_name_span = document.getElementById("share_project_name_span");
+    let copy_share_link_button = document.getElementById("copy_share_link_button");
+    let update_model_id_input = document.getElementById("update_model_id_input");
+    let copy_share_link_input = document.getElementById("copy_share_link_input");
+    let model_share_link_qrcode_img = document.getElementById("model_share_link_qrcode_img");
+    let project_is_password_protected_input = document.getElementById("project_is_password_protected_input");
+    let project_password_div = document.getElementById("project_password_div");
+    let project_password_input = document.getElementById("project_password_input");
+
+    if (model_is_password_protected == "True") {
+        project_is_password_protected_input.checked = "checked";
+        project_password_div.style.display = "block";
+    } else {
+        project_is_password_protected_input.checked = "";
+        project_password_div.style.display = "none";
+    }
+
+    project_password_input.value = model_password;
+    update_model_id_input.value = model_id;
+    share_project_name_span.innerText = model_name;
+    copy_share_link_button.value = model_share_link;
+    copy_share_link_input.value = model_share_link;
+    model_share_link_qrcode_img.src = model_share_link_qrcode;
+    openModal('.modal.share-modal');
+}
+
+
+
+export async function copyValueToClipboard(input) {
+    navigator.clipboard.writeText(input.value);
+
+    let translate_response = await apiCaller("translate", {
+        "key": "Copiado!"
+    });
+    input.innerText = translate_response["success"];
+    await sleep(2000);
+
+    translate_response = await apiCaller("translate", {
+        "key": "Copiar"
+    });
+    input.innerText = translate_response["success"];
+}
+
+export function showHideElement(element_id) {
+    var element = document.getElementById(element_id);
+    element.classList.toggle("open");
+}
+
+export async function updateModelFavorite(model_id, model_is_favorite) {
+    let update_model_response = await apiCaller("update_model", {
+        "model_id": model_id,
+        "model_is_favorite": model_is_favorite
+    });
+
+    console.log(update_model_response["success"]);
+    showUserDicts();
+    detectClickOutsideElement()
+}
+
+export async function showUserDicts() {
+    var user_folder_rows_tbody = document.getElementById("user_folder_rows_tbody");
+
+    let panel_create_project_user_dicts_html_response = await apiCaller("panel_create_project_user_dicts_html", {});
+    user_folder_rows_tbody.innerHTML = panel_create_project_user_dicts_html_response["success"];
+}

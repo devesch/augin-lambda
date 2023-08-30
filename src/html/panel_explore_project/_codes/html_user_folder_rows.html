@@ -1,0 +1,271 @@
+<tr>
+    <td colspan="1">
+        <img src="{{cdn_val}}/assets/icons/{{model_icon_val}}.svg" alt="" width="24" height="24">
+        <span class="ml-05">{{model_filename_val}}</span>
+        {{html_model_is_favorite}}
+    </td>
+    <td colspan="1">
+        {{model_created_at_val}}
+    </td>
+    <td colspan="1">
+        <span>{{model_filesize_ifc_val}} Mb</span>
+        {{html_need_to_upgrade_your_plan}}
+    </td>
+    <td class="relative" colspan="1">
+        <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_{{index_val}}" aria-expanded="false">
+            <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
+        </button>
+        <menu id="explore_table_item_menu_{{index_val}}" class="menu--explore-more-options none">
+            <li>
+                <button onclick="js.index.openModalShareProject('{{model_id_val}}', '{{model_filename_val}}', '{{model_share_link_val}}',  '{{model_share_link_qrcode_val}}', '{{model_is_password_protected_val}}', '{{model_password_val}}')">
+                    <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Compartilhar}}</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Atualizar}}</span>
+                </button>
+            </li>
+            <li>
+                <button onclick="js.index.updateModelFavorite('{{model_id_val}}', '{{opposite_model_is_favorite_val}}')">
+                    <img src="{{cdn_val}}/assets/icons/star_black.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Favoritar}}</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/category.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Selecionar categoria}}</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/edit.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Renomear}}</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/drive_file_move.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Mover}}</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>
+                </button>
+            </li>
+        </menu>
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <td colspan="1">
+    <img src="{{cdn_val}}/assets/icons/folder.svg" alt="" width="24" height="24">
+    <span class="ml-05">Pasta modelo 1</span>
+</td>
+<td colspan="1">
+    Ago 15, 2023
+</td>
+<td colspan="1">
+    <span>12 Mb</span>
+    <div class="tooltip-container">
+        <img class="ml-05" src="{{cdn_val}}/assets/icons/warning.svg" alt="" width="24" height="24" aria-describedby="tooltip_1">
+        <div class="tooltip-content" id="tooltip_1" role="tooltip">
+            {{Necessário upgrade de plano}}
+        </div>
+    </div>
+</td>
+<td class="relative" colspan="1">
+    <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_1" aria-expanded="false">
+        <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
+    </button>
+    <menu id="explore_table_item_menu_1" class="menu--explore-more-options none">
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Compartilhar}}</span>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Atualizar}}</span>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/star_black.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Favoritar}}</span>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/category.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Selecionar categoria}}</span>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/edit.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Renomear}}</span>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/drive_file_move.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Mover}}</span>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
+            </button>
+        </li>
+        <li>
+            <button>
+                <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>
+            </button>
+        </li>
+    </menu>
+</td>
+</tr>
+<tr>
+    <td colspan="1">
+        <img src="{{cdn_val}}/assets/icons/note_stack.svg" alt="" width="24" height="24">
+        <span class="ml-05">Modelo de federado</span>
+    </td>
+    <td colspan="1">
+        Ago 5, 2023
+    </td>
+    <td colspan="1">
+        <span>123 Mb</span>
+        <div class="tooltip-container">
+            <img class="ml-05" src="{{cdn_val}}/assets/icons/warning.svg" alt="" width="24" height="24" aria-describedby="tooltip_2">
+            <div class="tooltip-content" id="tooltip_2" role="tooltip">
+                {{Necessário upgrade de plano}}
+            </div>
+        </div>
+    </td>
+    <td class="relative" colspan="1">
+        <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_2" aria-expanded="false">
+            <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
+        </button>
+        <menu id="explore_table_item_menu_2" class="menu--explore-more-options none">
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>Compartilhar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>Atualizar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/star_black.svg" width="24" height="24" alt="" loading="lazy"> <span>Favoritar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/category.svg" width="24" height="24" alt="" loading="lazy"> <span>Selecionar categoria</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/edit.svg" width="24" height="24" alt="" loading="lazy"> <span>Renomear</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/drive_file_move.svg" width="24" height="24" alt="" loading="lazy"> <span>Mover</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>Baixar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>Apagar</span>
+                </button>
+            </li>
+        </menu>
+    </td>
+</tr>
+<tr>
+    <td colspan="1">
+        <img src="{{cdn_val}}/assets/icons/note.svg" alt="" width="24" height="24">
+        <span class="ml-05">Modelo de federado</span>
+        <img class="ml-05" src="{{cdn_val}}/assets/icons/star.svg" alt="" width="24" height="24">
+    </td>
+    <td colspan="1">
+        Ago 5, 2023
+    </td>
+    <td colspan="1">
+        <span>123 Mb</span>
+        <div class="tooltip-container">
+            <img class="ml-05" src="{{cdn_val}}/assets/icons/warning.svg" alt="" width="24" height="24" aria-describedby="tooltip_3">
+            <div class="tooltip-content" id="tooltip_3" role="tooltip">
+                Necessário upgrade de plano
+            </div>
+        </div>
+    </td>
+    <td class="relative" colspan="1">
+        <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_3" aria-expanded="false">
+            <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
+        </button>
+        <menu id="explore_table_item_menu_3" class="menu--explore-more-options none">
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>Compartilhar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>Atualizar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/star_black.svg" width="24" height="24" alt="" loading="lazy"> <span>Favoritar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/category.svg" width="24" height="24" alt="" loading="lazy"> <span>Selecionar categoria</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/edit.svg" width="24" height="24" alt="" loading="lazy"> <span>Renomear</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/drive_file_move.svg" width="24" height="24" alt="" loading="lazy"> <span>Mover</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>Baixar</span>
+                </button>
+            </li>
+            <li>
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>Apagar</span>
+                </button>
+            </li>
+        </menu>
+    </td> -->

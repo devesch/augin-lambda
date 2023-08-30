@@ -399,6 +399,16 @@
         "es": "Islas Cook",
         "pt": "Cook Islands"
     },
+    "Copiado!": {
+        "en": "Copied!",
+        "es": "¡Copiado!",
+        "pt": "Copiado!"
+    },
+    "Copiar": {
+        "en": "Copy",
+        "es": "Copiar",
+        "pt": "Copiar"
+    },
     "Costa Rica": {
         "en": "Costa Rica",
         "es": "Costa Rica",
@@ -698,6 +708,11 @@
         "en": "processing queue",
         "es": "cola de procesamiento",
         "pt": "Fila de processamento"
+    },
+    "Filtrar": {
+        "en": "filter",
+        "es": "filtrar",
+        "pt": "Filtrar"
     },
     "Finland": {
         "en": "Finland",

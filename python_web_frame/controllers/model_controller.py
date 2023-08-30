@@ -1,5 +1,4 @@
 import os
-
 from objects.Model import Model
 from utils.Config import lambda_constants
 from utils.AWS.S3 import S3
@@ -12,6 +11,7 @@ from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Validation import Validation
 from utils.utils.StrFormat import StrFormat
 from utils.utils.Http import Http
+from utils.utils.Sort import Sort
 
 
 class ModelController:
@@ -21,6 +21,36 @@ class ModelController:
         if cls._instance is None:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
+
+    def sort_models(self, models):
+        favorited_models = []
+        normal_models = []
+        sorted_models = []
+        if models:
+            for model in models:
+                if model.get("model_is_favorite"):
+                    favorited_models.append(model)
+                else:
+                    normal_models.append(model)
+        favorited_models = Sort().sort_dict_list(favorited_models, "created_at", reverse=False, integer=True)
+        normal_models = Sort().sort_dict_list(normal_models, "created_at", reverse=False, integer=True)
+        sorted_models.extend(favorited_models)
+        sorted_models.extend(normal_models)
+        return sorted_models
+
+    def check_if_model_is_too_big(self, model_filesize_ifc):
+        return int(model_filesize_ifc) > 1073741824  ### 1gb
+
+    def convert_model_filesize_ifc_to_mb(self, model_filesize_ifc):
+        return str(round(int(model_filesize_ifc) / 1024 / 1024, 1))
+
+    def convert_model_created_at_to_date(self, created_at):
+        from datetime import datetime
+
+        # Create a datetime object from the Unix timestamp
+        dt_object = datetime.fromtimestamp(float(created_at))
+        formatted_date = dt_object.strftime("%b %d, %Y")
+        return formatted_date
 
     def delete_model(self, model):
         S3().delete_folder(lambda_constants["processed_bucket"], model["model_upload_path"])

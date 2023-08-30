@@ -71,6 +71,8 @@ class UpdateModelProcess(BasePage):
             Dynamo().delete_entity(model)
             model = ModelController().change_model_status(model, model["model_state"], "completed")
             Dynamo().put_entity(model)
-            self.user.add_model_to_user_dicts(model)
+
+            user = self.load_user(model["model_user_email"])
+            user.add_model_to_user_dicts(model)
 
         return {"success": "Model " + self.post["model_id"] + " updated successfully to percentage " + model["model_processing_percentage"]}
