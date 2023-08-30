@@ -1113,11 +1113,18 @@ input[list]::-ms-clear {
 
     strong {
         font-weight: bold;
+        font-size: 1rem;
+    }
+
+    p {
+        text-align: right;
+        color: colors.color("color-neutral-600");
+        font-size: .9rem;
     }
     
     section {
-        background-color: var(--color-neutral-100);
-        padding: 1rem;
+        background-color: colors.color("color-neutral-100");
+        padding: .25rem 1rem 1rem;
         border-radius: 0.5rem;
     }
     
@@ -1129,10 +1136,17 @@ input[list]::-ms-clear {
         grid-template-columns: 1fr 1fr;
     }
 
-    @media only screen and (min-width: breakpoints.$xxl-large) {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+}
 
+.uploading-element-header {
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3rem;
 }
 
 /* Change plan - Start */
@@ -1489,25 +1503,6 @@ input[list]::-ms-clear {
     img {
         vertical-align: middle;
     }
-}
-
-.button--explore-more-options {
-    background-color: transparent;
-    border: none;
-    border-radius: 1rem;
-    padding: .1rem;
-}
-
-.button--explore-more-options:hover {
-    background-color: colors.color("color-neutral-200");
-}
-
-.button--explore-more-options:active {
-    background-color: colors.color("color-neutral-100");
-}
-
-.button--explore-more-options[aria-expanded="true"] {
-    background-color: colors.color("color-neutral-200");
 }
 
 .panel-explore-filters-container {

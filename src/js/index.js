@@ -184,9 +184,12 @@ const uploadWithProgressBar = (url, post_data) =>
     new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
         let progress_element;
+        let current_progress;
         xhr.upload.addEventListener('progress', (e) => {
             progress_element = document.getElementById("progress_" + post_data["element_index"]);
-            progress_element.value = Math.round((e.loaded / e.total) * 100);
+            current_progress = Math.round((e.loaded / e.total) * 100);
+            progress_element.value = current_progress;
+            progress_element.title = current_progress + "%";
             checkIfCreateProjectSubmitButtonIsAvailable(false);
         });
         xhr.addEventListener('load', () => {

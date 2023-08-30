@@ -1,8 +1,20 @@
-<section id="uploading_element_{{index_val}}">
+<section id="uploading_element_{{index_val}}" aria-live="polite">
     <input hidden name="has_more_than_one_file_{{index_val}}" id="has_more_than_one_file_{{index_val}}" class="uploading_element_has_more_than_one_file">
     <input hidden name="model_id_{{index_val}}" id="model_id_{{index_val}}">
-    <strong>{{model_filename_val}}</strong>
-    <progress id="progress_{{index_val}}" value="0" max="100"></progress>
-    <p id="message_{{index_val}}" class="uploading_element_message"></p>
-    <button onclick="js.index.deleteUploadingElement('{{index_val}}')" id="delete_button_{{index_val}}" style="display: none;">Remover</button>
+    <div class="uploading-element-header">
+        <strong>{{model_filename_val}}</strong>
+        <button id="delete_button_{{index_val}}" class="button--icon" 
+                onclick="js.index.deleteUploadingElement('{{index_val}}')" 
+                style="display: none;"
+                aria-label="{{Excluir modelo}} {{model_filename_val}}"
+                aria-describedby="message_{{index_val}}"
+                aria-controls="uploading_element_{{index_val}}">
+            <img src="{{cdn_val}}/assets/icons/trash-red.svg" width="24" height="24" alt=""/>
+        </button>
+    </div>
+    <p id="message_{{index_val}}" class="uploading_element_message">
+        {{Enviando arquivo, aguarde}}
+    </p>
+    <progress id="progress_{{index_val}}" value="0" max="100"
+            aria-describedby="message_{{index_val}}"></progress>
 </section>

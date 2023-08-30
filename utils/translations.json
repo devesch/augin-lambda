@@ -584,6 +584,11 @@
         "es": "Enviamos un código de acceso temporal a",
         "pt": "Enviamos um código de acesso temporário para"
     },
+    "Enviando arquivo, aguarde": {
+        "en": "Sending file, please wait",
+        "es": "Enviando archivo, por favor espere",
+        "pt": "Enviando arquivo, aguarde"
+    },
     "Equatorial Guinea": {
         "en": "Equatorial Guinea",
         "es": "Guinea Ecuatorial",
@@ -628,6 +633,11 @@
         "en": "I read and agree with the contract of",
         "es": "He leído y acepto el contrato de",
         "pt": "Eu li e concordo com o contrato de"
+    },
+    "Excluir modelo": {
+        "en": "delete template",
+        "es": "eliminar plantilla",
+        "pt": "Excluir modelo"
     },
     "Exibindo": {
         "en": "Showing",

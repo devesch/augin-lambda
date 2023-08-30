@@ -197,6 +197,48 @@ button.home__header__button:hover {
     }
 
 }
+/**/
+
+/* Trash/Delete Button - Start */
+button.button--icon,
+.button.button--icon {
+    background-color: colors.color("color-neutral-50");
+    border-color: colors.color("color-neutral-50");
+    border-radius: 100%;
+    padding: 0.25rem;
+}
+
+button.button--icon:hover,
+.button.button--icon:hover {
+    background-color: colors.color("color-primary-300");
+    border-color: colors.color("color-primary-300");
+}
+
+button.button--icon:active,
+.button.button--icon:active {
+    background-color: colors.color("color-primary-50");
+    border-color: colors.color("color-primary-50");
+}
+
+button.button--icon.ghost,
+.button.button--icon.ghost {
+    background-color: transparent;
+    border-color: colors.color("color-black");
+}
+
+button.button--icon:disabled,
+.button.button--icon:disabled {
+    background-color: colors.color("color-neutral-100");
+    border-color: colors.color("color-neutral-100");
+    opacity: 0.5;
+}
+
+button.button--icon[aria-expanded="true"],
+.button.button--icon[aria-expanded="true"] {
+    background-color: colors.color("color-primary-300");
+    border-color: colors.color("color-primary-300");
+}
+/* Trash/Delete Button - End */
 
 input:disabled,
 button:disabled,
