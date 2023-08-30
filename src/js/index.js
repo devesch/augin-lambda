@@ -110,7 +110,12 @@ export async function checkUploadModelFile(post_data, progress_element) {
         progress_element.classList.add("success");
         model_id.value = panel_create_project_check_file_response["models_ids"];
         has_more_than_one_file.value = panel_create_project_check_file_response["has_more_than_one_file"];
-        message.innerHTML = "Upload realizado com sucesso";
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Upload realizado com sucesso"
+        });
+
+        message.innerHTML = translate_response["success"];
         checkIfCreateProjectSubmitButtonIsAvailable();
         checkIfCreateProjectIsFederated();
     }
