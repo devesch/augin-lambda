@@ -51,9 +51,11 @@
             </menu>
         </div>
         <table class="explore__table">
+            <input hidden id="sort_attribute_input">
+            <input hidden id="sort_reverse_input" value="False">
             <thead>
                 <tr>
-                    <th colspan="1">{{Nome}}</th>
+                    <th onclick="js.index.sortProjectsBy('name')" colspan="1">{{Nome}} <span id="name_sort_span">v</span></th>
                     <th colspan="1">{{Criação}}</th>
                     <th colspan="2">{{Tamanho}}</th>
                 </tr>

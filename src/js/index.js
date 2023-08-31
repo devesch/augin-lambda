@@ -696,16 +696,6 @@ export async function updateModelPassword() {
 }
 
 
-
-
-
-/**
- * Hides/show input type password text
- * by changing input type to text/password
- * @param {HTMLButtonElement} button 
- * @param {string} input_id 
- * @returns 
- */
 export async function togglePasswordText(button, input_id) {
     var input = document.getElementById(input_id);
     var icon_img = button.querySelector("img");
@@ -737,6 +727,28 @@ export async function togglePasswordText(button, input_id) {
     button.setAttribute("aria-label", PASSWORD_SHOW_LABEL);
     icon_img.src = icon_img.src.replace(PASSWORD_HIDE_ICON, PASSWORD_SHOW_ICON);
     return;
+}
+
+
+export async function sortProjectsBy(sort_attribute) {
+    let sort_attribute_input = document.getElementById("sort_attribute_input");
+    let sort_reverse_input = document.getElementById("sort_reverse_input");
+    let sort_span = document.getElementById(sort_attribute + "_sort_span");
+
+    if (sort_attribute_input.value == sort_attribute) {
+        if (sort_reverse_input.value == "True") {
+            sort_reverse_input.value = "False"
+        } else {
+            sort_reverse_input.value = "True"
+        }
+    }
+    sort_attribute_input.value = sort_attribute;
+
+    if (sort_reverse_input.value == "False") {
+        sort_span.value = "v"
+    } else {
+        sort_span.value = "^"
+    }
 }
 
 
