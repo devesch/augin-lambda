@@ -743,15 +743,15 @@ export async function sortProjectsBy(sort_attribute) {
     let sort_span = document.getElementById(sort_attribute + "_sort_span");
 
     if (sort_attribute_input.value === sort_attribute) {
-        if (sort_reverse_input.value === "True") {
-            sort_reverse_input.value = "False"
-        } else {
+        if (sort_reverse_input.value === "False") {
             sort_reverse_input.value = "True"
+        } else {
+            sort_reverse_input.value = "False"
         }
     }
     sort_attribute_input.value = sort_attribute;
 
-    if (sort_reverse_input.value === "False") {
+    if (sort_reverse_input.value === "True") {
         sort_span.innerHTML = "v"
     } else {
         sort_span.innerHTML = "^"
