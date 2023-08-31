@@ -378,7 +378,7 @@ export function detectClickOutsideElement() {
             }
         }
 
-        activateExploreMenuButton(event.target);
+        hideExploreMenuWhenClickedOutside(event.target);
 
         if (exploreCreateButton) {
             let currentMenu = document.getElementById(exploreCreateButton.getAttribute("aria-controls"));
@@ -468,10 +468,9 @@ export function activateAuginSubscriptionSelection() {
 
 /**
  * 
- * @param {NodeListOf HTMLButtonElement} buttons 
- * @param {int} buttonsLength 
+ * @param {event.target} clickTarget 
  */
-export function activateExploreMenuButton(clickTarget) {
+export function hideExploreMenuWhenClickedOutside(clickTarget) {
 
     let buttons = document.querySelectorAll(".button--explore-more-options");
     let buttonsLength = buttons.length;
@@ -481,18 +480,12 @@ export function activateExploreMenuButton(clickTarget) {
         let i = 0;
         while (i < buttonsLength) {
             let currentMenu = document.getElementById(buttons[i].getAttribute("aria-controls"));
-            if (buttons[i].contains(clickTarget)) {
-                if (currentMenu.classList.contains("none")) {
-                    currentMenu.classList.remove("none");
-                    buttons[i].setAttribute("aria-expanded", "true");
-                } else {
-                    currentMenu.classList.add("none");
-                    buttons[i].setAttribute("aria-expanded", "false");
-                }
-            } else {
+
+            if (!buttons[i].contains(clickTarget)) {
                 currentMenu.classList.add("none");
                 buttons[i].setAttribute("aria-expanded", "false");
             }
+
             i++;
         }
     }
@@ -501,8 +494,7 @@ export function activateExploreMenuButton(clickTarget) {
 /**
  * 
  */
-export function toggleExploreMenu(button, event) {
-    event.preventDefault();
+export function toggleExploreMenu(button) {
     let menu = document.getElementById(button.getAttribute("aria-controls"));
     if (menu.classList.contains("none")) {
         menu.classList.remove("none");
