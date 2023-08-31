@@ -663,6 +663,7 @@ export async function saveModelFilename() {
         model_filename_error_span.innerHTML = update_model_response["error"]
     }
     closeModal('.modal.rename-modal');
+    showUserDicts()
 }
 
 

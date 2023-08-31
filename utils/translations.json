@@ -519,6 +519,11 @@
         "es": "Debe contener solo letras",
         "pt": "Deve conter apenas letras"
     },
+    "Digite o novo nome desejado para seu projeto.": {
+        "en": "Enter the new desired name for your project.",
+        "es": "Ingrese el nuevo nombre deseado para su proyecto.",
+        "pt": "Digite o novo nome desejado para seu projeto."
+    },
     "Digite o primeiro dígito do código de verificação que foi enviado ao seu e-mail.": {
         "en": "Enter the first digit of the verification code that was sent to your email.",
         "es": "Ingrese el primer dígito del código de verificación que se envió a su correo electrónico.",
@@ -1258,6 +1263,11 @@
         "en": "Full name",
         "es": "Nombre completo",
         "pt": "Nome completo"
+    },
+    "Nome do Projeto": {
+        "en": "Project name",
+        "es": "Nombre del proyecto",
+        "pt": "Nome do Projeto"
     },
     "Nome do federado": {
         "en": "federate name",
