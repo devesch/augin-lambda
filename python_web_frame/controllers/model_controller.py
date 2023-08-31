@@ -24,16 +24,20 @@ class ModelController:
         return cls._instance
 
     def generate_bin_files(self, model, output_bucket, output_key):
+        xml_zip_location = lambda_constants["tmp_path"] + "model_xml.zip"
+        unzip_location = lambda_constants["tmp_path"] + "model/"
         bin_location = lambda_constants["tmp_path"] + "model_bin.bin"
         mini_bin_location = lambda_constants["tmp_path"] + "mini_model_bin.bin"
-
         bin_zip_location = lambda_constants["tmp_path"] + "model_bin.zip"
         mini_bin_zip_location = lambda_constants["tmp_path"] + "model_mini_bin.zip"
+        bin_model_key = output_key.replace("-xml.zip", "-bin.zip")
+        mini_bin_model_key = output_key.replace("-xml.zip", "-mini-bin.zip")
 
         ReadWrite().delete_files_inside_a_folder(lambda_constants["tmp_path"])
 
-        S3().download_file(output_bucket, output_key, lambda_constants["tmp_path"] + "model_xml.zip")
-        xml_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "model_xml.zip", "xml")
+        S3().download_file(output_bucket, output_key, xml_zip_location)
+        ReadWrite().extract_zip_file(xml_zip_location, unzip_location)
+        xml_location = self.find_file_with_extension_in_directory(unzip_location, ["xml"])
 
         import xml_binary
         import importlib
@@ -41,17 +45,15 @@ class ModelController:
 
         importlib.reload(xml_binary)
 
-        xml_binary.run_xml_binary(xml_location, lambda_constants["tmp_path"] + "model_xml.zip")
-        time.sleep(2)
+        xml_binary.run_xml_binary(xml_location, bin_location)
+        time.sleep(1)
         if not os.path.exists(bin_location):
             raise Exception("Unable to generate bin files")
         else:
             ReadWrite().zip_file(bin_location, bin_zip_location)
-            bin_model_key = output_key.replace("-xml.zip", "-bin.zip")
             S3().upload_file(output_bucket, bin_model_key, bin_zip_location)
 
             ReadWrite().zip_file(mini_bin_location, mini_bin_zip_location)
-            mini_bin_model_key = output_key.replace("-xml.zip", "-mini-bin.zip")
             S3().upload_file(output_bucket, mini_bin_model_key, mini_bin_zip_location)
 
             Dynamo().update_entity(model, "model_upload_path_bin", bin_model_key)
