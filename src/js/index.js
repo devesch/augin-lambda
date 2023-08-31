@@ -710,8 +710,8 @@ export async function togglePasswordText(button, input_id) {
     var input = document.getElementById(input_id);
     var icon_img = button.querySelector("img");
 
-    const PASSWORD_SHOW_ICON = "icon-password-show-resized.svg";
-    const PASSWORD_HIDE_ICON = "icon-password-show-off-resized.svg";
+    const PASSWORD_SHOW_ICON = "visibility.svg";
+    const PASSWORD_HIDE_ICON = "visibility_off.svg";
     let PASSWORD_SHOW_LABEL = "Mostrar senha.";
     let PASSWORD_HIDE_LABEL = "Ocultar senha.";
 
