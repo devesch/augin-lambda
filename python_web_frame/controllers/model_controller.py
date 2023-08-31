@@ -61,6 +61,9 @@ class ModelController:
 
     def sort_models(self, models, sort_attribute="model_filename", sort_reverse=False):
         sort_reverse = sort_reverse == "True"
+        if sort_attribute not in ["model_filename", "model_filesize", "created_at"]:
+            sort_attribute = "model_filename"
+
         favorited_models = []
         normal_models = []
         sorted_models = []
