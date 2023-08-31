@@ -2108,5 +2108,15 @@
         "en": "Åland Islands",
         "es": "Islas Aland",
         "pt": "Åland Islands"
+    },
+    "Ícone de seta para cima": {
+        "en": "Up -to -arrow icon",
+        "es": "Icono de arriba a flujo",
+        "pt": "Ícone de seta para cima"
+    },
+    "Ícone de seta pra baixo": {
+        "en": "Down arrow icon",
+        "es": "Icono de flecha hacia abajo",
+        "pt": "Ícone de seta pra baixo"
     }
 }

@@ -755,14 +755,14 @@ export async function sortProjectsBy(sort_attribute) {
         sort_image.style.transform = "";
 
         let translate_response = await apiCaller("translate", {
-            "key": "Ícone de seta pra baixo"
+            "key": "Ícone de seta para baixo"
         });
         sort_image.alt = translate_response["success"]
     } else {
         sort_image.style.transform = "rotate(180 deg)";
 
         let translate_response = await apiCaller("translate", {
-            "key": "Ícone de seta pra cima"
+            "key": "Ícone de seta para cima"
         });
         sort_image.alt = translate_response["success"]
     }
