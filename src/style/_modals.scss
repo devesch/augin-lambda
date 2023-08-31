@@ -149,3 +149,27 @@
 .input-default--share-modal {
     margin-bottom: unset !important;
 }
+
+.toggle-password-button,
+.main-form .toggle-password-button {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    right: 1rem;
+    padding: 0;
+    background: none;
+    border: none;
+
+    img {
+        vertical-align: middle
+    }
+
+}
+
+.input-password {
+    position: relative;
+}
+
+.input-password__icon-show-password-off {
+    cursor: pointer;
+}
