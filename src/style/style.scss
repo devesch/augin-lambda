@@ -1381,7 +1381,8 @@ input[list]::-ms-clear {
     width: max-content;
     z-index: 1;
     
-    button {
+    button,
+    .button {
         background-color: unset;
         border: unset;
         width: 100%;
@@ -1393,11 +1394,13 @@ input[list]::-ms-clear {
         padding: 1rem 1rem; 
     }
 
-    button:hover {
+    button:hover,
+    .button:hover {
         background-color: colors.color("color-neutral-300");
     }
 
-    button:active {
+    button:active,
+    .button:active {
         background-color: colors.color("color-neutral-200");
     }
 
