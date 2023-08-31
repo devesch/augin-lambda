@@ -1527,9 +1527,9 @@ input[list]::-ms-clear {
 }
 
 .model-in-processing {
-    display: flex;
-    flex-direction: row;
+    display: grid;
     gap: 1rem;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     align-items: center;
 
