@@ -1532,6 +1532,11 @@ input[list]::-ms-clear {
     gap: 1rem;
     justify-content: space-between;
     align-items: center;
+
+    p {
+        flex-grow: 1;
+    }
+
 }
 
 .model-in-processing__progress-container {
@@ -1539,6 +1544,7 @@ input[list]::-ms-clear {
     flex-direction: row;
     gap: 1rem;
     align-items: center;
+    flex-grow: 1;
 
     progress {
         width: 100%;
