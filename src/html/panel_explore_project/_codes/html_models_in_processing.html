@@ -1,7 +1,10 @@
 <li class="model-in-processing">
-    <p>{{model_filename_val}} {{model_was_processed_where_val}}</p>
+    <strong class="model-in-processing__name">{{model_filename_val}} {{model_was_processed_where_val}}</strong>
     <div class="model-in-processing__progress-container">
-        <progress value="{{model_processing_percentage_val}}" max="100"></progress>
+        <div class="model-in-processing__label-container">
+            <p class="model-in-processing__label">{{Arquivo em processamento}}</p>
+            <progress value="{{model_processing_percentage_val}}" max="100"></progress>
+        </div>
         <button class="delete-processing-project-button button--icon" onclick="js.index.deleteModelProcessing('{{model_id_val}}')">
             <img src="{{cdn_val}}/assets/icons/trash-red.svg" alt="">
         </button>
