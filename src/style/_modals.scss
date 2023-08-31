@@ -25,7 +25,7 @@
 .content-modal {
     background-color: colors.color("color-neutral-100");
     margin: 2rem auto;
-    padding: 6rem 2rem 4rem;
+    padding: 1rem 2rem;
     box-shadow: shadows.$shadow-md;
     border-radius: 5px;
     max-width: 600px;
@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
 
-    padding: 0 2rem;
+    padding: 0;
 
     h1 {
         text-align: center;
@@ -69,14 +69,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    padding-left: 2rem;
+    margin-bottom: 2rem;
+    padding: 0;
     gap: 1rem;
     flex-wrap: wrap;
 }
 
 .modal-header-title {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
