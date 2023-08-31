@@ -76,7 +76,7 @@
             <div>
                 <div class="floating-input">
                     <input type="hidden" id="model_id_filename_input">
-                    <input type="text" name="model_filename" value="" id="model_filename_input" placeholder="" required autofocus maxlength="500">
+                    <input type="text" name="model_filename" value="" id="model_filename_input" placeholder="" required autofocus minlength="1" maxlength="500">
                     <label for="model_filename">{{Nome atual do arquivo}}</label>
                 </div>
             </div>
@@ -144,6 +144,109 @@
             <div class="modal-button-container">
                 <button class="button--modal button--cancel-modal ghost" onclick="js.index.closeModal('.modal.share-modal')">Cancelar</button>
                 <button class="button--modal" onclick="js.index.updateModelPassword('project_password_input')" id="update_model_password_button">Aplicar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="select-category-modal" class="modal select-category-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Selecionar categoria}}</h1>
+        </div>
+        <div class="modal-content">
+            <ul class="select-category-list">
+                <li>
+                    <input type="radio" name="select_category" id="select_category_1">
+                    <label for="select_category_1">
+                        <img src="{{cdn_val}}/assets/icons/ios-snow.svg" alt="" width="24" height="24">
+                        <p>{{Ar condicionado}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_2">
+                    <label for="select_category_2">
+                        <img src="{{cdn_val}}/assets/icons/water-outline.svg" alt="" width="24" height="24">
+                        <p>{{Hidrosanitário}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_3">
+                    <label for="select_category_3">
+                        <img src="{{cdn_val}}/assets/icons/home-outline.svg" alt="" width="24" height="24">
+                        <p>{{Arquitetura}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_4">
+                    <label for="select_category_4">
+                        <img src="{{cdn_val}}/assets/icons/flame-outline.svg" alt="" width="24" height="24">
+                        <p>{{Incêndio}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_5">
+                    <label for="select_category_5">
+                        <img src="{{cdn_val}}/assets/icons/flash-outline.svg" alt="" width="24" height="24">
+                        <p>{{Elétrica}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_6">
+                    <label for="select_category_6">
+                        <img src="{{cdn_val}}/assets/icons/globe-outline.svg" alt="" width="24" height="24">
+                        <p>{{Infraestrutura}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_7">
+                    <label for="select_category_7">
+                        <img src="{{cdn_val}}/assets/icons/extension-puzzle-outline.svg" alt="" width="24" height="24">
+                        <p>{{Estrutural}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_8">
+                    <label for="select_category_8">
+                        <img src="{{cdn_val}}/assets/icons/cafe-outline.svg" alt="" width="24" height="24">
+                        <p>{{Interiores}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_9">
+                    <label for="select_category_9">
+                        <img src="{{cdn_val}}/assets/icons/hammer-outline.svg" alt="" width="24" height="24">
+                        <p>{{Executivo}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_10">
+                    <label for="select_category_10">
+                        <img src="{{cdn_val}}/assets/icons/file-tray-full-outline.svg" alt="" width="24" height="24">
+                        <p>{{Projetos federado}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_11">
+                    <label for="select_category_11">
+                        <img src="{{cdn_val}}/assets/icons/balloon-outline.svg" alt="" width="24" height="24">
+                        <p>{{Gás}}</p>
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" name="select_category" id="select_category_12">
+                    <label for="select_category_12">
+                        <img src="{{cdn_val}}/assets/icons/documents-outline.svg" alt="" width="24" height="24">
+                        <p>{{Outros}}</p>
+                    </label>
+                </li>
+            </ul>
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_filename_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.select-category-modal')" class="ghost">{{Cancelar}}</button>
+                <button>{{Salvar}}</button>
             </div>
         </div>
     </div>
