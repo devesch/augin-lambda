@@ -466,21 +466,6 @@ export function activateAuginSubscriptionSelection() {
     }
 }
 
-export function openExploreMenu() {
-    if (buttons[i].contains(clickTarget)) {
-        if (currentMenu.classList.contains("none")) {
-            currentMenu.classList.remove("none");
-            buttons[i].setAttribute("aria-expanded", "true");
-        } else {
-            currentMenu.classList.add("none");
-            buttons[i].setAttribute("aria-expanded", "false");
-        }
-    } else {
-        currentMenu.classList.add("none");
-        buttons[i].setAttribute("aria-expanded", "false");
-    }
-}
-
 /**
  * 
  * @param {NodeListOf HTMLButtonElement} buttons 
@@ -516,7 +501,8 @@ export function activateExploreMenuButton(clickTarget) {
 /**
  * 
  */
-export function toggleExploreMenu(button) {
+export function toggleExploreMenu(button, event) {
+    event.preventDefault();
     let menu = document.getElementById(button.getAttribute("aria-controls"));
     if (menu.classList.contains("none")) {
         menu.classList.remove("none");
