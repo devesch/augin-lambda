@@ -318,6 +318,11 @@ input[type="checkbox"] + label {
         align-items: center;
     }
 
+    input:read-only + label,
+    input[readonly] + label {
+        background-color: unset;
+    }
+
     img {
         vertical-align: middle;
     }
