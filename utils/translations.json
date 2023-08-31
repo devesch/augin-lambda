@@ -1264,6 +1264,11 @@
         "es": "Nombre",
         "pt": "Nome"
     },
+    "Nome atual do arquivo": {
+        "en": "Current file name",
+        "es": "Nombre de archivo actual",
+        "pt": "Nome atual do arquivo"
+    },
     "Nome completo": {
         "en": "Full name",
         "es": "Nombre completo",
@@ -1538,6 +1543,11 @@
         "en": "To go out",
         "es": "Salir",
         "pt": "Sair"
+    },
+    "Salvar": {
+        "en": "To save",
+        "es": "Ahorrar",
+        "pt": "Salvar"
     },
     "Samoa": {
         "en": "Samoa",

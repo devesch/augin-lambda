@@ -75,16 +75,15 @@
                 <div class="floating-input">
                     <input type="hidden" id="model_id_filename_input">
                     <input type="text" name="model_filename" value="" id="model_filename_input" placeholder="" required autofocus maxlength="500">
-                    <label for="model_filename">{{Nome do Projeto}}</label>
+                    <label for="model_filename">{{Nome atual do arquivo}}</label>
                 </div>
-                <p class="input-hint">{{Digite o novo nome desejado para seu projeto.}}</p>
             </div>
             <span class="error" style="{{error_msg_visibility_val}}" id="model_filename_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
                 <button onclick="js.index.closeModal('.modal.rename-modal')" class="ghost">{{Cancelar}}</button>
-                <button onclick="js.index.saveModelFilename()">{{Renomear}}</button>
+                <button onclick="js.index.saveModelFilename()">{{Salvar}}</button>
             </div>
         </div>
     </div>

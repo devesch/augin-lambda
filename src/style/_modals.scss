@@ -76,8 +76,9 @@
 }
 
 .modal-header-title {
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: colors.color("color-black");
 }
 
 .share-modal__project-name {
