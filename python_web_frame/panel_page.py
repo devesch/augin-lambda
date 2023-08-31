@@ -46,7 +46,7 @@ class PanelPage(BasePage):
                 for model_id in self.user.user_dicts["files"]:
                     folder_models.append(Dynamo().get_model_by_id(model_id))
 
-                folder_models = ModelController().sort_models(folder_models)
+                folder_models = ModelController().sort_models(folder_models, self.post.get("sort_attribute"), self.post.get("sort_reverse"))
                 for index, model in enumerate(folder_models):
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
 

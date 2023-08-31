@@ -59,7 +59,8 @@ class ModelController:
             Dynamo().update_entity(model, "model_upload_path_bin", bin_model_key)
             Dynamo().update_entity(model, "model_upload_path_mini_bin", mini_bin_model_key)
 
-    def sort_models(self, models):
+    def sort_models(self, models, sort_attribute="model_filename", sort_reverse=False):
+        sort_reverse = sort_reverse == "True"
         favorited_models = []
         normal_models = []
         sorted_models = []
@@ -69,8 +70,14 @@ class ModelController:
                     favorited_models.append(model)
                 else:
                     normal_models.append(model)
-        favorited_models = Sort().sort_dict_list(favorited_models, "created_at", reverse=False, integer=True)
-        normal_models = Sort().sort_dict_list(normal_models, "created_at", reverse=False, integer=True)
+
+        if sort_attribute == "model_filename":
+            favorited_models = Sort().sort_dict_list(favorited_models, sort_attribute, reverse=sort_reverse, integer=False)
+            normal_models = Sort().sort_dict_list(normal_models, sort_attribute, reverse=sort_reverse, integer=False)
+        else:
+            favorited_models = Sort().sort_dict_list(favorited_models, sort_attribute, reverse=sort_reverse, integer=True)
+            normal_models = Sort().sort_dict_list(normal_models, sort_attribute, reverse=sort_reverse, integer=True)
+
         sorted_models.extend(favorited_models)
         sorted_models.extend(normal_models)
         return sorted_models

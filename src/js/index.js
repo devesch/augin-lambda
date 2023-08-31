@@ -644,8 +644,14 @@ export async function updateModelFavorite(model_id, model_is_favorite) {
 
 export async function showUserDicts() {
     var user_folder_rows_tbody = document.getElementById("user_folder_rows_tbody");
+    var sort_attribute_input = document.getElementById("sort_attribute_input");
+    var sort_reverse_input = document.getElementById("sort_reverse_input");
 
-    let panel_create_project_user_dicts_html_response = await apiCaller("panel_create_project_user_dicts_html", {});
+    let panel_create_project_user_dicts_html_response = await apiCaller("panel_create_project_user_dicts_html", {
+        "sort_attribute": sort_attribute_input.value,
+        "sort_reverse": sort_reverse_input.value,
+    });
+
     user_folder_rows_tbody.innerHTML = panel_create_project_user_dicts_html_response["success"];
 }
 
@@ -731,12 +737,13 @@ export async function togglePasswordText(button, input_id) {
 
 
 export async function sortProjectsBy(sort_attribute) {
+    console.log("Running sortProjectsBy");
     let sort_attribute_input = document.getElementById("sort_attribute_input");
     let sort_reverse_input = document.getElementById("sort_reverse_input");
     let sort_span = document.getElementById(sort_attribute + "_sort_span");
 
-    if (sort_attribute_input.value == sort_attribute) {
-        if (sort_reverse_input.value == "True") {
+    if (sort_attribute_input.value === sort_attribute) {
+        if (sort_reverse_input.value === "True") {
             sort_reverse_input.value = "False"
         } else {
             sort_reverse_input.value = "True"
@@ -744,11 +751,13 @@ export async function sortProjectsBy(sort_attribute) {
     }
     sort_attribute_input.value = sort_attribute;
 
-    if (sort_reverse_input.value == "False") {
-        sort_span.value = "v"
+    if (sort_reverse_input.value === "False") {
+        sort_span.innerHTML = "v"
     } else {
-        sort_span.value = "^"
+        sort_span.innerHTML = "^"
     }
+
+    showUserDicts();
 }
 
 
