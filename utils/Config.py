@@ -58,7 +58,7 @@ lambda_constants = {
     "current_language": "pt",
     "tmp_path": tmp_path,
     "kms_key_id": kms_key_id,
-    "pagination_size": "100",
+    "available_categories": ["Air conditioning", "Architecture", "Electric", "Structural", "Executive", "Gas", "Hydraulics", "Fire", "Infrastructure", "Interiors", "Federated", "Others"],
 }
 
 

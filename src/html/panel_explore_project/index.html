@@ -14,7 +14,7 @@
                 Upgrade
             </button>
             <button class="ghost my-plan__title-container__button">
-                <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="Notificações" width="24" height="24">
+                <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="{{Notificações}}" width="24" height="24">
             </button>
         </div>
     </div>
@@ -55,9 +55,9 @@
             <input hidden id="sort_reverse_input" value="False">
             <thead>
                 <tr>
-                    <th onclick="js.index.sortProjectsBy('model_filename')" colspan="1">{{Nome}} <img id="model_filename_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="Ícone de seta pra baixo" width="24" height="24"></th>
-                    <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}} <img id="created_at_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="Ícone de seta pra baixo" width="24" height="24"></th>
-                    <th onclick="js.index.sortProjectsBy('model_filesize_ifc')" colspan="2">{{Tamanho}} <img id="model_filesize_ifc_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="Ícone de seta pra baixo" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('model_filename')" colspan="1">{{Nome}} <img id="model_filename_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('model_filesize_ifc')" colspan="2">{{Tamanho}} <img id="model_filesize_ifc_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
                 </tr>
             </thead>
             <tbody id="user_folder_rows_tbody">
@@ -101,7 +101,7 @@
             <input hidden id="update_model_id_input">
             <h2 class="share-modal__project-name" id="share_project_name_span"></h2>
             <div class="qrcode-container">
-                <img class="qrcode__image" src="" id="model_share_link_qrcode_img" width="128" height="128" alt="QRCODE">
+                <img class="qrcode__image" src="" id="model_share_link_qrcode_img" width="128" height="128" alt="{{QRCODE}}">
                 <div class="qrcode__input-container">
                     <input class="qrcode__input" value="" id="copy_share_link_input" readonly>
                     <div class="qrcode__button-container">
@@ -133,7 +133,7 @@
                 <div class="input-default input-password input-default--share-modal">
                     <input placeholder="Definir Senha" type="password" name="project_password" value="" id="project_password_input" autocapitalize="off" autocorrect="off">
                     <button type="button" class="toggle-password-button button--icon" onclick="js.index.togglePasswordText(this, 'project_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
-                        <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="Icone de olho" width="24" height="24">
+                        <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="{{Ícone de olho}}" width="24" height="24">
                     </button>
                 </div>
                 <p>Opcional: Preencha para proteger seu link</p>
@@ -157,85 +157,85 @@
         <div class="modal-content">
             <ul class="select-category-list">
                 <li>
-                    <input type="radio" name="select_category" id="select_category_1">
-                    <label for="select_category_1">
+                    <input type="radio" name="select_category" value="Air conditioning" id="Air conditioning">
+                    <label for="Air conditioning">
                         <img src="{{cdn_val}}/assets/icons/ios-snow.svg" alt="" width="24" height="24">
                         <p>{{Ar condicionado}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_2">
-                    <label for="select_category_2">
+                    <input type="radio" name="select_category" value="Architecture" id="Architecture">
+                    <label for="Architecture">
                         <img src="{{cdn_val}}/assets/icons/water-outline.svg" alt="" width="24" height="24">
                         <p>{{Hidrosanitário}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_3">
-                    <label for="select_category_3">
+                    <input type="radio" name="select_category" value="Electric" id="Electric">
+                    <label for="Electric">
                         <img src="{{cdn_val}}/assets/icons/home-outline.svg" alt="" width="24" height="24">
                         <p>{{Arquitetura}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_4">
-                    <label for="select_category_4">
+                    <input type="radio" name="select_category" value="Structural" id="Structural">
+                    <label for="Structural">
                         <img src="{{cdn_val}}/assets/icons/flame-outline.svg" alt="" width="24" height="24">
                         <p>{{Incêndio}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_5">
-                    <label for="select_category_5">
+                    <input type="radio" name="select_category" value="Executive" id="Executive">
+                    <label for="Executive">
                         <img src="{{cdn_val}}/assets/icons/flash-outline.svg" alt="" width="24" height="24">
                         <p>{{Elétrica}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_6">
-                    <label for="select_category_6">
+                    <input type="radio" name="select_category" value="Gas" id="Gas">
+                    <label for="Gas">
                         <img src="{{cdn_val}}/assets/icons/globe-outline.svg" alt="" width="24" height="24">
                         <p>{{Infraestrutura}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_7">
-                    <label for="select_category_7">
+                    <input type="radio" name="select_category" value="Hydraulics" id="Hydraulics">
+                    <label for="Hydraulics">
                         <img src="{{cdn_val}}/assets/icons/extension-puzzle-outline.svg" alt="" width="24" height="24">
                         <p>{{Estrutural}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_8">
-                    <label for="select_category_8">
+                    <input type="radio" name="select_category" value="Fire" id="Fire">
+                    <label for="Fire">
                         <img src="{{cdn_val}}/assets/icons/cafe-outline.svg" alt="" width="24" height="24">
                         <p>{{Interiores}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_9">
-                    <label for="select_category_9">
+                    <input type="radio" name="select_category" value="Infrastructure" id="Infrastructure">
+                    <label for="Infrastructure">
                         <img src="{{cdn_val}}/assets/icons/hammer-outline.svg" alt="" width="24" height="24">
                         <p>{{Executivo}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_10">
-                    <label for="select_category_10">
+                    <input type="radio" name="select_category" value="Interiors" id="Interiors">
+                    <label for="Interiors">
                         <img src="{{cdn_val}}/assets/icons/file-tray-full-outline.svg" alt="" width="24" height="24">
                         <p>{{Projetos federado}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_11">
-                    <label for="select_category_11">
+                    <input type="radio" name="select_category" value="Federated" id="Federated">
+                    <label for="Federated">
                         <img src="{{cdn_val}}/assets/icons/balloon-outline.svg" alt="" width="24" height="24">
                         <p>{{Gás}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" id="select_category_12">
-                    <label for="select_category_12">
+                    <input type="radio" name="select_category" value="Others" id="Others">
+                    <label for="Others">
                         <img src="{{cdn_val}}/assets/icons/documents-outline.svg" alt="" width="24" height="24">
                         <p>{{Outros}}</p>
                     </label>
@@ -245,8 +245,9 @@
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
+                <input hidden id="model_id_selected_category_input">
                 <button onclick="js.index.closeModal('.modal.select-category-modal')" class="ghost">{{Cancelar}}</button>
-                <button>{{Salvar}}</button>
+                <button onclick="js.index.updateModelCategory()">{{Salvar}}</button>
             </div>
         </div>
     </div>

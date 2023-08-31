@@ -32,6 +32,7 @@ class Model:
         self.model_filesize_mini_bin = "0"
 
         self.model_upload_path = ""
+        self.model_category = ""
 
         self.model_password = ""
         self.model_is_password_protected = False

@@ -737,7 +737,6 @@ export async function togglePasswordText(button, input_id) {
 
 
 export async function sortProjectsBy(sort_attribute) {
-    console.log("Running sortProjectsBy");
     let sort_attribute_input = document.getElementById("sort_attribute_input");
     let sort_reverse_input = document.getElementById("sort_reverse_input");
     let sort_image = document.getElementById(sort_attribute + "_sort_image");
@@ -753,22 +752,79 @@ export async function sortProjectsBy(sort_attribute) {
 
     if (sort_reverse_input.value === "False") {
         sort_image.style.transform = "";
-
         let translate_response = await apiCaller("translate", {
             "key": "Ícone de seta para baixo"
         });
         sort_image.alt = translate_response["success"]
     } else {
         sort_image.style.transform = "rotate(180deg)";
-
         let translate_response = await apiCaller("translate", {
             "key": "Ícone de seta para cima"
         });
         sort_image.alt = translate_response["success"]
     }
 
+    var sort_images = document.querySelectorAll('[id$="_sort_image"]');
+    for (let image of sort_images) {
+        if (sort_image.id != image.id) {
+            image.style.display = "none";
+        } else {
+            image.style.display = "";
+        }
+    }
     showUserDicts();
 }
+
+
+
+export async function openCategoryModal(model_id, model_category) {
+    var model_id_selected_category_input = document.getElementById("model_id_selected_category_input");
+    var model_filename_error_span = document.getElementsByName("model_filename_error_span");
+
+    model_id_selected_category_input.value = model_id;
+    model_filename_error_span.innerHTML = "";
+
+    var select_category_inputs = document.getElementsByName("select_category");
+    for (let category of select_category_inputs) {
+        if (category.checked) {
+            category.checked = false;
+        }
+    }
+
+    if (model_category != "") {
+        var model_category_radio_input = document.getElementById(model_category);
+        model_category_radio_input.checked = true;
+    }
+
+    openModal(".modal.select-category-modal");
+}
+
+export async function updateModelCategory() {
+    var model_id_selected_category_input = document.getElementById("model_id_selected_category_input");
+    var select_category_inputs = document.getElementsByName("select_category");
+    var model_filename_error_span = document.getElementsByName("model_filename_error_span");
+
+    var selected_category = "";
+
+    for (let cat of select_category_inputs) {
+        if (cat.checked) {
+            selected_category = cat.id;
+        }
+    }
+
+    let update_model_response = await apiCaller("update_model", {
+        "model_id": model_id_selected_category_input.value,
+        "model_category": selected_category
+    });
+
+    if ("error" in update_model_response) {
+        model_filename_error_span.innerHTML = update_model_response["error"];
+    }
+
+    showUserDicts();
+    closeModal(".modal.select-category-modal");
+}
+
 
 
 document.addEventListener("DOMContentLoaded", function (event) {

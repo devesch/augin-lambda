@@ -1359,6 +1359,11 @@
         "es": "Nuestro equipo está trabajando para resolver la situación lo antes posible.",
         "pt": "Nossa equipe está trabalhando para resolver a situação o mais rápido possível."
     },
+    "Notificações": {
+        "en": "Notifications",
+        "es": "Notificaciones",
+        "pt": "Notificações"
+    },
     "Nova Senha": {
         "en": "New Password",
         "es": "Nueva contraseña",
@@ -1528,6 +1533,11 @@
         "en": "Puerto Rico",
         "es": "Puerto Rico",
         "pt": "Puerto Rico"
+    },
+    "QRCODE": {
+        "en": "Qrcode",
+        "es": "Código QR",
+        "pt": "QRCODE"
     },
     "Qatar": {
         "en": "Qatar",
@@ -2108,6 +2118,11 @@
         "en": "Åland Islands",
         "es": "Islas Aland",
         "pt": "Åland Islands"
+    },
+    "Ícone de olho": {
+        "en": "Eye icon",
+        "es": "Icono de los ojos",
+        "pt": "Ícone de olho"
     },
     "Ícone de seta para baixo": {
         "en": "Down arrow icon",

@@ -2,6 +2,7 @@ from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.project_controller import ProjectController
 from utils.AWS.Dynamo import Dynamo
+from utils.Config import lambda_constants
 
 
 class UpdateModel(BasePage):
@@ -9,6 +10,16 @@ class UpdateModel(BasePage):
         model = Dynamo().get_model_by_id(self.post["model_id"])
         if not model["model_user_email"] == self.user.user_email:
             return {"error": "project doesnt belong to user"}
+
+        if self.post.get("model_category"):
+            if model.get("model_is_federated"):
+                model["model_category"] = "Federated"
+                Dynamo().update_entity(model, "model_category", model["model_category"])
+            if self.post.get("model_category") in lambda_constants["available_categories"]:
+                model["model_category"] = self.post.get("model_category")
+                Dynamo().update_entity(model, "model_category", model["model_category"])
+            else:
+                return {"error": "A categoria selecionada é inválida."}
 
         if self.post.get("model_is_favorite"):
             if self.post["model_is_favorite"] == "True":
