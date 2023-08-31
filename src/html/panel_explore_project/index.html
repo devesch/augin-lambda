@@ -70,11 +70,6 @@
     <div class="content-modal max-width">
         <div class="modal-header">
             <h1 class="modal-header-title">{{Compartilhar}}</h1>
-            <div class="content-close">
-                <button class="close close-button" onclick="js.index.closeModal('.modal.share-modal')">
-                    <img src="{{cdn_val}}/assets/icons/close.svg" width="10" height="10" alt="Botão de fechar o modal">
-                </button>
-            </div>
         </div>
         <div class="modal-content">
             <input hidden id="update_model_id_input">
@@ -105,7 +100,7 @@
                 <p>Opcional: Preencha para proteger seu link</p>
             </div>
             <div class="modal-button-container">
-                <button class="button--modal button--cancel-modal" onclick="js.index.closeModal('.modal.share-modal')">Cancelar</button>
+                <button class="button--modal button--cancel-modal ghost" onclick="js.index.closeModal('.modal.share-modal')">Cancelar</button>
                 <button class="button--modal" onclick="js.index.updateModelPassword('project_password_input')" id="update_model_password_button">Aplicar</button>
             </div>
         </div>

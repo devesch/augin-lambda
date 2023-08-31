@@ -79,3 +79,73 @@
     font-size: 1rem;
     font-weight: bold;
 }
+
+.share-modal__project-name {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.qrcode-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.qrcode__image {
+    width: 100%;
+    max-width: 8rem;
+}
+
+.qrcode__input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.qrcode__button-container {
+    margin-top: unset;
+}
+
+.qrcode__input {
+    border: 1px solid color("color-neutral-900");
+    background-color: transparent;
+    padding: 0.15rem;
+}
+
+.qrcode__input:focus {
+    outline: 1px solid color("color-primary-500");
+}
+
+.qrcode__button {
+    background-color: color("color-primary-500");
+    color: color("white");
+    font-weight: bold;
+    border: 1px solid color("color-primary-500");
+    padding: 0.15rem 0.5rem;
+    font-size: .875rem;
+}
+
+.share-protection-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.project-password-container {
+    p {
+        text-align: right;
+        font-size: .875rem;
+    }
+}
+
+.input-default--share-modal {
+    margin-bottom: unset !important;
+}
