@@ -22,6 +22,14 @@ class Model:
         self.model_upload_path_xml = ""
         self.model_upload_path_aug = ""
         self.model_upload_path_sd_aug = ""
+        self.model_upload_path_bin = ""
+        self.model_upload_path_mini_bin = ""
+
+        self.model_filesize_xml = ""
+        self.model_filesize_aug = ""
+        self.model_filesize_sd_aug = ""
+        self.model_filesize_bin = ""
+        self.model_filesize_mini_bin = ""
 
         self.model_upload_path = ""
 

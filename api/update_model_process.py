@@ -3,6 +3,7 @@ from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.project_controller import ProjectController
 from utils.AWS.Dynamo import Dynamo
+from utils.AWS.S3 import S3
 
 
 class UpdateModelProcess(BasePage):
@@ -43,7 +44,9 @@ class UpdateModelProcess(BasePage):
             Dynamo().update_entity(model, "model_xml_memory_usage", model["model_xml_memory_usage"])
             Dynamo().update_entity(model, "model_xml_completed", model["model_xml_completed"])
             Dynamo().update_entity(model, "model_xml_to_dynamo_start", model["model_xml_to_dynamo_start"])
+            ModelController().generate_bin_files(model, self.post["output_bucket"], self.post["output_key"])
             ProjectController().add_project_to_process_xml_to_dynamo(self.post["model_id"], self.post["output_bucket"], self.post["output_key"], self.event.requestContext["domainName"])
+
         if self.post["output_format"] == "aug":
             model["model_aug_completed"] = str(time.time())
             model["model_aug_memory_usage"] = str(self.post["max_memory_usage"])
@@ -66,6 +69,12 @@ class UpdateModelProcess(BasePage):
         Dynamo().update_entity(model, "model_processing_percentage", model["model_processing_percentage"])
 
         if model["model_processing_percentage"] == "100":
+            model["model_filesize_xml"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_xml"])
+            model["model_filesize_aug"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_aug"])
+            model["model_filesize_sd_aug"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_sd_aug"])
+            model["model_filesize_bin"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_bin"])
+            model["model_filesize_mini_bin"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_mini_bin"])
+
             model = ModelController().calculate_model_memory_usage_in_gbs(model)
             model = ModelController().calculate_model_total_time(model)
             Dynamo().delete_entity(model)

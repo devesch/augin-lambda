@@ -78,6 +78,13 @@ class S3:
             return False
 
     def get_filesize(self, bucket, key):
+        try:
+            head_response = self.get_s3_client().head_object(Bucket=bucket, Key=key)
+            return head_response["ContentLength"]
+        except:
+            return "0"
+
+    def get_filesize(self, bucket, key):
         response = self.get_s3_client().head_object(Bucket=bucket, Key=key)
         return str(response["ContentLength"])
 

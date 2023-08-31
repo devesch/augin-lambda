@@ -1,4 +1,5 @@
 import json
+import os
 from utils.Code import Code
 
 codes = {}
@@ -11,6 +12,13 @@ class ReadWrite:
         if cls._instance is None:
             cls._instance = super(ReadWrite, cls).__new__(cls, *args, **kwargs)
         return cls._instance
+
+    def zip_file(self, file_to_be_ziped_location, zip_destiny_location):
+        import zipfile
+
+        with zipfile.ZipFile(zip_destiny_location, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as myzip:
+            myzip.write(file_to_be_ziped_location, arcname=os.path.basename(file_to_be_ziped_location))
+            print("Zip Generated " + zip_destiny_location)
 
     def read_html(self, filename, common_changes=None):
         import copy

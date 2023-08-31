@@ -3,6 +3,7 @@ from objects.Model import Model
 from utils.Config import lambda_constants
 from utils.AWS.S3 import S3
 from utils.AWS.Sqs import Sqs
+from utils.AWS.Ses import Ses
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
 from utils.utils.Generate import Generate
@@ -21,6 +22,40 @@ class ModelController:
         if cls._instance is None:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
+
+    def generate_bin_files(self, model, output_bucket, output_key):
+        bin_location = lambda_constants["tmp_path"] + "model_bin.bin"
+        mini_bin_location = lambda_constants["tmp_path"] + "mini_model_bin.bin"
+
+        bin_zip_location = lambda_constants["tmp_path"] + "model_bin.zip"
+        mini_bin_zip_location = lambda_constants["tmp_path"] + "model_mini_bin.zip"
+
+        ReadWrite().delete_files_inside_a_folder(lambda_constants["tmp_path"])
+
+        S3().download_file(output_bucket, output_key, lambda_constants["tmp_path"] + "model_xml.zip")
+        xml_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "model_xml.zip", "xml")
+
+        import xml_binary
+        import importlib
+        import time
+
+        importlib.reload(xml_binary)
+
+        xml_binary.run_xml_binary(xml_location, lambda_constants["tmp_path"] + "model_xml.zip")
+        time.sleep(2)
+        if not os.path.exists(bin_location):
+            raise Exception("Unable to generate bin files")
+        else:
+            ReadWrite().zip_file(bin_location, bin_zip_location)
+            bin_model_key = output_key.replace("-xml.zip", "-bin.zip")
+            S3().upload_file(output_bucket, bin_model_key, bin_zip_location)
+
+            ReadWrite().zip_file(mini_bin_location, mini_bin_zip_location)
+            mini_bin_model_key = output_key.replace("-xml.zip", "-mini-bin.zip")
+            S3().upload_file(output_bucket, mini_bin_model_key, mini_bin_zip_location)
+
+            Dynamo().update_entity(model, "model_upload_path_bin", bin_model_key)
+            Dynamo().update_entity(model, "model_upload_path_mini_bin", mini_bin_model_key)
 
     def sort_models(self, models):
         favorited_models = []
@@ -81,12 +116,12 @@ class ModelController:
         ifc_location = None
         ifcs_locations = []
         if self.is_zip_using_magic_number(lambda_constants["tmp_path"] + "original_file"):
-            self.extract_zip_file(lambda_constants["tmp_path"] + "original_file", lambda_constants["tmp_path"] + "unzip")
+            ReadWrite().extract_zip_file(lambda_constants["tmp_path"] + "original_file", lambda_constants["tmp_path"] + "unzip")
             ifc_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
             if not ifc_location:
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
             if self.is_zip_using_magic_number(ifc_location):
-                self.extract_zip_file(ifc_location, lambda_constants["tmp_path"] + "unzipunzip")
+                ReadWrite().extract_zip_file(ifc_location, lambda_constants["tmp_path"] + "unzipunzip")
                 ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzipunzip", ["ifc", "fbx"])
             else:
                 ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
@@ -123,7 +158,7 @@ class ModelController:
             else:
                 model = self.generate_new_model(user.user_email, os.path.basename(ifc_location))
 
-            self.zip_file(ifc_location, lambda_constants["tmp_path"] + "file_ok.zip")
+            ReadWrite().zip_file(ifc_location, lambda_constants["tmp_path"] + "file_ok.zip")
 
             model["model_filename_zip"] = Generate().generate_short_id() + ".zip"
             model["model_upload_path_zip"] = model["model_upload_path"] + model["model_filename_zip"]
@@ -286,19 +321,6 @@ class ModelController:
 
     def get_model_id_from_uploaded_file(self, uploaded_file):
         return uploaded_file.split("/")[-2]
-
-    def extract_zip_file(self, zip_file_path, extract_path):
-        import zipfile
-
-        with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-            zip_ref.extractall(extract_path)
-
-    def zip_file(self, file_to_be_ziped_location, zip_destiny_location):
-        import zipfile
-
-        with zipfile.ZipFile(zip_destiny_location, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as myzip:
-            myzip.write(file_to_be_ziped_location, arcname=os.path.basename(file_to_be_ziped_location))
-            print("Zip Generated " + zip_destiny_location)
 
     def is_ifc_file(self, file_path):
         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
