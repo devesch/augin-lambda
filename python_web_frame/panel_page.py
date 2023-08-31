@@ -66,7 +66,6 @@ class PanelPage(BasePage):
                         html.esc("html_need_to_upgrade_your_plan", self.show_html_need_to_upgrade_your_plan(index))
 
                     html.esc("model_share_link_val", model["model_share_link"])
-
                     html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
                     html.esc("model_is_password_protected_val", model["model_is_password_protected"])
                     html.esc("model_password_val", model["model_password"])
@@ -76,9 +75,11 @@ class PanelPage(BasePage):
                         html.esc("html_model_is_favorite", self.show_html_model_is_favorite())
                         html.esc("opposite_model_is_favorite_val", False)
                         html.esc("favorite_or_unfavorite_val", self.translate("Desfavoritar"))
+                        html.esc("favorite_icon_val", "star")
                     else:
                         html.esc("opposite_model_is_favorite_val", True)
                         html.esc("favorite_or_unfavorite_val", self.translate("Favoritar"))
+                        html.esc("favorite_icon_val", "star_black")
 
                     full_html.append(str(html))
         return "".join(full_html)
