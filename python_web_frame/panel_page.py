@@ -69,7 +69,8 @@ class PanelPage(BasePage):
                     html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
                     html.esc("model_is_password_protected_val", model["model_is_password_protected"])
                     html.esc("model_password_val", model["model_password"])
-                    html.esc("model_upload_path_zip_val", S3().generate_presigned_url(lambda_constants["processed_bucket"], model["model_upload_path_zip"]))
+                    # html.esc("model_upload_path_zip_val", S3().generate_presigned_url(lambda_constants["processed_bucket"], model["model_upload_path_zip"]))
+                    html.esc("model_upload_path_zip_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"])
 
                     if model.get("model_is_favorite"):
                         html.esc("html_model_is_favorite", self.show_html_model_is_favorite())

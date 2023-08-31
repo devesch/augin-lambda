@@ -730,12 +730,12 @@ export async function togglePasswordText(button, input_id) {
     if (input.type == "password") {
         input.type = "text";
         button.setAttribute("aria-label", PASSWORD_HIDE_LABEL);
-        icon_img.src = icon_img.src.replace(PASSWORD_HIDE_ICON, PASSWORD_SHOW_ICON);
+        icon_img.src = icon_img.src.replace(PASSWORD_SHOW_ICON, PASSWORD_HIDE_ICON);
         return;
     }
     input.type = "password";
     button.setAttribute("aria-label", PASSWORD_SHOW_LABEL);
-    icon_img.src = icon_img.src.replace(PASSWORD_SHOW_ICON, PASSWORD_HIDE_ICON);
+    icon_img.src = icon_img.src.replace(PASSWORD_HIDE_ICON, PASSWORD_SHOW_ICON);
     return;
 }
 
