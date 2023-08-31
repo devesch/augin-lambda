@@ -9,6 +9,7 @@ class Model:
         self.model_project_id = model_project_id
         self.model_user_email = user_email
 
+        self.model_name = ""
         self.model_filename = ""
         self.model_filename_zip = ""
         self.model_format = ""

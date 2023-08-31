@@ -28,9 +28,9 @@ class UpdateModel(BasePage):
                 model["model_is_favorite"] = False
             Dynamo().put_entity(model)
 
-        if self.post.get("model_filename"):
-            model["model_filename"] = self.post.get("model_filename").strip()
-            Dynamo().update_entity(model, "model_filename", model["model_filename"])
+        if self.post.get("model_name"):
+            model["model_name"] = self.post.get("model_name").strip()
+            Dynamo().update_entity(model, "model_name", model["model_name"])
 
         if "model_is_password_protected" in self.post:
             if self.post.get("model_is_password_protected"):

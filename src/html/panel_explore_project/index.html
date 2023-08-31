@@ -51,11 +51,11 @@
             </menu>
         </div>
         <table class="explore__table">
-            <input hidden id="sort_attribute_input" value="model_filename">
+            <input hidden id="sort_attribute_input" value="model_name">
             <input hidden id="sort_reverse_input" value="False">
             <thead>
                 <tr>
-                    <th onclick="js.index.sortProjectsBy('model_filename')" colspan="1">{{Nome}} <img id="model_filename_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('model_name')" colspan="1">{{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
                     <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
                     <th onclick="js.index.sortProjectsBy('model_filesize_ifc')" colspan="2">{{Tamanho}} <img id="model_filesize_ifc_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
                 </tr>
@@ -75,17 +75,17 @@
         <div class="modal-content">
             <div>
                 <div class="floating-input">
-                    <input type="hidden" id="model_id_filename_input">
-                    <input type="text" name="model_filename" value="" id="model_filename_input" placeholder="" required autofocus minlength="1" maxlength="500">
-                    <label for="model_filename">{{Nome atual do arquivo}}</label>
+                    <input type="hidden" id="model_id_name_input">
+                    <input type="text" name="model_name" value="" id="model_name_input" placeholder="" required autofocus minlength="1" maxlength="500">
+                    <label for="model_name">{{Nome atual do arquivo}}</label>
                 </div>
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_filename_error_span">
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_name_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
                 <button onclick="js.index.closeModal('.modal.rename-modal')" class="ghost">{{Cancelar}}</button>
-                <button onclick="js.index.saveModelFilename()">{{Salvar}}</button>
+                <button onclick="js.index.saveModelName()">{{Salvar}}</button>
             </div>
         </div>
     </div>
@@ -241,7 +241,7 @@
                     </label>
                 </li>
             </ul>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_filename_error_span">
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_category_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">

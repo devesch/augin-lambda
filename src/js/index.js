@@ -655,27 +655,27 @@ export async function showUserDicts() {
     user_folder_rows_tbody.innerHTML = panel_create_project_user_dicts_html_response["success"];
 }
 
-export async function openRenameModel(model_id, model_filename) {
-    var model_filename_input = document.getElementById("model_filename_input");
-    var model_id_filename_input = document.getElementById("model_id_filename_input");
+export async function openRenameModel(model_id, model_name) {
+    var model_name_input = document.getElementById("model_name_input");
+    var model_id_name_input = document.getElementById("model_id_name_input");
 
-    model_filename_input.value = model_filename;
-    model_id_filename_input.value = model_id;
+    model_name_input.value = model_name;
+    model_id_name_input.value = model_id;
     openModal('.modal.rename-modal');
 }
 
-export async function saveModelFilename() {
-    var model_filename_input = document.getElementById("model_filename_input");
+export async function saveModelName() {
+    var model_name_input = document.getElementById("model_name_input");
     var model_id_filename_input = document.getElementById("model_id_filename_input");
-    var model_filename_error_span = document.getElementById("model_filename_error_span");
+    var model_name_error_span = document.getElementById("model_name_error_span");
 
     let update_model_response = await apiCaller("update_model", {
         "model_id": model_id_filename_input.value,
-        "model_filename": model_filename_input.value
+        "model_name": model_name_input.value
     });
 
     if ("error" in update_model_response) {
-        model_filename_error_span.innerHTML = update_model_response["error"]
+        model_name_error_span.innerHTML = update_model_response["error"]
     }
     closeModal('.modal.rename-modal');
     showUserDicts()
@@ -779,10 +779,10 @@ export async function sortProjectsBy(sort_attribute) {
 
 export async function openCategoryModal(model_id, model_category) {
     var model_id_selected_category_input = document.getElementById("model_id_selected_category_input");
-    var model_filename_error_span = document.getElementsByName("model_filename_error_span");
+    var model_category_error_span = document.getElementsByName("model_category_error_span");
 
     model_id_selected_category_input.value = model_id;
-    model_filename_error_span.innerHTML = "";
+    model_category_error_span.innerHTML = "";
 
     var select_category_inputs = document.getElementsByName("select_category");
     for (let category of select_category_inputs) {
@@ -802,7 +802,7 @@ export async function openCategoryModal(model_id, model_category) {
 export async function updateModelCategory() {
     var model_id_selected_category_input = document.getElementById("model_id_selected_category_input");
     var select_category_inputs = document.getElementsByName("select_category");
-    var model_filename_error_span = document.getElementsByName("model_filename_error_span");
+    var model_category_error_span = document.getElementsByName("model_category_error_span");
 
     var selected_category = "";
 
@@ -818,7 +818,7 @@ export async function updateModelCategory() {
     });
 
     if ("error" in update_model_response) {
-        model_filename_error_span.innerHTML = update_model_response["error"];
+        model_category_error_span.innerHTML = update_model_response["error"];
     }
 
     showUserDicts();

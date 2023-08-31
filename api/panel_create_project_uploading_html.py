@@ -4,4 +4,4 @@ from utils.AWS.Dynamo import Dynamo
 
 class PanelCreateProjectUploadingHtml(PanelPage):
     def run(self):
-        return {"success": self.show_html_uploading_models(self.post.get("model_filename"), self.post.get("index"))}
+        return {"success": self.show_html_uploading_models(self.post.get("model_name"), self.post.get("index"))}

@@ -59,6 +59,7 @@ class PanelPage(BasePage):
                         html.esc("model_icon_val", "note")
 
                     html.esc("model_filename_val", model["model_filename"])
+                    html.esc("model_name_val", model["model_name"])
                     html.esc("model_created_at_val", ModelController().convert_model_created_at_to_date(model["created_at"]))
                     html.esc("model_filesize_ifc_val", ModelController().convert_model_filesize_ifc_to_mb(model["model_filesize_ifc"]))
 

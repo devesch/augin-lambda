@@ -59,12 +59,12 @@ class ModelController:
             Dynamo().update_entity(model, "model_upload_path_bin", bin_model_key)
             Dynamo().update_entity(model, "model_upload_path_mini_bin", mini_bin_model_key)
 
-    def sort_models(self, models, sort_attribute="model_filename", sort_reverse=False):
+    def sort_models(self, models, sort_attribute="model_name", sort_reverse=False):
         sort_reverse = sort_reverse == "True"
         sort_reverse = not sort_reverse
 
-        if sort_attribute not in ["model_filename", "model_filesize_ifc", "created_at"]:
-            sort_attribute = "model_filename"
+        if sort_attribute not in ["model_name", "model_filesize_ifc", "created_at"]:
+            sort_attribute = "model_name"
 
         favorited_models = []
         normal_models = []
@@ -78,7 +78,7 @@ class ModelController:
 
         if sort_attribute == "model_filesize_ifc":
             sort_reverse = not sort_reverse
-        if sort_attribute == "model_filename":
+        if sort_attribute == "model_name":
             favorited_models = Sort().sort_dict_list(favorited_models, sort_attribute, reverse=sort_reverse, integer=False)
             normal_models = Sort().sort_dict_list(normal_models, sort_attribute, reverse=sort_reverse, integer=False)
         else:
@@ -114,6 +114,7 @@ class ModelController:
         new_model = Model(email, model_id, model_id, "not_created").__dict__
         new_model["model_upload_path"] = datetime.datetime.fromtimestamp(int(float(new_model["created_at"]))).strftime("%Y/%m/%d") + "/" + model_id + "/"
         if filename:
+            new_model["model_name"] = filename
             new_model["model_filename"] = filename
         Dynamo().put_entity(new_model)
         return new_model
