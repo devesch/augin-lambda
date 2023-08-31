@@ -354,9 +354,6 @@ export function detectClickOutsideElement() {
     let openMobileMenuButton = document.querySelector(".menu-mobile-open-button");
     let closeMobileMenuButton = document.querySelector(".header__mobile-close-button");
 
-    let buttons = document.querySelectorAll(".button--explore-more-options");
-    let buttonsLength = buttons.length;
-
     let exploreCreateButton = document.querySelector(".explore-create-more-options");
 
     document.addEventListener("click", function (event) {
@@ -381,9 +378,7 @@ export function detectClickOutsideElement() {
             }
         }
 
-        if (buttonsLength > 0) {
-            activateExploreMenuButton(event.target, buttons, buttonsLength);
-        }
+        activateExploreMenuButton(event.target);
 
         if (exploreCreateButton) {
             let currentMenu = document.getElementById(exploreCreateButton.getAttribute("aria-controls"));
@@ -471,28 +466,64 @@ export function activateAuginSubscriptionSelection() {
     }
 }
 
+export function openExploreMenu() {
+    if (buttons[i].contains(clickTarget)) {
+        if (currentMenu.classList.contains("none")) {
+            currentMenu.classList.remove("none");
+            buttons[i].setAttribute("aria-expanded", "true");
+        } else {
+            currentMenu.classList.add("none");
+            buttons[i].setAttribute("aria-expanded", "false");
+        }
+    } else {
+        currentMenu.classList.add("none");
+        buttons[i].setAttribute("aria-expanded", "false");
+    }
+}
+
 /**
  * 
  * @param {NodeListOf HTMLButtonElement} buttons 
  * @param {int} buttonsLength 
  */
-export function activateExploreMenuButton(clickTarget, buttons, buttonsLength) {
-    let i = 0;
-    while (i < buttonsLength) {
-        let currentMenu = document.getElementById(buttons[i].getAttribute("aria-controls"));
-        if (buttons[i].contains(clickTarget)) {
-            if (currentMenu.classList.contains("none")) {
-                currentMenu.classList.remove("none");
-                buttons[i].setAttribute("aria-expanded", "true");
+export function activateExploreMenuButton(clickTarget) {
+
+    let buttons = document.querySelectorAll(".button--explore-more-options");
+    let buttonsLength = buttons.length;
+
+    if (buttonsLength > 0) {
+
+        let i = 0;
+        while (i < buttonsLength) {
+            let currentMenu = document.getElementById(buttons[i].getAttribute("aria-controls"));
+            if (buttons[i].contains(clickTarget)) {
+                if (currentMenu.classList.contains("none")) {
+                    currentMenu.classList.remove("none");
+                    buttons[i].setAttribute("aria-expanded", "true");
+                } else {
+                    currentMenu.classList.add("none");
+                    buttons[i].setAttribute("aria-expanded", "false");
+                }
             } else {
                 currentMenu.classList.add("none");
                 buttons[i].setAttribute("aria-expanded", "false");
             }
-        } else {
-            currentMenu.classList.add("none");
-            buttons[i].setAttribute("aria-expanded", "false");
+            i++;
         }
-        i++;
+    }
+}
+
+/**
+ * 
+ */
+export function toggleExploreMenu(button) {
+    let menu = document.getElementById(button.getAttribute("aria-controls"));
+    if (menu.classList.contains("none")) {
+        menu.classList.remove("none");
+        button.setAttribute("aria-expanded", "true");
+    } else {
+        menu.classList.add("none");
+        button.setAttribute("aria-expanded", "false");
     }
 }
 
@@ -556,15 +587,6 @@ export function activateDraggableItems() {
     }
 
 }
-
-document.addEventListener("DOMContentLoaded", function (event) {
-    // your code here
-    detectClickOutsideElement();
-    activateAuginSubscriptionSelection();
-    // activateExploreMenuButton();
-    activateDraggableItems();
-});
-
 
 export async function openModalShareProject(model_id, model_name, model_share_link, model_share_link_qrcode, model_is_password_protected, model_password) {
     let share_project_name_span = document.getElementById("share_project_name_span");
@@ -632,3 +654,11 @@ export async function showUserDicts() {
     let panel_create_project_user_dicts_html_response = await apiCaller("panel_create_project_user_dicts_html", {});
     user_folder_rows_tbody.innerHTML = panel_create_project_user_dicts_html_response["success"];
 }
+
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    // your code here
+    detectClickOutsideElement();
+    activateAuginSubscriptionSelection();
+    activateDraggableItems();
+});
