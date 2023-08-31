@@ -63,7 +63,7 @@ class ModelController:
         sort_reverse = sort_reverse == "True"
         sort_reverse = not sort_reverse
 
-        if sort_attribute not in ["model_filename", "model_filesize", "created_at"]:
+        if sort_attribute not in ["model_filename", "model_filesize_ifc", "created_at"]:
             sort_attribute = "model_filename"
 
         favorited_models = []
@@ -76,8 +76,6 @@ class ModelController:
                 else:
                     normal_models.append(model)
 
-        if sort_attribute == "model_filesize":
-            sort_reverse = not sort_reverse
         if sort_attribute == "model_filename":
             favorited_models = Sort().sort_dict_list(favorited_models, sort_attribute, reverse=sort_reverse, integer=False)
             normal_models = Sort().sort_dict_list(normal_models, sort_attribute, reverse=sort_reverse, integer=False)
