@@ -33,11 +33,19 @@ export async function deleteModel(model_id) {
 }
 
 export async function deleteModelFromExplore() {
-    const model_id_delete_input = document.getElementById("model_id_delete_input");
+    var model_id_delete_input = document.getElementById("model_id_delete_input");
+    var model_delete_error_span = document.getElementById("model_delete_error_span");
+
     let model_delete_response = await apiCaller("model_delete", {
         "model_id": model_id_delete_input.value
     });
+    if ("error" in model_delete_response) {
+        model_delete_error_span.innerHTML = model_delete_response["error"]
+    }
+
     await js.index.showUserDicts();
+    closeModal(".modal.delete-modal");
+
 }
 
 
@@ -612,13 +620,15 @@ export async function openModalShareProject(model_id, model_name, model_share_li
 }
 
 export async function openDeleteModal(model_id, model_name) {
-    const delete_model_name_span = document.getElementById("delete_model_name_span");
-    const model_id_delete_input = document.getElementById("model_id_delete_input");
+    var delete_model_name_span = document.getElementById("delete_model_name_span");
+    var model_id_delete_input = document.getElementById("model_id_delete_input");
+    var model_delete_error_span = document.getElementById("model_delete_error_span");
 
     delete_model_name_span.innerText = model_name;
     model_id_delete_input.value = model_id;
+    model_delete_error_span.innerHTML = "";
     openModal(".modal.delete-modal");
-    
+
 }
 
 
@@ -655,7 +665,6 @@ export async function updateModelFavorite(model_id, model_is_favorite) {
 
     console.log(update_model_response["success"]);
     showUserDicts();
-    detectClickOutsideElement()
 }
 
 export async function showUserDicts() {
@@ -682,19 +691,19 @@ export async function openRenameModel(model_id, model_name) {
 
 export async function saveModelName() {
     var model_name_input = document.getElementById("model_name_input");
-    var model_id_filename_input = document.getElementById("model_id_filename_input");
+    var model_id_name_input = document.getElementById("model_id_name_input");
     var model_name_error_span = document.getElementById("model_name_error_span");
 
     let update_model_response = await apiCaller("update_model", {
-        "model_id": model_id_filename_input.value,
+        "model_id": model_id_name_input.value,
         "model_name": model_name_input.value
     });
 
     if ("error" in update_model_response) {
         model_name_error_span.innerHTML = update_model_response["error"]
     }
-    closeModal('.modal.rename-modal');
     showUserDicts()
+    closeModal('.modal.rename-modal');
 }
 
 export async function updateModelPassword() {
@@ -713,8 +722,8 @@ export async function updateModelPassword() {
         model_password_error_span.innerHTML = update_model_response["error"]
         return
     }
-    closeModal('.modal.share-modal');
     showUserDicts()
+    closeModal('.modal.share-modal');
 }
 
 

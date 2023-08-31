@@ -265,13 +265,13 @@
 
                 <p>{{Tem certeza que deseja continuar?}}</p>
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_filename_error_span">
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_delete_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
                 <input type="text" id="model_id_delete_input" hidden>
                 <button onclick="js.index.closeModal('.modal.delete-modal')" class="ghost">{{Cancelar}}</button>
-                <button onclick="js.index.deleteModel()">{{Confirmar}}</button>
+                <button onclick="js.index.deleteModelFromExplore()">{{Confirmar}}</button>
             </div>
         </div>
     </div>
