@@ -582,15 +582,19 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     let project_is_password_protected_input = document.getElementById("project_is_password_protected_input");
     let project_password_div = document.getElementById("project_password_div");
     let project_password_input = document.getElementById("project_password_input");
+    let model_password_error_span = document.getElementById("model_password_error_span");
 
     if (model_is_password_protected == "True") {
         project_is_password_protected_input.checked = "checked";
         project_password_div.style.display = "block";
+        project_password_div.classList.add("open");
     } else {
         project_is_password_protected_input.checked = "";
         project_password_div.style.display = "none";
+        project_password_div.classList.remove("open");
     }
 
+    model_password_error_span.innerHTML = "";
     project_password_input.value = model_password;
     update_model_id_input.value = model_id;
     share_project_name_span.innerText = model_name;
@@ -620,6 +624,11 @@ export async function copyValueToClipboard(input) {
 export function showHideElement(element_id) {
     var element = document.getElementById(element_id);
     element.classList.toggle("open");
+    if (element.classList.contains("open")) {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
 }
 
 export async function updateModelFavorite(model_id, model_is_favorite) {
@@ -666,6 +675,25 @@ export async function saveModelFilename() {
     showUserDicts()
 }
 
+export async function updateModelPassword() {
+    var model_id = document.getElementById("update_model_id_input");
+    var project_is_password_protected_input = document.getElementById("project_is_password_protected_input");
+    var project_password_input = document.getElementById("project_password_input");
+    var model_password_error_span = document.getElementById("model_password_error_span");
+
+    let update_model_response = await apiCaller("update_model", {
+        "model_id": model_id.value,
+        "model_password": project_password_input.value,
+        "model_is_password_protected": project_is_password_protected_input.checked
+    });
+
+    if ("error" in update_model_response) {
+        model_password_error_span.innerHTML = update_model_response["error"]
+        return
+    }
+    closeModal('.modal.share-modal');
+    showUserDicts()
+}
 
 
 

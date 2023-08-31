@@ -33,6 +33,9 @@ class Model:
 
         self.model_upload_path = ""
 
+        self.model_password = ""
+        self.model_is_password_protected = False
+
         self.model_sw_version = ""
         self.model_plugin_version = ""
         self.model_thumb_filename = ""
@@ -40,8 +43,6 @@ class Model:
         self.model_share_link = ""
         self.model_share_link_qrcode = ""
         self.model_name = str(time.time())
-        self.model_is_password_protected = False
-        self.model_password = ""
         self.model_work = ""
         self.model_region = ""
         self.model_city = ""

@@ -137,6 +137,9 @@
                 </div>
                 <p>Opcional: Preencha para proteger seu link</p>
             </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_password_error_span">
+                {{error_msg_val}}
+            </span>
             <div class="modal-button-container">
                 <button class="button--modal button--cancel-modal ghost" onclick="js.index.closeModal('.modal.share-modal')">Cancelar</button>
                 <button class="button--modal" onclick="js.index.updateModelPassword('project_password_input')" id="update_model_password_button">Aplicar</button>
@@ -148,7 +151,7 @@
 <script>
     window.onload = async function () {
         while (true) {
-            await js.index.sleep(4000);
+            await js.index.sleep(10000);
             await js.index.processingProjectsUpdateUl();
         }
     };
