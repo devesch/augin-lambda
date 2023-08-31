@@ -394,6 +394,16 @@
         "es": "Compartir por código QR o enlace",
         "pt": "Compartilhe por QR Code ou link"
     },
+    "Confirmar": {
+        "en": "Confirm",
+        "es": "Confirmar",
+        "pt": "Confirmar"
+    },
+    "Confirmar exclusão de arquivo": {
+        "en": "Confirm file deletion",
+        "es": "Confirmar la eliminación de archivos",
+        "pt": "Confirmar exclusão de arquivo"
+    },
     "Congo": {
         "en": "Congo",
         "es": "Congo",
@@ -1978,6 +1988,11 @@
         "en": "last seen",
         "es": "ultima vez visto",
         "pt": "Visto por último"
+    },
+    "Você está excluindo definitivamente o arquivo": {
+        "en": "You are definitely excluding the file",
+        "es": "Definitivamente estás excluyendo el archivo",
+        "pt": "Você está excluindo definitivamente o arquivo"
     },
     "Você não está conseguindo se lembrar da sua senha? Não se preocupe": {
         "en": "Are you having trouble remembering your password?Don't worry",

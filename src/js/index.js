@@ -30,6 +30,13 @@ export async function deleteModel(model_id) {
         "model_id": model_id
     });
     await js.index.processingProjectsUpdateUl();
+}
+
+export async function deleteModelFromExplore() {
+    const model_id_delete_input = document.getElementById("model_id_delete_input");
+    let model_delete_response = await apiCaller("model_delete", {
+        "model_id": model_id_delete_input.value
+    });
     await js.index.showUserDicts();
 }
 
@@ -604,6 +611,15 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     openModal('.modal.share-modal');
 }
 
+export async function openDeleteModal(model_id, model_name) {
+    const delete_model_name_span = document.getElementById("delete_model_name_span");
+    const model_id_delete_input = document.getElementById("model_id_delete_input");
+
+    delete_model_name_span.innerText = model_name;
+    model_id_delete_input.value = model_id;
+    openModal(".modal.delete-modal");
+    
+}
 
 
 export async function copyValueToClipboard(input) {
