@@ -69,8 +69,6 @@ class UpdateModelProcess(BasePage):
         Dynamo().update_entity(model, "model_processing_percentage", model["model_processing_percentage"])
 
         if model["model_processing_percentage"] == "100":
-            raise Exception("Send me event payload")
-
             model["model_filesize_xml"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_xml"])
             model["model_filesize_aug"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_aug"])
             model["model_filesize_sd_aug"] = S3().get_filesize(self.post["output_bucket"], model["model_upload_path_sd_aug"])
