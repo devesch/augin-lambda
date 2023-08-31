@@ -1541,6 +1541,7 @@ input[list]::-ms-clear {
     align-items: center;
 
     progress {
+        width: 100%;
         flex-grow: 1;
     }
 
