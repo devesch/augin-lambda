@@ -1497,7 +1497,7 @@ input[list]::-ms-clear {
     gap: 1rem;
     grid-template-columns: 1fr 1fr;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
 }
 
 .model-in-processing__name {
@@ -1515,14 +1515,15 @@ input[list]::-ms-clear {
     flex-direction: column;
     -ms-flex-direction: column;
     justify-content: right;
-    gap: .25rem;
+    gap: 0;
+    width: 100%;
 }
 
 .model-in-processing__progress-container {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    align-items: center;
+    align-items: end;
     flex-grow: 1;
 
     progress {

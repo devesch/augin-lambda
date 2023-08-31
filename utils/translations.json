@@ -89,6 +89,11 @@
         "es": "Armenia",
         "pt": "Armenia"
     },
+    "Arquivo em processamento": {
+        "en": "Processing file",
+        "es": "Archivo de procesamiento",
+        "pt": "Arquivo em processamento"
+    },
     "Arraste e solte seu arquivo (IFC ou FBX) aqui ou": {
         "en": "Drag and drop your file (IFC or FBX) here or",
         "es": "Arrastre y suelte su archivo (IFC o FBX) aquí o",
