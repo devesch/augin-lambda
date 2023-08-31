@@ -759,7 +759,7 @@ export async function sortProjectsBy(sort_attribute) {
         });
         sort_image.alt = translate_response["success"]
     } else {
-        sort_image.style.transform = "rotate(180 deg)";
+        sort_image.style.transform = "rotate(180deg)";
 
         let translate_response = await apiCaller("translate", {
             "key": "Ícone de seta para cima"
