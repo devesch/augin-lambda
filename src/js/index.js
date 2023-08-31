@@ -740,7 +740,7 @@ export async function sortProjectsBy(sort_attribute) {
     console.log("Running sortProjectsBy");
     let sort_attribute_input = document.getElementById("sort_attribute_input");
     let sort_reverse_input = document.getElementById("sort_reverse_input");
-    let sort_span = document.getElementById(sort_attribute + "_sort_span");
+    let sort_image = document.getElementById(sort_attribute + "_sort_image");
 
     if (sort_attribute_input.value === sort_attribute) {
         if (sort_reverse_input.value === "True") {
@@ -752,9 +752,19 @@ export async function sortProjectsBy(sort_attribute) {
     sort_attribute_input.value = sort_attribute;
 
     if (sort_reverse_input.value === "False") {
-        sort_span.innerHTML = "v"
+        sort_image.style.transform = "";
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Ícone de seta pra baixo"
+        });
+        sort_image.alt = translate_response["success"]
     } else {
-        sort_span.innerHTML = "^"
+        sort_image.style.transform = "rotate(180 deg)";
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Ícone de seta pra cima"
+        });
+        sort_image.alt = translate_response["success"]
     }
 
     showUserDicts();
