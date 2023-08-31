@@ -85,8 +85,16 @@ input[readonly] {
     background-color: colors.color("color-neutral-200");
 }
 
-input:read-only + label,
-input[readonly] + label {
+.input:read-only + label,
+.input[readonly] + label,
+input[type="text"]:read-only + label,
+input[type="text"][readonly] + label,
+input[type="search"]:read-only + label,
+input[type="search"][readonly] + label,
+input[type="email"]:read-only + label,
+input[type="email"][readonly] + label
+input[type="password"]:read-only + label,
+input[type="password"][readonly] + label {
     background-color: colors.color("color-neutral-200");
 }
 
@@ -316,11 +324,6 @@ input[type="checkbox"] + label {
         gap: 0.5rem;
         padding: .5rem 1rem;
         align-items: center;
-    }
-
-    input:read-only + label,
-    input[readonly] + label {
-        background-color: unset;
     }
 
     img {
