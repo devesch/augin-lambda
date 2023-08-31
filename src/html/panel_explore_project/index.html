@@ -65,6 +65,35 @@
     </section>
 
 </main>
+<div id="rename-modal" class="modal rename-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Renomear}}</h1>
+            <div class="content-close">
+                <button class="close close-button" onclick="js.index.closeModal('.modal.rename-modal')">
+                    <img src="{{cdn_val}}/assets/icons/close.svg" width="10" height="10" alt="Botão de fechar o modal">
+                </button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="login__input-container">
+                <div class="floating-input">
+                    <input type="hidden" id="model_id_filename_input">
+                    <input type="text" name="model_filename" value="" id="model_filename_input" placeholder="" required autofocus maxlength="500">
+                    <label for="model_filename">{{Nome do Projeto}}</label>
+                </div>
+                <p class="input-hint">{{Digite o novo nome desejado para seu projeto.}}</p>
+            </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_filename_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="login__button-container">
+                <button onclick="js.index.saveModelFilename()">{{Renomear}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div id="share-modal" class="modal share-modal" aria-hidden="true">
     <div class="content-modal max-width">

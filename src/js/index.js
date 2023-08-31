@@ -640,6 +640,33 @@ export async function showUserDicts() {
     user_folder_rows_tbody.innerHTML = panel_create_project_user_dicts_html_response["success"];
 }
 
+export async function openRenameModel(model_id, model_filename) {
+    var model_filename_input = document.getElementById("model_filename_input");
+    var model_id_filename_input = document.getElementById("model_id_filename_input");
+
+    model_filename_input.value = model_filename;
+    model_id_filename_input.value = model_id;
+    openModal('.modal.rename-modal');
+}
+
+export async function saveModelFilename() {
+    var model_filename_input = document.getElementById("model_filename_input");
+    var model_id_filename_input = document.getElementById("model_id_filename_input");
+    var model_filename_error_span = document.getElementById("model_filename_error_span");
+
+    let update_model_response = await apiCaller("update_model", {
+        "model_id": model_id_filename_input.value,
+        "model_filename": model_filename_input.value
+    });
+
+    if ("error" in update_model_response) {
+        model_filename_error_span.innerHTML = update_model_response["error"]
+    }
+    closeModal('.modal.rename-modal');
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", function (event) {
     // your code here

@@ -17,4 +17,8 @@ class UpdateModel(BasePage):
                 model["model_is_favorite"] = False
             Dynamo().put_entity(model)
 
+        if self.post.get("model_filename"):
+            model["model_filename"] = self.post.get("model_filename").strip()
+            Dynamo().update_entity(model, "model_filename", model["model_filename"])
+
         return {"success": "model_is_favorite updated"}
