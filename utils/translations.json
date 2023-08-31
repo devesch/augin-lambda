@@ -74,6 +74,11 @@
         "es": "Apagar",
         "pt": "Apagar"
     },
+    "Ar condicionado": {
+        "en": "Air conditioning",
+        "es": "Aire condicionado",
+        "pt": "Ar condicionado"
+    },
     "Argentina": {
         "en": "Argentina",
         "es": "Argentina",
@@ -88,6 +93,11 @@
         "en": "Armenia",
         "es": "Armenia",
         "pt": "Armenia"
+    },
+    "Arquitetura": {
+        "en": "Architecture",
+        "es": "Arquitectura",
+        "pt": "Arquitetura"
     },
     "Arquivo em processamento": {
         "en": "Processing file",
@@ -589,6 +599,11 @@
         "es": "El Salvador",
         "pt": "El Salvador"
     },
+    "Elétrica": {
+        "en": "Electrical",
+        "es": "Eléctrico",
+        "pt": "Elétrica"
+    },
     "Email": {
         "en": "Email",
         "es": "Correo electrónico",
@@ -644,6 +659,11 @@
         "es": "Estonia",
         "pt": "Estonia"
     },
+    "Estrutural": {
+        "en": "Structural",
+        "es": "Estructural",
+        "pt": "Estrutural"
+    },
     "Eswatini": {
         "en": "Eswatini",
         "es": "Eswatini",
@@ -663,6 +683,11 @@
         "en": "delete template",
         "es": "eliminar plantilla",
         "pt": "Excluir modelo"
+    },
+    "Executivo": {
+        "en": "Executive",
+        "es": "Ejecutivo",
+        "pt": "Executivo"
     },
     "Exibindo": {
         "en": "Showing",
@@ -844,6 +869,11 @@
         "es": "Guayana",
         "pt": "Guyana"
     },
+    "Gás": {
+        "en": "Gas",
+        "es": "Gas",
+        "pt": "Gás"
+    },
     "Haiti": {
         "en": "Haiti",
         "es": "Haití",
@@ -853,6 +883,11 @@
         "en": "Heard Island and McDonald Islands",
         "es": "Escuché Island y Islas McDonald",
         "pt": "Heard Island and McDonald Islands"
+    },
+    "Hidrosanitário": {
+        "en": "Hydrosanitary",
+        "es": "Hidrosanitario",
+        "pt": "Hidrosanitário"
     },
     "Histórico de pagamento": {
         "en": "payment history",
@@ -899,6 +934,11 @@
         "es": "importa tu archivo",
         "pt": "Importe seu arquivo"
     },
+    "Incêndio": {
+        "en": "Fire",
+        "es": "Fuego",
+        "pt": "Incêndio"
+    },
     "India": {
         "en": "India",
         "es": "India",
@@ -908,6 +948,11 @@
         "en": "Indonesia",
         "es": "Indonesia",
         "pt": "Indonesia"
+    },
+    "Infraestrutura": {
+        "en": "Infrastructure",
+        "es": "Infraestructura",
+        "pt": "Infraestrutura"
     },
     "Insira abaixo o código que enviamos para o email": {
         "en": "Insert below the code we sent to the email",
@@ -923,6 +968,11 @@
         "en": "Enter a valid email to create your account",
         "es": "Ingrese un correo electrónico válido para crear su cuenta",
         "pt": "Insira um email válido para criar sua conta"
+    },
+    "Interiores": {
+        "en": "Interior",
+        "es": "Interior",
+        "pt": "Interiores"
     },
     "Iran, Islamic Republic of": {
         "en": "Iran, Islamic Republic of",
@@ -1334,6 +1384,11 @@
         "es": "Omán",
         "pt": "Oman"
     },
+    "Outros": {
+        "en": "Others",
+        "es": "Otros",
+        "pt": "Outros"
+    },
     "Pago": {
         "en": "Paid out",
         "es": "Pagado",
@@ -1443,6 +1498,11 @@
         "en": "Projects",
         "es": "Proyectos",
         "pt": "Projetos"
+    },
+    "Projetos federado": {
+        "en": "Federated Projects",
+        "es": "Proyectos federados",
+        "pt": "Projetos federado"
     },
     "Projetos federados": {
         "en": "federated projects",

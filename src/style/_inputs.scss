@@ -287,3 +287,38 @@ input[type="checkbox"] + label {
     }
 
 }
+
+.select-category-list {
+    columns: 2;
+    list-style: none;
+
+    li {
+        position: relative;
+    }
+
+    input {
+        position: absolute;
+        left: unset;
+        top: unset;
+        opacity: 0;
+        width: 0.1rem;
+        height: 0.1rem;
+    }
+
+    input:checked + label {
+        background-color: colors.color("color-primary-300");
+    }
+
+    label {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: .5rem 1rem;
+        align-items: center;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+}
