@@ -33,12 +33,19 @@ export async function deleteModelProcessing(model_id) {
     await js.index.processingProjectsUpdateUl();
 }
 
+
 export async function processingProjectsUpdateUl() {
     console.log("Running processingProjectsUpdateUl");
     let models_in_process_ul = document.getElementById("models_in_process_ul");
+    let amount_of_models_in_processing_before_update = models_in_process_ul.getElementsByTagName("li").length;
+
     let panel_explore_projects_models_in_processing_html_response = await apiCaller("panel_explore_projects_models_in_processing_html", {});
     models_in_process_ul.innerHTML = panel_explore_projects_models_in_processing_html_response["success"];
-    // await animatingProgressBar();
+
+    let amount_of_models_in_processing_after_update = models_in_process_ul.getElementsByTagName("li").length;
+    if (amount_of_models_in_processing_before_update != amount_of_models_in_processing_after_update) {
+        showUserDicts();
+    }
 }
 
 
