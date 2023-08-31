@@ -71,8 +71,10 @@ class PanelPage(BasePage):
                     if model.get("model_is_favorite"):
                         html.esc("html_model_is_favorite", self.show_html_model_is_favorite())
                         html.esc("opposite_model_is_favorite_val", False)
+                        html.esc("favorite_or_unfavorite_val", self.translate("Desfavoritar"))
                     else:
                         html.esc("opposite_model_is_favorite_val", True)
+                        html.esc("favorite_or_unfavorite_val", self.translate("Favoritar"))
 
                     full_html.append(str(html))
         return "".join(full_html)
