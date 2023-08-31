@@ -76,6 +76,8 @@ class ModelController:
                 else:
                     normal_models.append(model)
 
+        if sort_attribute == "model_filesize_ifc":
+            sort_reverse = not sort_reverse
         if sort_attribute == "model_filename":
             favorited_models = Sort().sort_dict_list(favorited_models, sort_attribute, reverse=sort_reverse, integer=False)
             normal_models = Sort().sort_dict_list(normal_models, sort_attribute, reverse=sort_reverse, integer=False)
