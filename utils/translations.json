@@ -504,6 +504,11 @@
         "es": "Dinamarca",
         "pt": "Denmark"
     },
+    "Desfavoritar": {
+        "en": "Disallower",
+        "es": "Rechazar",
+        "pt": "Desfavoritar"
+    },
     "Desvincular": {
         "en": "Unbind",
         "es": "Desatar",

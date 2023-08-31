@@ -11,7 +11,7 @@ class ModelDelete(BasePage):
                 if model["model_state"] == "completed":
                     user = self.load_user(model["model_user_email"])
                     user.decrease_total_count("user_completed_models_total_count")
-                    # user.update_user_datalist(model)
+                    user.remove_model_from_user_dicts(model)
                 ModelController().delete_model(model)
                 return {"success": "model deleted"}
         return {"error": "unable to delete model"}

@@ -135,9 +135,12 @@ class ModelController:
 
         for index, ifc_location in enumerate(ifcs_locations):
             if os.path.getsize(ifc_location) > int(lambda_constants["maxium_ifc_project_filesize"]):
-                return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
+                return {"error": "O projeto excede o tamanho máximo de 1Gb."}
             if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location):
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
+            if self.is_ifc_file(ifc_location):
+                if not self.is_acceptable_ifc_format(ifc_location):
+                    return {"error": "Os formartos suportados de IFC são: IFC2x3 e IFC4."}
 
         if len(ifcs_locations) > 1:
             response["has_more_than_one_file"] = True
@@ -328,6 +331,19 @@ class ModelController:
         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
             first_line = f.readline().strip()
             return first_line in ["ISO-10303-21", "ISO-10303-21;"]
+
+    def is_acceptable_ifc_format(self, file_path):
+        acceptable_versions = ["IFC2X3", "IFC4"]
+
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                if "FILE_SCHEMA" in line.upper():
+                    version_info = line.upper().split("'")
+                    if len(version_info) > 1:
+                        version = version_info[1]
+                        return version in acceptable_versions
+
+        return False
 
     def is_fbx_file(self, file_path):
         try:

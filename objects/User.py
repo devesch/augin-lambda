@@ -40,6 +40,11 @@ class User:
         self.user_dicts["files"].append(model["model_id"])
         Dynamo().put_entity(self.__dict__)
 
+    def remove_model_from_user_dicts(self, model):
+        if model["model_id"] in self.user_dicts["files"]:
+            self.user_dicts["files"].remove(model["model_id"])
+        Dynamo().put_entity(self.__dict__)
+
     def increase_total_count(self, param):
         current_value = int(getattr(self, param))
         new_value = current_value + 1

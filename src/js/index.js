@@ -25,12 +25,12 @@ export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export async function deleteModelProcessing(model_id) {
-    console.log("Running deleteModelProcessing");
+export async function deleteModel(model_id) {
     let model_delete_response = await apiCaller("model_delete", {
         "model_id": model_id
     });
     await js.index.processingProjectsUpdateUl();
+    await js.index.showUserDicts();
 }
 
 
