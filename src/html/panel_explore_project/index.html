@@ -69,11 +69,6 @@
     <div class="content-modal max-width">
         <div class="modal-header">
             <h1 class="modal-header-title">{{Renomear}}</h1>
-            <div class="content-close">
-                <button class="close close-button" onclick="js.index.closeModal('.modal.rename-modal')">
-                    <img src="{{cdn_val}}/assets/icons/close.svg" width="10" height="10" alt="Botão de fechar o modal">
-                </button>
-            </div>
         </div>
         <div class="modal-content">
             <div class="login__input-container">
@@ -87,7 +82,8 @@
             <span class="error" style="{{error_msg_visibility_val}}" id="model_filename_error_span">
                 {{error_msg_val}}
             </span>
-            <div class="login__button-container">
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.rename-modal')" class="ghost">{{Cancelar}}</button>
                 <button onclick="js.index.saveModelFilename()">{{Renomear}}</button>
             </div>
         </div>
@@ -113,11 +109,24 @@
                 </div>
             </div>
             <div class="share-protection-container">
-                <label class="switch" for="project_is_password_protected_input">
+                <!-- <label class="switch" for="project_is_password_protected_input">
                     <input onclick="js.index.showHideElement('project_password_div')" type="checkbox" name="project_is_password_protected" id="project_is_password_protected_input">
                     <div class="slider round"></div>
                 </label>
-                <label for="project_is_password_protected_input">Proteger Compartilhamento com Senha</label>
+                <label for="project_is_password_protected_input">Proteger Compartilhamento com Senha</label> -->
+
+
+                <div class="switch-container" id="project_is_password_protected_switch_div">
+                    <div class="input-container">
+                        <input onchange="js.index.showHideElement('project_password_div')" type="checkbox" name="project_is_password_protected" id="project_is_password_protected_input">
+                        <label class="switch" for="project_is_password_protected_input">
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <label for="project_is_password_protected_input">{{Proteger Compartilhamento com Senha}}</label>
+                </div>
+
+
             </div>
             <div id="project_password_div" class="project-password-container">
                 <div class="input-default input-password input-default--share-modal">

@@ -1439,6 +1439,11 @@
         "es": "Proceder",
         "pt": "Prosseguir"
     },
+    "Proteger Compartilhamento com Senha": {
+        "en": "Protect password sharing",
+        "es": "Proteger el intercambio de contraseñas",
+        "pt": "Proteger Compartilhamento com Senha"
+    },
     "Próximo": {
         "en": "Next",
         "es": "Próximo",
