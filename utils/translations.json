@@ -1179,6 +1179,11 @@
         "es": "Marruecos",
         "pt": "Morocco"
     },
+    "Mostrar senha.": {
+        "en": "Show password.",
+        "es": "Mostrar contraseña.",
+        "pt": "Mostrar senha."
+    },
     "Mover": {
         "en": "To move",
         "es": "Para mover",
@@ -1308,6 +1313,11 @@
         "en": "No",
         "es": "No",
         "pt": "Não"
+    },
+    "Ocultar senha.": {
+        "en": "Hide password.",
+        "es": "Contraseña oculta.",
+        "pt": "Ocultar senha."
     },
     "Olá": {
         "en": "Hello",

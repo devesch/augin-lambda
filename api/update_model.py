@@ -21,12 +21,15 @@ class UpdateModel(BasePage):
             model["model_filename"] = self.post.get("model_filename").strip()
             Dynamo().update_entity(model, "model_filename", model["model_filename"])
 
-        if self.post.get("model_is_password_protected"):
-            if self.post.get("model_is_password_protected") and not self.post.get("model_password"):
-                return {"error": "É necessário informar uma senha."}
+        if "model_is_password_protected" in self.post:
+            if self.post.get("model_is_password_protected"):
+                if self.post.get("model_is_password_protected") and not self.post.get("model_password"):
+                    return {"error": "É necessário informar uma senha."}
             if self.post.get("model_password"):
                 model["model_password"] = self.post.get("model_password")
+            else:
+                model["model_password"] = ""
             model["model_is_password_protected"] = self.post.get("model_is_password_protected")
             Dynamo().put_entity(model)
 
-        return {"success": "model_is_favorite updated"}
+        return {"success": "model updated"}
