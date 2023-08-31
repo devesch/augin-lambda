@@ -66,6 +66,7 @@ class PanelPage(BasePage):
                         html.esc("html_need_to_upgrade_your_plan", self.show_html_need_to_upgrade_your_plan(index))
 
                     html.esc("model_share_link_val", model["model_share_link"])
+
                     html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
                     html.esc("model_is_password_protected_val", model["model_is_password_protected"])
                     html.esc("model_password_val", model["model_password"])
