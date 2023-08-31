@@ -51,13 +51,13 @@
             </menu>
         </div>
         <table class="explore__table">
-            <input hidden id="sort_attribute_input">
-            <input hidden id="sort_reverse_input" value="True">
+            <input hidden id="sort_attribute_input" value="model_filename">
+            <input hidden id="sort_reverse_input" value="False">
             <thead>
                 <tr>
                     <th onclick="js.index.sortProjectsBy('model_filename')" colspan="1">{{Nome}} <span id="model_filename_sort_span">v</span></th>
-                    <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}}<span id="created_at_sort_span">v</span></th>
-                    <th onclick="js.index.sortProjectsBy('model_filesize')" colspan="2">{{Tamanho}}<span id="model_filesize_sort_span">v</span></th>
+                    <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}} <span id="created_at_sort_span">v</span></th>
+                    <th onclick="js.index.sortProjectsBy('model_filesize_ifc')" colspan="2">{{Tamanho}} <span id="model_filesize_ifc_sort_span">v</span></th>
                 </tr>
             </thead>
             <tbody id="user_folder_rows_tbody">

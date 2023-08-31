@@ -15,8 +15,8 @@ class Model:
         self.model_is_federated = False
         self.model_is_favorited = False
 
-        self.model_filesize = ""
-        self.model_filesize_zip = ""
+        self.model_filesize = "0"
+        self.model_filesize_zip = "0"
 
         self.model_upload_path_zip = ""
         self.model_upload_path_xml = ""
@@ -25,11 +25,11 @@ class Model:
         self.model_upload_path_bin = ""
         self.model_upload_path_mini_bin = ""
 
-        self.model_filesize_xml = ""
-        self.model_filesize_aug = ""
-        self.model_filesize_sd_aug = ""
-        self.model_filesize_bin = ""
-        self.model_filesize_mini_bin = ""
+        self.model_filesize_xml = "0"
+        self.model_filesize_aug = "0"
+        self.model_filesize_sd_aug = "0"
+        self.model_filesize_bin = "0"
+        self.model_filesize_mini_bin = "0"
 
         self.model_upload_path = ""
 

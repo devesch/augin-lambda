@@ -70,11 +70,11 @@ class UpdateModelProcess(BasePage):
         Dynamo().update_entity(model, "model_processing_percentage", model["model_processing_percentage"])
 
         if model["model_processing_percentage"] == "100":
-            model["model_filesize_xml"] = S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_xml"])
-            model["model_filesize_aug"] = S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_aug"])
-            model["model_filesize_sd_aug"] = S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_sd_aug"])
-            model["model_filesize_bin"] = S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_bin"])
-            model["model_filesize_mini_bin"] = S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_mini_bin"])
+            model["model_filesize_xml"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_xml"]))
+            model["model_filesize_aug"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_aug"]))
+            model["model_filesize_sd_aug"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_sd_aug"]))
+            model["model_filesize_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_bin"]))
+            model["model_filesize_mini_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_mini_bin"]))
 
             model = ModelController().calculate_model_memory_usage_in_gbs(model)
             model = ModelController().calculate_model_total_time(model)
