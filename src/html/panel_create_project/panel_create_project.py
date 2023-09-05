@@ -12,6 +12,7 @@ class PanelCreateProject(PanelPage):
 
     def render_get(self):
         html = super().parse_html()
+        self.check_error_msg(html, self.error_msg)
         return str(html)
 
     def render_post(self):

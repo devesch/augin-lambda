@@ -30,6 +30,7 @@
 
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
         <input hidden id="uploading_index_input" value="1">
+
         <article id="uploading_div" class="panel-create-project-uploading-container"></article>
 
         <div class="form-main-button-container">
@@ -42,6 +43,9 @@
                 </div>
                 <label for="create_federated_project_with_processed_files">{{Criar projeto federado com os arquivos processados}}</label>
             </div>
+            <span class="error" style="{{error_msg_visibility_val}}">
+                {{error_msg_val}}
+            </span>
             <button type="submit" class="form-main-button" id="submit_form_button" disabled>
                 {{Importar arquivo}}
             </button>

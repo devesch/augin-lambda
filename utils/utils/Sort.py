@@ -13,8 +13,8 @@ class Sort:
             sorted_list = sorted(dict_list, key=lambda x: x[attribute], reverse=reverse)
         return sorted_list
 
-    def sort_dict_by_keys(self, dictionary):
-        return {key: dictionary[key] for key in sorted(dictionary)}
+    def sort_dict_by_keys(self, dictionary, reverse=False):
+        return {key: dictionary[key] for key in sorted(dictionary, reverse=reverse)}
 
     def sort_dict_by_value(self, dictionary, reverse=True, integer=True):
         if integer:

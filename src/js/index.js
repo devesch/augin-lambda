@@ -26,7 +26,8 @@ export function sleep(ms) {
 }
 
 export async function deleteModel(model_id) {
-    let model_delete_response = await apiCaller("model_delete", {
+    let update_model_response = await apiCaller("update_model", {
+        "command": "delete_model",
         "model_id": model_id
     });
     await js.index.processingProjectsUpdateUl();
@@ -36,11 +37,13 @@ export async function deleteModelFromExplore() {
     var model_id_delete_input = document.getElementById("model_id_delete_input");
     var model_delete_error_span = document.getElementById("model_delete_error_span");
 
-    let model_delete_response = await apiCaller("model_delete", {
+    let update_model_response = await apiCaller("update_model", {
+        "command": "delete_model",
         "model_id": model_id_delete_input.value
     });
-    if ("error" in model_delete_response) {
-        model_delete_error_span.innerHTML = model_delete_response["error"]
+
+    if ("error" in update_model_response) {
+        model_delete_error_span.innerHTML = update_model_response["error"]
     }
 
     await js.index.showUserDicts();
@@ -111,22 +114,27 @@ export async function uploadModel(input) {
     }
 }
 
-export async function checkUploadModelFile(post_data, progress_element) {
-    console.log("Running checkUploadModelFile")
-    let message = document.getElementById("message_" + post_data["element_index"]);
-    let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
-    let model_id = document.getElementById("model_id_" + post_data["element_index"]);
-    let has_error = document.getElementById("has_error_" + post_data["element_index"]);
-    let has_more_than_one_file = document.getElementById("has_more_than_one_file_" + post_data["element_index"]);
-
+var is_checking_panel_create_project_check_file = false
+export async function checkUploadModelFile(post_data) {
+    while (is_checking_panel_create_project_check_file) {
+        await sleep(50);
+        checkIfCreateProjectSubmitButtonIsAvailable(false);
+    }
+    is_checking_panel_create_project_check_file = true
     let panel_create_project_check_file_response = await apiCaller("panel_create_project_check_file", {
         "key": post_data["key"]
     });
+
+    let message = document.getElementById("message_" + post_data["element_index"]);
+    let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
+    let model_id = document.getElementById("model_id_" + post_data["element_index"]);
+    let has_more_than_one_file = document.getElementById("has_more_than_one_file_" + post_data["element_index"]);
+    let progress_element = document.getElementById("progress_" + post_data["element_index"]);
+
     if ("error" in panel_create_project_check_file_response) {
         progress_element.classList.add("failed");
         message.innerHTML = panel_create_project_check_file_response["error"];
         delete_button.style = "";
-        has_error.value = "True";
         checkIfCreateProjectSubmitButtonIsAvailable(false);
     } else {
         progress_element.classList.add("success");
@@ -134,21 +142,20 @@ export async function checkUploadModelFile(post_data, progress_element) {
         has_more_than_one_file.value = panel_create_project_check_file_response["has_more_than_one_file"];
 
         let translate_response = await apiCaller("translate", {
-            "key": "Upload realizado com sucesso"
+            "key": "Upload realizado com sucesso."
         });
 
         message.innerHTML = translate_response["success"];
         checkIfCreateProjectSubmitButtonIsAvailable();
         checkIfCreateProjectIsFederated();
     }
-
-
+    is_checking_panel_create_project_check_file = false;
 }
 
 
 export async function checkIfCreateProjectIsFederated() {
     let federated_switch_div = document.getElementById("federated_switch_div");
-    let uploading_element_has_more_than_one_file = document.querySelectorAll(".uploading_element_has_more_than_one_file");
+    let uploading_element_has_more_than_one_file = document.getElementsByName("has_more_than_one_file");
     let uploading_element_message = document.querySelectorAll(".uploading_element_message");
 
     if (uploading_element_message.length > 1) {
@@ -170,28 +177,18 @@ export async function checkIfCreateProjectIsFederated() {
 
 export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable = true) {
     let submit_form_button = document.getElementById("submit_form_button");
-    let uploading_div = document.getElementById("uploading_div");
-    let uploading_element_errors = document.querySelectorAll(".uploading_element_with_error");
-    let uploading_element_message = document.querySelectorAll(".uploading_element_message");
+    let delete_buttons = document.querySelectorAll('[id^="delete_button_"]');
 
-    if (uploading_div.innerHTML.length < 1) {
-        submit_form_button.setAttribute("disabled", "disabled");
-        return;
-    }
-    for (let error_input of uploading_element_errors) {
-        if (error_input.value === "True") {
-            submit_form_button.setAttribute("disabled", "disabled");
-            return;
-        }
-    }
-    for (let element_message of uploading_element_message) {
-        if (element_message.innerHTML === "") {
-            submit_form_button.setAttribute("disabled", "disabled");
-            return;
-        }
-    }
     if (is_submitable) {
-        submit_form_button.removeAttribute("disabled");
+        for (let delete_button of delete_buttons) {
+            if (delete_button.style.display === "") {
+                submit_form_button.setAttribute("disabled", "disabled");
+                is_submitable = false
+            }
+        }
+        if (is_submitable) {
+            submit_form_button.removeAttribute("disabled");
+        }
     } else {
         submit_form_button.setAttribute("disabled", "disabled");
     }
@@ -220,7 +217,8 @@ const uploadWithProgressBar = (url, post_data) =>
             checkIfCreateProjectSubmitButtonIsAvailable(false);
         });
         xhr.addEventListener('load', () => {
-            checkUploadModelFile(post_data, progress_element);
+            sleep(500);
+            checkUploadModelFile(post_data);
             checkIfCreateProjectIsFederated()
             resolve({
                 status: xhr.status,
@@ -619,7 +617,7 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     openModal('.modal.share-modal');
 }
 
-export async function openDeleteModal(model_id, model_name) {
+export async function openModalDeleteProject(model_id, model_name) {
     var delete_model_name_span = document.getElementById("delete_model_name_span");
     var model_id_delete_input = document.getElementById("model_id_delete_input");
     var model_delete_error_span = document.getElementById("model_delete_error_span");
@@ -657,13 +655,11 @@ export function showHideElement(element_id) {
     }
 }
 
-export async function updateModelFavorite(model_id, model_is_favorite) {
+export async function openModalFavoriteProject(model_id, model_is_favorite) {
     let update_model_response = await apiCaller("update_model", {
         "model_id": model_id,
         "model_is_favorite": model_is_favorite
     });
-
-    console.log(update_model_response["success"]);
     showUserDicts();
 }
 
@@ -671,16 +667,30 @@ export async function showUserDicts() {
     var user_folder_rows_tbody = document.getElementById("user_folder_rows_tbody");
     var sort_attribute_input = document.getElementById("sort_attribute_input");
     var sort_reverse_input = document.getElementById("sort_reverse_input");
+    var folder_path_span = document.getElementById("folder_path_span");
+
+    var folder_id_input = document.getElementById("folder_id_input");
+    var folder_path_input = document.getElementById("folder_path_input");
+
+    var user_dicts_return_to_root_span = document.getElementById("user_dicts_return_to_root_span");
 
     let panel_create_project_user_dicts_html_response = await apiCaller("panel_create_project_user_dicts_html", {
         "sort_attribute": sort_attribute_input.value,
         "sort_reverse": sort_reverse_input.value,
+        "folder_id": folder_id_input.value,
     });
 
     user_folder_rows_tbody.innerHTML = panel_create_project_user_dicts_html_response["success"];
+    folder_path_span.innerHTML = folder_path_input.value;
+
+    if (folder_path_input.value) {
+        user_dicts_return_to_root_span.style.display = "";
+    } else {
+        user_dicts_return_to_root_span.style.display = "none";
+    }
 }
 
-export async function openRenameModel(model_id, model_name) {
+export async function openModalRenameProject(model_id, model_name) {
     var model_name_input = document.getElementById("model_name_input");
     var model_id_name_input = document.getElementById("model_id_name_input");
 
@@ -802,7 +812,7 @@ export async function sortProjectsBy(sort_attribute) {
 
 
 
-export async function openCategoryModal(model_id, model_category) {
+export async function openModalCategoryProject(model_id, model_category) {
     var model_id_selected_category_input = document.getElementById("model_id_selected_category_input");
     var model_category_error_span = document.getElementsByName("model_category_error_span");
 
@@ -858,3 +868,361 @@ document.addEventListener("DOMContentLoaded", function (event) {
     activateAuginSubscriptionSelection();
     activateDraggableItems();
 });
+
+
+
+export async function openModalUpdateProject(model_id) {
+    var model_id_update_model_input = document.getElementById("model_id_update_model_input");
+    var model_update_error_span = document.getElementById("model_update_error_span");
+    var update_model_user_folder_rows_tbody = document.getElementById("update_model_user_folder_rows_tbody");
+    var update_modal_return_folder_span = document.getElementById("update_modal_return_folder_span");
+    var update_modal_folder_path_span = document.getElementById("update_modal_folder_path_span");
+
+    update_modal_return_folder_span.style.display = "none";
+    update_modal_folder_path_span.style.display = "none";
+
+    var panel_explore_projects_modal_update_user_dicts_html_response = await apiCaller("panel_explore_projects_modal_update_user_dicts_html", {
+        "original_model_id": model_id,
+    })
+
+    model_id_update_model_input.value = model_id;
+    model_update_error_span.innerHTML = "";
+
+    update_model_user_folder_rows_tbody.innerHTML = panel_explore_projects_modal_update_user_dicts_html_response["success"];
+
+    var model_for_updates = document.getElementsByName("model_for_update");
+    for (let model_for_update of model_for_updates) {
+        model_for_update.checked = false;
+    }
+
+    openModal(".modal.update-modal");
+}
+
+
+
+
+
+export async function openModalConfirmUpdateProject() {
+    var model_id_update_model_input = document.getElementById("model_id_update_model_input");
+    var model_update_error_span = document.getElementById("model_update_error_span");
+    var model_for_updates = document.getElementsByName("model_for_update");
+    var selected_model_id = "";
+
+    for (let model_for_update of model_for_updates) {
+        if (model_for_update.checked) {
+            selected_model_id = model_for_update.value;
+        }
+    }
+
+    if (selected_model_id === "") {
+        var translate_response = await apiCaller("translate", {
+            "key": "É necessário selecionar o projeto que será usado para atualizar o projeto atual."
+        })
+        model_update_error_span.innerHTML = translate_response["success"];
+        return
+    }
+
+
+    var panel_explore_projects_modal_update_confirm_html_response = await apiCaller("panel_explore_projects_modal_update_confirm_html", {
+        "original_model_id": model_id_update_model_input.value,
+        "new_model_id": selected_model_id
+    })
+
+    var update_confirm_modal_div = document.getElementById("update_confirm_modal_div");
+    var model_update_confirm_error_span = document.getElementById("model_update_confirm_error_span");
+
+    update_confirm_modal_div.innerHTML = panel_explore_projects_modal_update_confirm_html_response["success"];
+    model_update_confirm_error_span.innerHTML = "";
+
+    closeModal(".modal.update-modal");
+    openModal(".modal.update-confirm-modal");
+}
+
+export async function closeModalConfirmUpdateProject() {
+    closeModal(".modal.update-confirm-modal");
+    openModal(".modal.update-modal");
+}
+
+export async function updateProjectFile() {
+    var model_id_update_model_input = document.getElementById("model_id_update_model_input");
+    var model_for_updates = document.getElementsByName("model_for_update");
+    var selected_model_id = "";
+    var model_update_confirm_error_span = document.getElementById("model_update_confirm_error_span");
+
+    for (let model_for_update of model_for_updates) {
+        if (model_for_update.checked) {
+            selected_model_id = model_for_update.value;
+        }
+    }
+
+    let update_model_response = await apiCaller("update_model", {
+        "command": "update_model_files",
+        "model_id": model_id_update_model_input.value,
+        "selected_model_id": selected_model_id
+    });
+
+    if ("error" in update_model_response) {
+        model_update_confirm_error_span.innerHTML = update_model_response["error"];
+    } else {
+        showUserDicts();
+        closeModal(".modal.update-confirm-modal");
+    }
+}
+
+
+
+export async function openModalCreateFolder() {
+    var create_folder_error_span = document.getElementsByName("create_folder_error_span");
+    var folder_name_input = document.getElementById("folder_name_input");
+
+    folder_name_input.value = "";
+    create_folder_error_span.innerHTML = "";
+    openModal('.modal.create-folder-modal');
+}
+
+export async function saveCreateFolder() {
+    var folder_name_input = document.getElementById("folder_name_input");
+    var folder_id_input = document.getElementById("folder_id_input");
+    var create_folder_error_span = document.getElementsByName("create_folder_error_span");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "create_folder",
+        "folder_name": folder_name_input.value,
+        "folder_id": folder_id_input.value,
+    });
+
+    if ("error" in update_user_response) {
+        create_folder_error_span.innerHTML = update_user_response["error"];
+    } else {
+        folder_name_input.value = "";
+        showUserDicts();
+        closeModal(".modal.create-folder-modal");
+    }
+}
+
+export async function openFolder(folder_id, folder_path) {
+    var folder_id_input = document.getElementById("folder_id_input");
+    var folder_path_input = document.getElementById("folder_path_input");
+    folder_id_input.value = folder_id;
+    folder_path_input.value = folder_path;
+    showUserDicts();
+}
+
+export async function openReturnFolder() {
+    var folder_id_input = document.getElementById("folder_id_input");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "get_root_folder",
+        "folder_id": folder_id_input.value
+    });
+
+    if ("success" in update_user_response) {
+        openFolder(update_user_response["success"]["folder_id"], update_user_response["success"]["folder_path"])
+    } else {
+        openFolder("", "")
+    }
+}
+
+
+
+
+export async function openModalDeleteFolder(folder_id, folder_name) {
+    var folder_delete_folder_id_input = document.getElementById("folder_delete_folder_id_input");
+    var delete_folder_name_span = document.getElementById("delete_folder_name_span");
+    var delete_folder_error_span = document.getElementById("delete_folder_error_span");
+
+    folder_delete_folder_id_input.value = folder_id;
+    delete_folder_name_span.innerHTML = folder_name;
+    delete_folder_error_span.innerHTML = "";
+    openModal('.modal.delete-folder-modal')
+}
+
+
+export async function openModalRenameFolders(folder_id) {
+    var folder_rename_folder_id = document.getElementById("folder_rename_folder_id");
+    var rename_folder_error_span = document.getElementsByName("rename_folder_error_span");
+
+    folder_rename_folder_id.value = folder_id;
+    rename_folder_error_span.innerHTML = "";
+    openModal('.modal.rename-folder-modal')
+}
+
+export async function saveRenameFolder() {
+    var folder_rename_input = document.getElementById("folder_rename_input");
+    var folder_rename_folder_id = document.getElementById("folder_rename_folder_id");
+    var rename_folder_error_span = document.getElementsByName("rename_folder_error_span");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "rename_folder",
+        "folder_new_name": folder_rename_input.value,
+        "folder_id": folder_rename_folder_id.value,
+    });
+
+    if ("error" in update_user_response) {
+        rename_folder_error_span.innerHTML = update_user_response["error"];
+    } else {
+        showUserDicts();
+        closeModal(".modal.rename-folder-modal");
+        folder_rename_input.value = "";
+    }
+}
+
+export async function saveDeleteFolder() {
+    var folder_delete_folder_id_input = document.getElementById("folder_delete_folder_id_input");
+    var delete_folder_name_span = document.getElementById("delete_folder_name_span");
+    var delete_folder_error_span = document.getElementById("delete_folder_error_span");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "delete_folder",
+        "folder_id": folder_delete_folder_id_input.value
+    });
+
+    if ("error" in update_user_response) {
+        delete_folder_error_span.innerHTML = update_user_response["error"];
+    } else {
+        showUserDicts();
+        closeModal('.modal.delete-folder-modal')
+        delete_folder_error_span.innerHTML = "";
+        delete_folder_name_span.innerHTML = "";
+    }
+}
+
+export async function FavoriteFolder(folder_id, folder_is_favorite) {
+    let update_user = await apiCaller("update_user", {
+        "command": "update_folder_favorite",
+        "folder_id": folder_id,
+        "folder_is_favorite": folder_is_favorite
+    });
+    showUserDicts();
+}
+
+
+export async function refreshUpdateModal(folder_id) {
+    var update_modal_folder_id = document.getElementById("update_modal_folder_id");
+    var update_model_user_folder_rows_tbody = document.getElementById("update_model_user_folder_rows_tbody");
+    var update_modal_folder_path_span = document.getElementById("update_modal_folder_path_span");
+    var update_modal_return_folder_span = document.getElementById("update_modal_return_folder_span");
+
+
+    var panel_explore_projects_modal_update_user_dicts_html_response = await apiCaller("panel_explore_projects_modal_update_user_dicts_html", {
+        "folder_id": folder_id,
+    })
+
+    if (folder_id) {
+        var update_user_response = await apiCaller("update_user", {
+            "command": "get_folder",
+            "folder_id": folder_id
+        });
+        update_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        update_modal_folder_path_span.style.display = "";
+        update_modal_return_folder_span.style.display = "";
+    } else {
+        update_modal_folder_path_span.style.display = "none";
+        update_modal_return_folder_span.style.display = "none";
+    }
+
+    update_modal_folder_id.value = folder_id;
+    update_model_user_folder_rows_tbody.innerHTML = panel_explore_projects_modal_update_user_dicts_html_response["success"];
+
+}
+
+export async function openReturnFolderModalUpdate() {
+    var update_modal_folder_id = document.getElementById("update_modal_folder_id");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "get_root_folder",
+        "folder_id": update_modal_folder_id.value
+    });
+    if ("success" in update_user_response) {
+        refreshUpdateModal(update_user_response["success"]["folder_id"]);
+    } else {
+        refreshUpdateModal("");
+    }
+}
+
+
+export async function openModalMoveProject(model_id) {
+    var model_id_move_modal_input = document.getElementById("model_id_move_modal_input");
+    var move_modal_error_span = document.getElementById("move_modal_error_span");
+    var move_model_user_folder_rows_tbody = document.getElementById("move_model_user_folder_rows_tbody");
+    var move_modal_return_folder_span = document.getElementById("move_modal_return_folder_span");
+    var move_modal_folder_path_span = document.getElementById("move_modal_folder_path_span");
+    var move_modal_folder_id = document.getElementById("move_modal_folder_id");
+
+    move_modal_return_folder_span.style.display = "none";
+    move_modal_folder_path_span.style.display = "none";
+
+    var panel_explore_projects_modal_update_user_dicts_html_response = await apiCaller("panel_explore_projects_modal_move_user_dicts_html", {})
+
+    model_id_move_modal_input.value = model_id;
+    move_modal_error_span.innerHTML = "";
+    move_modal_folder_id.value = "";
+    move_model_user_folder_rows_tbody.innerHTML = panel_explore_projects_modal_update_user_dicts_html_response["success"];
+
+
+    openModal(".modal.move-modal");
+}
+
+
+export async function refreshMoveModal(folder_id) {
+    var move_modal_folder_id = document.getElementById("move_modal_folder_id");
+    var move_model_user_folder_rows_tbody = document.getElementById("move_model_user_folder_rows_tbody");
+    var move_modal_return_folder_span = document.getElementById("move_modal_return_folder_span");
+    var move_modal_folder_path_span = document.getElementById("move_modal_folder_path_span");
+
+
+    var panel_explore_projects_modal_move_user_dicts_html_response = await apiCaller("panel_explore_projects_modal_move_user_dicts_html", {
+        "folder_id": folder_id,
+    })
+
+    if (folder_id) {
+        var update_user_response = await apiCaller("update_user", {
+            "command": "get_folder",
+            "folder_id": folder_id
+        });
+        move_modal_return_folder_span.style.display = "";
+        move_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        move_modal_folder_path_span.style.display = "";
+    } else {
+        move_modal_return_folder_span.style.display = "none";
+        move_modal_folder_path_span.style.display = "none";
+    }
+
+    move_modal_folder_id.value = folder_id;
+    move_model_user_folder_rows_tbody.innerHTML = panel_explore_projects_modal_move_user_dicts_html_response["success"];
+
+}
+
+export async function openReturnFolderModalMove() {
+    var move_modal_folder_id = document.getElementById("move_modal_folder_id");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "get_root_folder",
+        "folder_id": move_modal_folder_id.value
+    });
+    if ("success" in update_user_response) {
+        refreshMoveModal(update_user_response["success"]["folder_id"]);
+    } else {
+        refreshMoveModal("");
+    }
+}
+
+export async function saveConfirmMoveProject() {
+    var model_id_move_modal_input = document.getElementById("model_id_move_modal_input");
+    var move_modal_error_span = document.getElementById("move_modal_error_span");
+    var move_modal_folder_id = document.getElementById("move_modal_folder_id");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "move_model_folder",
+        "model_id": model_id_move_modal_input.value,
+        "selected_folder_id": move_modal_folder_id.value
+    })
+
+    if ("error" in update_user_response) {
+        move_modal_error_span.innerHTML = translate_response["error"];
+        return
+    }
+
+    closeModal(".modal.move-modal");
+    showUserDicts();
+}

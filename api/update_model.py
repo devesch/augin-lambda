@@ -11,6 +11,14 @@ class UpdateModel(BasePage):
         if not model["model_user_email"] == self.user.user_email:
             return {"error": "project doesnt belong to user"}
 
+        if self.post.get("command"):
+            if self.post["command"] == "delete_model":
+                ModelController().delete_model(model, self.user)
+
+            if self.post["command"] == "update_model_files":
+                selected_model = Dynamo().get_model_by_id(self.post["selected_model_id"])
+                ModelController().update_model_files(model, selected_model, self.user)
+
         if self.post.get("model_category"):
             if model.get("model_is_federated"):
                 model["model_category"] = "Federated"

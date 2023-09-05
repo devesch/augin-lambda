@@ -13,6 +13,17 @@ class ReadWrite:
             cls._instance = super(ReadWrite, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def find_file_with_extension_in_directory(self, root_directory, extensions):
+        import os
+
+        for root, dirs, files in os.walk(root_directory):
+            for file in files:
+                for extension in extensions:
+                    if file.lower().endswith("." + extension.lower()):
+                        return os.path.join(root, file).replace("\\", "/")
+
+        return None
+
     def zip_file(self, file_to_be_ziped_location, zip_destiny_location):
         import zipfile
 

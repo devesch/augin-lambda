@@ -23,6 +23,59 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def update_model_files(self, destination_model, source_model, user):
+        destination_model["model_project_id"] = source_model["model_project_id"]
+        destination_model["model_filename"] = source_model["model_filename"]
+        destination_model["model_filename_zip"] = source_model["model_filename_zip"]
+
+        destination_model["model_upload_path_zip"] = source_model["model_upload_path_zip"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+        destination_model["model_upload_path_xml"] = source_model["model_upload_path_xml"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+        destination_model["model_upload_path_aug"] = source_model["model_upload_path_aug"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+        destination_model["model_upload_path_sd_aug"] = source_model["model_upload_path_sd_aug"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+        destination_model["model_upload_path_bin"] = source_model["model_upload_path_bin"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+        destination_model["model_upload_path_mini_bin"] = source_model["model_upload_path_mini_bin"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+
+        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_zip"], destination_model["model_upload_path_zip"])
+        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_xml"], destination_model["model_upload_path_xml"])
+        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_aug"], destination_model["model_upload_path_aug"])
+        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_sd_aug"], destination_model["model_upload_path_sd_aug"])
+        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_bin"], destination_model["model_upload_path_bin"])
+        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_mini_bin"], destination_model["model_upload_path_mini_bin"])
+
+        destination_model["model_filesize"] = source_model["model_filesize"]
+        destination_model["model_filesize_zip"] = source_model["model_filesize_zip"]
+        destination_model["model_filesize_xml"] = source_model["model_filesize_xml"]
+        destination_model["model_filesize_aug"] = source_model["model_filesize_aug"]
+        destination_model["model_filesize_sd_aug"] = source_model["model_filesize_sd_aug"]
+        destination_model["model_filesize_bin"] = source_model["model_filesize_bin"]
+        destination_model["model_filesize_mini_bin"] = source_model["model_filesize_mini_bin"]
+
+        destination_model["model_memory_usage_in_gbs"] = str(source_model.get("model_memory_usage_in_gbs"))
+        destination_model["model_was_processed_where"] = str(source_model.get("model_was_processed_where"))
+        destination_model["model_xml_started"] = str(source_model.get("model_xml_started"))
+        destination_model["model_xml_memory_usage"] = str(source_model.get("model_xml_memory_usage"))
+        destination_model["model_xml_completed"] = str(source_model.get("model_xml_completed"))
+        destination_model["model_xml_total_time"] = str(source_model.get("model_xml_total_time"))
+        destination_model["model_xml_to_dynamo_start"] = str(source_model.get("model_xml_to_dynamo_start"))
+        destination_model["model_xml_to_dynamo_completed"] = str(source_model.get("model_xml_to_dynamo_completed"))
+        destination_model["model_xml_to_dynamo_total_time"] = str(source_model.get("model_xml_to_dynamo_total_time"))
+        destination_model["model_aug_started"] = str(source_model.get("model_aug_started"))
+        destination_model["model_aug_percent"] = str(source_model.get("model_aug_percent"))
+        destination_model["model_aug_memory_usage"] = str(source_model.get("model_aug_memory_usage"))
+        destination_model["model_aug_completed"] = str(source_model.get("model_aug_completed"))
+        destination_model["model_aug_total_time"] = str(source_model.get("model_aug_total_time"))
+        destination_model["model_aug_sd_started"] = str(source_model.get("model_aug_sd_started"))
+        destination_model["model_aug_sd_percent"] = str(source_model.get("model_aug_sd_percent"))
+        destination_model["model_aug_sd_memory_usage"] = str(source_model.get("model_aug_sd_memory_usage"))
+        destination_model["model_aug_sd_completed"] = str(source_model.get("model_aug_sd_completed"))
+        destination_model["model_aug_sd_total_time"] = str(source_model.get("model_aug_sd_total_time"))
+        destination_model["model_processing_total_time"] = str(source_model.get("model_processing_total_time"))
+        destination_model["model_processing_percentage"] = str(source_model.get("model_processing_percentage"))
+        destination_model["model_valid_until"] = str(source_model.get("model_valid_until"))
+
+        Dynamo().put_entity(destination_model)
+        self.delete_model(source_model, user)
+
     def generate_bin_files(self, model, output_bucket, output_key):
         xml_zip_location = lambda_constants["tmp_path"] + "model_xml.zip"
         unzip_location = lambda_constants["tmp_path"] + "model/"
@@ -37,7 +90,7 @@ class ModelController:
 
         S3().download_file(output_bucket, output_key, xml_zip_location)
         ReadWrite().extract_zip_file(xml_zip_location, unzip_location)
-        xml_location = self.find_file_with_extension_in_directory(unzip_location, ["xml"])
+        xml_location = ReadWrite().find_file_with_extension_in_directory(unzip_location, ["xml"])
 
         import xml_binary
         import importlib
@@ -103,7 +156,10 @@ class ModelController:
         formatted_date = dt_object.strftime("%b %d, %Y")
         return formatted_date
 
-    def delete_model(self, model):
+    def delete_model(self, model, user):
+        if model["model_state"] == "completed":
+            user.decrease_total_count("user_completed_models_total_count")
+            user.remove_model_from_user_dicts(model)
         S3().delete_folder(lambda_constants["processed_bucket"], model["model_upload_path"])
         Dynamo().delete_entity(model)
 
@@ -134,7 +190,7 @@ class ModelController:
         ifcs_locations = []
         if self.is_zip_using_magic_number(lambda_constants["tmp_path"] + "original_file"):
             ReadWrite().extract_zip_file(lambda_constants["tmp_path"] + "original_file", lambda_constants["tmp_path"] + "unzip")
-            ifc_location = self.find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
+            ifc_location = ReadWrite().find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
             if not ifc_location:
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
             if self.is_zip_using_magic_number(ifc_location):
@@ -150,12 +206,21 @@ class ModelController:
 
         for index, ifc_location in enumerate(ifcs_locations):
             if os.path.getsize(ifc_location) > int(lambda_constants["maxium_ifc_project_filesize"]):
-                return {"error": "O projeto excede o tamanho máximo de 1Gb."}
+                if index == 0:
+                    return {"error": "O projeto excede o tamanho máximo de 1Gb."}
+                else:
+                    return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."}
             if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location):
-                return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
+                if index == 0:
+                    return {"error": "Arquivo IFC ou FBX encontrado porém se não é válido."}
+                else:
+                    return {"error": "Algum arquivo dentro do .zip é inválido."}
             if self.is_ifc_file(ifc_location):
                 if not self.is_acceptable_ifc_format(ifc_location):
-                    return {"error": "Os formartos suportados de IFC são: IFC2x3 e IFC4."}
+                    if index == 0:
+                        return {"error": "Os formartos suportados de IFC são: IFC2x3 e IFC4."}
+                    else:
+                        return {"error": "Algum arquivo dentro do .zip não está dentro dos nossos formatos suportados: suportados de IFC são: IFC2x3 e IFC4."}
 
         if len(ifcs_locations) > 1:
             response["has_more_than_one_file"] = True
@@ -180,6 +245,8 @@ class ModelController:
 
             ReadWrite().zip_file(ifc_location, lambda_constants["tmp_path"] + "file_ok.zip")
 
+            model["model_name"] = os.path.basename(ifc_location)
+            model["model_filename"] = os.path.basename(ifc_location)
             model["model_filename_zip"] = Generate().generate_short_id() + ".zip"
             model["model_upload_path_zip"] = model["model_upload_path"] + model["model_filename_zip"]
 
@@ -206,8 +273,8 @@ class ModelController:
         if not Validation().check_if_local_env():
             Dynamo().delete_entity(model)
 
+        model = self.change_model_status(model, "not_created", "in_processing")
         if model["model_format"] == "ifc":
-            model = self.change_model_status(model, "not_created", "in_processing")
             model_filesize_ifc_in_megabytes = StrFormat().format_bytes_to_megabytes(model["model_filesize_ifc"])
             ec_requested_gbs = self.generate_ec_requested_gbs(model_filesize_ifc_in_megabytes)
             ec_gbs_bracket = self.generate_ec_gbs_bracket(ec_requested_gbs)
@@ -241,13 +308,16 @@ class ModelController:
                     Lambda().invoke("EC2-Launcher", "Event", {"ec_requested_gbs": ec_gbs_bracket})
                     # Lambda().invoke("EC2-Launcher", "Event", {"ec_requested_gbs": ec_gbs_bracket, "ec2_instance": choose_ec2_instance})
 
-            # ec2_instances["ec2_instances"].remove(choose_ec2_instance)
-            # Dynamo().put_entity(ec2_instances)
-            model["model_processing_started"] = True
-            Dynamo().put_entity(model)
-            data = {"model_id": model["model_id"], "output_format": "process_started"}
-            Http().request("POST", "https://" + lambda_constants["prefix_name"] + lambda_constants["domain_name"] + lambda_constants["sufix_name"] + "/api/update_model_process", headers={}, data=data)
-            return {"success": "Model " + model["model_id"] + " agora em processamento."}
+        if model["model_format"] == "fbx":
+            Lambda().invoke("process_fbx_to_glb", "Event", {"model_id": model["model_id"]})
+
+        # ec2_instances["ec2_instances"].remove(choose_ec2_instance)
+        # Dynamo().put_entity(ec2_instances)
+        model["model_processing_started"] = True
+        Dynamo().put_entity(model)
+        data = {"model_id": model["model_id"], "output_format": "process_started"}
+        Http().request("POST", "https://" + lambda_constants["prefix_name"] + lambda_constants["domain_name"] + lambda_constants["sufix_name"] + "/api/update_model_process", headers={}, data=data)
+        return {"success": "Model " + model["model_id"] + " agora em processamento."}
 
     def generate_stepfunctions_payloads(self, ec_requested_gbs, model):
         from utils.Config import lambda_constants
@@ -373,17 +443,6 @@ class ModelController:
         with open(filename, "rb") as f:
             magic_number = f.read(4)
         return magic_number in [b"\x50\x4B\x03\x04", b"\x50\x4B\x05\x06", b"\x50\x4B\x07\x08"]
-
-    def find_file_with_extension_in_directory(self, root_directory, extensions):
-        import os
-
-        for root, dirs, files in os.walk(root_directory):
-            for file in files:
-                for extension in extensions:
-                    if file.lower().endswith("." + extension.lower()):
-                        return os.path.join(root, file).replace("\\", "/")
-
-        return None
 
     def find_all_files_with_extension_in_directory(self, root_directory, extensions):
         import os

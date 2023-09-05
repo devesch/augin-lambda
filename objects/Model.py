@@ -8,6 +8,7 @@ class Model:
         self.model_id = model_id
         self.model_project_id = model_project_id
         self.model_user_email = user_email
+        self.model_folder_id = ""
 
         self.model_name = ""
         self.model_filename = ""
@@ -16,9 +17,6 @@ class Model:
         self.model_is_federated = False
         self.model_is_favorited = False
 
-        self.model_filesize = "0"
-        self.model_filesize_zip = "0"
-
         self.model_upload_path_zip = ""
         self.model_upload_path_xml = ""
         self.model_upload_path_aug = ""
@@ -26,6 +24,8 @@ class Model:
         self.model_upload_path_bin = ""
         self.model_upload_path_mini_bin = ""
 
+        self.model_filesize = "0"
+        self.model_filesize_zip = "0"
         self.model_filesize_xml = "0"
         self.model_filesize_aug = "0"
         self.model_filesize_sd_aug = "0"

@@ -105,6 +105,11 @@ class S3:
         self.get_s3_client().copy_object(Bucket=destination_bucket, CopySource={"Bucket": source_bucket, "Key": source_key}, Key=destination_key)
         time.sleep(3)
 
+    def copy_file_in_bucket(self, bucket, source_file_path, destination_file_path):
+        copy_source = {"Bucket": bucket, "Key": source_file_path}
+
+        self.get_s3_client().copy_object(Bucket=bucket, CopySource=copy_source, Key=destination_file_path)
+
     def get_s3_client(self):
         global s3_client
         if s3_client:

@@ -2,9 +2,11 @@ from python_web_frame.base_page import BasePage
 from utils.Config import lambda_constants
 from utils.utils.Sort import Sort
 from utils.utils.ReadWrite import ReadWrite
+from utils.utils.Generate import Generate
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.S3 import S3
 from python_web_frame.controllers.model_controller import ModelController
+from objects.User import sort_user_folders
 
 
 class PanelPage(BasePage):
@@ -34,29 +36,57 @@ class PanelPage(BasePage):
         html.esc("index_val", index)
         return str(html)
 
-    def list_html_user_folder_rows(self):
+    def list_html_user_folder_rows(self, folder_id=None, model_html=""):
         full_html = []
         if self.user.user_dicts:
-            if self.user.user_dicts["folders"]:
-                for folder in self.user.user_dicts["folders"]:
-                    html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
-                    full_html.append(str(html))
-            if self.user.user_dicts["files"]:
-                folder_models = []
-                for model_id in self.user.user_dicts["files"]:
-                    folder_models.append(Dynamo().get_model_by_id(model_id))
+            user_folder = self.user.generate_folder_data(folder_id)
+            if user_folder["folders"]:
+                user_folder["folders"] = sort_user_folders(user_folder["folders"], self.post.get("sort_attribute"), self.post.get("sort_reverse"))
+                for folder in user_folder["folders"]:
+                    if not model_html:
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows_folders")
+                    elif model_html == "update":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_update_model_user_folder_rows_folders")
+                    elif model_html == "move":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows_folders")
 
-                folder_models = ModelController().sort_models(folder_models, self.post.get("sort_attribute"), self.post.get("sort_reverse"))
-                for index, model in enumerate(folder_models):
-                    html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
+                    html.esc("folder_path_val", folder["folder_path"])
+                    html.esc("folder_name_val", folder["folder_name"])
+                    html.esc("folder_id_val", folder["folder_id"])
+                    html.esc("folder_created_at_val", ModelController().convert_model_created_at_to_date(folder["created_at"]))
+                    html.esc("folder_filesize_val", ModelController().convert_model_filesize_ifc_to_mb(folder["folder_size"]))
+
+                    if folder.get("folder_is_favorite"):
+                        html.esc("html_folder_is_favorite", self.show_html_model_is_favorite())
+                        html.esc("opposite_folder_is_favorite_val", False)
+                        html.esc("favorite_or_unfavorite_val", self.translate("Desfavoritar"))
+                        html.esc("favorite_icon_val", "star")
+                    else:
+                        html.esc("opposite_folder_is_favorite_val", True)
+                        html.esc("favorite_or_unfavorite_val", self.translate("Favoritar"))
+                        html.esc("favorite_icon_val", "star_black")
+
+                    full_html.append(str(html))
+
+            if user_folder["files"]:
+                user_folder["files"] = ModelController().sort_models(user_folder["files"], self.post.get("sort_attribute"), self.post.get("sort_reverse"))
+                for index, model in enumerate(user_folder["files"]):
+                    if not model_html:
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
+                    elif model_html == "update":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_update_model_user_folder_rows")
+                    elif model_html == "move":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows")
 
                     html.esc("index_val", str(index))
                     html.esc("model_id_val", model["model_id"])
-
                     if model.get("model_is_federated"):
                         html.esc("model_icon_val", "note_stack")
                     else:
-                        html.esc("model_icon_val", "note")
+                        if model.get("model_category"):
+                            html.esc("model_icon_val", model["model_category"] + "_category")
+                        else:
+                            html.esc("model_icon_val", "note")
 
                     html.esc("model_filename_val", model["model_filename"])
                     html.esc("model_name_val", model["model_name"])
@@ -95,3 +125,16 @@ class PanelPage(BasePage):
     def show_html_model_is_favorite(self):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_model_is_favorite")
         return str(html)
+
+    def show_html_update_modal_update_confirm(self, original_model, new_model):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_update_modal_update_confirm")
+        html.esc("original_model_name_val", original_model["model_name"])
+        html.esc("original_model_filename_val", original_model["model_filename"])
+        html.esc("original_created_at_val", ModelController().convert_model_created_at_to_date(original_model["created_at"]))
+        html.esc("new_model_name_val", original_model["model_name"])
+        html.esc("new_model_filename_val", new_model["model_filename"])
+        html.esc("new_created_at_val", ModelController().convert_model_created_at_to_date(new_model["created_at"]))
+        return str(html)
+
+    def list_html_move_model_user_folder_rows(self, folder_id):
+        raise Exception("TODO")

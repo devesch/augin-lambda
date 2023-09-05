@@ -29,6 +29,24 @@ lambda_client = client("lambda", lambda_constants["region"])
 # print(str(response))
 
 
+print("Running UPDATE lambda_process_fbx_to_glb")
+root_folder = getcwd().replace("\\", "/") + "/"
+root_dirs = ["utils/"]
+upload_project_folder = root_folder.replace((root_folder.split("/")[-2] + "/"), "") + "build_" + str(root_folder.split("/")[-2])
+dest_folder = upload_project_folder + "/lambda_process_fbx_to_glb_tmp/"
+if not path.exists(upload_project_folder):
+    makedirs(upload_project_folder)
+if not path.exists(dest_folder):
+    makedirs(dest_folder)
+for dirs in root_dirs:
+    copy_tree(root_folder + dirs, dest_folder + dirs, preserve_mode=1, preserve_times=1, update=0, verbose=1, dry_run=0)
+shutil.copy(root_folder + "lambda_process_fbx_to_glb.py", dest_folder + "lambda_function.py")
+shutil.make_archive(upload_project_folder + "/archive", "zip", dest_folder)
+f = open(upload_project_folder + "/archive.zip", "rb")
+response = lambda_client.update_function_code(FunctionName="process_fbx_to_glb", ZipFile=f.read())
+print(str(response))
+
+
 print("Running UPDATE lambda_process_xml_to_dynamo")
 root_folder = getcwd().replace("\\", "/") + "/"
 root_dirs = ["utils/", "objects/"]

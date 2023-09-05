@@ -13,7 +13,24 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 
 html_source_path = os.path.normpath(os.getcwd() + "/src/html")
-filtered_placeholders = ["Upload realizado com sucesso", "Copiado!", "Copiar", "Desfavoritar", "Mostrar senha.", "Ocultar senha.", "Ícone de seta para baixo", "Ícone de seta para cima"]
+filtered_placeholders = [
+    "É necessário selecionar para qual pasta será movido o projeto atual.",
+    "Upload realizado com sucesso.",
+    "Copiado!",
+    "Copiar",
+    "Desfavoritar",
+    "Mostrar senha.",
+    "Ocultar senha.",
+    "Ícone de seta para baixo",
+    "Ícone de seta para cima",
+    "É necessário selecionar o projeto que será usado para atualizar o projeto atual.",
+    "O projeto excede o tamanho máximo de 1Gb.",
+    "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb.",
+    "Arquivo IFC ou FBX encontrado porém se não é válido.",
+    "Algum arquivo dentro do .zip é inválido.",
+    "Os formartos suportados de IFC são: IFC2x3 e IFC4.",
+    "Algum arquivo dentro do .zip não está dentro dos nossos formatos suportados: suportados de IFC são: IFC2x3 e IFC4.",
+]
 translations = json.load(open("utils/translations.json", "r", encoding="utf-8"))
 country_data = json.load(open("utils/utils/country_data.json", "r", encoding="utf-8"))
 

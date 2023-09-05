@@ -29,6 +29,9 @@ class Dynamo:
         table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
 
     ### USER ###
+    def get_folder(self, folder_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "folder#"}, "sk": {"S": "folder_id#" + folder_id}}})
+
     def get_user(self, user_email):
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "user#" + user_email}, "sk": {"S": "user#" + user_email}}})
 

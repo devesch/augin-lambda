@@ -11,6 +11,9 @@ class PanelExploreProject(PanelPage):
     admin = False
 
     def render_get(self):
+        # self.user.user_dicts = {"folders": [], "files": []}
+        # Dynamo().put_entity(self.user.__dict__)
+
         html = super().parse_html()
         models_in_processing = Dynamo().query_user_models_from_state(self.user, "in_processing")
         if models_in_processing:

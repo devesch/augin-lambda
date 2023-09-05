@@ -29,6 +29,21 @@
         "es": "Biblioteca",
         "pt": "Algeria"
     },
+    "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb.": {
+        "en": "Some file within .zip exceeds the maximum size of 1GB.",
+        "es": "Algunos archivos dentro de .zip excede el tamaño máximo de 1 GB.",
+        "pt": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."
+    },
+    "Algum arquivo dentro do .zip não está dentro dos nossos formatos suportados: suportados de IFC são: IFC2x3 e IFC4.": {
+        "en": "Some file within .zip is not within our supported formats: supported IFC are: IFC2x3 and IFC4.",
+        "es": "Algunos archivos dentro de .zip no están dentro de nuestros formatos compatibles: IFC compatible son: IFC2X3 e IFC4.",
+        "pt": "Algum arquivo dentro do .zip não está dentro dos nossos formatos suportados: suportados de IFC são: IFC2x3 e IFC4."
+    },
+    "Algum arquivo dentro do .zip é inválido.": {
+        "en": "Some file within .zip is invalid.",
+        "es": "Algún archivo dentro de .zip no es válido.",
+        "pt": "Algum arquivo dentro do .zip é inválido."
+    },
     "Alterar email": {
         "en": "Change e-mail",
         "es": "Cambiar e-mail",
@@ -58,6 +73,11 @@
         "en": "Antarctic",
         "es": "antártico",
         "pt": "Antarctica"
+    },
+    "Antigo": {
+        "en": "Old",
+        "es": "Viejo",
+        "pt": "Antigo"
     },
     "Antigua and Barbuda": {
         "en": "Antigua and Barbuda",
@@ -98,6 +118,11 @@
         "en": "Architecture",
         "es": "Arquitectura",
         "pt": "Arquitetura"
+    },
+    "Arquivo IFC ou FBX encontrado porém se não é válido.": {
+        "en": "IFC or FBX file found but if it is not valid.",
+        "es": "El archivo IFC o FBX se encuentra, pero si no es válido.",
+        "pt": "Arquivo IFC ou FBX encontrado porém se não é válido."
     },
     "Arquivo em processamento": {
         "en": "Processing file",
@@ -399,6 +424,11 @@
         "es": "Confirmar",
         "pt": "Confirmar"
     },
+    "Confirmar atualização de arquivo": {
+        "en": "Confirm File Update",
+        "es": "Confirmar la actualización del archivo",
+        "pt": "Confirmar atualização de arquivo"
+    },
     "Confirmar exclusão de arquivo": {
         "en": "Confirm file deletion",
         "es": "Confirmar la eliminación de archivos",
@@ -448,6 +478,11 @@
         "en": "Create an account",
         "es": "Crea una cuenta",
         "pt": "Criar conta"
+    },
+    "Criar pasta": {
+        "en": "Create folder",
+        "es": "Crear carpeta",
+        "pt": "Criar pasta"
     },
     "Criar projeto federado com os arquivos processados": {
         "en": "Create federated project with processed files",
@@ -518,6 +553,16 @@
         "en": "set new password",
         "es": "establecer nueva contraseña",
         "pt": "Definir nova senha"
+    },
+    "Deletar": {
+        "en": "Delete",
+        "es": "Borrar",
+        "pt": "Deletar"
+    },
+    "Deletar pasta": {
+        "en": "Folder",
+        "es": "Carpeta",
+        "pt": "Deletar pasta"
     },
     "Denmark": {
         "en": "Denmark",
@@ -653,6 +698,11 @@
         "en": "Error 500",
         "es": "Error 500",
         "pt": "Erro 500"
+    },
+    "Escolher nova versão": {
+        "en": "Choose new version",
+        "es": "Elija nueva versión",
+        "pt": "Escolher nova versão"
     },
     "Esqueci minha senha": {
         "en": "I forgot my password",
@@ -1194,6 +1244,11 @@
         "es": "Mayotte",
         "pt": "Mayotte"
     },
+    "Meus Projetos": {
+        "en": "My projects",
+        "es": "Mis proyectos",
+        "pt": "Meus Projetos"
+    },
     "Meus projetos": {
         "en": "My projects",
         "es": "Mis proyectos",
@@ -1248,6 +1303,11 @@
         "en": "To move",
         "es": "Para mover",
         "pt": "Mover"
+    },
+    "Mover aqui": {
+        "en": "Move here",
+        "es": "Muevete aquí",
+        "pt": "Mover aqui"
     },
     "Mozambique": {
         "en": "Mozambique",
@@ -1329,10 +1389,20 @@
         "es": "Nombre de archivo actual",
         "pt": "Nome atual do arquivo"
     },
+    "Nome atual do projeto": {
+        "en": "Current Project Name",
+        "es": "Nombre del proyecto actual",
+        "pt": "Nome atual do projeto"
+    },
     "Nome completo": {
         "en": "Full name",
         "es": "Nombre completo",
         "pt": "Nome completo"
+    },
+    "Nome da pasta": {
+        "en": "Folder name",
+        "es": "Nombre de la carpeta",
+        "pt": "Nome da pasta"
     },
     "Nome do Projeto": {
         "en": "Project name",
@@ -1379,10 +1449,25 @@
         "es": "Nueva contraseña",
         "pt": "Nova Senha"
     },
+    "Novo": {
+        "en": "New",
+        "es": "Nuevo",
+        "pt": "Novo"
+    },
+    "Novo nome da pasta": {
+        "en": "New folder name",
+        "es": "Nuevo nombre de carpeta",
+        "pt": "Novo nome da pasta"
+    },
     "Não": {
         "en": "No",
         "es": "No",
         "pt": "Não"
+    },
+    "O projeto excede o tamanho máximo de 1Gb.": {
+        "en": "The project exceeds the maximum size of 1GB.",
+        "es": "El proyecto excede el tamaño máximo de 1 GB.",
+        "pt": "O projeto excede o tamanho máximo de 1Gb."
     },
     "Ocultar senha.": {
         "en": "Hide password.",
@@ -1398,6 +1483,11 @@
         "en": "Oman",
         "es": "Omán",
         "pt": "Oman"
+    },
+    "Os formartos suportados de IFC são: IFC2x3 e IFC4.": {
+        "en": "IFC -supported shapes are: IFC2x3 and IFC4.",
+        "es": "IFC Las formas soportadas son: IFC2X3 e IFC4.",
+        "pt": "Os formartos suportados de IFC são: IFC2x3 e IFC4."
     },
     "Outros": {
         "en": "Others",
@@ -1563,6 +1653,11 @@
         "en": "rename",
         "es": "rebautizar",
         "pt": "Renomear"
+    },
+    "Renomear pasta": {
+        "en": "Folder",
+        "es": "Carpeta",
+        "pt": "Renomear pasta"
     },
     "Romania": {
         "en": "Romania",
@@ -1924,6 +2019,11 @@
         "es": "Carga realizada exitosamente",
         "pt": "Upload realizado com sucesso"
     },
+    "Upload realizado com sucesso.": {
+        "en": "Uploaded successfully.",
+        "es": "Subido con éxito.",
+        "pt": "Upload realizado com sucesso."
+    },
     "Uruguay": {
         "en": "Uruguay",
         "es": "Uruguay",
@@ -1988,6 +2088,11 @@
         "en": "last seen",
         "es": "ultima vez visto",
         "pt": "Visto por último"
+    },
+    "Você está excluindo definitivamente a pasta": {
+        "en": "You are definitely excluding the folder",
+        "es": "Definitivamente estás excluyendo la carpeta",
+        "pt": "Você está excluindo definitivamente a pasta"
     },
     "Você está excluindo definitivamente o arquivo": {
         "en": "You are definitely excluding the file",
@@ -2133,6 +2238,16 @@
         "en": "Åland Islands",
         "es": "Islas Aland",
         "pt": "Åland Islands"
+    },
+    "É necessário selecionar o projeto que será usado para atualizar o projeto atual.": {
+        "en": "You need to select the project that will be used to update the current project.",
+        "es": "Debe seleccionar el proyecto que se utilizará para actualizar el proyecto actual.",
+        "pt": "É necessário selecionar o projeto que será usado para atualizar o projeto atual."
+    },
+    "É necessário selecionar para qual pasta será movido o projeto atual.": {
+        "en": "You need to select which folder the current project will be moved.",
+        "es": "Debe seleccionar qué carpeta se moverá el proyecto actual.",
+        "pt": "É necessário selecionar para qual pasta será movido o projeto atual."
     },
     "Ícone de olho": {
         "en": "Eye icon",

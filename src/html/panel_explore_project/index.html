@@ -29,10 +29,16 @@
     <section class="explore__table-container">
         <div class="explore__table-container__title-container relative">
             <h2>{{Meus projetos}}</h2>
+            <h6 id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
+                <- </h6> <h6 id="folder_path_span">
+            </h6>
+            <input hidden id="folder_id_input">
+            <input hidden id="folder_path_input">
+
             <button class="explore-create-more-options" aria-controls="explore_create_more_options" aria-expanded="false">{{Criar}} +</button>
             <menu id="explore_create_more_options" class="menu--explore-create-options none">
                 <li>
-                    <button>
+                    <button onclick="js.index.openModalCreateFolder()">
                         <img src="{{cdn_val}}/assets/icons/create_new_folder.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Pasta}}</span>
                     </button>
                 </li>
@@ -77,7 +83,7 @@
                 <div class="floating-input">
                     <input type="hidden" id="model_id_name_input">
                     <input type="text" name="model_name" value="" id="model_name_input" placeholder="" required autofocus minlength="1" maxlength="500">
-                    <label for="model_name">{{Nome atual do arquivo}}</label>
+                    <label for="model_name">{{Nome atual do projeto}}</label>
                 </div>
             </div>
             <span class="error" style="{{error_msg_visibility_val}}" id="model_name_error_span">
@@ -149,6 +155,61 @@
     </div>
 </div>
 
+
+<div id="update-modal" class="modal update-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Escolher nova versão}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <table class="explore__table">
+                    <input hidden id="update_modal_folder_id">
+                    <thead>
+                        <tr>
+                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalUpdate()" id="update_modal_return_folder_span">
+                                    <-</span> <span id="update_modal_folder_path_span">
+                                </span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="update_model_user_folder_rows_tbody">
+                        {{html_update_model_user_folder_rows}}
+                    </tbody>
+                </table>
+            </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_update_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="model_id_update_model_input">
+                <button onclick="js.index.closeModal('.modal.update-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.openModalConfirmUpdateProject()">{{Atualizar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="update-confirm-modal" class="modal update-confirm-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Confirmar atualização de arquivo}}</h1>
+        </div>
+        <div class="modal-content">
+            <div id="update_confirm_modal_div">
+                {{html_update_modal_update_confirm}}
+            </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="model_update_confirm_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModalConfirmUpdateProject()" class="ghost">{{Voltar}}</button>
+                <button onclick="js.index.updateProjectFile()">{{Atualizar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div id="select-category-modal" class="modal select-category-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
@@ -157,86 +218,86 @@
         <div class="modal-content">
             <ul class="select-category-list">
                 <li>
-                    <input type="radio" name="select_category" value="Air conditioning" id="Air conditioning">
-                    <label for="Air conditioning">
-                        <img src="{{cdn_val}}/assets/icons/ios-snow.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="air_conditioning" id="air_conditioning">
+                    <label for="air_conditioning">
+                        <img src="{{cdn_val}}/assets/icons/air_conditioning_category.svg" alt="" width="24" height="24">
                         <p>{{Ar condicionado}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Architecture" id="Architecture">
-                    <label for="Architecture">
-                        <img src="{{cdn_val}}/assets/icons/water-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="hydraulics" id="hydraulics">
+                    <label for="hydraulics">
+                        <img src="{{cdn_val}}/assets/icons/hydraulics_category.svg" alt="" width="24" height="24">
                         <p>{{Hidrosanitário}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Electric" id="Electric">
-                    <label for="Electric">
-                        <img src="{{cdn_val}}/assets/icons/home-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="architecture" id="architecture">
+                    <label for="architecture">
+                        <img src="{{cdn_val}}/assets/icons/architecture_category.svg" alt="" width="24" height="24">
                         <p>{{Arquitetura}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Structural" id="Structural">
-                    <label for="Structural">
-                        <img src="{{cdn_val}}/assets/icons/flame-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="fire" id="fire">
+                    <label for="fire">
+                        <img src="{{cdn_val}}/assets/icons/fire_category.svg" alt="" width="24" height="24">
                         <p>{{Incêndio}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Executive" id="Executive">
-                    <label for="Executive">
-                        <img src="{{cdn_val}}/assets/icons/flash-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="electric" id="electric">
+                    <label for="electric">
+                        <img src="{{cdn_val}}/assets/icons/electric_category.svg" alt="" width="24" height="24">
                         <p>{{Elétrica}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Gas" id="Gas">
-                    <label for="Gas">
-                        <img src="{{cdn_val}}/assets/icons/globe-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="infrastructure" id="infrastructure">
+                    <label for="infrastructure">
+                        <img src="{{cdn_val}}/assets/icons/infrastructure_category.svg" alt="" width="24" height="24">
                         <p>{{Infraestrutura}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Hydraulics" id="Hydraulics">
-                    <label for="Hydraulics">
-                        <img src="{{cdn_val}}/assets/icons/extension-puzzle-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="structural" id="structural">
+                    <label for="structural">
+                        <img src="{{cdn_val}}/assets/icons/structural_category.svg" alt="" width="24" height="24">
                         <p>{{Estrutural}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Fire" id="Fire">
-                    <label for="Fire">
-                        <img src="{{cdn_val}}/assets/icons/cafe-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="interiors" id="interiors">
+                    <label for="interiors">
+                        <img src="{{cdn_val}}/assets/icons/interiors_category.svg" alt="" width="24" height="24">
                         <p>{{Interiores}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Infrastructure" id="Infrastructure">
-                    <label for="Infrastructure">
-                        <img src="{{cdn_val}}/assets/icons/hammer-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="executive" id="executive">
+                    <label for="executive">
+                        <img src="{{cdn_val}}/assets/icons/executive_category.svg" alt="" width="24" height="24">
                         <p>{{Executivo}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Interiors" id="Interiors">
-                    <label for="Interiors">
-                        <img src="{{cdn_val}}/assets/icons/file-tray-full-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="federated" id="federated">
+                    <label for="federated">
+                        <img src="{{cdn_val}}/assets/icons/federated_category.svg" alt="" width="24" height="24">
                         <p>{{Projetos federado}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Federated" id="Federated">
-                    <label for="Federated">
-                        <img src="{{cdn_val}}/assets/icons/balloon-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="gas" id="gas">
+                    <label for="gas">
+                        <img src="{{cdn_val}}/assets/icons/gas_category.svg" alt="" width="24" height="24">
                         <p>{{Gás}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="Others" id="Others">
-                    <label for="Others">
-                        <img src="{{cdn_val}}/assets/icons/documents-outline.svg" alt="" width="24" height="24">
+                    <input type="radio" name="select_category" value="others" id="others">
+                    <label for="others">
+                        <img src="{{cdn_val}}/assets/icons/others_category.svg" alt="" width="24" height="24">
                         <p>{{Outros}}</p>
                     </label>
                 </li>
@@ -277,10 +338,115 @@
     </div>
 </div>
 
+<div id="create-folder-modal" class="modal create-folder-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Criar pasta}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <div class="floating-input">
+                    <!-- <input type="hidden" id="model_id_name_input"> -->
+                    <input type="text" name="folder_name" value="" id="folder_name_input" placeholder="" required autofocus minlength="1" maxlength="500">
+                    <label for="folder_name">{{Nome da pasta}}</label>
+                </div>
+            </div>
+            <span class="error" id="create_folder_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.create-folder-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveCreateFolder()">{{Criar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="rename-folder-modal" class="modal rename-folder-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Renomear pasta}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <div class="floating-input">
+                    <input type="text" value="" id="folder_rename_input" placeholder="" required autofocus minlength="1" maxlength="500">
+                    <label for="folder_rename_input">{{Novo nome da pasta}}</label>
+                </div>
+            </div>
+            <span class="error" id="rename_folder_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input type="hidden" id="folder_rename_folder_id">
+                <button onclick="js.index.closeModal('.modal.rename-folder-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveRenameFolder()">{{Renomear}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="delete-folder-modal" class="modal delete-folder-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Deletar pasta}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <p>{{Você está excluindo definitivamente a pasta}}</p>
+                <strong id="delete_folder_name_span"></strong>
+                <p>{{Tem certeza que deseja continuar?}}</p>
+            </div>
+            <span class="error" id="delete_folder_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input type="hidden" id="folder_delete_folder_id_input">
+                <button onclick="js.index.closeModal('.modal.delete-folder-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveDeleteFolder()">{{Deletar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="move-modal" class="modal move-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Escolher nova versão}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <table class="explore__table">
+                    <input hidden id="move_modal_folder_id">
+                    <thead>
+                        <tr>
+                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span">
+                                    <-</span> <span id="move_modal_folder_path_span">
+                                </span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="move_model_user_folder_rows_tbody">
+                        {{html_move_model_user_folder_rows}}
+                    </tbody>
+                </table>
+            </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="move_modal_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="model_id_move_modal_input">
+                <button onclick="js.index.closeModal('.modal.move-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveConfirmMoveProject()">{{Mover aqui}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     window.onload = async function () {
         while (true) {
-            await js.index.sleep(10000);
+            await js.index.sleep(20000);
             await js.index.processingProjectsUpdateUl();
         }
     };

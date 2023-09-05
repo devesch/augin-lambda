@@ -1,66 +1,38 @@
 <tr>
-    <td colspan="1">
-        <img src="{{cdn_val}}/assets/icons/{{model_icon_val}}.svg" alt="" width="24" height="24">
-        <span class="ml-05">{{model_name_val}}</span>
-        {{html_model_is_favorite}}
+    <td colspan="1" onclick="js.index.openFolder('{{folder_id_val}}', '{{folder_path_val}}')">
+        <img src="{{cdn_val}}/assets/icons/folder.svg" alt="" width="24" height="24">
+        <span class="ml-05">{{folder_name_val}}</span>
+        {{html_folder_is_favorite}}
     </td>
     <td colspan="1">
-        {{model_created_at_val}}
+        {{folder_created_at_val}}
     </td>
     <td colspan="1">
-        <span>{{model_filesize_ifc_val}} Mb</span>
-        {{html_need_to_upgrade_your_plan}}
+        <span>{{folder_filesize_val}} Mb</span>
     </td>
     <td class="relative" colspan="1">
-        <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_{{index_val}}" aria-expanded="false" onclick="js.index.toggleExploreMenu(this)">
+        <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_{{folder_id_val}}" aria-expanded="false" onclick="js.index.toggleExploreMenu(this)">
             <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
         </button>
-        <menu id="explore_table_item_menu_{{index_val}}" class="menu--explore-more-options none">
+        <menu id="explore_table_item_menu_{{folder_id_val}}" class="menu--explore-more-options none">
             <li>
-                <button onclick="js.index.openModalShareProject('{{model_id_val}}', '{{model_name_val}}', '{{model_share_link_val}}',  '{{model_share_link_qrcode_val}}', '{{model_is_password_protected_val}}', '{{model_password_val}}')">
-                    <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Compartilhar}}</span>
-                </button>
-            </li>
-            <li>
-                <button onclick="js.index.openModalUpdateProject('{{model_id_val}}')">
-                    <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Atualizar}}</span>
-                </button>
-            </li>
-            <li>
-                <button onclick="js.index.openModalFavoriteProject('{{model_id_val}}', '{{opposite_model_is_favorite_val}}')">
+                <button onclick="js.index.FavoriteFolder('{{folder_id_val}}', '{{opposite_folder_is_favorite_val}}')">
                     <img src="{{cdn_val}}/assets/icons/{{favorite_icon_val}}.svg" width="24" height="24" alt="" loading="lazy"> <span>{{favorite_or_unfavorite_val}}</span>
                 </button>
             </li>
             <li>
-                <button onclick="js.index.openModalCategoryProject('{{model_id_val}}', '{{model_category_val}}')">
-                    <img src="{{cdn_val}}/assets/icons/category.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Selecionar categoria}}</span>
-                </button>
-            </li>
-            <li>
-                <button onclick="js.index.openModalRenameProject('{{model_id_val}}', '{{model_name_val}}')">
+                <button onclick="js.index.openModalRenameFolders('{{folder_id_val}}')">
                     <img src="{{cdn_val}}/assets/icons/edit.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Renomear}}</span>
                 </button>
             </li>
             <li>
-                <button onclick="js.index.openModalMoveProject('{{model_id_val}}', '{{model_name_val}}')">
-                    <img src="{{cdn_val}}/assets/icons/drive_file_move.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Mover}}</span>
-                </button>
-            </li>
-            <li>
-                <a class="model-options-container__item button" download="{{model_filename_val}}" href="{{model_upload_path_zip_val}}">
-                    <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
-                </a>
-            </li>
-            <li>
-                <button onclick="js.index.openModalDeleteProject('{{model_id_val}}', '{{model_name_val}}')">
+                <button onclick="js.index.openModalDeleteFolder('{{folder_id_val}}', '{{folder_name_val}}')">
                     <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>
                 </button>
             </li>
         </menu>
     </td>
 </tr>
-
-
 
 
 
