@@ -63,7 +63,7 @@
                 <tr>
                     <th onclick="js.index.sortProjectsBy('model_name')" colspan="1">{{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
                     <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
-                    <th onclick="js.index.sortProjectsBy('model_filesize_ifc')" colspan="2">{{Tamanho}} <img id="model_filesize_ifc_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('model_filesize')" colspan="2">{{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
                 </tr>
             </thead>
             <tbody id="user_folder_rows_tbody">
@@ -413,7 +413,7 @@
 <div id="move-modal" class="modal move-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
-            <h1 class="modal-header-title">{{Escolher nova versão}}</h1>
+            <h1 class="modal-header-title">{{Escolher novo local do projeto}}</h1>
         </div>
         <div class="modal-content">
             <div>
@@ -442,6 +442,62 @@
         </div>
     </div>
 </div>
+
+<div id="move-folder-modal" class="modal move-folder-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Escolher novo local da pasta}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <table class="explore__table">
+                    <input hidden id="move_folder_modal_folder_id">
+                    <thead>
+                        <tr>
+                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalMoveFolder()" id="move_folder_modal_return_folder_span">
+                                    <-</span> <span id="move_folder_modal_folder_path_span">
+                                </span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="move_folder_model_user_folder_rows_tbody">
+                        {{html_move_folder_model_user_folder_rows}}
+                    </tbody>
+                </table>
+            </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="move_folder_modal_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="folder_id_move_folder_modal_input">
+                <button onclick="js.index.closeModal('.modal.move-folder-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveConfirmMoveFolder()">{{Mover aqui}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="generate-download-modal" class="modal generate-download-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Gerando pasta compactada...}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <h1>{{Aguarde enquanto processamos seu pedido e geramos uma pasta compactada.}}</h1>
+            </div>
+            <span class="error" id="generate_download_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="folder_id_move_folder_modal_input">
+                <button onclick="js.index.closeModal('.modal.generate-download-modal')" class="ghost">{{Fechar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
     window.onload = async function () {

@@ -114,18 +114,19 @@ export async function uploadModel(input) {
     }
 }
 
-var is_checking_panel_create_project_check_file = false
+
 export async function checkUploadModelFile(post_data) {
-    while (is_checking_panel_create_project_check_file) {
-        await sleep(50);
-        checkIfCreateProjectSubmitButtonIsAvailable(false);
-    }
-    is_checking_panel_create_project_check_file = true
+    let translate_response = await apiCaller("translate", {
+        "key": "Verificando arquivos..."
+    });
+
+    let message = document.getElementById("message_" + post_data["element_index"]);
+    message.innerHTML = translate_response["success"];
+
     let panel_create_project_check_file_response = await apiCaller("panel_create_project_check_file", {
         "key": post_data["key"]
     });
 
-    let message = document.getElementById("message_" + post_data["element_index"]);
     let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
     let model_id = document.getElementById("model_id_" + post_data["element_index"]);
     let has_more_than_one_file = document.getElementById("has_more_than_one_file_" + post_data["element_index"]);
@@ -133,6 +134,7 @@ export async function checkUploadModelFile(post_data) {
 
     if ("error" in panel_create_project_check_file_response) {
         progress_element.classList.add("failed");
+        let message = document.getElementById("message_" + post_data["element_index"]);
         message.innerHTML = panel_create_project_check_file_response["error"];
         delete_button.style = "";
         checkIfCreateProjectSubmitButtonIsAvailable(false);
@@ -145,11 +147,11 @@ export async function checkUploadModelFile(post_data) {
             "key": "Upload realizado com sucesso."
         });
 
+        let message = document.getElementById("message_" + post_data["element_index"]);
         message.innerHTML = translate_response["success"];
         checkIfCreateProjectSubmitButtonIsAvailable();
         checkIfCreateProjectIsFederated();
     }
-    is_checking_panel_create_project_check_file = false;
 }
 
 
@@ -745,28 +747,23 @@ export async function togglePasswordText(button, input_id) {
     const PASSWORD_HIDE_ICON = "visibility_off.svg";
     let PASSWORD_SHOW_LABEL = "Mostrar senha.";
     let PASSWORD_HIDE_LABEL = "Ocultar senha.";
-
-    let translate_response = await apiCaller("translate", {
-        "key": PASSWORD_SHOW_LABEL
-    });
-
-    PASSWORD_SHOW_LABEL = translate_response["success"];
-
-    translate_response = await apiCaller("translate", {
-        "key": PASSWORD_HIDE_LABEL
-    });
-
-    PASSWORD_HIDE_LABEL = translate_response["success"];
-
     if (input.type == "password") {
         input.type = "text";
+        let translate_response = await apiCaller("translate", {
+            "key": PASSWORD_HIDE_LABEL
+        });
+        PASSWORD_HIDE_LABEL = translate_response["success"];
         button.setAttribute("aria-label", PASSWORD_HIDE_LABEL);
         icon_img.src = icon_img.src.replace(PASSWORD_SHOW_ICON, PASSWORD_HIDE_ICON);
         return;
     }
     input.type = "password";
-    button.setAttribute("aria-label", PASSWORD_SHOW_LABEL);
     icon_img.src = icon_img.src.replace(PASSWORD_HIDE_ICON, PASSWORD_SHOW_ICON);
+    let translate_response = await apiCaller("translate", {
+        "key": PASSWORD_SHOW_LABEL
+    });
+    PASSWORD_SHOW_LABEL = translate_response["success"];
+    button.setAttribute("aria-label", PASSWORD_SHOW_LABEL);
     return;
 }
 
@@ -1038,11 +1035,13 @@ export async function openModalDeleteFolder(folder_id, folder_name) {
 }
 
 
-export async function openModalRenameFolders(folder_id) {
+export async function openModalRenameFolders(folder_id, folder_name) {
     var folder_rename_folder_id = document.getElementById("folder_rename_folder_id");
+    var folder_rename_input = document.getElementById("folder_rename_input");
     var rename_folder_error_span = document.getElementsByName("rename_folder_error_span");
 
     folder_rename_folder_id.value = folder_id;
+    folder_rename_input.value = folder_name;
     rename_folder_error_span.innerHTML = "";
     openModal('.modal.rename-folder-modal')
 }
@@ -1164,6 +1163,96 @@ export async function openModalMoveProject(model_id) {
 }
 
 
+export async function openModalMoveFolder(folder_id) {
+    var folder_id_move_folder_modal_input = document.getElementById("folder_id_move_folder_modal_input");
+    var move_folder_modal_error_span = document.getElementById("move_folder_modal_error_span");
+    var move_folder_model_user_folder_rows_tbody = document.getElementById("move_folder_model_user_folder_rows_tbody");
+    var move_folder_modal_return_folder_span = document.getElementById("move_folder_modal_return_folder_span");
+    var move_folder_modal_folder_path_span = document.getElementById("move_folder_modal_folder_path_span");
+    var move_folder_modal_folder_id = document.getElementById("move_folder_modal_folder_id");
+
+    move_folder_modal_return_folder_span.style.display = "none";
+    move_folder_modal_folder_path_span.style.display = "none";
+
+    var panel_explore_projects_modal_move_folder_user_dicts_html_response = await apiCaller("panel_explore_projects_modal_move_folder_user_dicts_html", {})
+
+    folder_id_move_folder_modal_input.value = folder_id;
+    move_folder_modal_error_span.innerHTML = "";
+    move_folder_modal_folder_id.value = "";
+    move_folder_model_user_folder_rows_tbody.innerHTML = panel_explore_projects_modal_move_folder_user_dicts_html_response["success"];
+
+
+    openModal(".modal.move-folder-modal");
+}
+
+
+export async function refreshMoveFolderModal(folder_id) {
+    var move_folder_modal_folder_id = document.getElementById("move_folder_modal_folder_id");
+    var move_folder_model_user_folder_rows_tbody = document.getElementById("move_folder_model_user_folder_rows_tbody");
+    var move_folder_modal_return_folder_span = document.getElementById("move_folder_modal_return_folder_span");
+    var move_folder_modal_folder_path_span = document.getElementById("move_folder_modal_folder_path_span");
+
+
+    var panel_explore_projects_modal_move_folder_user_dicts_html_response = await apiCaller("panel_explore_projects_modal_move_folder_user_dicts_html", {
+        "folder_id": folder_id,
+    })
+
+    if (folder_id) {
+        var update_user_response = await apiCaller("update_user", {
+            "command": "get_folder",
+            "folder_id": folder_id
+        });
+        move_folder_modal_return_folder_span.style.display = "";
+        move_folder_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        move_folder_modal_folder_path_span.style.display = "";
+    } else {
+        move_folder_modal_return_folder_span.style.display = "none";
+        move_folder_modal_folder_path_span.style.display = "none";
+    }
+
+    move_folder_modal_folder_id.value = folder_id;
+    move_folder_model_user_folder_rows_tbody.innerHTML = panel_explore_projects_modal_move_folder_user_dicts_html_response["success"];
+
+}
+
+
+export async function openReturnFolderModalMoveFolder() {
+    var move_folder_modal_folder_id = document.getElementById("move_folder_modal_folder_id");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "get_root_folder",
+        "folder_id": move_folder_modal_folder_id.value
+    });
+    if ("success" in update_user_response) {
+        refreshMoveFolderModal(update_user_response["success"]["folder_id"]);
+    } else {
+        refreshMoveFolderModal("");
+    }
+}
+
+
+
+
+export async function saveConfirmMoveFolder() {
+    var folder_id_move_folder_modal_input = document.getElementById("folder_id_move_folder_modal_input");
+    var move_folder_modal_error_span = document.getElementById("move_folder_modal_error_span");
+    var move_folder_modal_folder_id = document.getElementById("move_folder_modal_folder_id");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "move_folder_to_another_folder",
+        "folder_id": folder_id_move_folder_modal_input.value,
+        "selected_folder_id": move_folder_modal_folder_id.value
+    })
+
+    if ("error" in update_user_response) {
+        move_folder_modal_error_span.innerHTML = update_user_response["error"];
+        return
+    }
+
+    closeModal(".modal.move-folder-modal");
+    showUserDicts();
+}
+
 export async function refreshMoveModal(folder_id) {
     var move_modal_folder_id = document.getElementById("move_modal_folder_id");
     var move_model_user_folder_rows_tbody = document.getElementById("move_model_user_folder_rows_tbody");
@@ -1219,10 +1308,52 @@ export async function saveConfirmMoveProject() {
     })
 
     if ("error" in update_user_response) {
-        move_modal_error_span.innerHTML = translate_response["error"];
+        move_modal_error_span.innerHTML = update_user_response["error"];
         return
     }
 
     closeModal(".modal.move-modal");
     showUserDicts();
+}
+
+export async function downloadFolders(folder_id) {
+    var generate_download_error_span = document.getElementById("generate_download_error_span");
+    generate_download_error_span.innerHTML = "";
+    openModal(".modal.generate-download-modal");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "download_folder",
+        "folder_id": folder_id
+    });
+
+    if ("success" in update_user_response) {
+        const models = update_user_response["success"];
+
+        for (const model of models) {
+            const modelLink = model['model_link'];
+            const modelName = model['model_save_name'];
+            try {
+                const response = await fetch(modelLink);
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const blobUrl = URL.createObjectURL(blob);
+                    const anchor = document.createElement('a');
+                    anchor.style.display = 'none';
+                    anchor.href = blobUrl;
+                    anchor.download = modelName;
+                    document.body.appendChild(anchor);
+                    anchor.click();
+                    document.body.removeChild(anchor);
+                    URL.revokeObjectURL(blobUrl);
+                } else {
+                    console.error(`Failed to fetch ${modelLink}: ${response.statusText}`);
+                }
+            } catch (err) {
+                console.error(`An error occurred while downloading ${modelLink}: ${err}`);
+            }
+        }
+        closeModal(".modal.generate-download-modal");
+    } else {
+        generate_download_error_span.innerHTML = update_user_response["error"];
+    }
 }

@@ -85,4 +85,9 @@ class UpdateModelProcess(BasePage):
             user = self.load_user(model["model_user_email"])
             user.add_model_to_user_dicts(model)
 
+            if model["model_used_in_federated_ids"]:
+                federated_model = ModelController().publish_federated_model(model["model_used_in_federated_ids"][0])
+                if federated_model:
+                    user.add_model_to_user_dicts(federated_model)
+
         return {"success": "Model " + self.post["model_id"] + " updated successfully to percentage " + model["model_processing_percentage"]}

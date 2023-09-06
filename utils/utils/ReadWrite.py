@@ -29,7 +29,17 @@ class ReadWrite:
 
         with zipfile.ZipFile(zip_destiny_location, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as myzip:
             myzip.write(file_to_be_ziped_location, arcname=os.path.basename(file_to_be_ziped_location))
-            print("Zip Generated " + zip_destiny_location)
+
+    def zip_folder(self, folder_to_be_ziped_location, zip_destiny_location):
+        import zipfile
+        import os
+
+        with zipfile.ZipFile(zip_destiny_location, "w", zipfile.ZIP_DEFLATED) as zipf:
+            for root, _, files in os.walk(folder_to_be_ziped_location):
+                for file in files:
+                    full_path = os.path.join(root, file)
+                    relative_path = os.path.relpath(full_path, folder_to_be_ziped_location)
+                    zipf.write(full_path, relative_path)
 
     def read_html(self, filename, common_changes=None):
         import copy

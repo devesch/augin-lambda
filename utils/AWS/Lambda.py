@@ -1,5 +1,5 @@
-from utils.Config import lambda_constants
 import json
+from utils.Config import lambda_constants
 
 lambda_client = None
 stepfunctions_client = None
@@ -17,7 +17,13 @@ class Lambda:
         return self.get_stepfunctions_client().start_execution(stateMachineArn=state_machine_arn, input=json.dumps(payload))
 
     def invoke(self, function_name, invocation_type, payload):
-        return self.get_lambda_client().invoke(FunctionName=function_name, InvocationType=invocation_type, Payload=json.dumps(payload))
+        invoke_response = self.get_lambda_client().invoke(FunctionName=function_name, InvocationType=invocation_type, Payload=json.dumps(payload))
+        try:
+            response_payload = invoke_response["Payload"].read().decode()
+            response_payload = json.loads(response_payload)
+            return response_payload
+        except:
+            return invoke_response
 
     def get_lambda_client(self):
         global lambda_client

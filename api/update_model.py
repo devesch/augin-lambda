@@ -21,13 +21,14 @@ class UpdateModel(BasePage):
 
         if self.post.get("model_category"):
             if model.get("model_is_federated"):
-                model["model_category"] = "Federated"
-                Dynamo().update_entity(model, "model_category", model["model_category"])
-            if self.post.get("model_category") in lambda_constants["available_categories"]:
-                model["model_category"] = self.post.get("model_category")
+                model["model_category"] = "federated"
                 Dynamo().update_entity(model, "model_category", model["model_category"])
             else:
-                return {"error": "A categoria selecionada é inválida."}
+                if self.post.get("model_category") in lambda_constants["available_categories"]:
+                    model["model_category"] = self.post.get("model_category")
+                    Dynamo().update_entity(model, "model_category", model["model_category"])
+                else:
+                    return {"error": "A categoria selecionada é inválida."}
 
         if self.post.get("model_is_favorite"):
             if self.post["model_is_favorite"] == "True":

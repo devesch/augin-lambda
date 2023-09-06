@@ -5,8 +5,9 @@ from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.Generate import Generate
 from objects.UserPassword import UserPassword
 from objects.UserAuthToken import UserAuthToken
-from objects.UserFolder import UserFolder
+from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
 from utils.utils.Sort import Sort
+from python_web_frame.controllers.model_controller import ModelController
 
 
 class User:
@@ -27,6 +28,7 @@ class User:
         self.user_ip = ""
         self.user_cart_currency = ""
         self.user_dicts = {"folders": [], "files": []}
+        self.user_models_size_in_mbs = "0"
 
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
@@ -38,18 +40,30 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def move_folder_to_another_folder(self, folder, destiny_folder=""):
+        if folder.get("folder_root_id"):
+            root_folder = Dynamo().get_folder(folder["folder_root_id"])
+            remove_folder_from_folder(root_folder, folder)
+        else:
+            self.user_dicts["folders"].remove(folder["folder_id"])
+
+        if destiny_folder:
+            add_folder_to_folder(destiny_folder, folder)
+        else:
+            self.user_dicts["folders"].append(folder["folder_id"])
+        Dynamo().put_entity(self.__dict__)
+
     def move_model_to_another_folder(self, model, new_folder=""):
         if model.get("model_folder_id"):
             model_folder = Dynamo().get_folder(model["model_folder_id"])
-            model_folder["files"].remove(model["model_id"])
-            Dynamo().put_entity(model_folder)
+            remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
         else:
             self.user_dicts["files"].remove(model["model_id"])
 
         if new_folder:
             model["model_folder_id"] = new_folder["folder_id"]
-            new_folder["files"].append(model["model_id"])
-            Dynamo().put_entity(new_folder)
+            add_file_to_folder(new_folder, model["model_id"], model["model_filesize"])
+
         else:
             model["model_folder_id"] = ""
             self.user_dicts["files"].append(model["model_id"])
@@ -58,7 +72,6 @@ class User:
         Dynamo().put_entity(model)
 
     def generate_folder_data(self, folder_id=None):
-
         user_folder_is_user = False
         if not folder_id:
             user_folder = self.user_dicts
@@ -133,33 +146,20 @@ class User:
             Dynamo().put_entity(root_folder)
         Dynamo().delete_entity(folder)
 
-    # def rename_folder(self, folder_new_name, folder_path=None):
-    #     user_folder = self.find_folder(folder_path)
-
-    #     if folder_new_name in user_folder["folders"]:
-    #         return False
-
-    #     folders_names = folder_path.split("/")
-    #     if len(folders_names) >= 2:
-    #         root_user_folder = self.find_folder(folder_path.split("/")[-2])
-    #     else:
-    #         root_user_folder = self.find_folder()
-
-    #     root_user_folder["folders"][folder_new_name] = root_user_folder["folders"][folder_path.split("/")[-1]]
-    #     root_user_folder["folders"][folder_new_name]["folder_name"] = folder_new_name
-    #     del root_user_folder["folders"][folder_path.split("/")[-1]]
-
-    #     Dynamo().put_entity(self.__dict__)
-    #     return True
-
     def add_model_to_user_dicts(self, model):
         self.user_dicts["files"].append(model["model_id"])
+        self.user_models_size_in_mbs = str(round(float(self.user_models_size_in_mbs) + float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))))
         Dynamo().put_entity(self.__dict__)
 
     def remove_model_from_user_dicts(self, model):
-        raise Exception("TODO")
         if model["model_id"] in self.user_dicts["files"]:
             self.user_dicts["files"].remove(model["model_id"])
+        else:
+            model_folder = Dynamo().get_folder(model["model_folder_id"])
+            remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
+            Dynamo().put_entity(model_folder)
+
+        self.user_models_size_in_mbs = str(round(float(self.user_models_size_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))))
         Dynamo().put_entity(self.__dict__)
 
     def increase_total_count(self, param):
@@ -233,7 +233,7 @@ def sort_user_folders(user_folders, sort_attribute="folder_name", sort_reverse=F
         sort_attribute = "folder_name"
     if sort_attribute == "model_name":
         sort_attribute = "folder_name"
-    if sort_attribute == "model_filesize_ifc":
+    if sort_attribute == "model_filesize":
         sort_attribute = "folder_size"
 
     favorited_folders = []

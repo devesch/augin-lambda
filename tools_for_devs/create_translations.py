@@ -14,6 +14,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 filtered_placeholders = [
+    "Verificando arquivos...",
     "É necessário selecionar para qual pasta será movido o projeto atual.",
     "Upload realizado com sucesso.",
     "Copiado!",

@@ -8,7 +8,7 @@
         {{model_created_at_val}}
     </td>
     <td colspan="1">
-        <span>{{model_filesize_ifc_val}} Mb</span>
+        <span>{{model_filesize_val}} Mb</span>
         {{html_need_to_upgrade_your_plan}}
     </td>
     <td class="relative" colspan="1">
@@ -21,7 +21,7 @@
                     <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Compartilhar}}</span>
                 </button>
             </li>
-            <li>
+            <li style="{{model_update_visibility_val}}">
                 <button onclick="js.index.openModalUpdateProject('{{model_id_val}}')">
                     <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Atualizar}}</span>
                 </button>
@@ -31,7 +31,7 @@
                     <img src="{{cdn_val}}/assets/icons/{{favorite_icon_val}}.svg" width="24" height="24" alt="" loading="lazy"> <span>{{favorite_or_unfavorite_val}}</span>
                 </button>
             </li>
-            <li>
+            <li style="{{model_category_visibility_val}}">
                 <button onclick="js.index.openModalCategoryProject('{{model_id_val}}', '{{model_category_val}}')">
                     <img src="{{cdn_val}}/assets/icons/category.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Selecionar categoria}}</span>
                 </button>

@@ -48,3 +48,6 @@ class Date:
 
     def format_unixtime_to_inter_datetime(self, unix_time):
         return self.format_unixtime(int(float(unix_time)), "%d/%m/%y - %H:%M") + " GMT 0"
+
+    def format_unixtime_to_time(self, unix_time):
+        return self.format_unixtime(int(float(unix_time)), "%H:%M:%S")

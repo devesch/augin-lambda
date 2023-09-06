@@ -17,6 +17,9 @@ class Model:
         self.model_is_federated = False
         self.model_is_favorited = False
 
+        self.model_used_in_federated_ids = []
+        self.model_federated_required_ids = []
+
         self.model_upload_path_zip = ""
         self.model_upload_path_xml = ""
         self.model_upload_path_aug = ""

@@ -19,6 +19,11 @@
         "es": "AFGANISTÁN",
         "pt": "Afghanistan"
     },
+    "Aguarde enquanto processamos seu pedido e geramos uma pasta compactada.": {
+        "en": "Wait as we process your order and generate a compressed folder.",
+        "es": "Espere mientras procesamos su pedido y generamos una carpeta comprimida.",
+        "pt": "Aguarde enquanto processamos seu pedido e geramos uma pasta compactada."
+    },
     "Albania": {
         "en": "Albania",
         "es": "Albania",
@@ -699,10 +704,30 @@
         "es": "Error 500",
         "pt": "Erro 500"
     },
+    "Erro ao processar arquivo": {
+        "en": "Error when processing file",
+        "es": "Error al procesar el archivo",
+        "pt": "Erro ao processar arquivo"
+    },
     "Escolher nova versão": {
         "en": "Choose new version",
         "es": "Elija nueva versión",
         "pt": "Escolher nova versão"
+    },
+    "Escolher novo local": {
+        "en": "Choose a new location",
+        "es": "Elija una nueva ubicación",
+        "pt": "Escolher novo local"
+    },
+    "Escolher novo local da pasta": {
+        "en": "Choose new folder location",
+        "es": "Elija una nueva ubicación de carpeta",
+        "pt": "Escolher novo local da pasta"
+    },
+    "Escolher novo local do projeto": {
+        "en": "Choose new project location",
+        "es": "Elija una nueva ubicación del proyecto",
+        "pt": "Escolher novo local do projeto"
     },
     "Esqueci minha senha": {
         "en": "I forgot my password",
@@ -789,6 +814,11 @@
         "es": "favorito",
         "pt": "Favoritar"
     },
+    "Fechar": {
+        "en": "To close",
+        "es": "Cerrar",
+        "pt": "Fechar"
+    },
     "Federado": {
         "en": "Federated",
         "es": "federado",
@@ -853,6 +883,11 @@
         "en": "Georgia",
         "es": "Georgia",
         "pt": "Georgia"
+    },
+    "Gerando pasta compactada...": {
+        "en": "Generating compressed folder ...",
+        "es": "Generar carpeta comprimida ...",
+        "pt": "Gerando pasta compactada..."
     },
     "Gerencie seus dispositivos": {
         "en": "manage your devices",
@@ -2068,6 +2103,11 @@
         "en": "View more",
         "es": "Ver más",
         "pt": "Ver Mais"
+    },
+    "Verificando arquivos...": {
+        "en": "Checking files ...",
+        "es": "Comprobación de archivos ...",
+        "pt": "Verificando arquivos..."
     },
     "Viet Nam": {
         "en": "Viet Nam",
