@@ -5,19 +5,24 @@ from utils.AWS.S3 import S3
 from utils.AWS.Ses import Ses
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.ReadWrite import ReadWrite
+
 from fbx import FbxManager
 from fbx import FbxScene
 from fbx import FbxImporter
 from fbx import FbxExporter
-
+import bpy
+import time
 
 FBX_BINARY_SIGNATURE = b"Kaydara FBX Binary  \x00\x1A\x00"
 FBX_BINARY_SIGNATURE_LENGTH = len(FBX_BINARY_SIGNATURE)
 FBX_MANAGER = FbxManager.Create()
 
-ZIP_FILE_PATH = lambda_constants["tmp_path"] + "model.zip"
-FBX_FOLDER_PATH = lambda_constants["tmp_path"] + "model"
-
+def _time_convert(sec):
+  mins = sec // 60
+  sec = sec % 60
+  hours = mins // 60
+  mins = mins % 60
+  print("Time Lapsed = {0:02}:{1:02}:{2:02}".format(int(hours),int(mins),sec))
 
 def _get_file_fomrat(format_name):
     io_plugin_registry = FBX_MANAGER.GetIOPluginRegistry()
@@ -29,6 +34,10 @@ def _get_file_fomrat(format_name):
     # Default format is auto
     return -1
 
+def _is_binary_fbx(path):
+    with open(path, 'rb') as file:
+        return file.read(FBX_BINARY_SIGNATURE_LENGTH) == FBX_BINARY_SIGNATURE
+    return False
 
 def convert_ascii_to_binary(path):
     if _is_binary_fbx(path) == False:
@@ -39,20 +48,33 @@ def convert_ascii_to_binary(path):
         importer.Import(scene)
         importer.Destroy()
         exporter = FbxExporter.Create(FBX_MANAGER, "")
-        exporter.Initialize(path, _get_file_fomrat("binary"))
+        exporter.Initialize(path, _get_file_fomrat('binary'))
         exporter.Export(scene)
         exporter.Destroy()
         scene.Destroy()
-        print("Finished conversion")
+        print("Finished conversion ASCII to Binary")
     else:
-        print("This fbx has a binary format already")
+        print("This FBX has a Binary format already")
 
+def convert_fbx_to_glb(path):
+    bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.delete()
+    print("Start Import FBX scene")
+    bpy.ops.import_scene.fbx(filepath=path)
+    bpy.ops.object.scale_clear()
+    print("End Import FBX scene")
+    output_path = path.replace(".fbx", "")
+    print("Start conversion FBX to GLB")
+    bpy.ops.export_scene.gltf(filepath=output_path)
+    print("Finished conversion FBX to GLB")
 
-def _is_binary_fbx(path):
-    with open(path, "rb") as file:
-        return file.read(FBX_BINARY_SIGNATURE_LENGTH) == FBX_BINARY_SIGNATURE
-    return False
-
+def convert(path):
+    start_time = time.time()
+    convert_ascii_to_binary(path)
+    convert_fbx_to_glb(path)
+    end_time = time.time()
+    time_lapsed = end_time - start_time
+    _time_convert(time_lapsed)
 
 def lambda_handler(event, context):
     try:
@@ -68,8 +90,7 @@ def main_lambda_handler(event, context):
     S3().download_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"], ZIP_FILE_PATH)
     ReadWrite().extract_zip_file(ZIP_FILE_PATH, FBX_FOLDER_PATH)
     fbx_location = ReadWrite().find_file_with_extension_in_directory(FBX_FOLDER_PATH, ["fbx"])
-    convert_ascii_to_binary(fbx_location)
-    # convert_fbx_to_glb(fbx_location)
+    convert(fbx_location)
 
     print(json.dumps(event))
     return
