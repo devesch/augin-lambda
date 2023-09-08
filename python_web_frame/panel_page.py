@@ -51,6 +51,8 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows_folders")
                     elif model_html == "move_folder":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows_folders")
+                    elif model_html == "create_federated":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows_folders")
 
                     html.esc("folder_path_val", folder["folder_path"])
                     html.esc("folder_name_val", folder["folder_name"])
@@ -79,11 +81,17 @@ class PanelPage(BasePage):
                     if not model_html:
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
                     elif model_html == "update":
+                        if model["model_is_federated"]:
+                            continue
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_update_model_user_folder_rows")
                     elif model_html == "move":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows")
                     elif model_html == "move_folder":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows")
+                    elif model_html == "create_federated":
+                        if model["model_is_federated"] or model["model_format"] == "fbx":
+                            continue
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows")
 
                     html.esc("index_val", str(index))
                     html.esc("model_id_val", model["model_id"])
@@ -123,6 +131,11 @@ class PanelPage(BasePage):
                         html.esc("opposite_model_is_favorite_val", True)
                         html.esc("favorite_or_unfavorite_val", self.translate("Favoritar"))
                         html.esc("favorite_icon_val", "star_black")
+
+                    if model["model_used_in_federated_ids"]:
+                        html.esc("model_used_in_federated_ids_val", True)
+                    else:
+                        html.esc("model_used_in_federated_ids_val", False)
 
                     full_html.append(str(html))
         return "".join(full_html)

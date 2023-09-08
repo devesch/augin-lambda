@@ -25,17 +25,38 @@ class UpdateUser(BasePage):
             folder = Dynamo().get_folder(self.post["folder_id"])
             if not folder:
                 return {"error": "no folder"}
+            if folder["folder_user_id"] != self.user.user_id:
+                return {"error": "this folder doesnt belong to user"}
 
             if folder:
-                if int(folder["folder_size_in_mbs"]) < 5000:
+                if int(folder["folder_size_in_mbs"]) < 10000:
                     lambda_generate_folder_zip_reponse = Lambda().invoke(lambda_constants["lambda_generate_folder_zip"], "RequestResponse", {"folder_id": self.post["folder_id"]})
                     download_links.append({"model_save_name": folder["folder_name"] + ".zip", "model_link": lambda_generate_folder_zip_reponse["success"]})
                 else:
                     if folder["files"]:
                         for model_id in folder["files"]:
-                            model = Dynamo().get_model_by_id(model_id)
+                            model = Dynamo().get_model(model_id)
                             if model:
                                 download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": ModelController().generate_model_download_link(model)})
+                return {"success": download_links}
+
+            return {"error": "no folder"}
+
+        elif self.post["command"] == "download_model":
+            download_links = []
+            model = Dynamo().get_model(self.post["model_id"])
+            if not model:
+                return {"error": "no model"}
+            if model["model_user_id"] != self.user.user_id:
+                return {"error": "this model doesnt belong to user"}
+
+            if model:
+                # if int(int(model["model_filesize"]) / 1024 / 1024) < 10000:
+                if model["model_federated_required_ids"]:
+                    lambda_generate_folder_zip_reponse = Lambda().invoke(lambda_constants["lambda_generate_folder_zip"], "RequestResponse", {"model_id": self.post["model_id"]})
+                    download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": lambda_generate_folder_zip_reponse["success"]})
+                else:
+                    download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": ModelController().generate_model_download_link(model)})
                 return {"success": download_links}
 
             return {"error": "no folder"}
@@ -48,6 +69,8 @@ class UpdateUser(BasePage):
             return {"error": "no folder"}
 
         elif self.post["command"] == "get_root_folder":
+            if not self.post.get("folder_id"):
+                return {"error": "no folder_id in post"}
             folder = Dynamo().get_folder(self.post["folder_id"])
             root_folder = Dynamo().get_folder(folder["folder_root_id"])
             if root_folder:
@@ -57,7 +80,7 @@ class UpdateUser(BasePage):
 
         elif self.post["command"] == "delete_folder":
             folder = Dynamo().get_folder(self.post["folder_id"])
-            if folder["folder_user_email"] != self.user.user_email:
+            if folder["folder_user_id"] != self.user.user_id:
                 return {"error": "Esta pasta não pertence a este usuário."}
             if folder["folders"]:
                 return {"error": "Não é possível deletar uma pasta contendo pastas."}
@@ -69,7 +92,7 @@ class UpdateUser(BasePage):
 
         elif self.post["command"] == "rename_folder":
             folder = Dynamo().get_folder(self.post["folder_id"])
-            if folder["folder_user_email"] != self.user.user_email:
+            if folder["folder_user_id"] != self.user.user_id:
                 return {"error": "Esta pasta não pertence a este usuário."}
             if "/" in self.post["folder_new_name"]:
                 return {"error": "O nome da pasta não pode conter barras '/'."}
@@ -81,7 +104,7 @@ class UpdateUser(BasePage):
 
         elif self.post["command"] == "update_folder_favorite":
             folder = Dynamo().get_folder(self.post["folder_id"])
-            if folder["folder_user_email"] != self.user.user_email:
+            if folder["folder_user_id"] != self.user.user_id:
                 return {"error": "Esta pasta não pertence a este usuário."}
 
             if self.post["folder_is_favorite"] == "True":
@@ -93,10 +116,10 @@ class UpdateUser(BasePage):
             return {"success": "folder updated"}
 
         elif self.post["command"] == "move_model_folder":
-            model = Dynamo().get_model_by_id(self.post["model_id"])
+            model = Dynamo().get_model(self.post["model_id"])
             if self.post.get("selected_folder_id"):
                 folder = Dynamo().get_folder(self.post["selected_folder_id"])
-                if folder["folder_user_email"] != self.user.user_email:
+                if folder["folder_user_id"] != self.user.user_id:
                     return {"error": "Esta pasta não pertence a este usuário."}
                 self.user.move_model_to_another_folder(model, folder)
             else:
@@ -109,14 +132,14 @@ class UpdateUser(BasePage):
 
             if not folder:
                 return {"error": "Pasta de origem não encontrada."}
-            if folder["folder_user_email"] != self.user.user_email:
+            if folder["folder_user_id"] != self.user.user_id:
                 return {"error": "Pasta de origem não pertence a este usuário."}
 
             selected_folder = ""
             if self.post.get("selected_folder_id"):
                 selected_folder = Dynamo().get_folder(self.post["selected_folder_id"])
                 if selected_folder:
-                    if selected_folder["folder_user_email"] != self.user.user_email:
+                    if selected_folder["folder_user_id"] != self.user.user_id:
                         return {"error": "Pasta de destino não pertence a este usuário."}
                     if not check_if_folder_movement_is_valid(folder, selected_folder):
                         return {"error": "Não é possível mover uma pasta para dentro dela própria."}

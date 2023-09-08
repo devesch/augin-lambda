@@ -10,7 +10,7 @@ class Sort:
         if integer:
             sorted_list = sorted(dict_list, key=lambda x: float(x[attribute]), reverse=reverse)
         else:
-            sorted_list = sorted(dict_list, key=lambda x: x[attribute], reverse=reverse)
+            sorted_list = sorted(dict_list, key=lambda x: x[attribute].lower(), reverse=reverse)
         return sorted_list
 
     def sort_dict_by_keys(self, dictionary, reverse=False):

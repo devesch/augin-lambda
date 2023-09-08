@@ -24,6 +24,15 @@ class ReadWrite:
 
         return None
 
+    def get_file_hash(self, file_path):
+        import hashlib
+
+        hash_function = hashlib.sha256()
+        with open(file_path, "rb") as file:
+            while chunk := file.read(8192):
+                hash_function.update(chunk)
+        return hash_function.hexdigest()
+
     def zip_file(self, file_to_be_ziped_location, zip_destiny_location):
         import zipfile
 

@@ -28,7 +28,7 @@
 
     <section class="explore__table-container">
         <div class="explore__table-container__title-container relative">
-            <h2>{{Meus projetos}}</h2>
+            <h2 onclick="js.index.openFolder('', '')">{{Meus projetos}}</h2>
             <h6 id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
                 <- </h6> <h6 id="folder_path_span">
             </h6>
@@ -43,7 +43,7 @@
                     </button>
                 </li>
                 <li>
-                    <button>
+                    <button onclick="js.index.openModalCreateFederatedProject()">
                         <img src="{{cdn_val}}/assets/icons/note_stack_add.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Federado}}</span>
                     </button>
                 </li>
@@ -73,6 +73,61 @@
     </section>
 
 </main>
+<div id="create-federated-modal" class="modal create-federated-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Criar federado}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <div class="floating-input">
+                    <input type="text" name="federated_model_name_input" value="" id="federated_model_name_input" placeholder="" required autofocus minlength="1" maxlength="500">
+                    <label for="federated_model_name_input">{{Nome do projeto federado}}</label>
+                </div>
+            </div>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.create-federated-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveCreateFederatedProject()">{{Seguinte}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="create-federated-select-models-modal" class="modal create-federated-select-models-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Selecionar arquivos para federado}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <table class="explore__table">
+                    <input hidden id="create_federated_modal_folder_id">
+                    <thead>
+                        <tr>
+                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalCreateFederated()" id="create_federated_modal_return_folder_span">
+                                    <-</span> <span id="create_federated_modal_folder_path_span">
+                                </span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="create_federated_model_user_folder_rows_tbody">
+                        {{html_create_federated_model_user_folder_rows}}
+                    </tbody>
+                </table>
+            </div>
+            <span class="error" id="create_federated_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="folder_id_create_federated_modal_input">
+                <button onclick="js.index.openModalCreateFederatedProject()" class="ghost">{{Voltar}}</button>
+                <button onclick="js.index.saveConfirmCreateFederatedProject()">{{Criar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div id="rename-modal" class="modal rename-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
@@ -86,7 +141,7 @@
                     <label for="model_name">{{Nome atual do projeto}}</label>
                 </div>
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_name_error_span">
+            <span class="error" id="model_name_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
@@ -142,9 +197,9 @@
                         <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="{{Ícone de olho}}" width="24" height="24">
                     </button>
                 </div>
-                <p>Opcional: Preencha para proteger seu link</p>
+                <p>{{Opcional: Preencha para proteger seu link}}</p>
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_password_error_span">
+            <span class="error" id="model_password_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
@@ -177,7 +232,7 @@
                     </tbody>
                 </table>
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_update_error_span">
+            <span class="error" id="model_update_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
@@ -198,7 +253,7 @@
             <div id="update_confirm_modal_div">
                 {{html_update_modal_update_confirm}}
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_update_confirm_error_span">
+            <span class="error" id="model_update_confirm_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
@@ -302,7 +357,7 @@
                     </label>
                 </li>
             </ul>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_category_error_span">
+            <span class="error" id="model_category_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
@@ -323,10 +378,10 @@
             <div>
                 <p>{{Você está excluindo definitivamente o arquivo}}</p>
                 <strong id="delete_model_name_span"></strong>
-
                 <p>{{Tem certeza que deseja continuar?}}</p>
+                <strong id="delete_model_used_in_federated_ids_span">{{Este modelo está sendo usado como base em um projeto federado}}</strong>
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}" id="model_delete_error_span">
+            <span class="error" id="model_delete_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
@@ -480,18 +535,36 @@
 <div id="generate-download-modal" class="modal generate-download-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
+            <h1 class="modal-header-title">{{Gerando arquivo do modelo...}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <h1>{{Aguarde enquanto processamos seu pedido e geramos um arquivo compactado do modelo.}}</h1>
+            </div>
+            <span class="error" id="generate_download_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.generate-download-modal')" class="ghost">{{Fechar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="generate-download-folder-modal" class="modal generate-download-folder-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
             <h1 class="modal-header-title">{{Gerando pasta compactada...}}</h1>
         </div>
         <div class="modal-content">
             <div>
                 <h1>{{Aguarde enquanto processamos seu pedido e geramos uma pasta compactada.}}</h1>
             </div>
-            <span class="error" id="generate_download_error_span">
+            <span class="error" id="generate_download_folder_error_span">
                 {{error_msg_val}}
             </span>
             <div class="modal-button-container">
-                <input hidden id="folder_id_move_folder_modal_input">
-                <button onclick="js.index.closeModal('.modal.generate-download-modal')" class="ghost">{{Fechar}}</button>
+                <button onclick="js.index.closeModal('.modal.generate-download-folder-modal')" class="ghost">{{Fechar}}</button>
             </div>
         </div>
     </div>

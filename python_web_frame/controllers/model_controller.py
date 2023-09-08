@@ -24,9 +24,9 @@ class ModelController:
         return cls._instance
 
     def publish_federated_model(self, federated_model_id):
-        model = Dynamo().get_model_by_id(federated_model_id)
+        model = Dynamo().get_model(federated_model_id)
         for model_id in model["model_federated_required_ids"]:
-            required_model = Dynamo().get_model_by_id(model_id)
+            required_model = Dynamo().get_model(model_id)
             if required_model["model_state"] != "completed":
                 return False
             model["model_filesize"] = str(int(model["model_filesize"]) + int(required_model["model_filesize"]))
@@ -35,8 +35,7 @@ class ModelController:
         model["model_share_link_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(".zip", ".png")
         Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(".zip", ".png"))
 
-        Dynamo().delete_entity(model)
-        model = self.change_model_status(model, "not_created", "completed")
+        model = self.change_model_state(model, "not_created", "completed")
         Dynamo().put_entity(model)
         return model
 
@@ -134,7 +133,6 @@ class ModelController:
 
     def sort_models(self, models, sort_attribute="model_name", sort_reverse=False):
         sort_reverse = sort_reverse == "True"
-        sort_reverse = not sort_reverse
 
         if sort_attribute not in ["model_name", "model_filesize", "created_at"]:
             sort_attribute = "model_name"
@@ -149,8 +147,6 @@ class ModelController:
                 else:
                     normal_models.append(model)
 
-        if sort_attribute == "model_filesize":
-            sort_reverse = not sort_reverse
         if sort_attribute == "model_name":
             favorited_models = Sort().sort_dict_list(favorited_models, sort_attribute, reverse=sort_reverse, integer=False)
             normal_models = Sort().sort_dict_list(normal_models, sort_attribute, reverse=sort_reverse, integer=False)
@@ -177,8 +173,20 @@ class ModelController:
         return formatted_date
 
     def delete_model(self, model, user):
+        if model["model_used_in_federated_ids"]:
+            for model_id in model["model_used_in_federated_ids"]:
+                federated_model = Dynamo().get_model(model_id)
+                if model["model_id"] in federated_model["model_federated_required_ids"]:
+                    federated_model["model_federated_required_ids"].remove(model["model_id"])
+                    Dynamo().put_entity(federated_model)
+
+        if model["model_federated_required_ids"]:
+            for model_id in model["model_federated_required_ids"]:
+                required_model = Dynamo().get_model(model_id)
+                if model["model_id"] in required_model["model_used_in_federated_ids"]:
+                    required_model["model_used_in_federated_ids"].remove(model["model_id"])
+                    Dynamo().put_entity(required_model)
         if model["model_state"] == "completed":
-            user.decrease_total_count("user_completed_models_total_count")
             user.remove_model_from_user_dicts(model)
         S3().delete_folder(lambda_constants["processed_bucket"], model["model_upload_path"])
         Dynamo().delete_entity(model)
@@ -229,7 +237,14 @@ class ModelController:
 
         response = {"models_ids": []}
 
+        files_hashes = []
         for index, ifc_location in enumerate(ifcs_locations):
+            file_hash = ReadWrite().get_file_hash(ifc_location)
+            if file_hash not in files_hashes:
+                files_hashes.append(file_hash)
+            else:
+                return {"error": "O .zip contem arquivos duplicados."}
+
             if os.path.getsize(ifc_location) > int(lambda_constants["maxium_ifc_project_filesize"]):
                 if index == 0:
                     return {"error": "O projeto excede o tamanho máximo de 1Gb."}
@@ -246,6 +261,12 @@ class ModelController:
                         return {"error": "Os formartos suportados de IFC são: IFC2x3 e IFC4."}
                     else:
                         return {"error": "Algum arquivo dentro do .zip não está dentro dos nossos formatos suportados: suportados de IFC são: IFC2x3 e IFC4."}
+
+            models_in_processing = Dynamo().query_user_models_from_state(user, "in_processing")
+            if models_in_processing:
+                for model_in_processing in models_in_processing:
+                    if model_in_processing.get("model_filehash") == file_hash:
+                        return {"error": "Este mesmo arquivo já se encontra na fila de processamento."}
 
         if len(ifcs_locations) > 1:
             response["has_more_than_one_file"] = True
@@ -264,14 +285,15 @@ class ModelController:
                 ifc_location = new_ifc_location
 
             if index == 0:
-                model = Dynamo().get_model_by_id(self.get_model_id_from_uploaded_file(uploaded_file))
+                model = Dynamo().get_model(self.get_model_id_from_uploaded_file(uploaded_file))
             else:
-                model = self.generate_new_model(user.user_email, os.path.basename(ifc_location))
+                model = self.generate_new_model(user.user_id, os.path.basename(ifc_location))
 
             ReadWrite().zip_file(ifc_location, lambda_constants["tmp_path"] + "file_ok.zip")
 
             model["model_name"] = os.path.basename(ifc_location)
             model["model_filename"] = os.path.basename(ifc_location)
+            model["model_filehash"] = ReadWrite().get_file_hash(ifc_location)
             model["model_filename_zip"] = Generate().generate_short_id() + ".zip"
             model["model_upload_path_zip"] = model["model_upload_path"] + model["model_filename_zip"]
             S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"], lambda_constants["tmp_path"] + "file_ok.zip")
@@ -294,10 +316,7 @@ class ModelController:
         if not S3().check_if_file_exists(lambda_constants["processed_bucket"], model["model_upload_path_zip"]):
             return {"error": "Este model não foi enviado/transferido para a AWS."}
 
-        if not Validation().check_if_local_env():
-            Dynamo().delete_entity(model)
-
-        model = self.change_model_status(model, "not_created", "in_processing")
+        model = self.change_model_state(model, "not_created", "in_processing")
         if model["model_format"] == "ifc":
             model_filesize_in_megabytes = StrFormat().format_bytes_to_megabytes(model["model_filesize"])
             ec_requested_gbs = self.generate_ec_requested_gbs(model_filesize_in_megabytes)
@@ -406,8 +425,8 @@ class ModelController:
 
         return model
 
-    def change_model_status(self, model, current_status, next_status):
-        model["pk"] = model["pk"].replace(current_status, next_status)
+    def change_model_state(self, model, current_status, next_status):
+        model["model_user_id_state"] = model["model_user_id_state"].replace(current_status, next_status)
         model["model_state"] = model["model_state"].replace(current_status, next_status)
         return model
 

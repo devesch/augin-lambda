@@ -29,8 +29,27 @@ class Dynamo:
         table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
 
     ### USER ###
+    def get_user_email_with_id(self, user_id):
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "user_id-user_email-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "user_id"}, "ExpressionAttributeValues": {":0b430": {"S": user_id}}})
+        if query:
+            return query[0]["sk"].replace("user#", "")
+        return None
+
+    def get_next_user_id(self):
+        user = self.get_last_from_entity("user")
+        if user:
+            return str(int(user["user_id"]) + 1)
+        else:
+            return "500000"
+
     def get_folder(self, folder_id):
-        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "folder#"}, "sk": {"S": "folder_id#" + folder_id}}})
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "folder#" + folder_id}, "sk": {"S": "folder#" + folder_id}}})
+
+    def batch_get_folders(self, models_ids):
+        query = []
+        for model_id in models_ids:
+            query.append({"pk": "folder#" + model_id, "sk": "folder#" + model_id})
+        return self.execute_batch_get_item(query)
 
     def get_user(self, user_email):
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "user#" + user_email}, "sk": {"S": "user#" + user_email}}})
@@ -57,8 +76,14 @@ class Dynamo:
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "backoffice#"}, "sk": {"S": "backoffice#"}}})
 
     ### MODEL ###
-    def get_model(self, user_email, model_id):
-        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "user#" + user_email}, "sk": {"S": "model#" + model_id}}})
+    def get_model(self, model_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "model#" + model_id}, "sk": {"S": "model#" + model_id}}})
+
+    def batch_get_models(self, models_ids):
+        query = []
+        for model_id in models_ids:
+            query.append({"pk": "model#" + model_id, "sk": "model#" + model_id})
+        return self.execute_batch_get_item(query)
 
     def get_next_model_id(self):
         last_model = self.get_last_from_entity("model")
@@ -67,27 +92,10 @@ class Dynamo:
         else:
             return "500000"
 
-    def get_model_by_id(self, model_id):
-        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "model_id-sk-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "model_id"}, "ExpressionAttributeValues": {":0b430": {"S": model_id}}})
-        if query:
-            return self.get_entity(query[0]["pk"], query[0]["sk"])
-        return None
-
-    def query_user_models_from_state(self, user, model_state):
-        return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#d8ac1 = :d8ac1", "ExpressionAttributeNames": {"#d8ac1": "pk"}, "ExpressionAttributeValues": {":d8ac1": {"S": "user#" + user.user_email + "#model_state#" + model_state}}})
-
-    def query_user_last_created_models(self, user, limit=10000):
-        return self.query_paginated_user_models_by_created_at(user.user_email, "completed", last_evaluated_key=None, limit=limit)
-
-    def query_paginated_user_models_by_name(self, user_email, model_state, last_evaluated_key=None, limit=20, reverse=False):
-        key_schema = {"model_name": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}
-        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "pk-model_name-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "pk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_email + "#model_state#" + model_state}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
-        return self.execute_batch_get_item(query), last_evaluated_key
-
-    def query_paginated_user_models_by_created_at(self, user_email, model_state, last_evaluated_key=None, limit=20, reverse=False):
+    def query_user_models_from_state(self, user, model_state, last_evaluated_key=None, limit=10000, reverse=False):
         key_schema = {"created_at": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}
-        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "pk-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "pk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_email + "#model_state#" + model_state}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
-        return self.execute_batch_get_item(query), last_evaluated_key
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_user_id_state-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_user_id_state"}, "ExpressionAttributeValues": {":bef90": {"S": user.user_id + "#" + model_state}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
+        return self.execute_batch_get_item(query)
 
     ### PROJECT ###
 

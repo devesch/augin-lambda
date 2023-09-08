@@ -4,12 +4,12 @@ from python_web_frame.controllers.model_controller import ModelController
 
 
 class UserFolder:
-    def __init__(self, folder_user_email, folder_id, folder_name, folder_path, folder_root_id="") -> None:
-        self.pk = "folder#"
-        self.sk = "folder_id#" + folder_id
+    def __init__(self, folder_user_id, folder_id, folder_name, folder_path, folder_root_id="") -> None:
+        self.pk = "folder#" + folder_id
+        self.sk = "folder#" + folder_id
         self.folder_id = folder_id
         self.folder_name = folder_name
-        self.folder_user_email = folder_user_email
+        self.folder_user_id = folder_user_id
         self.folder_path = folder_path + "/" + folder_name
         self.folder_root_id = folder_root_id
         self.folder_is_favorite = False
@@ -59,11 +59,12 @@ def remove_folder_from_folder(folder, folder_to_be_removed):
 
 
 def remove_file_from_folder(folder, model_id, model_filesize):
-    folder["files"].remove(model_id)
-    if folder["files"]:
-        folder["folder_filesize_in_mbs"] = str(round(int(folder["folder_filesize_in_mbs"]) - float(ModelController().convert_model_filesize_to_mb(model_filesize))))
-    else:
-        folder["folder_filesize_in_mbs"] = "0"
+    if model_id in folder["files"]:
+        folder["files"].remove(model_id)
+        if folder["files"]:
+            folder["folder_filesize_in_mbs"] = str(round(int(folder["folder_filesize_in_mbs"]) - float(ModelController().convert_model_filesize_to_mb(model_filesize))))
+        else:
+            folder["folder_filesize_in_mbs"] = "0"
 
     folder["folder_size_in_mbs"] = str(int(folder["folder_foldersize_in_mbs"]) + int(folder["folder_filesize_in_mbs"]))
     Dynamo().put_entity(folder)

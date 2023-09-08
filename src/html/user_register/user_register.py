@@ -85,6 +85,7 @@ class UserRegister(UserPage):
         if self.post["user_country"].upper() != "BR":
             user.user_client_type = "international"
         user.user_status = "created"
+        user.user_id = Dynamo().get_next_user_id()
         user.user_ip = self.event.get_user_ip()
         user.update_cart_currency()
         self.increase_backoffice_data_total_count("user")
