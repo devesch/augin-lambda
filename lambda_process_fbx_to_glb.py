@@ -61,7 +61,11 @@ def convert_fbx_to_glb(path):
     bpy.ops.object.delete()
     print("Start Import FBX scene")
     bpy.ops.import_scene.fbx(filepath=path)
-    bpy.ops.object.scale_clear()
+
+    bpy.ops.object.mode_set(mode='OBJECT')
+    bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.transform_apply(scale=True)
+
     print("End Import FBX scene")
     output_path = path.replace(".fbx", "")
     print("Start conversion FBX to GLB")
