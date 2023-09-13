@@ -25,7 +25,7 @@ def get_path_data(path, user):
             return {"error": "error"}
 
     if path.get("model_id"):
-        path["model"] = Dynamo().get_model_by_id(path["model_id"])
+        path["model"] = Dynamo().get_model(path["model_id"])
         if not path["model"]:
             return {"error": "error"}
         path["project_id"] = path["model"]["model_project_id"]

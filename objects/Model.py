@@ -2,15 +2,17 @@ import time
 
 
 class Model:
-    def __init__(self, user_email, model_id, model_project_id, model_state) -> None:
-        self.pk = "user#" + user_email + "#model_state#" + model_state
+    def __init__(self, model_user_id, model_id, model_project_id, model_state) -> None:
+        self.pk = "model#" + model_id
         self.sk = "model#" + model_id
         self.model_id = model_id
         self.model_project_id = model_project_id
-        self.model_user_email = user_email
+        self.model_user_id = model_user_id
+        self.model_user_id_state = model_user_id + "#" + model_state
         self.model_folder_id = ""
 
         self.model_name = ""
+        self.model_filehash = ""
         self.model_filename = ""
         self.model_filename_zip = ""
         self.model_format = ""

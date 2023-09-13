@@ -101,6 +101,18 @@ for placeholder in filtered_placeholders:
             translations[placeholder] = {"pt": placeholder, "es": "", "en": ""}
             translations[placeholder]["es"] = translator.translate(text=placeholder, src="pt", dest="es").text
             translations[placeholder]["en"] = translator.translate(text=placeholder, src="pt", dest="en").text
+        if placeholder[0].isupper():
+            translations[placeholder]["pt"] = translations[placeholder]["pt"][0].upper() + translations[placeholder]["pt"][1:]
+            translations[placeholder]["es"] = translations[placeholder]["es"][0].upper() + translations[placeholder]["es"][1:]
+            translations[placeholder]["en"] = translations[placeholder]["en"][0].upper() + translations[placeholder]["en"][1:]
+        else:
+            translations[placeholder]["pt"] = translations[placeholder]["pt"][0].lower() + translations[placeholder]["pt"][1:]
+            translations[placeholder]["es"] = translations[placeholder]["es"][0].lower() + translations[placeholder]["es"][1:]
+            translations[placeholder]["en"] = translations[placeholder]["en"][0].lower() + translations[placeholder]["en"][1:]
+        # if translations[placeholder]["pt"] == translations[placeholder]["en"]:
+        #     if placeholder not in ["Argentina", "Barbados", "Indonesia", "India", "Libya", "Mauritius", "Philippines", "Serbia"]:
+        #         print("fixing translation for: " + placeholder)
+        #         translations[placeholder]["pt"] = translator.translate(text=placeholder, src="en", dest="pt").text
 
 
 with open("utils/translations.json", "w", encoding="utf-8") as json_file:

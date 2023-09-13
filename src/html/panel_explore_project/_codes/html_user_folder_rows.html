@@ -47,12 +47,12 @@
                 </button>
             </li>
             <li>
-                <a class="model-options-container__item button" download="{{model_filename_val}}" href="{{model_upload_path_zip_val}}">
+                <button onclick="js.index.openModalDownloadProject('{{model_id_val}}')">
                     <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
-                </a>
+                </button>
             </li>
             <li>
-                <button onclick="js.index.openModalDeleteProject('{{model_id_val}}', '{{model_name_val}}')">
+                <button onclick="js.index.openModalDeleteProject('{{model_id_val}}', '{{model_name_val}}', '{{model_used_in_federated_ids_val}}')">
                     <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>
                 </button>
             </li>

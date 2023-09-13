@@ -9,7 +9,7 @@ from utils.Config import lambda_constants
 
 class UpdateModelProcess(BasePage):
     def run(self):
-        model = Dynamo().get_model_by_id(self.post["model_id"])
+        model = Dynamo().get_model(self.post["model_id"])
         if self.post["output_format"] == "model_aug_percent":
             if not model["model_aug_completed"]:
                 model["model_aug_percent"] = self.post["progress_percent"]
@@ -65,7 +65,7 @@ class UpdateModelProcess(BasePage):
             Dynamo().update_entity(model, "model_aug_sd_memory_usage", model["model_aug_sd_memory_usage"])
             Dynamo().update_entity(model, "model_aug_sd_completed", model["model_aug_sd_completed"])
 
-        model = Dynamo().get_model_by_id(self.post["model_id"])
+        model = Dynamo().get_model(self.post["model_id"])
         model["model_processing_percentage"] = ModelController().calculate_model_process_percentage(model)
         Dynamo().update_entity(model, "model_processing_percentage", model["model_processing_percentage"])
 
@@ -78,11 +78,10 @@ class UpdateModelProcess(BasePage):
 
             model = ModelController().calculate_model_memory_usage_in_gbs(model)
             model = ModelController().calculate_model_total_time(model)
-            Dynamo().delete_entity(model)
-            model = ModelController().change_model_status(model, model["model_state"], "completed")
+            model = ModelController().change_model_state(model, model["model_state"], "completed")
             Dynamo().put_entity(model)
 
-            user = self.load_user(model["model_user_email"])
+            user = self.load_user(Dynamo().get_user_email_with_id(model["model_user_id"]))
             user.add_model_to_user_dicts(model)
 
             if model["model_used_in_federated_ids"]:

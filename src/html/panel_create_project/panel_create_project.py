@@ -24,10 +24,10 @@ class PanelCreateProject(PanelPage):
 
         federated_model = None
         if self.post.get("create_federated_project_with_processed_files"):
-            federated_model = ModelController().generate_new_model(self.user.user_email, filename=self.translate("Federado") + "-" + Date().format_unixtime_to_time(time.time()), federated=True, federated_required_ids=models_ids)
+            federated_model = ModelController().generate_new_model(self.user.user_id, filename=self.translate("Federado") + "-" + Date().format_unixtime_to_time(time.time()), federated=True, federated_required_ids=models_ids)
 
         for model_id in models_ids:
-            model = Dynamo().get_model_by_id(model_id)
+            model = Dynamo().get_model(model_id)
             ModelController().process_model_file_uploaded(model, federated_model)
 
         return Http().redirect("panel_explore_project")

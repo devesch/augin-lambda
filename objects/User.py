@@ -86,21 +86,27 @@ class User:
         deleted_files = []
 
         if user_folder["folders"]:
-            for folder_id in user_folder["folders"]:
-                folder = Dynamo().get_folder(folder_id)
-                if folder:
-                    folder_folders.append(folder)
-                else:
-                    if folder_id not in deleted_folders:
+            folder_folders.extend(Dynamo().batch_get_folders(user_folder["folders"]))
+            if len(user_folder["folders"]) != len(folder_folders):
+                for folder_id in user_folder["folders"]:
+                    folder_id_in_folder_folders = False
+                    for folder in folder_folders:
+                        if folder_id == folder["folder_id"]:
+                            folder_id_in_folder_folders = True
+                            break
+                    if not folder_id_in_folder_folders:
                         deleted_folders.append(folder_id)
 
         if user_folder["files"]:
-            for model_id in user_folder["files"]:
-                model = Dynamo().get_model_by_id(model_id)
-                if model:
-                    folder_files.append(model)
-                else:
-                    if model_id not in deleted_files:
+            folder_files.extend(Dynamo().batch_get_models(user_folder["files"]))
+            if len(user_folder["files"]) != len(folder_files):
+                for model_id in user_folder["files"]:
+                    model_id_in_folder_files = False
+                    for model in folder_files:
+                        if model_id == model["model_id"]:
+                            model_id_in_folder_files = True
+                            break
+                    if not model_id_in_folder_files:
                         deleted_files.append(model_id)
 
         if deleted_folders:
@@ -125,13 +131,13 @@ class User:
     def create_new_folder(self, new_folder_name, root_folder_id=""):
         if not root_folder_id:
             root_folder_id = ""
-            new_folder = UserFolder(self.user_email, Generate().generate_short_id(), new_folder_name, "").__dict__
+            new_folder = UserFolder(self.user_id, Generate().generate_short_id(), new_folder_name, "").__dict__
             Dynamo().put_entity(new_folder)
             self.user_dicts["folders"].append(new_folder["folder_id"])
             Dynamo().put_entity(self.__dict__)
         else:
             root_folder = Dynamo().get_folder(root_folder_id)
-            new_folder = UserFolder(self.user_email, Generate().generate_short_id(), new_folder_name, root_folder["folder_path"], root_folder["folder_id"]).__dict__
+            new_folder = UserFolder(self.user_id, Generate().generate_short_id(), new_folder_name, root_folder["folder_path"], root_folder["folder_id"]).__dict__
             Dynamo().put_entity(new_folder)
             root_folder["folders"].append(new_folder["folder_id"])
             Dynamo().put_entity(root_folder)
@@ -161,18 +167,6 @@ class User:
 
         self.user_models_size_in_mbs = str(round(float(self.user_models_size_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))))
         Dynamo().put_entity(self.__dict__)
-
-    def increase_total_count(self, param):
-        current_value = int(getattr(self, param))
-        new_value = current_value + 1
-        setattr(self, param, str(new_value))
-        Dynamo().update_entity(self.__dict__, param, str(new_value))
-
-    def decrease_total_count(self, param):
-        current_value = int(getattr(self, param))
-        new_value = current_value - 1
-        setattr(self, param, str(new_value))
-        Dynamo().update_entity(self.__dict__, param, str(new_value))
 
     def update_last_login_at(self):
         if int(float(self.user_last_login_at)) + 3000 < int(time()):
@@ -234,7 +228,7 @@ def sort_user_folders(user_folders, sort_attribute="folder_name", sort_reverse=F
     if sort_attribute == "model_name":
         sort_attribute = "folder_name"
     if sort_attribute == "model_filesize":
-        sort_attribute = "folder_size"
+        sort_attribute = "folder_foldersize_in_mbs"
 
     favorited_folders = []
     normal_folders = []

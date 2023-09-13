@@ -15,9 +15,14 @@
         "pt": "Adicionar método de pagamento"
     },
     "Afghanistan": {
-        "en": "AFGHANISTAN",
-        "es": "AFGANISTÁN",
-        "pt": "Afghanistan"
+        "en": "Afghanistan",
+        "es": "Afeganistão",
+        "pt": "Afeganistão"
+    },
+    "Aguarde enquanto processamos seu pedido e geramos um arquivo compactado do modelo.": {
+        "en": "Wait while we process your order and generate a compressed file of the model.",
+        "es": "Espere mientras procesemos su pedido y generemos un archivo comprimido del modelo.",
+        "pt": "Aguarde enquanto processamos seu pedido e geramos um arquivo compactado do modelo."
     },
     "Aguarde enquanto processamos seu pedido e geramos uma pasta compactada.": {
         "en": "Wait as we process your order and generate a compressed folder.",
@@ -27,7 +32,7 @@
     "Albania": {
         "en": "Albania",
         "es": "Albania",
-        "pt": "Albania"
+        "pt": "Albânia"
     },
     "Algeria": {
         "en": "Library",
@@ -57,7 +62,7 @@
     "American Samoa": {
         "en": "American Samoa",
         "es": "Samoa Americana",
-        "pt": "American Samoa"
+        "pt": "Samoa Americana"
     },
     "Andorra": {
         "en": "Andorra",
@@ -76,7 +81,7 @@
     },
     "Antarctica": {
         "en": "Antarctic",
-        "es": "antártico",
+        "es": "Antártico",
         "pt": "Antarctica"
     },
     "Antigo": {
@@ -87,7 +92,7 @@
     "Antigua and Barbuda": {
         "en": "Antigua and Barbuda",
         "es": "Antigua y Barbuda",
-        "pt": "Antigua and Barbuda"
+        "pt": "Antígua e Barbuda"
     },
     "Ao prosseguir, este dispositivo não estará mais vinculado a sua conta.": {
         "en": "By proceeding, this device will no longer be linked to your account.",
@@ -117,7 +122,7 @@
     "Armenia": {
         "en": "Armenia",
         "es": "Armenia",
-        "pt": "Armenia"
+        "pt": "Armênia"
     },
     "Arquitetura": {
         "en": "Architecture",
@@ -165,24 +170,24 @@
         "pt": "Atualizar forma de pagamento"
     },
     "Atualmente você tem": {
-        "en": "currently you have",
-        "es": "actualmente tienes",
+        "en": "Currently you have",
+        "es": "Actualmente tienes",
         "pt": "Atualmente você tem"
     },
     "Australia": {
         "en": "Australia",
         "es": "Australia",
-        "pt": "Australia"
+        "pt": "Austrália"
     },
     "Austria": {
         "en": "Austria",
         "es": "Austria",
-        "pt": "Austria"
+        "pt": "Áustria"
     },
     "Azerbaijan": {
         "en": "Azerbaijan",
         "es": "Azerbaiyán",
-        "pt": "Azerbaijan"
+        "pt": "Azerbaijão"
     },
     "Bahamas": {
         "en": "Bahamas",
@@ -192,7 +197,7 @@
     "Bahrain": {
         "en": "Bahrain",
         "es": "Bahrain",
-        "pt": "Bahrain"
+        "pt": "Bahrein"
     },
     "Baixar": {
         "en": "To go down",
@@ -217,12 +222,12 @@
     "Belarus": {
         "en": "Belarus",
         "es": "Bielorrusia",
-        "pt": "Belarus"
+        "pt": "Bielorrússia"
     },
     "Belgium": {
         "en": "Belgium",
         "es": "Bélgica",
-        "pt": "Belgium"
+        "pt": "Bélgica"
     },
     "Belize": {
         "en": "Belize",
@@ -252,22 +257,22 @@
     "Bhutan": {
         "en": "Bhutan",
         "es": "Bután",
-        "pt": "Bhutan"
+        "pt": "Butão"
     },
     "Bolivia, Plurinational State of": {
         "en": "Bolivia, Plurinational State of",
         "es": "Bolivia, estado plurinacional de",
-        "pt": "Bolivia, Plurinational State of"
+        "pt": "Bolívia, estado plurinacional de"
     },
     "Bonaire, Sint Eustatius and Saba": {
         "en": "Bonaire, Sint Eustatius and Saba",
         "es": "Bonaire, Sint Eustatius y Saba",
-        "pt": "Bonaire, Sint Eustatius and Saba"
+        "pt": "Bonaire, Sint Eustatius e Saba"
     },
     "Bosnia and Herzegovina": {
         "en": "Bosnia and Herzegovina",
         "es": "Bosnia y Herzegovina",
-        "pt": "Bosnia and Herzegovina"
+        "pt": "Bósnia e Herzegovina"
     },
     "Botswana": {
         "en": "Botswana",
@@ -277,17 +282,17 @@
     "Bouvet Island": {
         "en": "Bouvet Island",
         "es": "Isla bouvet",
-        "pt": "Bouvet Island"
+        "pt": "Ilha Bouvet"
     },
     "Brazil": {
         "en": "Brazil",
         "es": "Brasil",
-        "pt": "Brazil"
+        "pt": "Brasil"
     },
     "British Indian Ocean Territory": {
         "en": "British Indian Ocean Territory",
         "es": "Territorio Británico del Océano Índico",
-        "pt": "British Indian Ocean Territory"
+        "pt": "Território do Oceano Índico Britânico"
     },
     "Brunei Darussalam": {
         "en": "Brunei Darussalam",
@@ -297,7 +302,7 @@
     "Bulgaria": {
         "en": "Bulgaria",
         "es": "Bulgaria",
-        "pt": "Bulgaria"
+        "pt": "Bulgária"
     },
     "Burkina Faso": {
         "en": "Burkina Faso",
@@ -322,12 +327,12 @@
     "Cameroon": {
         "en": "Cameroon",
         "es": "Camerún",
-        "pt": "Cameroon"
+        "pt": "Camarões"
     },
     "Canada": {
         "en": "Canada",
         "es": "Canadá",
-        "pt": "Canada"
+        "pt": "Canadá"
     },
     "Cancelar": {
         "en": "Cancel",
@@ -335,8 +340,8 @@
         "pt": "Cancelar"
     },
     "Cancelar assinatura": {
-        "en": "unsubscribe",
-        "es": "darse de baja",
+        "en": "Unsubscribe",
+        "es": "Darse de baja",
         "pt": "Cancelar assinatura"
     },
     "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.": {
@@ -352,12 +357,12 @@
     "Cayman Islands": {
         "en": "Cayman Islands",
         "es": "Islas Caimán",
-        "pt": "Cayman Islands"
+        "pt": "Ilhas Cayman"
     },
     "Central African Republic": {
         "en": "Central African Republic",
         "es": "República Centroafricana",
-        "pt": "Central African Republic"
+        "pt": "República da África Central"
     },
     "Central de ajuda": {
         "en": "Help Center",
@@ -367,7 +372,7 @@
     "Chad": {
         "en": "Chad",
         "es": "Chad",
-        "pt": "Chad"
+        "pt": "Chade"
     },
     "Chegou o seu código de verificação, copie e cole para finalizar o seu cadastro": {
         "en": "Your verification code has arrived, copy and paste to finish your registration",
@@ -387,17 +392,17 @@
     "Christmas Island": {
         "en": "Christmas Island",
         "es": "Isla de Navidad",
-        "pt": "Christmas Island"
+        "pt": "Ilha do Natal"
     },
     "Cobrança e pagamento": {
-        "en": "billing and payment",
-        "es": "facturación y pago",
+        "en": "Billing and payment",
+        "es": "Facturación y pago",
         "pt": "Cobrança e pagamento"
     },
     "Cocos (Keeling) Islands": {
         "en": "Cocos (Keeling) Islands",
         "es": "Islas Cocos (Keeling)",
-        "pt": "Cocos (Keeling) Islands"
+        "pt": "Ilhas Cocos (Keeling)"
     },
     "Cole (ou digite) seu código de 6 dígitos": {
         "en": "Cole (or type) your 6 -digit code",
@@ -407,7 +412,7 @@
     "Colombia": {
         "en": "Colombia",
         "es": "Colombia",
-        "pt": "Colombia"
+        "pt": "Colômbia"
     },
     "Comoros": {
         "en": "Dwelling",
@@ -447,7 +452,7 @@
     "Congo, The Democratic Republic of the": {
         "en": "Congo, The Democratic Republic of the",
         "es": "Congo, la República Democrática del",
-        "pt": "Congo, The Democratic Republic of the"
+        "pt": "Congo, a República Democrática do"
     },
     "Contato": {
         "en": "Contact",
@@ -457,7 +462,7 @@
     "Cook Islands": {
         "en": "Cook Islands",
         "es": "Islas Cook",
-        "pt": "Cook Islands"
+        "pt": "Ilhas Cook"
     },
     "Copiado!": {
         "en": "Copied!",
@@ -484,6 +489,11 @@
         "es": "Crea una cuenta",
         "pt": "Criar conta"
     },
+    "Criar federado": {
+        "en": "Federate",
+        "es": "Federativo",
+        "pt": "Criar federado"
+    },
     "Criar pasta": {
         "en": "Create folder",
         "es": "Crear carpeta",
@@ -507,7 +517,7 @@
     "Croatia": {
         "en": "Croatia",
         "es": "Croacia",
-        "pt": "Croatia"
+        "pt": "Croácia"
     },
     "Cuba": {
         "en": "Cuba",
@@ -515,24 +525,24 @@
         "pt": "Cuba"
     },
     "Curaçao": {
-        "en": "",
-        "es": "",
+        "en": "Curaçao",
+        "es": "Curaçao",
         "pt": "Curaçao"
     },
     "Cyprus": {
         "en": "Cyprus",
         "es": "Chipre",
-        "pt": "Cyprus"
+        "pt": "Chipre"
     },
     "Czechia": {
         "en": "Czechia",
         "es": "Chequia",
-        "pt": "Czechia"
+        "pt": "Tchechia"
     },
     "Côte d'Ivoire": {
         "en": "Côte d'Ivoire",
         "es": "Cantas d'Iffioir",
-        "pt": "Côte d'Ivoire"
+        "pt": "Côte D'ivoire"
     },
     "DISPONÍVEL": {
         "en": "AVAILABLE",
@@ -540,7 +550,7 @@
         "pt": "DISPONÍVEL"
     },
     "Data de renovação": {
-        "en": "renewal date",
+        "en": "Renewal date",
         "es": "Fecha de renovación",
         "pt": "Data de renovação"
     },
@@ -555,8 +565,8 @@
         "pt": "Definir Nova Senha."
     },
     "Definir nova senha": {
-        "en": "set new password",
-        "es": "establecer nueva contraseña",
+        "en": "Set new password",
+        "es": "Establecer nueva contraseña",
         "pt": "Definir nova senha"
     },
     "Deletar": {
@@ -572,7 +582,7 @@
     "Denmark": {
         "en": "Denmark",
         "es": "Dinamarca",
-        "pt": "Denmark"
+        "pt": "Dinamarca"
     },
     "Desfavoritar": {
         "en": "Disallower",
@@ -632,7 +642,7 @@
     "Djibouti": {
         "en": "Djibouti",
         "es": "Djibouti",
-        "pt": "Djibouti"
+        "pt": "Djibuti"
     },
     "Dominica": {
         "en": "Dominated",
@@ -642,7 +652,7 @@
     "Dominican Republic": {
         "en": "Dominican Republic",
         "es": "República Dominicana",
-        "pt": "Dominican Republic"
+        "pt": "República Dominicana"
     },
     "Ecuador": {
         "en": "Ecurator",
@@ -652,7 +662,7 @@
     "Egypt": {
         "en": "Egypt",
         "es": "Egipto",
-        "pt": "Egypt"
+        "pt": "Egito"
     },
     "El Salvador": {
         "en": "El Salvador",
@@ -692,7 +702,7 @@
     "Equatorial Guinea": {
         "en": "Equatorial Guinea",
         "es": "Guinea Ecuatorial",
-        "pt": "Equatorial Guinea"
+        "pt": "Guiné Equatorial"
     },
     "Eritrea": {
         "en": "Erytrea",
@@ -739,10 +749,15 @@
         "es": "Nos enfrentamos a un revés en nuestro sitio web, que no está disponible temporalmente.",
         "pt": "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível."
     },
+    "Este modelo está sendo usado como base em um projeto federado": {
+        "en": "This model is being used as a base of a federated project",
+        "es": "Este modelo se está utilizando como base de un proyecto federado.",
+        "pt": "Este modelo está sendo usado como base em um projeto federado"
+    },
     "Estonia": {
         "en": "Estonia",
         "es": "Estonia",
-        "pt": "Estonia"
+        "pt": "Estônia"
     },
     "Estrutural": {
         "en": "Structural",
@@ -757,7 +772,7 @@
     "Ethiopia": {
         "en": "Ethiopia",
         "es": "Etiopía",
-        "pt": "Ethiopia"
+        "pt": "Etiópia"
     },
     "Eu li e concordo com o contrato de": {
         "en": "I read and agree with the contract of",
@@ -765,8 +780,8 @@
         "pt": "Eu li e concordo com o contrato de"
     },
     "Excluir modelo": {
-        "en": "delete template",
-        "es": "eliminar plantilla",
+        "en": "Delete template",
+        "es": "Eliminar plantilla",
         "pt": "Excluir modelo"
     },
     "Executivo": {
@@ -780,19 +795,14 @@
         "pt": "Exibindo"
     },
     "Exibir senha": {
-        "en": "show password",
-        "es": "mostrar contraseña",
+        "en": "Show password",
+        "es": "Mostrar contraseña",
         "pt": "Exibir senha"
     },
     "Explorar": {
         "en": "To explore",
         "es": "Para explorar",
         "pt": "Explorar"
-    },
-    "Failed": {
-        "en": "",
-        "es": "",
-        "pt": "Failed"
     },
     "Falhou": {
         "en": "Failed",
@@ -807,11 +817,11 @@
     "Faroe Islands": {
         "en": "Faroe Islands",
         "es": "Islas Faroe",
-        "pt": "Faroe Islands"
+        "pt": "Ilhas Faroe"
     },
     "Favoritar": {
-        "en": "favorite",
-        "es": "favorito",
+        "en": "Favorite",
+        "es": "Favorito",
         "pt": "Favoritar"
     },
     "Fechar": {
@@ -821,7 +831,7 @@
     },
     "Federado": {
         "en": "Federated",
-        "es": "federado",
+        "es": "Federado",
         "pt": "Federado"
     },
     "Fiji": {
@@ -835,24 +845,24 @@
         "pt": "Fila"
     },
     "Fila de processamento": {
-        "en": "processing queue",
-        "es": "cola de procesamiento",
+        "en": "Processing queue",
+        "es": "Cola de procesamiento",
         "pt": "Fila de processamento"
     },
     "Filtrar": {
-        "en": "filter",
-        "es": "filtrar",
+        "en": "Filter",
+        "es": "Filtrar",
         "pt": "Filtrar"
     },
     "Finland": {
         "en": "Finland",
         "es": "Finlandia",
-        "pt": "Finland"
+        "pt": "Finlândia"
     },
     "France": {
         "en": "France",
         "es": "Francia",
-        "pt": "France"
+        "pt": "França"
     },
     "French Guiana": {
         "en": "French Guyana",
@@ -867,22 +877,27 @@
     "French Southern Territories": {
         "en": "French Southern Territories",
         "es": "Territorios Franceses del Sur",
-        "pt": "French Southern Territories"
+        "pt": "Territórios do Sul da França"
     },
     "Gabon": {
         "en": "Gabon",
         "es": "Gabón",
-        "pt": "Gabon"
+        "pt": "Gabão"
     },
     "Gambia": {
         "en": "Gambia",
         "es": "Gambia",
-        "pt": "Gambia"
+        "pt": "Gâmbia"
     },
     "Georgia": {
         "en": "Georgia",
         "es": "Georgia",
-        "pt": "Georgia"
+        "pt": "Geórgia"
+    },
+    "Gerando arquivo do modelo...": {
+        "en": "Generating model file ...",
+        "es": "Generación del archivo de modelo ...",
+        "pt": "Gerando arquivo do modelo..."
     },
     "Gerando pasta compactada...": {
         "en": "Generating compressed folder ...",
@@ -890,19 +905,19 @@
         "pt": "Gerando pasta compactada..."
     },
     "Gerencie seus dispositivos": {
-        "en": "manage your devices",
-        "es": "administra tus dispositivos",
+        "en": "Manage your devices",
+        "es": "Administra tus dispositivos",
         "pt": "Gerencie seus dispositivos"
     },
     "Germany": {
         "en": "Germany",
         "es": "Alemania",
-        "pt": "Germany"
+        "pt": "Alemanha"
     },
     "Ghana": {
         "en": "Ghana",
         "es": "Ghana",
-        "pt": "Ghana"
+        "pt": "Gana"
     },
     "Gibraltar": {
         "en": "Gibraltar",
@@ -917,12 +932,12 @@
     "Greece": {
         "en": "Greece",
         "es": "Grecia",
-        "pt": "Greece"
+        "pt": "Grécia"
     },
     "Greenland": {
         "en": "Greenland",
         "es": "Groenlandia",
-        "pt": "Greenland"
+        "pt": "Groenlândia"
     },
     "Grenada": {
         "en": "Grenad",
@@ -952,7 +967,7 @@
     "Guinea": {
         "en": "Guinea",
         "es": "Guinea",
-        "pt": "Guinea"
+        "pt": "Guiné"
     },
     "Guinea-Bissau": {
         "en": "Guinea-bissau",
@@ -962,7 +977,7 @@
     "Guyana": {
         "en": "Guyana",
         "es": "Guayana",
-        "pt": "Guyana"
+        "pt": "Guiana"
     },
     "Gás": {
         "en": "Gas",
@@ -977,7 +992,7 @@
     "Heard Island and McDonald Islands": {
         "en": "Heard Island and McDonald Islands",
         "es": "Escuché Island y Islas McDonald",
-        "pt": "Heard Island and McDonald Islands"
+        "pt": "Heard Island e McDonald Islands"
     },
     "Hidrosanitário": {
         "en": "Hydrosanitary",
@@ -985,14 +1000,14 @@
         "pt": "Hidrosanitário"
     },
     "Histórico de pagamento": {
-        "en": "payment history",
-        "es": "historial de pagos",
+        "en": "Payment history",
+        "es": "Historial de pagos",
         "pt": "Histórico de pagamento"
     },
     "Holy See (Vatican City State)": {
         "en": "Holy See (Vatican City State)",
         "es": "Santa Sede (Estado de la Ciudad del Vaticano)",
-        "pt": "Holy See (Vatican City State)"
+        "pt": "Santa See (Estado da cidade do Vaticano)"
     },
     "Honduras": {
         "en": "Honduras",
@@ -1007,26 +1022,26 @@
     "Hungary": {
         "en": "Hungary",
         "es": "Hungría",
-        "pt": "Hungary"
+        "pt": "Hungria"
     },
     "Iceland": {
         "en": "Iceland",
         "es": "Islandia",
-        "pt": "Iceland"
+        "pt": "Islândia"
     },
     "Importar arquivo": {
-        "en": "import file",
-        "es": "importar archivo",
+        "en": "Import file",
+        "es": "Importar archivo",
         "pt": "Importar arquivo"
     },
     "Importar novo projeto": {
-        "en": "import new project",
-        "es": "importar nuevo proyecto",
+        "en": "Import new project",
+        "es": "Importar nuevo proyecto",
         "pt": "Importar novo projeto"
     },
     "Importe seu arquivo": {
-        "en": "import your file",
-        "es": "importa tu archivo",
+        "en": "Import your file",
+        "es": "Importa tu archivo",
         "pt": "Importe seu arquivo"
     },
     "Incêndio": {
@@ -1072,17 +1087,17 @@
     "Iran, Islamic Republic of": {
         "en": "Iran, Islamic Republic of",
         "es": "Irán (República Islámica de",
-        "pt": "Iran, Islamic Republic of"
+        "pt": "Irã (Republic Islâmica do Irã"
     },
     "Iraq": {
         "en": "Iraq",
         "es": "Irak",
-        "pt": "Iraq"
+        "pt": "Iraque"
     },
     "Ireland": {
         "en": "Ireland",
         "es": "Irlanda",
-        "pt": "Ireland"
+        "pt": "Irlanda"
     },
     "Isle of Man": {
         "en": "Isle of man",
@@ -1097,7 +1112,7 @@
     "Italy": {
         "en": "Italy",
         "es": "Italia",
-        "pt": "Italy"
+        "pt": "Itália"
     },
     "Jamaica": {
         "en": "Jamaica",
@@ -1105,9 +1120,9 @@
         "pt": "Jamaica"
     },
     "Japan": {
-        "en": "",
-        "es": "",
-        "pt": "Japan"
+        "en": "Japan",
+        "es": "Japão",
+        "pt": "Japão"
     },
     "Jersey": {
         "en": "Jersey",
@@ -1117,17 +1132,17 @@
     "Jordan": {
         "en": "Jordan",
         "es": "Jordán",
-        "pt": "Jordan"
+        "pt": "Jordânia"
     },
     "Kazakhstan": {
         "en": "Kazakhstan",
         "es": "Kazajstán",
-        "pt": "Kazakhstan"
+        "pt": "Cazaquistão"
     },
     "Kenya": {
         "en": "Kenya",
         "es": "Kenia",
-        "pt": "Kenya"
+        "pt": "Quênia"
     },
     "Kiribati": {
         "en": "Kiribati",
@@ -1137,12 +1152,12 @@
     "Korea, Democratic People's Republic of": {
         "en": "Korea, Democratic People's Republic of",
         "es": "República de Corea, Popular Democrática de",
-        "pt": "Korea, Democratic People's Republic of"
+        "pt": "Coréia, República Popular Democrática da"
     },
     "Korea, Republic of": {
         "en": "Korea, Republic of",
         "es": "Corea, república de",
-        "pt": "Korea, Republic of"
+        "pt": "Republica da Coréia"
     },
     "Kuwait": {
         "en": "Kuwait",
@@ -1152,37 +1167,37 @@
     "Kyrgyzstan": {
         "en": "Kyrgyzstan",
         "es": "Kirguistán",
-        "pt": "Kyrgyzstan"
+        "pt": "Quirguistão"
     },
     "Lao People's Democratic Republic": {
         "en": "Lao People's Democratic Republic",
         "es": "República Democrática Popular de Lao",
-        "pt": "Lao People's Democratic Republic"
+        "pt": "República Democrática Popular do Lao"
     },
     "Latvia": {
         "en": "Latvia",
         "es": "Letonia",
-        "pt": "Latvia"
+        "pt": "Letônia"
     },
     "Lebanon": {
         "en": "Lebanon",
         "es": "Líbano",
-        "pt": "Lebanon"
+        "pt": "Líbano"
     },
     "Lesotho": {
         "en": "Lesotho",
         "es": "Lesoto",
-        "pt": "Lesotho"
+        "pt": "Lesoto"
     },
     "Liberia": {
         "en": "Liberia",
         "es": "Liberia",
-        "pt": "Liberia"
+        "pt": "Libéria"
     },
     "Libya": {
         "en": "Libya",
         "es": "Libia",
-        "pt": "Libya"
+        "pt": "Libia"
     },
     "Liechtenstein": {
         "en": "Liechtenstein",
@@ -1190,8 +1205,8 @@
         "pt": "Liechtenstein"
     },
     "Limite de dispositivos": {
-        "en": "device limit",
-        "es": "límite de dispositivo",
+        "en": "Device limit",
+        "es": "Límite de dispositivo",
         "pt": "Limite de dispositivos"
     },
     "Limite mensal de desvinculações": {
@@ -1202,7 +1217,7 @@
     "Lithuania": {
         "en": "Lithuania",
         "es": "Lituania",
-        "pt": "Lithuania"
+        "pt": "Lituânia"
     },
     "Login": {
         "en": "Login",
@@ -1211,23 +1226,23 @@
     },
     "Logo Augin": {
         "en": "Logo Augin",
-        "es": "Logotipo augin",
+        "es": "Logotipo Augin",
         "pt": "Logo Augin"
     },
     "Luxembourg": {
         "en": "Luxembourg",
         "es": "Luxemburgo",
-        "pt": "Luxembourg"
+        "pt": "Luxemburgo"
     },
     "Macao": {
         "en": "Macao",
         "es": "Macao",
-        "pt": "Macao"
+        "pt": "Macau"
     },
     "Madagascar": {
         "en": "Madagascar",
         "es": "Madagascar",
-        "pt": "Madagascar"
+        "pt": "Madagáscar"
     },
     "Malawi": {
         "en": "Malawi",
@@ -1237,7 +1252,7 @@
     "Malaysia": {
         "en": "Malaysia",
         "es": "Malasia",
-        "pt": "Malaysia"
+        "pt": "Malásia"
     },
     "Maldives": {
         "en": "Mulling",
@@ -1257,17 +1272,17 @@
     "Marshall Islands": {
         "en": "Marshall Islands",
         "es": "Islas Marshall",
-        "pt": "Marshall Islands"
+        "pt": "Ilhas Marshall"
     },
     "Martinique": {
         "en": "Martinique",
         "es": "Martinica",
-        "pt": "Martinique"
+        "pt": "Martinica"
     },
     "Mauritania": {
         "en": "Mauritania",
         "es": "Mauritania",
-        "pt": "Mauritania"
+        "pt": "Mauritânia"
     },
     "Mauritius": {
         "en": "Mauritius",
@@ -1292,7 +1307,7 @@
     "Mexico": {
         "en": "Mexico",
         "es": "México",
-        "pt": "Mexico"
+        "pt": "México"
     },
     "Micronesia, Federated States of": {
         "en": "Microesia, Federated States of",
@@ -1307,12 +1322,12 @@
     "Monaco": {
         "en": "Monaco",
         "es": "Mónaco",
-        "pt": "Monaco"
+        "pt": "Mônaco"
     },
     "Mongolia": {
         "en": "Mongolia",
         "es": "Mongolia",
-        "pt": "Mongolia"
+        "pt": "Mongólia"
     },
     "Montenegro": {
         "en": "Montenegro",
@@ -1327,7 +1342,7 @@
     "Morocco": {
         "en": "Morocco",
         "es": "Marruecos",
-        "pt": "Morocco"
+        "pt": "Marrocos"
     },
     "Mostrar senha.": {
         "en": "Show password.",
@@ -1347,12 +1362,12 @@
     "Mozambique": {
         "en": "Mozambique",
         "es": "Mozambique",
-        "pt": "Mozambique"
+        "pt": "Moçambique"
     },
     "Myanmar": {
         "en": "Myanmar",
         "es": "Myanmar",
-        "pt": "Myanmar"
+        "pt": "Mianmar"
     },
     "Métodos de pagamento": {
         "en": "Payment methods",
@@ -1362,7 +1377,7 @@
     "Namibia": {
         "en": "Namibia",
         "es": "Namibia",
-        "pt": "Namibia"
+        "pt": "Namíbia"
     },
     "Nauru": {
         "en": "Nauru",
@@ -1382,32 +1397,32 @@
     "Netherlands": {
         "en": "Netherlands",
         "es": "Países Bajos",
-        "pt": "Netherlands"
+        "pt": "Holanda"
     },
     "New Caledonia": {
         "en": "New Caledonia",
         "es": "Nueva Caledonia",
-        "pt": "New Caledonia"
+        "pt": "Nova Caledônia"
     },
     "New Zealand": {
         "en": "New Zealand",
         "es": "Nueva Zelanda",
-        "pt": "New Zealand"
+        "pt": "Nova Zelândia"
     },
     "Nicaragua": {
         "en": "Nicaragua",
         "es": "Nicaragua",
-        "pt": "Nicaragua"
+        "pt": "Nicarágua"
     },
     "Niger": {
         "en": "Niger",
         "es": "Níger",
-        "pt": "Niger"
+        "pt": "Níger"
     },
     "Nigeria": {
         "en": "Nigeria",
         "es": "Nigeria",
-        "pt": "Nigeria"
+        "pt": "Nigéria"
     },
     "Niue": {
         "en": "Niue",
@@ -1449,25 +1464,30 @@
         "es": "nombre federado",
         "pt": "Nome do federado"
     },
+    "Nome do projeto federado": {
+        "en": "Federated Project Name",
+        "es": "Nombre del proyecto federado",
+        "pt": "Nome do projeto federado"
+    },
     "Norfolk Island": {
         "en": "Norfolk Island",
         "es": "Isla Norfolk",
-        "pt": "Norfolk Island"
+        "pt": "Ilha de Norfolk"
     },
     "North Macedonia": {
         "en": "North Macedonia",
         "es": "Macedonia del Norte",
-        "pt": "North Macedonia"
+        "pt": "Macedônia do Norte"
     },
     "Northern Mariana Islands": {
         "en": "Northern Mariana Islands",
         "es": "Islas Marianas del Norte",
-        "pt": "Northern Mariana Islands"
+        "pt": "Ilhas do norte da Mariana"
     },
     "Norway": {
         "en": "Norway",
         "es": "Noruega",
-        "pt": "Norway"
+        "pt": "Noruega"
     },
     "Nossa equipe está trabalhando para resolver a situação o mais rápido possível.": {
         "en": "Our team is working to resolve the situation as soon as possible.",
@@ -1517,7 +1537,12 @@
     "Oman": {
         "en": "Oman",
         "es": "Omán",
-        "pt": "Oman"
+        "pt": "Omã"
+    },
+    "Opcional: Preencha para proteger seu link": {
+        "en": "Optional: Fill in to protect your link",
+        "es": "Opcional: complete para proteger su enlace",
+        "pt": "Opcional: Preencha para proteger seu link"
     },
     "Os formartos suportados de IFC são: IFC2x3 e IFC4.": {
         "en": "IFC -supported shapes are: IFC2x3 and IFC4.",
@@ -1537,7 +1562,7 @@
     "Pakistan": {
         "en": "Pakistan",
         "es": "Pakistán",
-        "pt": "Pakistan"
+        "pt": "Paquistão"
     },
     "Palau": {
         "en": "Palau",
@@ -1547,12 +1572,12 @@
     "Palestine, State of": {
         "en": "Palestine, State of",
         "es": "Palestina, estado de",
-        "pt": "Palestine, State of"
+        "pt": "Palestina, estado de"
     },
     "Panama": {
         "en": "Panama",
         "es": "Panamá",
-        "pt": "Panama"
+        "pt": "Panamá"
     },
     "Papua New Guinea": {
         "en": "PAPUA NEW GUINEA",
@@ -1562,7 +1587,7 @@
     "Paraguay": {
         "en": "Paraguay",
         "es": "Paraguay",
-        "pt": "Paraguay"
+        "pt": "Paraguai"
     },
     "Pasta": {
         "en": "Folder",
@@ -1580,14 +1605,14 @@
         "pt": "Peru"
     },
     "Período de cobrança": {
-        "en": "billing period",
-        "es": "período de facturación",
+        "en": "Billing period",
+        "es": "Período de facturación",
         "pt": "Período de cobrança"
     },
     "Philippines": {
         "en": "Philippines",
         "es": "Filipinas",
-        "pt": "Philippines"
+        "pt": "Filipinas"
     },
     "Pitcairn": {
         "en": "Pitcairn",
@@ -1597,7 +1622,7 @@
     "Poland": {
         "en": "Poland",
         "es": "Polonia",
-        "pt": "Poland"
+        "pt": "Polônia"
     },
     "Política de cookies": {
         "en": "Cookies policy",
@@ -1645,8 +1670,8 @@
         "pt": "Projetos federado"
     },
     "Projetos federados": {
-        "en": "federated projects",
-        "es": "proyectos federados",
+        "en": "Federated projects",
+        "es": "Proyectos federados",
         "pt": "Projetos federados"
     },
     "Prosseguir": {
@@ -1667,7 +1692,7 @@
     "Puerto Rico": {
         "en": "Puerto Rico",
         "es": "Puerto Rico",
-        "pt": "Puerto Rico"
+        "pt": "Porto Rico"
     },
     "QRCODE": {
         "en": "Qrcode",
@@ -1677,16 +1702,16 @@
     "Qatar": {
         "en": "Qatar",
         "es": "Katar",
-        "pt": "Qatar"
+        "pt": "Catar"
     },
     "Quantidade de dispositivos": {
-        "en": "number of devices",
-        "es": "número de dispositivos",
+        "en": "Number of devices",
+        "es": "Número de dispositivos",
         "pt": "Quantidade de dispositivos"
     },
     "Renomear": {
-        "en": "rename",
-        "es": "rebautizar",
+        "en": "Rename",
+        "es": "Rebautizar",
         "pt": "Renomear"
     },
     "Renomear pasta": {
@@ -1697,17 +1722,17 @@
     "Romania": {
         "en": "Romania",
         "es": "Rumania",
-        "pt": "Romania"
+        "pt": "Romênia"
     },
     "Russian Federation": {
         "en": "Russian Federation",
         "es": "Federación Rusa",
-        "pt": "Russian Federation"
+        "pt": "Federação Russa"
     },
     "Rwanda": {
         "en": "Rwanda",
         "es": "Ruanda",
-        "pt": "Rwanda"
+        "pt": "Ruanda"
     },
     "Réunion": {
         "en": "Reunion",
@@ -1722,17 +1747,17 @@
     "Saint Helena, Ascension and Tristan da Cunha": {
         "en": "Saint Helena, Ascension and Tristan da Cunha",
         "es": "Santa Helena, Ascensión y Tristan da Cunha",
-        "pt": "Saint Helena, Ascension and Tristan da Cunha"
+        "pt": "Saint Helena, Ascensão e Tristan da Cunha"
     },
     "Saint Kitts and Nevis": {
         "en": "Saint Kitts and Nevis",
         "es": "Saint Kitts y Nevis",
-        "pt": "Saint Kitts and Nevis"
+        "pt": "Saint Kitts e Nevis"
     },
     "Saint Lucia": {
         "en": "Saint Lucia",
         "es": "Santa Lucía",
-        "pt": "Saint Lucia"
+        "pt": "Santa Lúcia"
     },
     "Saint Martin (French part)": {
         "en": "Saint Martin (French Part)",
@@ -1742,12 +1767,12 @@
     "Saint Pierre and Miquelon": {
         "en": "Saint Pierre and Miquelon",
         "es": "Saint Pierre y Miquelon",
-        "pt": "Saint Pierre and Miquelon"
+        "pt": "São Pierre e Miquelon"
     },
     "Saint Vincent and the Grenadines": {
         "en": "Saint Vincent and the Grenadines",
         "es": "San Vicente y las Granadinas",
-        "pt": "Saint Vincent and the Grenadines"
+        "pt": "São Vicente e Granadinas"
     },
     "Sair": {
         "en": "To go out",
@@ -1777,11 +1802,21 @@
     "Saudi Arabia": {
         "en": "Saudi Arabia",
         "es": "Arabia Saudita",
-        "pt": "Saudi Arabia"
+        "pt": "Arábia Saudita"
+    },
+    "Seguinte": {
+        "en": "Following",
+        "es": "Siguiente",
+        "pt": "Seguinte"
+    },
+    "Selecionar arquivos para federado": {
+        "en": "Select files for federate",
+        "es": "Seleccione archivos para federar",
+        "pt": "Selecionar arquivos para federado"
     },
     "Selecionar categoria": {
-        "en": "select category",
-        "es": "selecciona una categoría",
+        "en": "Select category",
+        "es": "Selecciona una categoría",
         "pt": "Selecionar categoria"
     },
     "Senegal": {
@@ -1795,14 +1830,14 @@
         "pt": "Senha"
     },
     "Senha inválida": {
-        "en": "invalid password",
-        "es": "contraseña invalida",
+        "en": "Invalid password",
+        "es": "Contraseña invalida",
         "pt": "Senha inválida"
     },
     "Serbia": {
         "en": "Serbia",
-        "es": "Serbia",
-        "pt": "Serbia"
+        "es": "Sérvia",
+        "pt": "Sérvia"
     },
     "Seu código de verficação de email": {
         "en": "Your Email Verification Code",
@@ -1810,8 +1845,8 @@
         "pt": "Seu código de verficação de email"
     },
     "Seu plano": {
-        "en": "your plan",
-        "es": "tu plan",
+        "en": "Your plan",
+        "es": "Tu plan",
         "pt": "Seu plano"
     },
     "Seu plano permite conectar até ": {
@@ -1832,7 +1867,7 @@
     "Sierra Leone": {
         "en": "Sierra Leone",
         "es": "Sierra Leona",
-        "pt": "Sierra Leone"
+        "pt": "Serra Leoa"
     },
     "Sim": {
         "en": "Yes",
@@ -1842,7 +1877,7 @@
     "Singapore": {
         "en": "Singapore",
         "es": "Singapur",
-        "pt": "Singapore"
+        "pt": "Cingapura"
     },
     "Sint Maarten (Dutch part)": {
         "en": "Sint Maarten (Dutch Part)",
@@ -1852,42 +1887,42 @@
     "Slovakia": {
         "en": "Slovakia",
         "es": "Eslovaquia",
-        "pt": "Slovakia"
+        "pt": "Eslováquia"
     },
     "Slovenia": {
         "en": "Slovenia",
         "es": "Eslovenia",
-        "pt": "Slovenia"
+        "pt": "Eslovênia"
     },
     "Solomon Islands": {
         "en": "Solomon Islands",
         "es": "Islas Salomón",
-        "pt": "Solomon Islands"
+        "pt": "Ilhas Salomão"
     },
     "Somalia": {
         "en": "Somalia",
         "es": "Somalia",
-        "pt": "Somalia"
+        "pt": "Somália"
     },
     "South Africa": {
         "en": "South Africa",
         "es": "Sudáfrica",
-        "pt": "South Africa"
+        "pt": "África do Sul"
     },
     "South Georgia and the South Sandwich Islands": {
         "en": "South Georgia and the South Sandwich Islands",
         "es": "Georgia del sur y las islas Sandwich del sur",
-        "pt": "South Georgia and the South Sandwich Islands"
+        "pt": "Geórgia do Sul e as Ilhas Sandwich South"
     },
     "South Sudan": {
         "en": "South Sudan",
         "es": "Sudán del Sur",
-        "pt": "South Sudan"
+        "pt": "Sudão do Sul"
     },
     "Spain": {
         "en": "Spain",
         "es": "España",
-        "pt": "Spain"
+        "pt": "Espanha"
     },
     "Sri Lanka": {
         "en": "Sri Lanka",
@@ -1897,7 +1932,7 @@
     "Sudan": {
         "en": "Sudan",
         "es": "Sudán",
-        "pt": "Sudan"
+        "pt": "Sudão"
     },
     "Suporte": {
         "en": "Support",
@@ -1912,32 +1947,32 @@
     "Svalbard and Jan Mayen": {
         "en": "Svalbard and Jan Mayen",
         "es": "Svalbard y Jan Mayen",
-        "pt": "Svalbard and Jan Mayen"
+        "pt": "Svalbard e Jan Mayen"
     },
     "Sweden": {
         "en": "Sweden",
         "es": "Suecia",
-        "pt": "Sweden"
+        "pt": "Suécia"
     },
     "Switzerland": {
         "en": "Switzerland",
         "es": "Suiza",
-        "pt": "Switzerland"
+        "pt": "Suíça"
     },
     "Syrian Arab Republic": {
         "en": "Syrian Arab Republic",
         "es": "República Árabe Siria",
-        "pt": "Syrian Arab Republic"
+        "pt": "República Árabe da Síria"
     },
     "Taiwan, Province of China": {
         "en": "Taiwan, Province of China",
         "es": "Taiwan, provincia de China",
-        "pt": "Taiwan, Province of China"
+        "pt": "Taiwan, província da China"
     },
     "Tajikistan": {
         "en": "Tajikistan",
         "es": "Tayikistán",
-        "pt": "Tajikistan"
+        "pt": "Tajiquistão"
     },
     "Tamanho": {
         "en": "Size",
@@ -1945,14 +1980,14 @@
         "pt": "Tamanho"
     },
     "Tamanho de projeto": {
-        "en": "project size",
-        "es": "tamaño del proyecto",
+        "en": "Project size",
+        "es": "Tamaño del proyecto",
         "pt": "Tamanho de projeto"
     },
     "Tanzania, United Republic of": {
         "en": "Tanzania, United Republic of",
         "es": "Tanzania, República Unida de",
-        "pt": "Tanzania, United Republic of"
+        "pt": "Tanzânia, República Unida de"
     },
     "Tem certeza que deseja continuar?": {
         "en": "Are you sure you want to continue?",
@@ -1967,7 +2002,7 @@
     "Thailand": {
         "en": "Thailand",
         "es": "Tailandia",
-        "pt": "Thailand"
+        "pt": "Tailândia"
     },
     "Timor-Leste": {
         "en": "Timor-Leste",
@@ -1977,7 +2012,7 @@
     "Togo": {
         "en": "Togo",
         "es": "Ir",
-        "pt": "Togo"
+        "pt": "Ir"
     },
     "Tokelau": {
         "en": "Tokelau",
@@ -1992,27 +2027,27 @@
     "Trinidad and Tobago": {
         "en": "Trinidad and Tobago",
         "es": "Trinidad y Tobago",
-        "pt": "Trinidad and Tobago"
+        "pt": "Trinidad e Tobago"
     },
     "Tunisia": {
         "en": "Tunisia",
         "es": "Túnez",
-        "pt": "Tunisia"
+        "pt": "Tunísia"
     },
     "Turkey": {
-        "en": "",
-        "es": "",
+        "en": "Turkey",
+        "es": "Turquia",
         "pt": "Turkey"
     },
     "Turkmenistan": {
         "en": "Turkmenistan",
         "es": "Turkmenistán",
-        "pt": "Turkmenistan"
+        "pt": "Turquemenistão"
     },
     "Turks and Caicos Islands": {
         "en": "Turks and Caicos Islands",
         "es": "Islas Turcas y Caicos",
-        "pt": "Turks and Caicos Islands"
+        "pt": "Ilhas Turcas e Caicos"
     },
     "Tuvalu": {
         "en": "Tuval",
@@ -2027,27 +2062,27 @@
     "Ukraine": {
         "en": "Ukraine",
         "es": "Ucrania",
-        "pt": "Ukraine"
+        "pt": "Ucrânia"
     },
     "United Arab Emirates": {
         "en": "United Arab Emirates",
         "es": "Emiratos Árabes Unidos",
-        "pt": "United Arab Emirates"
+        "pt": "Emirados Árabes Unidos"
     },
     "United Kingdom": {
         "en": "United Kingdom",
         "es": "Reino Unido",
-        "pt": "United Kingdom"
+        "pt": "Reino Unido"
     },
     "United States": {
         "en": "United States",
         "es": "Estados Unidos",
-        "pt": "United States"
+        "pt": "Estados Unidos"
     },
     "United States Minor Outlying Islands": {
         "en": "United States Minor Outlying Islands",
         "es": "Islas menores de los Estados Unidos.",
-        "pt": "United States Minor Outlying Islands"
+        "pt": "Ilhas Menores Estados Unidos"
     },
     "Upload realizado com sucesso": {
         "en": "Upload done successfully",
@@ -2062,12 +2097,12 @@
     "Uruguay": {
         "en": "Uruguay",
         "es": "Uruguay",
-        "pt": "Uruguay"
+        "pt": "Uruguai"
     },
     "Uzbekistan": {
         "en": "Uzbekistan",
         "es": "Uzbekistán",
-        "pt": "Uzbekistan"
+        "pt": "Uzbequistão"
     },
     "Validar Email": {
         "en": "Validate Email",
@@ -2090,14 +2125,14 @@
         "pt": "Veja seus dispositivos conectados ao Augin."
     },
     "Vence": {
-        "en": "wins",
-        "es": "gana",
+        "en": "Wins",
+        "es": "Gana",
         "pt": "Vence"
     },
     "Venezuela, Bolivarian Republic of": {
         "en": "Venezuela, Bolivarian Republic of",
         "es": "Venezuela, República Bolíva de",
-        "pt": "Venezuela, Bolivarian Republic of"
+        "pt": "Venezuela, República Bolivariana de"
     },
     "Ver Mais": {
         "en": "View more",
@@ -2112,21 +2147,21 @@
     "Viet Nam": {
         "en": "Viet Nam",
         "es": "Vietnam",
-        "pt": "Viet Nam"
+        "pt": "Vietnã"
     },
     "Virgin Islands, British": {
         "en": "Virgin Islands, British",
         "es": "Islas Vírgenes, Británica",
-        "pt": "Virgin Islands, British"
+        "pt": "Ilhas Virgens, britânico"
     },
     "Virgin Islands, U.S.": {
         "en": "Virgin Islands, U.S.",
         "es": "Islas Vírgenes, EE. UU.",
-        "pt": "Virgin Islands, U.S."
+        "pt": "Ilhas Virgens, EUA"
     },
     "Visto por último": {
-        "en": "last seen",
-        "es": "ultima vez visto",
+        "en": "Last seen",
+        "es": "Ultima vez visto",
         "pt": "Visto por último"
     },
     "Você está excluindo definitivamente a pasta": {
@@ -2150,39 +2185,39 @@
         "pt": "Você pode conectar um novo dispositivo quando quiser."
     },
     "Você utilizou": {
-        "en": "you used",
-        "es": "usaste",
+        "en": "You used",
+        "es": "Usaste",
         "pt": "Você utilizou"
     },
     "Voltar": {
         "en": "To go back",
-        "es": "para volver",
+        "es": "Para volver",
         "pt": "Voltar"
     },
     "Wallis and Futuna": {
         "en": "Wallis and Futuna",
         "es": "Wallis y Futuna",
-        "pt": "Wallis and Futuna"
+        "pt": "Wallis e Futuna"
     },
     "Western Sahara": {
         "en": "Western Sahara",
         "es": "Sahara Occidental",
-        "pt": "Western Sahara"
+        "pt": "Saara Ocidental"
     },
     "Yemen": {
         "en": "Yemen",
         "es": "Yemen",
-        "pt": "Yemen"
+        "pt": "Iémen"
     },
     "Zambia": {
         "en": "Zambia",
         "es": "Zambia",
-        "pt": "Zambia"
+        "pt": "Zâmbia"
     },
     "Zimbabwe": {
         "en": "Zimbabwe",
         "es": "Zimbabue",
-        "pt": "Zimbabwe"
+        "pt": "Zimbábue"
     },
     "até 5": {
         "en": "up to 5",
@@ -2277,7 +2312,7 @@
     "Åland Islands": {
         "en": "Åland Islands",
         "es": "Islas Aland",
-        "pt": "Åland Islands"
+        "pt": "Ilhas Aland"
     },
     "É necessário selecionar o projeto que será usado para atualizar o projeto atual.": {
         "en": "You need to select the project that will be used to update the current project.",
