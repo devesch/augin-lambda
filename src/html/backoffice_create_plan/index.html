@@ -21,6 +21,16 @@
 
         <div class="switch-container">
             <div class="input-container">
+                <input type="checkbox" name="plan_available_for_purchase" id="plan_available_for_purchase_input" {{plan_available_for_purchase_checked_val}}>
+                <label class="switch" for="plan_available_for_purchase_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="plan_available_for_purchase_input">{{Disponível para compra}}</label>
+        </div>
+
+        <div class="switch-container">
+            <div class="input-container">
                 <input onchange="js.index.toogleDiv(this, 'annually_div')" type="checkbox" name="plan_available_annually" id="plan_available_annually_input" {{plan_available_annually_checked_val}}>
                 <label class="switch" for="plan_available_annually_input">
                     <div class="slider"></div>
@@ -77,6 +87,55 @@
 
             <input type="checkbox" name="plan_monthly_pix_payment_method" id="plan_monthly_pix_payment_method_input">
             <label for="plan_monthly_pix_payment_method_input">{{PIX}}</label>
+        </div>
+
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_cloud_space_in_mbs" value="{{plan_cloud_space_in_mbs_val}}" id="plan_cloud_space_in_mbs_input" placeholder="" required maxlength="500">
+            <label for="plan_cloud_space_in_mbs_input">{{Espaço em nuvem (Mbs)}}</label>
+        </div>
+
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_model_size_in_mbs" value="{{plan_maxium_model_size_in_mbs_val}}" id="plan_maxium_model_size_in_mbs_input" placeholder="" required maxlength="500">
+            <label for="plan_maxium_model_size_in_mbs_input">{{Tamanho máximo por projeto (Mbs)}}</label>
+        </div>
+
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_federated_size_in_mbs" value="{{plan_maxium_federated_size_in_mbs_val}}" id="plan_maxium_federated_size_in_mbs_input" placeholder="" required maxlength="500">
+            <label for="plan_maxium_federated_size_in_mbs_input">{{Tamanho máximo por federado (Mbs)}}</label>
+        </div>
+        <p class="input-hint">{{Insira o (zero) para desabilitar}}</p>
+
+        <div class="floating-input">
+            <select name="plan_reference_tracker" id="plan_reference_tracker_select" value="{{plan_reference_tracker_val}}" required>
+                {{html_plan_reference_tracker_options}}
+            </select>
+        </div>
+
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_available" value="{{plan_maxium_devices_available_val}}" id="plan_maxium_devices_available_input" placeholder="" required maxlength="500">
+            <label for="plan_maxium_devices_available_input">{{Dispositivos ativos (Max)}}</label>
+        </div>
+
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_changes_in_30d" value="{{plan_maxium_devices_changes_in_30d_val}}" id="plan_maxium_devices_changes_in_30d_input" placeholder="" required maxlength="500">
+            <label for="plan_maxium_devices_changes_in_30d_input">{{Troca de dispositivos ativos (Max/Mês)}}</label>
+        </div>
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input onchange="js.index.toogleDiv(this, 'trial_div')" type="checkbox" name="plan_has_trial" id="plan_has_trial_input" {{plan_has_trial_checked_val}}>
+                <label class="switch" for="plan_has_trial_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="plan_has_trial_input">{{Disponível em trial}}</label>
+        </div>
+
+        <div id="trial_div" style="{{trial_div_visibility_val}}">
+            <div class="floating-input">
+                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_trial_duration_in_days" value="{{plan_trial_duration_in_days_val}}" id="plan_trial_duration_in_days_input" placeholder="" required maxlength="500">
+                <label for="plan_trial_duration_in_days_input">{{Duração do trial em dias}}</label>
+            </div>
         </div>
 
         <span class="error" style="{{error_msg_visibility_val}}">

@@ -36,23 +36,22 @@ export async function toogleDiv(checkbox_input, div_id) {
 
 export async function formatToMoney(input) {
     input.value = input.value.replace(/\D/g, "");
-
     if (input.value.length > 2) {
         input.value = input.value.replace(/^0+/, "");
     }
-
     input.value = input.value.padStart(3, '0');
     input.value = input.value.replace(/(\d{2})$/, ',$1');
-
     let length = input.value.length;
-
     if (length > 6 && length <= 9) {
         input.value = input.value.replace(/(\d{1,3})(\d{3},\d{2})$/, '$1.$2');
     }
-
     if (length > 9) {
-        input.value = input.value.replace(/(\d{1,3})\.(\d{3}\.\d{3},\d{2})$/, '$1.$2');
+        input.value = input.value.replace(/(\d{1,3})(\d{3})(\d{3},\d{2})$/, '$1.$2.$3');
     }
+}
+
+export async function formatToNumbers(input) {
+    input.value = input.value.replace(/\D/g, '');
 }
 
 
@@ -238,11 +237,17 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
         console.log("has_fbx.value", has_fbx.value);
         if (has_fbx.value === "True") {
             create_federated_project_with_processed_files_checkbox.checked = false;
+            if (checkbox) {
+                console.log("TODO SHOW TOOLTIP ERROR MSG")
+            }
         }
     }
 
     if (uploadedFilesNames.length === 0) {
         create_federated_project_with_processed_files_checkbox.checked = false;
+        if (checkbox) {
+            console.log("TODO SHOW TOOLTIP ERROR MSG")
+        }
     }
 
     if (uploading_element_message.length === 1) {
@@ -250,6 +255,9 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
             console.log("has_more_than_one_file_input.value", has_more_than_one_file_input.value);
             if (has_more_than_one_file_input.value != "true") {
                 create_federated_project_with_processed_files_checkbox.checked = false;
+                if (checkbox) {
+                    console.log("TODO SHOW TOOLTIP ERROR MSG")
+                }
             }
         }
     }
