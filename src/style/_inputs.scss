@@ -198,13 +198,14 @@ input[type="checkbox"] + label {
     }
 
     input[type="checkbox"]:checked::after {
-        left: 25%;
+        $checkbox-width: 0.45rem;
+        left: calc($checkbox-width / 2);
+        width: $checkbox-width;
+        height: 0.9rem;
         transform: rotate(45deg) translate(-50%, -50%);
         -o-transform: rotate(45deg) translate(-50%, -50%);
         -ms-transform: rotate(45deg) translate(-50%, -50%);
         -webkit-transform: rotate(45deg) translate(-50%, -50%);
-        width: 0.45rem;
-        height: 0.9rem;
         border-bottom: 2px solid colors.color("color-success-900");
         border-right: 2px solid colors.color("color-success-900");
     }
