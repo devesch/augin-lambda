@@ -3,6 +3,11 @@ from utils.utils.EncodeDecode import EncodeDecode
 
 
 def get_path_data(path, user):
+    if path.get("plan_id"):
+        path["plan"] = Dynamo().get_plan(path["plan_id"])
+        if not path["plan"]:
+            return {"error": "error"}
+
     if path.get("user_encoded_email"):
         path["user_email"] = EncodeDecode().decode_from_b64(path["user_encoded_email"])
         if not path["user_email"]:

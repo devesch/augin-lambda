@@ -159,6 +159,11 @@
         "es": "Archivo de procesamiento",
         "pt": "Arquivo em processamento"
     },
+    "Arraste e solte seu arquivo (IFC ou FBX ou GLB) aqui ou": {
+        "en": "Drag and release your file (IFC or FBX or GLB) here or",
+        "es": "Arrastre y suelte su archivo (IFC o FBX o GLB) aquí o",
+        "pt": "Arraste e solte seu arquivo (IFC ou FBX ou GLB) aqui ou"
+    },
     "Arraste e solte seu arquivo (IFC ou FBX) aqui ou": {
         "en": "Drag and drop your file (IFC or FBX) here or",
         "es": "Arrastre y suelte su archivo (IFC o FBX) aquí o",
@@ -2563,6 +2568,11 @@
         "en": "of your plan",
         "es": "de tu plan",
         "pt": "do seu plano"
+    },
+    "editar": {
+        "en": "to edit",
+        "es": "para editar",
+        "pt": "editar"
     },
     "faça um upgrade": {
         "en": "upgrade",
