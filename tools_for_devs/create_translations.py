@@ -14,9 +14,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 filtered_placeholders = [
-    "unavailable",
-    "unique",
-    "multiple",
+    "indisponível",
+    "único",
+    "múltiplo",
     "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento",
     "Favoritos",
     "Não Federados",

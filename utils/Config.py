@@ -75,7 +75,8 @@ lambda_constants = {
         "interiors": {"category_id": "interiors", "category_name": "Interiors"},
         "federated": {"category_id": "federated", "category_name": "Federated"},
         "others": {"category_id": "others", "category_name": "Others"},
-    "plan_reference_trackers": ["unavailable", "unique", "multiple"],
+    },
+    "plan_reference_trackers": {"indisponível": "unavailable", "único": "unique", "múltiplo": "multiple"},
 }
 
 

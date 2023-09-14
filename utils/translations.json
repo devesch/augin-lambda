@@ -699,15 +699,30 @@
         "es": "Disponible anual",
         "pt": "Disponível anual"
     },
+    "Disponível em trial": {
+        "en": "Available in trial",
+        "es": "Disponible en juicio",
+        "pt": "Disponível em trial"
+    },
     "Disponível mensal": {
         "en": "Available monthly",
         "es": "Disponible mensualmente",
         "pt": "Disponível mensal"
     },
+    "Disponível para compra": {
+        "en": "Available for purchase",
+        "es": "Disponible para compra",
+        "pt": "Disponível para compra"
+    },
     "Dispositivos": {
         "en": "Devices",
         "es": "Dispositivos",
         "pt": "Dispositivos"
+    },
+    "Dispositivos ativos (Max)": {
+        "en": "Active Devices (MAX)",
+        "es": "Dispositivos activos (Max)",
+        "pt": "Dispositivos ativos (Max)"
     },
     "Djibouti": {
         "en": "Djibouti",
@@ -723,6 +738,11 @@
         "en": "Dominican Republic",
         "es": "República Dominicana",
         "pt": "República Dominicana"
+    },
+    "Duração do trial em dias": {
+        "en": "Trial duration in days",
+        "es": "Duración de prueba en días",
+        "pt": "Duração do trial em dias"
     },
     "Ecuador": {
         "en": "Ecurator",
@@ -813,6 +833,11 @@
         "en": "Choose new project location",
         "es": "Elija una nueva ubicación del proyecto",
         "pt": "Escolher novo local do projeto"
+    },
+    "Espaço em nuvem (Mbs)": {
+        "en": "Cloud Space (MBS)",
+        "es": "Espacio en la nube (MBS)",
+        "pt": "Espaço em nuvem (Mbs)"
     },
     "Esqueci minha senha": {
         "en": "I forgot my password",
@@ -1183,6 +1208,11 @@
         "en": "Insert below the code we sent to the email",
         "es": "Inserte debajo el código que le enviamos al correo electrónico",
         "pt": "Insira abaixo o código que enviamos para o email"
+    },
+    "Insira o (zero) para desabilitar": {
+        "en": "Insert the (zero) to disable",
+        "es": "Inserte el (cero) para deshabilitar",
+        "pt": "Insira o (zero) para desabilitar"
     },
     "Insira seu email de usuário Augin": {
         "en": "Enter your augin user email",
@@ -2179,6 +2209,16 @@
         "es": "Tamaño del proyecto",
         "pt": "Tamanho de projeto"
     },
+    "Tamanho máximo por federado (Mbs)": {
+        "en": "Maximum size per federate (MBS)",
+        "es": "Tamaño máximo por federación (MBS)",
+        "pt": "Tamanho máximo por federado (Mbs)"
+    },
+    "Tamanho máximo por projeto (Mbs)": {
+        "en": "Maximum size per design (MBS)",
+        "es": "Tamaño máximo por diseño (MBS)",
+        "pt": "Tamanho máximo por projeto (Mbs)"
+    },
     "Tanzania, United Republic of": {
         "en": "Tanzania, United Republic of",
         "es": "Tanzania, República Unida de",
@@ -2238,6 +2278,11 @@
         "en": "Trinidad and Tobago",
         "es": "Trinidad y Tobago",
         "pt": "Trinidad e Tobago"
+    },
+    "Troca de dispositivos ativos (Max/Mês)": {
+        "en": "Change of active devices (MAX/MONTH)",
+        "es": "Cambio de dispositivos activos (máx/mes)",
+        "pt": "Troca de dispositivos ativos (Max/Mês)"
     },
     "Tunisia": {
         "en": "Tunisia",
@@ -2489,10 +2534,20 @@
         "es": "mejora",
         "pt": "faça um upgrade"
     },
+    "indisponível": {
+        "en": "unavailable",
+        "es": "indisponible",
+        "pt": "indisponível"
+    },
     "isponíveis e realizou": {
         "en": "available and performed",
         "es": "disponible y realizado",
         "pt": "isponíveis e realizou"
+    },
+    "múltiplo": {
+        "en": "multiple",
+        "es": "múltiple",
+        "pt": "múltiplo"
     },
     "ou": {
         "en": "or",
@@ -2568,5 +2623,10 @@
         "en": "Down arrow icon",
         "es": "Icono de flecha hacia abajo",
         "pt": "Ícone de seta pra baixo"
+    },
+    "único": {
+        "en": "single",
+        "es": "soltero",
+        "pt": "único"
     }
 }
