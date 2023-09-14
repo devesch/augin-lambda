@@ -35,6 +35,8 @@ class User:
         self.user_favorited_folders = []
         self.user_plan_id = ""
         self.user_plan = ""
+        self.user_subscription = ""
+
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
         # self.user_model_datalist_work = []

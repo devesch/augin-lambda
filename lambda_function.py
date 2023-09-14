@@ -119,8 +119,15 @@ if os.environ.get("AWS_EXECUTION_ENV") is None:
         event = json.load(read_file)
         html = main_lambda_handler(event, None)
     os.system("npm run dev")
-    css = open("src/dist/style/style.css", "r").read()
-    js_index = open("src/dist/js/index.js", "r").read()
+    import codecs
+
+    with codecs.open("src/dist/style/style.css", "r", "utf-8-sig") as css:
+        css = css.read()
+    with codecs.open("src/dist/js/index.js", "r", "utf-8-sig") as js_index:
+        js_index = js_index.read()
+
+    # css = open("src/dist/style/style.css", "r").read()
+    # js_index = open("src/dist/js/index.js", "r").read()
     replacements = {
         "local_js_index_val": f"<script> {js_index} </script>",
         "local_css_val": f"<style> {css} </style>",

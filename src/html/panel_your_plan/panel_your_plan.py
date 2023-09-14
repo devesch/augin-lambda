@@ -1,6 +1,8 @@
 from python_web_frame.panel_page import PanelPage
 from utils.Config import lambda_constants
 from objects.Plan import translate_reference_tracker
+from utils.utils.ReadWrite import ReadWrite
+from utils.AWS.Dynamo import Dynamo
 
 
 class PanelYourPlan(PanelPage):
@@ -37,6 +39,20 @@ class PanelYourPlan(PanelPage):
         else:
             html.esc("plan_download_files_val", self.translate("Não"))
 
+        if not self.user.user_subscription:
+            html.esc("user_subscription_price_val", "-")
+            html.esc("user_subscription_recurrency_val", "-")
+            html.esc("user_subscription_valid_until_val", "-")
+
+        if not self.user.user_plan_id:
+            html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
+
+        user_orders = Dynamo().query_user_orders(self.user.user_id)
+        if user_orders:
+            raise Exception("TODO")
+        user_payment_methods = Dynamo().query_user_payment_methods(self.user.user_id)
+        if user_payment_methods:
+            raise Exception("TODO")
         return str(html)
 
     def render_post(self):
