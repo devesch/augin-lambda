@@ -14,10 +14,21 @@
             <input type="text" name="plan_name_es" value="{{plan_name_es_val}}" id="plan_name_es_input" placeholder="" required maxlength="500">
             <label for="plan_name_es_input">{{Nome ES}}</label>
         </div>
+
+
         <div class="floating-input">
-            <input type="text" name="plan_description" value="{{plan_description_val}}" id="plan_description_input" placeholder="" required maxlength="500">
-            <label for="plan_description_input">{{Descrição}}</label>
+            <input type="text" name="plan_description_pt" value="{{plan_description_pt_val}}" id="plan_description_pt_input" placeholder="" required maxlength="500">
+            <label for="plan_description_pt_input">{{Descrição PT}}</label>
         </div>
+        <div class="floating-input">
+            <input type="text" name="plan_description_en" value="{{plan_description_en_val}}" id="plan_description_en_input" placeholder="" required maxlength="500">
+            <label for="plan_description_en_input">{{Descrição EN}}</label>
+        </div>
+        <div class="floating-input">
+            <input type="text" name="plan_description_es" value="{{plan_description_es_val}}" id="plan_description_es_input" placeholder="" required maxlength="500">
+            <label for="plan_description_es_input">{{Descrição ES}}</label>
+        </div>
+
 
         <div class="switch-container">
             <div class="input-container">
@@ -45,17 +56,27 @@
                 <label for="plan_price_annually_brl_input">{{Preço BRL}}</label>
             </div>
             <div class="floating-input">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl_actual" value="{{plan_price_annually_brl_actual_val}}" id="plan_price_annually_brl_actual_input" placeholder="" maxlength="500">
+                <label for="plan_price_annually_brl_actual_input">{{Preço atual BRL}}</label>
+            </div>
+
+            <div class="floating-input">
                 <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd" value="{{plan_price_annually_usd_val}}" id="plan_price_annually_usd_input" placeholder="" maxlength="500">
                 <label for="plan_price_annually_usd_input">{{Preço USD}}</label>
             </div>
+            <div class="floating-input">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd_actual" value="{{plan_price_annually_usd_actual_val}}" id="plan_price_annually_usd_actual_input" placeholder="" maxlength="500">
+                <label for="plan_price_annually_usd_actual_input">{{Preço atual USD}}</label>
+            </div>
 
-            <input type="checkbox" name="plan_annually_card_payment_method" id="plan_annually_card_payment_method_input">
+
+            <input type="checkbox" name="plan_annually_card_payment_method" id="plan_annually_card_payment_method_input" {{plan_annually_card_payment_method_checked_val}}>
             <label for="plan_annually_card_payment_method_input">{{Cartão}}</label>
 
-            <input type="checkbox" name="plan_annually_boleto_payment_method" id="plan_annually_boleto_payment_method_input">
+            <input type="checkbox" name="plan_annually_boleto_payment_method" id="plan_annually_boleto_payment_method_input" {{plan_annually_boleto_payment_method_checked_val}}>
             <label for="plan_annually_boleto_payment_method_input">{{Boleto}}</label>
 
-            <input type="checkbox" name="plan_annually_pix_payment_method" id="plan_annually_pix_payment_method_input">
+            <input type="checkbox" name="plan_annually_pix_payment_method" id="plan_annually_pix_payment_method_input" {{plan_annually_pix_payment_method_checked_val}}>
             <label for="plan_annually_pix_payment_method_input">{{PIX}}</label>
         </div>
 
@@ -75,8 +96,17 @@
                 <label for="plan_price_monthly_brl_input">{{Preço BRL}}</label>
             </div>
             <div class="floating-input">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl_actual" value="{{plan_price_monthly_brl_actual_val}}" id="plan_price_monthly_brl_actual_input" placeholder="" maxlength="500">
+                <label for="plan_price_monthly_brl_actual_input">{{Preço atual BRL}}</label>
+            </div>
+
+            <div class="floating-input">
                 <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd" value="{{plan_price_monthly_usd_val}}" id="plan_price_monthly_usd_input" placeholder="" maxlength="500">
                 <label for="plan_price_monthly_usd_input">{{Preço USD}}</label>
+            </div>
+            <div class="floating-input">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd_actual" value="{{plan_price_monthly_usd_actual_val}}" id="plan_price_monthly_usd_actual_input" placeholder="" maxlength="500">
+                <label for="plan_price_monthly_usd_actual_input">{{Preço atual USD}}</label>
             </div>
 
             <input type="checkbox" name="plan_monthly_card_payment_method" id="plan_monthly_card_payment_method_input">
@@ -119,6 +149,11 @@
         <div class="floating-input">
             <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_changes_in_30d" value="{{plan_maxium_devices_changes_in_30d_val}}" id="plan_maxium_devices_changes_in_30d_input" placeholder="" required maxlength="500">
             <label for="plan_maxium_devices_changes_in_30d_input">{{Troca de dispositivos ativos (Max/Mês)}}</label>
+        </div>
+
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_app_can_be_offline_in_days" value="{{plan_app_can_be_offline_in_days_val}}" id="plan_app_can_be_offline_in_days_input" placeholder="" required maxlength="500">
+            <label for="plan_app_can_be_offline_in_days_input">{{Duração do APP offline em dias}}</label>
         </div>
 
         <div class="switch-container">

@@ -113,7 +113,23 @@ class Http:
 
     def format_post_data(self, post):
         dangerous_characters = ["<", ">", "?", ";", "[", "\\", "]", "|"]
-        format_to_number_fields = []
+        format_to_number_fields = [
+            "plan_price_annually_brl_actual",
+            "plan_price_annually_usd_actual",
+            "plan_price_monthly_brl_actual",
+            "plan_price_monthly_usd_actual",
+            "plan_price_annually_brl",
+            "plan_price_annually_usd",
+            "plan_price_monthly_brl",
+            "plan_price_monthly_usd",
+            "plan_cloud_space_in_mbs",
+            "plan_maxium_model_size_in_mbs",
+            "plan_maxium_federated_size_in_mbs",
+            "plan_maxium_devices_available",
+            "plan_maxium_devices_changes_in_30d",
+            "plan_trial_duration_in_days",
+            "plan_app_can_be_offline_in_days",
+        ]
         format_to_letter_fields = ["user_name"]
         acceptable_json_fields = ["last_evaluated_key"]
         ignore_param = []

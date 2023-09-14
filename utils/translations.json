@@ -639,6 +639,21 @@
         "es": "Descripción",
         "pt": "Descrição"
     },
+    "Descrição EN": {
+        "en": "Description en",
+        "es": "Descripción es",
+        "pt": "Descrição EN"
+    },
+    "Descrição ES": {
+        "en": "Description ES",
+        "es": "Descripción es",
+        "pt": "Descrição ES"
+    },
+    "Descrição PT": {
+        "en": "PT Description",
+        "es": "Descripción de PT",
+        "pt": "Descrição PT"
+    },
     "Desfavoritar": {
         "en": "Disallower",
         "es": "Rechazar",
@@ -738,6 +753,11 @@
         "en": "Dominican Republic",
         "es": "República Dominicana",
         "pt": "República Dominicana"
+    },
+    "Duração do APP offline em dias": {
+        "en": "Duration of the offline app in days",
+        "es": "Duración de la aplicación fuera de línea en días",
+        "pt": "Duração do APP offline em dias"
     },
     "Duração do trial em dias": {
         "en": "Trial duration in days",
@@ -1863,6 +1883,16 @@
         "en": "USD price",
         "es": "Precio de USD",
         "pt": "Preço USD"
+    },
+    "Preço atual BRL": {
+        "en": "Current price BRL",
+        "es": "Precio actual BRL",
+        "pt": "Preço atual BRL"
+    },
+    "Preço atual USD": {
+        "en": "Current USD price",
+        "es": "Precio actual de USD",
+        "pt": "Preço atual USD"
     },
     "Problema temporário": {
         "en": "Temporary problem",
