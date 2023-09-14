@@ -52,6 +52,7 @@ export async function formatToMoney(input) {
 
 export async function formatToNumbers(input) {
     input.value = input.value.replace(/\D/g, '');
+    input.value = input.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 }
 
 
