@@ -30,10 +30,10 @@ class BackofficeCreatePlan(BackofficePage):
 
             if self.post.get("plan_description_pt"):
                 html.esc("plan_description_pt_val", self.post["plan_description_pt"])
-            if self.post.get("plan_description_en"):
-                html.esc("plan_description_en_val", self.post["plan_description_en"])
-            if self.post.get("plan_description_es"):
-                html.esc("plan_description_es_val", self.post["plan_description_es"])
+            # if self.post.get("plan_description_en"):
+            #     html.esc("plan_description_en_val", self.post["plan_description_en"])
+            # if self.post.get("plan_description_es"):
+            #     html.esc("plan_description_es_val", self.post["plan_description_es"])
 
             if self.post.get("plan_available_for_purchase"):
                 html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
@@ -126,6 +126,12 @@ class BackofficeCreatePlan(BackofficePage):
             return self.render_get_with_error("É necessárion informar um nome em EN")
         if not self.post.get("plan_name_es"):
             return self.render_get_with_error("É necessárion informar um nome em ES")
+        if not self.post.get("plan_description_pt"):
+            return self.render_get_with_error("É necessárion informar uma descrição em PT")
+        # if not self.post.get("plan_description_en"):
+        #     return self.render_get_with_error("É necessárion informar uma descrição em EN")
+        # if not self.post.get("plan_description_es"):
+        #     return self.render_get_with_error("É necessárion informar uma descrição em ES")
 
         if self.post.get("plan_price_annually_brl"):
             if not Validation().check_if_is_number(self.post["plan_price_annually_brl"]):
