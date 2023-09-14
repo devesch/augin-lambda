@@ -33,7 +33,8 @@ class User:
         self.user_models_size_in_mbs = "0"
         self.user_favorited_models = []
         self.user_favorited_folders = []
-
+        self.user_plan_id = ""
+        self.user_plan = ""
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
         # self.user_model_datalist_work = []
@@ -43,6 +44,10 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def update_user_plan(self):
+        if not self.user_plan_id:
+            self.user_plan = Dynamo().get_free_plan()
 
     def add_folder_to_user_shared_dicts(self, folder):
         if folder["folder_id"] not in self.user_shared_dicts["folders"]:
