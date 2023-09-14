@@ -51,6 +51,10 @@ class Plan:
         self.plan_trial_duration_in_days = "0"
         self.plan_app_can_be_offline_in_days = "0"
 
+        self.plan_team_play_participants = "0"
+        self.plan_download_files = False
+        self.plan_share_files = False
+
         # self.plan_id = plan_id
         # self.plan_name = ""
         # self.plan_shortname = ""

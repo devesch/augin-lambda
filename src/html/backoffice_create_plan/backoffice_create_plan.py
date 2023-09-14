@@ -99,12 +99,21 @@ class BackofficeCreatePlan(BackofficePage):
                 html.esc("trial_div_visibility_val", "display:none;")
             if self.post.get("plan_trial_duration_in_days"):
                 html.esc("plan_trial_duration_in_days_val", self.post["plan_trial_duration_in_days"])
+            if self.post.get("plan_team_play_participants"):
+                html.esc("plan_team_play_participants_val", self.post["plan_team_play_participants"])
+
+            if self.post.get("plan_download_files"):
+                html.esc("plan_download_files_checked_val", "checked='checked'")
+            if self.post.get("plan_share_files"):
+                html.esc("plan_share_files_checked_val", "checked='checked'")
 
         else:
             html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
             html.esc("plan_available_annually_checked_val", "checked='checked'")
             html.esc("plan_available_monthly_checked_val", "checked='checked'")
             html.esc("plan_has_trial_checked_val", "checked='checked'")
+            html.esc("plan_download_files_checked_val", "checked='checked'")
+            html.esc("plan_share_files_checked_val", "checked='checked'")
 
         html.esc("html_plan_reference_tracker_options", self.list_html_plan_reference_tracker_options())
 
