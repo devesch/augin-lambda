@@ -22,7 +22,7 @@
             <h3>
                 Features {{do seu plano}}
             </h3>
-            <table>
+            <table class="my-plan__table">
                 <tr>
                     <td>{{Tamanho de projeto}}</td>
                     <td><strong>{{plan_maxium_model_size_in_mbs_val}} Mb</strong></td>
@@ -52,12 +52,15 @@
                     <td><strong>{{plan_download_files_val}}</strong></td>
                 </tr>
             </table>
+            <div class="main-container__item__button-container">
+                <a href="#" class="button">Fazer upgrade</a>
+            </div>
         </div>
         <div class="my-plan__main-container__item">
             <h3>
                 {{Cobrança e pagamento}}
             </h3>
-            <table>
+            <table class="my-plan__table">
                 <tr>
                     <td>{{Preço}}</td>
                     <td><strong>R$ 135</strong></td>
@@ -71,16 +74,19 @@
                     <td><strong>Jul 27, 2023</strong></td>
                 </tr>
             </table>
-            <div class="main-container__item__button-container">
+            <!-- <div class="main-container__item__button-container">
                 <a class="button" href="">{{Atualizar forma de pagamento}}</a>
                 <a class="main-container__item__link" href="">{{Cancelar assinatura}}</a>
+            </div> -->
+            <div class="main-container__item__button-container">
+                <a href="" class="button black ghost">{{Cancelar assinatura}}</a>
             </div>
         </div>
         <div class="my-plan__main-container__item">
             <h3>
                 {{Histórico de pagamento}}
             </h3>
-            <table>
+            <table class="my-plan__table">
                 <tr>
                     <td>Jul, 2 2023 <a><img src="{{cdn_val}}/assets/icons/open_in_new.svg" alt="" width="20" height="20"></a></td>
                     <td>R$ 135</td>
@@ -145,7 +151,7 @@
             <h3>
                 {{Métodos de pagamento}}
             </h3>
-            <table>
+            <table class="my-plan__table">
                 <tr>
                     <td>
                         <img src="{{cdn_val}}/assets/icons/mastercard.svg" alt="" width="28" height="20">
