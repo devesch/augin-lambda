@@ -101,4 +101,4 @@ def translate_reference_tracker(plan_reference_tracker):
 
     for reference_tracker_name, reference_tracker_value in lambda_constants["plan_reference_trackers"].items():
         if plan_reference_tracker == reference_tracker_value:
-            return reference_tracker_name
+            return reference_tracker_name.title()

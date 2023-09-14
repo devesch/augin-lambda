@@ -1219,6 +1219,11 @@
         "es": "India",
         "pt": "India"
     },
+    "Indisponível": {
+        "en": "Unavailable",
+        "es": "Indisponible",
+        "pt": "Indisponível"
+    },
     "Indonesia": {
         "en": "Indonesia",
         "es": "Indonesia",
@@ -1568,6 +1573,11 @@
         "en": "Payment methods",
         "es": "Métodos de pago",
         "pt": "Métodos de pagamento"
+    },
+    "Múltiplo": {
+        "en": "Multiple",
+        "es": "Múltiple",
+        "pt": "Múltiplo"
     },
     "Namibia": {
         "en": "Namibia",
@@ -2688,6 +2698,11 @@
         "en": "Down arrow icon",
         "es": "Icono de flecha hacia abajo",
         "pt": "Ícone de seta pra baixo"
+    },
+    "Único": {
+        "en": "Single",
+        "es": "Soltero",
+        "pt": "Único"
     },
     "único": {
         "en": "single",

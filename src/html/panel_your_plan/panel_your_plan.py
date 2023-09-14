@@ -29,7 +29,7 @@ class PanelYourPlan(PanelPage):
         if self.user.user_plan["plan_maxium_federated_size_in_mbs"] == "0":
             html.esc("plan_maxium_federated_size_in_mbs_val", self.translate("Não"))
         else:
-            html.esc("plan_maxium_federated_size_in_mbs_val", self.user.user_plan["plan_maxium_federated_size_in_mbs"] + "Mb")
+            html.esc("plan_maxium_federated_size_in_mbs_val", self.user.user_plan["plan_maxium_federated_size_in_mbs"] + " Mb")
 
         html.esc("plan_maxium_devices_available_val", self.user.user_plan["plan_maxium_devices_available"])
         if self.user.user_plan["plan_download_files"]:
