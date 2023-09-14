@@ -24,7 +24,9 @@ class PanelCreateProject(PanelPage):
 
         federated_model = None
         if self.post.get("create_federated_project_with_processed_files"):
-            federated_model = ModelController().generate_new_model(self.user.user_id, filename=self.translate("Federado") + "-" + Date().format_unixtime_to_time(time.time()), federated=True, federated_required_ids=models_ids)
+            if not self.post.get("federated_name"):
+                return self.render_get_with_error("É necessário informar um nome para o projeto federado")
+            federated_model = ModelController().generate_new_model(self.user.user_id, filename=self.post["federated_name"], federated=True, federated_required_ids=models_ids)
 
         for model_id in models_ids:
             model = Dynamo().get_model(model_id)

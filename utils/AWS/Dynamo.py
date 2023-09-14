@@ -1,8 +1,8 @@
 from utils.Config import lambda_constants
-
 from boto3 import client, resource
 from botocore.config import Config
 from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
+import os
 
 
 my_config = Config(retries={"max_attempts": 50, "mode": "adaptive"})
@@ -77,13 +77,23 @@ class Dynamo:
 
     ### MODEL ###
     def get_model(self, model_id):
-        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "model#" + model_id}, "sk": {"S": "model#" + model_id}}})
+        model = self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "model#" + model_id}, "sk": {"S": "model#" + model_id}}})
+        if model:
+            if model["model_state"] == "deleted":
+                return None
+        return model
 
     def batch_get_models(self, models_ids):
         query = []
+        filtered_query = []
         for model_id in models_ids:
             query.append({"pk": "model#" + model_id, "sk": "model#" + model_id})
-        return self.execute_batch_get_item(query)
+        query = self.execute_batch_get_item(query)
+        if query:
+            for model in query:
+                if model["model_state"] != "deleted":
+                    filtered_query.append(model)
+        return filtered_query
 
     def get_next_model_id(self):
         last_model = self.get_last_from_entity("model")
@@ -93,6 +103,11 @@ class Dynamo:
             return "500000"
 
     def query_user_models_from_state(self, user, model_state, last_evaluated_key=None, limit=10000, reverse=False):
+        key_schema = {"created_at": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_user_id_state-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_user_id_state"}, "ExpressionAttributeValues": {":bef90": {"S": user.user_id + "#" + model_state}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
+        return self.execute_batch_get_item(query)
+
+    def query_user_models_name_from_state(self, user, model_state, last_evaluated_key=None, limit=10000, reverse=False):
         key_schema = {"created_at": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_user_id_state-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_user_id_state"}, "ExpressionAttributeValues": {":bef90": {"S": user.user_id + "#" + model_state}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
         return self.execute_batch_get_item(query)
@@ -222,6 +237,8 @@ class Dynamo:
                     python_obj[attribute] = int(python_obj[attribute])
                 except:
                     python_obj[attribute] = float(python_obj[attribute])
+        if os.environ.get("AWS_EXECUTION_ENV") is None:
+            python_obj = dict(sorted(python_obj.items()))
         return python_obj
 
     def python_obj_to_dynamo_obj(self, python_obj: dict) -> dict:

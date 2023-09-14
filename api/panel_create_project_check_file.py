@@ -4,4 +4,7 @@ from python_web_frame.controllers.model_controller import ModelController
 
 class PanelCreateProjectCheckFile(PanelPage):
     def run(self):
-        return ModelController().check_if_file_uploaded_is_valid(self.post["key"], self.user)
+        check_response = ModelController().check_if_file_uploaded_is_valid(self.post["key"], self.post["original_name"], self.user)
+        if "success" in check_response:
+            check_response["success"]["file_formats_html"] = self.list_html_uploading_file_formats(check_response["success"]["file_formats"])
+        return check_response

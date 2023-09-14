@@ -54,15 +54,18 @@ class ReadWrite:
         import copy
 
         global codes
-
         code = codes.get(filename)
         if code:
             new_code = copy.deepcopy(code)
             new_code.common_changes = common_changes
-            return new_code
-        codes[filename] = Code(filename)
-        new_code = copy.deepcopy(codes[filename])
-        new_code.common_changes = common_changes
+        else:
+            codes[filename] = Code(filename)
+            new_code = copy.deepcopy(codes[filename])
+            new_code.common_changes = common_changes
+        # if lambda_constants["debug"]:
+        #     new_code.esc("show_only_when_debug_val", "")
+        # else:
+        #     new_code.esc("show_only_when_debug_val", "display:none;")
         return new_code
 
     def extract_zip_file(self, zip_file_path, extract_path):

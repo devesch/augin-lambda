@@ -25,7 +25,7 @@
             <img src="{{cdn_val}}/assets/icons/upload_file.svg" alt="" width="115" height="144">
             <p>{{Arraste e solte seu arquivo (IFC ou FBX) aqui ou}} <span class="link--primary">{{selecione um em seu computador}}</span></p>
         </label>
-        <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX, .ZIP" multiple>
+        <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX, .GLB, .ZIP" multiple>
     </div>
 
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
@@ -34,16 +34,21 @@
         <article id="uploading_div" class="panel-create-project-uploading-container"></article>
 
         <div class="form-main-button-container">
-            <div class="switch-container" id="federated_switch_div" style="display:none;">
+            <div class="switch-container" id="federated_switch_div">
                 <div class="input-container">
-                    <input type="checkbox" name="create_federated_project_with_processed_files" id="create_federated_project_with_processed_files">
+                    <input onchange="js.index.checkIfCreateProjectIsFederated(true)" type="checkbox" name="create_federated_project_with_processed_files" id="create_federated_project_with_processed_files">
                     <label class="switch" for="create_federated_project_with_processed_files">
                         <div class="slider"></div>
                     </label>
                 </div>
                 <label for="create_federated_project_with_processed_files">{{Criar projeto federado com os arquivos processados}}</label>
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}">
+
+            <div class="floating-input" style="display:none;" id="federated_name_div">
+                <input type="text" name="federated_name" value="{{federated_name_val}}" id="federated_name_input" placeholder="" required maxlength="50">
+                <label for="federated_name_input">{{Nome do projeto federado}}</label>
+            </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="create_project_error_span">
                 {{error_msg_val}}
             </span>
             <button type="submit" class="form-main-button" id="submit_form_button" disabled>
@@ -54,6 +59,13 @@
 
 </main>
 
-
+<script>
+    window.onload = function () {
+        let create_federated_project_with_processed_files = document.getElementById("create_federated_project_with_processed_files");
+        let federated_name_input = document.getElementById("federated_name_input");
+        federated_name_input.required = false;
+        create_federated_project_with_processed_files.checked = false;
+    };
+</script>
 
 {{footer}}

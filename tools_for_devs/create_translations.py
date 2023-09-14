@@ -14,6 +14,21 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 filtered_placeholders = [
+    "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento",
+    "Favoritos",
+    "Não Federados",
+    "Air Conditioning",
+    "Architecture",
+    "Electric",
+    "Structural",
+    "Executive",
+    "Gas",
+    "Hydraulics",
+    "Fire",
+    "Infrastructure",
+    "Interiors",
+    "Federated",
+    "Others",
     "Verificando arquivos...",
     "É necessário selecionar para qual pasta será movido o projeto atual.",
     "Upload realizado com sucesso.",
@@ -101,6 +116,7 @@ for placeholder in filtered_placeholders:
             translations[placeholder] = {"pt": placeholder, "es": "", "en": ""}
             translations[placeholder]["es"] = translator.translate(text=placeholder, src="pt", dest="es").text
             translations[placeholder]["en"] = translator.translate(text=placeholder, src="pt", dest="en").text
+
         if placeholder[0].isupper():
             translations[placeholder]["pt"] = translations[placeholder]["pt"][0].upper() + translations[placeholder]["pt"][1:]
             translations[placeholder]["es"] = translations[placeholder]["es"][0].upper() + translations[placeholder]["es"][1:]

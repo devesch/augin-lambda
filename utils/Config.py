@@ -32,6 +32,8 @@ cdn_base_url = "https://" + cdn_bucket
 
 
 lambda_constants = {
+    "brand_api_endpoint": "https://api.branch.io/v1/",
+    "branch_key": "key_live_kbPDVR9iW4fdsvi1MNpMRlnetqjvZogI",
     "ip_data_api_key": "6aa0e0c8249d4135172b977b137ee37adf36a0975f9e6367dbaa912a",
     "ifc_converter": ifc_converter,
     "s3_put_user_key_id": s3_put_user_key_id,
@@ -55,11 +57,25 @@ lambda_constants = {
     "cdn": cdn_base_url,
     "upload_bucket": f"upload.{domain_name}{sufix_name}",
     "processed_bucket": f"processed.{domain_name}{sufix_name}",
+    "archive_bucket": f"archive.{domain_name}{sufix_name}",
     "processed_bucket_cdn": f"https://processed.{domain_name}{sufix_name}",
     "current_language": "pt",
     "tmp_path": tmp_path,
     "kms_key_id": kms_key_id,
-    "available_categories": ["air_conditioning", "architecture", "electric", "structural", "executive", "gas", "hydraulics", "fire", "infrastructure", "interiors", "federated", "others"],
+    "available_categories": {
+        "air_conditioning": {"category_id": "air_conditioning", "category_name": "Air Conditioning"},
+        "architecture": {"category_id": "architecture", "category_name": "Architecture"},
+        "electric": {"category_id": "electric", "category_name": "Electric"},
+        "structural": {"category_id": "structural", "category_name": "Structural"},
+        "executive": {"category_id": "executive", "category_name": "Executive"},
+        "gas": {"category_id": "gas", "category_name": "Gas"},
+        "hydraulics": {"category_id": "hydraulics", "category_name": "Hydraulics"},
+        "fire": {"category_id": "fire", "category_name": "Fire"},
+        "infrastructure": {"category_id": "infrastructure", "category_name": "Infrastructure"},
+        "interiors": {"category_id": "interiors", "category_name": "Interiors"},
+        "federated": {"category_id": "federated", "category_name": "Federated"},
+        "others": {"category_id": "others", "category_name": "Others"},
+    },
 }
 
 

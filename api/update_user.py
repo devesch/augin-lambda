@@ -13,6 +13,84 @@ class UpdateUser(BasePage):
         if not self.post.get("command"):
             return {"error": "no command in post"}
 
+        if self.post["command"] == "remove_folder_from_shared":
+            self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
+            return {"success": "folder removed from shared"}
+
+        if self.post["command"] == "update_folder_password":
+            folder = Dynamo().get_folder(self.post["folder_id"])
+            if not folder:
+                return {"error": "Nenhuma pasta encontrada com os dados fornecidos"}
+            if folder["folder_user_id"] != self.user.user_id:
+                return {"error": "Esta pasta não pertence a este usuário"}
+
+            folder_is_accessible = self.post.get("folder_is_accessible")
+            folder_is_password_protected = self.post.get("folder_is_password_protected")
+            folder_password = self.post.get("folder_password")
+
+            folder["folder_is_accessible"] = folder_is_accessible
+            if folder_is_accessible and folder_is_password_protected and not folder_password:
+                return {"error": "É necessário informar uma senha."}
+            folder["folder_password"] = folder_password if folder_password else ""
+            folder["folder_is_password_protected"] = folder_is_password_protected
+
+            Dynamo().put_entity(folder)
+            return {"success": "folder password updated"}
+
+        if self.post["command"] == "remove_model_from_shared":
+            model = Dynamo().get_model(self.post["model_id"])
+            if not model:
+                return {"error": "Nenhum projeto encontrado com os dados fornecidos"}
+            self.user.remove_model_from_user_dicts(model, shared=True)
+            return {"success": "Projeto removido dos compartilhados"}
+
+        if self.post["command"] == "add_model_to_user_favorites":
+            if self.post["model_is_favorite"] == "False":
+                self.user.remove_model_id_from_favorites(self.post["model_id"])
+            else:
+                self.user.add_model_id_to_favorites(self.post["model_id"])
+            return {"success": "user favorites updated"}
+
+        if self.post["command"] == "add_folder_to_user_favorites":
+            if self.post["folder_is_favorite"] == "False":
+                self.user.remove_folder_id_from_favorites(self.post["folder_id"])
+            else:
+                self.user.add_folder_id_to_favorites(self.post["folder_id"])
+            return {"success": "user favorites updated"}
+
+        if self.post["command"] == "add_shared":
+            ### TODO BEFORE PROD: NOT LET USER ADD HIS OWN FOLDERS AND FILES TO SHARED
+            if not "model_id" in self.post["shared_link"] and not "folder_id" in self.post["shared_link"]:
+                return {"error": "Nenhum arquivo encontrado com o link fornecido"}
+            if "model_id" in self.post["shared_link"]:
+                model = Dynamo().get_model(self.post["shared_link"].split("model_id=")[1])
+                if not model:
+                    return {"error": "Nenhum projeto encontrado com o link fornecido"}
+                if not model["model_is_accessible"]:
+                    return {"error": "Este projeto não se encontra acessível através de compartilhamento"}
+                if model["model_id"] in self.user.user_shared_dicts["files"]:
+                    return {"error": "Este modelo já se encontra nos seus compartilhados"}
+                if model["model_is_password_protected"] and not self.post.get("shared_password"):
+                    return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
+                if model["model_is_password_protected"] and (model["model_password"] != self.post.get("shared_password")):
+                    return {"error": "A senha informada está incorreta"}
+                self.user.add_model_to_user_dicts(model, shared=True)
+                return {"success": "Modelo adicionado aos compartilhados"}
+            if "folder_id" in self.post["shared_link"]:
+                folder = Dynamo().get_folder(self.post["shared_link"].split("folder_id=")[1])
+                if not folder:
+                    return {"error": "Nenhuma pasta encontrada com o link fornecido"}
+                if not folder["folder_is_accessible"]:
+                    return {"error": "Esta pasta não se encontra acessível através de compartilhamento"}
+                if folder["folder_id"] in self.user.user_shared_dicts["folders"]:
+                    return {"error": "Esta pasta já se encontra nos seus compartilhados"}
+                if folder["folder_is_password_protected"] and not self.post.get("shared_password"):
+                    return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
+                if folder["folder_is_password_protected"] and (folder["folder_password"] != self.post.get("shared_password")):
+                    return {"error": "A senha informada está incorreta"}
+                self.user.add_folder_to_user_shared_dicts(folder)
+                return {"success": "Pasta adicionada aos compartilhados"}
+
         if self.post["command"] == "create_folder":
             if not self.post.get("folder_name"):
                 return {"error": "É necessário informar um nome para o novo diretório."}
@@ -82,10 +160,6 @@ class UpdateUser(BasePage):
             folder = Dynamo().get_folder(self.post["folder_id"])
             if folder["folder_user_id"] != self.user.user_id:
                 return {"error": "Esta pasta não pertence a este usuário."}
-            if folder["folders"]:
-                return {"error": "Não é possível deletar uma pasta contendo pastas."}
-            if folder["files"]:
-                return {"error": "Não é possível deletar uma pasta contendo arquivos."}
 
             self.user.delete_folder(folder)
             return {"success": "folder deleted"}
@@ -101,19 +175,6 @@ class UpdateUser(BasePage):
             folder["folder_name"] = self.post["folder_new_name"].strip()
             Dynamo().put_entity(folder)
             return {"success": "folder renamed"}
-
-        elif self.post["command"] == "update_folder_favorite":
-            folder = Dynamo().get_folder(self.post["folder_id"])
-            if folder["folder_user_id"] != self.user.user_id:
-                return {"error": "Esta pasta não pertence a este usuário."}
-
-            if self.post["folder_is_favorite"] == "True":
-                folder["folder_is_favorite"] = True
-            else:
-                folder["folder_is_favorite"] = False
-            Dynamo().put_entity(folder)
-
-            return {"success": "folder updated"}
 
         elif self.post["command"] == "move_model_folder":
             model = Dynamo().get_model(self.post["model_id"])

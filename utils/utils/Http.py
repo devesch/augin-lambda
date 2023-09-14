@@ -14,6 +14,22 @@ class Http:
             cls._instance = super(Http, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def call_branch(self, method, url, data={}):
+        import requests
+
+        if method.upper() == "GET":
+            response = requests.get(lambda_constants["brand_api_endpoint"] + url)
+        else:
+            response = requests.post(lambda_constants["brand_api_endpoint"] + url, json.dumps(data))
+        return json.loads(response.text)
+
+    def get_branch_id(self, url):
+        import urllib.request
+
+        response = urllib.request.urlopen(lambda_constants["brand_api_endpoint"] + "url?url=" + url + "&branch_key=" + lambda_constants["branch_key"])
+        result = response.read().decode("utf-8")
+        return json.loads(result)["data"]["~id"]
+
     def request(self, method="GET", url="", headers={}, data={}, json_res=True):
         import requests
 

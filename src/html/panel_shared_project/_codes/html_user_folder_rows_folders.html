@@ -1,0 +1,33 @@
+<tr>
+    <td colspan="1" onclick="js.index.openFolder('{{folder_id_val}}', '{{folder_path_val}}')">
+        <img src="{{cdn_val}}/assets/icons/folder.svg" alt="" width="24" height="24">
+        <span class="ml-05">{{folder_name_val}}</span>
+        {{html_folder_is_favorite}}
+    </td>
+    <td colspan="1">
+        {{owners_name_val}}
+    </td>
+    <td colspan="1">
+        {{folder_created_at_val}}
+    </td>
+    <td colspan="1">
+        <span>{{folder_size_in_mbs_val}}</span>
+    </td>
+    <td class="relative" colspan="1">
+        <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_{{folder_id_val}}" aria-expanded="false" onclick="js.index.toggleExploreMenu(this)">
+            <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
+        </button>
+        <menu id="explore_table_item_menu_{{folder_id_val}}" class="menu--explore-more-options none">
+            <li>
+                <button onclick="js.index.FavoriteFolder('{{folder_id_val}}', '{{opposite_folder_is_favorite_val}}')">
+                    <img src="{{cdn_val}}/assets/icons/{{favorite_icon_val}}.svg" width="24" height="24" alt="" loading="lazy"> <span>{{favorite_or_unfavorite_val}}</span>
+                </button>
+            </li>
+            <li style="{{remove_folder_visibility_val}}">
+                <button onclick="js.index.openModalRemoveFolder('{{folder_id_val}}', '{{folder_name_val}}')">
+                    <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Remover}}</span>
+                </button>
+            </li>
+        </menu>
+    </td>
+</tr>
