@@ -748,6 +748,19 @@ input[list]::-ms-clear {
         font-size: fonts.$font-heading-3-size;
         text-align: center;
     }
+
+    h3 {
+        color: colors.color("color-black");
+        font-size: fonts.$font-heading-4-size;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-top: 1rem;
+        text-align: center;
+    }
 }
 
 .my-plan__sub-title,
