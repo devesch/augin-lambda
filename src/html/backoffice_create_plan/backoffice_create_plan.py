@@ -250,6 +250,17 @@ class BackofficeCreatePlan(BackofficePage):
         plan["plan_maxium_devices_available"] = self.post["plan_maxium_devices_available"]
         plan["plan_maxium_devices_changes_in_30d"] = self.post["plan_maxium_devices_changes_in_30d"]
         plan["plan_app_can_be_offline_in_days"] = self.post["plan_app_can_be_offline_in_days"]
+        plan["plan_team_play_participants"] = self.post["plan_team_play_participants"]
+
+        if self.post.get("plan_download_files"):
+            plan["plan_download_files"] = True
+        else:
+            plan["plan_download_files"] = False
+
+        if self.post.get("plan_share_files"):
+            plan["plan_share_files"] = True
+        else:
+            plan["plan_share_files"] = False
 
         if self.post.get("plan_has_trial"):
             plan["plan_has_trial"] = True
