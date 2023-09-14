@@ -30,10 +30,10 @@ class BackofficeCreatePlan(BackofficePage):
 
             if self.post.get("plan_description_pt"):
                 html.esc("plan_description_pt_val", self.post["plan_description_pt"])
-            if self.post.get("plan_description_en"):
-                html.esc("plan_description_en_val", self.post["plan_description_en"])
-            if self.post.get("plan_description_es"):
-                html.esc("plan_description_es_val", self.post["plan_description_es"])
+            # if self.post.get("plan_description_en"):
+            #     html.esc("plan_description_en_val", self.post["plan_description_en"])
+            # if self.post.get("plan_description_es"):
+            #     html.esc("plan_description_es_val", self.post["plan_description_es"])
 
             if self.post.get("plan_available_for_purchase"):
                 html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
@@ -99,12 +99,21 @@ class BackofficeCreatePlan(BackofficePage):
                 html.esc("trial_div_visibility_val", "display:none;")
             if self.post.get("plan_trial_duration_in_days"):
                 html.esc("plan_trial_duration_in_days_val", self.post["plan_trial_duration_in_days"])
+            if self.post.get("plan_team_play_participants"):
+                html.esc("plan_team_play_participants_val", self.post["plan_team_play_participants"])
+
+            if self.post.get("plan_download_files"):
+                html.esc("plan_download_files_checked_val", "checked='checked'")
+            if self.post.get("plan_share_files"):
+                html.esc("plan_share_files_checked_val", "checked='checked'")
 
         else:
             html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
             html.esc("plan_available_annually_checked_val", "checked='checked'")
             html.esc("plan_available_monthly_checked_val", "checked='checked'")
             html.esc("plan_has_trial_checked_val", "checked='checked'")
+            html.esc("plan_download_files_checked_val", "checked='checked'")
+            html.esc("plan_share_files_checked_val", "checked='checked'")
 
         html.esc("html_plan_reference_tracker_options", self.list_html_plan_reference_tracker_options())
 
@@ -117,6 +126,12 @@ class BackofficeCreatePlan(BackofficePage):
             return self.render_get_with_error("É necessárion informar um nome em EN")
         if not self.post.get("plan_name_es"):
             return self.render_get_with_error("É necessárion informar um nome em ES")
+        if not self.post.get("plan_description_pt"):
+            return self.render_get_with_error("É necessárion informar uma descrição em PT")
+        # if not self.post.get("plan_description_en"):
+        #     return self.render_get_with_error("É necessárion informar uma descrição em EN")
+        # if not self.post.get("plan_description_es"):
+        #     return self.render_get_with_error("É necessárion informar uma descrição em ES")
 
         if self.post.get("plan_price_annually_brl"):
             if not Validation().check_if_is_number(self.post["plan_price_annually_brl"]):
@@ -169,6 +184,9 @@ class BackofficeCreatePlan(BackofficePage):
             if not Validation().check_if_is_number(self.post["plan_app_can_be_offline_in_days"]):
                 return self.render_get_with_error("A duração do APP offline em dias deve ser um número")
 
+        if not self.post.get("plan_trial_duration_in_days"):
+            self.post["plan_trial_duration_in_days"] = "0"
+
         if not self.path.get("plan"):
             plan = Plan(Generate().generate_short_id()).__dict__
             plan["plan_name_pt"] = self.post["plan_name_pt"]
@@ -181,8 +199,8 @@ class BackofficeCreatePlan(BackofficePage):
         plan["plan_name_es"] = self.post["plan_name_es"]
 
         plan["plan_description_pt"] = self.post["plan_description_pt"]
-        plan["plan_description_en"] = self.post["plan_description_en"]
-        plan["plan_description_es"] = self.post["plan_description_es"]
+        # plan["plan_description_en"] = self.post["plan_description_en"]
+        # plan["plan_description_es"] = self.post["plan_description_es"]
 
         if self.post.get("plan_available_for_purchase"):
             plan["plan_available_for_purchase"] = True
@@ -238,6 +256,17 @@ class BackofficeCreatePlan(BackofficePage):
         plan["plan_maxium_devices_available"] = self.post["plan_maxium_devices_available"]
         plan["plan_maxium_devices_changes_in_30d"] = self.post["plan_maxium_devices_changes_in_30d"]
         plan["plan_app_can_be_offline_in_days"] = self.post["plan_app_can_be_offline_in_days"]
+        plan["plan_team_play_participants"] = self.post["plan_team_play_participants"]
+
+        if self.post.get("plan_download_files"):
+            plan["plan_download_files"] = True
+        else:
+            plan["plan_download_files"] = False
+
+        if self.post.get("plan_share_files"):
+            plan["plan_share_files"] = True
+        else:
+            plan["plan_share_files"] = False
 
         if self.post.get("plan_has_trial"):
             plan["plan_has_trial"] = True

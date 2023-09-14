@@ -1809,6 +1809,11 @@
         "es": "PAPÚA NUEVA GUINEA",
         "pt": "Papua New Guinea"
     },
+    "Para criar federados é necessário ter mais de um arquivo e todos eles serem do tipo IFC": {
+        "en": "To create federates you need to have more than one file and all of them are IFC type",
+        "es": "Para crear federados, debe tener más de un archivo y todos ellos son de tipo IFC",
+        "pt": "Para criar federados é necessário ter mais de um arquivo e todos eles serem do tipo IFC"
+    },
     "Paraguay": {
         "en": "Paraguay",
         "es": "Paraguay",
@@ -1963,6 +1968,21 @@
         "en": "Number of devices",
         "es": "Número de dispositivos",
         "pt": "Quantidade de dispositivos"
+    },
+    "Quantidade de pessoas no team play": {
+        "en": "Number of people in Team Play",
+        "es": "Número de personas en el juego del equipo",
+        "pt": "Quantidade de pessoas no team play"
+    },
+    "Realiza compartilhamentos": {
+        "en": "Performs shares",
+        "es": "Realiza acciones",
+        "pt": "Realiza compartilhamentos"
+    },
+    "Realiza downloads": {
+        "en": "Downloads",
+        "es": "Descargas",
+        "pt": "Realiza downloads"
     },
     "Remover": {
         "en": "Remove",

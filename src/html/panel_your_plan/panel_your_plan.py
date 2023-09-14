@@ -1,8 +1,8 @@
 from python_web_frame.panel_page import PanelPage
 
 
-class PanelHome(PanelPage):
-    name = "Painel"
+class PanelYourPlan(PanelPage):
+    name = "Painel - Seu Plano"
     public = False
     bypass = False
     admin = False
