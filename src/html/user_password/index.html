@@ -6,23 +6,23 @@
     </div>
     <div class="login__title-container">
         <h2>{{Bem vindo ao Augin, para prosseguir precisamos seus dados de login.}}</h2>
+        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+            <input hidden id="user_email" value="{{user_email_val}}">
+            <div class="login__input-container floating-input">
+                <input type="password" name="user_password" value="{{user_password_val}}" id="password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                <label for="password_input">{{Senha}}</label>
+                <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                    <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
+                </button>
+            </div>
+            <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                {{error_msg_val}}
+            </span>
+            <div class="login__button-container">
+                <button class="ghost" type="button" onclick="js.index.userSendResetPassEmail();">{{Esqueci minha senha}}</button>
+                <button type="submit">{{Prosseguir}}</button>
+            </div>
+        </form>
     </div>
-    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
-        <input hidden id="user_email" value="{{user_email_val}}">
-        <div class="login__input-container floating-input">
-            <input type="password" name="user_password" value="{{user_password_val}}" id="password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
-            <label for="password_input">{{Senha}}</label>
-            <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
-                <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
-            </button>
-        </div>
-        <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
-            {{error_msg_val}}
-        </span>
-        <div class="login__button-container">
-            <button class="ghost" type="button" onclick="js.index.userSendResetPassEmail();">{{Esqueci minha senha}}</button>
-            <button type="submit">{{Prosseguir}}</button>
-        </div>
-    </form>
 </main>
 {{footer}}

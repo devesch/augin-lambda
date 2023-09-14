@@ -4,23 +4,15 @@ from utils.AWS.Dynamo import Dynamo
 from utils.Config import lambda_constants
 
 
-class PanelExploreProject(PanelPage):
-    name = "Painel - Explorar Projetos"
+class PanelSharedProject(PanelPage):
+    name = "Painel - Compartilhados Projetos"
     public = False
     bypass = False
     admin = False
 
     def render_get(self):
-        # self.user.user_dicts = {"folders": [], "files": []}
-        # Dynamo().put_entity(self.user.__dict__)
-
         html = super().parse_html()
         html.esc("html_project_filter_options", self.list_html_project_filter_options())
-        models_in_processing = Dynamo().query_user_models_from_state(self.user, "in_processing")
-        if models_in_processing:
-            html.esc("html_models_in_processing", self.list_html_models_in_processing(self.event, models_in_processing))
-        else:
-            html.esc("models_in_processing_visibility_val", "display:none;")
         html.esc("html_user_folder_rows", self.list_html_user_folder_rows())
         return str(html)
 

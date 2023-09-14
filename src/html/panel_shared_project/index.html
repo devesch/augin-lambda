@@ -1,0 +1,147 @@
+{{header}}
+{{menu_panel}}
+<main class="my-plan__main">
+    <div class="my-plan__title-container">
+        <h1 class="my-plan__title">{{Explorar}}</h1>
+        <section class="panel-explore-filters-container">
+            <select onchange="js.index.showUserDicts()" name="explore_filter" id="explore_filter" required>
+                <option value="" selected>{{Todos}}</option>
+                {{html_project_filter_options}}
+            </select>
+            <input oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search">
+        </section>
+        <div class="my-plan__title-container__button-container">
+            <button class="black my-plan__title-container__button">
+                Upgrade
+            </button>
+            <button class="ghost my-plan__title-container__button">
+                <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="{{Notificações}}" width="24" height="24">
+            </button>
+        </div>
+    </div>
+
+    <section class="explore__table-container">
+        <div class="explore__table-container__title-container relative">
+            <h2 onclick="js.index.openFolder('', '')">{{Compartilhados comigo}}</h2>
+            <h6 id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
+                <- </h6> <h6 id="folder_path_span">
+            </h6>
+            <input hidden id="folder_id_input">
+            <input hidden id="folder_path_input">
+
+            <button onclick="js.index.openModalAddSharedProject()" class="explore-create-more-options" aria-controls="explore_create_more_options" aria-expanded="false">{{Adicionar}} +</button>
+        </div>
+        <table class="explore__table">
+            <input hidden id="sort_attribute_input" value="model_name">
+            <input hidden id="sort_reverse_input" value="False">
+            <thead>
+                <tr>
+                    <th onclick="js.index.sortProjectsBy('model_name')" colspan="1">{{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('owners_name')" colspan="1">{{Properietário}} <img id="owners_name_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th onclick="js.index.sortProjectsBy('model_filesize')" colspan="2">{{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                </tr>
+            </thead>
+            <tbody id="user_folder_rows_tbody">
+                {{html_user_folder_rows}}
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<div id="add-shared-project-modal" class="modal add-shared-project-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Adicionar projeto ou pasta}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <div class="floating-input">
+                    <input type="text" name="shared_asset_link" value="" id="shared_asset_link_input" placeholder="" required autofocus minlength="1" maxlength="500">
+                    <label for="shared_asset_link_input">{{Link do projeto ou pasta}}</label>
+                </div>
+            </div>
+            <span class="error" id="add_shared_asset_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.add-shared-project-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveAddSharedProject()">{{Adicionar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="password-shared-project-modal" class="modal password-shared-project-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Este arquivo se encontra protegido por senha}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <div class="floating-input">
+                    <input type="password" name="shared_asset_password" value="" id="shared_asset_password_input" placeholder="" required autofocus minlength="1" maxlength="500">
+                    <label for="shared_asset_password_input">{{Digite a senha do arquivo}}</label>
+                    <button type="button" class="toggle-password-button button--icon" onclick="js.index.togglePasswordText(this, 'shared_asset_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
+                        <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="{{Ícone de olho}}" width="24" height="24">
+                    </button>
+                </div>
+            </div>
+            <span class="error" id="shared_asset_password_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.openModalAddSharedProject('.password-shared-project-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveAddPasswordSharedProject()">{{Adicionar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="remove-modal" class="modal remove-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Confirmar exclusão de projeto}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <p>{{Você está removendo o projeto}}</p>
+                <strong id="remove_model_name_span"></strong>
+                <p>{{Tem certeza que deseja continuar?}}</p>
+            </div>
+            <span class="error" id="model_remove_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input type="text" id="model_id_remove_input" hidden>
+                <button onclick="js.index.closeModal('.modal.remove-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.removeModelFromShared()">{{Confirmar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="remove-folder-modal" class="modal remove-folder-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Confirmar exclusão de pasta}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <p>{{Você está removendo a pasta}}</p>
+                <strong id="remove_folder_name_span"></strong>
+                <p>{{Tem certeza que deseja continuar?}}</p>
+            </div>
+            <span class="error" id="folder_remove_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input type="text" id="folder_id_remove_input" hidden>
+                <button onclick="js.index.closeModal('.modal.remove-folder-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.removeFolderFromShared()">{{Confirmar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{footer}}

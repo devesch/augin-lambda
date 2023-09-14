@@ -38,10 +38,14 @@ class BasePage:
                 html.esc("menu_panel", self.render_menu_panel(common_changes))
             if "menu_panel_no_icons" in html.placeholders:
                 html.esc("menu_panel_no_icons", self.render_menu_panel_no_icons(common_changes))
+            if "menu_backoffice" in html.placeholders:
+                html.esc("menu_backoffice", self.render_backoffice_menu(common_changes))
+
             if "menu" in html.placeholders:
                 html.esc("menu", self.render_menu(common_changes))
             if "footer" in html.placeholders:
                 html.esc("footer", self.render_footer(common_changes))
+
         if "user_url_val" in html.placeholders:
             html.esc("user_url_val", self.event.get_url())
         return html
@@ -52,6 +56,13 @@ class BasePage:
         html.esc("font_ext_val", font_format)
         html.esc("font_type_val", font_format)
         html.esc("page_title_val", self.name)
+        return str(html)
+
+    def render_backoffice_menu(self, common_changes={}):
+        html = ReadWrite().read_html("main/menu_backoffice", common_changes)
+        html.esc(self.route + "_active_val", "active")
+        html.esc("user_name_val", self.user.user_name)
+        html.esc("user_email_val", self.user.user_email)
         return str(html)
 
     def render_menu_panel(self, common_changes={}):

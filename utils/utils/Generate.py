@@ -12,17 +12,16 @@ class Generate:
         return cls._instance
 
     def generate_qr_code(self, code, bucket, key=None):
-        from PIL import Image
-        from io import BytesIO
         import qrcode
 
-        qr_pil = qrcode.make(code)
-        qr_pil = qr_pil.resize((300, 300), Image.NEAREST)
-        buffer = BytesIO()
-        qr_pil.save(buffer, "png")
         file_path = tmp_path + "qrcode.png" if Validation().check_if_local_env() else tmp_path + "qrcode.png"
+
+        qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=2)
+        qr.add_data(code)
+        qr.make(fit=True)
+        qr_pil = qr.make_image(fill_color="black", back_color="white")
+
         qr_pil.save(file_path)
-        buffer.seek(0)
         key = key or code
         S3().upload_file(bucket, key, file_path)
 

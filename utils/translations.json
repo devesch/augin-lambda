@@ -9,10 +9,20 @@
         "es": "La contraseña debe tener al menos 8 caracteres",
         "pt": "A senha deve ter no mínimo 8 caracteres"
     },
+    "Adicionar": {
+        "en": "To add",
+        "es": "Para agregar",
+        "pt": "Adicionar"
+    },
     "Adicionar método de pagamento": {
         "en": "Add payment method",
         "es": "Añadir método de pago",
         "pt": "Adicionar método de pagamento"
+    },
+    "Adicionar projeto ou pasta": {
+        "en": "Add project or folder",
+        "es": "Agregar proyecto o carpeta",
+        "pt": "Adicionar projeto ou pasta"
     },
     "Afghanistan": {
         "en": "Afghanistan",
@@ -28,6 +38,11 @@
         "en": "Wait as we process your order and generate a compressed folder.",
         "es": "Espere mientras procesamos su pedido y generamos una carpeta comprimida.",
         "pt": "Aguarde enquanto processamos seu pedido e geramos uma pasta compactada."
+    },
+    "Air Conditioning": {
+        "en": "Air conditioning",
+        "es": "Aire acondicionado",
+        "pt": "Ar condicionado"
     },
     "Albania": {
         "en": "Albania",
@@ -108,6 +123,11 @@
         "en": "Air conditioning",
         "es": "Aire condicionado",
         "pt": "Ar condicionado"
+    },
+    "Architecture": {
+        "en": "Architecture",
+        "es": "Arquitectura",
+        "pt": "Arquitetura"
     },
     "Argentina": {
         "en": "Argentina",
@@ -259,6 +279,11 @@
         "es": "Bután",
         "pt": "Butão"
     },
+    "Boleto": {
+        "en": "Ticket",
+        "es": "Boleto",
+        "pt": "Boleto"
+    },
     "Bolivia, Plurinational State of": {
         "en": "Bolivia, Plurinational State of",
         "es": "Bolivia, estado plurinacional de",
@@ -344,6 +369,11 @@
         "es": "Darse de baja",
         "pt": "Cancelar assinatura"
     },
+    "Cartão": {
+        "en": "Card",
+        "es": "Tarjeta",
+        "pt": "Cartão"
+    },
     "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.": {
         "en": "If you do not receive the code, check the email address entered and check your SPAM box.",
         "es": "Si no recibes el código, revisa la dirección de correo electrónico ingresada y revisa tu carpeta de SPAM.",
@@ -419,6 +449,16 @@
         "es": "Vivienda",
         "pt": "Comoros"
     },
+    "Compartilhados": {
+        "en": "Shared",
+        "es": "Compartido",
+        "pt": "Compartilhados"
+    },
+    "Compartilhados comigo": {
+        "en": "Shared with me",
+        "es": "Comparte conmigo",
+        "pt": "Compartilhados comigo"
+    },
     "Compartilhar": {
         "en": "To share",
         "es": "Para compartir",
@@ -443,6 +483,16 @@
         "en": "Confirm file deletion",
         "es": "Confirmar la eliminación de archivos",
         "pt": "Confirmar exclusão de arquivo"
+    },
+    "Confirmar exclusão de pasta": {
+        "en": "Confirm Folder Exclusion",
+        "es": "Confirmar la exclusión de la carpeta",
+        "pt": "Confirmar exclusão de pasta"
+    },
+    "Confirmar exclusão de projeto": {
+        "en": "Confirm project exclusion",
+        "es": "Confirmar la exclusión del proyecto",
+        "pt": "Confirmar exclusão de projeto"
     },
     "Congo": {
         "en": "Congo",
@@ -584,6 +634,26 @@
         "es": "Dinamarca",
         "pt": "Dinamarca"
     },
+    "Descrição": {
+        "en": "Description",
+        "es": "Descripción",
+        "pt": "Descrição"
+    },
+    "Descrição EN": {
+        "en": "Description en",
+        "es": "Descripción es",
+        "pt": "Descrição EN"
+    },
+    "Descrição ES": {
+        "en": "Description ES",
+        "es": "Descripción es",
+        "pt": "Descrição ES"
+    },
+    "Descrição PT": {
+        "en": "PT Description",
+        "es": "Descripción de PT",
+        "pt": "Descrição PT"
+    },
     "Desfavoritar": {
         "en": "Disallower",
         "es": "Rechazar",
@@ -598,6 +668,11 @@
         "en": "Should contain only letters",
         "es": "Debe contener solo letras",
         "pt": "Deve conter apenas letras"
+    },
+    "Digite a senha do arquivo": {
+        "en": "Enter the file password",
+        "es": "Ingrese la contraseña del archivo",
+        "pt": "Digite a senha do arquivo"
     },
     "Digite o novo nome desejado para seu projeto.": {
         "en": "Enter the new desired name for your project.",
@@ -634,10 +709,35 @@
         "es": "Ingrese el tercer dígito del código de verificación que se envió a su correo electrónico.",
         "pt": "Digite o terceiro dígito do código de verificação que foi enviado ao seu e-mail."
     },
+    "Disponível anual": {
+        "en": "Available annual",
+        "es": "Disponible anual",
+        "pt": "Disponível anual"
+    },
+    "Disponível em trial": {
+        "en": "Available in trial",
+        "es": "Disponible en juicio",
+        "pt": "Disponível em trial"
+    },
+    "Disponível mensal": {
+        "en": "Available monthly",
+        "es": "Disponible mensualmente",
+        "pt": "Disponível mensal"
+    },
+    "Disponível para compra": {
+        "en": "Available for purchase",
+        "es": "Disponible para compra",
+        "pt": "Disponível para compra"
+    },
     "Dispositivos": {
         "en": "Devices",
         "es": "Dispositivos",
         "pt": "Dispositivos"
+    },
+    "Dispositivos ativos (Max)": {
+        "en": "Active Devices (MAX)",
+        "es": "Dispositivos activos (Max)",
+        "pt": "Dispositivos ativos (Max)"
     },
     "Djibouti": {
         "en": "Djibouti",
@@ -654,6 +754,16 @@
         "es": "República Dominicana",
         "pt": "República Dominicana"
     },
+    "Duração do APP offline em dias": {
+        "en": "Duration of the offline app in days",
+        "es": "Duración de la aplicación fuera de línea en días",
+        "pt": "Duração do APP offline em dias"
+    },
+    "Duração do trial em dias": {
+        "en": "Trial duration in days",
+        "es": "Duración de prueba en días",
+        "pt": "Duração do trial em dias"
+    },
     "Ecuador": {
         "en": "Ecurator",
         "es": "Ecurador",
@@ -668,6 +778,11 @@
         "en": "El Salvador",
         "es": "El Salvador",
         "pt": "El Salvador"
+    },
+    "Electric": {
+        "en": "Electric",
+        "es": "Eléctrico",
+        "pt": "Elétrica"
     },
     "Elétrica": {
         "en": "Electrical",
@@ -739,6 +854,11 @@
         "es": "Elija una nueva ubicación del proyecto",
         "pt": "Escolher novo local do projeto"
     },
+    "Espaço em nuvem (Mbs)": {
+        "en": "Cloud Space (MBS)",
+        "es": "Espacio en la nube (MBS)",
+        "pt": "Espaço em nuvem (Mbs)"
+    },
     "Esqueci minha senha": {
         "en": "I forgot my password",
         "es": "Olvide mi contraseña",
@@ -748,6 +868,16 @@
         "en": "We are facing a setback on our website, which is temporarily unavailable.",
         "es": "Nos enfrentamos a un revés en nuestro sitio web, que no está disponible temporalmente.",
         "pt": "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível."
+    },
+    "Estamos quase lá! Preencha as informações abaixo e vamos criar sua conta.": {
+        "en": "We are almost there!Fill in the information below and we will create your account.",
+        "es": "¡Estamos casi alli!Complete la información a continuación y crearemos su cuenta.",
+        "pt": "Estamos quase lá! Preencha as informações abaixo e vamos criar sua conta."
+    },
+    "Este arquivo se encontra protegido por senha": {
+        "en": "This file is protected by password",
+        "es": "Este archivo está protegido por contraseña",
+        "pt": "Este arquivo se encontra protegido por senha"
     },
     "Este modelo está sendo usado como base em um projeto federado": {
         "en": "This model is being used as a base of a federated project",
@@ -783,6 +913,11 @@
         "en": "Delete template",
         "es": "Eliminar plantilla",
         "pt": "Excluir modelo"
+    },
+    "Executive": {
+        "en": "Executive",
+        "es": "Ejecutivo",
+        "pt": "Executivo"
     },
     "Executivo": {
         "en": "Executive",
@@ -824,12 +959,22 @@
         "es": "Favorito",
         "pt": "Favoritar"
     },
+    "Favoritos": {
+        "en": "Favorites",
+        "es": "Favoritos",
+        "pt": "Favoritos"
+    },
     "Fechar": {
         "en": "To close",
         "es": "Cerrar",
         "pt": "Fechar"
     },
     "Federado": {
+        "en": "Federated",
+        "es": "Federado",
+        "pt": "Federado"
+    },
+    "Federated": {
         "en": "Federated",
         "es": "Federado",
         "pt": "Federado"
@@ -858,6 +1003,11 @@
         "en": "Finland",
         "es": "Finlandia",
         "pt": "Finlândia"
+    },
+    "Fire": {
+        "en": "Fire",
+        "es": "Fuego",
+        "pt": "Fogo"
     },
     "France": {
         "en": "France",
@@ -888,6 +1038,11 @@
         "en": "Gambia",
         "es": "Gambia",
         "pt": "Gâmbia"
+    },
+    "Gas": {
+        "en": "Gas",
+        "es": "Gas",
+        "pt": "Gás"
     },
     "Georgia": {
         "en": "Georgia",
@@ -1024,6 +1179,11 @@
         "es": "Hungría",
         "pt": "Hungria"
     },
+    "Hydraulics": {
+        "en": "Hydrosanitary",
+        "es": "Hidrosanitario",
+        "pt": "Hidrosanitário"
+    },
     "Iceland": {
         "en": "Iceland",
         "es": "Islandia",
@@ -1064,10 +1224,20 @@
         "es": "Infraestructura",
         "pt": "Infraestrutura"
     },
+    "Infrastructure": {
+        "en": "Infrastructure",
+        "es": "Infraestructura",
+        "pt": "Infraestrutura"
+    },
     "Insira abaixo o código que enviamos para o email": {
         "en": "Insert below the code we sent to the email",
         "es": "Inserte debajo el código que le enviamos al correo electrónico",
         "pt": "Insira abaixo o código que enviamos para o email"
+    },
+    "Insira o (zero) para desabilitar": {
+        "en": "Insert the (zero) to disable",
+        "es": "Inserte el (cero) para deshabilitar",
+        "pt": "Insira o (zero) para desabilitar"
     },
     "Insira seu email de usuário Augin": {
         "en": "Enter your augin user email",
@@ -1080,6 +1250,11 @@
         "pt": "Insira um email válido para criar sua conta"
     },
     "Interiores": {
+        "en": "Interior",
+        "es": "Interior",
+        "pt": "Interiores"
+    },
+    "Interiors": {
         "en": "Interior",
         "es": "Interior",
         "pt": "Interiores"
@@ -1108,6 +1283,11 @@
         "en": "Israel",
         "es": "Israel",
         "pt": "Israel"
+    },
+    "Isto irá deletar todos os arquivos e pastas que também existam dentro dela": {
+        "en": "This will delete all files and folders that also exist inside it",
+        "es": "Esto eliminará todos los archivos y carpetas que también existen dentro de él.",
+        "pt": "Isto irá deletar todos os arquivos e pastas que também existam dentro dela"
     },
     "Italy": {
         "en": "Italy",
@@ -1213,6 +1393,11 @@
         "en": "Monthly limit of unlinks",
         "es": "Límite mensual de desvinculaciones",
         "pt": "Limite mensal de desvinculações"
+    },
+    "Link do projeto ou pasta": {
+        "en": "Project Link or Folder",
+        "es": "Enlace o carpeta del proyecto",
+        "pt": "Link do projeto ou pasta"
     },
     "Lithuania": {
         "en": "Lithuania",
@@ -1344,6 +1529,11 @@
         "es": "Marruecos",
         "pt": "Marrocos"
     },
+    "Mostrando Todos": {
+        "en": "Showing all",
+        "es": "Mostrando todo",
+        "pt": "Mostrando Todos"
+    },
     "Mostrar senha.": {
         "en": "Show password.",
         "es": "Mostrar contraseña.",
@@ -1434,6 +1624,21 @@
         "es": "Nombre",
         "pt": "Nome"
     },
+    "Nome EN": {
+        "en": "Name en",
+        "es": "Nombrar",
+        "pt": "Nome EN"
+    },
+    "Nome ES": {
+        "en": "Name ES",
+        "es": "Nombrar",
+        "pt": "Nome ES"
+    },
+    "Nome PT": {
+        "en": "Name PT",
+        "es": "Nombre PT",
+        "pt": "Nome PT"
+    },
     "Nome atual do arquivo": {
         "en": "Current file name",
         "es": "Nombre de archivo actual",
@@ -1519,6 +1724,11 @@
         "es": "No",
         "pt": "Não"
     },
+    "Não Federados": {
+        "en": "Non -federated",
+        "es": "No federado",
+        "pt": "Não Federados"
+    },
     "O projeto excede o tamanho máximo de 1Gb.": {
         "en": "The project exceeds the maximum size of 1GB.",
         "es": "El proyecto excede el tamaño máximo de 1 GB.",
@@ -1549,10 +1759,20 @@
         "es": "IFC Las formas soportadas son: IFC2X3 e IFC4.",
         "pt": "Os formartos suportados de IFC são: IFC2x3 e IFC4."
     },
+    "Others": {
+        "en": "Others",
+        "es": "Otros",
+        "pt": "Outros"
+    },
     "Outros": {
         "en": "Others",
         "es": "Otros",
         "pt": "Outros"
+    },
+    "PIX": {
+        "en": "Pix",
+        "es": "Pix",
+        "pt": "PIX"
     },
     "Pago": {
         "en": "Paid out",
@@ -1619,6 +1839,11 @@
         "es": "Pitcairn",
         "pt": "Pitcairn"
     },
+    "Planos": {
+        "en": "Plans",
+        "es": "Planes",
+        "pt": "Planos"
+    },
     "Poland": {
         "en": "Poland",
         "es": "Polonia",
@@ -1649,6 +1874,26 @@
         "es": "Precio",
         "pt": "Preço"
     },
+    "Preço BRL": {
+        "en": "BRL price",
+        "es": "Precio BRL",
+        "pt": "Preço BRL"
+    },
+    "Preço USD": {
+        "en": "USD price",
+        "es": "Precio de USD",
+        "pt": "Preço USD"
+    },
+    "Preço atual BRL": {
+        "en": "Current price BRL",
+        "es": "Precio actual BRL",
+        "pt": "Preço atual BRL"
+    },
+    "Preço atual USD": {
+        "en": "Current USD price",
+        "es": "Precio actual de USD",
+        "pt": "Preço atual USD"
+    },
     "Problema temporário": {
         "en": "Temporary problem",
         "es": "Problema temporal",
@@ -1673,6 +1918,11 @@
         "en": "Federated projects",
         "es": "Proyectos federados",
         "pt": "Projetos federados"
+    },
+    "Properietário": {
+        "en": "Propaler",
+        "es": "Propalador",
+        "pt": "Properietário"
     },
     "Prosseguir": {
         "en": "Proceed",
@@ -1708,6 +1958,11 @@
         "en": "Number of devices",
         "es": "Número de dispositivos",
         "pt": "Quantidade de dispositivos"
+    },
+    "Remover": {
+        "en": "Remove",
+        "es": "Eliminar",
+        "pt": "Remover"
     },
     "Renomear": {
         "en": "Rename",
@@ -1929,6 +2184,11 @@
         "es": "Sri Lanka",
         "pt": "Sri Lanka"
     },
+    "Structural": {
+        "en": "Structural",
+        "es": "Estructural",
+        "pt": "Estrutural"
+    },
     "Sudan": {
         "en": "Sudan",
         "es": "Sudán",
@@ -1984,6 +2244,16 @@
         "es": "Tamaño del proyecto",
         "pt": "Tamanho de projeto"
     },
+    "Tamanho máximo por federado (Mbs)": {
+        "en": "Maximum size per federate (MBS)",
+        "es": "Tamaño máximo por federación (MBS)",
+        "pt": "Tamanho máximo por federado (Mbs)"
+    },
+    "Tamanho máximo por projeto (Mbs)": {
+        "en": "Maximum size per design (MBS)",
+        "es": "Tamaño máximo por diseño (MBS)",
+        "pt": "Tamanho máximo por projeto (Mbs)"
+    },
     "Tanzania, United Republic of": {
         "en": "Tanzania, United Republic of",
         "es": "Tanzania, República Unida de",
@@ -2009,6 +2279,11 @@
         "es": "Timor-Leste",
         "pt": "Timor-Leste"
     },
+    "Todos": {
+        "en": "All",
+        "es": "Todo",
+        "pt": "Todos"
+    },
     "Togo": {
         "en": "Togo",
         "es": "Ir",
@@ -2024,10 +2299,25 @@
         "es": "Pintura",
         "pt": "Tonga"
     },
+    "Tornar pasta acessível": {
+        "en": "Folder",
+        "es": "Carpeta",
+        "pt": "Tornar pasta acessível"
+    },
+    "Tornar projeto acessível": {
+        "en": "Project",
+        "es": "Proyecto",
+        "pt": "Tornar projeto acessível"
+    },
     "Trinidad and Tobago": {
         "en": "Trinidad and Tobago",
         "es": "Trinidad y Tobago",
         "pt": "Trinidad e Tobago"
+    },
+    "Troca de dispositivos ativos (Max/Mês)": {
+        "en": "Change of active devices (MAX/MONTH)",
+        "es": "Cambio de dispositivos activos (máx/mes)",
+        "pt": "Troca de dispositivos ativos (Max/Mês)"
     },
     "Tunisia": {
         "en": "Tunisia",
@@ -2063,6 +2353,11 @@
         "en": "Ukraine",
         "es": "Ucrania",
         "pt": "Ucrânia"
+    },
+    "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento": {
+        "en": "One or more of your files has an error, please delete the files with error to perform the processing",
+        "es": "Uno o más de sus archivos tiene un error, elimine los archivos con error para realizar el procesamiento",
+        "pt": "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento"
     },
     "United Arab Emirates": {
         "en": "United Arab Emirates",
@@ -2174,6 +2469,16 @@
         "es": "Definitivamente estás excluyendo el archivo",
         "pt": "Você está excluindo definitivamente o arquivo"
     },
+    "Você está removendo a pasta": {
+        "en": "You are removing the folder",
+        "es": "Estás quitando la carpeta",
+        "pt": "Você está removendo a pasta"
+    },
+    "Você está removendo o projeto": {
+        "en": "You are removing the project",
+        "es": "Estás eliminando el proyecto",
+        "pt": "Você está removendo o projeto"
+    },
     "Você não está conseguindo se lembrar da sua senha? Não se preocupe": {
         "en": "Are you having trouble remembering your password?Don't worry",
         "es": "¿Tiene problemas para recordar su contraseña?No se preocupe",
@@ -2264,10 +2569,20 @@
         "es": "mejora",
         "pt": "faça um upgrade"
     },
+    "indisponível": {
+        "en": "unavailable",
+        "es": "indisponible",
+        "pt": "indisponível"
+    },
     "isponíveis e realizou": {
         "en": "available and performed",
         "es": "disponible y realizado",
         "pt": "isponíveis e realizou"
+    },
+    "múltiplo": {
+        "en": "multiple",
+        "es": "múltiple",
+        "pt": "múltiplo"
     },
     "ou": {
         "en": "or",
@@ -2343,5 +2658,10 @@
         "en": "Down arrow icon",
         "es": "Icono de flecha hacia abajo",
         "pt": "Ícone de seta pra baixo"
+    },
+    "único": {
+        "en": "single",
+        "es": "soltero",
+        "pt": "único"
     }
 }

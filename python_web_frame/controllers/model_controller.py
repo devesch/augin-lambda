@@ -23,6 +23,33 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def search_models_by_name(self, search_input, user, shared=False):
+
+        matching_name_models = []
+        if shared:
+            for folder_id in user.user_shared_dicts["folders"]:
+                folder = Dynamo().get_folder(folder_id)
+                if folder:
+                    matching_name_models = self.add_folder_files_to_matching_name_models(search_input, folder["files"], matching_name_models)
+            matching_name_models = self.add_folder_files_to_matching_name_models(search_input, user.user_shared_dicts["files"], matching_name_models)
+
+        else:
+            completed_models = Dynamo().query_user_models_name_from_state(user, "completed")
+            if completed_models:
+                for model in completed_models:
+                    if search_input.lower() in model["model_name"].lower():
+                        matching_name_models.append(model)
+        return matching_name_models
+
+    def add_folder_files_to_matching_name_models(self, search_input, folder_files, matching_name_models):
+        if folder_files:
+            for model_id in folder_files:
+                model = Dynamo().get_model(model_id)
+                if model:
+                    if search_input.lower() in model["model_name"].lower():
+                        matching_name_models.append(model)
+        return matching_name_models
+
     def publish_federated_model(self, federated_model_id):
         model = Dynamo().get_model(federated_model_id)
         for model_id in model["model_federated_required_ids"]:
@@ -43,54 +70,68 @@ class ModelController:
         return lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"]
 
     def update_model_files(self, destination_model, source_model, user):
-        destination_model["model_project_id"] = source_model["model_project_id"]
-        destination_model["model_filename"] = source_model["model_filename"]
-        destination_model["model_filename_zip"] = source_model["model_filename_zip"]
+        if source_model["model_format"] == "ifc":
+            destination_model["model_project_id"] = source_model["model_project_id"]
+            destination_model["model_filename"] = source_model["model_filename"]
+            destination_model["model_filename_zip"] = source_model["model_filename_zip"]
 
-        destination_model["model_upload_path_zip"] = source_model["model_upload_path_zip"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
-        destination_model["model_upload_path_xml"] = source_model["model_upload_path_xml"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
-        destination_model["model_upload_path_aug"] = source_model["model_upload_path_aug"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
-        destination_model["model_upload_path_sd_aug"] = source_model["model_upload_path_sd_aug"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
-        destination_model["model_upload_path_bin"] = source_model["model_upload_path_bin"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
-        destination_model["model_upload_path_mini_bin"] = source_model["model_upload_path_mini_bin"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+            destination_model["model_upload_path_zip"] = source_model["model_upload_path_zip"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+            destination_model["model_upload_path_xml"] = source_model["model_upload_path_xml"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+            destination_model["model_upload_path_aug"] = source_model["model_upload_path_aug"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+            destination_model["model_upload_path_sd_aug"] = source_model["model_upload_path_sd_aug"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+            destination_model["model_upload_path_bin"] = source_model["model_upload_path_bin"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+            destination_model["model_upload_path_mini_bin"] = source_model["model_upload_path_mini_bin"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
 
-        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_zip"], destination_model["model_upload_path_zip"])
-        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_xml"], destination_model["model_upload_path_xml"])
-        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_aug"], destination_model["model_upload_path_aug"])
-        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_sd_aug"], destination_model["model_upload_path_sd_aug"])
-        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_bin"], destination_model["model_upload_path_bin"])
-        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_mini_bin"], destination_model["model_upload_path_mini_bin"])
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_zip"], destination_model["model_upload_path_zip"])
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_xml"], destination_model["model_upload_path_xml"])
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_aug"], destination_model["model_upload_path_aug"])
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_sd_aug"], destination_model["model_upload_path_sd_aug"])
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_bin"], destination_model["model_upload_path_bin"])
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_mini_bin"], destination_model["model_upload_path_mini_bin"])
 
-        destination_model["model_filesize"] = source_model["model_filesize"]
-        destination_model["model_filesize_zip"] = source_model["model_filesize_zip"]
-        destination_model["model_filesize_xml"] = source_model["model_filesize_xml"]
-        destination_model["model_filesize_aug"] = source_model["model_filesize_aug"]
-        destination_model["model_filesize_sd_aug"] = source_model["model_filesize_sd_aug"]
-        destination_model["model_filesize_bin"] = source_model["model_filesize_bin"]
-        destination_model["model_filesize_mini_bin"] = source_model["model_filesize_mini_bin"]
+            destination_model["model_filesize"] = source_model["model_filesize"]
+            destination_model["model_filesize_zip"] = source_model["model_filesize_zip"]
+            destination_model["model_filesize_xml"] = source_model["model_filesize_xml"]
+            destination_model["model_filesize_aug"] = source_model["model_filesize_aug"]
+            destination_model["model_filesize_sd_aug"] = source_model["model_filesize_sd_aug"]
+            destination_model["model_filesize_bin"] = source_model["model_filesize_bin"]
+            destination_model["model_filesize_mini_bin"] = source_model["model_filesize_mini_bin"]
 
-        destination_model["model_memory_usage_in_gbs"] = str(source_model.get("model_memory_usage_in_gbs"))
-        destination_model["model_was_processed_where"] = str(source_model.get("model_was_processed_where"))
-        destination_model["model_xml_started"] = str(source_model.get("model_xml_started"))
-        destination_model["model_xml_memory_usage"] = str(source_model.get("model_xml_memory_usage"))
-        destination_model["model_xml_completed"] = str(source_model.get("model_xml_completed"))
-        destination_model["model_xml_total_time"] = str(source_model.get("model_xml_total_time"))
-        destination_model["model_xml_to_dynamo_start"] = str(source_model.get("model_xml_to_dynamo_start"))
-        destination_model["model_xml_to_dynamo_completed"] = str(source_model.get("model_xml_to_dynamo_completed"))
-        destination_model["model_xml_to_dynamo_total_time"] = str(source_model.get("model_xml_to_dynamo_total_time"))
-        destination_model["model_aug_started"] = str(source_model.get("model_aug_started"))
-        destination_model["model_aug_percent"] = str(source_model.get("model_aug_percent"))
-        destination_model["model_aug_memory_usage"] = str(source_model.get("model_aug_memory_usage"))
-        destination_model["model_aug_completed"] = str(source_model.get("model_aug_completed"))
-        destination_model["model_aug_total_time"] = str(source_model.get("model_aug_total_time"))
-        destination_model["model_aug_sd_started"] = str(source_model.get("model_aug_sd_started"))
-        destination_model["model_aug_sd_percent"] = str(source_model.get("model_aug_sd_percent"))
-        destination_model["model_aug_sd_memory_usage"] = str(source_model.get("model_aug_sd_memory_usage"))
-        destination_model["model_aug_sd_completed"] = str(source_model.get("model_aug_sd_completed"))
-        destination_model["model_aug_sd_total_time"] = str(source_model.get("model_aug_sd_total_time"))
-        destination_model["model_processing_total_time"] = str(source_model.get("model_processing_total_time"))
-        destination_model["model_processing_percentage"] = str(source_model.get("model_processing_percentage"))
-        destination_model["model_valid_until"] = str(source_model.get("model_valid_until"))
+            destination_model["model_memory_usage_in_gbs"] = str(source_model.get("model_memory_usage_in_gbs"))
+            destination_model["model_was_processed_where"] = str(source_model.get("model_was_processed_where"))
+            destination_model["model_xml_started"] = str(source_model.get("model_xml_started"))
+            destination_model["model_xml_memory_usage"] = str(source_model.get("model_xml_memory_usage"))
+            destination_model["model_xml_completed"] = str(source_model.get("model_xml_completed"))
+            destination_model["model_xml_total_time"] = str(source_model.get("model_xml_total_time"))
+            destination_model["model_xml_to_dynamo_start"] = str(source_model.get("model_xml_to_dynamo_start"))
+            destination_model["model_xml_to_dynamo_completed"] = str(source_model.get("model_xml_to_dynamo_completed"))
+            destination_model["model_xml_to_dynamo_total_time"] = str(source_model.get("model_xml_to_dynamo_total_time"))
+            destination_model["model_aug_started"] = str(source_model.get("model_aug_started"))
+            destination_model["model_aug_percent"] = str(source_model.get("model_aug_percent"))
+            destination_model["model_aug_memory_usage"] = str(source_model.get("model_aug_memory_usage"))
+            destination_model["model_aug_completed"] = str(source_model.get("model_aug_completed"))
+            destination_model["model_aug_total_time"] = str(source_model.get("model_aug_total_time"))
+            destination_model["model_aug_sd_started"] = str(source_model.get("model_aug_sd_started"))
+            destination_model["model_aug_sd_percent"] = str(source_model.get("model_aug_sd_percent"))
+            destination_model["model_aug_sd_memory_usage"] = str(source_model.get("model_aug_sd_memory_usage"))
+            destination_model["model_aug_sd_completed"] = str(source_model.get("model_aug_sd_completed"))
+            destination_model["model_aug_sd_total_time"] = str(source_model.get("model_aug_sd_total_time"))
+            destination_model["model_processing_total_time"] = str(source_model.get("model_processing_total_time"))
+            destination_model["model_processing_percentage"] = str(source_model.get("model_processing_percentage"))
+            destination_model["model_valid_until"] = str(source_model.get("model_valid_until"))
+
+        elif source_model["model_format"] in ["fbx", "glb"]:
+            destination_model["model_filename"] = source_model["model_filename"]
+            destination_model["model_filename_zip"] = source_model["model_filename_zip"]
+
+            destination_model["model_upload_path_zip"] = source_model["model_upload_path_zip"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+            destination_model["model_upload_path_glb"] = source_model["model_upload_path_glb"].replace(source_model["model_upload_path"], destination_model["model_upload_path"])
+
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_zip"], destination_model["model_upload_path_zip"])
+            S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_glb"], destination_model["model_upload_path_glb"])
+
+            destination_model["model_filesize"] = source_model["model_filesize"]
+            destination_model["model_filesize_glb"] = source_model["model_filesize_glb"]
 
         Dynamo().put_entity(destination_model)
         self.delete_model(source_model, user)
@@ -131,10 +172,10 @@ class ModelController:
             Dynamo().update_entity(model, "model_upload_path_bin", bin_model_key)
             Dynamo().update_entity(model, "model_upload_path_mini_bin", mini_bin_model_key)
 
-    def sort_models(self, models, sort_attribute="model_name", sort_reverse=False):
+    def sort_models(self, user, models, sort_attribute="model_name", sort_reverse=False):
         sort_reverse = sort_reverse == "True"
 
-        if sort_attribute not in ["model_name", "model_filesize", "created_at"]:
+        if sort_attribute not in models[0]:
             sort_attribute = "model_name"
 
         favorited_models = []
@@ -142,12 +183,15 @@ class ModelController:
         sorted_models = []
         if models:
             for model in models:
-                if model.get("model_is_favorite"):
+                if model["model_id"] in user.user_favorited_models:
                     favorited_models.append(model)
                 else:
                     normal_models.append(model)
 
-        if sort_attribute == "model_name":
+        if sort_attribute in ["created_at", "model_filesize"]:
+            sort_reverse = not sort_reverse
+
+        if sort_attribute in ["model_name", "owners_name"]:
             favorited_models = Sort().sort_dict_list(favorited_models, sort_attribute, reverse=sort_reverse, integer=False)
             normal_models = Sort().sort_dict_list(normal_models, sort_attribute, reverse=sort_reverse, integer=False)
         else:
@@ -183,13 +227,17 @@ class ModelController:
         if model["model_federated_required_ids"]:
             for model_id in model["model_federated_required_ids"]:
                 required_model = Dynamo().get_model(model_id)
-                if model["model_id"] in required_model["model_used_in_federated_ids"]:
-                    required_model["model_used_in_federated_ids"].remove(model["model_id"])
-                    Dynamo().put_entity(required_model)
+                if required_model:
+                    if model["model_id"] in required_model["model_used_in_federated_ids"]:
+                        required_model["model_used_in_federated_ids"].remove(model["model_id"])
+                        Dynamo().put_entity(required_model)
         if model["model_state"] == "completed":
             user.remove_model_from_user_dicts(model)
+
+        model = self.change_model_state(model, model["model_state"], "deleted")
+        S3().copy_folder_from_one_bucket_to_another(lambda_constants["processed_bucket"], lambda_constants["archive_bucket"], model["model_upload_path"], model["model_upload_path"])
         S3().delete_folder(lambda_constants["processed_bucket"], model["model_upload_path"])
-        Dynamo().delete_entity(model)
+        Dynamo().put_entity(model)
 
     def generate_new_model(self, email, filename="", federated=False, federated_required_ids=[]):
         import datetime
@@ -201,41 +249,50 @@ class ModelController:
             new_model["model_name"] = filename
             new_model["model_filename"] = filename
         if federated:
+            filtered_federated_required_ids = []
+            for required_model_id in federated_required_ids:
+                required_model = Dynamo().get_model(required_model_id)
+                if required_model:
+                    if required_model.get("model_format") == "ifc":
+                        filtered_federated_required_ids.append(required_model_id)
+
             new_model["model_is_federated"] = True
-            new_model["model_federated_required_ids"] = federated_required_ids
+            new_model["model_federated_required_ids"] = filtered_federated_required_ids
             new_model["model_category"] = "federated"
 
         Dynamo().put_entity(new_model)
         return new_model
 
-    def check_if_file_uploaded_is_valid(self, uploaded_file, user):
+    def check_if_file_uploaded_is_valid(self, uploaded_file, original_name, user):
         if not uploaded_file:
             return {"error": "no uploaded_file"}
+
+        original_name = original_name.replace("/", "").replace("?", "").replace("$", "")
 
         ReadWrite().delete_files_inside_a_folder(lambda_constants["tmp_path"])
 
         if not S3().check_if_file_exists(lambda_constants["upload_bucket"], uploaded_file):
             return {"error": "Este model não foi enviado/transferido para a AWS."}
 
-        S3().download_file(lambda_constants["upload_bucket"], uploaded_file, lambda_constants["tmp_path"] + "original_file")
+        S3().download_file(lambda_constants["upload_bucket"], uploaded_file, lambda_constants["tmp_path"] + original_name)
 
         ifc_location = None
         ifcs_locations = []
-        if self.is_zip_using_magic_number(lambda_constants["tmp_path"] + "original_file"):
-            ReadWrite().extract_zip_file(lambda_constants["tmp_path"] + "original_file", lambda_constants["tmp_path"] + "unzip")
+        if self.is_zip_using_magic_number(lambda_constants["tmp_path"] + original_name):
+            ReadWrite().extract_zip_file(lambda_constants["tmp_path"] + original_name, lambda_constants["tmp_path"] + "unzip")
             ifc_location = ReadWrite().find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
             if not ifc_location:
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
             if self.is_zip_using_magic_number(ifc_location):
                 ReadWrite().extract_zip_file(ifc_location, lambda_constants["tmp_path"] + "unzipunzip")
-                ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzipunzip", ["ifc", "fbx"])
+                ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzipunzip", ["ifc", "fbx", "glb"])
             else:
-                ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
+                ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx", "glb"])
         else:
-            ifc_location = lambda_constants["tmp_path"] + "original_file"
+            ifc_location = lambda_constants["tmp_path"] + original_name
             ifcs_locations = [ifc_location]
 
-        response = {"models_ids": []}
+        response = {"success": {"models_ids": [], "file_formats": {}}}
 
         files_hashes = []
         for index, ifc_location in enumerate(ifcs_locations):
@@ -250,11 +307,8 @@ class ModelController:
                     return {"error": "O projeto excede o tamanho máximo de 1Gb."}
                 else:
                     return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."}
-            if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location):
-                if index == 0:
-                    return {"error": "Arquivo IFC ou FBX encontrado porém se não é válido."}
-                else:
-                    return {"error": "Algum arquivo dentro do .zip é inválido."}
+            if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location) and not self.is_glb_file(ifc_location):
+                return {"error": "Algum arquivo dentro do .zip é inválido."}
             if self.is_ifc_file(ifc_location):
                 if not self.is_acceptable_ifc_format(ifc_location):
                     if index == 0:
@@ -269,15 +323,37 @@ class ModelController:
                         return {"error": "Este mesmo arquivo já se encontra na fila de processamento."}
 
         if len(ifcs_locations) > 1:
-            response["has_more_than_one_file"] = True
+            response["success"]["has_more_than_one_file"] = True
         else:
-            response["has_more_than_one_file"] = False
+            response["success"]["has_more_than_one_file"] = False
 
+        response["success"]["has_fbx"] = False
         for index, ifc_location in enumerate(ifcs_locations):
             if self.is_ifc_file(ifc_location):
                 file_format = "ifc"
+
+                if "ifc" not in response["success"]["file_formats"]:
+                    response["success"]["file_formats"]["ifc"] = 1
+                else:
+                    response["success"]["file_formats"]["ifc"] += 1
+
             elif self.is_fbx_file(ifc_location):
                 file_format = "fbx"
+                response["success"]["has_fbx"] = True
+
+                if "fbx" not in response["success"]["file_formats"]:
+                    response["success"]["file_formats"]["fbx"] = 1
+                else:
+                    response["success"]["file_formats"]["fbx"] += 1
+
+            elif self.is_glb_file(ifc_location):
+                file_format = "glb"
+                response["success"]["has_fbx"] = True
+
+                if "glb" not in response["success"]["file_formats"]:
+                    response["success"]["file_formats"]["glb"] = 1
+                else:
+                    response["success"]["file_formats"]["glb"] += 1
 
             if not "." + file_format in ifc_location:
                 new_ifc_location = ifc_location + "." + file_format
@@ -294,7 +370,9 @@ class ModelController:
             model["model_name"] = os.path.basename(ifc_location)
             model["model_filename"] = os.path.basename(ifc_location)
             model["model_filehash"] = ReadWrite().get_file_hash(ifc_location)
-            model["model_filename_zip"] = Generate().generate_short_id() + ".zip"
+
+            model_uploaded_filename = Generate().generate_short_id()
+            model["model_filename_zip"] = model_uploaded_filename + ".zip"
             model["model_upload_path_zip"] = model["model_upload_path"] + model["model_filename_zip"]
             S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"], lambda_constants["tmp_path"] + "file_ok.zip")
 
@@ -302,13 +380,25 @@ class ModelController:
             model["model_filesize"] = str(os.path.getsize(ifc_location))
             model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
             model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
-            model["model_upload_path_xml"] = model["model_upload_path_zip"].replace(".zip", "-xml.zip")
-            model["model_upload_path_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug.zip")
-            model["model_upload_path_sd_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug-sd.zip")
-            model["model_share_link_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(".zip", ".png")
-            Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(".zip", ".png"))
+            if model["model_format"] in ["fbx", "glb"]:
+                model["model_upload_path_glb"] = model["model_upload_path_zip"].replace(".zip", ".glb")
+                if model["model_format"] == "glb":
+                    S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_glb"], ifc_location)
+            elif model["model_format"] in ["ifc"]:
+                model["model_upload_path_xml"] = model["model_upload_path_zip"].replace(".zip", "-xml.zip")
+                model["model_upload_path_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug.zip")
+                model["model_upload_path_sd_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug-sd.zip")
+            model["model_share_link_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(model_uploaded_filename, "QRSHARE-" + model_uploaded_filename).replace(".zip", ".png")
+            Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(model_uploaded_filename, "QRSHARE-" + model_uploaded_filename).replace(".zip", ".png"))
 
-            response["models_ids"].append(model["model_id"])
+            post_data = {"branch_key": lambda_constants["branch_key"], "channel": "app", "feature": "app", "campaign": "app", "stage": "sharing", "tags": [model["model_name"], model["model_id"]], "data": {"$canonical_identifier": "user/" + str(model["model_id"]), "$og_title": model["model_name"], "$og_description": model["model_name"], "$og_image_url": "", "$desktop_url": "https://augin.app", "asset_type": "4", "user_id": user.user_id}}
+            branch_response = Http().call_branch("POST", "url", post_data)
+            model["model_branch_id"] = Http().get_branch_id(branch_response["url"])
+            model["model_branch_url"] = branch_response["url"]
+            model["model_branch_url_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png")
+            Generate().generate_qr_code(model["model_branch_url"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png"))
+
+            response["success"]["models_ids"].append(model["model_id"])
             Dynamo().put_entity(model)
         return response
 
@@ -351,17 +441,22 @@ class ModelController:
                     Lambda().invoke("EC2-Launcher", "Event", {"ec_requested_gbs": ec_gbs_bracket})
                     # Lambda().invoke("EC2-Launcher", "Event", {"ec_requested_gbs": ec_gbs_bracket, "ec2_instance": choose_ec2_instance})
 
-        if model["model_format"] == "fbx":
-            Lambda().invoke("process_fbx_to_glb", "Event", {"model_id": model["model_id"]})
+        elif model["model_format"] == "fbx":
+            Lambda().invoke("fbx-to-glb-converter-lambda-dev", "Event", {"model_id": model["model_id"], "input_bucket": lambda_constants["processed_bucket"], "input_key": model["model_upload_path_zip"], "output_bucket": lambda_constants["processed_bucket"], "output_key": model["model_upload_path_glb"], "output_project_domain_name": lambda_constants["prefix_name"] + lambda_constants["domain_name"] + lambda_constants["sufix_name"]})
 
         # ec2_instances["ec2_instances"].remove(choose_ec2_instance)
         # Dynamo().put_entity(ec2_instances)
-        if federated_model:
+        if model["model_format"] == "ifc" and federated_model:
             model["model_used_in_federated_ids"].append(federated_model["model_id"])
         model["model_processing_started"] = True
         Dynamo().put_entity(model)
         data = {"model_id": model["model_id"], "output_format": "process_started"}
         Http().request("POST", "https://" + lambda_constants["prefix_name"] + lambda_constants["domain_name"] + lambda_constants["sufix_name"] + "/api/update_model_process", headers={}, data=data)
+
+        if model["model_format"] == "glb":
+            data = {"model_id": model["model_id"], "output_format": "glb"}
+            Http().request("POST", "https://" + lambda_constants["prefix_name"] + lambda_constants["domain_name"] + lambda_constants["sufix_name"] + "/api/update_model_process", headers={}, data=data)
+
         return {"success": "Model " + model["model_id"] + " agora em processamento."}
 
     def generate_stepfunctions_payloads(self, ec_requested_gbs, model):
@@ -481,7 +576,14 @@ class ModelController:
                 header = f.read(20)  # Read first 20 bytes
                 return b"Kaydara FBX Binary" in header
         except Exception as e:
-            print(f"An error occurred: {e}")
+            return False
+
+    def is_glb_file(self, file_path):
+        try:
+            with open(file_path, "rb") as f:  # Read as binary
+                header = f.read(4)  # Read first 4 bytes to get the magic number
+                return header == b"glTF"
+        except Exception as e:
             return False
 
     def is_zip_using_magic_number(self, filename):

@@ -4,10 +4,8 @@
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Criar conta}}</h1>
     </div>
-    <div class="create-account__title-container">
-        <h2>{{Bem vindo ao Augin, para criar sua conta precisamos algumas informações.}}</h2>
-    </div>
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" class="create-account__form-container">
+        <h2>{{Estamos quase lá! Preencha as informações abaixo e vamos criar sua conta.}}</h2>
         <div class="create-account__input-container floating-input">
             <input readonly type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder="" required maxlength="500">
             <label for="email-account_input">{{Email}}</label>

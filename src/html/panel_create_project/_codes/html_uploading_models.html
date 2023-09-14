@@ -2,6 +2,8 @@
     <input hidden id="has_more_than_one_file_{{index_val}}">
     <input hidden name="model_id_{{index_val}}" id="model_id_{{index_val}}">
     <input hidden id="has_error_{{index_val}}">
+    <input hidden id="has_fbx_{{index_val}}">
+    <input hidden id="model_filename_{{index_val}}" value="{{model_filename_val}}">
     <div class="uploading-element-header">
         <strong>{{model_filename_val}}</strong>
         <button id="delete_button_{{index_val}}" class="button--icon" onclick="js.index.deleteUploadingElement('{{index_val}}')" aria-label="{{Excluir modelo}} {{model_filename_val}}" aria-describedby="message_{{index_val}}" aria-controls="uploading_element_{{index_val}}">
@@ -12,4 +14,5 @@
         {{Enviando arquivo, aguarde}}
     </p>
     <progress id="progress_{{index_val}}" value="0" max="100" aria-describedby="message_{{index_val}}"></progress>
+    <div id="file_formats_div_{{index_val}}">{{html_uploading_file_formats}}</div>
 </section>

@@ -42,11 +42,17 @@ class UpdateModel(BasePage):
 
         elif self.post["command"] == "update_model_files":
             selected_model = Dynamo().get_model(self.post["selected_model_id"])
+            if not selected_model:
+                return {"error": "O projeto selecionado é inválido"}
+            if model["model_id"] == selected_model["model_id"]:
+                return {"error": "É necessário escolher um arquivo diferente do original para a substitução"}
+            if (model["model_format"] == "ifc" and selected_model["model_format"] != "ifc") and (model["model_format"] in ["fbx", "glb"] and selected_model["model_format"] == "ifc"):
+                return {"error": "É necessário escolher um arquivo do mesmo formato para a substitução"}
             ModelController().update_model_files(model, selected_model, self.user)
             return {"success": "model files updated"}
 
         elif self.post["command"] == "update_category":
-            if model.get("model_is_federated"):
+            if model["model_is_federated"]:
                 model["model_category"] = "federated"
                 Dynamo().update_entity(model, "model_category", model["model_category"])
             else:
@@ -57,28 +63,22 @@ class UpdateModel(BasePage):
                     return {"error": "A categoria selecionada é inválida."}
             return {"success": "model category updated"}
 
-        elif self.post["command"] == "update_favorite":
-            if self.post["model_is_favorite"] == "True":
-                model["model_is_favorite"] = True
-            else:
-                model["model_is_favorite"] = False
-            Dynamo().put_entity(model)
-            return {"success": "model favorite updated"}
-
         elif self.post["command"] == "update_name":
             model["model_name"] = self.post.get("model_name").strip()
             Dynamo().update_entity(model, "model_name", model["model_name"])
             return {"success": "model name updated"}
 
         elif self.post["command"] == "update_password":
-            if self.post.get("model_is_password_protected"):
-                if self.post.get("model_is_password_protected") and not self.post.get("model_password"):
-                    return {"error": "É necessário informar uma senha."}
-            if self.post.get("model_password"):
-                model["model_password"] = self.post.get("model_password")
-            else:
-                model["model_password"] = ""
-            model["model_is_password_protected"] = self.post.get("model_is_password_protected")
+            model_is_accessible = self.post.get("model_is_accessible")
+            model_is_password_protected = self.post.get("model_is_password_protected")
+            model_password = self.post.get("model_password")
+
+            model["model_is_accessible"] = model_is_accessible
+            if model_is_accessible and model_is_password_protected and not model_password:
+                return {"error": "É necessário informar uma senha."}
+            model["model_password"] = model_password if model_password else ""
+            model["model_is_password_protected"] = model_is_password_protected
+
             Dynamo().put_entity(model)
             return {"success": "model password updated"}
 
