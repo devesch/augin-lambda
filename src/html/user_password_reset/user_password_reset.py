@@ -43,4 +43,4 @@ class UserPasswordReset(UserPage):
         user.update_password(self.post["user_password"], Generate().generate_salt(9))
         Dynamo().put_entity(user.__dict__)
         user.update_auth_token()
-        return {"html": Http().redirect("panel_home"), "command": "login", "user_auth_token": user.user_auth_token}
+        return {"html": Http().redirect("panel_your_plan"), "command": "login", "user_auth_token": user.user_auth_token}

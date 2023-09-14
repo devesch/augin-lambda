@@ -199,8 +199,8 @@ class BackofficeCreatePlan(BackofficePage):
         plan["plan_name_es"] = self.post["plan_name_es"]
 
         plan["plan_description_pt"] = self.post["plan_description_pt"]
-        plan["plan_description_en"] = self.post["plan_description_en"]
-        plan["plan_description_es"] = self.post["plan_description_es"]
+        # plan["plan_description_en"] = self.post["plan_description_en"]
+        # plan["plan_description_es"] = self.post["plan_description_es"]
 
         if self.post.get("plan_available_for_purchase"):
             plan["plan_available_for_purchase"] = True
