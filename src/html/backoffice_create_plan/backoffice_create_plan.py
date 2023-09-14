@@ -15,8 +15,6 @@ class BackofficeCreatePlan(BackofficePage):
         if self.post:
             if self.post.get("plan_available_for_purchase"):
                 html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
-            else:
-                html.esc("annually_div_visibility_val", "display:none;")
 
             if self.post.get("plan_available_annually"):
                 html.esc("plan_available_annually_checked_val", "checked='checked'")
@@ -31,7 +29,7 @@ class BackofficeCreatePlan(BackofficePage):
             if self.post.get("plan_has_trial"):
                 html.esc("plan_has_trial_checked_val", "checked='checked'")
             else:
-                html.esc("monthly_div_visibility_val", "display:none;")
+                html.esc("trial_div_visibility_val", "display:none;")
 
         else:
             html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
