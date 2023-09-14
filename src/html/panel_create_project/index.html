@@ -15,7 +15,7 @@
 
     <div class="new-project__sub-title-container">
         <h2 class="new-project__sub-title">
-            {{Importe seu arquivo}} <strong>IFC</strong> {{ou}} <strong>FBX</strong> {{para ser visualizado  no Augin.}}
+            {{Importe seu arquivo}} <strong>IFC</strong> {{ou}} <strong>FBX</strong> {{ou}} <strong>GLB</strong> {{para ser visualizado  no Augin.}}
         </h2>
         <p>{{Seu plano permite importar arquivos até}} <strong>100Mb</strong>, <a class="link--primary" href="">{{faça um upgrade}}</a> {{para aumentar esse limite.}}</p>
     </div>
@@ -23,7 +23,7 @@
     <div class="upload-file-container">
         <label class="upload-file-label" for="upload_new_project">
             <img src="{{cdn_val}}/assets/icons/upload_file.svg" alt="" width="115" height="144">
-            <p>{{Arraste e solte seu arquivo (IFC ou FBX) aqui ou}} <span class="link--primary">{{selecione um em seu computador}}</span></p>
+            <p>{{Arraste e solte seu arquivo (IFC ou FBX ou GLB) aqui ou}} <span class="link--primary">{{selecione um em seu computador}}</span></p>
         </label>
         <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX, .GLB, .ZIP" multiple>
     </div>
