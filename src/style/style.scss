@@ -1151,6 +1151,23 @@ input[list]::-ms-clear {
 
 }
 
+.file-formats-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+
+    section {
+        background-color: colors.color("color-neutral-200");
+        padding: 0.1rem 0.5rem;
+        font-weight: bold;
+        color: colors.color("color-neutral-900");
+        border-radius: 0.25rem;
+        font-size: 0.9rem;
+    }
+
+}
+
 .uploading-element-header {
     display: flex;
     flex-direction: row;
