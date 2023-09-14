@@ -169,6 +169,9 @@ class BackofficeCreatePlan(BackofficePage):
             if not Validation().check_if_is_number(self.post["plan_app_can_be_offline_in_days"]):
                 return self.render_get_with_error("A duração do APP offline em dias deve ser um número")
 
+        if not self.post.get("plan_trial_duration_in_days"):
+            self.post["plan_trial_duration_in_days"] = "0"
+
         if not self.path.get("plan"):
             plan = Plan(Generate().generate_short_id()).__dict__
             plan["plan_name_pt"] = self.post["plan_name_pt"]

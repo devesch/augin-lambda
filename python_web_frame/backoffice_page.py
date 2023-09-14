@@ -13,7 +13,7 @@ class BackofficePage(BasePage):
             html = ReadWrite().read_html("backoffice_create_plan/_codes/html_plan_reference_tracker_options")
             html.esc("plan_reference_tracker_val", lambda_constants["plan_reference_trackers"][plan_reference_tracker])
             html.esc("plan_reference_tracker_name_val", self.translate(plan_reference_tracker))
-            if self.post.get("plan_reference_tracker") == plan_reference_tracker:
+            if self.post.get("plan_reference_tracker") == lambda_constants["plan_reference_trackers"][plan_reference_tracker] or (self.path.get("plan") and self.path["plan"].get("plan_reference_tracker") == lambda_constants["plan_reference_trackers"][plan_reference_tracker]):
                 html.esc("pre_sel_val", "selected='selected'")
             full_html.append(str(html))
         return "".join(full_html)

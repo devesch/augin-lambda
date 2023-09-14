@@ -156,6 +156,36 @@
             <label for="plan_app_can_be_offline_in_days_input">{{Duração do APP offline em dias}}</label>
         </div>
 
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_team_play_participants" value="{{plan_team_play_participants_val}}" id="plan_team_play_participants_input" placeholder="" required maxlength="500">
+            <label for="plan_team_play_participants_input">{{Quantidade de pessoas no team play}}</label>
+        </div>
+
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_download_files" value="{{plan_download_files_val}}" id="plan_download_files_input" placeholder="" required maxlength="500">
+            <label for="plan_download_files_input">{{Quantidade de pessoas no team play}}</label>
+        </div>
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input type="checkbox" name="plan_download_files" id="plan_download_files_input" {{plan_download_files_checked_val}}>
+                <label class="switch" for="plan_download_files_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="plan_download_files_input">{{Realiza downloads}}</label>
+        </div>
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input type="checkbox" name="plan_share_files" id="plan_share_files_input" {{plan_share_files_checked_val}}>
+                <label class="switch" for="plan_share_files_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="plan_share_files_input">{{Realiza compartilhamentos}}</label>
+        </div>
+
         <div class="switch-container">
             <div class="input-container">
                 <input onchange="js.index.toogleDiv(this, 'trial_div')" type="checkbox" name="plan_has_trial" id="plan_has_trial_input" {{plan_has_trial_checked_val}}>
