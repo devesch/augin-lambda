@@ -22,9 +22,16 @@ class BackofficeCreatePlan(BackofficePage):
                 html.esc("plan_available_monthly_checked_val", "checked='checked'")
             else:
                 html.esc("monthly_div_visibility_val", "display:none;")
+
+            if self.post.get("plan_has_trial"):
+                html.esc("plan_has_trial_checked_val", "checked='checked'")
+            else:
+                html.esc("monthly_div_visibility_val", "display:none;")
+
         else:
             html.esc("plan_available_annually_checked_val", "checked='checked'")
             html.esc("plan_available_monthly_checked_val", "checked='checked'")
+            html.esc("plan_has_trial_checked_val", "checked='checked'")
 
         html.esc("html_plan_reference_tracker_options", self.list_html_plan_reference_tracker_options())
         return str(html)
