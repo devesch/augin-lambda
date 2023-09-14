@@ -182,3 +182,17 @@
     </form>
 </div>
 {{footer}}
+
+<script>
+    window.onload = () => {
+        let plan_price_annually_brl_input = document.getElementById("plan_price_annually_brl_input");
+        let plan_price_annually_brl_actual_input = document.getElementById("plan_price_annually_brl_actual_input");
+        let plan_price_annually_usd_input = document.getElementById("plan_price_annually_usd_input");
+        let plan_price_annually_usd_actual_input = document.getElementById("plan_price_annually_usd_actual_input");
+
+        js.index.formatToMoney(plan_price_annually_brl_input);
+        js.index.formatToMoney(plan_price_annually_brl_actual_input);
+        js.index.formatToMoney(plan_price_annually_usd_input);
+        js.index.formatToMoney(plan_price_annually_usd_actual_input);
+    };
+</script>
