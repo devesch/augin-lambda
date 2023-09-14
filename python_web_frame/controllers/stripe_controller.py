@@ -61,11 +61,12 @@ class StripeController:
     def get_product(self, product_id):
         return self.stripe.Product.retrieve(product_id)
 
-    def update_stripe_product(self, product_address, product):
+    def update_product(self, product, type="plan"):
         active = True
-        if product["product_available"] == "unavailable":
-            active = False
-        self.stripe.Product.modify(product_address, name=product["product_name"], active=active)
+        if type == "plan":
+            if not product["plan_available_for_purchase"]:
+                active = False
+            self.stripe.Product.modify(product["plan_id"], name=product["plan_name_pt"], active=active)
 
     def delete_stripe_product(self, product_address):
         return self.stripe.Product.delete(product_address)
@@ -79,12 +80,6 @@ class StripeController:
 
     def delete_price(self, product_stripe_price_id):
         return self.stripe.Price.modify(product_stripe_price_id, active=False)
-
-    def update_stripe_price(self, product_address, product):
-        active = True
-        if product["product_available"] == "unavailable":
-            active = False
-        self.stripe.Price.modify(product_address, name=product["product_name"], active=active)
 
     def create_stripe_payment_intent(self, amount, currency, payment_method, customer_id, user_cart):
         return self.stripe.PaymentIntent.create(

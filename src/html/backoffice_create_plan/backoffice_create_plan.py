@@ -171,6 +171,7 @@ class BackofficeCreatePlan(BackofficePage):
 
         if not self.path.get("plan"):
             plan = Plan(Generate().generate_short_id()).__dict__
+            plan["plan_name_pt"] = self.post["plan_name_pt"]
             StripeController().create_product(plan, "plan")
         else:
             plan = self.path["plan"]
@@ -275,15 +276,7 @@ class BackofficeCreatePlan(BackofficePage):
                 if str(stripe_price.unit_amount) != plan["plan_price_monthly_usd_actual"]:
                     plan["plan_price_monthly_usd_actual_stripe_id"] = StripeController().create_price(plan["plan_id"], "usd", plan["plan_price_monthly_usd_actual"], "month")
 
-        # if product.product_recurrency == "unique":
-        #     product.product_brl_stripe_price_id = StripeController().create_stripe_price(product.product_address, "brl", product.product_brl_price, None)
-        #     product.product_usd_stripe_price_id = StripeController().create_stripe_price(product.product_address, "usd", product.product_usd_price, None)
-        # elif product.product_recurrency == "monthly":
-        #     product.product_brl_stripe_price_id = StripeController().create_stripe_price(product.product_address, "brl", product.product_brl_price, "month")
-        #     product.product_usd_stripe_price_id = StripeController().create_stripe_price(product.product_address, "usd", product.product_usd_price, "month")
-        # elif product.product_recurrency == "annualy":
-        #     product.product_brl_stripe_price_id = StripeController().create_stripe_price(product.product_address, "brl", product.product_brl_price, "year")
-        #     product.product_usd_stripe_price_id = StripeController().create_stripe_price(product.product_address, "usd", product.product_usd_price, "year")
+        StripeController().update_product(plan, type="plan")
 
         Dynamo().put_entity(plan)
 
