@@ -63,6 +63,7 @@ def convert_fbx_to_glb(path):
     bpy.ops.import_scene.fbx(filepath=path)
 
     bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.make_single_user(object=True, obdata=True, material=True, animation=False, obdata_animation=False)
     bpy.ops.object.transform_apply(scale=True)
 
     print("End Import FBX scene")
