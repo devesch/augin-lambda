@@ -1040,7 +1040,9 @@ export async function openModalUpdateProject(model_id) {
 }
 
 
-
+export async function openModalDeleteProject(model_id) {
+    openModal(".modal.delete-file-modal");
+}
 
 
 export async function openModalConfirmUpdateProject() {

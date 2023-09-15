@@ -65,6 +65,29 @@
 
 </main>
 
+<div id="delete-project-modal" class="modal delete-project-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Confirmar exclusão do projeto}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <p>{{Você está excluindo definitivamente o projeto}}</p>
+                <p><strong id="delete_file_modal_file_name"></strong></p>
+                <p>{{Tem certeza que deseja continuar?}}</p>
+            </div>
+            <span class="error" id="model_delete_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="model_id_delete_model_input">
+                <button onclick="js.index.closeModal('.modal.update-modal')" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.deleteUploadingElement()">{{Continuar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     window.onload = function () {
         let create_federated_project_with_processed_files = document.getElementById("create_federated_project_with_processed_files");

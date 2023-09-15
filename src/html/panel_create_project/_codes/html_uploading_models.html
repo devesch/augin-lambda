@@ -6,7 +6,8 @@
     <input hidden id="model_filename_{{index_val}}" value="{{model_filename_val}}">
     <div class="uploading-element-header">
         <strong>{{model_filename_val}}</strong>
-        <button id="delete_button_{{index_val}}" class="button--icon" onclick="js.index.deleteUploadingElement('{{index_val}}')" aria-label="{{Excluir modelo}} {{model_filename_val}}" aria-describedby="message_{{index_val}}" aria-controls="uploading_element_{{index_val}}">
+        <!-- js.index.deleteUploadingElement('{{index_val}}') -->
+        <button id="delete_button_{{index_val}}" class="button--icon" onclick="js.index.openModalDeleteProject('{{index_val}}')" aria-label="{{Excluir modelo}} {{model_filename_val}}" aria-describedby="message_{{index_val}}" aria-controls="uploading_element_{{index_val}}">
             <img src="{{cdn_val}}/assets/icons/trash-red.svg" width="24" height="24" alt="" />
         </button>
     </div>
