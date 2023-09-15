@@ -244,23 +244,23 @@ class PanelUserData(UserPage):
             html.esc("user_name_val", self.user.user_name.title())
 
         if self.post.get("user_phone"):
-            html.esc("user_phone_val", ReadWrite().format_to_phone(self.post["user_phone"]))
+            html.esc("user_phone_val", StrFormat().format_to_phone(self.post["user_phone"]))
         else:
-            html.esc("user_phone_val", ReadWrite().format_to_phone(self.user.user_phone))
+            html.esc("user_phone_val", StrFormat().format_to_phone(self.user.user_phone))
 
         if self.post.get("user_cnpj"):
-            html.esc("user_cnpj_val", ReadWrite().format_to_cnpj(self.post["user_cnpj"]))
+            html.esc("user_cnpj_val", StrFormat().format_to_cnpj(self.post["user_cnpj"]))
         elif hasattr(self.user, "user_cnpj"):
-            html.esc("user_cnpj_val", ReadWrite().format_to_cnpj(self.user.user_cnpj))
+            html.esc("user_cnpj_val", StrFormat().format_to_cnpj(self.user.user_cnpj))
         if self.post.get("user_cnpj"):
             html.esc("user_cnpj_val", self.post["user_cnpj"])
         elif hasattr(self.user, "user_cnpj"):
             html.esc("user_cpf_val", self.user.user_cnpj)
 
         if self.post.get("user_zip_code"):
-            html.esc("user_zip_code_val", ReadWrite().format_to_zip_code(self.post["user_zip_code"]))
+            html.esc("user_zip_code_val", StrFormat().format_to_zip_code(self.post["user_zip_code"]))
         elif self.user.user_address_data["user_zip_code"]:
-            html.esc("user_zip_code_val", ReadWrite().format_to_zip_code(self.user.user_address_data["user_zip_code"]))
+            html.esc("user_zip_code_val", StrFormat().format_to_zip_code(self.user.user_address_data["user_zip_code"]))
 
         if self.post.get("user_state"):
             html.esc("user_state_val", self.post["user_state"].upper())

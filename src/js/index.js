@@ -86,7 +86,7 @@ export async function showUserCompanyAddressData() {
     let box_inputs = document.querySelector(".page-user__box-user-data__box-inputs__box-adress");
     if (user_cnpj.value.length == 18) {
         openModal('.modal.modal-loader-spinner')
-        let api_response = await js.index.apiCaller("panel_get_company_data_with_cnpj", {
+        let api_response = await apiCaller("panel_get_company_data_with_cnpj", {
             'user_cnpj': user_cnpj.value.replace(".", "").replace(".", "").replace("-", "").replace("/", "")
         });
         closeModal('.modal.modal-loader-spinner')
