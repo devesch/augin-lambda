@@ -5,8 +5,8 @@ from utils.utils.ReadWrite import ReadWrite
 from utils.AWS.Dynamo import Dynamo
 
 
-class PanelYourPlan(PanelPage):
-    name = "Painel - Seu Plano"
+class CheckoutUpgradeYourPlan(PanelPage):
+    name = "Painel - Melhore Seu Plano"
     public = False
     bypass = False
     admin = False
