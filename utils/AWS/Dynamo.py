@@ -48,6 +48,17 @@ class Dynamo:
             filtered_query = Sort().sort_dict_list(filtered_query, "plan_price_monthly_brl_actual", reverse=False, integer=True)
         return filtered_query
 
+    def query_trial_plans(self):
+        filtered_query = []
+        query = self.query_entity("plan")
+        if query:
+            for item in query:
+                if item["plan_is_trial"]:
+                    filtered_query.append(item)
+        if filtered_query:
+            filtered_query = Sort().sort_dict_list(filtered_query, "plan_price_monthly_brl_actual", reverse=False, integer=True)
+        return filtered_query
+
     ### ORDER ###
     def query_user_orders(self, user_id):
         return []

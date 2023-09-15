@@ -604,6 +604,11 @@
         "es": "Congo, la República Democrática del",
         "pt": "Congo, a República Democrática do"
     },
+    "Conheça o": {
+        "en": "Meet the",
+        "es": "Satisfacer la",
+        "pt": "Conheça o"
+    },
     "Contato": {
         "en": "Contact",
         "es": "Contacto",
@@ -2709,6 +2714,16 @@
         "es": "Prueba",
         "pt": "Testar trial por"
     },
+    "Teste grátis": {
+        "en": "Free trial",
+        "es": "Prueba gratis",
+        "pt": "Teste grátis"
+    },
+    "Teste por": {
+        "en": "Test by",
+        "es": "Evaluar",
+        "pt": "Teste por"
+    },
     "Thailand": {
         "en": "Thailand",
         "es": "Tailandia",
@@ -3088,6 +3103,11 @@
         "en": "it is",
         "es": "es",
         "pt": "e"
+    },
+    "e libere todas as funções": {
+        "en": "and release all functions",
+        "es": "y libera todas las funciones",
+        "pt": "e libere todas as funções"
     },
     "editar": {
         "en": "to edit",

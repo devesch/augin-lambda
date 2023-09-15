@@ -81,6 +81,11 @@ class BasePage:
         html.esc("user_email_val", self.user.user_email)
         html.esc("user_client_type_val", self.user.user_client_type)
         html.esc("user_url_val", self.event.get_url())
+        if not self.user.user_plan_id:
+            trial_plans = Dynamo().query_trial_plans()
+            if trial_plans:
+                if trial_plans[-1]["plan_id"] not in self.user.user_used_trials:
+                    html.esc("html_trial_plan_promo_thumb", self.show_html_trial_plan_promo_thumb(trial_plans[-1]))
         return str(html)
 
     def render_menu_panel_no_icons(self, common_changes={}):
@@ -154,4 +159,10 @@ class BasePage:
 
     def render_html_mouse_flow_code(self, common_changes={}):
         html = ReadWrite().read_html("main/_codes/html_mouse_flow_code", common_changes)
+        return str(html)
+
+    def show_html_trial_plan_promo_thumb(self, trial_plan):
+        html = ReadWrite().read_html("main/_codes/html_trial_plan_promo_thumb")
+        html.esc("plan_name_val", trial_plan["plan_name_" + self.lang])
+        html.esc("plan_trial_duration_in_days_val", trial_plan["plan_trial_duration_in_days"])
         return str(html)
