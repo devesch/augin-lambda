@@ -21,6 +21,36 @@ export function getWebView() {
     return _webView;
 }
 
+export async function panelUserDataChangeCountryForm(user_client_type) {
+    console.log("Running panelUserDataChangeCountryForm");
+    let user_country_select = document.getElementById("user_country");
+    console.log("user_country_select ", user_country_select);
+    let panel_user_data_change_country_response = await apiCaller("panel_user_data_change_country", {
+        "selected_country": user_country_select.value,
+        "user_client_type": user_client_type
+    });
+    console.log("panel_user_data_change_country_response ", panel_user_data_change_country_response);
+    if (panel_user_data_change_country_response.success) {
+        if (window.location.href.includes("https://web.augin.app/panel_user_data")) {
+            window.location.href = panel_user_data_change_country_response.success
+        }
+        if (window.location.href.includes("https://web.augin.app/checkout_order_summary")) {
+            if (panel_user_data_change_country_response.success.includes("physical")) {
+                showCheckoutPanelUserDataForm("physical")
+            }
+            if (panel_user_data_change_country_response.success.includes("international")) {
+                showCheckoutPanelUserDataForm("international")
+            }
+        }
+    };
+    if (panel_user_data_change_country_response.error) {
+        if (panel_user_data_change_country_response.error == "no url change needed") {
+            userRegisterGenerateCountryInput();
+        }
+    };
+}
+
+
 export async function openCookiesContainer() {
     document.querySelector(".footer-cookies").classList.add("active");
 }
