@@ -40,12 +40,10 @@ class BasePage:
                 html.esc("menu_panel_no_icons", self.render_menu_panel_no_icons(common_changes))
             if "menu_backoffice" in html.placeholders:
                 html.esc("menu_backoffice", self.render_backoffice_menu(common_changes))
-
             if "menu" in html.placeholders:
                 html.esc("menu", self.render_menu(common_changes))
             if "footer" in html.placeholders:
                 html.esc("footer", self.render_footer(common_changes))
-
         if "user_url_val" in html.placeholders:
             html.esc("user_url_val", self.event.get_url())
         return html
@@ -56,6 +54,15 @@ class BasePage:
         html.esc("font_ext_val", font_format)
         html.esc("font_type_val", font_format)
         html.esc("page_title_val", self.name)
+
+        if self.cookie_policy is None:
+            html.esc("open_modal_cookie_policy_val", "active")
+        else:
+            if not "backoffice" in self.route and self.cookie_policy.get("tawk") == "accepted":
+                html.esc("html_tawk_code", self.render_html_tawk_code(common_changes))
+            if self.cookie_policy.get("mouseflow") == "accepted":
+                if not "backoffice" in self.route and not "home" in self.route and not "history" in self.route:
+                    html.esc("html_mouse_flow_code", self.render_html_mouse_flow_code(common_changes))
         return str(html)
 
     def render_backoffice_menu(self, common_changes={}):
@@ -82,6 +89,14 @@ class BasePage:
 
     def render_footer(self, common_changes={}):
         html = ReadWrite().read_html("main/footer", common_changes)
+        if self.cookie_policy:
+            if self.cookie_policy.get("tawk") == "accepted":
+                html.esc("open_tawk_or_open_cookies_modal_val", "Tawk_API.toggle()")
+        else:
+            html.esc("open_modal_cookie_policy_val", "active")
+
+        html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openCookiesContainer()")
+        html.esc("user_url_val", self.event.get_url())
         return str(html)
 
     def render_get_with_error(self, error_msg):
@@ -127,3 +142,12 @@ class BasePage:
             backoffice_data = backoffice_data.__dict__
             Dynamo().put_entity(backoffice_data)
         return backoffice_data
+
+    def render_html_tawk_code(self, common_changes={}):
+        html = self.utils.read_html("main/_codes/html_tawk_code", common_changes)
+        tawk_api_code = "5c61ca4c7cf662208c950f53/default" if self.lang == "pt" else "5dae0f3fdf22d91339a04c3c/default"
+        html.esc("tawk_api_val", tawk_api_code)
+        if self.user:
+            html.esc("tawk_user_name_val", self.user.user_name)
+            html.esc("tawk_user_email_val", self.user.user_email)
+        return str(html)

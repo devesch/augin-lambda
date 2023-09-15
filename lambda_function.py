@@ -25,12 +25,13 @@ def lambda_handler(event, context):
         importlib.import_module("src.html." + page + "." + page)
         class_instance = getattr(getattr(importlib.import_module("src.html." + page), page), StrFormat().format_snakecase_to_camelcase(page))()
 
-        set_instance_attributes(class_instance, event, page, None, None, lang, user=None, project_cookies=None, error_msg=None)
+        set_instance_attributes(class_instance, event, page, None, None, None, lang, user=None, project_cookies=None, error_msg=None)
         return Http().respond(getattr(class_instance, "render_get")(), event, status_code=201)
 
 
-def set_instance_attributes(class_instance, event, page, path, post, lang, user, project_cookies, error_msg):
+def set_instance_attributes(class_instance, event, page, cookie_policy, path, post, lang, user, project_cookies, error_msg):
     setattr(class_instance, "route", page)
+    setattr(class_instance, "cookie_policy", cookie_policy)
     setattr(class_instance, "event", event)
     setattr(class_instance, "path", path)
     setattr(class_instance, "post", post)
@@ -79,6 +80,7 @@ def main_lambda_handler(event, context):
     # Dynamo().update_dynamo_constants()
     user = initialize_user(event)
     lang = event.get_lang() or "pt"
+    cookie_policy = event.get_cookie_policy() or None
     lambda_constants["current_language"] = lang
     path = get_path_data(event.get_path(), user)
     project_cookies = event.get_project_cookies()
@@ -96,7 +98,7 @@ def main_lambda_handler(event, context):
         if user and user.user_credential != "admin" and class_instance.admin:
             return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você não possui as credenciais para acessar esta página')}"), event)
 
-    set_instance_attributes(class_instance, event, page, path, post, lang, user, project_cookies, path.get("error_msg"))
+    set_instance_attributes(class_instance, event, page, cookie_policy, path, post, lang, user, project_cookies, path.get("error_msg"))
 
     if page == "api":
         response = getattr(class_instance, "run")()

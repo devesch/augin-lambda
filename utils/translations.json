@@ -19,6 +19,11 @@
         "es": "La contraseña debe tener al menos 8 caracteres",
         "pt": "A senha deve ter no mínimo 8 caracteres"
     },
+    "Aceitar Tudo": {
+        "en": "Accept everything",
+        "es": "Aceptar todo",
+        "pt": "Aceitar Tudo"
+    },
     "Acessar minha conta": {
         "en": "Access my account",
         "es": "Acceder a mi cuenta",
@@ -554,6 +559,11 @@
         "es": "Acepto recibir anuncios.",
         "pt": "Concordo em receber comunicados."
     },
+    "Configurações": {
+        "en": "Settings",
+        "es": "Ajustes",
+        "pt": "Configurações"
+    },
     "Confirmar": {
         "en": "Confirm",
         "es": "Confirmar",
@@ -608,6 +618,16 @@
         "en": "Cook Islands",
         "es": "Islas Cook",
         "pt": "Ilhas Cook"
+    },
+    "Cookies necessários de terceiros": {
+        "en": "Necessary cookies from third parties",
+        "es": "Cookies necesarias de terceros",
+        "pt": "Cookies necessários de terceiros"
+    },
+    "Cookies opcionais de terceiros": {
+        "en": "Optional third party cookies",
+        "es": "Galletas de terceros opcionales",
+        "pt": "Cookies opcionais de terceiros"
     },
     "Copiado!": {
         "en": "Copied!",
@@ -909,6 +929,21 @@
         "es": "El Salvador",
         "pt": "El Salvador"
     },
+    "Ele nos ajuda a analisar o comportamento dos usuários e a melhorar o desempenho e a experiência do usuário em nosso site.": {
+        "en": "It helps us analyze user behavior and improve user performance and experience on our site.",
+        "es": "Nos ayuda a analizar el comportamiento del usuario y mejorar el rendimiento y la experiencia del usuario en nuestro sitio.",
+        "pt": "Ele nos ajuda a analisar o comportamento dos usuários e a melhorar o desempenho e a experiência do usuário em nosso site."
+    },
+    "Ele permite que você participe de um chat ao vivo com nossa equipe de suporte para obter assistência ou fazer perguntas.": {
+        "en": "It allows you to participate in a live chat with our support team to get assistance or ask questions.",
+        "es": "Le permite participar en un chat en vivo con nuestro equipo de apoyo para obtener ayuda o hacer preguntas.",
+        "pt": "Ele permite que você participe de um chat ao vivo com nossa equipe de suporte para obter assistência ou fazer perguntas."
+    },
+    "Ele é um Cookie obrigatório e portanto você não pode desativá-lo": {
+        "en": "He is a mandatory cookie and so you can't disable it",
+        "es": "Él es una galleta obligatoria, por lo que no puedes desactivarla",
+        "pt": "Ele é um Cookie obrigatório e portanto você não pode desativá-lo"
+    },
     "Electric": {
         "en": "Electric",
         "es": "Eléctrico",
@@ -994,6 +1029,11 @@
         "es": "Olvide mi contraseña",
         "pt": "Esqueci minha senha"
     },
+    "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação.": {
+        "en": "These cookies resemble their language preferences, ensuring that you view our site in your favorite language during your browsing session.",
+        "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
+        "pt": "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação."
+    },
     "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível.": {
         "en": "We are facing a setback on our website, which is temporarily unavailable.",
         "es": "Nos enfrentamos a un revés en nuestro sitio web, que no está disponible temporalmente.",
@@ -1009,10 +1049,25 @@
         "es": "Este archivo está protegido por contraseña",
         "pt": "Este arquivo se encontra protegido por senha"
     },
+    "Este cookie é utilizado para a funcionalidade de chat opcional.": {
+        "en": "This cookie is used for optional chat functionality.",
+        "es": "Esta cookie se usa para la funcionalidad de chat opcional.",
+        "pt": "Este cookie é utilizado para a funcionalidade de chat opcional."
+    },
+    "Este cookie é utilizado para o monitoramento e análise opcional de nosso site.": {
+        "en": "This cookie is used for the monitoring and optional analysis of our site.",
+        "es": "Esta cookie se utiliza para el monitoreo y el análisis opcional de nuestro sitio.",
+        "pt": "Este cookie é utilizado para o monitoramento e análise opcional de nosso site."
+    },
     "Este modelo está sendo usado como base em um projeto federado": {
         "en": "This model is being used as a base of a federated project",
         "es": "Este modelo se está utilizando como base de un proyecto federado.",
         "pt": "Este modelo está sendo usado como base em um projeto federado"
+    },
+    "Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos.": {
+        "en": "These are the mandatory cookies for the operation of our site, including, for example, those that allow visitors to browse safely on the site, login, store preferences, store items in the cart and make payments.",
+        "es": "Estas son las cookies obligatorias para la operación de nuestro sitio, incluidas, por ejemplo, aquellas que permiten a los visitantes navegar de manera segura en el sitio, iniciar sesión, almacenar preferencias, almacenar artículos en el carrito y realizar pagos.",
+        "pt": "Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos."
     },
     "Estonia": {
         "en": "Estonia",
@@ -1278,6 +1333,16 @@
         "en": "Gas",
         "es": "Gas",
         "pt": "Gás"
+    },
+    "Habilitar este cookie melhora sua experiência de comunicação.": {
+        "en": "Enabling this cookie improves your communication experience.",
+        "es": "Habilitar esta cookie mejora su experiencia de comunicación.",
+        "pt": "Habilitar este cookie melhora sua experiência de comunicação."
+    },
+    "Habilitar este cookie nos auxilia a aprimorar nossos serviços.": {
+        "en": "Enabling this cookie helps us improve our services.",
+        "es": "Habilitar esta cookie nos ayuda a mejorar nuestros servicios.",
+        "pt": "Habilitar este cookie nos auxilia a aprimorar nossos serviços."
     },
     "Haiti": {
         "en": "Haiti",
@@ -1749,6 +1814,11 @@
         "es": "Se necesita una actualización del plan",
         "pt": "Necessário upgrade de plano"
     },
+    "Necessários": {
+        "en": "Necessary",
+        "es": "Necesario",
+        "pt": "Necessários"
+    },
     "Nepal": {
         "en": "Nepal",
         "es": "Nepal",
@@ -2059,6 +2129,16 @@
         "es": "Polonia",
         "pt": "Polônia"
     },
+    "Política de Cookies": {
+        "en": "Cookies policy",
+        "es": "Política de cookies",
+        "pt": "Política de Cookies"
+    },
+    "Política de Privacidade": {
+        "en": "Privacy Policy",
+        "es": "Política de privacidad",
+        "pt": "Política de Privacidade"
+    },
     "Política de cookies": {
         "en": "Cookies policy",
         "es": "Política de cookies",
@@ -2078,6 +2158,11 @@
         "en": "Portugal",
         "es": "Portugal",
         "pt": "Portugal"
+    },
+    "Preferências de idioma:": {
+        "en": "Language Preferences:",
+        "es": "Preferencias del idioma:",
+        "pt": "Preferências de idioma:"
     },
     "Preço": {
         "en": "Price",
@@ -2173,6 +2258,11 @@
         "en": "Qatar",
         "es": "Katar",
         "pt": "Catar"
+    },
+    "Quais Cookies você deseja aceitar?": {
+        "en": "Which cookies do you want to accept?",
+        "es": "¿Qué galletas quieres aceptar?",
+        "pt": "Quais Cookies você deseja aceitar?"
     },
     "Quantidade de dispositivos": {
         "en": "Number of devices",
@@ -2344,6 +2434,11 @@
         "es": "Sérvia",
         "pt": "Sérvia"
     },
+    "Sessão de login:": {
+        "en": "Login Session:",
+        "es": "Sesión de inicio de sesión:",
+        "pt": "Sessão de login:"
+    },
     "Seu código de verficação de email": {
         "en": "Your Email Verification Code",
         "es": "Su código de verificación por correo electrónico",
@@ -2463,6 +2558,11 @@
         "en": "Your password has changed",
         "es": "Tu contraseña ha cambiado",
         "pt": "Sua senha foi alterada"
+    },
+    "Suas configurações de Cookies": {
+        "en": "Your cookies settings",
+        "es": "Configuración de su cookies",
+        "pt": "Suas configurações de Cookies"
     },
     "Sudan": {
         "en": "Sudan",
@@ -2694,6 +2794,21 @@
         "es": "Usuarios",
         "pt": "Usuários"
     },
+    "Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta.": {
+        "en": "We use cookies to manage your login session and ensure safe access to your account.These cookies are essential for user authentication and account -related features.",
+        "es": "Utilizamos cookies para administrar su sesión de inicio de sesión y garantizar un acceso seguro a su cuenta.Estas cookies son esenciales para la autenticación del usuario y las características relacionadas con la cuenta.",
+        "pt": "Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta."
+    },
+    "Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso.": {
+        "en": "We use cookies to optimize our site and collect use statistics.",
+        "es": "Utilizamos cookies para optimizar nuestro sitio y recopilar estadísticas de uso.",
+        "pt": "Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso."
+    },
+    "Utilizamos o": {
+        "en": "We use the",
+        "es": "Usamos el",
+        "pt": "Utilizamos o"
+    },
     "Uzbekistan": {
         "en": "Uzbekistan",
         "es": "Uzbekistán",
@@ -2809,6 +2924,11 @@
         "es": "Puedes conectar un nuevo dispositivo cuando quieras.",
         "pt": "Você pode conectar um novo dispositivo quando quiser."
     },
+    "Você pode ler mais sobre a política do": {
+        "en": "You can read more about the policy of",
+        "es": "Puedes leer más sobre la política de",
+        "pt": "Você pode ler mais sobre a política do"
+    },
     "Você precisa estar logado para acessar esta página": {
         "en": "You need to be logged in to access this page",
         "es": "Necesita iniciar sesión para acceder a esta página",
@@ -2864,6 +2984,11 @@
         "es": "hasta 5",
         "pt": "até 5"
     },
+    "como ferramenta para pagamentos e compras": {
+        "en": "as a tool for payments and purchases",
+        "es": "como herramienta para pagos y compras",
+        "pt": "como ferramenta para pagamentos e compras"
+    },
     "de": {
         "en": "in",
         "es": "en",
@@ -2909,10 +3034,20 @@
         "es": "de tu plan",
         "pt": "do seu plano"
     },
+    "e": {
+        "en": "it is",
+        "es": "es",
+        "pt": "e"
+    },
     "editar": {
         "en": "to edit",
         "es": "para editar",
         "pt": "editar"
+    },
+    "em": {
+        "en": "in",
+        "es": "en",
+        "pt": "em"
     },
     "faça um upgrade": {
         "en": "upgrade",
@@ -2963,6 +3098,36 @@
         "en": "people",
         "es": "gente",
         "pt": "pessoas"
+    },
+    "política de cookies do Mouseflow": {
+        "en": "mOUSEFLOW cookies policy",
+        "es": "política de cookies de mouseflow",
+        "pt": "política de cookies do Mouseflow"
+    },
+    "política de cookies do Stripe": {
+        "en": "stripe Cookies Policy",
+        "es": "política de cookies de rayas",
+        "pt": "política de cookies do Stripe"
+    },
+    "política de cookies do Tawk.to": {
+        "en": "tawk.to cookies policy",
+        "es": "tawk.to Política de cookies",
+        "pt": "política de cookies do Tawk.to"
+    },
+    "política de privacidade do Mouseflow": {
+        "en": "mOUSEFLOW Privacy Policy",
+        "es": "política de privacidad del mouseflew",
+        "pt": "política de privacidade do Mouseflow"
+    },
+    "política de privacidade do Stripe": {
+        "en": "sTRIPE PRIVACY POLICY",
+        "es": "política de privacidad de rayas",
+        "pt": "política de privacidade do Stripe"
+    },
+    "política de privacidade do Tawk.to": {
+        "en": "tawk.to Privacy Policy",
+        "es": "tawk.to Política de privacidad",
+        "pt": "política de privacidade do Tawk.to"
     },
     "por projeto": {
         "en": "per project",

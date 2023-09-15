@@ -11,6 +11,14 @@ class Event:
     def __str__(self):
         return dumps(self.__dict__)
 
+    def get_cookie_policy(self):
+        if hasattr(self, "cookies"):
+            for cookie in self.cookies:
+                if "__Secure-cookie-policy" in cookie:
+                    if parse_qs(cookie):
+                        return loads(parse_qs(cookie)["__Secure-cookie-policy"][0].replace("'", '"'))
+        return {}
+
     def get_referer(self):
         if hasattr(self, "headers"):
             if "referer" in self.headers:
