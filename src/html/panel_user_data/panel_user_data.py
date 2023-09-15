@@ -1,7 +1,7 @@
 ﻿from python_web_frame.user_page import UserPage
 from utils.utils.Http import Http
 from utils.utils.ReadWrite import ReadWrite
-from utils.utils.EncodeDecode import EncodeDecode
+from utils.utils.Validation import Validation
 from utils.utils.JsonData import JsonData
 from utils.utils.StrFormat import StrFormat
 
@@ -54,17 +54,17 @@ class PanelUserData(UserPage):
                 return self.render_get_with_error("Por favor informe um nome.")
             if not self.post.get("user_phone"):
                 return self.render_get_with_error("Por favor informe um número de telefone.")
-            if not ReadWrite().validate_br_phone(self.post["user_phone"]):
+            if not Validation().check_if_br_phone(self.post["user_phone"]):
                 return self.render_get_with_error("Por favor informe um número de telefone válido.")
             if self.post.get("user_cpf"):
-                if not ReadWrite().validate_cpf(self.post["user_cpf"]):
+                if not Validation().check_if_cpf(self.post["user_cpf"]):
                     return self.render_get_with_error("Por favor informe um número CPF válido.")
             if self.post.get("user_zip_code"):
                 if self.post.get("user_street_number"):
                     if self.post["user_street_number"] == "0":
                         return self.render_get_with_error("Por favor informe um número de endereço válido.")
 
-                api_cep_response = ReadWrite().get_request_address_data_with_zip_code(self.post["user_zip_code"])
+                api_cep_response = Http().get_request_address_data_with_zip_code(self.post["user_zip_code"])
                 if not api_cep_response:
                     return self.render_get_with_error("O código postal informado é inválido.")
 
@@ -78,17 +78,17 @@ class PanelUserData(UserPage):
             # TODO: como vai ficar a tradução aqui nessas mensagens hardcoded?
             if not self.post.get("user_cnpj"):
                 return self.render_get_with_error("Por favor informe um CNPJ.")
-            if not ReadWrite().validate_cnpj(self.post["user_cnpj"]):
+            if not Validation().check_if_cnpj(self.post["user_cnpj"]):
                 return self.render_get_with_error("Por favor informe um número CNPJ válido.")
 
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
             if not self.post.get("user_phone"):
                 return self.render_get_with_error("Por favor informe um número de telefone.")
-            if not ReadWrite().validate_br_phone(self.post["user_phone"]):
+            if not Validation().check_if_br_phone(self.post["user_phone"]):
                 return self.render_get_with_error("Por favor informe um número de telefone válido.")
 
-            api_cnpj_response = ReadWrite().get_request_cnpj_address_data(self.post["user_cnpj"])
+            api_cnpj_response = Http().get_request_cnpj_address_data(self.post["user_cnpj"])
             if not api_cnpj_response:
                 return self.render_get_with_error("Nenhum dado encontrado para o CNPJ informado.")
 
