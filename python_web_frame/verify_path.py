@@ -3,6 +3,9 @@ from utils.utils.EncodeDecode import EncodeDecode
 
 
 def get_path_data(path, user):
+    if path.get("error_msg"):
+        path["error_msg"] = path["error_msg"].replace("u00ea", "ê").replace("u00e1", "á")
+
     if path.get("plan_id"):
         path["plan"] = Dynamo().get_plan(path["plan_id"])
         if not path["plan"]:

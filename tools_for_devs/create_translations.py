@@ -14,6 +14,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 filtered_placeholders = [
+    "Você precisa estar logado para acessar esta página",
+    "Você não possui as credenciais para acessar esta página",
     "Ocultar senha",
     "Exibir senha",
     "mês",
