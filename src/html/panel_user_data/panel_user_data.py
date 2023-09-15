@@ -1,4 +1,5 @@
 ﻿from python_web_frame.panel_page import PanelPage
+from python_web_frame.user_page import UserPage
 from utils.utils.Http import Http
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Validation import Validation
@@ -7,7 +8,7 @@ from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 
 
-class PanelUserData(PanelPage):
+class PanelUserData(PanelPage, UserPage):
     name = "Painel - Perfil do Usuário"
     public = False
     bypass = False
