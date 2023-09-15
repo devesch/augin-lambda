@@ -52,8 +52,6 @@ class PanelUserData(UserPage):
             # TODO: como vai ficar a tradução aqui nessas mensagens hardcoded?
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
-            if not self.post.get("user_last_name"):
-                return self.render_get_with_error("Por favor informe um sobrenome.")
             if not self.post.get("user_phone"):
                 return self.render_get_with_error("Por favor informe um número de telefone.")
             if not ReadWrite().validate_br_phone(self.post["user_phone"]):
@@ -85,7 +83,6 @@ class PanelUserData(UserPage):
 
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
-            self.post["user_last_name"] = ""
             if not self.post.get("user_phone"):
                 return self.render_get_with_error("Por favor informe um número de telefone.")
             if not ReadWrite().validate_br_phone(self.post["user_phone"]):
@@ -108,8 +105,7 @@ class PanelUserData(UserPage):
         if self.path["user_client_type"] == "international":
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
-            if not self.post.get("user_last_name"):
-                return self.render_get_with_error("Por favor informe um sobrenome.")
+
             if not self.post.get("user_phone"):
                 return self.render_get_with_error("Por favor informe um número de telefone.")
             if not ReadWrite().validate_phone(self.post["user_phone"], self.post["user_country"]):
@@ -117,7 +113,6 @@ class PanelUserData(UserPage):
 
         self.user.user_name = self.post["user_name"]
         self.user.user_first_three_letters_name = self.user.user_name[:3]
-        self.user.user_last_name = self.post["user_last_name"]
         self.user.user_phone = self.post["user_phone"]
         self.user.user_cpf = self.post.get("user_cpf", "")
         self.user.user_cnpj = self.post.get("user_cnpj", "")
@@ -324,10 +319,6 @@ class PanelUserData(UserPage):
             html.esc("user_name_val", self.post["user_name"].title())
         else:
             html.esc("user_name_val", self.user.user_name.title())
-        if self.post.get("user_last_name"):
-            html.esc("user_last_name_val", self.post["user_last_name"].title())
-        else:
-            html.esc("user_last_name_val", self.user.user_last_name.title())
 
         if self.post.get("user_country"):
             user_country_alpha_2 = self.post["user_country"]
@@ -414,9 +405,9 @@ class PanelUserData(UserPage):
             html.esc("html_oninput_maskToPhone", str(ReadWrite().read_html("user_register/_codes/html_oninput_mask_to_phone")))
             html.esc("user_phone_input_maxlength_val", "15")
             if self.post.get("user_phone"):
-                html.esc("user_phone_val", ReadWrite().format_to_phone(self.post["user_phone"]))
+                html.esc("user_phone_val", StrFormat().format_to_phone(self.post["user_phone"]))
             if user_phone:
-                html.esc("user_phone_val", ReadWrite().format_to_phone(user_phone))
+                html.esc("user_phone_val", StrFormat().format_to_phone(user_phone))
         elif user_country_alpha_2.upper() != "BR":
             html.esc("user_phone_input_maxlength_val", "17")
             if self.post.get("user_phone"):
