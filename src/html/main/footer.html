@@ -1,3 +1,101 @@
 </body>
 
+<aside class="footer-cookies {{open_modal_cookie_policy_val}}">
+    <form action="{{domain_name_url_val}}/home" method="POST" id="form_cookie">
+        <input hidden="hidden" name="user_url" value="{{user_url_val}}">
+        <input hidden="hidden" name="change_cookie_policy" value="true">
+        <div class="footer-cookies-container open">
+            <h2>{{Suas configurações de Cookies}}</h2>
+            <div class="footer-cookies__paragraph-container">
+                <p>{{Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso.}}</p>
+                <p>
+                    <a class="policy-link" href="https://web.magipix.app/privacy_policy" title="Política de Privacidade" target="_blank">{{Política de Privacidade}}</a> {{e}}
+                    <a class="policy-link" href="https://web.magipix.app/cookies_policy" title="Política de Cookies" target="_blank">{{Política de Cookies}}</a>.
+                </p>
+            </div>
+            <div class="button--cookies-container">
+                <button type="button" class="button--cookies button--cookies-configure-button" onclick="js.index.openCookiesConfiguration()">{{Configurações}}</button>
+                <button type="submit" class="button--cookies button--cookies-accept-all-button" value="accept" name="cookie_policy" id="accept-cookies">{{Aceitar Tudo}}</button>
+            </div>
+        </div>
+        <div class="footer-cookies-configuration-container">
+            <h2>{{Quais Cookies você deseja aceitar?}}</h2>
+            <div class="footer-cookies__accordion-container">
+                <details>
+                    <summary>
+                        <input aria-labelledby="necessary-cookies-label" class="cookies-summary__checkbox" type="checkbox" disabled="disabled" checked>
+                        <p id="necessary-cookies-label">{{Necessários}}</p>
+                    </summary>
+                    <p>{{Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos.}}</p>
+                    <ul>
+                        <li>
+                            <dfn><strong>{{Sessão de login:}}</strong></dfn>
+                            {{Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta.}}
+                        </li>
+                        <li>
+                            <dfn><strong>{{Preferências de idioma:}}</strong></dfn>
+                            {{Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação.}}
+                        </li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>
+                        <input aria-labelledby="third-party-necessary-cookies-label" class="cookies-summary__checkbox" type="checkbox" disabled="disabled" checked>
+                        <p id="third-party-necessary-cookies-label">{{Cookies necessários de terceiros}}</p>
+                    </summary>
+                    <p><dfn><strong>Stripe:</strong></dfn> {{Utilizamos o}} Stripe {{como ferramenta para pagamentos e compras}}.</p>
+                    <p>{{Ele é um Cookie obrigatório e portanto você não pode desativá-lo}}.</p>
+                    <p>
+                        {{Você pode ler mais sobre a política do}} Stripe {{em}}:
+                        <a class="policy-link" href="https://stripe.com/legal/cookies-policy" target="_blank">{{política de cookies do Stripe}}</a> {{e}}
+                        <a class="policy-link" href="https://stripe.com/privacy" target="_blank">{{política de privacidade do Stripe}}</a>
+                    </p>
+                </details>
+                <details>
+                    <summary>
+                        <input aria-labelledby="third-party-optional-cookies-label" class="cookies-summary__checkbox js-parent-checkbox" type="checkbox">
+                        <p id="third-party-optional-cookies-label">{{Cookies opcionais de terceiros}}</p>
+                    </summary>
+                    <details>
+                        <summary>
+                            <input aria-labelledby="tawk-to" class="cookies-summary__checkbox js-child-checkbox" type="checkbox" name="tawk" id="tawkto_optional_cookie_consent" />
+                            <p>Tawk.to</p>
+                        </summary>
+                        <p>
+                            {{Este cookie é utilizado para a funcionalidade de chat opcional.}}
+                            {{Ele permite que você participe de um chat ao vivo com nossa equipe de suporte para obter assistência ou fazer perguntas.}}
+                            {{Habilitar este cookie melhora sua experiência de comunicação.}}
+                        </p>
+                        <p>
+                            {{Você pode ler mais sobre a política do}} Tawk.to {{em}}:
+                            <a class="policy-link" href="https://help.tawk.to/article/what-are-tawkto-cookies-and-what-do-they-do" target="_blank">{{política de cookies do Tawk.to}}</a> {{e}}
+                            <a class="policy-link" href="https://www.tawk.to/privacy-policy/" target="_blank">{{política de privacidade do Tawk.to}}</a>
+                        </p>
+                    </details>
+                    <details>
+                        <summary>
+                            <input aria-labelledby="mouseflow" class="cookies-summary__checkbox js-child-checkbox" type="checkbox" name="mouseflow" id="mouseflow_optional_cookie_consent" />
+                            <p>Mouseflow</p>
+                        </summary>
+                        <p>
+                            {{Este cookie é utilizado para o monitoramento e análise opcional de nosso site.}}
+                            {{Ele nos ajuda a analisar o comportamento dos usuários e a melhorar o desempenho e a experiência do usuário em nosso site.}}
+                            {{Habilitar este cookie nos auxilia a aprimorar nossos serviços.}}
+                        </p>
+                        <p>
+                            {{Você pode ler mais sobre a política do}} Mouseflow {{em}}:
+                            <a class="policy-link" href="https://mouseflow.com/legal/visitor/cookie-policy" target="_blank">{{política de cookies do Mouseflow}}</a> {{e}}
+                            <a class="policy-link" href="https://mouseflow.com/legal/company/privacy-policy/" target="_blank">{{política de privacidade do Mouseflow}}</a>
+                        </p>
+                    </details>
+                </details>
+            </div>
+            <div class="button--cookies-container">
+                <button type="submit" class="button--cookies button--cookies-configure-button" value="selected" name="cookie_policy" id="selected-cookies">Enviar Permissões</button>
+                <button type="submit" class="button--cookies button--cookies-accept-all-button" value="accept" name="cookie_policy" id="accept-cookies">Aceitar Tudo</button>
+            </div>
+        </div>
+    </form>
+</aside>
+
 </html>
