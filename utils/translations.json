@@ -1119,6 +1119,11 @@
         "es": "Fuego",
         "pt": "Fogo"
     },
+    "Forma de pagamento": {
+        "en": "Form of payment",
+        "es": "Forma de pago",
+        "pt": "Forma de pagamento"
+    },
     "France": {
         "en": "France",
         "es": "Francia",
@@ -1988,6 +1993,11 @@
         "en": "Pitcairn",
         "es": "Pitcairn",
         "pt": "Pitcairn"
+    },
+    "Plano": {
+        "en": "Flat",
+        "es": "Departamento",
+        "pt": "Plano"
     },
     "Planos": {
         "en": "Plans",
