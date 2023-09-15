@@ -84,10 +84,25 @@
         "es": "Cambiar e-mail",
         "pt": "Alterar email"
     },
+    "Alterar para pessoa física": {
+        "en": "Change to Individuals",
+        "es": "Cambiar a las personas",
+        "pt": "Alterar para pessoa física"
+    },
+    "Alterar para pessoa jurídica": {
+        "en": "Change to legal entity",
+        "es": "Cambio a la entidad legal",
+        "pt": "Alterar para pessoa jurídica"
+    },
     "Alterar plano": {
         "en": "Change",
         "es": "Cambiar",
         "pt": "Alterar plano"
+    },
+    "Alterar senha": {
+        "en": "Change Password",
+        "es": "Cambiar contraseña",
+        "pt": "Alterar senha"
     },
     "American Samoa": {
         "en": "American Samoa",
@@ -514,6 +529,16 @@
         "es": "Compartir por código QR o enlace",
         "pt": "Compartilhe por QR Code ou link"
     },
+    "Complemento": {
+        "en": "Complement",
+        "es": "Complementar",
+        "pt": "Complemento"
+    },
+    "Concordo em receber comunicados.": {
+        "en": "I agree to receive announcements.",
+        "es": "Acepto recibir anuncios.",
+        "pt": "Concordo em receber comunicados."
+    },
     "Confirmar": {
         "en": "Confirm",
         "es": "Confirmar",
@@ -653,6 +678,11 @@
         "en": "Czechia",
         "es": "Chequia",
         "pt": "Tchechia"
+    },
+    "Código da Cidade": {
+        "en": "City code",
+        "es": "Código de ciudad",
+        "pt": "Código da Cidade"
     },
     "Côte d'Ivoire": {
         "en": "Côte d'Ivoire",
@@ -1814,6 +1844,11 @@
         "es": "No federado",
         "pt": "Não Federados"
     },
+    "Número": {
+        "en": "Number",
+        "es": "Número",
+        "pt": "Número"
+    },
     "O projeto excede o tamanho máximo de 1Gb.": {
         "en": "The project exceeds the maximum size of 1GB.",
         "es": "El proyecto excede el tamaño máximo de 1 GB.",
@@ -2254,6 +2289,16 @@
         "es": "Su plan le permite importar archivos hasta",
         "pt": "Seu plano permite importar arquivos até"
     },
+    "Seu sobrenome": {
+        "en": "Your surname",
+        "es": "Tu apellido",
+        "pt": "Seu sobrenome"
+    },
+    "Seu telefone": {
+        "en": "Your phone",
+        "es": "Su teléfono",
+        "pt": "Seu telefone"
+    },
     "Seychelles": {
         "en": "Seychelles",
         "es": "Seychelles",
@@ -2623,6 +2668,16 @@
         "en": "Last seen",
         "es": "Ultima vez visto",
         "pt": "Visto por último"
+    },
+    "Você está cadastrado como pessoa física": {
+        "en": "You are registered as an individual",
+        "es": "Estás registrado como individuo",
+        "pt": "Você está cadastrado como pessoa física"
+    },
+    "Você está cadastrado como pessoa jurídica": {
+        "en": "You are registered as a legal entity",
+        "es": "Estás registrado como una entidad legal",
+        "pt": "Você está cadastrado como pessoa jurídica"
     },
     "Você está excluindo definitivamente a pasta": {
         "en": "You are definitely excluding the folder",

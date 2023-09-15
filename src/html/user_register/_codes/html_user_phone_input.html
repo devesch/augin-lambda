@@ -1,0 +1,6 @@
+<picture>
+    <img src="{{cdn_val}}/assets/images/flags/{{user_country_alpha_2_lower_val}}.jpg" width="20" height="15" alt="{{user_country_code_val}} {{flag}}">
+</picture>
+<input type="tel" name="user_country_code" id="user_country_code" value="+{{user_country_code_val}}" placeholder="{{Digite o código de chamada internacional do seu país}}" readonly>
+<input type="tel" name="user_phone" id="user_phone" value="{{user_phone_val}}" class="floating" {{html_oninput_maskToPhone}} placeholder="{{Digite seu telefone}}" maxlength="{{user_phone_input_maxlength_val}}" required>
+<!-- <label for="user_phone" class="floating-label">Telefone</label> -->

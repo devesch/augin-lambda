@@ -2,9 +2,10 @@
 from utils.utils.Http import Http
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.EncodeDecode import EncodeDecode
+from utils.utils.JsonData import JsonData
 
 
-class UserProfile(UserPage):
+class PanelUserData(UserPage):
     name = "Perfil"
     public = False
     bypass = False
@@ -15,7 +16,7 @@ class UserProfile(UserPage):
             self.render_props = False
 
         if not self.path.get("user_client_type"):
-            return Http().redirect("checkout_order_summary")
+            return Http().redirect("panel_user_data/?user_client_type=" + self.user.user_client_type)
 
         html = super().parse_html()
         if self.user.user_client_type != self.path["user_client_type"]:
@@ -154,10 +155,6 @@ class UserProfile(UserPage):
             html.esc("user_name_val", self.post["user_name"].title())
         else:
             html.esc("user_name_val", self.user.user_name.title())
-        if self.post.get("user_last_name"):
-            html.esc("user_last_name_val", self.post["user_last_name"].title())
-        else:
-            html.esc("user_last_name_val", self.user.user_last_name.title())
 
         if self.post.get("user_country"):
             user_country_alpha_2 = self.post["user_country"]
@@ -406,4 +403,23 @@ class UserProfile(UserPage):
         if not self.render_props:
             html.esc("html_onsubmit_international_form", str(ReadWrite().read_html("panel_user_data/_codes/html_onsubmit_international_form")))
 
+        return str(html)
+
+    def generate_html_user_phone_input(self, user_country_alpha_2, user_phone=""):
+        html = ReadWrite().read_html("user_register/_codes/html_user_phone_input")
+        html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
+        html.esc("user_country_code_val", JsonData().get_country_phone_code()[user_country_alpha_2])
+        if user_country_alpha_2.upper() == "BR":
+            html.esc("html_oninput_maskToPhone", str(ReadWrite().read_html("user_register/_codes/html_oninput_mask_to_phone")))
+            html.esc("user_phone_input_maxlength_val", "15")
+            if self.post.get("user_phone"):
+                html.esc("user_phone_val", ReadWrite().format_to_phone(self.post["user_phone"]))
+            if user_phone:
+                html.esc("user_phone_val", ReadWrite().format_to_phone(user_phone))
+        elif user_country_alpha_2.upper() != "BR":
+            html.esc("user_phone_input_maxlength_val", "17")
+            if self.post.get("user_phone"):
+                html.esc("user_phone_val", self.post["user_phone"])
+            if user_phone:
+                html.esc("user_phone_val", user_phone)
         return str(html)

@@ -1,0 +1,69 @@
+<div class="box-physical-person">
+    <p>{{Você está cadastrado como pessoa jurídica}}</p>
+    <a {{html_onclick_change_to_physical_form}} href="{{domain_name_url_val}}/panel_user_data/?user_client_type=physical">{{Alterar para pessoa física}}</a>
+</div>
+<form action="{{domain_name_url_val}}/panel_user_data/?user_client_type=company" method="POST" id="form">
+    <div class="box-inputs">
+        <div class="input-default">
+            <input type="email" name="user_email" id="user_email" value="{{user_email_val}}" class="floating" readonly minlength="3" maxlength="255" required>
+            <label for="user_email" class="floating-label">Seu Email</label>
+        </div>
+        <div class="input-default">
+            <input type="text" name="user_phone" id="user_phone" id="user-phone" value="{{user_phone_val}}" class="floating" oninput="js.index.maskToPhone(this)" placeholder="{{Seu telefone}}" required maxlength="15">
+            <label for="user_phone" class="floating-label">Seu telefone</label>
+        </div>
+        <div class="input-default focus">
+            <input type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" required maxlength="18">
+            <input hidden type="text" name="user_cpf" id="user_cpf" class="floating" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" minlength="14" maxlength="14">
+            <label for="user_cnpj" class="floating-label">Seu CNPJ</label>
+        </div>
+        <div class="page-user__box-user-data__box-inputs__box-adress box-inputs" style="{{box_inputs_style_val}}">
+            <div class="input-default">
+                <input hidden type="text" name="user_last_name" id="user_last_name" value="{{user_last_name_val}}" oninput="js.index.maskToLetter(this)" placeholder="{{Seu sobrenome}}" minlength="1" maxlength="255">
+                <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" maxlength="50" minlength="1" readonly>
+                <label for="user_name" class="floating-label">Seu primeiro nome</label>
+            </div>
+            <div class="input-default focus">
+                <input type="text" name="user_zip_code" id="user_zip_code" value="{{user_zip_code_val}}" class="floating" readonly>
+                <label for="user_zip_code" class="floating-label">Seu CEP</label>
+            </div>
+            <div class="input-default focus">
+                <input type="text" name="user_state" id="user_state" class="floating" value="{{user_state_val}}" readonly>
+                <label for="user_state" class="floating-label">Estado</label>
+            </div>
+            <div class="input-default focus">
+                <input type="text" name="user_city" id="user_city" class="floating" value="{{user_city_val}}" readonly>
+                <label for="user_state" class="floating-label">Cidade</label>
+            </div>
+            <input placeholder="{{Código da Cidade}}" type="text" name="user_city_code" id="user_city_code" value="{{user_city_code_val}}" readonly style="display:none;">
+            <div class="input-default focus">
+                <input type="text" name="user_neighborhood" id="user_neighborhood" class="floating" value="{{user_neighborhood_val}}" readonly>
+                <label for="user_neighborhood" class="floating-label">Bairro</label>
+            </div>
+            <div class="input-default focus">
+                <input type="text" name="user_street" id="user_street" class="floating" value="{{user_street_val}}" readonly>
+                <label for="user_street" class="floating-label">Rua</label>
+            </div>
+            <div class="input-default focus">
+                <input type="text" name="user_street_number" id="user_street_number" class="floating" value="{{user_street_number_val}}" readonly>
+                <label for="user_street_number" class="floating-label">Número</label>
+            </div>
+            <div class="input-default focus">
+                <input type="text" name="user_complement" id="user_complement" class="floating" value="{{user_complement_val}}">
+                <label for="user_complement" class="floating-label">Complemento</label>
+            </div>
+        </div>
+        <div class="checkbox-default">
+            <input type="checkbox" id="user_aggre_with_communication" name="user_aggre_with_communication" {{user_aggre_with_communication_checked_val}}>
+            <label for="user_aggre_with_communication">{{Concordo em receber comunicados.}}</label>
+        </div>
+        <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+            {{error_msg_val}}
+        </span>
+        <div class="button-magipix">
+            <button type="submit" {{html_onsubmit_company_form}}>
+                {{Salvar}}
+            </button>
+        </div>
+    </div>
+</form>
