@@ -1623,6 +1623,30 @@ input[list]::-ms-clear {
 
 }
 
+.create-account__input-container {
+    button {
+        border: unset;
+        background-color: unset;
+        position: absolute;
+        border-radius: 100%;
+        padding: .5rem;
+        right: .25rem;
+        bottom: 50%;
+        transform: translateY(50%);
+        transition: background-color 0.5 ease-in-out;
+    }
+
+    button:hover {
+        border: unset;
+        background-color: colors.color("color-neutral-200");
+    }
+
+    button:active {
+        border: unset;
+        background-color: colors.color("color-neutral-100");
+    }
+}
+
 .login__button-container,
 .create-account__button-container {
     margin-top: 4rem;
