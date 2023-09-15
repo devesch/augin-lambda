@@ -25,6 +25,12 @@ export async function openCookiesContainer() {
     document.querySelector(".footer-cookies").classList.add("active");
 }
 
+
+export async function openCookiesConfiguration() {
+    document.querySelector(".footer-cookies-container").classList.remove("open");
+    document.querySelector(".footer-cookies-configuration-container").classList.add("open");
+}
+
 export async function showUserPhysicalAddressData() {
     console.log("Running showUserPhysicalAddressData")
     let error_msg = document.getElementById("error_msg");
