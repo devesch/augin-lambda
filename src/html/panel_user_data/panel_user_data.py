@@ -110,7 +110,7 @@ class PanelUserData(PanelPage, UserPage):
 
             if not self.post.get("user_phone"):
                 return self.render_get_with_error("Por favor informe um número de telefone.")
-            if not ReadWrite().validate_phone(self.post["user_phone"], self.post["user_country"]):
+            if not Validation().check_if_phone(self.post["user_phone"], self.post["user_country"]):
                 return self.render_get_with_error("Por favor informe um número de telefone válido.")
 
         self.user.user_name = self.post["user_name"]
