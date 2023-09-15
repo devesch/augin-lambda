@@ -1762,11 +1762,13 @@ input[list]::-ms-clear {
 
 /* Footer Cookie - Start */
 .footer-cookies {
-    position: sticky;
     bottom: 0;
+    left: 100%;
+    transform: translateX(-100%);
+    position: fixed;
+    width: 100%;
     z-index: 2000;
     max-width: 500px;
-    left: 100%;
     background-color: colors.color("color-white");
     border: 1px solid colors.color("color-neutral-900");
     padding: 1rem;
@@ -1794,25 +1796,6 @@ input[list]::-ms-clear {
     font-weight: 500;
 }
 
-// .button--cookies {
-//     align-items: center;
-//     border-radius: 5px;
-//     display: flex;
-//     height: 100%;
-//     transition: .5s;
-//     border: 1px solid #444;
-//     background: #444;
-//     cursor: pointer;
-//     font-family: 'Poppins', sans-serif;
-//     font-weight: 500;
-//     text-align: center;
-//     flex-grow: 1;
-//     font-size: .9rem;
-//     line-height: 1;
-//     padding: 0.75rem 0.5rem;
-//     transition: background-color .5s ease-in-out, color 0.3s linear, border-color 0.3s linear;
-// }
-
 .button--cookies-container {
     display: flex;
     align-items: start;
@@ -1820,27 +1803,6 @@ input[list]::-ms-clear {
     height: 100%;
     justify-content: center;
 }
-
-// .button--cookies-configure-button {
-//     background-color: transparent;
-//     color: #444;
-// }
-
-// .button--cookies-configure-button:hover {
-//     background-color: #444;
-//     color: $white;
-// }
-
-// .button--cookies-accept-all-button {
-//     background-color: colors.color("color-primary-5");
-//     border-color: $magipix-strong;
-//     color: $white;
-// }
-
-// .button--cookies-accept-all-button:hover {
-//     background-color: $white;
-//     color: $magipix-strong;
-// }
 
 .footer-cookies-configuration-container {
     display: none;
@@ -1875,6 +1837,8 @@ input[list]::-ms-clear {
     padding: 0.5rem 0;
     margin-left: -1rem;
     margin-right: -1rem;
+    display: flex;
+    align-items: center;
 }
 
 .footer-cookies__accordion-container summary::after {
