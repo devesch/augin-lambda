@@ -8,6 +8,7 @@ from objects.UserAuthToken import UserAuthToken
 from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
 from utils.utils.Sort import Sort
 from python_web_frame.controllers.model_controller import ModelController
+from python_web_frame.controllers.stripe_controller import StripeController
 from utils.Config import lambda_constants
 
 
@@ -38,6 +39,7 @@ class User:
         self.user_plan = ""
         self.user_subscription = ""
         self.user_used_trials = []
+        self.user_stripe_customer_id = ""
 
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
@@ -257,6 +259,47 @@ class User:
         if int(float(self.user_last_login_at)) + 3000 < int(time()):
             self.user_last_login_at = str(time())
             Dynamo().update_entity(self.__dict__, "user_last_login_at", self.user_last_login_at)
+
+    def check_if_is_payment_ready(self):
+        self.user_payment_ready = True
+
+        if not self.user_name:
+            self.user_payment_ready = False
+        if not self.user_phone:
+            self.user_payment_ready = False
+
+        if not self.user_address_data["user_country"]:
+            self.user_payment_ready = False
+        if not self.user_address_data["user_zip_code"]:
+            self.user_payment_ready = False
+        if not self.user_address_data["user_state"]:
+            self.user_payment_ready = False
+        if not self.user_address_data["user_city"]:
+            self.user_payment_ready = False
+        if not self.user_address_data["user_neighborhood"]:
+            self.user_payment_ready = False
+
+        if self.user_client_type == "physical" or self.user_client_type == "company":
+            if not self.user_address_data["user_city_code"]:
+                self.user_payment_ready = False
+            if not self.user_address_data["user_street"]:
+                self.user_payment_ready = False
+            if not self.user_address_data["user_street_number"]:
+                self.user_payment_ready = False
+
+        if self.user_client_type == "physical":
+            if not self.user_cpf:
+                self.user_payment_ready = False
+        elif self.user_client_type == "company":
+            if not self.user_cnpj:
+                self.user_payment_ready = False
+
+        if not self.user_payment_ready:
+            return
+        if not self.user_stripe_customer_id:
+            self.user_stripe_customer_id = StripeController().create_customer(self)
+        else:
+            StripeController().update_customer(self.user_stripe_customer_id, self)
 
     def update_cart_currency(self):
         if self.user_address_data["user_country"] == "BR":

@@ -19,7 +19,7 @@ class StripeController:
         self.stripe = __import__("stripe")
         self.stripe.api_key = stripe_secret_key
 
-    def create_stripe_customer(self, user):
+    def create_customer(self, user):
         name = user.user_name
         phone = user.user_phone
         email = user.user_email
@@ -37,7 +37,7 @@ class StripeController:
     def get_stripe_customer(self, user_stripe_customer_id):
         return self.stripe.Customer.retrieve(user_stripe_customer_id)
 
-    def update_stripe_customer(self, user_stripe_customer_id, user):
+    def update_customer(self, user_stripe_customer_id, user):
         name = user.user_name
         phone = user.user_phone
         email = user.user_email

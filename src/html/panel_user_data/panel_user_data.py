@@ -4,6 +4,7 @@ from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Validation import Validation
 from utils.utils.JsonData import JsonData
 from utils.utils.StrFormat import StrFormat
+from utils.AWS.Dynamo import Dynamo
 
 
 class PanelUserData(UserPage):
@@ -135,7 +136,7 @@ class PanelUserData(UserPage):
 
         self.user.update_cart_currency()
         self.user.check_if_is_payment_ready()
-        self.dynamo.put_entity(self.user.__dict__)
+        Dynamo().put_entity(self.user.__dict__)
 
         if not self.render_props:
             if not self.user.user_payment_ready:
