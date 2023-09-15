@@ -36,6 +36,7 @@ class User:
         self.user_plan_id = ""
         self.user_plan = ""
         self.user_subscription = ""
+        self.user_used_trials = []
 
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
@@ -46,6 +47,9 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def clear_perdonal_data(self):
+        self.user_address_data = {"user_country": "", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
 
     def update_user_plan(self):
         if not self.user_plan_id:

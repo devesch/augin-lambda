@@ -63,6 +63,7 @@ class BasePage:
         html.esc(self.route + "_active_val", "active")
         html.esc("user_name_val", self.user.user_name)
         html.esc("user_email_val", self.user.user_email)
+        html.esc("user_client_type_val", self.user.user_client_type)
         return str(html)
 
     def render_menu_panel(self, common_changes={}):
@@ -70,6 +71,7 @@ class BasePage:
         html.esc(self.route + "_active_val", "active")
         html.esc("user_name_val", self.user.user_name)
         html.esc("user_email_val", self.user.user_email)
+        html.esc("user_client_type_val", self.user.user_client_type)
         return str(html)
 
     def render_menu_panel_no_icons(self, common_changes={}):

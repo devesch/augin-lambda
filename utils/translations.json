@@ -214,6 +214,11 @@
         "es": "Actualizar método de pago",
         "pt": "Atualizar forma de pagamento"
     },
+    "Atualize seus dados": {
+        "en": "Update your data",
+        "es": "Actualice sus datos",
+        "pt": "Atualize seus dados"
+    },
     "Atualmente você tem": {
         "en": "Currently you have",
         "es": "Actualmente tienes",
@@ -534,6 +539,11 @@
         "es": "Confirmar la exclusión del proyecto",
         "pt": "Confirmar exclusão de projeto"
     },
+    "Confirmar exclusão do projeto": {
+        "en": "Confirm project exclusion",
+        "es": "Confirmar la exclusión del proyecto",
+        "pt": "Confirmar exclusão do projeto"
+    },
     "Congo": {
         "en": "Congo",
         "es": "Congo",
@@ -548,6 +558,11 @@
         "en": "Contact",
         "es": "Contacto",
         "pt": "Contato"
+    },
+    "Continuar": {
+        "en": "Continue",
+        "es": "Continuar",
+        "pt": "Continuar"
     },
     "Cook Islands": {
         "en": "Cook Islands",
@@ -618,6 +633,11 @@
         "en": "Cuba",
         "es": "Cuba",
         "pt": "Cuba"
+    },
+    "Cupons": {
+        "en": "Coupons",
+        "es": "Cupones",
+        "pt": "Cupons"
     },
     "Curaçao": {
         "en": "Curaçao",
@@ -1554,6 +1574,11 @@
         "es": "Microesia, estados federados de",
         "pt": "Micronesia, Federated States of"
     },
+    "Modelos": {
+        "en": "Models",
+        "es": "Modelos",
+        "pt": "Modelos"
+    },
     "Moldova, Republic of": {
         "en": "MOLDOVA, Republic of",
         "es": "Moldavia, República de",
@@ -1844,6 +1869,11 @@
         "es": "Mensualidad",
         "pt": "Pagamento mensal"
     },
+    "Pagamentos": {
+        "en": "Payments",
+        "es": "Pagos",
+        "pt": "Pagamentos"
+    },
     "Pago": {
         "en": "Paid out",
         "es": "Pagado",
@@ -1973,6 +2003,11 @@
         "en": "Temporary problem",
         "es": "Problema temporal",
         "pt": "Problema temporário"
+    },
+    "Produtos": {
+        "en": "Products",
+        "es": "Productos",
+        "pt": "Produtos"
     },
     "Projeto": {
         "en": "Project",
@@ -2364,6 +2399,11 @@
         "es": "Tanzania, República Unida de",
         "pt": "Tanzânia, República Unida de"
     },
+    "TeamPlay para até ": {
+        "en": "Teamplay for even",
+        "es": "TeamPlay por pares",
+        "pt": "TeamPlay para até "
+    },
     "Tem certeza que deseja continuar?": {
         "en": "Are you sure you want to continue?",
         "es": "Estás seguro de que quieres continuar?",
@@ -2373,6 +2413,16 @@
         "en": "Terms and conditions",
         "es": "Términos y Condiciones",
         "pt": "Termos e condiçōes"
+    },
+    "Testar trial": {
+        "en": "Trial test",
+        "es": "Prueba de ensayo",
+        "pt": "Testar trial"
+    },
+    "Testar trial por": {
+        "en": "Test",
+        "es": "Prueba",
+        "pt": "Testar trial por"
     },
     "Thailand": {
         "en": "Thailand",
@@ -2584,6 +2634,11 @@
         "es": "Definitivamente estás excluyendo el archivo",
         "pt": "Você está excluindo definitivamente o arquivo"
     },
+    "Você está excluindo definitivamente o projeto": {
+        "en": "You are definitely excluding the project",
+        "es": "Definitivamente estás excluyendo el proyecto",
+        "pt": "Você está excluindo definitivamente o projeto"
+    },
     "Você está removendo a pasta": {
         "en": "You are removing the folder",
         "es": "Estás quitando la carpeta",
@@ -2664,6 +2719,11 @@
         "es": "lanzamientos este mes.",
         "pt": "desvinculações este mês."
     },
+    "dias": {
+        "en": "days",
+        "es": "días",
+        "pt": "dias"
+    },
     "dias atrás": {
         "en": "days ago",
         "es": "dias atras",
@@ -2733,6 +2793,11 @@
         "en": "to be viewed in Augin.",
         "es": "para ver en Augin.",
         "pt": "para ser visualizado  no Augin."
+    },
+    "pessoas": {
+        "en": "people",
+        "es": "gente",
+        "pt": "pessoas"
     },
     "por projeto": {
         "en": "per project",

@@ -68,6 +68,11 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                     else:
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button())
 
+                    if plan["plan_has_trial"]:
+                        trial_plan_version = Dynamo().get_plan(plan["plan_id"] + "-trial")
+                        if trial_plan_version and plan["plan_id"] + "-trial" not in self.user.user_used_trials:
+                            html.esc("html_trial_button", self.show_html_trial_button(plan["plan_trial_duration_in_days"]))
+
                     html.esc("plan_maxium_model_size_in_mbs_val", plan["plan_maxium_model_size_in_mbs"])
                     html.esc("plan_cloud_space_in_gbs_val", int(int(plan["plan_cloud_space_in_mbs"]) / 1000))
                     if not plan["plan_share_files"]:
@@ -79,6 +84,11 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                     if not plan["plan_download_files"]:
                         html.esc("plan_download_files_visibility_val", "display:none;")
 
+                    if plan["plan_team_play_participants"] == "0":
+                        html.esc("plan_team_play_participants_visibility_val", "display:none;")
+                    else:
+                        html.esc("plan_team_play_participants_val", plan["plan_team_play_participants"])
+
                     full_html.append(str(html))
         return "".join(full_html)
 
@@ -88,4 +98,9 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
 
     def show_html_upgrade_plan_button(self):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_upgrade_plan_button")
+        return str(html)
+
+    def show_html_trial_button(self, plan_trial_duration_in_days):
+        html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_trial_button")
+        html.esc("plan_trial_duration_in_days_val", plan_trial_duration_in_days)
         return str(html)

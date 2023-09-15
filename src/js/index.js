@@ -985,7 +985,6 @@ export async function updateModelCategory() {
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    // your code here
     detectClickOutsideElement();
     activateDraggableItems();
 });
@@ -1021,9 +1020,9 @@ export async function openModalUpdateProject(model_id) {
 }
 
 
-export async function openModalDeleteProject(model_id) {
-    openModal(".modal.delete-file-modal");
-}
+// export async function openModalDeleteProject(model_id) {
+//     openModal(".modal.delete-file-modal");
+// }
 
 
 export async function openModalConfirmUpdateProject() {
