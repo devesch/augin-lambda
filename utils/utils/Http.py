@@ -200,6 +200,7 @@ class Http:
             command = html.get("command")
             user_auth_token = html.get("user_auth_token")
             project_cookies = html.get("project_cookies")
+            cookie_policy = html.get("cookie_policy")
             user_lang = html.get("user_lang")
             html = html.get("html")
 
@@ -245,6 +246,8 @@ class Http:
             response["headers"]["Set-Cookie"] = f"__Secure-token={user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"
         elif command == "logout":
             response["headers"]["Set-Cookie"] = f"__Secure-token=; Secure; domain={domain}; path=/; Max-Age=-1;"
+        elif command == "change_cookie_policy":
+            response["headers"]["Set-Cookie"] = f"__Secure-cookie-policy={cookie_policy}; Secure; domain={domain}; path=/; Max-Age=7776000;".replace('"', "'")
         elif command == "change_lang":
             response["headers"]["Set-Cookie"] = f"__Secure-lang={user_lang}; Secure; domain={domain}; path=/; Max-Age=7776000;"
         elif command == "set_project_cookies":

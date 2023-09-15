@@ -144,10 +144,14 @@ class BasePage:
         return backoffice_data
 
     def render_html_tawk_code(self, common_changes={}):
-        html = self.utils.read_html("main/_codes/html_tawk_code", common_changes)
+        html = ReadWrite().read_html("main/_codes/html_tawk_code", common_changes)
         tawk_api_code = "5c61ca4c7cf662208c950f53/default" if self.lang == "pt" else "5dae0f3fdf22d91339a04c3c/default"
         html.esc("tawk_api_val", tawk_api_code)
         if self.user:
             html.esc("tawk_user_name_val", self.user.user_name)
             html.esc("tawk_user_email_val", self.user.user_email)
+        return str(html)
+
+    def render_html_mouse_flow_code(self, common_changes={}):
+        html = ReadWrite().read_html("main/_codes/html_mouse_flow_code", common_changes)
         return str(html)
