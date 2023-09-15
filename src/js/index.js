@@ -21,9 +21,140 @@ export function getWebView() {
     return _webView;
 }
 
+export async function showUserPhysicalAddressData() {
+    console.log("Running showUserPhysicalAddressData")
+    let error_msg = document.getElementById("error_msg");
+    let user_zip_code = document.getElementById("user_zip_code");
+    let user_state = document.getElementById("user_state");
+    let user_city = document.getElementById("user_city");
+    let user_city_code = document.getElementById("user_city_code");
+    let user_neighborhood = document.getElementById("user_neighborhood");
+    let user_street = document.getElementById("user_street");
+    let box_inputs = document.querySelector(".page-user__box-user-data__box-inputs__box-adress");
+    await maskToZipCode(user_zip_code)
+
+    if (user_zip_code.value.length == 9) {
+        openModal('.modal.modal-loader-spinner')
+        let api_response = await apiCaller("panel_get_address_data_with_zip", {
+            'user_zip_code': user_zip_code.value.replace(".", "").replace("-", "")
+        });
+        console.log("api_response " + api_response)
+        closeModal('.modal.modal-loader-spinner')
+        if ("success" in api_response) {
+            user_state.value = api_response.success.state
+            user_city.value = api_response.success.city
+            user_city_code.value = api_response.success.city_code
+            user_neighborhood.value = api_response.success.neighborhood
+            user_street.value = api_response.success.street
+            box_inputs.style = ""
+            error_msg.innerHTML = ""
+            error_msg.style = "display: none;"
+            return
+        }
+        if ("error" in api_response) {
+            error_msg.innerHTML = api_response.error
+            error_msg.style = "color:#FF0000;"
+            return
+        }
+    }
+    user_state.value = ""
+    user_city.value = ""
+    user_city_code.value = ""
+    user_neighborhood.value = ""
+    user_street.value = ""
+    user_street_number.value = ""
+    user_complement.value = ""
+    box_inputs.style = "display: none;"
+}
+
+
+export async function showUserCompanyAddressData() {
+    console.log("Running showUserCompanyAddressData")
+    let error_msg = document.getElementById("error_msg");
+    let user_cnpj = document.getElementById("user_cnpj");
+    let user_name = document.getElementById("user_name");
+    let user_zip_code = document.getElementById("user_zip_code");
+    let user_state = document.getElementById("user_state");
+    let user_city = document.getElementById("user_city");
+    let user_city_code = document.getElementById("user_city_code");
+    let user_neighborhood = document.getElementById("user_neighborhood");
+    let user_street = document.getElementById("user_street");
+    let user_street_number = document.getElementById("user_street_number");
+    let user_complement = document.getElementById("user_complement");
+
+    await maskToCNPJ(user_cnpj)
+    let box_inputs = document.querySelector(".page-user__box-user-data__box-inputs__box-adress");
+    if (user_cnpj.value.length == 18) {
+        openModal('.modal.modal-loader-spinner')
+        let api_response = await js.index.apiCaller("panel_get_company_data_with_cnpj", {
+            'user_cnpj': user_cnpj.value.replace(".", "").replace(".", "").replace("-", "").replace("/", "")
+        });
+        closeModal('.modal.modal-loader-spinner')
+        if ("success" in api_response) {
+            user_name.value = api_response.success.name
+            user_zip_code.value = api_response.success.zip_code
+            user_state.value = api_response.success.state
+            user_city.value = api_response.success.city
+            user_city_code.value = api_response.success.city_code
+            user_neighborhood.value = api_response.success.neighborhood
+            user_street.value = api_response.success.street
+            user_street_number.value = api_response.success.street_number
+            if ("complement" in api_response.success) {
+                user_complement.value = api_response.success.complement
+            }
+            box_inputs.style = ""
+            error_msg.innerHTML = ""
+            error_msg.style = "display: none;"
+            return
+        }
+        if ("error" in api_response) {
+            error_msg.innerHTML = api_response.error
+            error_msg.style = "color:#FF0000;"
+            return
+        }
+    }
+    user_name.value = ""
+    user_zip_code.value = ""
+    user_state.value = ""
+    user_city.value = ""
+    user_city_code.value = ""
+    user_neighborhood.value = ""
+    user_street.value = ""
+    user_street_number.value = ""
+    user_complement.value = ""
+    box_inputs.style = "display: none;"
+}
+
 export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+
+export async function maskToZipCode(input) {
+    input.value = input.value.replace(/\D/g, "");
+    input.value = input.value.replace(/^(\d{5})(\d)/, "$1-$2");
+}
+
+export function maskToCPF(input) {
+    input.value = input.value.replace(/\D/g, "");
+    input.value = input.value.replace(/(\d{3})(\d)/, "$1.$2");
+    input.value = input.value.replace(/(\d{3})(\d)/, "$1.$2");
+    input.value = input.value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+}
+export function maskToCNPJ(input) {
+    input.value = input.value.replace(/\D/g, "");
+    input.value = input.value.replace(/(\d{2})(\d)/, "$1.$2");
+    input.value = input.value.replace(/(\d{3})(\d)/, "$1.$2");
+    input.value = input.value.replace(/(\d{3})(\d)/, "$1/$2");
+    input.value = input.value.replace(/(\d{4})(\d)/, "$1-$2");
+}
+
+export function maskToPhone(input) {
+    input.value = input.value.replace(/\D/g, "");
+    input.value = input.value.replace(/^(\d{2})(\d)/g, "($1) $2");
+    input.value = input.value.replace(/(\d)(\d{4})$/, "$1-$2");
+}
+
 
 export async function toogleDiv(checkbox_input, div_id) {
     var div = document.getElementById(div_id);

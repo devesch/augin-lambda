@@ -25,6 +25,7 @@ class User:
         self.user_phone = ""
         self.user_address_data = {"user_country": "BR", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
         self.user_client_type = "physical"  # physical / company / international
+        self.user_aggre_with_communication = False
         self.user_credential = ""
         self.user_ip = ""
         self.user_cart_currency = ""

@@ -3,6 +3,7 @@ from utils.utils.Http import Http
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.JsonData import JsonData
+from utils.utils.StrFormat import StrFormat
 
 
 class PanelUserData(UserPage):
@@ -168,23 +169,23 @@ class PanelUserData(UserPage):
         html.esc("html_user_phone_input", self.generate_html_user_phone_input(user_country_alpha_2, self.user.user_phone))
 
         if self.post.get("user_phone"):
-            html.esc("user_phone_val", ReadWrite().format_to_phone(self.post["user_phone"]))
+            html.esc("user_phone_val", StrFormat().format_to_phone(self.post["user_phone"]))
         else:
-            html.esc("user_phone_val", ReadWrite().format_to_phone(self.user.user_phone))
+            html.esc("user_phone_val", StrFormat().format_to_phone(self.user.user_phone))
 
         if self.post.get("user_cpf"):
-            html.esc("user_cpf_val", ReadWrite().format_to_cpf(self.post["user_cpf"]))
+            html.esc("user_cpf_val", StrFormat().format_to_cpf(self.post["user_cpf"]))
         elif hasattr(self.user, "user_cpf"):
-            html.esc("user_cpf_val", ReadWrite().format_to_cpf(self.user.user_cpf))
+            html.esc("user_cpf_val", StrFormat().format_to_cpf(self.user.user_cpf))
         if self.post.get("user_cnpj"):
             html.esc("user_cnpj_val", self.post["user_cnpj"])
         elif hasattr(self.user, "user_cnpj"):
             html.esc("user_cpf_val", self.user.user_cnpj)
 
         if self.post.get("user_zip_code"):
-            html.esc("user_zip_code_val", ReadWrite().format_to_zip_code(self.post["user_zip_code"]))
+            html.esc("user_zip_code_val", StrFormat().format_to_zip_code(self.post["user_zip_code"]))
         elif self.user.user_address_data["user_zip_code"]:
-            html.esc("user_zip_code_val", ReadWrite().format_to_zip_code(self.user.user_address_data["user_zip_code"]))
+            html.esc("user_zip_code_val", StrFormat().format_to_zip_code(self.user.user_address_data["user_zip_code"]))
 
         if self.post.get("user_state"):
             html.esc("user_state_val", self.post["user_state"].upper())

@@ -769,6 +769,11 @@
         "es": "Ingrese la contraseña del archivo",
         "pt": "Digite a senha do arquivo"
     },
+    "Digite o código de chamada internacional do seu país": {
+        "en": "Enter your country's international call code",
+        "es": "Ingrese el código de llamada internacional de su país",
+        "pt": "Digite o código de chamada internacional do seu país"
+    },
     "Digite o novo nome desejado para seu projeto.": {
         "en": "Enter the new desired name for your project.",
         "es": "Ingrese el nuevo nombre deseado para su proyecto.",
@@ -803,6 +808,11 @@
         "en": "Enter the third digit of the verification code that was sent to your email.",
         "es": "Ingrese el tercer dígito del código de verificación que se envió a su correo electrónico.",
         "pt": "Digite o terceiro dígito do código de verificação que foi enviado ao seu e-mail."
+    },
+    "Digite seu telefone": {
+        "en": "Enter your phone",
+        "es": "Ingrese su teléfono",
+        "pt": "Digite seu telefone"
     },
     "Disponível anual": {
         "en": "Available annual",
@@ -2813,6 +2823,11 @@
         "en": "upgrade",
         "es": "mejora",
         "pt": "faça um upgrade"
+    },
+    "flag": {
+        "en": "flag",
+        "es": "bandera",
+        "pt": "flag"
     },
     "indisponível": {
         "en": "unavailable",

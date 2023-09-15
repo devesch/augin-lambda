@@ -10,11 +10,7 @@
         </div>
         <div class="input-default">
             <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.maskToLetter(this)" maxlength="50" minlength="1" required>
-            <label for="user_name" class="floating-label">Seu primeiro nome</label>
-        </div>
-        <div class="input-default">
-            <input type="text" name="user_last_name" id="user_last_name" value="{{user_last_name_val}}" class="floating" oninput="js.index.maskToLetter(this)" required minlength="1" maxlength="255">
-            <label for="user_last_name" class="floating-label">Seu sobrenome</label>
+            <label for="user_name" class="floating-label">Seu nome</label>
         </div>
         <div class="input-default">
             <select onchange="js.index.panelUserDataChangeCountryForm('physical')" class="floating" name="user_country" id="user_country" value="{{user_country_val}}" required>
@@ -40,7 +36,7 @@
                 <label for="user_state" class="floating-label">Estado</label>
             </div>
             <div class="input-default focus">
-                <input  type="text" name="user_city" id="user_city" value="{{user_city_val}}" class="floating" readonly required>
+                <input type="text" name="user_city" id="user_city" value="{{user_city_val}}" class="floating" readonly required>
                 <label for="user_city" class="floating-label">Cidade</label>
             </div>
             <input type="text" name="user_city_code" id="user_city_code" value="{{user_city_code_val}}" readonly style="display:none;">
