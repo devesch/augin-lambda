@@ -1,11 +1,11 @@
-from python_web_frame.panel_page import PanelPage
+from python_web_frame.checkout_page import CheckoutPage
 from utils.Config import lambda_constants
 from objects.Plan import translate_reference_tracker
 from utils.utils.ReadWrite import ReadWrite
 from utils.AWS.Dynamo import Dynamo
 
 
-class CheckoutUpgradeYourPlan(PanelPage):
+class CheckoutUpgradeYourPlan(CheckoutPage):
     name = "Painel - Melhore Seu Plano"
     public = False
     bypass = False
