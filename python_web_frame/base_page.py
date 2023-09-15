@@ -90,6 +90,8 @@ class BasePage:
 
     def render_menu_panel_no_icons(self, common_changes={}):
         html = ReadWrite().read_html("main/menu_panel_no_icons", common_changes)
+        html.esc(self.route + "_active_val", "active")
+        html.esc("user_url_val", self.event.get_url())
         return str(html)
 
     def render_footer(self, common_changes={}):
