@@ -714,6 +714,11 @@
         "es": "Chequia",
         "pt": "Tchechia"
     },
+    "Código ZIP": {
+        "en": "ZIP Code",
+        "es": "Código postal",
+        "pt": "Código ZIP"
+    },
     "Código da Cidade": {
         "en": "City code",
         "es": "Código de ciudad",
@@ -803,6 +808,11 @@
         "en": "Enter the file password",
         "es": "Ingrese la contraseña del archivo",
         "pt": "Digite a senha do arquivo"
+    },
+    "Digite a sua cidade": {
+        "en": "Enter your city",
+        "es": "Entra en tu ciudad",
+        "pt": "Digite a sua cidade"
     },
     "Digite o código de chamada internacional do seu país": {
         "en": "Enter your country's international call code",
@@ -969,6 +979,16 @@
         "es": "Empresa",
         "pt": "Empresa"
     },
+    "Endereço": {
+        "en": "Address",
+        "es": "DIRECCIÓN",
+        "pt": "Endereço"
+    },
+    "Endereço 2": {
+        "en": "Address 2",
+        "es": "Dirección 2",
+        "pt": "Endereço 2"
+    },
     "Enviamos um código de acesso temporário para": {
         "en": "We send a temporary access code to",
         "es": "Enviamos un código de acceso temporal a",
@@ -1038,6 +1058,11 @@
         "en": "These cookies resemble their language preferences, ensuring that you view our site in your favorite language during your browsing session.",
         "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
         "pt": "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação."
+    },
+    "Estado/Região/Provincia": {
+        "en": "State/Region/Province",
+        "es": "Estado/Región/Provincia",
+        "pt": "Estado/Região/Provincia"
     },
     "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível.": {
         "en": "We are facing a setback on our website, which is temporarily unavailable.",
@@ -2094,6 +2119,11 @@
         "es": "Carpeta",
         "pt": "Pasta"
     },
+    "País": {
+        "en": "Country",
+        "es": "País",
+        "pt": "País"
+    },
     "Pendências": {
         "en": "Pendencies",
         "es": "Pendencias",
@@ -2444,10 +2474,20 @@
         "es": "Sesión de inicio de sesión:",
         "pt": "Sessão de login:"
     },
+    "Seu Email": {
+        "en": "Your email",
+        "es": "Su e-mail",
+        "pt": "Seu Email"
+    },
     "Seu código de verficação de email": {
         "en": "Your Email Verification Code",
         "es": "Su código de verificación por correo electrónico",
         "pt": "Seu código de verficação de email"
+    },
+    "Seu nome": {
+        "en": "Your name",
+        "es": "Su nombre",
+        "pt": "Seu nome"
     },
     "Seu plano": {
         "en": "Your plan",

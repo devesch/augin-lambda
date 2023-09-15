@@ -21,6 +21,20 @@ export function getWebView() {
     return _webView;
 }
 
+
+export async function userRegisterGenerateCountryInput() {
+    console.log("Running userRegisterGenerateCountryInput");
+    let user_country_select = document.getElementById("user_country");
+    console.log("user_country_select ", user_country_select);
+    let user_phone_div = document.getElementById("user_phone_div");
+    console.log("user_phone_div ", user_phone_div);
+    let user_country_phone_response = await apiCaller("user_register_country_phone", {
+        "selected_country": user_country_select.value
+    })
+    console.log("user_country_phone_response ", user_country_phone_response);
+    user_phone_div.innerHTML = user_country_phone_response.success;
+}
+
 export async function panelUserDataChangeCountryForm(user_client_type) {
     console.log("Running panelUserDataChangeCountryForm");
     let user_country_select = document.getElementById("user_country");
