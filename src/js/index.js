@@ -129,6 +129,10 @@ export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+export function maskToNumber(input) {
+    input.value = input.value.replace(/\D/g, "");
+}
+
 
 export async function maskToZipCode(input) {
     input.value = input.value.replace(/\D/g, "");
