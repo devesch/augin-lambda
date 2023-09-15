@@ -2794,6 +2794,11 @@
         "es": "Puedes conectar un nuevo dispositivo cuando quieras.",
         "pt": "Você pode conectar um novo dispositivo quando quiser."
     },
+    "Você precisa estar logado para acessar esta páginaOcultar senha": {
+        "en": "You need to be logged in to access this page hide password",
+        "es": "Debe registrarse para acceder a esta página Ocultar contraseña",
+        "pt": "Você precisa estar logado para acessar esta páginaOcultar senha"
+    },
     "Você utilizou": {
         "en": "You used",
         "es": "Usaste",
