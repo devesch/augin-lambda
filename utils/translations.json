@@ -1514,6 +1514,11 @@
         "es": "Límite mensual de desvinculaciones",
         "pt": "Limite mensal de desvinculações"
     },
+    "Linguagem": {
+        "en": "Language",
+        "es": "Idioma",
+        "pt": "Linguagem"
+    },
     "Link do projeto ou pasta": {
         "en": "Project Link or Folder",
         "es": "Enlace o carpeta del proyecto",
