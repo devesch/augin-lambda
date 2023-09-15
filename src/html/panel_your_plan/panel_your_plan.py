@@ -16,7 +16,6 @@ class PanelYourPlan(PanelPage):
         html.esc("user_name_val", self.user.user_name.title())
         self.user.update_user_plan()
         html.esc("plan_name_val", self.user.user_plan["plan_name_" + self.lang])
-        html.esc("plan_name_val", self.user.user_plan["plan_name_" + self.lang])
 
         html.esc("plan_maxium_model_size_in_mbs_val", self.user.user_plan["plan_maxium_model_size_in_mbs"])
         html.esc("plan_cloud_space_in_mbs_val", self.user.user_plan["plan_cloud_space_in_mbs"])

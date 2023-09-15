@@ -53,24 +53,11 @@ class StrFormat:
             return "{}.{}.{}/{}-{}".format(cnpj[:2], cnpj[2:5], cnpj[5:8], cnpj[8:12], cnpj[12:])
         return ""
 
-    def format_to_money(self, money, currency):
+    def format_to_money(self, money, currency, big=False):
         if currency == "brl":
-            return self.format_to_brl_money(money)
+            return self.format_to_brl_money(money, big)
         elif currency == "usd":
-            return self.format_to_usd_money(money)
-
-    def format_to_magipix_money(self, money, currency):
-        if currency == "brl":
-            return self.format_to_brl_magipix_money(money)
-        elif currency == "usd":
-            return self.format_to_usd_money(money)
-
-    def format_to_brl_magipix_money(self, money):
-        money = str(money).replace(".", "").replace(",", "")
-        if money == "0":
-            return "0,00"
-        money = money[:-2]
-        return f"{money[:-3]}.{money[-3:]}" if len(money) >= 4 else money
+            return self.format_to_usd_money(money, big)
 
     def format_to_billing_money(self, money):
         money = str(money).replace(".", "").replace(",", "")
@@ -78,18 +65,26 @@ class StrFormat:
             return "0.00"
         return f"{money[:-2]}.{money[-2:]}"
 
-    def format_to_brl_money(self, money):
+    def format_to_brl_money(self, money, big=False):
         money = str(money).replace(".", "").replace(",", "")
         if money == "0":
+            if big:
+                return "0"
             return "0,00"
         formatted_money = f"{money[:-5]}.{money[-5:-2]},{money[-2:]}" if len(money) >= 6 else f"{money[:-2]},{money[-2:]}"
+        if big:
+            return formatted_money[:-3]
         return formatted_money
 
-    def format_to_usd_money(self, money):
+    def format_to_usd_money(self, money, big=False):
         money = str(money).replace(".", "").replace(",", "")
         if money == "0":
+            if big:
+                return "0"
             return "0.00"
         formatted_money = f"{money[:-5]},{money[-5:-2]}.{money[-2:]}" if len(money) >= 6 else f"{money[:-2]}.{money[-2:]}"
+        if big:
+            return formatted_money[:-3]
         return formatted_money
 
     def format_to_ddd(self, ddd_number):

@@ -117,7 +117,7 @@ class StripeController:
         if stripe_plan_interval == "month":
             return "monthly"
         if stripe_plan_interval == "year":
-            return "annualy"
+            return "annually"
 
     def convert_stripe_status_code_to_status(self, stripe_status_code):
         if str(stripe_status_code) == "incomplete":

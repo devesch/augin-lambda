@@ -14,6 +14,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 filtered_placeholders = [
+    "mês",
+    "Cobrado mensalmente",
+    "ano",
+    "Cobrado anualmente",
     "indisponível",
     "único",
     "múltiplo",

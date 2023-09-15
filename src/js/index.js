@@ -559,43 +559,25 @@ export function showHtmlElement(element) {
     element.removeAttribute("hidden");
 }
 
-export function activateAuginSubscriptionSelection() {
-    let monthlyRadioButton = document.getElementById("monthly_augin_plan");
-    let yearlyRadioButton = document.getElementById("yearly_augin_plan");
-
-    if (monthlyRadioButton && yearlyRadioButton) {
-        let monthlySubscriptionContainer = document.getElementById("monthly_subscription_container");
-        let yearlySubscriptionContainer = document.getElementById("yearly_subscription_container");
-
-        if (monthlySubscriptionContainer && yearlySubscriptionContainer) {
-            if (monthlyRadioButton.checked) {
-                showHtmlElement(monthlySubscriptionContainer);
-                hideHtmlElement(yearlySubscriptionContainer);
-            }
-
-            if (yearlyRadioButton.checked) {
-                hideHtmlElement(monthlySubscriptionContainer);
-                showHtmlElement(yearlySubscriptionContainer);
-            }
-
-            monthlyRadioButton.addEventListener("change", function () {
-                if (monthlyRadioButton.checked) {
-                    showHtmlElement(monthlySubscriptionContainer);
-                    hideHtmlElement(yearlySubscriptionContainer);
-                }
-            });
-
-            yearlyRadioButton.addEventListener("change", function () {
-                if (yearlyRadioButton.checked) {
-                    hideHtmlElement(monthlySubscriptionContainer);
-                    showHtmlElement(yearlySubscriptionContainer);
-                }
-            });
-        } else {
-            console.warn("monthlySubscriptionContainer and yearlySubscriptionContainer are not defined.");
-        }
+export function showPlansThumbs(recurrency) {
+    let monthly_subscription_container = document.getElementById("monthly_subscription_container");
+    let yearly_subscription_container = document.getElementById("yearly_subscription_container");
+    let monthly_augin_plan_input = document.getElementById("monthly_augin_plan_input");
+    let yearly_augin_plan_input = document.getElementById("yearly_augin_plan_input");
+    if (recurrency == "monthly") {
+        monthly_augin_plan_input.checked = true;
+        yearly_augin_plan_input.checked = false;
+        monthly_subscription_container.style.display = ""
+        yearly_subscription_container.style.display = "none"
+    }
+    if (recurrency == "annually") {
+        monthly_augin_plan_input.checked = false;
+        yearly_augin_plan_input.checked = true;
+        monthly_subscription_container.style.display = "none"
+        yearly_subscription_container.style.display = ""
     }
 }
+
 
 /**
  * 
@@ -1005,7 +987,6 @@ export async function updateModelCategory() {
 document.addEventListener("DOMContentLoaded", function (event) {
     // your code here
     detectClickOutsideElement();
-    activateAuginSubscriptionSelection();
     activateDraggableItems();
 });
 

@@ -2,7 +2,7 @@
 {{menu_panel}}
 <main class="my-plan__main">
     <div class="my-plan__title-container">
-        <h1 class="my-plan__title">Alterar plano</h1>
+        <h1 class="my-plan__title">{{Alterar plano}}</h1>
         <div class="my-plan__title-container__button-container">
             <button class="black my-plan__title-container__button">
                 Upgrade
@@ -13,55 +13,37 @@
         </div>
     </div>
 
-   <div class="change-plan__sub-title-container">
+    <div class="change-plan__sub-title-container">
         <h1 class="change-plan__sub-title">
-            Olá <strong>Tiago</strong>, seu plano é o <strong>Augin PRO</strong>. Escolha seu novo plano.
+            {{Olá}} <strong>{{user_name_val}}</strong>{{, seu plano é o }}<strong>{{plan_name_val}}</strong>{{. Escolha seu novo plano.}}
         </h1>
-   </div>
+    </div>
 
-   <form role="radiogroup" class="change-plan__payment-radio-tabs-container">
-        <input id="yearly_augin_plan" type="radio" name="monthly_or_yearly_augin_plan" value="yearly_augin_plan" aria-controls="yearly_subscription_container" checked>
-        <label for="yearly_augin_plan">
-            Pagamento anual
+    <form role="radiogroup" class="change-plan__payment-radio-tabs-container">
+        <input id="yearly_augin_plan_input" type="radio" name="monthly_or_yearly_augin_plan" value="yearly_augin_plan" aria-controls="yearly_subscription_container" checked>
+        <label onclick="js.index.showPlansThumbs('annually')" for="yearly_augin_plan">
+            {{Pagamento anual}}
         </label>
-        <input id="monthly_augin_plan" type="radio" name="monthly_or_yearly_augin_plan" value="monthly_augin_plan" aria-controls="monthly_subscription_container">
-        <label for="monthly_augin_plan">
-            Pagamento mensal
+        <input id="monthly_augin_plan_input" type="radio" name="monthly_or_yearly_augin_plan" value="monthly_augin_plan" aria-controls="monthly_subscription_container">
+        <label onclick="js.index.showPlansThumbs('monthly')" for="monthly_augin_plan">
+            {{Pagamento mensal}}
         </label>
-   </form>
+    </form>
 
-   <section aria-live="polite">
-       <article id="monthly_subscription_container" class="change-plan__subscription-container" role="tabpanel">
-            <section>
-                <h2>Augin PRO</h2>
-                <div class="change-plan__price-container">
-                    <h3>R$ 135 / mês</h3>
-                    <p>Cobrado mensalmente</p>
-                </div>
-                <div class="change-plan__upgrade-plan-button-container">
-                    <button class="ghost">Seu plano atual</button>
-                    <a href="">Economize com pagamento anual (25% off) <img src="../assets/icons/arrow_forward.svg" width="12" height="12" alt=""/></a>
-                </div>
-                <ul>
-                    <li>Crie projetos de até 100Mb</li>
-                    <li>Armazenamento de até 30Gb</li>
-                    <li>Compartilhe por QR Code ou link</li>
-                    <li>Utilize até 5 Reference Trackers por projeto</li>
-                    <li>Projetos federados de até 100Mb</li>
-                    <li>Use sua conta em até 4 dispositivos</li>
-                    <li>Baixe seus IFCs em qualquer lugar</li>
-                </ul>
-            </section>
-            <section>
+    <section aria-live="polite">
+        <article id="monthly_subscription_container" class="change-plan__subscription-container" role="tabpanel" style="display:none;">
+            {{html_monthly_plans_thumbs}}
+
+            <!-- <section>
                 <h2>Augin PRO 10</h2>
-       
+
                 <div class="change-plan__price-container">
                     <h3>R$ 185 / mês</h3>
                     <p>Cobrado mensalmente</p>
                 </div>
                 <div class="change-plan__upgrade-plan-button-container">
                     <button>Upgrade de plano</button>
-                    <a href="">Economize com pagamento anual (25% off) <img src="../assets/icons/arrow_forward.svg" width="12" height="12" alt=""/></a>
+                    <a href="">Economize com pagamento anual (25% off) <img src="../assets/icons/arrow_forward.svg" width="12" height="12" alt="" /></a>
                 </div>
                 <ul>
                     <li>Crie projetos de até 1Gb</li>
@@ -72,11 +54,12 @@
                     <li>Use sua conta em até 4 dispositivos</li>
                     <li>Baixe seus IFCs em qualquer lugar</li>
                 </ul>
-            </section>
-       </article>
-       
-       <article id="yearly_subscription_container" class="change-plan__subscription-container" role="tabpanel">
-            <section>
+            </section> -->
+        </article>
+
+        <article id="yearly_subscription_container" class="change-plan__subscription-container" role="tabpanel">
+            {{html_annually_plans_thumbs}}
+            <!-- <section>
                 <h2>Augin PRO</h2>
                 <div class="change-plan__price-container">
                     <h3>R$ 1215 / ano</h3>
@@ -84,7 +67,7 @@
                 </div>
                 <div class="change-plan__upgrade-plan-button-container">
                     <button class="ghost">Seu plano atual</button>
-                    <a href="">Você está economizando 25% com o pagamento anual <img src="../assets/icons/arrow_forward.svg" width="12" height="12" alt=""/></a>
+                    <a href="">Você está economizando 25% com o pagamento anual <img src="../assets/icons/arrow_forward.svg" width="12" height="12" alt="" /></a>
                 </div>
                 <ul>
                     <li>Crie projetos de até 100Mb</li>
@@ -98,14 +81,14 @@
             </section>
             <section>
                 <h2>Augin PRO 10</h2>
-       
+
                 <div class="change-plan__price-container">
                     <h3>R$ 1665 / ano</h3>
                     <p>Cobrado anualmente</p>
                 </div>
                 <div class="change-plan__upgrade-plan-button-container">
                     <button>Upgrade de plano</button>
-                    <a href="">Você está economizando 25% com o pagamento anual <img src="../assets/icons/arrow_forward.svg" width="12" height="12" alt=""/></a>
+                    <a href="">Você está economizando 25% com o pagamento anual <img src="../assets/icons/arrow_forward.svg" width="12" height="12" alt="" /></a>
                 </div>
                 <ul>
                     <li>Crie projetos de até 1Gb</li>
@@ -116,9 +99,9 @@
                     <li>Use sua conta em até 4 dispositivos</li>
                     <li>Baixe seus IFCs em qualquer lugar</li>
                 </ul>
-            </section>
+            </section> -->
         </article>
-   </section>
+    </section>
 
 </main>
 {{footer}}

@@ -1,4 +1,14 @@
 {
+    ", seu plano é o ": {
+        "en": ", your plan is the",
+        "es": ", tu plan es el",
+        "pt": ", seu plano é o "
+    },
+    ". Escolha seu novo plano.": {
+        "en": ".Choose your new plan.",
+        "es": ".Elija su nuevo plan.",
+        "pt": ". Escolha seu novo plano."
+    },
     "8 caracteres ou mais. Pode conter letras, números e símbolos.": {
         "en": "8 characters or more.It may contain letters, numbers and symbols.",
         "es": "8 caracteres o más.Puede contener letras, números y símbolos.",
@@ -74,6 +84,11 @@
         "es": "Cambiar e-mail",
         "pt": "Alterar email"
     },
+    "Alterar plano": {
+        "en": "Change",
+        "es": "Cambiar",
+        "pt": "Alterar plano"
+    },
     "American Samoa": {
         "en": "American Samoa",
         "es": "Samoa Americana",
@@ -138,6 +153,11 @@
         "en": "Storage",
         "es": "Almacenamiento",
         "pt": "Armazenamento"
+    },
+    "Armazenamento de até": {
+        "en": "Up to",
+        "es": "Hasta",
+        "pt": "Armazenamento de até"
     },
     "Armenia": {
         "en": "Armenia",
@@ -233,6 +253,11 @@
         "en": "Download your IFCs anywhere",
         "es": "Descarga tus IFC en cualquier lugar",
         "pt": "Baixe seus IFCs em qualquer lugar"
+    },
+    "Baixe seus arquivos em qualquer lugar": {
+        "en": "Download your files anywhere",
+        "es": "Descargue sus archivos en cualquier lugar",
+        "pt": "Baixe seus arquivos em qualquer lugar"
     },
     "Bangladesh": {
         "en": "Bangladesh",
@@ -429,6 +454,16 @@
         "es": "Isla de Navidad",
         "pt": "Ilha do Natal"
     },
+    "Cobrado anualmente": {
+        "en": "Charged annually",
+        "es": "Cargado anualmente",
+        "pt": "Cobrado anualmente"
+    },
+    "Cobrado mensalmente": {
+        "en": "Charged monthly",
+        "es": "Cobrado mensualmente",
+        "pt": "Cobrado mensalmente"
+    },
     "Cobrança e pagamento": {
         "en": "Billing and payment",
         "es": "Facturación y pago",
@@ -568,6 +603,11 @@
         "en": "Creation",
         "es": "Creación",
         "pt": "Criação"
+    },
+    "Crie projetos de até": {
+        "en": "Create projects of up to",
+        "es": "Crear proyectos de hasta",
+        "pt": "Crie projetos de até"
     },
     "Croatia": {
         "en": "Croatia",
@@ -768,6 +808,11 @@
         "en": "Trial duration in days",
         "es": "Duración de prueba en días",
         "pt": "Duração do trial em dias"
+    },
+    "Economize com pagamento anual": {
+        "en": "Save with annual payment",
+        "es": "Ahorrar con pago anual",
+        "pt": "Economize com pagamento anual"
     },
     "Ecuador": {
         "en": "Ecurator",
@@ -1789,6 +1834,16 @@
         "es": "Pix",
         "pt": "PIX"
     },
+    "Pagamento anual": {
+        "en": "Annual payment",
+        "es": "Pago anual",
+        "pt": "Pagamento anual"
+    },
+    "Pagamento mensal": {
+        "en": "Monthly payment",
+        "es": "Mensualidad",
+        "pt": "Pagamento mensal"
+    },
     "Pago": {
         "en": "Paid out",
         "es": "Pagado",
@@ -1939,6 +1994,11 @@
         "es": "Proyectos federados",
         "pt": "Projetos federados"
     },
+    "Projetos federados de até": {
+        "en": "Federated projects from up to",
+        "es": "Proyectos federados de hasta",
+        "pt": "Projetos federados de até"
+    },
     "Properietário": {
         "en": "Propaler",
         "es": "Propalador",
@@ -1993,6 +2053,11 @@
         "en": "Downloads",
         "es": "Descargas",
         "pt": "Realiza downloads"
+    },
+    "Reference Trackers": {
+        "en": "Reference Trackers",
+        "es": "Rastreadores de referencia",
+        "pt": "Reference Trackers"
     },
     "Remover": {
         "en": "Remove",
@@ -2138,6 +2203,11 @@
         "en": "Your plan",
         "es": "Tu plan",
         "pt": "Seu plano"
+    },
+    "Seu plano atual": {
+        "en": "Your current plan",
+        "es": "Tu plan actual",
+        "pt": "Seu plano atual"
     },
     "Seu plano permite conectar até ": {
         "en": "Your plan allows you to connect up to",
@@ -2429,6 +2499,16 @@
         "es": "Uruguay",
         "pt": "Uruguai"
     },
+    "Use sua conta em até": {
+        "en": "Use your account in up to",
+        "es": "Use su cuenta en hasta",
+        "pt": "Use sua conta em até"
+    },
+    "Usuários": {
+        "en": "Users",
+        "es": "Usuarios",
+        "pt": "Usuários"
+    },
     "Uzbekistan": {
         "en": "Uzbekistan",
         "es": "Uzbekistán",
@@ -2559,6 +2639,11 @@
         "es": "Zimbabue",
         "pt": "Zimbábue"
     },
+    "ano": {
+        "en": "year",
+        "es": "año",
+        "pt": "ano"
+    },
     "até 5": {
         "en": "up to 5",
         "es": "hasta 5",
@@ -2583,6 +2668,11 @@
         "en": "days ago",
         "es": "dias atras",
         "pt": "dias atrás"
+    },
+    "dispositivos": {
+        "en": "devices",
+        "es": "dispositivos",
+        "pt": "dispositivos"
     },
     "dispositivos conectados de": {
         "en": "connected devices from",
@@ -2618,6 +2708,11 @@
         "en": "available and performed",
         "es": "disponible y realizado",
         "pt": "isponíveis e realizou"
+    },
+    "mês": {
+        "en": "month",
+        "es": "mes",
+        "pt": "mês"
     },
     "múltiplo": {
         "en": "multiple",

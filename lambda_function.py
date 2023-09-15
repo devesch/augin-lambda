@@ -115,6 +115,7 @@ def main_lambda_handler(event, context):
 
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:
+
     with open("_testnow.json", "r") as read_file:
         event = json.load(read_file)
         html = main_lambda_handler(event, None)
@@ -125,6 +126,10 @@ if os.environ.get("AWS_EXECUTION_ENV") is None:
         css = css.read()
     with codecs.open("src/dist/js/index.js", "r", "utf-8-sig") as js_index:
         js_index = js_index.read()
+
+    import subprocess
+
+    subprocess.run(["python", "tools_for_devs/create_translations.py"])
 
     # css = open("src/dist/style/style.css", "r").read()
     # js_index = open("src/dist/js/index.js", "r").read()

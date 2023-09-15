@@ -1,4 +1,5 @@
 from utils.Config import lambda_constants
+from utils.utils.Sort import Sort
 from boto3 import client, resource
 from botocore.config import Config
 from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
@@ -35,6 +36,17 @@ class Dynamo:
 
     def get_free_plan(self):
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#149765c4adca"}, "sk": {"S": "plan#149765c4adca"}}})
+
+    def query_purchasable_plans(self):
+        filtered_query = []
+        query = self.query_entity("plan")
+        if query:
+            for item in query:
+                if item["plan_available_for_purchase"]:
+                    filtered_query.append(item)
+        if filtered_query:
+            filtered_query = Sort().sort_dict_list(filtered_query, "plan_price_monthly_brl_actual", reverse=False, integer=True)
+        return filtered_query
 
     ### ORDER ###
     def query_user_orders(self, user_id):

@@ -2,6 +2,7 @@ from python_web_frame.checkout_page import CheckoutPage
 from utils.Config import lambda_constants
 from objects.Plan import translate_reference_tracker
 from utils.utils.ReadWrite import ReadWrite
+from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 
 
@@ -16,45 +17,75 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
         html.esc("user_name_val", self.user.user_name.title())
         self.user.update_user_plan()
         html.esc("plan_name_val", self.user.user_plan["plan_name_" + self.lang])
-        html.esc("plan_name_val", self.user.user_plan["plan_name_" + self.lang])
-
-        html.esc("plan_maxium_model_size_in_mbs_val", self.user.user_plan["plan_maxium_model_size_in_mbs"])
-        html.esc("plan_cloud_space_in_mbs_val", self.user.user_plan["plan_cloud_space_in_mbs"])
-
-        if self.user.user_plan["plan_share_files"]:
-            html.esc("plan_share_files_val", self.translate("Sim"))
-        else:
-            html.esc("plan_share_files_val", self.translate("Não"))
-
-        html.esc("plan_reference_tracker_val", self.translate(translate_reference_tracker(self.user.user_plan["plan_reference_tracker"])))
-
-        if self.user.user_plan["plan_maxium_federated_size_in_mbs"] == "0":
-            html.esc("plan_maxium_federated_size_in_mbs_val", self.translate("Não"))
-        else:
-            html.esc("plan_maxium_federated_size_in_mbs_val", self.user.user_plan["plan_maxium_federated_size_in_mbs"] + " Mb")
-
-        html.esc("plan_maxium_devices_available_val", self.user.user_plan["plan_maxium_devices_available"])
-        if self.user.user_plan["plan_download_files"]:
-            html.esc("plan_download_files_val", self.translate("Sim"))
-        else:
-            html.esc("plan_download_files_val", self.translate("Não"))
-
-        if not self.user.user_subscription:
-            html.esc("user_subscription_currency_val", "")
-            html.esc("user_subscription_price_val", "-")
-            html.esc("user_subscription_recurrency_val", "-")
-            html.esc("user_subscription_valid_until_val", "-")
-
-        if not self.user.user_plan_id:
-            html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
-
-        user_orders = Dynamo().query_user_orders(self.user.user_id)
-        if user_orders:
-            raise Exception("TODO")
-        user_payment_methods = Dynamo().query_user_payment_methods(self.user.user_id)
-        if user_payment_methods:
-            raise Exception("TODO")
+        purchasable_plans = Dynamo().query_purchasable_plans()
+        html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly"))
+        html.esc("html_annually_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "annually"))
         return str(html)
 
     def render_post(self):
         return self.render_get()
+
+    def list_html_plans_thumbs(self, purchasable_plans, recurrency="monthly"):
+        full_html = []
+        if purchasable_plans:
+            for plan in purchasable_plans:
+                if plan["plan_available_monthly"] and recurrency == "monthly" or plan["plan_available_annually"] and recurrency == "annually":
+                    html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_plans_thumbs")
+                    html.esc("plan_name_val", plan["plan_name_" + self.lang])
+                    if self.user.user_cart_currency == "brl":
+                        html.esc("plan_currency_val", StrFormat().format_currency_to_symbol("brl"))
+                        if recurrency == "monthly":
+                            html.esc("plan_price_actual_val", StrFormat().format_to_brl_money(plan["plan_price_monthly_brl_actual"], big=True))
+                        if recurrency == "annually":
+                            html.esc("plan_price_actual_val", StrFormat().format_to_brl_money(plan["plan_price_annually_brl_actual"], big=True))
+
+                    elif self.user.user_cart_currency == "usd":
+                        html.esc("plan_currency_val", StrFormat().format_currency_to_symbol("usd"))
+                        if recurrency == "monthly":
+                            html.esc("plan_price_actual_val", StrFormat().format_to_usd_money(plan["plan_price_monthly_usd_actual"], big=True))
+                        if recurrency == "annually":
+                            html.esc("plan_price_actual_val", StrFormat().format_to_usd_money(plan["plan_price_annually_usd_actual"], big=True))
+
+                    if recurrency == "monthly":
+                        html.esc("plan_recurrency_val", self.translate("mês"))
+                        html.esc("plan_recurrency_phrase_val", self.translate("Cobrado mensalmente"))
+
+                        if not plan["plan_available_annually"]:
+                            html.esc("save_on_annually_visibility_val", "display:none;")
+                        else:
+                            if self.user.user_cart_currency == "brl":
+                                html.esc("plan_annually_savings", int(int(plan["plan_price_monthly_brl_actual"]) / int(plan["plan_price_annually_brl_actual"]) * 100))
+                            elif self.user.user_cart_currency == "usd":
+                                html.esc("plan_annually_savings", int(int(plan["plan_price_monthly_usd_actual"]) / int(plan["plan_price_annually_usd_actual"]) * 100))
+
+                    if recurrency == "annually":
+                        html.esc("save_on_annually_visibility_val", "display:none;")
+                        html.esc("plan_recurrency_val", self.translate("ano"))
+                        html.esc("plan_recurrency_phrase_val", self.translate("Cobrado anualmente"))
+
+                    if plan["plan_available_monthly"] == self.user.user_plan_id:
+                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_your_plan_button())
+                    else:
+                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button())
+
+                    html.esc("plan_maxium_model_size_in_mbs_val", plan["plan_maxium_model_size_in_mbs"])
+                    html.esc("plan_cloud_space_in_gbs_val", int(int(plan["plan_cloud_space_in_mbs"]) / 1000))
+                    if not plan["plan_share_files"]:
+                        html.esc("plan_share_files_visibility_val", "display:none;")
+
+                    html.esc("plan_reference_tracker_val", self.translate(translate_reference_tracker(plan["plan_reference_tracker"])))
+                    html.esc("plan_maxium_federated_size_in_mbs_val", plan["plan_maxium_federated_size_in_mbs"])
+                    html.esc("plan_maxium_devices_available_val", plan["plan_maxium_devices_available"])
+                    if not plan["plan_download_files"]:
+                        html.esc("plan_download_files_visibility_val", "display:none;")
+
+                    full_html.append(str(html))
+        return "".join(full_html)
+
+    def show_html_your_plan_button(self):
+        html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_your_plan_button")
+        return str(html)
+
+    def show_html_upgrade_plan_button(self):
+        html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_upgrade_plan_button")
+        return str(html)
