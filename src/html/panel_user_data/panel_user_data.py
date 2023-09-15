@@ -1,4 +1,4 @@
-﻿from python_web_frame.user_page import UserPage
+﻿from python_web_frame.panel_page import PanelPage
 from utils.utils.Http import Http
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Validation import Validation
@@ -7,8 +7,8 @@ from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 
 
-class PanelUserData(UserPage):
-    name = "Perfil"
+class PanelUserData(PanelPage):
+    name = "Painel - Perfil do Usuário"
     public = False
     bypass = False
     admin = False
@@ -158,7 +158,7 @@ class PanelUserData(UserPage):
         elif self.user.user_address_data.get("user_country"):
             user_country_alpha_2 = self.user.user_address_data["user_country"]
         else:
-            ip_data = ReadWrite().get_request_ip_data(self.event.get_user_ip())
+            ip_data = Http().get_request_ip_data(self.event.get_user_ip())
             user_country_alpha_2 = ip_data["country_code"].upper()
 
         html.esc("html_user_country_options", self.list_html_user_country_options(user_country_alpha_2))

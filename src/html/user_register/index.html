@@ -19,6 +19,9 @@
         <div class="create-account__input-container floating-input">
             <input type="password" name="user_password" value="{{user_password_val}}" id="password-account_input" placeholder="" required minlength="8" maxlength="500">
             <label for="password-account_input">{{Senha}}</label>
+            <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="password-account_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
+            </button>
         </div>
         <p class="input-hint">{{8 caracteres ou mais. Pode conter letras, números e símbolos.}}</p>
         <p class="error none">{{Senha inválida}}</p>

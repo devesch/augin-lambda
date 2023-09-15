@@ -654,40 +654,41 @@ export function detectClickOutsideElement() {
     });
 }
 
-/**
- * 
- * @param {HTMLButtonElement} button 
- */
+
 export function togglePasswordVisibility(button) {
     let image = button.querySelector("img");
     let input = document.getElementById(button.getAttribute("aria-controls"));
     if (image.src.includes("visibility_off")) {
         image.src = image.src.replace("visibility_off", "visibility");
         input.setAttribute("type", "text");
-        button.setAttribute("aria-label", "Ocultar senha");
-        button.setAttribute("title", "Ocultar senha");
+
+        let translate_response = apiCaller("translate", {
+            key: "Ocultar senha"
+        })
+
+        button.setAttribute("aria-label", translate_response["success"]);
+        button.setAttribute("title", translate_response["success"]);
     } else {
         image.src = image.src.replace("visibility", "visibility_off");
         input.setAttribute("type", "password");
-        button.setAttribute("aria-label", "Exibir senha");
-        button.setAttribute("title", "Exibir senha");
+
+        let translate_response = apiCaller("translate", {
+            key: "Exibir senha"
+        })
+
+        button.setAttribute("aria-label", translate_response["success"]);
+        button.setAttribute("title", translate_response["success"]);
     }
 }
 
-/**
- * 
- * @param {HTMLElement} element 
- */
+
 export function hideHtmlElement(element) {
     element.classList.add("none");
     element.setAttribute("aria-hidden", "true");
     element.setAttribute("hidden", "hidden");
 }
 
-/**
- * 
- * @param {HTMLElement} element 
- */
+
 export function showHtmlElement(element) {
     element.classList.remove("none");
     element.setAttribute("aria-hidden", "false");
