@@ -1319,6 +1319,11 @@
         "es": "Islandia",
         "pt": "Islândia"
     },
+    "Idioma": {
+        "en": "Language",
+        "es": "Idioma",
+        "pt": "Idioma"
+    },
     "Importar arquivo": {
         "en": "Import file",
         "es": "Importar archivo",
@@ -1528,11 +1533,6 @@
         "en": "Monthly limit of unlinks",
         "es": "Límite mensual de desvinculaciones",
         "pt": "Limite mensal de desvinculações"
-    },
-    "Linguagem": {
-        "en": "Language",
-        "es": "Idioma",
-        "pt": "Linguagem"
     },
     "Link do projeto ou pasta": {
         "en": "Project Link or Folder",
@@ -1903,6 +1903,11 @@
         "en": "The project exceeds the maximum size of 1GB.",
         "es": "El proyecto excede el tamaño máximo de 1 GB.",
         "pt": "O projeto excede o tamanho máximo de 1Gb."
+    },
+    "Ocultar senha": {
+        "en": "Hide password",
+        "es": "Contraseña oculta",
+        "pt": "Ocultar senha"
     },
     "Ocultar senha.": {
         "en": "Hide password.",
@@ -2308,6 +2313,11 @@
         "en": "Password",
         "es": "Contraseña",
         "pt": "Senha"
+    },
+    "Senha Atual": {
+        "en": "Current password",
+        "es": "Contraseña actual",
+        "pt": "Senha Atual"
     },
     "Senha atual": {
         "en": "Current password",

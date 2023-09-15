@@ -99,8 +99,9 @@
                         <label class="button" for="select_translation">
                             <img src="{{cdn_val}}/assets/icons/translate.svg" alt="Trocar idioma" width="24" height="24">
                         </label>
+                        <input hidden name="user_url" value="{{user_url_val}}">
                         <select name="select_translation" id="select_translation" class="hidden-select" onchange="this.form.submit()">
-                            <option value="" selected disabled>{{Linguagem}}</option>
+                            <option value="" selected disabled>{{Idioma}}</option>
                             <option value="pt">Português</option>
                             <option value="en">English</option>
                             <option value="es">Español</option>
