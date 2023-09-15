@@ -1,0 +1,35 @@
+{{header}}
+{{menu_panel}}
+<div class="page-user page-mobile" id="panelUserNewPassword">
+    <div class="page-user__box-user-data box-content max-width">
+        <h1>{{Mude sua senha}}</h1>
+        <p>{{Digite sua nova senha para}} </p>
+        <p>{{user_email_val}}</p>
+        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" id="form">
+            <div class="box-inputs">
+                <div class="login__input-container floating-input">
+                    <input type="password" name="user_current_password" value="{{user_current_password_val}}" id="user_current_password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                    <label for="user_current_password_input">{{Nova Senha}}</label>
+                    <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_current_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                        <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
+                    </button>
+                </div>
+                <div class="login__input-container floating-input">
+                    <input type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                    <label for="user_password_input">{{Nova Senha}}</label>
+                    <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                        <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
+                    </button>
+                </div>
+
+                <span class="error" style="{{error_msg_visibility_val}}">
+                    {{error_msg_val}}
+                </span>
+                <div class="button-magipix">
+                    <button type="submit">{{Alterar Senha}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{footer}}

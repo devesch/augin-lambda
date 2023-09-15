@@ -19,6 +19,11 @@
         "es": "La contraseña debe tener al menos 8 caracteres",
         "pt": "A senha deve ter no mínimo 8 caracteres"
     },
+    "Acessar minha conta": {
+        "en": "Access my account",
+        "es": "Acceder a mi cuenta",
+        "pt": "Acessar minha conta"
+    },
     "Adicionar": {
         "en": "To add",
         "es": "Para agregar",
@@ -78,6 +83,11 @@
         "en": "Some file within .zip is invalid.",
         "es": "Algún archivo dentro de .zip no es válido.",
         "pt": "Algum arquivo dentro do .zip é inválido."
+    },
+    "Alterar Senha": {
+        "en": "Change Password",
+        "es": "Cambiar contraseña",
+        "pt": "Alterar Senha"
     },
     "Alterar email": {
         "en": "Change e-mail",
@@ -814,6 +824,11 @@
         "es": "Ingrese su teléfono",
         "pt": "Digite seu telefone"
     },
+    "Digite sua nova senha para": {
+        "en": "Enter your new password to",
+        "es": "Ingrese su nueva contraseña para",
+        "pt": "Digite sua nova senha para"
+    },
     "Disponível anual": {
         "en": "Available annual",
         "es": "Disponible anual",
@@ -1539,6 +1554,11 @@
         "es": "Logotipo Augin",
         "pt": "Logo Augin"
     },
+    "Logo Magipix": {
+        "en": "Logo Magipix",
+        "es": "Logo magipix",
+        "pt": "Logo Magipix"
+    },
     "Luxembourg": {
         "en": "Luxembourg",
         "es": "Luxemburgo",
@@ -1683,6 +1703,11 @@
         "en": "Mozambique",
         "es": "Mozambique",
         "pt": "Moçambique"
+    },
+    "Mude sua senha": {
+        "en": "Change your password",
+        "es": "Cambia tu contraseña",
+        "pt": "Mude sua senha"
     },
     "Myanmar": {
         "en": "Myanmar",
@@ -1843,6 +1868,11 @@
         "en": "New Password",
         "es": "Nueva contraseña",
         "pt": "Nova Senha"
+    },
+    "Nova senha": {
+        "en": "New Password",
+        "es": "Nueva contraseña",
+        "pt": "Nova senha"
     },
     "Novo": {
         "en": "New",
@@ -2279,6 +2309,11 @@
         "es": "Contraseña",
         "pt": "Senha"
     },
+    "Senha atual": {
+        "en": "Current password",
+        "es": "Contraseña actual",
+        "pt": "Senha atual"
+    },
     "Senha inválida": {
         "en": "Invalid password",
         "es": "Contraseña invalida",
@@ -2398,6 +2433,16 @@
         "en": "Structural",
         "es": "Estructural",
         "pt": "Estrutural"
+    },
+    "Sua senha acabou de ser alterada!": {
+        "en": "Your password has just been changed!",
+        "es": "¡Tu contraseña acaba de ser cambiada!",
+        "pt": "Sua senha acabou de ser alterada!"
+    },
+    "Sua senha foi alterada": {
+        "en": "Your password has changed",
+        "es": "Tu contraseña ha cambiado",
+        "pt": "Sua senha foi alterada"
     },
     "Sudan": {
         "en": "Sudan",
