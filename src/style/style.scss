@@ -154,6 +154,33 @@ body {
     height: 100%;
 }
 
+summary,
+details {
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Remove the default disclosure triangle */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details {
+    display: block;
+    transition: none;
+}
+
 ol,
 ul {
     list-style: none;
@@ -1690,6 +1717,180 @@ input[list]::-ms-clear {
 
 }
 /* Create your account - End */
+
+@supports not (-ms-ime-align: auto) {
+    details {
+        position: relative;
+    }
+
+    summary>* {
+        display: inline;
+    }
+
+    summary {
+        cursor: pointer;
+        transition: list-style-image .5s linear;
+        color: colors.color("color-primary-900");
+        border-radius: 7.5px;
+        padding: 1rem;
+        font-weight: 500;
+
+        list-style: none;
+
+        transition: background-image .5s linear, color .5s linear;
+    }
+
+    summary::after {
+        // transition: background-image .5s linear, color .5s linear;
+        content: "";
+        width: 12px;
+        height: 12px;
+        background: url($cdn_val + "assets/icons/icon-down.png") no-repeat;
+        top: 10px;
+        right: 0;
+        position: absolute;
+        display: inline-block;
+        transition: transform .5s linear;
+    }
+
+    details[open]>summary:after {
+        //    background: url($cdn_val + "assets/icons/icon-up.png") no-repeat;
+        transform: rotate(180deg);
+    }
+}
+/* Accordion - End */
+
+/* Footer Cookie - Start */
+.footer-cookies {
+    position: sticky;
+    bottom: 0;
+    z-index: 2000;
+    max-width: 500px;
+    left: 100%;
+    background-color: colors.color("color-white");
+    border: 1px solid colors.color("color-neutral-900");
+    padding: 1rem;
+    display: none;
+
+    border-radius: 5px;
+}
+
+.footer-cookies.active {
+    display: block;
+}
+
+.footer-cookies-container {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-cookies-container.open {
+    display: flex;
+}
+
+.footer-cookies__paragraph-container {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+// .button--cookies {
+//     align-items: center;
+//     border-radius: 5px;
+//     display: flex;
+//     height: 100%;
+//     transition: .5s;
+//     border: 1px solid #444;
+//     background: #444;
+//     cursor: pointer;
+//     font-family: 'Poppins', sans-serif;
+//     font-weight: 500;
+//     text-align: center;
+//     flex-grow: 1;
+//     font-size: .9rem;
+//     line-height: 1;
+//     padding: 0.75rem 0.5rem;
+//     transition: background-color .5s ease-in-out, color 0.3s linear, border-color 0.3s linear;
+// }
+
+.button--cookies-container {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    height: 100%;
+    justify-content: center;
+}
+
+// .button--cookies-configure-button {
+//     background-color: transparent;
+//     color: #444;
+// }
+
+// .button--cookies-configure-button:hover {
+//     background-color: #444;
+//     color: $white;
+// }
+
+// .button--cookies-accept-all-button {
+//     background-color: colors.color("color-primary-5");
+//     border-color: $magipix-strong;
+//     color: $white;
+// }
+
+// .button--cookies-accept-all-button:hover {
+//     background-color: $white;
+//     color: $magipix-strong;
+// }
+
+.footer-cookies-configuration-container {
+    display: none;
+    flex-direction: column;
+    -ms-flex-direction: column;
+}
+
+.footer-cookies-configuration-container.open {
+    display: flex;
+}
+
+.cookies-summary__checkbox {
+    margin: unset;
+    margin-right: .5rem;
+}
+
+.footer-cookies__accordion-container {
+    margin-bottom: 1rem;
+}
+
+.footer-cookies__accordion-container details p+p,
+.footer-cookies__accordion-container details li {
+    margin-top: .5rem;
+}
+
+.footer-cookies__accordion-container details {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.footer-cookies__accordion-container summary {
+    padding: 0.5rem 0;
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.footer-cookies__accordion-container summary::after {
+    top: unset;
+}
+
+.open-cookies-button {
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.user-register-section-label {
+    text-align: center;
+}
+
+/* Footer Cookie - End */
 
 /* Overwrittes - Start */
 .none {
