@@ -94,7 +94,7 @@ def main_lambda_handler(event, context):
         if not user and not class_instance.public:
             return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você precisa estar logado para acessar esta página')}"), event)
         if user and user.user_credential != "admin" and class_instance.admin:
-            return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você não possui as credenciais para acessar esta página.')}"), event)
+            return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você não possui as credenciais para acessar esta página')}"), event)
 
     set_instance_attributes(class_instance, event, page, path, post, lang, user, project_cookies, path.get("error_msg"))
 

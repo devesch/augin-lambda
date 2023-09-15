@@ -1,7 +1,9 @@
 from python_web_frame.panel_page import PanelPage
 from utils.utils.Validation import Validation
 from utils.utils.Generate import Generate
+from utils.utils.ReadWrite import ReadWrite
 from utils.AWS.Dynamo import Dynamo
+from utils.AWS.Ses import Ses
 
 
 class PanelUserNewPassword(PanelPage):
@@ -33,35 +35,12 @@ class PanelUserNewPassword(PanelPage):
         self.user.update_password(self.post["user_password"], Generate().generate_salt(9))
         self.user.user_ip = self.event.get_user_ip()
         Dynamo().put_entity(self.user.__dict__)
+        user_password_modified_email = self.generate_user_password_modified_email(self.user.user_name)
         self.user.clear_all_auth_tokens()
-        self.send_email_user_password_modified(self.user.user_email, self.user.user_name)
+        Ses().send_email(self.user.user_email, body_html=user_password_modified_email, body_text=user_password_modified_email, subject_data="Augin - Sua senha foi alterada")
         return {"html": self.utils.redirect("home"), "command": "logout", "user_auth_token": None}
 
-    def send_email_user_password_modified(self, user_email, user_name):
-        try:
-            html = self.utils.read_html("panel_user_new_password/_codes/html_password_modified_email")
-            html.esc("user_name_val", user_name)
-            get_ses_client().send_email(
-                Destination={"ToAddresses": [user_email]},
-                Message={
-                    "Body": {
-                        "Html": {
-                            "Charset": "utf-8",
-                            "Data": str(html),
-                        },
-                        "Text": {
-                            "Charset": "utf-8",
-                            "Data": str(html),
-                        },
-                    },
-                    "Subject": {
-                        "Charset": "utf-8",
-                        "Data": "Magipix - Sua senha foi alterada",
-                    },
-                },
-                Source=lambda_constants["email_sender"],
-                ConfigurationSetName="configset",
-            )
-            return True
-        except:
-            return False
+    def generate_user_password_modified_email(self, user_name):
+        html = ReadWrite().read_html("panel_user_new_password/_codes/html_password_modified_email")
+        html.esc("user_name_val", user_name)
+        return str(html)

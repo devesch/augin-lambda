@@ -2789,10 +2789,20 @@
         "es": "¿Tiene problemas para recordar su contraseña?No se preocupe",
         "pt": "Você não está conseguindo se lembrar da sua senha? Não se preocupe"
     },
+    "Você não possui as credenciais para acessar esta página": {
+        "en": "You do not have the credentials to access this page",
+        "es": "No tiene las credenciales para acceder a esta página",
+        "pt": "Você não possui as credenciais para acessar esta página"
+    },
     "Você pode conectar um novo dispositivo quando quiser.": {
         "en": "You can connect a new device whenever you want.",
         "es": "Puedes conectar un nuevo dispositivo cuando quieras.",
         "pt": "Você pode conectar um novo dispositivo quando quiser."
+    },
+    "Você precisa estar logado para acessar esta página": {
+        "en": "You need to be logged in to access this page",
+        "es": "Necesita iniciar sesión para acceder a esta página",
+        "pt": "Você precisa estar logado para acessar esta página"
     },
     "Você precisa estar logado para acessar esta páginaOcultar senha": {
         "en": "You need to be logged in to access this page hide password",

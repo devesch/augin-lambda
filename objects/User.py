@@ -51,6 +51,12 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def clear_all_auth_tokens(self):
+        all_users_auth_tokens = Dynamo().query_users_auth_token(self.user_email)
+        if all_users_auth_tokens:
+            for auth_token in all_users_auth_tokens:
+                Dynamo().delete_entity(auth_token)
+
     def clear_perdonal_data(self):
         self.user_address_data = {"user_country": "", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
 
