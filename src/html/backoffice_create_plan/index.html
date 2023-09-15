@@ -20,14 +20,14 @@
             <input type="text" name="plan_description_pt" value="{{plan_description_pt_val}}" id="plan_description_pt_input" placeholder="" required maxlength="500">
             <label for="plan_description_pt_input">{{Descrição PT}}</label>
         </div>
-        <div class="floating-input">
+        <!-- <div class="floating-input">
             <input type="text" name="plan_description_en" value="{{plan_description_en_val}}" id="plan_description_en_input" placeholder="" required maxlength="500">
             <label for="plan_description_en_input">{{Descrição EN}}</label>
         </div>
         <div class="floating-input">
             <input type="text" name="plan_description_es" value="{{plan_description_es_val}}" id="plan_description_es_input" placeholder="" required maxlength="500">
             <label for="plan_description_es_input">{{Descrição ES}}</label>
-        </div>
+        </div> -->
 
 
         <div class="switch-container">
@@ -52,20 +52,20 @@
 
         <div id="annually_div" style="{{annually_div_visibility_val}}">
             <div class="floating-input">
-                <input onload="js.index.formatToMoney(this)" oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl" value="{{plan_price_annually_brl_val}}" id="plan_price_annually_brl_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl" value="{{plan_price_annually_brl_val}}" id="plan_price_annually_brl_input" placeholder="" maxlength="500">
                 <label for="plan_price_annually_brl_input">{{Preço BRL}}</label>
             </div>
             <div class="floating-input">
-                <input onload="js.index.formatToMoney(this)" oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl_actual" value="{{plan_price_annually_brl_actual_val}}" id="plan_price_annually_brl_actual_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl_actual" value="{{plan_price_annually_brl_actual_val}}" id="plan_price_annually_brl_actual_input" placeholder="" maxlength="500">
                 <label for="plan_price_annually_brl_actual_input">{{Preço atual BRL}}</label>
             </div>
 
             <div class="floating-input">
-                <input onload="js.index.formatToMoney(this)" oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd" value="{{plan_price_annually_usd_val}}" id="plan_price_annually_usd_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd" value="{{plan_price_annually_usd_val}}" id="plan_price_annually_usd_input" placeholder="" maxlength="500">
                 <label for="plan_price_annually_usd_input">{{Preço USD}}</label>
             </div>
             <div class="floating-input">
-                <input onload="js.index.formatToMoney(this)" oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd_actual" value="{{plan_price_annually_usd_actual_val}}" id="plan_price_annually_usd_actual_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd_actual" value="{{plan_price_annually_usd_actual_val}}" id="plan_price_annually_usd_actual_input" placeholder="" maxlength="500">
                 <label for="plan_price_annually_usd_actual_input">{{Preço atual USD}}</label>
             </div>
 
@@ -92,11 +92,11 @@
 
         <div id="monthly_div" style="{{monthly_div_visibility_val}}">
             <div class="floating-input">
-                <input onload="js.index.formatToMoney(this)" oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl" value="{{plan_price_monthly_brl_val}}" id="plan_price_monthly_brl_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl" value="{{plan_price_monthly_brl_val}}" id="plan_price_monthly_brl_input" placeholder="" maxlength="500">
                 <label for="plan_price_monthly_brl_input">{{Preço BRL}}</label>
             </div>
             <div class="floating-input">
-                <input onload="js.index.formatToMoney(this)" oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl_actual" value="{{plan_price_monthly_brl_actual_val}}" id="plan_price_monthly_brl_actual_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl_actual" value="{{plan_price_monthly_brl_actual_val}}" id="plan_price_monthly_brl_actual_input" placeholder="" maxlength="500">
                 <label for="plan_price_monthly_brl_actual_input">{{Preço atual BRL}}</label>
             </div>
 
@@ -109,13 +109,13 @@
                 <label for="plan_price_monthly_usd_actual_input">{{Preço atual USD}}</label>
             </div>
 
-            <input type="checkbox" name="plan_monthly_card_payment_method" id="plan_monthly_card_payment_method_input">
+            <input type="checkbox" name="plan_monthly_card_payment_method" id="plan_monthly_card_payment_method_input" {{plan_monthly_card_payment_method_checked_val}}>
             <label for="plan_monthly_card_payment_method_input">{{Cartão}}</label>
 
-            <input type="checkbox" name="plan_monthly_boleto_payment_method" id="plan_monthly_boleto_payment_method_input">
+            <input type="checkbox" name="plan_monthly_boleto_payment_method" id="plan_monthly_boleto_payment_method_input" {{plan_monthly_boleto_payment_method_checked_val}}>
             <label for="plan_monthly_boleto_payment_method_input">{{Boleto}}</label>
 
-            <input type="checkbox" name="plan_monthly_pix_payment_method" id="plan_monthly_pix_payment_method_input">
+            <input type="checkbox" name="plan_monthly_pix_payment_method" id="plan_monthly_pix_payment_method_input" {{plan_monthly_pix_payment_method_checked_val}}>
             <label for="plan_monthly_pix_payment_method_input">{{PIX}}</label>
         </div>
 
@@ -156,6 +156,32 @@
             <label for="plan_app_can_be_offline_in_days_input">{{Duração do APP offline em dias}}</label>
         </div>
 
+        <div class="floating-input">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_team_play_participants" value="{{plan_team_play_participants_val}}" id="plan_team_play_participants_input" placeholder="" required maxlength="500">
+            <label for="plan_team_play_participants_input">{{Quantidade de pessoas no team play}}</label>
+        </div>
+
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input type="checkbox" name="plan_download_files" id="plan_download_files_input" {{plan_download_files_checked_val}}>
+                <label class="switch" for="plan_download_files_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="plan_download_files_input">{{Realiza downloads}}</label>
+        </div>
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input type="checkbox" name="plan_share_files" id="plan_share_files_input" {{plan_share_files_checked_val}}>
+                <label class="switch" for="plan_share_files_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="plan_share_files_input">{{Realiza compartilhamentos}}</label>
+        </div>
+
         <div class="switch-container">
             <div class="input-container">
                 <input onchange="js.index.toogleDiv(this, 'trial_div')" type="checkbox" name="plan_has_trial" id="plan_has_trial_input" {{plan_has_trial_checked_val}}>
@@ -168,7 +194,7 @@
 
         <div id="trial_div" style="{{trial_div_visibility_val}}">
             <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_trial_duration_in_days" value="{{plan_trial_duration_in_days_val}}" id="plan_trial_duration_in_days_input" placeholder="" required maxlength="500">
+                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_trial_duration_in_days" value="{{plan_trial_duration_in_days_val}}" id="plan_trial_duration_in_days_input" placeholder="" maxlength="500">
                 <label for="plan_trial_duration_in_days_input">{{Duração do trial em dias}}</label>
             </div>
         </div>
@@ -190,9 +216,34 @@
         let plan_price_annually_usd_input = document.getElementById("plan_price_annually_usd_input");
         let plan_price_annually_usd_actual_input = document.getElementById("plan_price_annually_usd_actual_input");
 
+        let plan_price_monthly_brl_input = document.getElementById("plan_price_monthly_brl_input");
+        let plan_price_monthly_brl_actual_input = document.getElementById("plan_price_monthly_brl_actual_input");
+        let plan_price_monthly_usd_input = document.getElementById("plan_price_monthly_usd_input");
+        let plan_price_monthly_usd_actual_input = document.getElementById("plan_price_monthly_usd_actual_input");
+
+        let plan_cloud_space_in_mbs_input = document.getElementById("plan_cloud_space_in_mbs_input");
+        let plan_maxium_model_size_in_mbs_input = document.getElementById("plan_maxium_model_size_in_mbs_input");
+        let plan_maxium_federated_size_in_mbs_input = document.getElementById("plan_maxium_federated_size_in_mbs_input");
+        let plan_maxium_devices_available_input = document.getElementById("plan_maxium_devices_available_input");
+        let plan_maxium_devices_changes_in_30d_input = document.getElementById("plan_maxium_devices_changes_in_30d_input");
+        let plan_app_can_be_offline_in_days_input = document.getElementById("plan_app_can_be_offline_in_days_input");
+        let plan_trial_duration_in_days_input = document.getElementById("plan_trial_duration_in_days_input");
+
         js.index.formatToMoney(plan_price_annually_brl_input);
         js.index.formatToMoney(plan_price_annually_brl_actual_input);
         js.index.formatToMoney(plan_price_annually_usd_input);
         js.index.formatToMoney(plan_price_annually_usd_actual_input);
+
+        js.index.formatToMoney(plan_price_monthly_brl_input);
+        js.index.formatToMoney(plan_price_monthly_brl_actual_input);
+        js.index.formatToMoney(plan_price_monthly_usd_input);
+        js.index.formatToMoney(plan_price_monthly_usd_actual_input);
+
+        js.index.formatToNumbers(plan_cloud_space_in_mbs_input);
+        js.index.formatToNumbers(plan_maxium_model_size_in_mbs_input);
+        js.index.formatToNumbers(plan_maxium_federated_size_in_mbs_input);
+        js.index.formatToNumbers(plan_maxium_devices_available_input);
+        js.index.formatToNumbers(plan_maxium_devices_changes_in_30d_input);
+        js.index.formatToNumbers(plan_app_can_be_offline_in_days_input);
     };
 </script>

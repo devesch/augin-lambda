@@ -381,9 +381,10 @@ class ModelController:
             model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
             model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
             if model["model_format"] in ["fbx", "glb"]:
-                model["model_upload_path_glb"] = model["model_upload_path_zip"].replace(".zip", ".glb")
+                model["model_upload_path_glb"] = model["model_upload_path_zip"].replace(".zip", "-glb.zip")
                 if model["model_format"] == "glb":
-                    S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_glb"], ifc_location)
+                    ReadWrite().zip_file(ifc_location, lambda_constants["tmp_path"] + "zipped_glb.zip")
+                    S3().upload_file(lambda_constants["processed_bucket"], model["model_upload_path_glb"], lambda_constants["tmp_path"] + "zipped_glb.zip")
             elif model["model_format"] in ["ifc"]:
                 model["model_upload_path_xml"] = model["model_upload_path_zip"].replace(".zip", "-xml.zip")
                 model["model_upload_path_aug"] = model["model_upload_path_zip"].replace(".zip", "-aug.zip")

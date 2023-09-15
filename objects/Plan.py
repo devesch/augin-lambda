@@ -23,12 +23,22 @@ class Plan:
         self.plan_available_annually = False
         self.plan_price_annually_brl = "0"
         self.plan_price_annually_usd = "0"
+        self.plan_price_annually_brl_actual = "0"
+        self.plan_price_annually_usd_actual = "0"
+        self.plan_price_annually_brl_actual_stripe_id = ""
+        self.plan_price_annually_usd_actual_stripe_id = ""
+
         self.plan_annually_card_payment_method = False
         self.plan_annually_boleto_payment_method = False
         self.plan_annually_pix_payment_method = False
         self.plan_available_monthly = False
         self.plan_price_monthly_brl = "0"
         self.plan_price_monthly_usd = "0"
+        self.plan_price_monthly_brl_actual = "0"
+        self.plan_price_monthly_usd_actual = "0"
+        self.plan_price_monthly_brl_actual_stripe_id = ""
+        self.plan_price_monthly_usd_actual_stripe_id = ""
+
         self.plan_monthly_card_payment_method = False
         self.plan_cloud_space_in_mbs = "0"
         self.plan_maxium_model_size_in_mbs = "0"
@@ -37,8 +47,13 @@ class Plan:
         self.plan_maxium_devices_available = "1"
         self.plan_maxium_devices_changes_in_30d = "1"
         self.plan_has_trial = False
+        self.plan_is_trial = False
         self.plan_trial_duration_in_days = "0"
         self.plan_app_can_be_offline_in_days = "0"
+
+        self.plan_team_play_participants = "0"
+        self.plan_download_files = False
+        self.plan_share_files = False
 
         # self.plan_id = plan_id
         # self.plan_name = ""
@@ -79,3 +94,11 @@ class Plan:
 
         self.created_at = str(time.time())
         self.entity = "plan"
+
+
+def translate_reference_tracker(plan_reference_tracker):
+    from utils.Config import lambda_constants
+
+    for reference_tracker_name, reference_tracker_value in lambda_constants["plan_reference_trackers"].items():
+        if plan_reference_tracker == reference_tracker_value:
+            return reference_tracker_name.title()

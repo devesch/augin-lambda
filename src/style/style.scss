@@ -666,6 +666,12 @@ input[list]::-ms-clear {
 
 }
 
+.my-plan__table {
+    td:last-of-type {
+        text-align: right;
+    }
+}
+
 .my-plan__profile__container {
     display: flex;
     flex-direction: row;
@@ -1147,6 +1153,23 @@ input[list]::-ms-clear {
 
     @media only screen and (min-width: breakpoints.$x-large) {
         grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+.file-formats-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+
+    section {
+        background-color: colors.color("color-neutral-200");
+        padding: 0.1rem 0.5rem;
+        font-weight: bold;
+        color: colors.color("color-neutral-900");
+        border-radius: 0.25rem;
+        font-size: 0.9rem;
     }
 
 }

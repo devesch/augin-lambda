@@ -159,6 +159,11 @@
         "es": "Archivo de procesamiento",
         "pt": "Arquivo em processamento"
     },
+    "Arraste e solte seu arquivo (IFC ou FBX ou GLB) aqui ou": {
+        "en": "Drag and release your file (IFC or FBX or GLB) here or",
+        "es": "Arrastre y suelte su archivo (IFC o FBX o GLB) aquí o",
+        "pt": "Arraste e solte seu arquivo (IFC ou FBX ou GLB) aqui ou"
+    },
     "Arraste e solte seu arquivo (IFC ou FBX) aqui ou": {
         "en": "Drag and drop your file (IFC or FBX) here or",
         "es": "Arrastre y suelte su archivo (IFC o FBX) aquí o",
@@ -1214,6 +1219,11 @@
         "es": "India",
         "pt": "India"
     },
+    "Indisponível": {
+        "en": "Unavailable",
+        "es": "Indisponible",
+        "pt": "Indisponível"
+    },
     "Indonesia": {
         "en": "Indonesia",
         "es": "Indonesia",
@@ -1564,6 +1574,11 @@
         "es": "Métodos de pago",
         "pt": "Métodos de pagamento"
     },
+    "Múltiplo": {
+        "en": "Multiple",
+        "es": "Múltiple",
+        "pt": "Múltiplo"
+    },
     "Namibia": {
         "en": "Namibia",
         "es": "Namibia",
@@ -1804,6 +1819,11 @@
         "es": "PAPÚA NUEVA GUINEA",
         "pt": "Papua New Guinea"
     },
+    "Para criar federados é necessário ter mais de um arquivo e todos eles serem do tipo IFC": {
+        "en": "To create federates you need to have more than one file and all of them are IFC type",
+        "es": "Para crear federados, debe tener más de un archivo y todos ellos son de tipo IFC",
+        "pt": "Para criar federados é necessário ter mais de um arquivo e todos eles serem do tipo IFC"
+    },
     "Paraguay": {
         "en": "Paraguay",
         "es": "Paraguay",
@@ -1958,6 +1978,21 @@
         "en": "Number of devices",
         "es": "Número de dispositivos",
         "pt": "Quantidade de dispositivos"
+    },
+    "Quantidade de pessoas no team play": {
+        "en": "Number of people in Team Play",
+        "es": "Número de personas en el juego del equipo",
+        "pt": "Quantidade de pessoas no team play"
+    },
+    "Realiza compartilhamentos": {
+        "en": "Performs shares",
+        "es": "Realiza acciones",
+        "pt": "Realiza compartilhamentos"
+    },
+    "Realiza downloads": {
+        "en": "Downloads",
+        "es": "Descargas",
+        "pt": "Realiza downloads"
     },
     "Remover": {
         "en": "Remove",
@@ -2564,6 +2599,11 @@
         "es": "de tu plan",
         "pt": "do seu plano"
     },
+    "editar": {
+        "en": "to edit",
+        "es": "para editar",
+        "pt": "editar"
+    },
     "faça um upgrade": {
         "en": "upgrade",
         "es": "mejora",
@@ -2658,6 +2698,11 @@
         "en": "Down arrow icon",
         "es": "Icono de flecha hacia abajo",
         "pt": "Ícone de seta pra baixo"
+    },
+    "Único": {
+        "en": "Single",
+        "es": "Soltero",
+        "pt": "Único"
     },
     "único": {
         "en": "single",

@@ -28,6 +28,22 @@ class Dynamo:
         dynamodb_client = client("dynamodb", region_name=lambda_constants["region"])
         table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
 
+    ### PLAN ###
+
+    def get_plan(self, plan_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#" + plan_id}, "sk": {"S": "plan#" + plan_id}}})
+
+    def get_free_plan(self):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#149765c4adca"}, "sk": {"S": "plan#149765c4adca"}}})
+
+    ### ORDER ###
+    def query_user_orders(self, user_id):
+        return []
+
+    ### PAYMENT METHODS ###
+    def query_user_payment_methods(self, user_id):
+        return []
+
     ### USER ###
     def get_user_email_with_id(self, user_id):
         query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "user_id-user_email-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "user_id"}, "ExpressionAttributeValues": {":0b430": {"S": user_id}}})

@@ -1,0 +1,89 @@
+{{header}}
+{{menu_panel}}
+<main class="my-plan__main">
+    <div class="my-plan__title-container">
+        <h1 class="my-plan__title">{{Seu plano}}</h1>
+        <div class="my-plan__title-container__button-container">
+            <button class="black my-plan__title-container__button">
+                Upgrade
+            </button>
+            <button class="ghost my-plan__title-container__button">
+                <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="Notificações" width="24" height="24">
+            </button>
+        </div>
+    </div>
+    <div class="my-plan__sub-title-container">
+        <h2 class="my-plan__sub-title">
+            {{Olá}} <strong>{{user_name_val}}</strong>, {{seu plano é o}} <strong>{{plan_name_val}}</strong>
+        </h2>
+    </div>
+    <div class="my-plan__main-container">
+        <div class="my-plan__main-container__item">
+            <h3>
+                Features {{do seu plano}}
+            </h3>
+            <table class="my-plan__table">
+                <tr>
+                    <td>{{Tamanho de projeto}}</td>
+                    <td><strong>{{plan_maxium_model_size_in_mbs_val}} Mb</strong></td>
+                </tr>
+                <tr>
+                    <td>{{Armazenamento}}</td>
+                    <td><strong>{{plan_cloud_space_in_mbs_val}} Mb</strong></td>
+                </tr>
+                <tr>
+                    <td>{{Compartilhe por QR Code ou link}}</td>
+                    <td><strong>{{plan_share_files_val}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Reference Trackers {{por projeto}}</td>
+                    <td><strong>{{plan_reference_tracker_val}}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{Projetos federados}}</td>
+                    <td><strong>{{plan_maxium_federated_size_in_mbs_val}}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{Quantidade de dispositivos}}</td>
+                    <td><strong>{{plan_maxium_devices_available_val}}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{Baixe seus IFCs em qualquer lugar}}</td>
+                    <td><strong>{{plan_download_files_val}}</strong></td>
+                </tr>
+            </table>
+            <div class="main-container__item__button-container">
+                <a href="#" class="button">Fazer upgrade</a>
+            </div>
+        </div>
+        <div class="my-plan__main-container__item">
+            <h3>
+                {{Cobrança e pagamento}}
+            </h3>
+            <table class="my-plan__table">
+                <tr>
+                    <td>{{Preço}}</td>
+                    <td><strong>{{user_subscription_currency_val}} {{user_subscription_price_val}}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{Período de cobrança}}</td>
+                    <td><strong>{{user_subscription_recurrency_val}}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{Data de renovação}}</td>
+                    <td><strong>{{user_subscription_valid_until_val}}</strong></td>
+                </tr>
+            </table>
+            <div class="main-container__item__button-container">
+                {{html_upgrade_plan_button}}
+                <!-- <a class="button" href="">{{Atualizar forma de pagamento}}</a>
+                <a class="main-container__item__link" href="">{{Cancelar assinatura}}</a> -->
+            </div>
+
+            {{html_payment_history_div}}
+            {{html_payment_methods_div}}
+
+        </div>
+    </div>
+</main>
+{{footer}}
