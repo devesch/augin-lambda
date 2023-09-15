@@ -12,4 +12,57 @@
             <img src="{{cdn_val}}/assets/icons/close.svg" alt="" width="24" height="24">
         </button>
     </div>
+    <nav class="my-plan__nav">
+        <strong>{{Acesso}}</strong>
+        <ul class="my-plan__nav__ul">
+            <li class="{{panel_create_project_active_val}}">
+                <a href="{{domain_name_url_val}}/user_login">
+                    <img src="{{cdn_val}}/assets/icons/cloud_upload.svg" alt="" width="24" height="24" />
+                    <span>{{Fazer login}}</span>
+                </a>
+            </li>
+            <li class="{{panel_create_project_active_val}}">
+                <a href="{{domain_name_url_val}}/user_email_register">
+                    <img src="{{cdn_val}}/assets/icons/cloud_upload.svg" alt="" width="24" height="24" />
+                    <span>{{Criar conta}}</span>
+                </a>
+            </li>
+        </ul>
+
+        <strong>{{Suporte}}</strong>
+        <ul class="my-plan__nav__ul">
+            <li>
+                <a href="">
+                    <img src="{{cdn_val}}/assets/icons/help_center.svg" alt="" width="24" height="24" />
+                    <span>{{Central de ajuda}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="{{cdn_val}}/assets/icons/support_agent.svg" alt="" width="24" height="24" />
+                    <span>{{Contato}}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="my-plan__header-footer-container">
+        <section class="my-plan__profile">
+            <menu class="my-plan__profile-menu">
+                <li>
+                    <form class="label-select-container" action="{{domain_name_url_val}}/home" method="POST">
+                        <label class="button" for="select_translation">
+                            <img src="{{cdn_val}}/assets/icons/translate.svg" alt="Trocar idioma" width="24" height="24">
+                        </label>
+                        <input hidden name="user_url" value="{{user_url_val}}">
+                        <select name="select_translation" id="select_translation" class="hidden-select" onchange="this.form.submit()">
+                            <option value="" selected disabled>{{Idioma}}</option>
+                            <option value="pt">Português</option>
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </form>
+                </li>
+            </menu>
+        </section>
+    </div>
 </header>

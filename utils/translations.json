@@ -24,6 +24,11 @@
         "es": "Acceder a mi cuenta",
         "pt": "Acessar minha conta"
     },
+    "Acesso": {
+        "en": "Access",
+        "es": "Acceso",
+        "pt": "Acesso"
+    },
     "Adicionar": {
         "en": "To add",
         "es": "Para agregar",
@@ -1088,6 +1093,11 @@
         "en": "Favorites",
         "es": "Favoritos",
         "pt": "Favoritos"
+    },
+    "Fazer login": {
+        "en": "Login",
+        "es": "Hacer login",
+        "pt": "Fazer login"
     },
     "Fechar": {
         "en": "To close",
