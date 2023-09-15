@@ -336,14 +336,14 @@ class PanelUserData(PanelPage, UserPage):
         html.esc("html_user_phone_input", self.generate_html_user_phone_input(user_country_alpha_2, self.user.user_phone))
 
         if self.post.get("user_phone"):
-            html.esc("user_phone_val", ReadWrite().format_to_phone(self.post["user_phone"]))
+            html.esc("user_phone_val", StrFormat().format_to_phone(self.post["user_phone"]))
         else:
-            html.esc("user_phone_val", ReadWrite().format_to_phone(self.user.user_phone))
+            html.esc("user_phone_val", StrFormat().format_to_phone(self.user.user_phone))
 
         if self.post.get("user_cpf"):
-            html.esc("user_cpf_val", ReadWrite().format_to_cpf(self.post["user_cpf"]))
+            html.esc("user_cpf_val", StrFormat().format_to_cpf(self.post["user_cpf"]))
         elif hasattr(self.user, "user_cpf"):
-            html.esc("user_cpf_val", ReadWrite().format_to_cpf(self.user.user_cpf))
+            html.esc("user_cpf_val", StrFormat().format_to_cpf(self.user.user_cpf))
         if self.post.get("user_cnpj"):
             html.esc("user_cnpj_val", self.post["user_cnpj"])
         elif hasattr(self.user, "user_cnpj"):

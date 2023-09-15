@@ -2,17 +2,17 @@
     <div class="box-inputs">
         <div class="input-default">
             <input type="email" name="user_email" id="user_email" value="{{user_email_val}}" class="floating" readonly minlength="3" maxlength="255" required>
-            <label for="user_email" class="floating-label">Seu Email</label>
+            <label for="user_email" class="floating-label">{{Seu Email}}</label>
         </div>
         <div class="input-default">
             <input name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.maskToLetter(this)" maxlength="50" minlength="1" required>
-            <label for="user_name" class="floating-label">Seu nome</label>
+            <label for="user_name" class="floating-label">{{Seu nome}}</label>
         </div>
         <div class="input-default">
             <select onchange="js.index.panelUserDataChangeCountryForm('international')" name="user_country" class="floating" id="user_country" value="{{user_country_val}}" required>
                 {{html_user_country_options}}
             </select>
-            <label for="user_country" class="floating-label">País</label>
+            <label for="user_country" class="floating-label">{{País}}</label>
         </div>
         <div class="input-default-icon focus" id="user_phone_div">
             {{html_user_phone_input}}
@@ -23,24 +23,24 @@
         </div>
         <div class="input-default">
             <input name="user_zip_code" id="user_zip_code" value="{{user_zip_code_val}}" class="floating" oninput="js.index.maskToNumber(this)" maxlength="18">
-            <label for="user_zip_code" class="floating-label">código ZIP</label>
+            <label for="user_zip_code" class="floating-label">{{Código ZIP}}</label>
         </div>
         <div class="input-default">
             <input name="user_state" id="user_state" class="floating" value="{{user_state_val}}">
-            <label for="user_state" class="floating-label">estado/região/provincia</label>
+            <label for="user_state" class="floating-label">{{Estado/Região/Provincia}}</label>
         </div>
         <div class="input-default">
             <input name="user_city" id="user_city" class="floating" value="{{user_city_val}}">
-            <label for="user_city" class="floating-label">Digite a sua cidade</label>
+            <label for="user_city" class="floating-label">{{Digite a sua cidade}}</label>
         </div>
         <input placeholder="{{Código da Cidade}}" name="user_city_code" class="floating" id="user_city_code" value="{{user_city_code_val}}" readonly style="display:none;">
         <div class="input-default">
             <input class="floating" name="user_neighborhood" id="user_neighborhood" class="floating" value="{{user_neighborhood_val}}">
-            <label for="user_neighborhood" class="floating-label">Endereço</label>
+            <label for="user_neighborhood" class="floating-label">{{Endereço}}</label>
         </div>
         <div class="input-default">
             <input name="user_street" id="user_street" class="floating" value="{{user_street_val}}">
-            <label for="user_street" class="floating-label">Endereço 2</label>
+            <label for="user_street" class="floating-label">{{Endereço 2}}</label>
         </div>
         <div class="input-default">
             <input hidden placeholder="{{Número}}" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" oninput="js.index.maskToNumber(this)">
