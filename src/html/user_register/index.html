@@ -16,10 +16,10 @@
             <label for="name-account_input">{{Nome completo}}</label>
         </div>
         <p class="error none">{{Deve conter apenas letras}}</p>
-        <div class="create-account__input-container floating-input">
-            <input type="password" name="user_password" value="{{user_password_val}}" id="password-account_input" placeholder="" required minlength="8" maxlength="500">
-            <label for="password-account_input">{{Senha}}</label>
-            <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="password-account_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+        <div class="login__input-container floating-input">
+            <input type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+            <label for="user_password_input">{{Nova Senha}}</label>
+            <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
                 <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
             </button>
         </div>
