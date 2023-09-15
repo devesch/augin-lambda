@@ -9,7 +9,7 @@ class PanelUserDataChangeCountry(BasePage):
             return {"error": "no selected_country found in post"}
         if not self.post.get("user_client_type"):
             return {"error": "no user_client_type found in post"}
-        if self.post["selected_country"] not in JsonData.get_country_data():
+        if self.post["selected_country"] not in JsonData().get_country_data():
             return {"error": "invalid selected_country found in post"}
         if self.post["selected_country"] == "BR" and self.post["user_client_type"] == "international":
             return {"success": lambda_constants["domain_name_url"] + "/panel_user_data/?user_client_type=physical"}
