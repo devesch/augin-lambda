@@ -114,6 +114,10 @@ class Http:
     def format_post_data(self, post):
         dangerous_characters = ["<", ">", "?", ";", "[", "\\", "]", "|"]
         format_to_number_fields = [
+            "user_phone",
+            "user_cpf",
+            "user_cnpj",
+            "user_zip_code",
             "plan_price_annually_brl_actual",
             "plan_price_annually_usd_actual",
             "plan_price_monthly_brl_actual",
@@ -130,7 +134,7 @@ class Http:
             "plan_trial_duration_in_days",
             "plan_app_can_be_offline_in_days",
         ]
-        format_to_letter_fields = ["user_name"]
+        format_to_letter_fields = ["user_name", "user_complement"]
         acceptable_json_fields = ["last_evaluated_key"]
         ignore_param = []
         if not post:
