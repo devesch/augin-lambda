@@ -2,6 +2,7 @@ from python_web_frame.panel_page import PanelPage
 from utils.utils.Validation import Validation
 from utils.utils.Generate import Generate
 from utils.utils.ReadWrite import ReadWrite
+from utils.utils.Http import Http
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Ses import Ses
 
@@ -38,7 +39,7 @@ class PanelUserNewPassword(PanelPage):
         user_password_modified_email = self.generate_user_password_modified_email(self.user.user_name)
         self.user.clear_all_auth_tokens()
         Ses().send_email(self.user.user_email, body_html=user_password_modified_email, body_text=user_password_modified_email, subject_data="Augin - Sua senha foi alterada")
-        return {"html": self.utils.redirect("home"), "command": "logout", "user_auth_token": None}
+        return {"html": Http().redirect("home"), "command": "logout", "user_auth_token": None}
 
     def generate_user_password_modified_email(self, user_name):
         html = ReadWrite().read_html("panel_user_new_password/_codes/html_password_modified_email")
