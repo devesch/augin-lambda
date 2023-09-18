@@ -71,16 +71,13 @@ export async function panelUserDataChangeCountryForm(user_client_type) {
     if ("success" in panel_user_data_change_country_response) {
         if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/panel_user_data")) {
             window.location.href = panel_user_data_change_country_response["success"];
-            return
         }
-        if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/checkout_order_summary")) {
+        if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/checkout_upgrade_your_plan")) {
             if (panel_user_data_change_country_response["success"].includes("physical")) {
                 showCheckoutPanelUserDataForm("physical")
-                return
             }
             if (panel_user_data_change_country_response["success"].includes("international")) {
                 showCheckoutPanelUserDataForm("international")
-                return
             }
         }
     };
