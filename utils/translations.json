@@ -2039,6 +2039,11 @@
         "es": "No se encuentran proyectos con los datos proporcionados",
         "pt": "Nenhum projeto encontrado com os dados fornecidos"
     },
+    "Nenhum usuário encontrado": {
+        "en": "No User Found",
+        "es": "Usuario no encontrado",
+        "pt": "Nenhum usuário encontrado"
+    },
     "Nenhuma mudança de URL necessária": {
         "en": "No necessary URL change",
         "es": "No hay cambio de URL necesario",

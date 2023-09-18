@@ -12,10 +12,17 @@ class UpdateUser(BasePage):
     def run(self):
         if not self.post.get("command"):
             return {"error": "Nenhum command no post"}
+        if not self.user:
+            return {"error": "Nenhum usuário encontrado"}
 
         if self.post["command"] == "check_if_user_can_upgrade_his_plan":
-            self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
-            return {"success": "folder removed from shared"}
+            plan = Dynamo().get_plan(self.post["plan_id"])
+            if not plan:
+                return {"error": "Nenhum plano encontrado com este plan_id", "user_client_type": self.user.user_client_type}
+            if not self.user.check_if_is_payment_ready():
+                return {"error": "É necessário que o usuário atualize os seus dados", "user_client_type": self.user.user_client_type}
+            else:
+                return {"success": "O usuário pode trocar o seu plano atual"}
 
         if self.post["command"] == "remove_folder_from_shared":
             self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])

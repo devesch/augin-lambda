@@ -23,11 +23,11 @@
         </div>
         <div class="input-default">
             <input hidden type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" maxlength="18">
-            <input type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" required>
+            <input type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14">
             <label for="user_cpf" class="floating-label">Seu CPF</label>
         </div>
         <div class="input-default">
-            <input type="text" name="user_zip_code" id="user_zip_code" class="floating" value="{{user_zip_code_val}}" oninput="js.index.showUserPhysicalAddressData()" minlength="9" maxlength="9" required>
+            <input type="text" name="user_zip_code" id="user_zip_code" class="floating" value="{{user_zip_code_val}}" oninput="js.index.showUserPhysicalAddressData()" minlength="9" maxlength="9">
             <label for="user_zip_code" class="floating-label">Seu CEP</label>
         </div>
         <div class="page-user__box-user-data__box-inputs__box-adress box-inputs" style="{{box_inputs_style_val}}">

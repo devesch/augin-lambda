@@ -40,6 +40,7 @@ class User:
         self.user_subscription = ""
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
+        self.user_payment_ready = False
 
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
@@ -309,11 +310,12 @@ class User:
                 self.user_payment_ready = False
 
         if not self.user_payment_ready:
-            return
+            return False
         if not self.user_stripe_customer_id:
             self.user_stripe_customer_id = StripeController().create_customer(self)
         else:
             StripeController().update_customer(self.user_stripe_customer_id, self)
+            return True
 
     def update_cart_currency(self):
         if self.user_address_data["user_country"] == "BR":
