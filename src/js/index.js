@@ -86,6 +86,79 @@ export async function panelUserDataChangeCountryForm(user_client_type) {
     };
 }
 
+export async function postCheckoutPanelUserDataForm(userClientType) {
+    console.log("Running postCheckoutPanelUserDataForm");
+    console.log("userClientType ", userClientType)
+    let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
+
+    let user_email = document.getElementById("user_email").value
+    console.log("user_email ", user_email)
+    let user_name = document.getElementById("user_name").value
+    console.log("user_name ", user_name)
+    let user_phone = document.getElementById("user_phone").value
+    console.log("user_phone ", user_phone)
+    let user_cpf = document.getElementById("user_cpf").value
+    console.log("user_cpf ", user_cpf)
+    let user_cnpj = document.getElementById("user_cnpj").value
+    console.log("user_cnpj ", user_cnpj)
+    let user_country = document.getElementById("user_country").value
+    console.log("user_country ", user_country)
+    let user_zip_code = document.getElementById("user_zip_code").value
+    console.log("user_zip_code ", user_zip_code)
+    let user_state = document.getElementById("user_state").value
+    console.log("user_state ", user_state)
+    let user_city = document.getElementById("user_city").value
+    console.log("user_city ", user_city)
+    let user_city_code = document.getElementById("user_city_code").value
+    console.log("user_city_code ", user_city_code)
+    let user_neighborhood = document.getElementById("user_neighborhood").value
+    console.log("user_neighborhood ", user_neighborhood)
+    let user_street = document.getElementById("user_street").value
+    console.log("user_street ", user_street)
+    let user_street_number = document.getElementById("user_street_number").value
+    console.log("user_street_number ", user_street_number)
+    let user_complement = document.getElementById("user_complement").value
+    console.log("user_complement ", user_complement)
+    sleep(5000)
+    let panel_user_data_page_response = await request(props.domainNameUrlVal + "/panel_user_data/?render_props=False&user_client_type=" + userClientType, "POST", {
+        "Content-Type": "application/x-www-form-urlencoded",
+    }, {
+        "user_email": user_email,
+        "user_name": user_name,
+        "user_phone": user_phone,
+        "user_cpf": user_cpf,
+        "user_cnpj": user_cnpj,
+        "user_country": user_country,
+        "user_zip_code": user_zip_code,
+        "user_state": user_state,
+        "user_city": user_city,
+        "user_city_code": user_city_code,
+        "user_neighborhood": user_neighborhood,
+        "user_street": user_street,
+        "user_street_number": user_street_number,
+        "user_complement": user_complement
+    }, false);
+    console.log("panel_user_data_page_response ", panel_user_data_page_response);
+    panel_user_data_form_div.innerHTML = panel_user_data_page_response;
+    if (panel_user_data_page_response.includes("suc") && panel_user_data_page_response.includes("ess")) {
+        console.log("panel_user_data_page_response.includes Perfil atualizado com sucesso")
+        let redirect_to_payment_page_response = await request(props.domainNameUrlVal + "/checkout_upgrade_your_plan", "POST", {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Access-Control-Allow-Origin": "*",
+        }, {
+            "continue_to_payment": "continue_to_payment",
+        }, false);
+        console.log("redirect_to_payment_page_response ", redirect_to_payment_page_response)
+        if (redirect_to_payment_page_response.includes("window.location.replace")) {
+            console.log("redirect_to_payment_page_response has redirect")
+            let redirect_to_payment_page_response_split_array = redirect_to_payment_page_response.split("'")
+            console.log("redirect_to_payment_page_response_split_array ", redirect_to_payment_page_response_split_array)
+            console.log("redirect_to_payment_page_response_split_array[1] ", redirect_to_payment_page_response_split_array[1])
+            window.location.replace(redirect_to_payment_page_response_split_array[1])
+        }
+    }
+}
+
 
 export async function openCookiesContainer() {
     document.querySelector(".footer-cookies").classList.add("active");

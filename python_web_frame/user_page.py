@@ -5,6 +5,7 @@ from utils.AWS.Ses import Ses
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.JsonData import JsonData
 from utils.utils.Sort import Sort
+from utils.utils.StrFormat import StrFormat
 
 
 class UserPage(BasePage):
@@ -55,10 +56,21 @@ class UserPage(BasePage):
             return verification_code
         return None
 
-    def check_if_verify_email_expired(self, creation_time):
-        import time
-
-        delta_time = int(time.time()) - int(float(creation_time))
-        if delta_time > 900:
-            return True
-        return False
+    def generate_html_user_phone_input(self, user_country_alpha_2, user_phone=""):
+        html = ReadWrite().read_html("user_register/_codes/html_user_phone_input")
+        html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
+        html.esc("user_country_code_val", JsonData().get_country_phone_code()[user_country_alpha_2])
+        if user_country_alpha_2.upper() == "BR":
+            html.esc("html_oninput_maskToPhone", str(ReadWrite().read_html("user_register/_codes/html_oninput_mask_to_phone")))
+            html.esc("user_phone_input_maxlength_val", "15")
+            if self.post.get("user_phone"):
+                html.esc("user_phone_val", StrFormat().format_to_phone(self.post["user_phone"]))
+            if user_phone:
+                html.esc("user_phone_val", StrFormat().format_to_phone(user_phone))
+        elif user_country_alpha_2.upper() != "BR":
+            html.esc("user_phone_input_maxlength_val", "17")
+            if self.post.get("user_phone"):
+                html.esc("user_phone_val", self.post["user_phone"])
+            if user_phone:
+                html.esc("user_phone_val", user_phone)
+        return str(html)

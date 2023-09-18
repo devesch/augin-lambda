@@ -1104,6 +1104,11 @@
         "es": "Error al procesar el archivo",
         "pt": "Erro ao processar arquivo"
     },
+    "Escolha seu novo plano": {
+        "en": "Choose your new plan",
+        "es": "Elija su nuevo plan",
+        "pt": "Escolha seu novo plano"
+    },
     "Escolher nova versão": {
         "en": "Choose new version",
         "es": "Elija nueva versión",

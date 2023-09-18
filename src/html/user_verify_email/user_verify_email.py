@@ -2,6 +2,7 @@ from python_web_frame.user_page import UserPage
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.EncodeDecode import EncodeDecode
+from objects.VerifyEmail import check_if_verify_email_expired
 
 
 class UserVerifyEmail(UserPage):
@@ -30,6 +31,6 @@ class UserVerifyEmail(UserPage):
         verify_email = Dynamo().get_verify_email(self.path["user_email"], self.post["verify_email_code"])
         if not verify_email:
             return self.render_get_with_error("Código de verificação inválido.")
-        if self.check_if_verify_email_expired(verify_email["created_at"]):
+        if check_if_verify_email_expired(verify_email["created_at"]):
             return self.render_get_with_error("Código de verificação expirado.")
         return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.path["user_email"]) + "&verify_email_code=" + self.post["verify_email_code"])

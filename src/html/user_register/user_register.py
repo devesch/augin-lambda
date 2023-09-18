@@ -5,6 +5,7 @@ from utils.utils.Http import Http
 from utils.utils.Validation import Validation
 from utils.utils.Generate import Generate
 from utils.utils.JsonData import JsonData
+from objects.VerifyEmail import check_if_verify_email_expired
 
 
 class UserRegister(UserPage):
@@ -18,7 +19,7 @@ class UserRegister(UserPage):
             return Http().redirect("user_login")
         if not self.path.get("verify_email"):
             return Http().redirect("user_login")
-        if self.check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
+        if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
             return Http().redirect("user_login")
 
         html = super().parse_html()
@@ -57,7 +58,7 @@ class UserRegister(UserPage):
             return Http().redirect("user_login")
         if not self.path.get("verify_email"):
             return Http().redirect("user_login")
-        if self.check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
+        if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
             return Http().redirect("user_login")
 
         if not self.post.get("user_name"):
