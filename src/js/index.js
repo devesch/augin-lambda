@@ -24,6 +24,8 @@ export function getWebView() {
 
 
 export async function checkIfUserCanUpgradePlan(plan_id) {
+    let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input");
+    user_selected_plan_id_input.value = plan_id
     let update_user_response = await apiCaller("update_user", {
         "command": "check_if_user_can_upgrade_his_plan",
         "plan_id": plan_id
@@ -31,6 +33,8 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
 
     if ("error" in update_user_response) {
         showCheckoutPanelUserDataForm(update_user_response["user_client_type"]);
+    } else {
+        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value)
     }
 }
 
@@ -141,21 +145,8 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
     console.log("panel_user_data_page_response ", panel_user_data_page_response);
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
     if (panel_user_data_page_response.includes("suc") && panel_user_data_page_response.includes("ess")) {
-        console.log("panel_user_data_page_response.includes Perfil atualizado com sucesso")
-        let redirect_to_payment_page_response = await request(ProjectData.props.domainNameUrlVal + "/checkout_upgrade_your_plan", "POST", {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Access-Control-Allow-Origin": "*",
-        }, {
-            "continue_to_payment": "continue_to_payment",
-        }, false);
-        console.log("redirect_to_payment_page_response ", redirect_to_payment_page_response)
-        if (redirect_to_payment_page_response.includes("window.location.replace")) {
-            console.log("redirect_to_payment_page_response has redirect")
-            let redirect_to_payment_page_response_split_array = redirect_to_payment_page_response.split("'")
-            console.log("redirect_to_payment_page_response_split_array ", redirect_to_payment_page_response_split_array)
-            console.log("redirect_to_payment_page_response_split_array[1] ", redirect_to_payment_page_response_split_array[1])
-            window.location.replace(redirect_to_payment_page_response_split_array[1])
-        }
+        let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input")
+        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value)
     }
 }
 
