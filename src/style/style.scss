@@ -1285,6 +1285,8 @@ input[list]::-ms-clear {
         padding: 1rem 2rem;
         border: 2px solid colors.color("color-primary-700");
         border-radius: 1rem;
+        max-width: 400px;
+        flex-grow: 1;
     }
 
     ul {
