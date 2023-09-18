@@ -29,9 +29,9 @@
     </div>
 
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
-        <input hidden id="uploading_index_input" value="1">
+        <input hidden id="uploading_index_input" value="{{uploading_index_input_val}}">
 
-        <article id="uploading_div" class="panel-create-project-uploading-container"></article>
+        <article id="uploading_div" class="panel-create-project-uploading-container">{{html_uploading_models}}</article>
 
         <div class="form-main-button-container">
             <div class="switch-container" id="federated_switch_div">

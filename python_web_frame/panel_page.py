@@ -13,6 +13,13 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_uploading_models(self, models_not_created):
+        full_html = []
+        if models_not_created:
+            for index, model in enumerate(models_not_created):
+                full_html.append(str(self.show_html_uploading_models(model["model_filename"], index)))
+        return "".join(full_html)
+
     def list_html_models_in_processing(self, event, models_in_processing):
         full_html = []
         if models_in_processing:
