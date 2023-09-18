@@ -36,14 +36,22 @@ export async function request(url, method = "GET", headers = {}, postData = {}, 
         }
     }
 
-    const requestOptions = {
+
+    var requestOptions = {
         method: method,
         headers: myHeaders,
         body: body_data,
         redirect: 'follow',
         mode: 'no-cors'
     };
-
+    if (method == "GET") {
+        var requestOptions = {
+            method: method,
+            headers: myHeaders,
+            redirect: 'follow',
+            mode: 'no-cors'
+        };
+    }
     console.log("requestOptions ", requestOptions);
     const response = await fetch(url, requestOptions);
     console.log("request response ", response);
