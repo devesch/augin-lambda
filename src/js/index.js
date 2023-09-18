@@ -68,20 +68,23 @@ export async function panelUserDataChangeCountryForm(user_client_type) {
         "selected_country": user_country_select.value,
         "user_client_type": user_client_type
     });
-    if (panel_user_data_change_country_response.success) {
+    if ("success" in panel_user_data_change_country_response) {
         if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/panel_user_data")) {
-            window.location.href = panel_user_data_change_country_response.success
+            window.location.href = panel_user_data_change_country_response["success"];
+            return
         }
         if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/checkout_order_summary")) {
-            if (panel_user_data_change_country_response.success.includes("physical")) {
+            if (panel_user_data_change_country_response["success"].includes("physical")) {
                 showCheckoutPanelUserDataForm("physical")
+                return
             }
-            if (panel_user_data_change_country_response.success.includes("international")) {
+            if (panel_user_data_change_country_response["success"].includes("international")) {
                 showCheckoutPanelUserDataForm("international")
+                return
             }
         }
     };
-    if (panel_user_data_change_country_response.error) {
+    if ("error" in panel_user_data_change_country_response) {
         userRegisterGenerateCountryInput();
     };
 }
