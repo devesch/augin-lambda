@@ -104,6 +104,16 @@
         "es": "Afeganistão",
         "pt": "Afeganistão"
     },
+    "Aguardando a confirmação do pagamento": {
+        "en": "Awaiting confirmation of payment",
+        "es": "Esperando la confirmación del pago",
+        "pt": "Aguardando a confirmação do pagamento"
+    },
+    "Aguarde enquanto processamos o seu pagamento": {
+        "en": "Wait while we process your payment",
+        "es": "Espera mientras procesamos tu pago",
+        "pt": "Aguarde enquanto processamos o seu pagamento"
+    },
     "Aguarde enquanto processamos seu pedido e geramos um arquivo compactado do modelo.": {
         "en": "Wait while we process your order and generate a compressed file of the model.",
         "es": "Espere mientras procesemos su pedido y generemos un archivo comprimido del modelo.",
@@ -1249,6 +1259,11 @@
         "es": "He leído y acepto el contrato de",
         "pt": "Eu li e concordo com o contrato de"
     },
+    "Evento não verificado pelo stripe.": {
+        "en": "Event not verified by the Stripe.",
+        "es": "Evento no verificado por la franja.",
+        "pt": "Evento não verificado pelo stripe."
+    },
     "Excluir modelo": {
         "en": "Delete template",
         "es": "Eliminar plantilla",
@@ -1343,6 +1358,11 @@
         "en": "Filter",
         "es": "Filtrar",
         "pt": "Filtrar"
+    },
+    "Finalizado": {
+        "en": "Finished",
+        "es": "Finalizado",
+        "pt": "Finalizado"
     },
     "Finland": {
         "en": "Finland",
@@ -1548,6 +1568,11 @@
         "en": "Iceland",
         "es": "Islandia",
         "pt": "Islândia"
+    },
+    "Icone sucesso": {
+        "en": "Icon Success",
+        "es": "Éxito ícono",
+        "pt": "Icone sucesso"
     },
     "Idioma": {
         "en": "Language",
@@ -2054,15 +2079,30 @@
         "es": "No se encuentran proyectos con los datos proporcionados",
         "pt": "Nenhum projeto encontrado com os dados fornecidos"
     },
+    "Nenhum tipo de compra enviado.": {
+        "en": "No type of purchase sent.",
+        "es": "No se envía ningún tipo de compra.",
+        "pt": "Nenhum tipo de compra enviado."
+    },
     "Nenhum usuário encontrado": {
         "en": "No User Found",
         "es": "Usuario no encontrado",
         "pt": "Nenhum usuário encontrado"
     },
+    "Nenhum usuário encontrado.": {
+        "en": "No user found.",
+        "es": "Usuario no encontrado.",
+        "pt": "Nenhum usuário encontrado."
+    },
     "Nenhuma mudança de URL necessária": {
         "en": "No necessary URL change",
         "es": "No hay cambio de URL necesario",
         "pt": "Nenhuma mudança de URL necessária"
+    },
+    "Nenhuma order encontrada.": {
+        "en": "No order found.",
+        "es": "No se encontró ningún orden.",
+        "pt": "Nenhuma order encontrada."
     },
     "Nenhuma pasta": {
         "en": "No folders",
@@ -2078,6 +2118,11 @@
         "en": "No folders found with the data provided",
         "es": "No se encuentran carpetas con los datos proporcionados",
         "pt": "Nenhuma pasta encontrada com os dados fornecidos"
+    },
+    "Nenhuma recorrência de pagamento enviada.": {
+        "en": "No payment recurrence sent.",
+        "es": "No se envió recurrencia de pago.",
+        "pt": "Nenhuma recorrência de pagamento enviada."
     },
     "Nepal": {
         "en": "Nepal",
@@ -2364,6 +2409,16 @@
         "es": "Opcional: complete para proteger su enlace",
         "pt": "Opcional: Preencha para proteger seu link"
     },
+    "Ordem encontrada porém não se encontra paga": {
+        "en": "Order found but not paid",
+        "es": "Orden encontrado pero no pagado",
+        "pt": "Ordem encontrada porém não se encontra paga"
+    },
+    "Ordem encontrada porém não se encontra paga.": {
+        "en": "Order found but is not paid.",
+        "es": "Orden encontrado pero no se paga.",
+        "pt": "Ordem encontrada porém não se encontra paga."
+    },
     "Os formartos suportados de IFC são: IFC2x3 e IFC4.": {
         "en": "IFC -supported shapes are: IFC2x3 and IFC4.",
         "es": "IFC Las formas soportadas son: IFC2X3 e IFC4.",
@@ -2403,6 +2458,11 @@
         "en": "Paid out",
         "es": "Pagado",
         "pt": "Pago"
+    },
+    "Pague Agora": {
+        "en": "Pay now",
+        "es": "Pagar ahora",
+        "pt": "Pague Agora"
     },
     "Pakistan": {
         "en": "Pakistan",
@@ -2478,6 +2538,11 @@
         "en": "Country",
         "es": "País",
         "pt": "País"
+    },
+    "Pedido": {
+        "en": "Order",
+        "es": "Orden",
+        "pt": "Pedido"
     },
     "Pendências": {
         "en": "Pendencies",
@@ -2624,6 +2689,11 @@
         "es": "Marque que está de acuerdo con los términos.",
         "pt": "Por favor marque que está de acordo com os termos."
     },
+    "Por favor não feche essa janela até a sua conclusão": {
+        "en": "Please do not close this window until its conclusion",
+        "es": "No cierre esta ventana hasta su conclusión",
+        "pt": "Por favor não feche essa janela até a sua conclusão"
+    },
     "Por favor selecione o seu país.": {
         "en": "Please select your country.",
         "es": "Por favor seleccione su país.",
@@ -2643,6 +2713,11 @@
         "en": "Portugal",
         "es": "Portugal",
         "pt": "Portugal"
+    },
+    "Precisa de ajuda? Mande uma mensagem para nosso": {
+        "en": "Need help?Send a message to our",
+        "es": "¿Necesita ayuda?Enviar un mensaje a nuestro",
+        "pt": "Precisa de ajuda? Mande uma mensagem para nosso"
     },
     "Preferências de idioma:": {
         "en": "Language Preferences:",
@@ -2769,6 +2844,11 @@
         "es": "Descargas",
         "pt": "Realiza downloads"
     },
+    "Recorrência de pagamento inválida.": {
+        "en": "Invalid payment recurrence.",
+        "es": "Recurrencia de pago no válida.",
+        "pt": "Recorrência de pagamento inválida."
+    },
     "Reference Trackers": {
         "en": "Reference Trackers",
         "es": "Rastreadores de referencia",
@@ -2788,6 +2868,11 @@
         "en": "Folder",
         "es": "Carpeta",
         "pt": "Renomear pasta"
+    },
+    "Resumo do pedido": {
+        "en": "Order Summary",
+        "es": "Resumen de pedido",
+        "pt": "Resumo do pedido"
     },
     "Romania": {
         "en": "Romania",
@@ -3049,10 +3134,20 @@
         "es": "Sri Lanka",
         "pt": "Sri Lanka"
     },
+    "Status do pedido": {
+        "en": "Order status",
+        "es": "Estado de pedido",
+        "pt": "Status do pedido"
+    },
     "Structural": {
         "en": "Structural",
         "es": "Estructural",
         "pt": "Estrutural"
+    },
+    "Sua Assinatura": {
+        "en": "Your signature",
+        "es": "Su firma",
+        "pt": "Sua Assinatura"
     },
     "Sua senha acabou de ser alterada!": {
         "en": "Your password has just been changed!",
@@ -3213,6 +3308,11 @@
         "en": "Project",
         "es": "Proyecto",
         "pt": "Tornar projeto acessível"
+    },
+    "Total": {
+        "en": "Total",
+        "es": "Total",
+        "pt": "Total"
     },
     "Trinidad and Tobago": {
         "en": "Trinidad and Tobago",
@@ -3413,6 +3513,16 @@
         "en": "Last seen",
         "es": "Ultima vez visto",
         "pt": "Visto por último"
+    },
+    "Visualizar detalhes": {
+        "en": "View details",
+        "es": "Ver detalles",
+        "pt": "Visualizar detalhes"
+    },
+    "Você acabou de iniciar uma assinatura, por favor revise as suas informações": {
+        "en": "You just started a signature, please review your information",
+        "es": "Acaba de comenzar una firma, revise su información.",
+        "pt": "Você acabou de iniciar uma assinatura, por favor revise as suas informações"
     },
     "Você está cadastrado como pessoa física": {
         "en": "You are registered as an individual",
@@ -3759,6 +3869,11 @@
         "es": "este modelo no pertenece al usuario",
         "pt": "this model doesnt belong to user"
     },
+    "total": {
+        "en": "total",
+        "es": "total",
+        "pt": "total"
+    },
     "Åland Islands": {
         "en": "Åland Islands",
         "es": "Islas Aland",
@@ -3893,6 +4008,11 @@
         "en": "Down arrow icon",
         "es": "Icono de flecha hacia abajo",
         "pt": "Ícone de seta pra baixo"
+    },
+    "Ícone sucesso": {
+        "en": "Successful icon",
+        "es": "Icono exitoso",
+        "pt": "Ícone sucesso"
     },
     "Único": {
         "en": "Single",

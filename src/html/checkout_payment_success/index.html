@@ -1,0 +1,42 @@
+{{header}}
+{{menu_panel}}
+<div class="container page page-center" id="checkoutPaymentSuccess">
+    <div class="box-content max-width">
+        <div class="page__top-side-completed-purchase" style="display:none;">
+            <img src="{{cdn_val}}/assets/icons/icon-success.svg" alt="{{Ícone sucesso}}">
+            <h1>{{Pedido}} <a href="{{domain_name_url_val}}/panel_order/?order_id={{order_id_val}}">#{{order_short_id_val}}</a> {{Finalizado}}! :)</h1>
+        </div>
+        <div class="page__top-side-completed-purchase__box-button">
+            <div class="button-default">
+                <a href="{{domain_name_url_val}}/panel_order/?order_id={{order_id_val}}">{{Visualizar detalhes}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal modal-loader-spinner" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="box-massage-processing">
+            <h1 class="message-processing-payment">{{Aguarde enquanto processamos o seu pagamento}}. <br> {{Por favor não feche essa janela até a sua conclusão}}.</h1>
+            <span class="loader-spinner"></span>
+        </div>
+    </div>
+</div>
+
+{{footer}}
+<script>
+    window.onload = async function () {
+        console.log("Running on load");
+        js.index.openModal('.modal.modal-loader-spinner');
+        while (true) {
+            if (await js.index.checkout_check_if_order_is_paid('{{order_id_val}}')) {
+                js.index.closeModal('.modal.modal-loader-spinner');
+                break;
+            }
+            js.index.sleep(2000);
+        }
+        let success_message_div = document.querySelector(".page__top-side-completed-purchase");
+        success_message_div.style = "";
+    };
+</script>

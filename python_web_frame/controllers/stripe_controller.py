@@ -4,7 +4,7 @@ from json import load
 
 stripe_token = "pk_test_51KUDNpA9OIVeHB9yQ6ngZSyKDmLUpgaq8iO10XRUy8bfLHzar7vgQ7AdXN6BFSUbTEe8O7DP3hDJ1DxFigcAbGzV00ZtwONkpc"
 stripe_secret_key = "sk_test_51KUDNpA9OIVeHB9yBr8fiH7gVUhfggy4zFkJib2maUawYM4tSkRQ64swJwwx4pXFZ4U3O93qPEGRZzWW1agdeBd500ev6Lx5W5"
-# stripe_webhook_key = "whsec_2dkGe8Hx2kduNIJr1XKkvR5BqHP1NKLX"
+stripe_webhook_key = "whsec_WKPU9mlyvPUzEFz1b5LJNixsrk6pgokG"
 
 
 class StripeController:
@@ -90,9 +90,34 @@ class StripeController:
             metadata=user_cart,
         )
 
-    def create_stripe_subscription(self, customer_id, price_id, user_cart):
+    def create_subscription(self, user, plan, plan_recurrency):
+        payment_method_types = []
+        if plan_recurrency == "annually":
+            if user.user_cart_currency == "brl":
+                price_id = plan["plan_price_annually_brl_actual_stripe_id"]
+                if plan["plan_annually_boleto_payment_method"]:
+                    payment_method_types.append("boleto")
+                if plan["plan_annually_pix_payment_method"]:
+                    payment_method_types.append("pix")
+            if user.user_cart_currency == "usd":
+                price_id = plan["plan_price_annually_usd_actual_stripe_id"]
+            if plan["plan_annually_card_payment_method"]:
+                payment_method_types.append("card")
+
+        if plan_recurrency == "monthly":
+            if user.user_cart_currency == "brl":
+                price_id = plan["plan_price_monthly_brl_actual_stripe_id"]
+                if plan["plan_monthly_boleto_payment_method"]:
+                    payment_method_types.append("boleto")
+                if plan["plan_monthly_pix_payment_method"]:
+                    payment_method_types.append("pix")
+            if user.user_cart_currency == "usd":
+                price_id = plan["plan_price_monthly_usd_actual_stripe_id"]
+            if plan["plan_monthly_card_payment_method"]:
+                payment_method_types.append("card")
+
         return self.stripe.Subscription.create(
-            customer=customer_id,
+            customer=user.user_stripe_customer_id,
             items=[
                 {
                     "price": price_id,
@@ -100,8 +125,8 @@ class StripeController:
             ],
             payment_behavior="default_incomplete",
             expand=["latest_invoice.payment_intent"],
-            payment_settings={"payment_method_types": ["card"], "save_default_payment_method": "on_subscription"},
-            metadata=user_cart,
+            payment_settings={"payment_method_types": payment_method_types, "save_default_payment_method": "on_subscription"},
+            metadata={"user_id": user.user_id, "plan_id": plan["plan_id"], "plan_recurrency": plan_recurrency},
         )
 
     def get_stripe_payment_intent(self, payment_intent_id):
@@ -135,12 +160,9 @@ class StripeController:
         if str(stripe_payment_code[0]) == "pix":
             return "pix"
 
-    def verify_stripe_signature(self, payload, sig_header, sandbox=False):
-        endpoint_secret = self.stripe_sandbox_webhook_key
-        if not sandbox:
-            endpoint_secret = self.stripe_production_webhook_key
+    def verify_stripe_signature(self, payload, sig_header):
         try:
-            event = self.stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
+            event = self.stripe.Webhook.construct_event(payload, sig_header, stripe_webhook_key)
             if event:
                 return event
         except:

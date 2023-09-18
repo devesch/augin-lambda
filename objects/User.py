@@ -5,6 +5,7 @@ from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.Generate import Generate
 from objects.UserPassword import UserPassword
 from objects.UserAuthToken import UserAuthToken
+from objects.UserSubscription import UserSubscription
 from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
 from utils.utils.Sort import Sort
 from python_web_frame.controllers.model_controller import ModelController
@@ -37,7 +38,8 @@ class User:
         self.user_favorited_folders = []
         self.user_plan_id = ""
         self.user_plan = ""
-        self.user_subscription = ""
+        self.user_subscription_id = ""
+        self.user_subscription = {}
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
@@ -51,6 +53,22 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def update_subscription(self, order, user_stripe_subscription):
+        user_subscription = Dynamo().get_subscription(user_stripe_subscription.stripe_id)
+        if not user_subscription:
+            user_subscription = UserSubscription(user_stripe_subscription.stripe_id, self.user_id).__dict__
+
+        user_subscription["subscription_plan_id"] = order["order_plan_id"]
+        user_subscription["subscription_recurrency"] = order["order_plan_recurrency"]
+        user_subscription["subscription_status"] = user_stripe_subscription["status"]
+        user_subscription["subscription_last_order_id"] = order["order_id"]
+        user_subscription["subscription_valid_until"] = str(user_stripe_subscription["current_period_end"])
+        Dynamo().put_entity(user_subscription)
+
+        self.user_has_subscription = "True"
+        self.user_subscription_id = user_stripe_subscription.stripe_id
+        Dynamo().put_entity(self.__dict__)
 
     def translate_cart_currency_to_symbol(self):
         if self.user_cart_currency == "brl":
@@ -385,7 +403,7 @@ def sort_user_folders(user, user_folders, sort_attribute="folder_name", sort_rev
 
     if sort_attribute in ["created_at", "folder_foldersize_in_mbs"]:
         sort_reverse = not sort_reverse
-    if sort_attribute in ["model_name", "owners_name"]:
+    if sort_attribute in ["folder_name", "owners_name"]:
         favorited_folders = Sort().sort_dict_list(favorited_folders, sort_attribute, reverse=sort_reverse, integer=False)
         normal_folders = Sort().sort_dict_list(normal_folders, sort_attribute, reverse=sort_reverse, integer=False)
     else:

@@ -29,6 +29,19 @@ class Dynamo:
         dynamodb_client = client("dynamodb", region_name=lambda_constants["region"])
         table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
 
+    ### ORDER ###
+
+    def get_order(self, order_id):
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "order_id-created_at-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "order_id"}, "ExpressionAttributeValues": {":0b430": {"S": order_id}}})
+        if query:
+            return self.get_entity(query[0]["pk"], query[0]["sk"])
+        return None
+
+    ### SUBSCRIPTION ###
+
+    def get_subscription(self, subscription_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "subscription#" + subscription_id}, "sk": {"S": "subscription#" + subscription_id}}})
+
     ### PLAN ###
 
     def get_plan(self, plan_id):

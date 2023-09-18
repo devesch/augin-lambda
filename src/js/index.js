@@ -22,10 +22,125 @@ export function getWebView() {
     return _webView;
 }
 
+export async function processStripeSubscriptionPayment(stripe_token, payment_type, plan_id, plan_recurrency) {
+    const stripe = Stripe(stripe_token);
+    console.log("const stripe ", stripe);
+    let continue_button = document.getElementById("submit");
+    let box_payment_loader = document.getElementById("box_payment_loader");
+    let elements = '';
+    let emailAddress = '';
+    let orderId = '';
+    initialize()
+    console.log("running initialize");
+    checkStatus(orderId);
+    console.log("running checkStatus");
+    document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
 
-export async function checkIfUserCanUpgradePlan(plan_id) {
+    async function initialize() {
+        let checkout_stripe_generate_payload = await apiCaller("checkout_stripe_generate_payload", {
+            "plan_id": plan_id,
+            "plan_recurrency": plan_recurrency,
+            "payment_type": payment_type
+        });
+        const clientSecret = checkout_stripe_generate_payload["success"]["client_secret"]
+        orderId = checkout_stripe_generate_payload["success"]["order_id"]
+        console.log("clientSecret ", clientSecret)
+        console.log("orderId ", orderId)
+        const appearance = {
+            theme: 'stripe',
+        };
+        elements = stripe.elements({
+            appearance,
+            clientSecret
+        });
+        const linkAuthenticationElement = elements.create("linkAuthentication");
+        linkAuthenticationElement.mount("#link-authentication-element");
+        linkAuthenticationElement.on('change', (event) => {
+            emailAddress = event.value.email;
+        });
+        const paymentElementOptions = {
+            layout: "tabs",
+        };
+        const paymentElement = elements.create("payment", paymentElementOptions);
+        paymentElement.mount("#payment-element");
+        await sleep(200);
+        box_payment_loader.style.display = "none";
+        continue_button.style.display = "";
+    }
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setLoading(true);
+        const {
+            error
+        } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                return_url: ProjectData.props.domainNameUrlVal + "/checkout_payment_success/?order_id=" + orderId,
+                receipt_email: emailAddress,
+            },
+        });
+        if (error.type === "card_error" || error.type === "validation_error") {
+            showMessage(error.message);
+        } else {
+            showMessage("An unexpected error occurred.");
+        }
+        setLoading(false);
+    }
+    async function checkStatus() {
+        const clientSecret = new URLSearchParams(window.location.search).get(
+            "payment_intent_client_secret"
+        );
+        if (!clientSecret) {
+            return;
+        }
+        const {
+            paymentIntent
+        } = await stripe.retrievePaymentIntent(clientSecret);
+        switch (paymentIntent.status) {
+            case "succeeded":
+                showMessage("Payment succeeded!");
+                break;
+            case "processing":
+                showMessage("Your payment is processing.");
+                break;
+            case "requires_payment_method":
+                showMessage("Your payment was not successful, please try again.");
+                break;
+            default:
+                showMessage("Something went wrong.");
+                break;
+        }
+    }
+
+    function showMessage(messageText) {
+        const messageContainer = document.querySelector("#payment-message");
+        messageContainer.classList.remove("hidden");
+        messageContainer.textContent = messageText;
+        setTimeout(function () {
+            messageContainer.classList.add("hidden");
+            messageText.textContent = "";
+        }, 4000);
+    }
+
+    function setLoading(isLoading) {
+        if (isLoading) {
+            document.querySelector("#submit").disabled = true;
+            document.querySelector("#spinner").classList.remove("hidden");
+            document.querySelector("#button-text").classList.add("hidden");
+        } else {
+            document.querySelector("#submit").disabled = false;
+            document.querySelector("#spinner").classList.add("hidden");
+            document.querySelector("#button-text").classList.remove("hidden");
+        }
+    }
+}
+
+
+export async function checkIfUserCanUpgradePlan(plan_id, recurrency) {
     let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input");
+    let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
     user_selected_plan_id_input.value = plan_id
+    user_selected_plan_recurrency_input.value = recurrency
     let update_user_response = await apiCaller("update_user", {
         "command": "check_if_user_can_upgrade_his_plan",
         "plan_id": plan_id
@@ -34,7 +149,7 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
     if ("error" in update_user_response) {
         showCheckoutPanelUserDataForm(update_user_response["user_client_type"]);
     } else {
-        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value)
+        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
     }
 }
 
@@ -52,6 +167,20 @@ export async function showCheckoutPanelUserDataForm(userClientType) {
     // await floatingLabel("#panel_user_data_form_div form"); TODO FIX LABELS POSITIONS IF SOME FIELD ALREADY HAS INFO
 }
 
+export async function checkout_check_if_order_is_paid(order_id) {
+    console.log("running checkout_check_if_order_is_paid")
+    let checkout_check_if_order_is_paid_response = await apiCaller("checkout_check_if_order_is_paid", {
+        "order_id": order_id
+    })
+    if ("success" in checkout_check_if_order_is_paid_response) {
+        console.log("order paid")
+        return true
+    } else {
+        console.log("checking response again...", checkout_check_if_order_is_paid_response)
+        await sleep(3000)
+        checkout_check_if_order_is_paid(order_id)
+    }
+}
 
 export async function userRegisterGenerateCountryInput() {
     let user_country_select = document.getElementById("user_country");
@@ -146,7 +275,8 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
     if (panel_user_data_page_response.includes("suc") && panel_user_data_page_response.includes("ess")) {
         let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input")
-        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value)
+        let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
+        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&recurrency=" + user_selected_plan_recurrency_input.value)
     }
 }
 

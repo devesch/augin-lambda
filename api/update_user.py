@@ -118,7 +118,7 @@ class UpdateUser(BasePage):
                 return {"error": "Esta pasta não pertence a este usuária"}
 
             if folder:
-                if int(folder["folder_size_in_mbs"]) < 10000:
+                if float(folder["folder_size_in_mbs"]) < 10000:
                     lambda_generate_folder_zip_reponse = Lambda().invoke(lambda_constants["lambda_generate_folder_zip"], "RequestResponse", {"folder_id": self.post["folder_id"]})
                     download_links.append({"model_save_name": folder["folder_name"] + ".zip", "model_link": lambda_generate_folder_zip_reponse["success"]})
                 else:

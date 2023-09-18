@@ -66,7 +66,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                     if plan["plan_available_monthly"] == self.user.user_plan_id:
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_your_plan_button())
                     else:
-                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"]))
+                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency))
 
                     if plan["plan_has_trial"]:
                         trial_plan_version = Dynamo().get_plan(plan["plan_id"] + "-trial")
@@ -96,9 +96,11 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_your_plan_button")
         return str(html)
 
-    def show_html_upgrade_plan_button(self, plan_id):
+    def show_html_upgrade_plan_button(self, plan_id, recurrency):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_upgrade_plan_button")
         html.esc("plan_id_val", plan_id)
+        html.esc("recurrency_val", recurrency)
+
         return str(html)
 
     def show_html_trial_button(self, plan_trial_duration_in_days):
