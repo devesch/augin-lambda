@@ -39,7 +39,7 @@ class PanelYourPlan(PanelPage):
             html.esc("plan_download_files_val", self.translate("Não"))
 
         if not self.user.user_subscription:
-            html.esc("user_subscription_currency_val", "")
+            html.esc("user_subscription_currency_val", self.user.translate_cart_currency_to_symbol())
             html.esc("user_subscription_price_val", "-")
             html.esc("user_subscription_recurrency_val", "-")
             html.esc("user_subscription_valid_until_val", "-")

@@ -13,6 +13,10 @@ class UpdateUser(BasePage):
         if not self.post.get("command"):
             return {"error": "Nenhum command no post"}
 
+        if self.post["command"] == "check_if_user_can_upgrade_his_plan":
+            self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
+            return {"success": "folder removed from shared"}
+
         if self.post["command"] == "remove_folder_from_shared":
             self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
             return {"success": "folder removed from shared"}

@@ -22,6 +22,15 @@ export function getWebView() {
 }
 
 
+export async function checkIfUserCanUpgradePlan(plan_id) {
+    let update_user_response = await apiCaller("update_user", {
+        "command": "check_if_user_can_upgrade_his_plan",
+        "plan_id": plan_id
+    })
+
+
+}
+
 export async function userRegisterGenerateCountryInput() {
     console.log("Running userRegisterGenerateCountryInput");
     let user_country_select = document.getElementById("user_country");

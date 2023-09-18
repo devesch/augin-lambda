@@ -51,6 +51,14 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def translate_cart_currency_to_symbol(self):
+        if self.user_cart_currency == "brl":
+            return "R$"
+        elif self.user_cart_currency == "usd":
+            return "U$"
+        else:
+            raise Exception("Invalid cart currency")
+
     def clear_all_auth_tokens(self):
         all_users_auth_tokens = Dynamo().query_users_auth_token(self.user_email)
         if all_users_auth_tokens:
