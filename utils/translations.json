@@ -14,6 +14,36 @@
         "es": "8 caracteres o más.Puede contener letras, números y símbolos.",
         "pt": "8 caracteres ou mais. Pode conter letras, números e símbolos."
     },
+    "A duração do APP offline em dias deve ser um número": {
+        "en": "The duration of the offline app on days should be a number",
+        "es": "La duración de la aplicación fuera de línea en los días debe ser un número",
+        "pt": "A duração do APP offline em dias deve ser um número"
+    },
+    "A duração do plano trial em dias deve ser um número": {
+        "en": "The duration of the trial plan in days should be a number",
+        "es": "La duración del plan de prueba en días debe ser un número",
+        "pt": "A duração do plano trial em dias deve ser um número"
+    },
+    "A quantidade máxima de dispositivos deve ser um número": {
+        "en": "The maximum amount of devices should be a number",
+        "es": "La cantidad máxima de dispositivos debe ser un número",
+        "pt": "A quantidade máxima de dispositivos deve ser um número"
+    },
+    "A quantidade máxima de troca de dispositivos deve ser um número": {
+        "en": "The maximum amount of device exchange should be a number",
+        "es": "La cantidad máxima de intercambio de dispositivos debe ser un número",
+        "pt": "A quantidade máxima de troca de dispositivos deve ser um número"
+    },
+    "A senha atual está incorreta.": {
+        "en": "The current password is incorrect.",
+        "es": "La contraseña actual es incorrecta.",
+        "pt": "A senha atual está incorreta."
+    },
+    "A senha deve ter entre 8 e 45 caracteres.": {
+        "en": "The password should be between 8 and 45 characters.",
+        "es": "La contraseña debe estar entre 8 y 45 caracteres.",
+        "pt": "A senha deve ter entre 8 e 45 caracteres."
+    },
     "A senha deve ter no mínimo 8 caracteres": {
         "en": "The password must have at least 8 characters",
         "es": "La contraseña debe tener al menos 8 caracteres",
@@ -729,6 +759,16 @@
         "es": "Código de ciudad",
         "pt": "Código da Cidade"
     },
+    "Código de verificação expirado.": {
+        "en": "Expired verification code.",
+        "es": "Código de verificación vencido.",
+        "pt": "Código de verificação expirado."
+    },
+    "Código de verificação inválido.": {
+        "en": "Invalid verification code.",
+        "es": "Código de verificación invalido.",
+        "pt": "Código de verificação inválido."
+    },
     "Côte d'Ivoire": {
         "en": "Côte d'Ivoire",
         "es": "Cantas d'Iffioir",
@@ -978,6 +1018,11 @@
         "en": "Invalid email",
         "es": "Email inválido",
         "pt": "Email inválido"
+    },
+    "Email inválido.": {
+        "en": "Invalid email.",
+        "es": "Email inválido.",
+        "pt": "Email inválido."
     },
     "Empresa": {
         "en": "Company",
@@ -1469,6 +1514,11 @@
         "es": "Indonesia",
         "pt": "Indonesia"
     },
+    "Informe um email.": {
+        "en": "Enter an email.",
+        "es": "Ingrese un correo electrónico.",
+        "pt": "Informe um email."
+    },
     "Infraestrutura": {
         "en": "Infrastructure",
         "es": "Infraestructura",
@@ -1493,11 +1543,6 @@
         "en": "Enter your augin user email",
         "es": "Ingrese su correo electrónico de usuario de Augin",
         "pt": "Insira seu email de usuário Augin"
-    },
-    "Insira seu email, ele será usado para criar sua conta no Augin.": {
-        "en": "Enter your email, it will be used to create your Augin account.",
-        "es": "Ingrese su correo electrónico, se utilizará para crear su cuenta de Augin.",
-        "pt": "Insira seu email, ele será usado para criar sua conta no Augin."
     },
     "Insira um email válido para criar sua conta": {
         "en": "Enter a valid email to create your account",
@@ -1568,6 +1613,11 @@
         "en": "Jordan",
         "es": "Jordán",
         "pt": "Jordânia"
+    },
+    "Já existe uma conta com este email cadastrado.": {
+        "en": "There is already an account with this registered email.",
+        "es": "Ya hay una cuenta con este correo electrónico registrado.",
+        "pt": "Já existe uma conta com este email cadastrado."
     },
     "Kazakhstan": {
         "en": "Kazakhstan",
@@ -1864,6 +1914,11 @@
         "es": "Necesario",
         "pt": "Necessários"
     },
+    "Nenhum dado encontrado para o CNPJ informado.": {
+        "en": "No data found for the informed CNPJ.",
+        "es": "No se encontraron datos para el CNPJ informado.",
+        "pt": "Nenhum dado encontrado para o CNPJ informado."
+    },
     "Nepal": {
         "en": "Nepal",
         "es": "Nepal",
@@ -2024,10 +2079,70 @@
         "es": "Número",
         "pt": "Número"
     },
+    "O código postal informado é inválido.": {
+        "en": "The informed postal code is invalid.",
+        "es": "El código postal informado no es válido.",
+        "pt": "O código postal informado é inválido."
+    },
+    "O preço atual do plano anual em BRL deve ser um número": {
+        "en": "The current price of the annual BRL plan must be a number",
+        "es": "El precio actual del plan BRL anual debe ser un número",
+        "pt": "O preço atual do plano anual em BRL deve ser um número"
+    },
+    "O preço atual do plano anual em USD deve ser um número": {
+        "en": "The current price of the annual USD plan should be a number",
+        "es": "El precio actual del plan de USD anual debe ser un número",
+        "pt": "O preço atual do plano anual em USD deve ser um número"
+    },
+    "O preço atual do plano mensal em BRL deve ser um número": {
+        "en": "The current price of the monthly BRL plan must be a number",
+        "es": "El precio actual del plan BRL mensual debe ser un número",
+        "pt": "O preço atual do plano mensal em BRL deve ser um número"
+    },
+    "O preço atual do plano mensal em USD deve ser um número": {
+        "en": "The current price of the monthly USD plan should be a number",
+        "es": "El precio actual del plan USD mensual debe ser un número",
+        "pt": "O preço atual do plano mensal em USD deve ser um número"
+    },
+    "O preço do plano anual em BRL deve ser um número": {
+        "en": "The price of the annual plan in BRL must be a number",
+        "es": "El precio del plan anual en BRL debe ser un número",
+        "pt": "O preço do plano anual em BRL deve ser um número"
+    },
+    "O preço do plano anual em USD deve ser um número": {
+        "en": "The price of the annual USD plan should be a number",
+        "es": "El precio del plan de USD anual debe ser un número",
+        "pt": "O preço do plano anual em USD deve ser um número"
+    },
+    "O preço do plano mensal em BRL deve ser um número": {
+        "en": "The price of the monthly BRL plan must be a number",
+        "es": "El precio del plan BRL mensual debe ser un número",
+        "pt": "O preço do plano mensal em BRL deve ser um número"
+    },
+    "O preço do plano mensal em USD deve ser um número": {
+        "en": "The price of the monthly USD plan should be a number",
+        "es": "El precio del plan USD mensual debe ser un número",
+        "pt": "O preço do plano mensal em USD deve ser um número"
+    },
     "O projeto excede o tamanho máximo de 1Gb.": {
         "en": "The project exceeds the maximum size of 1GB.",
         "es": "El proyecto excede el tamaño máximo de 1 GB.",
         "pt": "O projeto excede o tamanho máximo de 1Gb."
+    },
+    "O tamanho de federado máximo deve ser um número": {
+        "en": "The maximum federated size should be a number",
+        "es": "El tamaño federado máximo debe ser un número",
+        "pt": "O tamanho de federado máximo deve ser um número"
+    },
+    "O tamanho do modelo máximo deve ser um número": {
+        "en": "The size of the maximum model should be a number",
+        "es": "El tamaño del modelo máximo debe ser un número",
+        "pt": "O tamanho do modelo máximo deve ser um número"
+    },
+    "O tamanho máximo em núvem deve ser um número": {
+        "en": "The maximum size in cloud should be a number",
+        "es": "El tamaño máximo en la nube debe ser un número",
+        "pt": "O tamanho máximo em núvem deve ser um número"
     },
     "Ocultar senha": {
         "en": "Hide password",
@@ -2144,6 +2259,16 @@
         "es": "Pendencias",
         "pt": "Pendências"
     },
+    "Perfil atualizado com sucesso.": {
+        "en": "Profile updated successfully.",
+        "es": "Perfil actualizado con éxito.",
+        "pt": "Perfil atualizado com sucesso."
+    },
+    "Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra": {
+        "en": "Updated profile but it is necessary to fill all fields to process with the purchase",
+        "es": "Perfil actualizado, pero es necesario llenar todos los campos para procesar con la compra",
+        "pt": "Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra"
+    },
     "Peru": {
         "en": "Peru",
         "es": "Perú",
@@ -2198,6 +2323,91 @@
         "en": "Privacy Policy",
         "es": "Política de privacidad",
         "pt": "Política de privacidade"
+    },
+    "Por favor informe a senha atual.": {
+        "en": "Please enter the current password.",
+        "es": "Ingrese la contraseña actual.",
+        "pt": "Por favor informe a senha atual."
+    },
+    "Por favor informe a sua senha.": {
+        "en": "Please enter your password.",
+        "es": "Por favor, introduzca su contraseña.",
+        "pt": "Por favor informe a sua senha."
+    },
+    "Por favor informe um CNPJ.": {
+        "en": "Please enter a CNPJ.",
+        "es": "Por favor ingrese un CNPJ.",
+        "pt": "Por favor informe um CNPJ."
+    },
+    "Por favor informe um código de verificação de 6 dígitos": {
+        "en": "Please enter a 6 digit check code",
+        "es": "Ingrese un código de verificación de 6 dígitos",
+        "pt": "Por favor informe um código de verificação de 6 dígitos"
+    },
+    "Por favor informe um nome.": {
+        "en": "Please enter a name.",
+        "es": "Ingrese un nombre.",
+        "pt": "Por favor informe um nome."
+    },
+    "Por favor informe um número CNPJ válido.": {
+        "en": "Please enter a valid CNPJ number.",
+        "es": "Ingrese un número CNPJ válido.",
+        "pt": "Por favor informe um número CNPJ válido."
+    },
+    "Por favor informe um número CPF válido.": {
+        "en": "Please enter a valid CPF number.",
+        "es": "Ingrese un número CPF válido.",
+        "pt": "Por favor informe um número CPF válido."
+    },
+    "Por favor informe um número de endereço válido.": {
+        "en": "Please enter a valid address number.",
+        "es": "Ingrese un número de dirección válido.",
+        "pt": "Por favor informe um número de endereço válido."
+    },
+    "Por favor informe um número de telefone válido.": {
+        "en": "Please enter a valid phone number.",
+        "es": "Por favor ingrese un número de teléfono válido.",
+        "pt": "Por favor informe um número de telefone válido."
+    },
+    "Por favor informe um número de telefone.": {
+        "en": "Please enter a phone number.",
+        "es": "Por favor, ingrese un número de teléfono.",
+        "pt": "Por favor informe um número de telefone."
+    },
+    "Por favor informe uma Senha.": {
+        "en": "Please enter a password.",
+        "es": "Porfavor ingrese una contraseña.",
+        "pt": "Por favor informe uma Senha."
+    },
+    "Por favor informe uma senha.": {
+        "en": "Please enter a password.",
+        "es": "Porfavor ingrese una contraseña.",
+        "pt": "Por favor informe uma senha."
+    },
+    "Por favor marque que está de acordo com nossa política de cookies.": {
+        "en": "Please mark you agree with our cookies policy.",
+        "es": "Marque usted de acuerdo con nuestra política de cookies.",
+        "pt": "Por favor marque que está de acordo com nossa política de cookies."
+    },
+    "Por favor marque que está de acordo com nossa política de privacidade.": {
+        "en": "Please mark that it is in accordance with our privacy policy.",
+        "es": "Marque que esté de acuerdo con nuestra Política de privacidad.",
+        "pt": "Por favor marque que está de acordo com nossa política de privacidade."
+    },
+    "Por favor marque que está de acordo com os termos.": {
+        "en": "Please mark that it is in accordance with the terms.",
+        "es": "Marque que está de acuerdo con los términos.",
+        "pt": "Por favor marque que está de acordo com os termos."
+    },
+    "Por favor selecione o seu país.": {
+        "en": "Please select your country.",
+        "es": "Por favor seleccione su país.",
+        "pt": "Por favor selecione o seu país."
+    },
+    "Por favor selecione um país válido.": {
+        "en": "Please select a valid country.",
+        "es": "Seleccione un país válido.",
+        "pt": "Por favor selecione um país válido."
     },
     "Por favor, tente novamente mais tarde.": {
         "en": "Please try again later.",
@@ -2473,6 +2683,11 @@
         "en": "Current password",
         "es": "Contraseña actual",
         "pt": "Senha atual"
+    },
+    "Senha incorreta.": {
+        "en": "Incorrect password.",
+        "es": "Contraseña incorrecta.",
+        "pt": "Senha incorreta."
     },
     "Senha inválida": {
         "en": "Invalid password",
@@ -3234,6 +3449,16 @@
         "es": "Islas Aland",
         "pt": "Ilhas Aland"
     },
+    "É necessário fazer o envio dos arquivos": {
+        "en": "It is necessary to send the files",
+        "es": "Es necesario enviar los archivos",
+        "pt": "É necessário fazer o envio dos arquivos"
+    },
+    "É necessário informar um nome para o projeto federado": {
+        "en": "It is necessary to inform a name for the federated project",
+        "es": "Es necesario informar un nombre para el proyecto federado",
+        "pt": "É necessário informar um nome para o projeto federado"
+    },
     "É necessário selecionar o projeto que será usado para atualizar o projeto atual.": {
         "en": "You need to select the project that will be used to update the current project.",
         "es": "Debe seleccionar el proyecto que se utilizará para actualizar el proyecto actual.",
@@ -3243,6 +3468,36 @@
         "en": "You need to select which folder the current project will be moved.",
         "es": "Debe seleccionar qué carpeta se moverá el proyecto actual.",
         "pt": "É necessário selecionar para qual pasta será movido o projeto atual."
+    },
+    "É necessárion informar um nome em EN": {
+        "en": "It is necessary to inform a name in en",
+        "es": "Es necesario informar un nombre en EN",
+        "pt": "É necessárion informar um nome em EN"
+    },
+    "É necessárion informar um nome em ES": {
+        "en": "It is necessary to inform a name in ES",
+        "es": "Es necesario informar un nombre en ES",
+        "pt": "É necessárion informar um nome em ES"
+    },
+    "É necessárion informar um nome em PT": {
+        "en": "You must inform a name in PT",
+        "es": "Debes informar un nombre en PT",
+        "pt": "É necessárion informar um nome em PT"
+    },
+    "É necessárion informar uma descrição em EN": {
+        "en": "It is necessary to inform a description in en",
+        "es": "Es necesario informar una descripción en EN",
+        "pt": "É necessárion informar uma descrição em EN"
+    },
+    "É necessárion informar uma descrição em ES": {
+        "en": "It is necessary to inform a description in ES",
+        "es": "Es necesario informar una descripción en ES",
+        "pt": "É necessárion informar uma descrição em ES"
+    },
+    "É necessárion informar uma descrição em PT": {
+        "en": "It is necessary to inform a description in PT",
+        "es": "Es necesario informar una descripción en PT",
+        "pt": "É necessárion informar uma descrição em PT"
     },
     "Ícone de olho": {
         "en": "Eye icon",

@@ -3,6 +3,8 @@ import json
 import os, sys
 import codecs
 import os
+import re
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
@@ -93,15 +95,19 @@ for sub_dirs in os.listdir(html_source_path):
                     if os.path.isfile(file_path):
                         with codecs.open(file_path, "r", "utf-8-sig") as read_file:
                             html_file = read_file.read()
-                        placeholders = html_file.split("{{")
-                        for index, placeholder in enumerate(placeholders):
-                            if placeholder:
-                                placeholders[index] = placeholder.split("}}")[0]
-                        for index, placeholder in enumerate(placeholders):
-                            if placeholder:
-                                if not "_val" in placeholder and not "html_" in placeholder and not "js." in placeholder and not "_" in placeholder and not "<" in placeholder and not "header" in placeholder and not "menu" in placeholder and not "footer" in placeholder and placeholder not in filtered_placeholders:
-                                    filtered_placeholders.append(placeholder)
-
+                        if not ".py" in file:
+                            placeholders = html_file.split("{{")
+                            for index, placeholder in enumerate(placeholders):
+                                if placeholder:
+                                    placeholders[index] = placeholder.split("}}")[0]
+                            for index, placeholder in enumerate(placeholders):
+                                if placeholder:
+                                    if not "_val" in placeholder and not "html_" in placeholder and not "js." in placeholder and not "_" in placeholder and not "<" in placeholder and not "header" in placeholder and not "menu" in placeholder and not "footer" in placeholder and placeholder not in filtered_placeholders:
+                                        filtered_placeholders.append(placeholder)
+                        else:
+                            pattern = r'self\.render_get_with_error\("([^"]*)"\)'
+                            placeholders = re.findall(pattern, html_file)
+                            filtered_placeholders.extend(placeholders)
 
 # py_source_path = "C:/Users/eugen/Desktop/Desenvolvimento/magipix-lambda/pages"
 # for file in os.listdir(py_source_path):
