@@ -5,7 +5,8 @@ import {
     ProjectData
 } from './classes/ProjectData.js';
 import {
-    apiCaller
+    apiCaller,
+    request
 } from "./api.js";
 import AnchorLinkUtils from "./utils.js";
 // import "./tooltip.js";
@@ -35,7 +36,7 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
         }
         console.log("user_country ", user_country);
         let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
-        let panel_user_data_page_response = await request(props.domainNameUrlVal + "/panel_user_data/?error_msg=É necessário atualizar os seus dados para processeguir na compra&render_props=False&user_client_type=" + userClientType + "&selected_country=" + user_country, "GET", {
+        let panel_user_data_page_response = await request(ProjectData.props.domainNameUrlVal + "/panel_user_data/?error_msg=É necessário atualizar os seus dados para processeguir na compra&render_props=False&user_client_type=" + userClientType + "&selected_country=" + user_country, "GET", {
             "Content-Type": "text/html; charset=utf-8",
         }, {}, false);
         panel_user_data_form_div.innerHTML = panel_user_data_page_response;
@@ -68,10 +69,10 @@ export async function panelUserDataChangeCountryForm(user_client_type) {
     });
     console.log("panel_user_data_change_country_response ", panel_user_data_change_country_response);
     if (panel_user_data_change_country_response.success) {
-        if (window.location.href.includes("https://web.augin.app/panel_user_data")) {
+        if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/panel_user_data")) {
             window.location.href = panel_user_data_change_country_response.success
         }
-        if (window.location.href.includes("https://web.augin.app/checkout_order_summary")) {
+        if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/checkout_order_summary")) {
             if (panel_user_data_change_country_response.success.includes("physical")) {
                 showCheckoutPanelUserDataForm("physical")
             }
