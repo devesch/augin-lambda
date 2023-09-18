@@ -35,12 +35,10 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
 }
 
 export async function showCheckoutPanelUserDataForm(userClientType) {
-    console.log("Running showCheckoutPanelUserDataForm");
     let user_country = "";
     if (document.getElementById("user_country")) {
         user_country = document.getElementById("user_country").value;
     }
-    console.log("user_country ", user_country);
     let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
     let panel_user_data_page_response = await request(ProjectData.props.domainNameUrlVal + "/panel_user_data/?error_msg=É necessário atualizar os seus dados para processeguir na compra&render_props=False&user_client_type=" + userClientType + "&selected_country=" + user_country, "GET", {
         "Content-Type": "text/html; charset=utf-8",
@@ -52,7 +50,6 @@ export async function showCheckoutPanelUserDataForm(userClientType) {
 
 
 export async function userRegisterGenerateCountryInput() {
-    console.log("Running userRegisterGenerateCountryInput");
     let user_country_select = document.getElementById("user_country");
     console.log("user_country_select ", user_country_select);
     let user_phone_div = document.getElementById("user_phone_div");
@@ -60,7 +57,6 @@ export async function userRegisterGenerateCountryInput() {
     let user_country_phone_response = await apiCaller("user_register_country_phone", {
         "selected_country": user_country_select.value
     })
-    console.log("user_country_phone_response ", user_country_phone_response);
     user_phone_div.innerHTML = user_country_phone_response.success;
 }
 
@@ -72,7 +68,6 @@ export async function panelUserDataChangeCountryForm(user_client_type) {
         "selected_country": user_country_select.value,
         "user_client_type": user_client_type
     });
-    console.log("panel_user_data_change_country_response ", panel_user_data_change_country_response);
     if (panel_user_data_change_country_response.success) {
         if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/panel_user_data")) {
             window.location.href = panel_user_data_change_country_response.success
