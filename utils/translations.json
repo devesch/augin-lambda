@@ -1494,6 +1494,11 @@
         "es": "Ingrese su correo electrónico de usuario de Augin",
         "pt": "Insira seu email de usuário Augin"
     },
+    "Insira seu email, ele será usado para criar sua conta no Augin.": {
+        "en": "Enter your email, it will be used to create your Augin account.",
+        "es": "Ingrese su correo electrónico, se utilizará para crear su cuenta de Augin.",
+        "pt": "Insira seu email, ele será usado para criar sua conta no Augin."
+    },
     "Insira um email válido para criar sua conta": {
         "en": "Enter a valid email to create your account",
         "es": "Ingrese un correo electrónico válido para crear su cuenta",
