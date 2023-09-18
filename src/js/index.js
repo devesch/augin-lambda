@@ -1643,6 +1643,7 @@ export async function FavoriteFolder(folder_id, folder_is_favorite) {
 
 
 export async function refreshUpdateModal(folder_id) {
+    var model_id_update_model_input = document.getElementById("model_id_update_model_input");
     var update_modal_folder_id = document.getElementById("update_modal_folder_id");
     var update_model_user_folder_rows_tbody = document.getElementById("update_model_user_folder_rows_tbody");
     var update_modal_folder_path_span = document.getElementById("update_modal_folder_path_span");
@@ -1650,7 +1651,8 @@ export async function refreshUpdateModal(folder_id) {
 
     var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "folder_id": folder_id,
-        "model_html": "update"
+        "model_html": "update",
+        "model_id_to_be_updated": model_id_update_model_input.value
     })
 
     if (folder_id) {
