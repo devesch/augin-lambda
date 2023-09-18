@@ -35,12 +35,17 @@
 
         <div class="form-main-button-container">
             <div class="switch-container" id="federated_switch_div">
-                <div class="input-container">
-                    <input onchange="js.index.checkIfCreateProjectIsFederated(true)" type="checkbox" name="create_federated_project_with_processed_files" id="create_federated_project_with_processed_files">
-                    <label class="switch" for="create_federated_project_with_processed_files">
-                        <div class="slider"></div>
-                    </label>
-                </div>
+                <section class="tooltip-container">
+                    <div class="input-container">
+                        <input onchange="js.index.checkIfCreateProjectIsFederated(true)" type="checkbox" name="create_federated_project_with_processed_files" id="create_federated_project_with_processed_files">
+                        <label class="switch" for="create_federated_project_with_processed_files">
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <div class="tooltip-content" id="tooltip_create_project" role="tooltip">
+                        {{Para criar federados é necessário ter mais de um arquivo e todos eles serem do tipo IFC}}
+                    </div>
+                </section>
                 <label for="create_federated_project_with_processed_files">{{Criar projeto federado com os arquivos processados}}</label>
                 <section class="tooltip-container">
                     <img src="{{cdn_val}}/assets/icons/help.svg" alt="" width="24" height="24" aria-describedby="tooltip_create_project">
