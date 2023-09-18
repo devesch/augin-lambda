@@ -11,7 +11,7 @@ from objects.UserFolder import check_if_folder_movement_is_valid
 class UpdateUser(BasePage):
     def run(self):
         if not self.post.get("command"):
-            return {"error": "no command in post"}
+            return {"error": "Nenhum command no post"}
 
         if self.post["command"] == "remove_folder_from_shared":
             self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
@@ -30,7 +30,7 @@ class UpdateUser(BasePage):
 
             folder["folder_is_accessible"] = folder_is_accessible
             if folder_is_accessible and folder_is_password_protected and not folder_password:
-                return {"error": "É necessário informar uma senha."}
+                return {"error": "É necessário informar uma senha"}
             folder["folder_password"] = folder_password if folder_password else ""
             folder["folder_is_password_protected"] = folder_is_password_protected
 
@@ -93,7 +93,7 @@ class UpdateUser(BasePage):
 
         if self.post["command"] == "create_folder":
             if not self.post.get("folder_name"):
-                return {"error": "É necessário informar um nome para o novo diretório."}
+                return {"error": "É necessário informar um nome para o novo diretório"}
 
             self.user.create_new_folder(self.post["folder_name"], self.post.get("folder_id"))
             return {"success": "User updated."}
@@ -102,9 +102,9 @@ class UpdateUser(BasePage):
             download_links = []
             folder = Dynamo().get_folder(self.post["folder_id"])
             if not folder:
-                return {"error": "no folder"}
+                return {"error": "Nenhuma pasta"}
             if folder["folder_user_id"] != self.user.user_id:
-                return {"error": "this folder doesnt belong to user"}
+                return {"error": "Esta pasta não pertence a este usuária"}
 
             if folder:
                 if int(folder["folder_size_in_mbs"]) < 10000:
@@ -118,15 +118,15 @@ class UpdateUser(BasePage):
                                 download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": ModelController().generate_model_download_link(model)})
                 return {"success": download_links}
 
-            return {"error": "no folder"}
+            return {"error": "Nenhuma pasta"}
 
         elif self.post["command"] == "download_model":
             download_links = []
             model = Dynamo().get_model(self.post["model_id"])
             if not model:
-                return {"error": "no model"}
+                return {"error": "Nenhum modelo"}
             if model["model_user_id"] != self.user.user_id:
-                return {"error": "this model doesnt belong to user"}
+                return {"error": "Este modelo não pertence a este usuário"}
 
             if model:
                 # if int(int(model["model_filesize"]) / 1024 / 1024) < 10000:
@@ -137,29 +137,29 @@ class UpdateUser(BasePage):
                     download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": ModelController().generate_model_download_link(model)})
                 return {"success": download_links}
 
-            return {"error": "no folder"}
+            return {"error": "Nenhuma pasta"}
 
         elif self.post["command"] == "get_folder":
             folder = Dynamo().get_folder(self.post["folder_id"])
             if folder:
                 return {"success": folder}
 
-            return {"error": "no folder"}
+            return {"error": "Nenhuma pasta"}
 
         elif self.post["command"] == "get_root_folder":
             if not self.post.get("folder_id"):
-                return {"error": "no folder_id in post"}
+                return {"error": "Nenhum folder_id no post"}
             folder = Dynamo().get_folder(self.post["folder_id"])
             root_folder = Dynamo().get_folder(folder["folder_root_id"])
             if root_folder:
                 return {"success": root_folder}
 
-            return {"error": "no root folder"}
+            return {"error": "Sem root folder"}
 
         elif self.post["command"] == "delete_folder":
             folder = Dynamo().get_folder(self.post["folder_id"])
             if folder["folder_user_id"] != self.user.user_id:
-                return {"error": "Esta pasta não pertence a este usuário."}
+                return {"error": "Esta pasta não pertence a este usuário"}
 
             self.user.delete_folder(folder)
             return {"success": "folder deleted"}
@@ -167,7 +167,7 @@ class UpdateUser(BasePage):
         elif self.post["command"] == "rename_folder":
             folder = Dynamo().get_folder(self.post["folder_id"])
             if folder["folder_user_id"] != self.user.user_id:
-                return {"error": "Esta pasta não pertence a este usuário."}
+                return {"error": "Esta pasta não pertence a este usuário"}
             if "/" in self.post["folder_new_name"]:
                 return {"error": "O nome da pasta não pode conter barras '/'."}
 
@@ -181,7 +181,7 @@ class UpdateUser(BasePage):
             if self.post.get("selected_folder_id"):
                 folder = Dynamo().get_folder(self.post["selected_folder_id"])
                 if folder["folder_user_id"] != self.user.user_id:
-                    return {"error": "Esta pasta não pertence a este usuário."}
+                    return {"error": "Esta pasta não pertence a este usuário"}
                 self.user.move_model_to_another_folder(model, folder)
             else:
                 self.user.move_model_to_another_folder(model)
@@ -192,20 +192,20 @@ class UpdateUser(BasePage):
             folder = Dynamo().get_folder(self.post["folder_id"])
 
             if not folder:
-                return {"error": "Pasta de origem não encontrada."}
+                return {"error": "Pasta de origem não encontrada"}
             if folder["folder_user_id"] != self.user.user_id:
-                return {"error": "Pasta de origem não pertence a este usuário."}
+                return {"error": "Pasta de origem não pertence a este usuário"}
 
             selected_folder = ""
             if self.post.get("selected_folder_id"):
                 selected_folder = Dynamo().get_folder(self.post["selected_folder_id"])
                 if selected_folder:
                     if selected_folder["folder_user_id"] != self.user.user_id:
-                        return {"error": "Pasta de destino não pertence a este usuário."}
+                        return {"error": "Pasta de destino não pertence a este usuário"}
                     if not check_if_folder_movement_is_valid(folder, selected_folder):
-                        return {"error": "Não é possível mover uma pasta para dentro dela própria."}
+                        return {"error": "Não é possível mover uma pasta para dentro dela própria"}
 
             self.user.move_folder_to_another_folder(folder, selected_folder)
             return {"success": "folder moved to another folder"}
 
-        return {"error": "no valid command in post"}
+        return {"error": "Nenhum command válido encontrado no post"}

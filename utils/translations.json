@@ -14,6 +14,16 @@
         "es": "8 caracteres o más.Puede contener letras, números y símbolos.",
         "pt": "8 caracteres ou mais. Pode conter letras, números e símbolos."
     },
+    "A categoria selecionada é inválida": {
+        "en": "The selected category is invalid",
+        "es": "La categoría seleccionada no es válida",
+        "pt": "A categoria selecionada é inválida"
+    },
+    "A categoria selecionada é inválida.": {
+        "en": "The selected category is invalid.",
+        "es": "La categoría seleccionada no es válida.",
+        "pt": "A categoria selecionada é inválida."
+    },
     "A duração do APP offline em dias deve ser um número": {
         "en": "The duration of the offline app on days should be a number",
         "es": "La duración de la aplicación fuera de línea en los días debe ser un número",
@@ -48,6 +58,11 @@
         "en": "The password must have at least 8 characters",
         "es": "La contraseña debe tener al menos 8 caracteres",
         "pt": "A senha deve ter no mínimo 8 caracteres"
+    },
+    "A senha informada está incorreta": {
+        "en": "The informed password is incorrect",
+        "es": "La contraseña informada es incorrecta",
+        "pt": "A senha informada está incorreta"
     },
     "Aceitar Tudo": {
         "en": "Accept everything",
@@ -769,6 +784,11 @@
         "es": "Código de verificación invalido.",
         "pt": "Código de verificação inválido."
     },
+    "Código postal inválido": {
+        "en": "Invalid postal code",
+        "es": "Código postal no válido",
+        "pt": "Código postal inválido"
+    },
     "Côte d'Ivoire": {
         "en": "Côte d'Ivoire",
         "es": "Cantas d'Iffioir",
@@ -1109,6 +1129,31 @@
         "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
         "pt": "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação."
     },
+    "Esta pasta já se encontra nos seus compartilhados": {
+        "en": "This folder is already in its shared",
+        "es": "Esta carpeta ya está en su compartir",
+        "pt": "Esta pasta já se encontra nos seus compartilhados"
+    },
+    "Esta pasta não pertence a este usuária": {
+        "en": "This folder does not belong to this user",
+        "es": "Esta carpeta no pertenece a este usuario",
+        "pt": "Esta pasta não pertence a este usuária"
+    },
+    "Esta pasta não pertence a este usuário": {
+        "en": "This folder does not belong to this user",
+        "es": "Esta carpeta no pertenece a este usuario",
+        "pt": "Esta pasta não pertence a este usuário"
+    },
+    "Esta pasta não pertence a este usuário.": {
+        "en": "This folder does not belong to this user.",
+        "es": "Esta carpeta no pertenece a este usuario.",
+        "pt": "Esta pasta não pertence a este usuário."
+    },
+    "Esta pasta não se encontra acessível através de compartilhamento": {
+        "en": "This folder is not accessible through sharing",
+        "es": "Esta carpeta no es accesible al compartir",
+        "pt": "Esta pasta não se encontra acessível através de compartilhamento"
+    },
     "Estado/Região/Provincia": {
         "en": "State/Region/Province",
         "es": "Estado/Región/Provincia",
@@ -1143,6 +1188,21 @@
         "en": "This model is being used as a base of a federated project",
         "es": "Este modelo se está utilizando como base de un proyecto federado.",
         "pt": "Este modelo está sendo usado como base em um projeto federado"
+    },
+    "Este modelo já se encontra nos seus compartilhados": {
+        "en": "This model is already in its shared",
+        "es": "Este modelo ya está en su compartido",
+        "pt": "Este modelo já se encontra nos seus compartilhados"
+    },
+    "Este modelo não pertence a este usuário": {
+        "en": "This model does not belong to this user",
+        "es": "Este modelo no pertenece a este usuario",
+        "pt": "Este modelo não pertence a este usuário"
+    },
+    "Este projeto não se encontra acessível através de compartilhamento": {
+        "en": "This project is not accessible through sharing",
+        "es": "Este proyecto no es accesible a través del intercambio",
+        "pt": "Este projeto não se encontra acessível através de compartilhamento"
     },
     "Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos.": {
         "en": "These are the mandatory cookies for the operation of our site, including, for example, those that allow visitors to browse safely on the site, login, store preferences, store items in the cart and make payments.",
@@ -1544,6 +1604,11 @@
         "es": "Ingrese su correo electrónico de usuario de Augin",
         "pt": "Insira seu email de usuário Augin"
     },
+    "Insira seu email, ele será usado para criar sua conta no Augin.": {
+        "en": "Enter your email, it will be used to create your Augin account.",
+        "es": "Ingrese su correo electrónico, se utilizará para crear su cuenta de Augin.",
+        "pt": "Insira seu email, ele será usado para criar sua conta no Augin."
+    },
     "Insira um email válido para criar sua conta": {
         "en": "Enter a valid email to create your account",
         "es": "Ingrese un correo electrónico válido para crear su cuenta",
@@ -1914,10 +1979,85 @@
         "es": "Necesario",
         "pt": "Necessários"
     },
+    "Nenhum CNPJ enviado no formulário": {
+        "en": "No CNPJ sent on the form",
+        "es": "No se envió CNPJ en el formulario",
+        "pt": "Nenhum CNPJ enviado no formulário"
+    },
+    "Nenhum CNPJ enviado no formulário.": {
+        "en": "No CNPJ sent on the form.",
+        "es": "No se envió CNPJ en el formulario.",
+        "pt": "Nenhum CNPJ enviado no formulário."
+    },
+    "Nenhum arquivo encontrado com o link fornecido": {
+        "en": "No files found with the link provided",
+        "es": "No se encuentran archivos con el enlace proporcionado",
+        "pt": "Nenhum arquivo encontrado com o link fornecido"
+    },
+    "Nenhum command no post": {
+        "en": "No Command in the post",
+        "es": "No hay comando en la publicación",
+        "pt": "Nenhum command no post"
+    },
+    "Nenhum command válido encontrado no post": {
+        "en": "No valid Command found in the post",
+        "es": "No se encuentra un comando válido en la publicación",
+        "pt": "Nenhum command válido encontrado no post"
+    },
+    "Nenhum command válido no post": {
+        "en": "No Command Valid in the Post",
+        "es": "No hay comando válido en la publicación",
+        "pt": "Nenhum command válido no post"
+    },
+    "Nenhum código postal fornecido": {
+        "en": "No postal code provided",
+        "es": "No se proporciona código postal",
+        "pt": "Nenhum código postal fornecido"
+    },
     "Nenhum dado encontrado para o CNPJ informado.": {
         "en": "No data found for the informed CNPJ.",
         "es": "No se encontraron datos para el CNPJ informado.",
         "pt": "Nenhum dado encontrado para o CNPJ informado."
+    },
+    "Nenhum email enviado no formulário.": {
+        "en": "No email sent on the form.",
+        "es": "No se envía correo electrónico en el formulario.",
+        "pt": "Nenhum email enviado no formulário."
+    },
+    "Nenhum modelo": {
+        "en": "No model",
+        "es": "No hay modelo",
+        "pt": "Nenhum modelo"
+    },
+    "Nenhum projeto encontrado com o link fornecido": {
+        "en": "No projects found with the link provided",
+        "es": "No se encontraron proyectos con el enlace proporcionado",
+        "pt": "Nenhum projeto encontrado com o link fornecido"
+    },
+    "Nenhum projeto encontrado com os dados fornecidos": {
+        "en": "No projects found with the data provided",
+        "es": "No se encuentran proyectos con los datos proporcionados",
+        "pt": "Nenhum projeto encontrado com os dados fornecidos"
+    },
+    "Nenhuma mudança de URL necessária": {
+        "en": "No necessary URL change",
+        "es": "No hay cambio de URL necesario",
+        "pt": "Nenhuma mudança de URL necessária"
+    },
+    "Nenhuma pasta": {
+        "en": "No folders",
+        "es": "Sin carpetas",
+        "pt": "Nenhuma pasta"
+    },
+    "Nenhuma pasta encontrada com o link fornecido": {
+        "en": "No folders found with the link provided",
+        "es": "No se encuentran carpetas con el enlace proporcionado",
+        "pt": "Nenhuma pasta encontrada com o link fornecido"
+    },
+    "Nenhuma pasta encontrada com os dados fornecidos": {
+        "en": "No folders found with the data provided",
+        "es": "No se encuentran carpetas con los datos proporcionados",
+        "pt": "Nenhuma pasta encontrada com os dados fornecidos"
     },
     "Nepal": {
         "en": "Nepal",
@@ -2074,6 +2214,31 @@
         "es": "No federado",
         "pt": "Não Federados"
     },
+    "Não foi possível encontrar dados com o CNPJ informado": {
+        "en": "It was not possible to find data with the CNPJ informed",
+        "es": "No fue posible encontrar datos con el CNPJ informado",
+        "pt": "Não foi possível encontrar dados com o CNPJ informado"
+    },
+    "Não foi possível encontrar dados com o CNPJ informado.": {
+        "en": "It was not possible to find data with the informed CNPJ.",
+        "es": "No fue posible encontrar datos con el CNPJ informado.",
+        "pt": "Não foi possível encontrar dados com o CNPJ informado."
+    },
+    "Não foi possível enviar o email, entre em contato com o suporte.": {
+        "en": "It was not possible to send the email, contact the support.",
+        "es": "No fue posible enviar el correo electrónico, comunicarse con el soporte.",
+        "pt": "Não foi possível enviar o email, entre em contato com o suporte."
+    },
+    "Não é possível mover uma pasta para dentro dela própria": {
+        "en": "It is not possible to move a folder into it",
+        "es": "No es posible mover una carpeta a ella",
+        "pt": "Não é possível mover uma pasta para dentro dela própria"
+    },
+    "Não é possível mover uma pasta para dentro dela própria.": {
+        "en": "It is not possible to move a folder into it.",
+        "es": "No es posible mover una carpeta a ella.",
+        "pt": "Não é possível mover uma pasta para dentro dela própria."
+    },
     "Número": {
         "en": "Number",
         "es": "Número",
@@ -2083,6 +2248,11 @@
         "en": "The informed postal code is invalid.",
         "es": "El código postal informado no es válido.",
         "pt": "O código postal informado é inválido."
+    },
+    "O nome da pasta não pode conter barras '/'.": {
+        "en": "The name of the folder cannot contain bars '/'.",
+        "es": "El nombre de la carpeta no puede contener barras '/'.",
+        "pt": "O nome da pasta não pode conter barras '/'."
     },
     "O preço atual do plano anual em BRL deve ser um número": {
         "en": "The current price of the annual BRL plan must be a number",
@@ -2128,6 +2298,11 @@
         "en": "The project exceeds the maximum size of 1GB.",
         "es": "El proyecto excede el tamaño máximo de 1 GB.",
         "pt": "O projeto excede o tamanho máximo de 1Gb."
+    },
+    "O projeto selecionado é inválido": {
+        "en": "The selected project is invalid",
+        "es": "El proyecto seleccionado no es válido",
+        "pt": "O projeto selecionado é inválido"
     },
     "O tamanho de federado máximo deve ser um número": {
         "en": "The maximum federated size should be a number",
@@ -2248,6 +2423,36 @@
         "en": "Folder",
         "es": "Carpeta",
         "pt": "Pasta"
+    },
+    "Pasta de destino não pertence a este usuário": {
+        "en": "Destination folder does not belong to this user",
+        "es": "La carpeta de destino no pertenece a este usuario",
+        "pt": "Pasta de destino não pertence a este usuário"
+    },
+    "Pasta de destino não pertence a este usuário.": {
+        "en": "Destination folder does not belong to this user.",
+        "es": "La carpeta de destino no pertenece a este usuario.",
+        "pt": "Pasta de destino não pertence a este usuário."
+    },
+    "Pasta de origem não encontrada": {
+        "en": "Origin Folder Not Found",
+        "es": "Carpeta de origen no encontrada",
+        "pt": "Pasta de origem não encontrada"
+    },
+    "Pasta de origem não encontrada.": {
+        "en": "Origin folder not found.",
+        "es": "Carpeta de origen no encontrada.",
+        "pt": "Pasta de origem não encontrada."
+    },
+    "Pasta de origem não pertence a este usuário": {
+        "en": "Origin folder does not belong to this user",
+        "es": "La carpeta de origen no pertenece a este usuario",
+        "pt": "Pasta de origem não pertence a este usuário"
+    },
+    "Pasta de origem não pertence a este usuário.": {
+        "en": "Origin folder does not belong to this user.",
+        "es": "La carpeta de origen no pertenece a este usuario.",
+        "pt": "Pasta de origem não pertence a este usuário."
     },
     "País": {
         "en": "Country",
@@ -2664,6 +2869,11 @@
         "es": "Selecciona una categoría",
         "pt": "Selecionar categoria"
     },
+    "Sem root folder": {
+        "en": "Root folder",
+        "es": "Carpeta raíz",
+        "pt": "Sem root folder"
+    },
     "Senegal": {
         "en": "Senegal",
         "es": "Senegal",
@@ -3029,6 +3239,26 @@
         "es": "Ucrania",
         "pt": "Ucrânia"
     },
+    "Um dos modelos não pertence a este usuário": {
+        "en": "One of the models does not belong to this user",
+        "es": "Uno de los modelos no pertenece a este usuario",
+        "pt": "Um dos modelos não pertence a este usuário"
+    },
+    "Um dos modelos não pertence a este usuário.": {
+        "en": "One of the models does not belong to this user.",
+        "es": "Uno de los modelos no pertenece a este usuario.",
+        "pt": "Um dos modelos não pertence a este usuário."
+    },
+    "Um dos modelos selecionados não existe": {
+        "en": "One of the selected models does not exist",
+        "es": "Uno de los modelos seleccionados no existe",
+        "pt": "Um dos modelos selecionados não existe"
+    },
+    "Um dos modelos selecionados não existe.": {
+        "en": "One of the selected models does not exist.",
+        "es": "Uno de los modelos seleccionados no existe.",
+        "pt": "Um dos modelos selecionados não existe."
+    },
     "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento": {
         "en": "One or more of your files has an error, please delete the files with error to perform the processing",
         "es": "Uno o más de sus archivos tiene un error, elimine los archivos con error para realizar el procesamiento",
@@ -3073,6 +3303,11 @@
         "en": "Use your account in up to",
         "es": "Use su cuenta en hasta",
         "pt": "Use sua conta em até"
+    },
+    "Usuário inexistente.": {
+        "en": "Nonexistent user.",
+        "es": "Usuario inexistente.",
+        "pt": "Usuário inexistente."
     },
     "Usuários": {
         "en": "Users",
@@ -3369,6 +3604,51 @@
         "es": "múltiple",
         "pt": "múltiplo"
     },
+    "no command found in post": {
+        "en": "no Command Found in Post",
+        "es": "no se encuentra el comando en la publicación",
+        "pt": "no command found in post"
+    },
+    "no command in post": {
+        "en": "in Command in Post",
+        "es": "al mando en la publicación",
+        "pt": "no command in post"
+    },
+    "no folder": {
+        "en": "folder",
+        "es": "carpeta",
+        "pt": "no folder"
+    },
+    "no model": {
+        "en": "in the model",
+        "es": "en el modelo",
+        "pt": "no model"
+    },
+    "no root folder": {
+        "en": "in root folder",
+        "es": "en la carpeta de la raíz",
+        "pt": "no root folder"
+    },
+    "no url change needed": {
+        "en": "at URL Change Needed",
+        "es": "en URL se necesita cambio",
+        "pt": "no url change needed"
+    },
+    "no user in request": {
+        "en": "at user in request",
+        "es": "en el usuario en solicitud",
+        "pt": "no user in request"
+    },
+    "no valid command found in post": {
+        "en": "no Valid Command Found in Post",
+        "es": "no se encuentra un comando válido en la publicación",
+        "pt": "no valid command found in post"
+    },
+    "no valid command in post": {
+        "en": "no Valid Command in Post",
+        "es": "no hay comando válido en la publicación",
+        "pt": "no valid command in post"
+    },
     "ou": {
         "en": "or",
         "es": "o",
@@ -3429,6 +3709,11 @@
         "es": "posible",
         "pt": "possíveis"
     },
+    "project doesnt belong to user": {
+        "en": "project Doesnt Belong to User",
+        "es": "el proyecto no pertenece al usuario",
+        "pt": "project doesnt belong to user"
+    },
     "resultados": {
         "en": "results",
         "es": "resultados",
@@ -3444,20 +3729,80 @@
         "es": "tu plan es",
         "pt": "seu plano é o"
     },
+    "this folder doesnt belong to user": {
+        "en": "this folder doesnt Belong to user",
+        "es": "esta carpeta no pertenece al usuario",
+        "pt": "this folder doesnt belong to user"
+    },
+    "this model doesnt belong to user": {
+        "en": "this model doesnt Belong to user",
+        "es": "este modelo no pertenece al usuario",
+        "pt": "this model doesnt belong to user"
+    },
     "Åland Islands": {
         "en": "Åland Islands",
         "es": "Islas Aland",
         "pt": "Ilhas Aland"
+    },
+    "É necessário escolher um arquivo diferente do original para a substitução": {
+        "en": "It is necessary to choose a different file from the original for the replacement",
+        "es": "Es necesario elegir un archivo diferente del original para el reemplazo",
+        "pt": "É necessário escolher um arquivo diferente do original para a substitução"
+    },
+    "É necessário escolher um arquivo do mesmo formato para a substitução": {
+        "en": "It is necessary to choose a file of the same format for the replacement",
+        "es": "Es necesario elegir un archivo del mismo formato para el reemplazo",
+        "pt": "É necessário escolher um arquivo do mesmo formato para a substitução"
     },
     "É necessário fazer o envio dos arquivos": {
         "en": "It is necessary to send the files",
         "es": "Es necesario enviar los archivos",
         "pt": "É necessário fazer o envio dos arquivos"
     },
+    "É necessário informar um nome para o federado": {
+        "en": "It is necessary to inform a name for the federate",
+        "es": "Es necesario informar un nombre para el federado",
+        "pt": "É necessário informar um nome para o federado"
+    },
+    "É necessário informar um nome para o federado.": {
+        "en": "It is necessary to inform a name for the federate.",
+        "es": "Es necesario informar un nombre para el federado.",
+        "pt": "É necessário informar um nome para o federado."
+    },
+    "É necessário informar um nome para o novo diretório": {
+        "en": "It is necessary to inform a name for the new directory",
+        "es": "Es necesario informar un nombre para el nuevo directorio",
+        "pt": "É necessário informar um nome para o novo diretório"
+    },
+    "É necessário informar um nome para o novo diretório.": {
+        "en": "It is necessary to inform a name for the new directory.",
+        "es": "Es necesario informar un nombre para el nuevo directorio.",
+        "pt": "É necessário informar um nome para o novo diretório."
+    },
     "É necessário informar um nome para o projeto federado": {
         "en": "It is necessary to inform a name for the federated project",
         "es": "Es necesario informar un nombre para el proyecto federado",
         "pt": "É necessário informar um nome para o projeto federado"
+    },
+    "É necessário informar uma senha": {
+        "en": "It is necessary to enter a password",
+        "es": "Es necesario ingresar una contraseña",
+        "pt": "É necessário informar uma senha"
+    },
+    "É necessário informar uma senha.": {
+        "en": "It is necessary to enter a password.",
+        "es": "Es necesario ingresar una contraseña.",
+        "pt": "É necessário informar uma senha."
+    },
+    "É necessário selecionar no mínimo 2 arquivos que servirão como base do federado": {
+        "en": "It is necessary to select at least 2 files that will serve as the base of the federated",
+        "es": "Es necesario seleccionar al menos 2 archivos que sirvan como base de la federada",
+        "pt": "É necessário selecionar no mínimo 2 arquivos que servirão como base do federado"
+    },
+    "É necessário selecionar no mínimo 2 arquivos que servirão como base do federado.": {
+        "en": "You need to select at least 2 files that will serve as the base of the federated.",
+        "es": "Debe seleccionar al menos 2 archivos que sirvan como base de la federada.",
+        "pt": "É necessário selecionar no mínimo 2 arquivos que servirão como base do federado."
     },
     "É necessário selecionar o projeto que será usado para atualizar o projeto atual.": {
         "en": "You need to select the project that will be used to update the current project.",
@@ -3468,6 +3813,16 @@
         "en": "You need to select which folder the current project will be moved.",
         "es": "Debe seleccionar qué carpeta se moverá el proyecto actual.",
         "pt": "É necessário selecionar para qual pasta será movido o projeto atual."
+    },
+    "É necessário selecionar quais arquivos servirão como base do federado": {
+        "en": "It is necessary to select which files will serve as the base of the federated",
+        "es": "Es necesario seleccionar qué archivos servirán como base de la federada",
+        "pt": "É necessário selecionar quais arquivos servirão como base do federado"
+    },
+    "É necessário selecionar quais arquivos servirão como base do federado.": {
+        "en": "You need to select which files will serve as the base of the federate.",
+        "es": "Debe seleccionar qué archivos servirán como base de la federación.",
+        "pt": "É necessário selecionar quais arquivos servirão como base do federado."
     },
     "É necessárion informar um nome em EN": {
         "en": "It is necessary to inform a name in en",

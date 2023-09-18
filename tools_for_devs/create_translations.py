@@ -15,6 +15,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 
 html_source_path = os.path.normpath(os.getcwd() + "/src/html")
+api_source_path = os.path.normpath(os.getcwd() + "/api")
+
 filtered_placeholders = [
     "Você precisa estar logado para acessar esta página",
     "Você não possui as credenciais para acessar esta página",
@@ -109,22 +111,14 @@ for sub_dirs in os.listdir(html_source_path):
                             placeholders = re.findall(pattern, html_file)
                             filtered_placeholders.extend(placeholders)
 
-# py_source_path = "C:/Users/eugen/Desktop/Desenvolvimento/magipix-lambda/pages"
-# for file in os.listdir(py_source_path):
-#     if file[0] != ".":
-#         file_path = os.path.join(py_source_path, file)
-#         if os.path.isfile(file_path):
-#             with codecs.open(file_path, "r", "utf-8-sig") as read_file:
-#                 py_file = read_file.read()
-#             ### GET PLACEHOLDERS STUFF ###
-#             placeholders = py_file.split('self.render_get_with_error("')
-#             for index, placeholder in enumerate(placeholders):
-#                 if placeholder:
-#                     placeholders[index] = placeholder.split('")')[0]
-#             for index, placeholder in enumerate(placeholders):
-#                 if placeholder:
-#                     if not "from " in placeholder:
-#                         filtered_placeholders.append(placeholder)
+
+for file in os.listdir(api_source_path):
+    if os.path.isfile(api_source_path + "/" + file):
+        with codecs.open(api_source_path + "/" + file, "r", "utf-8-sig") as read_file:
+            html_file = read_file.read()
+        pattern = r'return \{"error": "([^"]*)"\}'
+        result = re.findall(pattern, html_file)
+        filtered_placeholders.extend(result)
 
 
 translator = Translator()

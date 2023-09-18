@@ -15,4 +15,4 @@ class PanelUserDataChangeCountry(BasePage):
             return {"success": lambda_constants["domain_name_url"] + "/panel_user_data/?user_client_type=physical"}
         if self.post["selected_country"] != "BR" and self.post["user_client_type"] != "international":
             return {"success": lambda_constants["domain_name_url"] + "/panel_user_data/?user_client_type=international&selected_country=" + self.post["selected_country"]}
-        return {"error": "no url change needed"}
+        return {"error": "Nenhuma mudança de URL necessária"}

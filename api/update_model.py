@@ -8,28 +8,28 @@ from utils.Config import lambda_constants
 class UpdateModel(BasePage):
     def run(self):
         if not self.post.get("command"):
-            return {"error": "no command found in post"}
+            return {"error": "Nenhum command no post"}
 
         if self.post.get("model_id"):
             model = Dynamo().get_model(self.post["model_id"])
             if not model["model_user_id"] == self.user.user_id:
-                return {"error": "project doesnt belong to user"}
+                return {"error": "Este model_id não pertence ao usuário"}
 
         if self.post["command"] == "create_federated":
             if not self.post.get("federated_required_ids"):
-                return {"error": "É necessário selecionar quais arquivos servirão como base do federado."}
+                return {"error": "É necessário selecionar quais arquivos servirão como base do federado"}
             if not self.post.get("federated_name"):
-                return {"error": "É necessário informar um nome para o federado."}
+                return {"error": "É necessário informar um nome para o federado"}
             federated_required_ids = self.post["federated_required_ids"].split(",")
             if len(federated_required_ids) <= 1:
-                return {"error": "É necessário selecionar no mínimo 2 arquivos que servirão como base do federado."}
+                return {"error": "É necessário selecionar no mínimo 2 arquivos que servirão como base do federado"}
 
             for model_id in federated_required_ids:
                 required_model = Dynamo().get_model(model_id)
                 if not required_model:
-                    return {"error": "Um dos modelos selecionados não existe."}
+                    return {"error": "Um dos modelos selecionados não existe"}
                 if required_model["model_user_id"] != self.user.user_id:
-                    return {"error": "Um dos modelos não pertence a este usuário."}
+                    return {"error": "Um dos modelos não pertence a este usuário"}
 
             federated_model = ModelController().generate_new_model(self.user.user_id, filename=self.post["federated_name"].strip(), federated=True, federated_required_ids=federated_required_ids)
             federated_model = ModelController().publish_federated_model(federated_model["model_id"])
@@ -60,7 +60,7 @@ class UpdateModel(BasePage):
                     model["model_category"] = self.post.get("model_category")
                     Dynamo().update_entity(model, "model_category", model["model_category"])
                 else:
-                    return {"error": "A categoria selecionada é inválida."}
+                    return {"error": "A categoria selecionada é inválida"}
             return {"success": "model category updated"}
 
         elif self.post["command"] == "update_name":
@@ -75,7 +75,7 @@ class UpdateModel(BasePage):
 
             model["model_is_accessible"] = model_is_accessible
             if model_is_accessible and model_is_password_protected and not model_password:
-                return {"error": "É necessário informar uma senha."}
+                return {"error": "É necessário informar uma senha"}
             model["model_password"] = model_password if model_password else ""
             model["model_is_password_protected"] = model_is_password_protected
 
@@ -83,4 +83,4 @@ class UpdateModel(BasePage):
             return {"success": "model password updated"}
 
         else:
-            return {"error": "no valid command found in post"}
+            return {"error": "Nenhum command válido no post"}
