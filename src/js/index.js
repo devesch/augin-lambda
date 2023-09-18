@@ -87,9 +87,7 @@ export async function panelUserDataChangeCountryForm(user_client_type) {
         }
     };
     if (panel_user_data_change_country_response.error) {
-        if (panel_user_data_change_country_response.error == "no url change needed") {
-            userRegisterGenerateCountryInput();
-        }
+        userRegisterGenerateCountryInput();
     };
 }
 
