@@ -120,7 +120,7 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
     let user_complement = document.getElementById("user_complement").value
     console.log("user_complement ", user_complement)
     sleep(5000)
-    let panel_user_data_page_response = await request(props.domainNameUrlVal + "/panel_user_data/?render_props=False&user_client_type=" + userClientType, "POST", {
+    let panel_user_data_page_response = await request(ProjectData.props.domainNameUrlVal + "/panel_user_data/?render_props=False&user_client_type=" + userClientType, "POST", {
         "Content-Type": "application/x-www-form-urlencoded",
     }, {
         "user_email": user_email,
@@ -142,7 +142,7 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
     if (panel_user_data_page_response.includes("suc") && panel_user_data_page_response.includes("ess")) {
         console.log("panel_user_data_page_response.includes Perfil atualizado com sucesso")
-        let redirect_to_payment_page_response = await request(props.domainNameUrlVal + "/checkout_upgrade_your_plan", "POST", {
+        let redirect_to_payment_page_response = await request(ProjectData.props.domainNameUrlVal + "/checkout_upgrade_your_plan", "POST", {
             "Content-Type": "application/x-www-form-urlencoded",
             "Access-Control-Allow-Origin": "*",
         }, {
