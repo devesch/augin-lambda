@@ -712,6 +712,7 @@ export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable 
 
 export async function deleteUploadingElement(index) {
     let model_filename_input = document.getElementById("model_filename_" + index);
+    let model_id_input = document.getElementById("model_id_" + index);
     if (uploadedFilesNames.includes(model_filename_input.value)) {
         let filename_index_in_list = uploadedFilesNames.indexOf(model_filename_input.value);
         uploadedFilesNames.splice(filename_index_in_list, 1);
@@ -721,6 +722,11 @@ export async function deleteUploadingElement(index) {
     uploading_element.remove();
     checkIfCreateProjectSubmitButtonIsAvailable();
     checkIfCreateProjectIsFederated(false)
+
+    let update_model_response = await apiCaller("update_model", {
+        "command": "delete_model",
+        "model_id": model_id_input.value
+    });
 }
 
 

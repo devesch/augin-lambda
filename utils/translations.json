@@ -3784,10 +3784,20 @@
         "es": "o",
         "pt": "ou"
     },
+    "para aumentar esse limite": {
+        "en": "to increase this limit",
+        "es": "para aumentar este límite",
+        "pt": "para aumentar esse limite"
+    },
     "para aumentar esse limite.": {
         "en": "to increase this limit.",
         "es": "para aumentar este límite.",
         "pt": "para aumentar esse limite."
+    },
+    "para ser visualizado  no Augin": {
+        "en": "to be viewed at Augin",
+        "es": "ser visto en Augin",
+        "pt": "para ser visualizado  no Augin"
     },
     "para ser visualizado  no Augin.": {
         "en": "to be viewed in Augin.",

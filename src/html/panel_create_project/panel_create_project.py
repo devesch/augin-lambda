@@ -15,10 +15,12 @@ class PanelCreateProject(PanelPage):
     def render_get(self):
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
-        models_not_created = Dynamo().query_user_models_from_state(self.user, "not_created")
-        if models_not_created:
-            html.esc("html_uploading_models", self.list_html_uploading_models(models_not_created))
-            html.esc("uploading_index_input_val", len(models_not_created))
+        already_uploaded_models = ModelController().get_already_uploaded_models(self.user)
+        if already_uploaded_models:
+            html.esc("html_uploading_models", self.list_html_uploading_models(already_uploaded_models))
+            html.esc("uploading_index_input_val", len(already_uploaded_models))
+        else:
+            html.esc("uploading_index_input_val", 1)
         return str(html)
 
     def render_post(self):

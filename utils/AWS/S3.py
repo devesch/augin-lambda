@@ -101,10 +101,11 @@ class S3:
 
     def copy_folder_from_one_bucket_to_another(self, src_bucket_name, dest_bucket_name, src_folder_name, dest_folder_name):
         result = self.get_s3_client().list_objects_v2(Bucket=src_bucket_name, Prefix=src_folder_name)
-        for obj in result.get("Contents"):
-            copy_source = {"Bucket": src_bucket_name, "Key": obj.get("Key")}
-            dest_key = obj.get("Key").replace(src_folder_name, dest_folder_name, 1)
-            self.get_s3_client().copy_object(CopySource=copy_source, Bucket=dest_bucket_name, Key=dest_key)
+        if result.get("Contents"):
+            for obj in result.get("Contents"):
+                copy_source = {"Bucket": src_bucket_name, "Key": obj.get("Key")}
+                dest_key = obj.get("Key").replace(src_folder_name, dest_folder_name, 1)
+                self.get_s3_client().copy_object(CopySource=copy_source, Bucket=dest_bucket_name, Key=dest_key)
 
     def copy_file_from_one_bucket_to_another(self, source_bucket, source_key, destination_bucket, destination_key):
         import time

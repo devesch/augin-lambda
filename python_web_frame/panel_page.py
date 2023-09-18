@@ -17,7 +17,7 @@ class PanelPage(BasePage):
         full_html = []
         if models_not_created:
             for index, model in enumerate(models_not_created):
-                full_html.append(str(self.show_html_uploading_models(model["model_filename"], index)))
+                full_html.append(str(self.show_html_uploading_models(model["model_filename"], index, full_model=model)))
         return "".join(full_html)
 
     def list_html_models_in_processing(self, event, models_in_processing):
@@ -37,10 +37,20 @@ class PanelPage(BasePage):
                 full_html.append(str(html))
         return "".join(full_html)
 
-    def show_html_uploading_models(self, model_filename, index):
+    def show_html_uploading_models(self, model_filename, index, full_model=False):
         html = ReadWrite().read_html("panel_create_project/_codes/html_uploading_models")
         html.esc("model_filename_val", model_filename)
         html.esc("index_val", index)
+        if full_model:
+            html.esc("model_id_val", full_model["model_id"])
+            if full_model["model_format"] != "ifc":
+                html.esc("has_fbx_val", "True")
+            html.esc("actual_progress_val", "100")
+            html.esc("uploading_element_message_val", self.translate("Upload realizado com sucesso."))
+            html.esc("success_class_val", "success")
+        else:
+            html.esc("actual_progress_val", "0")
+            html.esc("uploading_element_message_val", self.translate("Enviando arquivo, aguarde"))
         return str(html)
 
     def list_html_user_folder_rows(self, folder_id=None, model_html=""):
