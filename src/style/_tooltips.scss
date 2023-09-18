@@ -1,4 +1,5 @@
 @use '_colors.scss' as colors;
+@use '_breakpoints.scss' as breakpoints;
 
 .tooltip-container {
     position: relative;
@@ -29,4 +30,36 @@
 
 .tooltip-container:hover .tooltip-content {
     display: block;
+}
+
+.tooltip--project-create-project {
+    white-space: normal;
+    width: min(90vw, 41rem);
+}
+
+@media only screen and (max-width: breakpoints.$xx-large) {
+    .tooltip--left {
+        transform: unset;
+        left: 0;
+    }
+
+    .tooltip--right {
+        transform: unset;
+        left: unset;
+        right: 0;
+    }
+}
+
+@media only screen and (max-width: breakpoints.$medium) {
+    .switch-container {
+        flex-direction: column;
+    }
+
+    .tooltip--left,
+    .tooltip--right {
+        transform: translateX(-50%);
+        left: 50%;
+        right: unset;
+    }
+
 }
