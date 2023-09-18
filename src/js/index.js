@@ -282,6 +282,9 @@ export function maskToNumber(input) {
     input.value = input.value.replace(/\D/g, "");
 }
 
+export function maskToLetter(input) {
+    input.value = input.value.replace(/[0-9]/g, '');;
+}
 
 export async function maskToZipCode(input) {
     input.value = input.value.replace(/\D/g, "");
