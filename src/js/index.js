@@ -30,21 +30,26 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
     })
 
     if ("error" in update_user_response) {
-        let user_country = "";
-        if (document.getElementById("user_country")) {
-            user_country = document.getElementById("user_country").value;
-        }
-        console.log("user_country ", user_country);
-        let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
-        let panel_user_data_page_response = await request(ProjectData.props.domainNameUrlVal + "/panel_user_data/?error_msg=É necessário atualizar os seus dados para processeguir na compra&render_props=False&user_client_type=" + update_user_response["user_client_type"] + "&selected_country=" + user_country, "GET", {
-            "Content-Type": "text/html; charset=utf-8",
-        }, {}, false);
-        panel_user_data_form_div.innerHTML = panel_user_data_page_response;
-        openModal('#panel_user_data_modal');
-        await floatingLabel("#panel_user_data_form_div form");
+        showCheckoutPanelUserDataForm(update_user_response["user_client_type"]);
     }
-
 }
+
+export async function showCheckoutPanelUserDataForm(userClientType) {
+    console.log("Running showCheckoutPanelUserDataForm");
+    let user_country = "";
+    if (document.getElementById("user_country")) {
+        user_country = document.getElementById("user_country").value;
+    }
+    console.log("user_country ", user_country);
+    let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
+    let panel_user_data_page_response = await request(props.domainNameUrlVal + "/panel_user_data/?error_msg=É necessário atualizar os seus dados para processeguir na compra&render_props=False&user_client_type=" + userClientType + "&selected_country=" + user_country, "GET", {
+        "Content-Type": "text/html; charset=utf-8",
+    }, {}, false);
+    panel_user_data_form_div.innerHTML = panel_user_data_page_response;
+    openModal('#panel_user_data_modal');
+    // await floatingLabel("#panel_user_data_form_div form"); TODO FIX LABELS POSITIONS IF SOME FIELD ALREADY HAS INFO
+}
+
 
 export async function userRegisterGenerateCountryInput() {
     console.log("Running userRegisterGenerateCountryInput");
