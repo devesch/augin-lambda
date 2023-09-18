@@ -29,7 +29,6 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
     })
 
     if ("error" in update_user_response) {
-        openModal('#panel_user_data_modal');
         let user_country = "";
         if (document.getElementById("user_country")) {
             user_country = document.getElementById("user_country").value;
@@ -40,6 +39,7 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
             "Content-Type": "text/html; charset=utf-8",
         }, {}, false);
         panel_user_data_form_div.innerHTML = panel_user_data_page_response;
+        openModal('#panel_user_data_modal');
         await floatingLabel("#panel_user_data_form_div form");
     }
 
