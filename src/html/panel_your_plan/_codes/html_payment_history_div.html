@@ -2,7 +2,7 @@
     <h3>
         {{Histórico de pagamento}}
     </h3>
-    <table>
+    <table id="payment_history_rows">
         {{html_payment_history_rows}}
     </table>
     <nav class="my-plan__history-pagination">
@@ -12,22 +12,10 @@
                     <div></div>
                 </button>
             </li>
-            <li>
-                <button class="button--pagination-number selected-page">1</button>
-            </li>
-            <li>
-                <button class="button--pagination-number">2</button>
-            </li>
-            <li>
-                <button class="button--pagination-number">3</button>
-            </li>
-            <li>
-                <button class="button--pagination-number">4</button>
-            </li>
-            <li>
-                <button class="button--arrow right-arrow">
-                    <div></div>
-                </button>
+            {{html_payment_history_pages_buttons}}
+            <button class="button--arrow right-arrow">
+                <div></div>
+            </button>
             </li>
         </ul>
     </nav>

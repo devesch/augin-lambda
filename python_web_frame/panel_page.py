@@ -2,11 +2,11 @@ from python_web_frame.base_page import BasePage
 from utils.Config import lambda_constants
 from utils.utils.Sort import Sort
 from utils.utils.ReadWrite import ReadWrite
-from utils.utils.Generate import Generate
 from utils.utils.Date import Date
 from utils.AWS.Dynamo import Dynamo
-from utils.AWS.S3 import S3
+from utils.utils.StrFormat import StrFormat
 from python_web_frame.controllers.model_controller import ModelController
+from objects.Order import translate_order_status
 from objects.User import sort_user_folders
 
 
@@ -251,4 +251,66 @@ class PanelPage(BasePage):
             html.esc("file_format_val", format.upper())
             html.esc("file_format_quantity_val", quantity)
             full_html.append(str(html))
+        return "".join(full_html)
+
+    def show_html_payment_history_div(self, user_orders):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_div")
+        html.esc("html_payment_history_rows", self.list_html_payment_history_rows(user_orders))
+        html.esc("html_payment_history_pages_buttons", self.list_html_payment_history_pages_buttons())
+        return str(html)
+
+    def list_html_payment_history_pages_buttons(self):
+        full_html = []
+        already_showed_pages = []
+        for index in range(int(self.user.user_total_orders_count)):
+            if (index + 1) > int(lambda_constants["user_orders_page_size"]):
+                html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_pages_buttons")
+                page_index = int((index + 1) / int(lambda_constants["user_orders_page_size"]))
+                if page_index not in already_showed_pages:
+                    already_showed_pages.append(page_index)
+                    if page_index == 1:
+                        html.esc("selected_page_val", "selected-page")
+                    html.esc("page_index_val", page_index)
+                full_html.append(str(html))
+        return "".join(full_html)
+
+    def list_html_payment_history_rows(self, user_orders):
+        plan_id_name_conversion = {}
+        full_html = []
+        for index, order in enumerate(user_orders):
+            html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_rows")
+            html.esc("order_created_at_val", Date().format_to_str_time(order["created_at"]))
+            html.esc("order_currency_symbol_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
+            html.esc("order_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
+            html.esc("order_status_val", translate_order_status(order["order_status"]))
+
+            if order["order_status"] == "paid":
+                html.esc("order_status_class_val", "paid")
+            else:
+                html.esc("order_status_class_val", "failed")
+
+            if order["order_plan_id"] not in plan_id_name_conversion:
+                plan_id_name_conversion[order["order_plan_id"]] = Dynamo().get_plan(order["order_plan_id"])
+            html.esc("order_plan_name_val", plan_id_name_conversion[order["order_plan_id"]]["plan_name_" + self.lang])
+            html.esc("order_id_val", order["order_id"])
+
+            full_html.append(str(html))
+        return "".join(full_html)
+
+    def show_html_payment_methods_div(self, user_payment_methods):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_div")
+        html.esc("html_payment_methods_rows", self.list_html_payment_methods_rows(user_payment_methods))
+        return str(html)
+
+    def list_html_payment_methods_rows(self, user_payment_methods):
+        full_html = []
+        for payment_method in user_payment_methods:
+            if payment_method["payment_method_type"] == "card":
+                html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
+                html.esc("brand_val", payment_method["payment_method_card"]["brand"])
+                html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
+                html.esc("last4_val", payment_method["payment_method_card"]["last4"])
+                html.esc("exp_month_val", payment_method["payment_method_card"]["exp_month"])
+                html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
+                full_html.append(str(html))
         return "".join(full_html)

@@ -13,19 +13,23 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
     admin = False
 
     def render_get(self):
+        user_subscription = None
+        if self.user.user_subscription_id:
+            user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+        user_plan = self.user.get_user_actual_plan()
+
         html = super().parse_html()
         html.esc("user_name_val", self.user.user_name.title())
-        self.user.add_plan_data()
-        html.esc("plan_name_val", self.user.user_plan["plan_name_" + self.lang])
+        html.esc("plan_name_val", user_plan["plan_name_" + self.lang])
         purchasable_plans = Dynamo().query_purchasable_plans()
-        html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly"))
-        html.esc("html_annually_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "annually"))
+        html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly", user_subscription))
+        html.esc("html_annually_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "annually", user_subscription))
         return str(html)
 
     def render_post(self):
         return self.render_get()
 
-    def list_html_plans_thumbs(self, purchasable_plans, recurrency="monthly"):
+    def list_html_plans_thumbs(self, purchasable_plans, recurrency, user_subscription):
         full_html = []
         if purchasable_plans:
             for plan in purchasable_plans:
@@ -64,7 +68,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                         html.esc("plan_recurrency_val", self.translate("ano"))
                         html.esc("plan_recurrency_phrase_val", self.translate("Cobrado anualmente"))
 
-                    if plan["plan_available_monthly"] == self.user.user_plan_id:
+                    if user_subscription and (user_subscription.get("subscription_plan_id") == plan["plan_id"]) and (user_subscription.get("subscription_recurrency") == recurrency):
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_your_plan_button())
                     else:
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency))

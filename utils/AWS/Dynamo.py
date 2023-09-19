@@ -79,10 +79,14 @@ class Dynamo:
 
     ### ORDER ###
     def query_user_orders(self, user_id):
-        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "order_user_id-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "order_user_id"}, "ExpressionAttributeValues": {":bef90": {"S": user_id}}})
-        if query:
-            return self.execute_batch_get_item(query)
-        return []
+        return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "order#"}}})
+
+    def query_paginated_user_orders(self, user_id, user_total_orders_count, page_index):
+        query = []
+        start_index = int(user_total_orders_count) - (int(lambda_constants["user_orders_page_size"]) * (int(page_index) - 1))
+        for index in range(start_index, start_index - int(lambda_constants["user_orders_page_size"]), -1):
+            query.append({"pk": "user#" + user_id, "sk": "order#" + str(int(index))})
+        return self.execute_batch_get_item(query)
 
     ### PAYMENT METHODS ###
     def query_user_payment_methods(self, user_id):

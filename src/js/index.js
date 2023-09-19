@@ -22,6 +22,30 @@ export function getWebView() {
     return _webView;
 }
 
+
+
+
+
+export async function showSelectedPaymentPage(button, index) {
+    let payment_history_rows = document.getElementById("payment_history_rows");
+    let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
+
+
+    let pagination_queries_response = await apiCaller("pagination_queries", {
+        "query": "query_paginated_user_orders",
+        "page": index
+    })
+
+    payment_history_rows.innerHTML = pagination_queries_response["success"];
+
+    for (let payment_history_page_button of payment_history_page_buttons) {
+        payment_history_page_button.classList.remove("selected-page")
+    }
+    button.classList.add("selected-page");
+}
+
+
+
 export async function processStripeSubscriptionPayment(stripe_token, payment_type, plan_id, plan_recurrency) {
     const stripe = Stripe(stripe_token);
     console.log("const stripe ", stripe);
@@ -2220,4 +2244,12 @@ export async function removeModelFromShared() {
 
     await js.index.showUserDicts();
     closeModal(".modal.remove-modal");
+}
+
+export async function openModalCancelSubscription() {
+    openModal(".modal.cancel-subscription-modal");
+}
+
+export async function saveCancelSubscription() {
+    console.log("running saveCancelSubscription");
 }

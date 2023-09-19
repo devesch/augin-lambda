@@ -89,8 +89,8 @@
             </table>
             <div class="main-container__item__button-container">
                 {{html_upgrade_plan_button}}
-                <!-- <a class="button" href="">{{Atualizar forma de pagamento}}</a>
-                <a class="main-container__item__link" href="">{{Cancelar assinatura}}</a> -->
+                {{html_cancel_subscription_button}}
+                <!-- <a class="button" href="">{{Atualizar forma de pagamento}}</a>-->
             </div>
         </div>
 
@@ -99,4 +99,25 @@
 
     </div>
 </main>
+
+
+<div id="cancel-subscription-modal" class="modal cancel-subscription-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Cancelando assinatura}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <h1>{{Confirme o cancelamento da sua assinatura}}.</h1>
+            </div>
+            <span class="error" id="cancel_subscription_error_span">
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.cancel-subscription-modal')">{{Fechar}}</button>
+                <button onclick="js.index.saveCancelSubscription()" class="ghost">{{Cancelar assinatura}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{footer}}

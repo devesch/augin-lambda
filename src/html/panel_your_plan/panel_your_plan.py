@@ -1,7 +1,5 @@
 from python_web_frame.panel_page import PanelPage
-from utils.Config import lambda_constants
 from objects.Plan import translate_reference_tracker
-from objects.Order import translate_order_status
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.utils.Date import Date
@@ -18,7 +16,6 @@ class PanelYourPlan(PanelPage):
         user_subscription = None
         if self.user.user_subscription_id:
             user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
-
         user_plan = self.user.get_user_actual_plan()
 
         html = super().parse_html()
@@ -43,7 +40,7 @@ class PanelYourPlan(PanelPage):
         if int(user_plan["plan_team_play_participants"]) > 0:
             html.esc("plan_team_play_val", self.translate("Sim"))
         else:
-            html.esc("plan_team_play_val", self.translate("Não"))
+            html.esc("plan_team_play_val", user_plan["plan_team_play_participants"])
 
         if not user_subscription:
             html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
@@ -57,11 +54,20 @@ class PanelYourPlan(PanelPage):
             html.esc("user_subscription_valid_until_val", Date().format_to_str_time(user_subscription["subscription_valid_until"]))
             subscription_payment_method = Dynamo().get_payment_method(self.user.user_id, user_subscription["subscription_default_payment_method"])
             html.esc("user_subscription_payment_method_val", StrFormat().format_to_payment_method(subscription_payment_method["payment_method_type"]))
+            html.esc("html_cancel_subscription_button", self.show_html_cancel_subscription_button())
 
         if not self.user.user_plan_id:
             html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
 
-        user_orders = Dynamo().query_user_orders(self.user.user_id)
+        # user_orders = Dynamo().query_user_orders(self.user.user_id)
+        # for index, order in enumerate(user_orders):
+        #     Dynamo().delete_entity(order)
+        #     order["sk"] = "order#" + str(len(user_orders) - index)
+        #     Dynamo().put_entity(order)
+
+        # self.user.user_total_orders_count = str(len(user_orders))
+        # Dynamo().put_entity(self.user.__dict__)
+        user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, "1")
         if user_orders:
             html.esc("html_payment_history_div", self.show_html_payment_history_div(user_orders))
         user_payment_methods = Dynamo().query_user_payment_methods(self.user.user_id)
@@ -72,47 +78,6 @@ class PanelYourPlan(PanelPage):
     def render_post(self):
         return self.render_get()
 
-    def show_html_payment_history_div(self, user_orders):
-        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_div")
-        html.esc("html_payment_history_rows", self.list_html_payment_history_rows(user_orders))
+    def show_html_cancel_subscription_button(self):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_cancel_subscription_button")
         return str(html)
-
-    def list_html_payment_history_rows(self, user_orders):
-        plan_id_name_conversion = {}
-        full_html = []
-        for order in user_orders:
-            html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_rows")
-            html.esc("order_created_at_val", Date().format_to_str_time(order["created_at"]))
-            html.esc("order_currency_symbol_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
-            html.esc("order_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
-            html.esc("order_status_val", translate_order_status(order["order_status"]))
-
-            if order["order_status"] == "paid":
-                html.esc("order_status_class_val", "paid")
-            else:
-                html.esc("order_status_class_val", "failed")
-
-            if order["order_plan_id"] not in plan_id_name_conversion:
-                plan_id_name_conversion[order["order_plan_id"]] = Dynamo().get_plan(order["order_plan_id"])
-            html.esc("order_plan_name_val", plan_id_name_conversion[order["order_plan_id"]]["plan_name_" + self.lang])
-
-            full_html.append(str(html))
-        return "".join(full_html)
-
-    def show_html_payment_methods_div(self, user_payment_methods):
-        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_div")
-        html.esc("html_payment_methods_rows", self.list_html_payment_methods_rows(user_payment_methods))
-        return str(html)
-
-    def list_html_payment_methods_rows(self, user_payment_methods):
-        full_html = []
-        for payment_method in user_payment_methods:
-            if payment_method["payment_method_type"] == "card":
-                html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
-                html.esc("brand_val", payment_method["payment_method_card"]["brand"])
-                html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
-                html.esc("last4_val", payment_method["payment_method_card"]["last4"])
-                html.esc("exp_month_val", payment_method["payment_method_card"]["exp_month"])
-                html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
-                full_html.append(str(html))
-        return "".join(full_html)

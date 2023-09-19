@@ -18,6 +18,12 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "O .zip contem arquivos duplicados.",
+    "O projeto excede o tamanho máximo de 1Gb.",
+    "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb.",
+    "Os formartos suportados de IFC são: IFC2x3 e IFC4.",
+    "Algum arquivo dentro do .zip não está dentro dos nossos formatos suportados: suportados de IFC são: IFC2x3 e IFC4.",
+    "Este mesmo arquivo já se encontra na fila de processamento.",
     "Incompleto",
     "Pago",
     "Não autorizado",

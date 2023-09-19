@@ -494,6 +494,11 @@
         "es": "Canadá",
         "pt": "Canadá"
     },
+    "Cancelando assinatura": {
+        "en": "CANCELING SIGNATURE",
+        "es": "Firma de cancelación",
+        "pt": "Cancelando assinatura"
+    },
     "Cancelar": {
         "en": "Cancel",
         "es": "Cancelar",
@@ -688,6 +693,11 @@
         "en": "Confirm project exclusion",
         "es": "Confirmar la exclusión del proyecto",
         "pt": "Confirmar exclusão do projeto"
+    },
+    "Confirme o cancelamento da sua assinatura": {
+        "en": "Confirm the cancellation of your signature",
+        "es": "Confirme la cancelación de su firma",
+        "pt": "Confirme o cancelamento da sua assinatura"
     },
     "Congo": {
         "en": "Congo",
@@ -1263,6 +1273,11 @@
         "en": "This cookie is used for the monitoring and optional analysis of our site.",
         "es": "Esta cookie se utiliza para el monitoreo y el análisis opcional de nuestro sitio.",
         "pt": "Este cookie é utilizado para o monitoramento e análise opcional de nosso site."
+    },
+    "Este mesmo arquivo já se encontra na fila de processamento.": {
+        "en": "This same file is already in the processing queue.",
+        "es": "Este mismo archivo ya está en la cola de procesamiento.",
+        "pt": "Este mesmo arquivo já se encontra na fila de processamento."
     },
     "Este modelo está sendo usado como base em um projeto federado": {
         "en": "This model is being used as a base of a federated project",
@@ -2433,6 +2448,11 @@
         "en": "Number",
         "es": "Número",
         "pt": "Número"
+    },
+    "O .zip contem arquivos duplicados.": {
+        "en": "O .zip contains duplicate files.",
+        "es": "O .zip contiene archivos duplicados.",
+        "pt": "O .zip contem arquivos duplicados."
     },
     "O código postal informado é inválido.": {
         "en": "The informed postal code is invalid.",

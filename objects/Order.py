@@ -6,7 +6,7 @@ from utils.Code import Code
 class Order:
     def __init__(self, user_id, order_id) -> None:
         self.pk = "user#" + user_id
-        self.sk = "order#" + order_id
+        self.sk = "order#" + str(time())
         self.order_user_id = user_id
         self.order_id = order_id
         self.order_plan_id = ""

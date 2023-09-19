@@ -42,6 +42,7 @@ class User:
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
+        self.user_total_orders_count = "0"
 
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
@@ -52,6 +53,10 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def incrase_user_total_orders_count(self):
+        self.user_total_orders_count = str(int(self.user_total_orders_count + 1))
+        Dynamo().update_entity(self.user.__dict__, "user_total_orders_count", self.user_total_orders_count)
 
     def get_user_actual_plan(self):
         if self.check_if_subscription_is_valid():
