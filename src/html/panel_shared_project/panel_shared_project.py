@@ -1,6 +1,5 @@
 from python_web_frame.panel_page import PanelPage
 from utils.utils.ReadWrite import ReadWrite
-from utils.AWS.Dynamo import Dynamo
 from utils.Config import lambda_constants
 
 

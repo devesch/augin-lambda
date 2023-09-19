@@ -11,6 +11,10 @@ class UserSubscription:
         self.subscription_plan_id = ""
         self.subscription_recurrency = ""
         self.subscription_status = ""
+        self.subscription_price_id = ""
+        self.subscription_price = ""
+        self.subscription_currency = ""
+        self.subscription_default_payment_method = ""
         self.subscription_last_order_id = ""
         self.subscription_valid_until = ""
         self.created_at = str(time.time())

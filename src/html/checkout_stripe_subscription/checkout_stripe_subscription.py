@@ -40,7 +40,7 @@ class CheckoutStripeSubscription(CheckoutPage):
             if self.user.user_cart_currency == "usd":
                 html.esc("plan_price_val", StrFormat().format_to_money(self.path["plan"]["plan_price_monthly_usd_actual"], self.user.user_cart_currency))
 
-        html.esc("user_cart_currency_symbol", self.user.translate_cart_currency_to_symbol())
+        html.esc("user_cart_currency_symbol", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
         html.esc("stripe_token_val", stripe_token)
         html.esc("plan_id_val", self.path["plan"]["plan_id"])
         html.esc("plan_recurrency_val", self.path["plan_recurrency"])

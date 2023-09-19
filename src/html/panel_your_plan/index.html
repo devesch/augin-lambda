@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>{{Armazenamento}}</td>
-                    <td><strong>{{plan_cloud_space_in_mbs_val}} Mb</strong></td>
+                    <td><strong>{{plan_cloud_space_in_gbs_val}} Gb</strong></td>
                 </tr>
                 <tr>
                     <td>{{Compartilhe por QR Code ou link}}</td>
@@ -51,10 +51,15 @@
                     <td>{{Baixe seus IFCs em qualquer lugar}}</td>
                     <td><strong>{{plan_download_files_val}}</strong></td>
                 </tr>
+                <tr>
+                    <td>TeamPlay</td>
+                    <td><strong>{{plan_team_play_val}}</strong></td>
+                </tr>
             </table>
-            <div class="main-container__item__button-container">
-                <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan" class="button">Fazer upgrade</a>
-            </div>
+            {{html_upgrade_plan_button}}
+            <!-- <div class="main-container__item__button-container">
+                <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan" class="button">{{Realizar upgrade}}</a>
+            </div> -->
         </div>
         <div class="my-plan__main-container__item">
             <h3>
@@ -79,7 +84,7 @@
                 </tr>
                 <tr>
                     <td>{{Forma de pagamento}}</td>
-                    <td><strong></strong></td>
+                    <td><strong>{{user_subscription_payment_method_val}}</strong></td>
                 </tr>
             </table>
             <div class="main-container__item__button-container">
@@ -87,11 +92,11 @@
                 <!-- <a class="button" href="">{{Atualizar forma de pagamento}}</a>
                 <a class="main-container__item__link" href="">{{Cancelar assinatura}}</a> -->
             </div>
-
-            {{html_payment_history_div}}
-            {{html_payment_methods_div}}
-
         </div>
+
+        {{html_payment_history_div}}
+        {{html_payment_methods_div}}
+
     </div>
 </main>
 {{footer}}

@@ -1,0 +1,72 @@
+{{header}}
+<section class="page-backoffice-order-nfse-international-pdf max-width">
+    {{html_international_nfse_canceled}}
+    <table>
+        <table>
+            <tr class="address">
+                <td>
+                    <h1>Invoice {{order_id_val}}</h1>
+                    <p>Av. Mariland 403, Sala 802 CEP 90440-190 - Porto Alegre</p>
+                </td>
+                <!-- <td>
+                    <img src="{{cdn_val}}/assets/images/logo-augin.svg" width="150" alt="">
+                </td> -->
+            </tr>
+        </table>
+        <table>
+            <tr class="head-date">
+                <td>Date</td>
+                <td>To</td>
+                <td>Ship</td>
+            </tr>
+            <tr class="date-items">
+                <td>
+                    <p>{{order_date_val}}</p>
+                </td>
+                <td>
+                    <p>{{nfse_user_name_val}}</p>
+                    <p>{{nfse_user_address_val}}</p>
+                    <p>{{nfse_user_city_val}}, {{nfse_user_zip_code_val}} - {{nfse_user_country_val}}</p>
+                </td>
+                <td>
+                    <p>No shipping required</p>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr class="head-instructions">
+                <td>
+                    <p>Instructions</p>
+                </td>
+            </tr>
+            <tr class="instructions">
+                <td>
+                    <p>-</p>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <div class="head-products">
+                <p>Items</p>
+            </div>
+            <div class="items">
+                <p>{{order_commentary_val}}</p>
+            </div>
+        </div>
+        <div class="totals">
+            <div class="subtotal">
+                <p>Subtotal: <span>R$ {{order_brl_price_val}}</span></p>
+            </div>
+            <div class="sales-tax">
+                <p>Sales Tax: <span>R$ 00,00</span></p>
+            </div>
+            <div class="shipping-handling">
+                <p>Shipping & Handling: <span>R$ 00,00</span></p>
+            </div>
+            <div class="total">
+                <p>Total Due By: <span>R$ {{order_brl_price_val}}</span></p>
+            </div>
+        </div>
+        <p class="thank-you">Thank you for your business!</p>
+    </table>
+</section>

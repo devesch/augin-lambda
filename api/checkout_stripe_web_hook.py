@@ -1,9 +1,14 @@
-from python_web_frame.base_page import User, BasePage
+from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.billing_controller import BillingController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.utils.Validation import Validation
 from objects.Order import Order
+from objects.UserPaymentMethod import UserPaymentMethod
 from utils.AWS.Dynamo import Dynamo
+from utils.AWS.Ses import Ses
+from utils.utils.ReadWrite import ReadWrite
+from utils.utils.StrFormat import StrFormat
+from utils.utils.EncodeDecode import EncodeDecode
 
 
 class CheckoutStripeWebHook(BasePage):
@@ -19,7 +24,8 @@ class CheckoutStripeWebHook(BasePage):
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
             user_stripe_subscription = None
             if not order and self.post["data"]["object"]["description"] == "Subscription update":
-                self.utils.send_payload_email(self.event, "MAGIPIX SUBSCRIPTION STRIPE PAYMENT")
+                raise Exception("TODO")
+                self.utils.send_payload_email(self.event, "AUGIN SUBSCRIPTION STRIPE PAYMENT")
                 if self.user.user_subscription:  ### TODO MAKE MORE CHECKS TO MAKE SURE SUBSCRIPTION UPDATE IS FROM THE SAME SUB_ID, CHECK WHEN CHARGE ID COMES
                     user_stripe_subscription = StripeController().get_stripe_subscription(self.user.user_subscription["subscription_stripe_id"])
                     user_first_order_from_subscription = self.get_user_first_order_from_subscription(self.user.user_email, self.user.user_subscription["subscription_last_order_id"])
@@ -46,13 +52,24 @@ class CheckoutStripeWebHook(BasePage):
         elif self.post["type"] == "charge.succeeded":
             stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
             self.user = self.load_user(stripe_customer["email"])
-            order = self.dynamo.get_order(self.user.user_email, "stripe-" + self.post["data"]["object"]["payment_intent"])
+            order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
             if not order:
                 import time
 
                 time.sleep(15)
-                order = self.dynamo.get_order(self.user.user_email, "stripe-" + self.post["data"]["object"]["payment_intent"])
-            self.dynamo.update_entity(order, "order_payment_stripe_charge_id", self.post["data"]["object"]["id"])
+                order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
+            Dynamo().update_entity(order, "order_payment_stripe_charge_id", self.post["data"]["object"]["id"])
+            Dynamo().update_entity(order, "order_payment_stripe_receipt_url", self.post["data"]["object"]["receipt_url"])
+            Dynamo().update_entity(order, "order_payment_method", self.post["data"]["object"]["payment_method_details"]["type"])
+
+            payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["data"]["object"]["payment_method"])
+            if not payment_method:
+                payment_method = UserPaymentMethod(self.user.user_id, self.post["data"]["object"]["payment_method"]).__dict__
+
+            payment_method["payment_method_type"] = self.post["data"]["object"]["payment_method_details"]["type"]
+            if self.post["data"]["object"]["payment_method_details"]["type"] == "card":
+                payment_method["payment_method_card"] = self.post["data"]["object"]["payment_method_details"]["card"]
+            Dynamo().put_entity(payment_method)
             return {"success": "Evento charge.succeeded tratado."}
 
         return {"success": "Evento não tratado."}
@@ -74,7 +91,7 @@ class CheckoutStripeWebHook(BasePage):
         new_order = Order(user.user_email, "stripe-" + payment_intent["id"])
         new_order.order_status = StripeController().convert_stripe_status_code_to_status(payment_intent["status"])
         new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(subscription["plan"]["interval"])
-        new_order.order_payment_method = StripeController().convert_stripe_payment_code_to_method(subscription["payment_settings"]["payment_method_types"])
+        new_order.order_payment_method = subscription["payment_settings"]["payment_method_types"]
         new_order.order_sub_total_brl_price = user_first_order_from_subscription["order_sub_total_brl_price"]
         new_order.order_sub_total_usd_price = user_first_order_from_subscription["order_sub_total_usd_price"]
         new_order.order_brl_discount = user_first_order_from_subscription["order_brl_discount"]
@@ -93,3 +110,13 @@ class CheckoutStripeWebHook(BasePage):
         new_order.order_descrimination = self.utils.generate_order_descrimination(user_first_order_from_subscription["order_user_updated_cart_information"], user_first_order_from_subscription["order_brl_price"])
         self.dynamo.put_entity(new_order.__dict__)
         self.increase_backoffice_data_total_count("order")
+
+    def send_payment_success_email(self, order):
+        html = ReadWrite().read_html("checkout_payment_success/_codes/html_payment_success_email")
+        html.esc("user_email_val", self.user.user_email)
+        html.esc("user_name_val", self.user.user_name)
+        html.esc("order_currency_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
+        html.esc("order_total_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
+        html.esc("order_id_val", order["order_id"])
+        ### TODO EM PROD ADD EVERYONES EMAILS
+        Ses().send_email("eugenio@devesch.com.br", body_html=str(html), body_text=str(html), subject_data="Pagamento realizado com sucesso")

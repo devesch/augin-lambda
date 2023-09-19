@@ -15,7 +15,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
     def render_get(self):
         html = super().parse_html()
         html.esc("user_name_val", self.user.user_name.title())
-        self.user.update_user_plan()
+        self.user.add_plan_data()
         html.esc("plan_name_val", self.user.user_plan["plan_name_" + self.lang])
         purchasable_plans = Dynamo().query_purchasable_plans()
         html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly"))
@@ -59,6 +59,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                                 html.esc("plan_annually_savings", int(int(plan["plan_price_monthly_usd_actual"]) / int(plan["plan_price_annually_usd_actual"]) * 100))
 
                     if recurrency == "annually":
+                        html.esc("plan_recurrency_val", self.translate("ano"))
                         html.esc("save_on_annually_visibility_val", "display:none;")
                         html.esc("plan_recurrency_val", self.translate("ano"))
                         html.esc("plan_recurrency_phrase_val", self.translate("Cobrado anualmente"))

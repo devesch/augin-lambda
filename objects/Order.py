@@ -1,5 +1,6 @@
 from time import time
 from utils.utils.StrFormat import StrFormat
+from utils.Code import Code
 
 
 class Order:
@@ -36,6 +37,7 @@ class Order:
         self.order_payment_service_id = ""
         self.order_payment_stripe_subscription_id = ""
         self.order_payment_stripe_charge_id = ""
+        self.order_payment_stripe_receipt_url = ""
         self.order_user_cart_cupom = {}
         self.created_at = str(time())
         self.entity = "order"
@@ -55,3 +57,43 @@ def generate_order_descrimination(product_name, product_brl_price):
 
 def generate_order_short_id(order_id):
     return order_id[-6:]
+
+
+def translate_order_payment_method(order_payment_method):
+    if order_payment_method == "card":
+        return Code().translate("Cartão de crédito")
+    if order_payment_method == "boleto":
+        return Code().translate("Boleto")
+    if order_payment_method == "pix":
+        return Code().translate("Pix")
+    if order_payment_method == "direct":
+        return Code().translate("Pagamento Direto")
+    if order_payment_method == "free_checkout":
+        return Code().translate("Creditado pela Augin")
+
+
+def translate_order_type(order_type):
+    if order_type == "unique":
+        return Code().translate("Compra única")
+    elif order_type == "monthly" or order_type == "annually":
+        return Code().translate("Assinatura")
+
+
+def translate_order_status(order_status):
+    translations = {
+        "pending": "Incompleto",
+        "paid": "Pago",
+        "not_authorized": "Não autorizado",
+        "expired_card": "Cartão expirado",
+        "blocked_card": "Cartão bloqueado",
+        "canceled_card": "Cartão cancelado",
+        "problems_with_card": "Problemas no cartão",
+        "time_out": "Excedeu o limite de tentativas",
+        "refunded": "Reembolsado",
+    }
+
+    translated_status = translations.get(order_status)
+    if translated_status:
+        return Code().translate(translated_status)
+    else:
+        return order_status

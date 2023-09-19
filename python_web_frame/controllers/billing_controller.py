@@ -7,6 +7,11 @@ from time import time
 from utils.Config import lambda_constants
 from utils.AWS.Lambda import Lambda
 from utils.AWS.Dynamo import Dynamo
+from utils.AWS.Ses import Ses
+from utils.utils.ReadWrite import ReadWrite
+from utils.utils.EncodeDecode import EncodeDecode
+from utils.utils.StrFormat import StrFormat
+from utils.utils.Date import Date
 from utils.AWS.S3 import S3
 from OpenSSL import crypto
 from lxml import etree
@@ -16,7 +21,6 @@ from suds.client import Client
 from suds.transport.http import HttpTransport
 import urllib.request, http.client
 from objects.PendingNfse import PendingNfse
-from json import loads, dumps
 
 
 class HTTPSClientAuthHandler(urllib.request.HTTPSHandler):
@@ -45,8 +49,8 @@ class HttpAuthenticated(HttpTransport):
 
 certificado_path = "xmls/certificado_A1_magipix_exportado.p12"
 certificado_password = "XR#U8B^zopseZY6!v&H9!ie3!pxFWhE6KZbV!3Rz$hkm93WJkxNDNX2@xzY%" + "3Px"
-# url = "https://nfse-hom.procempa.com.br/bhiss-ws/nfse?wsdl" ### TEST URL
-url = "https://nfe.portoalegre.rs.gov.br/bhiss-ws/nfse?wsdl"  ### PROD URL
+url = "https://nfse-hom.procempa.com.br/bhiss-ws/nfse?wsdl"  ### TEST URL
+# url = "https://nfe.portoalegre.rs.gov.br/bhiss-ws/nfse?wsdl"  ### PROD URL
 cabecalho = "<cabecalho xmlns=" + chr(34) + "http://www.abrasf.org.br/nfse.xsd" + chr(34) + " versao=" + chr(34) + "1.00" + chr(34) + "><versaoDados >1.00</versaoDados ></cabecalho>"
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:
@@ -61,7 +65,7 @@ class BillingController:
 
     def get_bill_of_sale_xml(self, order):
         get_nfe_with_data = self.generate_get_nfe_with_data(order)
-        # self.utils.write_file(temp_path + "/get_nfe_with_data.xml", get_nfe_with_data)
+        # ReadWrite().write_file(lambda_constants["tmp_path"] +"get_nfe_with_data.xml", get_nfe_with_data)
 
         key, cert = self.generate_key_and_cert(certificado_path, certificado_password, https=True)
         cliente = Client(url, transport=HttpAuthenticated(key=key, cert=cert, endereco=url))
@@ -70,18 +74,18 @@ class BillingController:
         return ET.fromstring(ConsultarNfsePorRps_return)
 
     def generate_only_pdf_nfse(self, order):
-        self.dynamo.update_entity(order, "order_nfse_pdf_link", lambda_constants["img_cdn"] + "/" + self.generate_pdf_nfse_img_bucket_key(order["order_id"], order["order_nfse_created_at"]))
-        self.generate_pdf_bill_of_sale(self.utils.encode_to_b64(order["order_user_email"]), order["order_id"], order["order_nfse_created_at"])
+        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["img_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"], order["order_nfse_created_at"]))
+        self.generate_pdf_bill_of_sale(EncodeDecode().encode_to_b64(order["order_user_email"]), order["order_id"], order["order_nfse_created_at"])
         return
 
     def refund_bill_of_sale(self, order):
         cancel_nfe_with_data = self.generate_cancel_nfe_with_data(order["order_nfse_id"])
-        self.utils.write_file(temp_path + "/cancel_nfe_with_data.xml", cancel_nfe_with_data)
+        ReadWrite().write_file(lambda_constants["tmp_path"] + "cancel_nfe_with_data.xml", cancel_nfe_with_data)
 
         key, cert = self.generate_key_and_cert(certificado_path, certificado_password, https=False)
-        xml_element = etree.fromstring(self.utils.read_bytes(temp_path + "/cancel_nfe_with_data.xml"))
+        xml_element = etree.fromstring(ReadWrite().read_bytes(lambda_constants["tmp_path"] + "cancel_nfe_with_data.xml"))
         cancel_nfe_with_data_signed = self.sign_xml_element(xml_element, "pedidoCancelamento_" + order["order_nfse_id"], key, cert)
-        self.utils.write_file(temp_path + "/cancel_nfe_with_data_signed.xml", cancel_nfe_with_data_signed)
+        ReadWrite().write_file(lambda_constants["tmp_path"] + "cancel_nfe_with_data_signed.xml", cancel_nfe_with_data_signed)
         cancel_nfe_with_data_signed = self.fix_cancel_nfe_with_data_signed_signature_position()
 
         key, cert = self.generate_key_and_cert(certificado_path, certificado_password, https=True)
@@ -93,39 +97,35 @@ class BillingController:
             self.send_unable_to_generate_nfse_email(CancelarNfse_return)
             return
 
-        self.dynamo.update_entity(order, "order_nfse_status", "canceled")
-        self.dynamo.update_entity(order, "order_nfse_canceled_at", str(time()))
-        self.dynamo.update_entity(order, "order_nfse_xml_link", lambda_constants["img_cdn"] + "/" + self.generate_nfse_canceled_img_bucket_key(order["order_id"]))
+        Dynamo().update_entity(order, "order_nfse_status", "canceled")
+        Dynamo().update_entity(order, "order_nfse_canceled_at", str(time()))
+        Dynamo().update_entity(order, "order_nfse_xml_link", lambda_constants["img_cdn"] + "/" + self.generate_nfse_canceled_processed_bucket_key(order["order_id"]))
 
         xml_tree = ET.ElementTree(response_xml)
-        xml_tree.write(temp_path + "/cancel_nfe_response.xml")
+        xml_tree.write(lambda_constants["tmp_path"] + "cancel_nfe_response.xml")
         nfse_xml = self.get_bill_of_sale_xml(order)
         xml_tree = ET.ElementTree(nfse_xml)
-        xml_tree.write(temp_path + "/xml_tree.xml")
-        self.utils.upload_file_to_s3(
-            lambda_constants["img_bucket"],
-            self.generate_nfse_canceled_img_bucket_key(order["order_id"]),
-            temp_path + "/xml_tree.xml",
-        )
-        self.utils.delete_file_from_s3(lambda_constants["img_bucket"], self.generate_nfse_img_bucket_key(order["order_id"], order["order_nfse_created_at"]))
-        self.generate_pdf_bill_of_sale(self.utils.encode_to_b64(order["order_user_email"]), order["order_id"], order["order_nfse_created_at"])
+        xml_tree.write(lambda_constants["tmp_path"] + "xml_tree.xml")
+        S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_canceled_processed_bucket_key(order["order_id"]), lambda_constants["tmp_path"] + "xml_tree.xml")
+        S3().delete_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"], order["order_nfse_created_at"]))
+        self.generate_pdf_bill_of_sale(EncodeDecode().encode_to_b64(order["order_user_email"]), order["order_id"], order["order_nfse_created_at"])
         return
 
     def generate_bill_of_sale(self, user, order):
         nfe_with_data_rps_only = self.generate_nfe_with_data_rps_only(user, order)
-        self.utils.write_file(temp_path + "/nfe_with_data_rps_only.xml", nfe_with_data_rps_only)
+        ReadWrite().write_file(lambda_constants["tmp_path"] + "nfe_with_data_rps_only.xml", nfe_with_data_rps_only)
 
         key, cert = self.generate_key_and_cert(certificado_path, certificado_password, https=False)
-        xml_element = etree.fromstring(self.utils.read_bytes(temp_path + "/nfe_with_data_rps_only.xml"))
+        xml_element = etree.fromstring(ReadWrite().read_bytes(lambda_constants["tmp_path"] + "nfe_with_data_rps_only.xml"))
         nfe_with_data_rps_signed = self.sign_xml_element(xml_element, str(int(float(order["created_at"]))), key, cert)
 
         nfe_with_data_lote_only = self.generate_nfe_with_data_lote_only(order, nfe_with_data_rps_signed)
-        self.utils.write_file(temp_path + "/nfe_with_data_lote_only.xml", nfe_with_data_lote_only)
+        ReadWrite().write_file(lambda_constants["tmp_path"] + "nfe_with_data_lote_only.xml", nfe_with_data_lote_only)
 
-        xml_element = etree.fromstring(self.utils.read_bytes(temp_path + "/nfe_with_data_lote_only.xml"))
+        xml_element = etree.fromstring(ReadWrite().read_bytes(lambda_constants["tmp_path"] + "nfe_with_data_lote_only.xml"))
         nfe_with_data_lote_signed = self.sign_xml_element(xml_element, "Lote" + str(int(float(order["created_at"]))), key, cert)
         nfe_with_data_lote_signed = self.fix_nfe_with_data_lote_signed_signature_position(nfe_with_data_lote_signed)
-        self.utils.write_file(temp_path + "/nfe_with_data_lote_signed.xml", nfe_with_data_lote_signed)
+        ReadWrite().write_file(lambda_constants["tmp_path"] + "nfe_with_data_lote_signed.xml", nfe_with_data_lote_signed)
 
         try:
             key, cert = self.generate_key_and_cert(certificado_path, certificado_password, https=True)
@@ -135,68 +135,55 @@ class BillingController:
         except Exception as e:
             self.send_unable_to_generate_nfse_email(e)
             pending_nfse = PendingNfse(order["order_id"], order["order_user_email"])
-            self.dynamo.put_entity(pending_nfse.__dict__)
+            Dynamo().put_entity(pending_nfse.__dict__)
             return
 
         if not self.check_if_nfse_was_issued(GerarNfse_return):
             self.send_unable_to_generate_nfse_email(GerarNfse_return)
             pending_nfse = PendingNfse(order["order_id"], order["order_user_email"])
-            self.dynamo.put_entity(pending_nfse.__dict__)
+            Dynamo().put_entity(pending_nfse.__dict__)
             return
-        self.dynamo.update_entity(order, "order_nfse_id", response_xml[3][0][0][0][0].text)
-        self.dynamo.update_entity(order, "order_nfse_status", "issued")
-        self.dynamo.update_entity(order, "order_nfse_number", response_xml[3][0][0][0][3][0].text)
-        self.dynamo.update_entity(order, "order_nfse_serie", response_xml[3][0][0][0][3][1].text)
-        self.dynamo.update_entity(order, "order_nfse_type", response_xml[3][0][0][0][3][2].text)
-        self.dynamo.update_entity(order, "order_nfse_created_at", str(time()))
-        self.dynamo.update_entity(order, "order_nfse_xml_link", lambda_constants["img_cdn"] + "/" + self.generate_nfse_img_bucket_key(order["order_id"]))
-        self.dynamo.update_entity(order, "order_nfse_pdf_link", lambda_constants["img_cdn"] + "/" + self.generate_pdf_nfse_img_bucket_key(order["order_id"]))
-        order = self.dynamo.get_entity(order["pk"], order["sk"])
+
+        Dynamo().update_entity(order, "order_nfse_id", response_xml[3][0][0][0][0].text)
+        Dynamo().update_entity(order, "order_nfse_status", "issued")
+        Dynamo().update_entity(order, "order_nfse_number", response_xml[3][0][0][0][3][0].text)
+        Dynamo().update_entity(order, "order_nfse_serie", response_xml[3][0][0][0][3][1].text)
+        Dynamo().update_entity(order, "order_nfse_type", response_xml[3][0][0][0][3][2].text)
+        Dynamo().update_entity(order, "order_nfse_created_at", str(time()))
+        Dynamo().update_entity(order, "order_nfse_xml_link", lambda_constants["img_cdn"] + "/" + self.generate_nfse_processed_bucket_key(order["order_id"]))
+        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["img_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"]))
+        order = Dynamo().get_entity(order["pk"], order["sk"])
         xml_tree = ET.ElementTree(response_xml)
-        xml_tree.write(temp_path + "/generated_nfe_response.xml")
+        xml_tree.write(lambda_constants["tmp_path"] + "generated_nfe_response.xml")
         nfse_xml = self.get_bill_of_sale_xml(order)
         xml_tree = ET.ElementTree(nfse_xml)
-        xml_tree.write(temp_path + "/xml_tree.xml")
-        self.utils.upload_file_to_s3(
-            lambda_constants["img_bucket"],
-            self.generate_nfse_img_bucket_key(order["order_id"]),
-            temp_path + "/xml_tree.xml",
-        )
-        self.generate_pdf_bill_of_sale(self.utils.encode_to_b64(order["order_user_email"]), order["order_id"], None)
+        xml_tree.write(lambda_constants["tmp_path"] + "xml_tree.xml")
+        S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"]), lambda_constants["tmp_path"] + "xml_tree.xml")
+        self.generate_pdf_bill_of_sale(EncodeDecode().encode_to_b64(order["order_user_email"]), order["order_id"], None)
         return
 
     def generate_international_pdf_bill_of_sale(self, order):
-        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_pdf_nfse_img_bucket_key(order["order_id"]))
+        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"]))
         self.generate_pdf_bill_of_sale(order["order_id"], order["created_at"])
-        S3().download_file_from_s3(lambda_constants["img_bucket"], self.generate_pdf_nfse_img_bucket_key(order["order_id"]), temp_path + "/order_pdf.pdf")
-        self.utils.upload_file_to_s3(
-            lambda_constants["img_bucket"],
-            self.generate_nfse_img_bucket_key(order["order_id"], extension=".pdf"),
-            temp_path + "/order_pdf.pdf",
-        )
+        S3().download_file(lambda_constants["processed_bucket"], self.generate_pdf_nfse_processed_bucket_key(order["order_id"]), lambda_constants["tmp_path"] + "order_pdf.pdf")
+        S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"], extension=".pdf"), lambda_constants["tmp_path"] + "order_pdf.pdf")
         return
 
     def cancel_international_pdf_bill_of_sale(self, order):
-        self.dynamo.update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_canceled_img_bucket_key(order["order_id"], extension=".pdf"))
-        self.utils.delete_file_from_s3(lambda_constants["img_bucket"], self.generate_nfse_img_bucket_key(order["order_id"], order["created_at"], extension=".pdf"))
-        self.generate_pdf_bill_of_sale(self.utils.encode_to_b64(order["order_user_email"]), order["order_id"], order["created_at"])
-        self.utils.download_file_from_s3(lambda_constants["img_bucket"], self.generate_pdf_nfse_img_bucket_key(order["order_id"], order["created_at"]), temp_path + "/order_pdf.pdf")
-        self.utils.upload_file_to_s3(
-            lambda_constants["img_bucket"],
-            self.generate_nfse_canceled_img_bucket_key(order["order_id"], extension=".pdf"),
-            temp_path + "/order_pdf.pdf",
-        )
+        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_canceled_processed_bucket_key(order["order_id"], extension=".pdf"))
+        S3().delete_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"], order["created_at"], extension=".pdf"))
+        self.generate_pdf_bill_of_sale(ReadWrite().encode_to_b64(order["order_user_email"]), order["order_id"], order["created_at"])
+        S3().download_file(lambda_constants["processed_bucket"], self.generate_pdf_nfse_processed_bucket_key(order["order_id"], order["created_at"]), lambda_constants["tmp_path"] + "order_pdf.pdf")
+        S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_canceled_processed_bucket_key(order["order_id"], extension=".pdf"), lambda_constants["tmp_path"] + "order_pdf.pdf")
         return
 
     def generate_pdf_bill_of_sale(self, order_id, order_nfse_created_at):
-        lambda_generate_pdf_response = Lambda().invoke(FunctionName="lambda_generate_pdf", InvocationType="RequestResponse", Payload=dumps({"input_url": lambda_constants["domain_name_url"] + "/backoffice_order_nfse_pdf/?" "order_id=" + order_id, "output_bucket": lambda_constants["processed_bucket"], "output_key": self.generate_pdf_nfse_img_bucket_key(order_id, order_nfse_created_at)}))
-        response_payload = lambda_generate_pdf_response["Payload"].read().decode()
-        response_payload = loads(response_payload)
-        print(loads(response_payload["body"]))
+        lambda_generate_pdf_response = Lambda().invoke("lambda_generate_pdf", "RequestResponse", {"input_url": lambda_constants["domain_name_url"] + "/backoffice_order_nfse_pdf/?order_id=" + order_id, "output_bucket": lambda_constants["processed_bucket"], "output_key": self.generate_pdf_nfse_processed_bucket_key(order_id, order_nfse_created_at)})
+        print(lambda_generate_pdf_response)
         return
 
     def generate_get_nfe_with_data(self, order):
-        xml = self.utils.read_file("xmls/get_nfe_no_data.xml")
+        xml = ReadWrite().read_file("xmls/get_nfe_no_data.xml")
         xml = xml.replace("{{order_nfse_number_val}}", order["order_nfse_number"])
         xml = xml.replace("{{order_nfse_serie_val}}", order["order_nfse_serie"])
         xml = xml.replace("{{order_nfse_type_val}}", order["order_nfse_type"])
@@ -215,27 +202,27 @@ class BillingController:
         return False
 
     def generate_cancel_nfe_with_data(self, nfse_id):
-        xml = self.utils.read_file("xmls/cancel_nfe_no_data.xml")
+        xml = ReadWrite().read_file("xmls/cancel_nfe_no_data.xml")
         xml = xml.replace("{{nfse_id_val}}", nfse_id)
         xml = xml.replace("{{company_cnpj_val}}", lambda_constants["cnpj"])
         xml = xml.replace("{{company_inscription_val}}", lambda_constants["municipal_inscription"])
         return self.remover_acentos(xml)
 
-    def generate_nfse_img_bucket_key(self, order_id, order_nfse_created_at=False, extension=".xml"):
+    def generate_nfse_processed_bucket_key(self, order_id, order_nfse_created_at=False, extension=".xml"):
         if order_nfse_created_at:
             return "nfse/" + datetime.fromtimestamp(int(float(order_nfse_created_at))).strftime("%Y/%m") + "/" + order_id + extension
         return "nfse/" + datetime.fromtimestamp(int(float(time()))).strftime("%Y/%m") + "/" + order_id + extension
 
-    def generate_pdf_nfse_img_bucket_key(self, order_id, order_nfse_created_at=False):
+    def generate_pdf_nfse_processed_bucket_key(self, order_id, order_nfse_created_at=False):
         if order_nfse_created_at:
             return "nfse_pdf/" + datetime.fromtimestamp(int(float(order_nfse_created_at))).strftime("%Y/%m") + "/" + order_id + ".pdf"
         return "nfse_pdf/" + datetime.fromtimestamp(int(float(time()))).strftime("%Y/%m") + "/" + order_id + ".pdf"
 
-    def generate_nfse_canceled_img_bucket_key(self, order_id, extension=".xml"):
+    def generate_nfse_canceled_processed_bucket_key(self, order_id, extension=".xml"):
         return "nfse_canceled/" + datetime.fromtimestamp(int(float(time()))).strftime("%Y/%m") + "/" + order_id + extension
 
     def fix_cancel_nfe_with_data_signed_signature_position(self):
-        xml = self.utils.read_file(temp_path + "/cancel_nfe_with_data_signed.xml")
+        xml = ReadWrite().read_file(lambda_constants["tmp_path"] + "cancel_nfe_with_data_signed.xml")
         xml = xml.replace("</Pedido>", "")
         xml = xml.replace("</CancelarNfseEnvio>", "</Pedido></CancelarNfseEnvio>")
         return xml
@@ -252,7 +239,7 @@ class BillingController:
         return xml
 
     def generate_nfe_with_data_lote_only(self, order, nfe_with_data_rps_signed):
-        xml = self.utils.read_file("xmls/nfe_no_data_lote_only.xml")
+        xml = ReadWrite().read_file("xmls/nfe_no_data_lote_only.xml")
         xml = xml.replace("{{order_id_val}}", str(int(float(order["created_at"]))))
         xml = xml.replace("{{company_cnpj_val}}", lambda_constants["cnpj"])
         xml = xml.replace("{{company_inscription_val}}", lambda_constants["municipal_inscription"])
@@ -264,19 +251,12 @@ class BillingController:
             if element.text is not None and not element.text.strip():
                 element.text = None
 
-        signer = XMLSigner(
-            method=signxml.methods.enveloped,
-            signature_algorithm="rsa-sha256",
-            digest_algorithm="sha256",
-            c14n_algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments",
-        )
+        signer = XMLSigner(method=signxml.methods.enveloped, signature_algorithm="rsa-sha256", digest_algorithm="sha256", c14n_algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments")
         signer.excise_empty_xmlns_declarations = True
         ns = {}
         ns[None] = signer.namespaces["ds"]
         signer.namespaces = ns
-
         ref_uri = ("#%s" % reference) if reference else None
-
         signed_root = signer.sign(xml_element, key=key, cert=cert, reference_uri=ref_uri)
         ns = {"ns": "http://www.w3.org/2000/09/xmldsig#"}
         tagX509Data = signed_root.find(".//ns:X509Data", namespaces=ns)
@@ -307,10 +287,10 @@ class BillingController:
             return arqchave.name, arqcert.name
 
     def generate_nfe_with_data_rps_only(self, user, order):
-        xml = self.utils.read_file("xmls/nfe_no_data_rps_only.xml")
+        xml = ReadWrite().read_file("xmls/nfe_no_data_rps_only.xml")
         xml = xml.replace("{{order_id_val}}", str(int(float(order["created_at"]))))
-        xml = xml.replace("{{order_created_at_val}}", self.utils.format_unixtime_to_billingtime(order["created_at"]))
-        xml = xml.replace("{{order_total_price_val}}", self.utils.format_to_billing_money(order["order_total_price"]))
+        xml = xml.replace("{{order_created_at_val}}", Date().format_unixtime_to_billingtime(order["created_at"]))
+        xml = xml.replace("{{order_total_price_val}}", StrFormat().format_to_billing_money(order["order_total_price"]))
         xml = xml.replace("{{order_commentary_val}}", order["order_descrimination"])
         xml = xml.replace("{{company_cnpj_val}}", lambda_constants["cnpj"])
         xml = xml.replace("{{company_inscription_val}}", lambda_constants["municipal_inscription"])
@@ -335,7 +315,7 @@ class BillingController:
                 # xml = xml.replace("<CpfCnpj>", "")
                 # xml = xml.replace("<CpfCnpj/>", "")
 
-        xml = xml.replace("{{user_full_name_val}}", (user.user_name + " " + user.user_last_name).strip())
+        xml = xml.replace("{{user_full_name_val}}", (user.user_name).strip())
 
         if user.user_address_data["user_street"]:
             xml = xml.replace("{{user_street_val}}", user.user_address_data["user_street"])
@@ -375,26 +355,4 @@ class BillingController:
         return self.remover_acentos(xml)
 
     def send_unable_to_generate_nfse_email(self, generate_nfse_response):
-        html = "<p>" + generate_nfse_response + "</p>"
-        get_ses_client().send_email(
-            Destination={"ToAddresses": ["eugenio@devesch.com.br"]},
-            Message={
-                "Body": {
-                    "Html": {
-                        "Charset": "utf-8",
-                        "Data": str(html),
-                    },
-                    "Text": {
-                        "Charset": "utf-8",
-                        "Data": str(html),
-                    },
-                },
-                "Subject": {
-                    "Charset": "utf-8",
-                    "Data": "UNABLE TO GENERATE NFSE",
-                },
-            },
-            Source=lambda_constants["email_sender"],
-            ConfigurationSetName="configset",
-        )
-        return
+        Ses().send_email("eugenio@devesch.com.br", body_html="<p>" + generate_nfse_response + "</p>", body_text="<p>" + generate_nfse_response + "</p>", subject_data="<p>" + generate_nfse_response + "</p>", region=lambda_constants["region"])

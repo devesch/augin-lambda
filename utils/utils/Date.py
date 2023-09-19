@@ -1,5 +1,4 @@
-import os
-import json
+from datetime import datetime
 
 
 class Date:
@@ -9,6 +8,11 @@ class Date:
         if cls._instance is None:
             cls._instance = super(Date, cls).__new__(cls, *args, **kwargs)
         return cls._instance
+
+    def format_to_str_time(self, created_at):
+        dt_object = datetime.fromtimestamp(float(created_at))
+        formatted_date = dt_object.strftime("%b %d, %Y")
+        return formatted_date
 
     def get_current_br_month(self):
         import datetime
@@ -21,6 +25,9 @@ class Date:
         import time
 
         return int(time.time()) - int(float(unix_time))
+
+    def format_unixtime_to_billingtime(self, unix_time):
+        return self.format_unixtime(int(float(unix_time)), "%Y-%m-%dT%H:%M:%S") + ".000-02:00"
 
     def format_total_time_to_hh_mm_ss(self, time):
         time = str(round((time.real * 10) * (6)))

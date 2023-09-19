@@ -3,6 +3,7 @@ from utils.Config import lambda_constants
 from utils.utils.Sort import Sort
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Generate import Generate
+from utils.utils.Date import Date
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.S3 import S3
 from python_web_frame.controllers.model_controller import ModelController
@@ -70,7 +71,7 @@ class PanelPage(BasePage):
 
                 for folder in user_folder["folders"]:
                     if folder["folder_user_id"] not in user_ids_name_dict:
-                        owner_user = Dynamo().get_user(Dynamo().get_user_email_with_id(folder["folder_user_id"]))
+                        owner_user = Dynamo().get_user(folder["folder_user_id"])
                         user_ids_name_dict[folder["folder_user_id"]] = owner_user["user_name"]
                     folder["owners_name"] = user_ids_name_dict[folder["folder_user_id"]]
 
@@ -98,7 +99,7 @@ class PanelPage(BasePage):
                     html.esc("folder_path_val", folder["folder_path"])
                     html.esc("folder_name_val", folder["folder_name"])
                     html.esc("folder_id_val", folder["folder_id"])
-                    html.esc("folder_created_at_val", ModelController().convert_model_created_at_to_date(folder["created_at"]))
+                    html.esc("folder_created_at_val", Date().format_to_str_time(folder["created_at"]))
                     html.esc("folder_size_in_mbs_val", f'{round(float(folder["folder_size_in_mbs"]), 2):.1f}' + " Mb")
 
                     html.esc("owners_name_val", folder["owners_name"])
@@ -134,7 +135,7 @@ class PanelPage(BasePage):
         if models:
             for model in models:
                 if model["model_user_id"] not in user_ids_name_dict:
-                    owner_user = Dynamo().get_user(Dynamo().get_user_email_with_id(model["model_user_id"]))
+                    owner_user = Dynamo().get_user(model["model_user_id"])
                     user_ids_name_dict[model["model_user_id"]] = owner_user["user_name"]
                 model["owners_name"] = user_ids_name_dict[model["model_user_id"]]
 
@@ -190,7 +191,7 @@ class PanelPage(BasePage):
 
                 html.esc("model_filename_val", model["model_filename"])
                 html.esc("model_name_val", model["model_name"])
-                html.esc("model_created_at_val", ModelController().convert_model_created_at_to_date(model["created_at"]))
+                html.esc("model_created_at_val", Date().format_to_str_time(model["created_at"]))
                 html.esc("model_filesize_val", ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
 
                 if ModelController().check_if_model_is_too_big(model["model_filesize"]):
@@ -237,10 +238,10 @@ class PanelPage(BasePage):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_update_modal_update_confirm")
         html.esc("original_model_name_val", original_model["model_name"])
         html.esc("original_model_filename_val", original_model["model_filename"])
-        html.esc("original_created_at_val", ModelController().convert_model_created_at_to_date(original_model["created_at"]))
+        html.esc("original_created_at_val", Date().format_to_str_time(original_model["created_at"]))
         html.esc("new_model_name_val", new_model["model_name"])
         html.esc("new_model_filename_val", new_model["model_filename"])
-        html.esc("new_created_at_val", ModelController().convert_model_created_at_to_date(new_model["created_at"]))
+        html.esc("new_created_at_val", Date().format_to_str_time(new_model["created_at"]))
         return str(html)
 
     def list_html_uploading_file_formats(self, file_formats):

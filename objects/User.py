@@ -37,9 +37,8 @@ class User:
         self.user_favorited_models = []
         self.user_favorited_folders = []
         self.user_plan_id = ""
-        self.user_plan = ""
         self.user_subscription_id = ""
-        self.user_subscription = {}
+        self.user_subscription_valid_until = ""
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
@@ -54,6 +53,17 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def get_user_actual_plan(self):
+        if self.check_if_subscription_is_valid():
+            return Dynamo().get_plan(self.user_plan_id)
+        else:
+            return Dynamo().get_free_plan()
+
+    def check_if_subscription_is_valid(self):
+        if not self.user_subscription_valid_until:
+            return False
+        return float(self.user_subscription_valid_until) > float(time.time())
+
     def update_subscription(self, order, user_stripe_subscription):
         user_subscription = Dynamo().get_subscription(user_stripe_subscription.stripe_id)
         if not user_subscription:
@@ -62,21 +72,19 @@ class User:
         user_subscription["subscription_plan_id"] = order["order_plan_id"]
         user_subscription["subscription_recurrency"] = order["order_plan_recurrency"]
         user_subscription["subscription_status"] = user_stripe_subscription["status"]
+        user_subscription["subscription_default_payment_method"] = user_stripe_subscription["default_payment_method"]
+        user_subscription["subscription_price_id"] = user_stripe_subscription["plan"]["id"]
+        user_subscription["subscription_price"] = user_stripe_subscription["plan"]["amount_decimal"]
+        user_subscription["subscription_currency"] = user_stripe_subscription["currency"]
         user_subscription["subscription_last_order_id"] = order["order_id"]
         user_subscription["subscription_valid_until"] = str(user_stripe_subscription["current_period_end"])
         Dynamo().put_entity(user_subscription)
 
         self.user_has_subscription = "True"
         self.user_subscription_id = user_stripe_subscription.stripe_id
+        self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
+        self.user_plan_id = order["order_plan_id"]
         Dynamo().put_entity(self.__dict__)
-
-    def translate_cart_currency_to_symbol(self):
-        if self.user_cart_currency == "brl":
-            return "R$"
-        elif self.user_cart_currency == "usd":
-            return "U$"
-        else:
-            raise Exception("Invalid cart currency")
 
     def clear_all_auth_tokens(self):
         all_users_auth_tokens = Dynamo().query_users_auth_token(self.user_email)
@@ -86,10 +94,6 @@ class User:
 
     def clear_perdonal_data(self):
         self.user_address_data = {"user_country": "", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
-
-    def update_user_plan(self):
-        if not self.user_plan_id:
-            self.user_plan = Dynamo().get_free_plan()
 
     def add_folder_to_user_shared_dicts(self, folder):
         if folder["folder_id"] not in self.user_shared_dicts["folders"]:

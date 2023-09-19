@@ -219,14 +219,6 @@ class ModelController:
     def convert_model_filesize_to_mb(self, model_filesize):
         return str(round(int(model_filesize) / 1024 / 1024, 1))
 
-    def convert_model_created_at_to_date(self, created_at):
-        from datetime import datetime
-
-        # Create a datetime object from the Unix timestamp
-        dt_object = datetime.fromtimestamp(float(created_at))
-        formatted_date = dt_object.strftime("%b %d, %Y")
-        return formatted_date
-
     def delete_model(self, model, user):
         if model["model_used_in_federated_ids"]:
             for model_id in model["model_used_in_federated_ids"]:

@@ -97,7 +97,7 @@ class UpdateModelProcess(BasePage):
             model = ModelController().change_model_state(model, model["model_state"], "completed")
             Dynamo().put_entity(model)
 
-            user = self.load_user(Dynamo().get_user_email_with_id(model["model_user_id"]))
+            user = self.load_user(model["model_user_id"])
             user.add_model_to_user_dicts(model)
 
             if model["model_used_in_federated_ids"]:

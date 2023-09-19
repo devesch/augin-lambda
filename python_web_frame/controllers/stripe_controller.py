@@ -97,8 +97,8 @@ class StripeController:
                 price_id = plan["plan_price_annually_brl_actual_stripe_id"]
                 if plan["plan_annually_boleto_payment_method"]:
                     payment_method_types.append("boleto")
-                if plan["plan_annually_pix_payment_method"]:
-                    payment_method_types.append("pix")
+                # if plan["plan_annually_pix_payment_method"]:
+                #     payment_method_types.append("pix")
             if user.user_cart_currency == "usd":
                 price_id = plan["plan_price_annually_usd_actual_stripe_id"]
             if plan["plan_annually_card_payment_method"]:
@@ -109,8 +109,8 @@ class StripeController:
                 price_id = plan["plan_price_monthly_brl_actual_stripe_id"]
                 if plan["plan_monthly_boleto_payment_method"]:
                     payment_method_types.append("boleto")
-                if plan["plan_monthly_pix_payment_method"]:
-                    payment_method_types.append("pix")
+                # if plan["plan_monthly_pix_payment_method"]:
+                #     payment_method_types.append("pix")
             if user.user_cart_currency == "usd":
                 price_id = plan["plan_price_monthly_usd_actual_stripe_id"]
             if plan["plan_monthly_card_payment_method"]:
@@ -153,12 +153,6 @@ class StripeController:
             return "paid"
         else:
             return "stripe " + str(stripe_status_code)
-
-    def convert_stripe_payment_code_to_method(self, stripe_payment_code):
-        if str(stripe_payment_code[0]) == "card":
-            return "credit_card"
-        if str(stripe_payment_code[0]) == "pix":
-            return "pix"
 
     def verify_stripe_signature(self, payload, sig_header):
         try:

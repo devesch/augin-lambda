@@ -39,7 +39,7 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
         new_order = Order(user.user_id, subscription["latest_invoice"]["payment_intent"].stripe_id)
         new_order.order_status = StripeController().convert_stripe_status_code_to_status(subscription["status"])
         new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(subscription["plan"]["interval"])
-        # new_order.order_payment_method = StripeController().convert_stripe_payment_code_to_method(subscription["payment_settings"]["payment_method_types"])
+        # new_order.order_payment_method = subscription["payment_settings"]["payment_method_types"]
         if plan_recurrency == "annually":
             new_order.order_sub_total_brl_price = plan["plan_price_annually_brl_actual"]
             new_order.order_sub_total_usd_price = plan["plan_price_annually_usd_actual"]
@@ -72,7 +72,7 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
     #     new_order.order_status = StripeController().convert_stripe_status_code_to_status(payment_intent["status"])
     #     new_order.order_type = "unique"
     #     new_order.order_is_booth = user.user_cart_is_booth
-    #     new_order.order_payment_method = StripeController().convert_stripe_payment_code_to_method(payment_intent["payment_method_types"])
+    #     new_order.order_payment_method = payment_intent["payment_method_types"]
     #     new_order.order_sub_total_brl_price = user.user_cart_sub_total_brl_price
     #     new_order.order_sub_total_usd_price = user.user_cart_sub_total_usd_price
     #     new_order.order_brl_discount = user.user_cart_brl_discount

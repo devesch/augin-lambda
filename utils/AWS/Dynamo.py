@@ -29,6 +29,11 @@ class Dynamo:
         dynamodb_client = client("dynamodb", region_name=lambda_constants["region"])
         table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
 
+    ### PAYMENT METHOD ###
+
+    def get_payment_method(self, user_id, payment_method_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "user#" + user_id}, "sk": {"S": "payment_method#" + payment_method_id}}})
+
     ### ORDER ###
 
     def get_order(self, order_id):
@@ -74,11 +79,14 @@ class Dynamo:
 
     ### ORDER ###
     def query_user_orders(self, user_id):
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "order_user_id-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "order_user_id"}, "ExpressionAttributeValues": {":bef90": {"S": user_id}}})
+        if query:
+            return self.execute_batch_get_item(query)
         return []
 
     ### PAYMENT METHODS ###
     def query_user_payment_methods(self, user_id):
-        return []
+        return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "payment_method#"}}})
 
     ### USER ###
     def get_user_email_with_id(self, user_id):

@@ -17,7 +17,7 @@ def crawler(user_email, response, headers):
     del splitted_responses[0]
     for splited_response in splitted_responses:
         new_link = "https://" + splited_response.split('"')[0]
-        if "https://web.magipix.app" in new_link:
+        if "https://web.augin.app" in new_link:
             if new_link not in crawled_links[user_email]:
                 new_link_response = utils.request("GET", new_link, headers, json=False)
                 if "<separetor>" in new_link_response:

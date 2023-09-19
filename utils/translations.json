@@ -509,6 +509,26 @@
         "es": "Tarjeta",
         "pt": "Cartão"
     },
+    "Cartão bloqueado": {
+        "en": "Blocked card",
+        "es": "Tarjeta bloqueada",
+        "pt": "Cartão bloqueado"
+    },
+    "Cartão cancelado": {
+        "en": "Canceled card",
+        "es": "Tarjeta cancelada",
+        "pt": "Cartão cancelado"
+    },
+    "Cartão de crédito": {
+        "en": "Credit card",
+        "es": "Tarjeta de crédito",
+        "pt": "Cartão de crédito"
+    },
+    "Cartão expirado": {
+        "en": "Expired card",
+        "es": "Tarjeta expirada",
+        "pt": "Cartão expirado"
+    },
     "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.": {
         "en": "If you do not receive the code, check the email address entered and check your SPAM box.",
         "es": "Si no recibes el código, revisa la dirección de correo electrónico ingresada y revisa tu carpeta de SPAM.",
@@ -619,6 +639,16 @@
         "es": "Complementar",
         "pt": "Complemento"
     },
+    "Comprar novamente": {
+        "en": "Buy again",
+        "es": "Compra otra vez",
+        "pt": "Comprar novamente"
+    },
+    "Comprovante de pagamento": {
+        "en": "Payment voucher",
+        "es": "Comprobante de pago",
+        "pt": "Comprovante de pagamento"
+    },
     "Concordo em receber comunicados.": {
         "en": "I agree to receive announcements.",
         "es": "Acepto recibir anuncios.",
@@ -714,6 +744,11 @@
         "es": "Costa Rica",
         "pt": "Costa Rica"
     },
+    "Creditado pela Augin": {
+        "en": "Credited by Augin",
+        "es": "Acreditado por Augin",
+        "pt": "Creditado pela Augin"
+    },
     "Criar": {
         "en": "To create",
         "es": "Crear",
@@ -759,10 +794,20 @@
         "es": "Croacia",
         "pt": "Croácia"
     },
+    "Créditos": {
+        "en": "Credits",
+        "es": "Créditos",
+        "pt": "Créditos"
+    },
     "Cuba": {
         "en": "Cuba",
         "es": "Cuba",
         "pt": "Cuba"
+    },
+    "Cupom:": {
+        "en": "Coupon:",
+        "es": "Cupón:",
+        "pt": "Cupom:"
     },
     "Cupons": {
         "en": "Coupons",
@@ -783,6 +828,11 @@
         "en": "Czechia",
         "es": "Chequia",
         "pt": "Tchechia"
+    },
+    "Código Completo:": {
+        "en": "Full Code:",
+        "es": "Código completo:",
+        "pt": "Código Completo:"
     },
     "Código ZIP": {
         "en": "ZIP Code",
@@ -823,6 +873,11 @@
         "en": "Renewal date",
         "es": "Fecha de renovación",
         "pt": "Data de renovação"
+    },
+    "Data e Hora:": {
+        "en": "Date and time:",
+        "es": "Fecha y hora:",
+        "pt": "Data e Hora:"
     },
     "Definir Nova Senha": {
         "en": "Set New Password",
@@ -1264,6 +1319,11 @@
         "es": "Evento no verificado por la franja.",
         "pt": "Evento não verificado pelo stripe."
     },
+    "Excedeu o limite de tentativas": {
+        "en": "Exceeded the limit of attempts",
+        "es": "Excedió el límite de intentos",
+        "pt": "Excedeu o limite de tentativas"
+    },
     "Excluir modelo": {
         "en": "Delete template",
         "es": "Eliminar plantilla",
@@ -1288,6 +1348,11 @@
         "en": "Show password",
         "es": "Mostrar contraseña",
         "pt": "Exibir senha"
+    },
+    "Expira em": {
+        "en": "Expires in",
+        "es": "Expira en",
+        "pt": "Expira em"
     },
     "Explorar": {
         "en": "To explore",
@@ -1594,6 +1659,11 @@
         "es": "Importa tu archivo",
         "pt": "Importe seu arquivo"
     },
+    "Incompleto": {
+        "en": "Incomplete",
+        "es": "Incompleto",
+        "pt": "Incompleto"
+    },
     "Incêndio": {
         "en": "Fire",
         "es": "Fuego",
@@ -1613,6 +1683,11 @@
         "en": "Indonesia",
         "es": "Indonesia",
         "pt": "Indonesia"
+    },
+    "Informaçōes do pedido": {
+        "en": "Order Information",
+        "es": "Información del pedido",
+        "pt": "Informaçōes do pedido"
     },
     "Informe um email.": {
         "en": "Enter an email.",
@@ -1698,6 +1773,11 @@
         "en": "Italy",
         "es": "Italia",
         "pt": "Itália"
+    },
+    "Itens da Compra": {
+        "en": "Purchase items",
+        "es": "Comprar artículos",
+        "pt": "Itens da Compra"
     },
     "Jamaica": {
         "en": "Jamaica",
@@ -1808,6 +1888,26 @@
         "en": "Project Link or Folder",
         "es": "Enlace o carpeta del proyecto",
         "pt": "Link do projeto ou pasta"
+    },
+    "Link para a Compra": {
+        "en": "Link to purchase",
+        "es": "Enlace para la compra",
+        "pt": "Link para a Compra"
+    },
+    "Link para a compra": {
+        "en": "Link to purchase",
+        "es": "Enlace para la compra",
+        "pt": "Link para a compra"
+    },
+    "Link para o BackOffice": {
+        "en": "Link to Backoffice",
+        "es": "Enlace a BackOffice",
+        "pt": "Link para o BackOffice"
+    },
+    "Link para o Backoffice": {
+        "en": "Link to Backoffice",
+        "es": "Enlace a BackOffice",
+        "pt": "Link para o Backoffice"
     },
     "Lithuania": {
         "en": "Lithuania",
@@ -1988,6 +2088,11 @@
         "en": "Myanmar",
         "es": "Myanmar",
         "pt": "Mianmar"
+    },
+    "Método de pagamento:": {
+        "en": "Payment method:",
+        "es": "Método de pago:",
+        "pt": "Método de pagamento:"
     },
     "Métodos de pagamento": {
         "en": "Payment methods",
@@ -2244,6 +2349,11 @@
         "es": "Nuestro equipo está trabajando para resolver la situación lo antes posible.",
         "pt": "Nossa equipe está trabalhando para resolver a situação o mais rápido possível."
     },
+    "Nota Fiscal": {
+        "en": "Invoice",
+        "es": "Nota fiscal",
+        "pt": "Nota Fiscal"
+    },
     "Notificações": {
         "en": "Notifications",
         "es": "Notificaciones",
@@ -2269,6 +2379,16 @@
         "es": "Nuevo nombre de carpeta",
         "pt": "Novo nome da pasta"
     },
+    "Novo pagamento de": {
+        "en": "New payment of",
+        "es": "Nuevo pago de",
+        "pt": "Novo pagamento de"
+    },
+    "Novo pagamento realizado pelo cliente": {
+        "en": "New payment made by the customer",
+        "es": "Nuevo pago realizado por el cliente",
+        "pt": "Novo pagamento realizado pelo cliente"
+    },
     "Não": {
         "en": "No",
         "es": "No",
@@ -2278,6 +2398,11 @@
         "en": "Non -federated",
         "es": "No federado",
         "pt": "Não Federados"
+    },
+    "Não autorizado": {
+        "en": "Not authorized",
+        "es": "No autorizado",
+        "pt": "Não autorizado"
     },
     "Não foi possível encontrar dados com o CNPJ informado": {
         "en": "It was not possible to find data with the CNPJ informed",
@@ -2439,6 +2564,11 @@
         "es": "Pix",
         "pt": "PIX"
     },
+    "Pagamento Direto": {
+        "en": "Direct payment",
+        "es": "Pago directo",
+        "pt": "Pagamento Direto"
+    },
     "Pagamento anual": {
         "en": "Annual payment",
         "es": "Pago anual",
@@ -2578,6 +2708,11 @@
         "en": "Pitcairn",
         "es": "Pitcairn",
         "pt": "Pitcairn"
+    },
+    "Pix": {
+        "en": "Pix",
+        "es": "Pix",
+        "pt": "Pix"
     },
     "Plano": {
         "en": "Flat",
@@ -2754,6 +2889,16 @@
         "es": "Problema temporal",
         "pt": "Problema temporário"
     },
+    "Problemas no cartão": {
+        "en": "Card Problems",
+        "es": "Problemas de tarjetas",
+        "pt": "Problemas no cartão"
+    },
+    "Produto": {
+        "en": "Product",
+        "es": "Producto",
+        "pt": "Produto"
+    },
     "Produtos": {
         "en": "Products",
         "es": "Productos",
@@ -2819,6 +2964,11 @@
         "es": "Katar",
         "pt": "Catar"
     },
+    "Qtd": {
+        "en": "QTD",
+        "es": "QTD",
+        "pt": "Qtd"
+    },
     "Quais Cookies você deseja aceitar?": {
         "en": "Which cookies do you want to accept?",
         "es": "¿Qué galletas quieres aceptar?",
@@ -2844,10 +2994,20 @@
         "es": "Descargas",
         "pt": "Realiza downloads"
     },
+    "Realizar upgrade": {
+        "en": "Upgrade",
+        "es": "Mejora",
+        "pt": "Realizar upgrade"
+    },
     "Recorrência de pagamento inválida.": {
         "en": "Invalid payment recurrence.",
         "es": "Recurrencia de pago no válida.",
         "pt": "Recorrência de pagamento inválida."
+    },
+    "Reembolsado": {
+        "en": "Reimbursed",
+        "es": "Reembolsado",
+        "pt": "Reembolsado"
     },
     "Reference Trackers": {
         "en": "Reference Trackers",
@@ -3139,6 +3299,11 @@
         "es": "Estado de pedido",
         "pt": "Status do pedido"
     },
+    "Status:": {
+        "en": "Status:",
+        "es": "Estado:",
+        "pt": "Status:"
+    },
     "Structural": {
         "en": "Structural",
         "es": "Estructural",
@@ -3163,6 +3328,11 @@
         "en": "Your cookies settings",
         "es": "Configuración de su cookies",
         "pt": "Suas configurações de Cookies"
+    },
+    "Sub-total:": {
+        "en": "Subtotal:",
+        "es": "Total parcial:",
+        "pt": "Sub-total:"
     },
     "Sudan": {
         "en": "Sudan",
@@ -3279,6 +3449,11 @@
         "es": "Timor-Leste",
         "pt": "Timor-Leste"
     },
+    "Tipo de compra": {
+        "en": "Purchase type",
+        "es": "Tipo de compra",
+        "pt": "Tipo de compra"
+    },
     "Todos": {
         "en": "All",
         "es": "Todo",
@@ -3313,6 +3488,11 @@
         "en": "Total",
         "es": "Total",
         "pt": "Total"
+    },
+    "Total de": {
+        "en": "Total of",
+        "es": "Total de",
+        "pt": "Total de"
     },
     "Trinidad and Tobago": {
         "en": "Trinidad and Tobago",
@@ -3629,6 +3809,11 @@
         "es": "año",
         "pt": "ano"
     },
+    "anualmente": {
+        "en": "annually",
+        "es": "anualmente",
+        "pt": "anualmente"
+    },
     "até 5": {
         "en": "up to 5",
         "es": "hasta 5",
@@ -3723,6 +3908,11 @@
         "en": "available and performed",
         "es": "disponible y realizado",
         "pt": "isponíveis e realizou"
+    },
+    "mensalmente": {
+        "en": "monthly",
+        "es": "mensual",
+        "pt": "mensalmente"
     },
     "mês": {
         "en": "month",
