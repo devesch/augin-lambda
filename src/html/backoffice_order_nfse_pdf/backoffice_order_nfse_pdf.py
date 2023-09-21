@@ -71,23 +71,23 @@ class BackofficeOrderNfsePdf(BackofficePage):
             html.esc("nfse_city_val", api_cep_response.get("city").title())
             html.esc("nfse_state_val", api_cep_response.get("state").upper())
         else:
-            if nfse_user:
-                html.esc("nfse_address_val", "NÃO INFORMADO")
-                html.esc("nfse_address_number_val", "S/N")
-                html.esc("nfse_district_val", "NÃO INFORMADO")
-                html.esc("nfse_city_val", "PORTO ALEGRE")
-                html.esc("nfse_state_val", "RS")
-            else:
-                html.esc("nfse_address_val", "NÃO INFORMADO")
-                html.esc("nfse_address_number_val", "S/N")
-                html.esc("nfse_district_val", "NÃO INFORMADO")
-                html.esc("nfse_city_val", "PORTO ALEGRE")
-                html.esc("nfse_state_val", "RS")
+            if nfse_user.get("user_address_data"):
+                if "user_street" in nfse_user.get("user_address_data") and "user_street_number" in nfse_user.get("user_address_data") and "user_neighborhood" in nfse_user.get("user_address_data") and "user_city" in nfse_user.get("user_address_data") and "user_state" in nfse_user.get("user_address_data"):
+                    html.esc("nfse_address_val", nfse_user.user_address_data["user_street"].title())
+                    html.esc("nfse_address_number_val", nfse_user.user_address_data["user_street_number"])
+                    html.esc("nfse_district_val", nfse_user.user_address_data["user_neighborhood"].title())
+                    html.esc("nfse_city_val", nfse_user.user_address_data["user_city"].title())
+                    html.esc("nfse_state_val", nfse_user.user_address_data["user_state"].upper())
+        html.esc("nfse_address_val", "NÃO INFORMADO")
+        html.esc("nfse_address_number_val", "S/N")
+        html.esc("nfse_district_val", "NÃO INFORMADO")
+        html.esc("nfse_city_val", "PORTO ALEGRE")
+        html.esc("nfse_state_val", "RS")
 
-        html.esc("user_email_val", self.path["user_email"])
+        html.esc("user_email_val", nfse_user.user_email)
 
         if nfse_user.user_phone:
-            html.esc("user_phone_val", self.utils.format_to_phone(nfse_user.user_phone))
+            html.esc("user_phone_val", StrFormat().format_to_phone(nfse_user.user_phone))
         else:
             html.esc("user_phone_val", "NÃO INFORMADO")
 
@@ -103,7 +103,7 @@ class BackofficeOrderNfsePdf(BackofficePage):
         return str(html)
 
     def show_html_canceled_nfse(self):
-        html = self.utils.read_html("backoffice_order_nfse_pdf/_codes/html_cancaled_nfse")
+        html = ReadWrite().read_html("backoffice_order_nfse_pdf/_codes/html_cancaled_nfse")
         return str(html)
 
     def convert_xml_into_json(self, xml_string):
