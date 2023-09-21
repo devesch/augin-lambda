@@ -17,5 +17,6 @@ class UserSubscription:
         self.subscription_default_payment_method = ""
         self.subscription_last_order_id = ""
         self.subscription_valid_until = ""
+        self.subscription_canceled_at = ""
         self.created_at = str(time.time())
         self.entity = "subscription"

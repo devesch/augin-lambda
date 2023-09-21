@@ -44,29 +44,25 @@ class PanelYourPlan(PanelPage):
 
         if not user_subscription:
             html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
+            html.esc("user_subscription_status_val", "-")
             html.esc("user_subscription_price_val", "-")
             html.esc("user_subscription_recurrency_val", "-")
             html.esc("user_subscription_valid_until_val", "-")
         else:
             html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(user_subscription["subscription_currency"]))
+            html.esc("user_subscription_status_val", self.translate(StrFormat().format_status(user_subscription["subscription_status"])))
             html.esc("user_subscription_price_val", StrFormat().format_to_money(user_subscription["subscription_price"], user_subscription["subscription_currency"]))
             html.esc("user_subscription_recurrency_val", StrFormat().format_recurrency(user_subscription["subscription_recurrency"]).title())
             html.esc("user_subscription_valid_until_val", Date().format_to_str_time(user_subscription["subscription_valid_until"]))
             subscription_payment_method = Dynamo().get_payment_method(self.user.user_id, user_subscription["subscription_default_payment_method"])
             html.esc("user_subscription_payment_method_val", StrFormat().format_to_payment_method(subscription_payment_method["payment_method_type"]))
-            html.esc("html_cancel_subscription_button", self.show_html_cancel_subscription_button())
+            if user_subscription["subscription_status"] == "active":
+                html.esc("user_subscription_valid_until_visibility_val", "display:none;")
+                html.esc("html_cancel_subscription_button", self.show_html_cancel_subscription_button())
+            else:
+                html.esc("user_subscription_active_visibility_val", "display:none;")
+                html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
 
-        if not self.user.user_plan_id:
-            html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
-
-        # user_orders = Dynamo().query_user_orders(self.user.user_id)
-        # for index, order in enumerate(user_orders):
-        #     Dynamo().delete_entity(order)
-        #     order["sk"] = "order#" + str(len(user_orders) - index)
-        #     Dynamo().put_entity(order)
-
-        # self.user.user_total_orders_count = str(len(user_orders))
-        # Dynamo().put_entity(self.user.__dict__)
         user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, "1")
         if user_orders:
             html.esc("html_payment_history_div", self.show_html_payment_history_div(user_orders))

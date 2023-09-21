@@ -24,6 +24,11 @@
         "es": "La firma no está activa",
         "pt": "A assinatura não se encontra ativa"
     },
+    "A assinatura se encontra ativa": {
+        "en": "The signature is active",
+        "es": "La firma está activa",
+        "pt": "A assinatura se encontra ativa"
+    },
     "A categoria selecionada é inválida": {
         "en": "The selected category is invalid",
         "es": "La categoría seleccionada no es válida",
@@ -304,6 +309,11 @@
         "es": "Firma no encontrada",
         "pt": "Assinatura não encontrada"
     },
+    "Ativa": {
+        "en": "Active",
+        "es": "Activo",
+        "pt": "Ativa"
+    },
     "Ativado em": {
         "en": "Activated on",
         "es": "Activado el",
@@ -504,6 +514,11 @@
         "es": "Canadá",
         "pt": "Canadá"
     },
+    "Cancelada": {
+        "en": "Canceled",
+        "es": "Cancelado",
+        "pt": "Cancelada"
+    },
     "Cancelando assinatura": {
         "en": "CANCELING SIGNATURE",
         "es": "Firma de cancelación",
@@ -703,6 +718,11 @@
         "en": "Confirm project exclusion",
         "es": "Confirmar la exclusión del proyecto",
         "pt": "Confirmar exclusão do projeto"
+    },
+    "Confirme a renovação da sua assinatura": {
+        "en": "Confirm the renewal of your signature",
+        "es": "Confirme la renovación de su firma",
+        "pt": "Confirme a renovação da sua assinatura"
     },
     "Confirme o cancelamento da sua assinatura": {
         "en": "Confirm the cancellation of your signature",
@@ -3029,6 +3049,11 @@
         "es": "Mejora",
         "pt": "Realizar upgrade"
     },
+    "Reativar assinatura": {
+        "en": "Reactivate",
+        "es": "Reactivar",
+        "pt": "Reativar assinatura"
+    },
     "Recorrência de pagamento inválida.": {
         "en": "Invalid payment recurrence.",
         "es": "Recurrencia de pago no válida.",
@@ -3323,6 +3348,11 @@
         "en": "Sri Lanka",
         "es": "Sri Lanka",
         "pt": "Sri Lanka"
+    },
+    "Status": {
+        "en": "Status",
+        "es": "Estado",
+        "pt": "Status"
     },
     "Status do pedido": {
         "en": "Order status",
@@ -3663,6 +3693,11 @@
         "en": "Uzbekistan",
         "es": "Uzbekistán",
         "pt": "Uzbequistão"
+    },
+    "Valida até": {
+        "en": "Valid until",
+        "es": "Válido hasta",
+        "pt": "Valida até"
     },
     "Validar Email": {
         "en": "Validate Email",

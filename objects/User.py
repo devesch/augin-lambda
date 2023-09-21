@@ -57,7 +57,7 @@ class User:
 
     def change_user_subscription_status(self, new_status):
         self.user_subscription_status = new_status
-        Dynamo().update_entity(self.user.__dict__, "user_subscription_status", self.user_subscription_status)
+        Dynamo().update_entity(self.__dict__, "user_subscription_status", self.user_subscription_status)
 
     def incrase_user_total_orders_count(self):
         self.user_total_orders_count = str(int(self.user_total_orders_count + 1))
@@ -74,7 +74,7 @@ class User:
             return Dynamo().get_free_plan()
 
     def check_if_subscription_is_valid(self):
-        if not self.user_subscription_valid_until or self.user_subscription_status == "canceled":
+        if not self.user_subscription_valid_until:
             return False
         return float(self.user_subscription_valid_until) > float(time.time())
 

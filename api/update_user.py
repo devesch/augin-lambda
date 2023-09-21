@@ -28,6 +28,7 @@ class UpdateUser(BasePage):
         StripeController().cancel_subscription(self.user.user_subscription_id)
         stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
         user_subscription["subscription_status"] = stripe_subscription["status"]
+        user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])
         Dynamo().put_entity(user_subscription)
         self.user.change_user_subscription_status(stripe_subscription["status"])
         return {"success": "Assinatura cancelada"}

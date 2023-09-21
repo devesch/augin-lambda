@@ -18,6 +18,8 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Ativa",
+    "Cancelada",
     "O .zip contem arquivos duplicados.",
     "O projeto excede o tamanho máximo de 1Gb.",
     "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb.",
