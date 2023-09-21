@@ -29,10 +29,10 @@
 
     <section class="explore__table-container">
         <div class="explore__table-container__title-container relative">
-            <h2 onclick="js.index.openFolder('', '')">{{Meus projetos}}</h2>
-            <h6 id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
-                <- </h6> <h6 id="folder_path_span">
-            </h6>
+            <button id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
+                <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}"/>
+            </button>
+            <h2 onclick="js.index.openFolder('', '')">{{Meus projetos}}</h2><h6 id="folder_path_span"></h6>
             <input hidden id="folder_id_input">
             <input hidden id="folder_path_input">
 

@@ -1595,7 +1595,7 @@ input[list]::-ms-clear {
     input[type="checkbox"]:checked:after {
         width: $checkbox-checked-width;
         height: 0.6rem;
-        left: calc($checkbox-width - $checkbox-checked-width);
+        left: calc($checkbox-width / 2);
         border-color: colors.color("color-black");
     }
 
