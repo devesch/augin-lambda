@@ -1102,7 +1102,7 @@ export function activateDraggableItems() {
         const draggingItem = container.querySelector(".dragging");
         let notDraggingItems = container.querySelectorAll("tbody tr:not(.dragging)");
 
-        if (notDraggingItems.length() > 0) {
+        if (notDraggingItems.length > 0) {
             const nextSibling = notDraggingItems.find(sibling => {
                 return event.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
             });
