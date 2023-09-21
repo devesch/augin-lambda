@@ -12,7 +12,7 @@
             <div>
                 <div>
                     <img src="{{cdn_val}}/assets/icons/icon-search.svg" width="24" height="24" alt="{{Icone buscar}}">
-                    <input type="text" name="search" onkeyup="js.index.searchEmail('table-orders')" value="{{user_email_val}}" id="search-orders" placeholder="{{Buscar usuários}}">
+                    <input type="text" name="search" onkeyup="js.index.updateBackofficeOrders(this)" value="{{user_email_val}}" id="search-orders" placeholder="{{Buscar usuários}}">
                 </div>
                 <select name="order_status" onchange="js.index.refreshLocationHREF(this)">
                     <option value="{{domain_name_url_val}}/backoffice_orders/?order_status=all" {{pre_sel_all_val}}>Todas</option>

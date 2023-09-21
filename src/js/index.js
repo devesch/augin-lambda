@@ -2404,7 +2404,7 @@ export async function loadMoreCallApiPagination() {
     }
     let last_evaluated_key_input = document.getElementById("last_evaluated_key");
     let query_input = document.getElementById("query");
-    let pagination_queries_response = await js.index.apiCaller("pagination_queries", {
+    let pagination_queries_response = await apiCaller("pagination_queries", {
         "query": query_input.value,
         "last_evaluated_key": last_evaluated_key_input.value,
         "query_filter": query_filter_value
@@ -2430,4 +2430,14 @@ export async function loadMoreCallApiPagination() {
     countPagination.style.display = "block";
     loadingPaginationMessage.style.display = "none";
 
+}
+
+
+export async function updateBackofficeOrders(input) {
+    let pagination_component = document.getElementById("pagination_component")
+    let backoffice_orders_html_response = await apiCaller("backoffice_orders_html", {
+        "search": input.value
+    });
+
+    pagination_component.innerHTML = backoffice_orders_html_response["success"];
 }

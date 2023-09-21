@@ -25,7 +25,7 @@ class StrFormat:
         if payment_method == "pix":
             return Code().translate("Pix")
         else:
-            return ""
+            return "-"
 
     def format_recurrency(self, recurrency):
         if recurrency == "monthly":

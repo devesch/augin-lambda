@@ -58,7 +58,7 @@ class Generate:
             "Baiduspider": {1: "jpeg", 13: "webp"},
         }
 
-        import user_agents
+        # import user_agents
 
         browser_family = ""
         browser_version = ""
@@ -86,6 +86,8 @@ class Generate:
 
     @staticmethod
     def generate_font_from_user_agent(user_agent):
+        return "ttf"
+
         import user_agents
 
         font_family = {

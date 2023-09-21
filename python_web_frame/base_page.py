@@ -112,6 +112,8 @@ class BasePage:
     def load_user(self, user_email):
         if not "@" in user_email:
             user_email = Dynamo().get_user_email_with_id(user_email)
+        if not user_email:
+            return None
         user = User(user_email)
         user.load_information()
         if user.user_status == "not_created":
