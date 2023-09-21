@@ -348,6 +348,6 @@ input[type="checkbox"] + label {
     cursor: pointer !important;
     height: 24px !important;
     width: 24px !important;
-    // background-image: url($cdn_val + "assets/icons/close.svg") !important;
+    background-image: url("https://cdn.augin.app/assets/icons/close.svg") !important;
     /* Will place small red box on the right of input (positioning carries over) */
 }
