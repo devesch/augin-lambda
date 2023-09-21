@@ -2268,3 +2268,40 @@ export async function saveCancelSubscription() {
         location.reload();
     }
 }
+
+export async function openModalAddPaymentMethod() {
+    openModal(".modal.add-payment-method-modal");
+}
+
+export async function saveAddPaymentMethod() {
+    let number_input = document.getElementById("number");
+    let exp_month_input = document.getElementById("exp_month");
+    let exp_year_input = document.getElementById("exp_year");
+    let cvc_input = document.getElementById("cvc");
+
+    const url = 'https://api.stripe.com/v1/payment_methods';
+    const headers = new Headers({
+        'Authorization': 'Bearer sk_test_51KUDNpA9OIVeHB9yBr8fiH7gVUhfggy4zFkJib2maUawYM4tSkRQ64swJwwx4pXFZ4U3O93qPEGRZzWW1agdeBd500ev6Lx5W5',
+        'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    const body = new URLSearchParams({
+        'type': 'card',
+        'card[number]': number_input.value,
+        'card[exp_month]': exp_month_input.value,
+        'card[exp_year]': exp_year_input.value,
+        'card[cvc]': cvc_input.value,
+    }).toString();
+
+    fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: body
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
