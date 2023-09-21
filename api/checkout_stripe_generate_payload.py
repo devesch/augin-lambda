@@ -40,7 +40,7 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
 
     def create_order_with_stripe_subscription(self, user, plan, plan_recurrency, subscription):
         user.incrase_user_total_orders_count()
-        new_order = Order(user.user_id, user.user_total_orders_count, subscription.stripe_id)
+        new_order = Order(user.user_id, user.user_total_orders_count, subscription["latest_invoice"]["payment_intent"].stripe_id)
         new_order.order_status = StripeController().convert_stripe_status_code_to_status(subscription["status"])
         new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(subscription["plan"]["interval"])
         # new_order.order_payment_method = subscription["payment_settings"]["payment_method_types"]
