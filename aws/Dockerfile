@@ -24,11 +24,8 @@ RUN python3.11 -m pip install --upgrade pip
 RUN python3.11 -m pip install certifi
 
 WORKDIR /opt
-COPY ../requirements.txt /opt/requirements.txt
-RUN sed -i 's/^bpy/#bpy/' requirements.txt
-RUN sed -i 's/^pywin32/#pywin32/' requirements.txt
 
-RUN python3.11 -m pip install -r requirements.txt -t /python
+RUN python3.11 -m pip install python_libs_val -t /python
 RUN find /python -name "*-info" -type d -exec rm -rdf {} +
 RUN find /python -name "tests" -type d -exec rm -rdf {} +
 RUN rm -rdf /python/boto3/

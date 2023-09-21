@@ -499,6 +499,11 @@
         "es": "Burundi",
         "pt": "Burundi"
     },
+    "Buscar usuários": {
+        "en": "Seek users",
+        "es": "Buscar usuarios",
+        "pt": "Buscar usuários"
+    },
     "Cabo Verde": {
         "en": "Cape Green",
         "es": "Cabo Verde",
@@ -849,6 +854,11 @@
         "es": "Cuba",
         "pt": "Cuba"
     },
+    "Cupom": {
+        "en": "Coupon",
+        "es": "Cupón",
+        "pt": "Cupom"
+    },
     "Cupom:": {
         "en": "Coupon:",
         "es": "Cupón:",
@@ -923,6 +933,11 @@
         "en": "Date and time:",
         "es": "Fecha y hora:",
         "pt": "Data e Hora:"
+    },
+    "Datetime": {
+        "en": "Datetime",
+        "es": "Fecha y hora",
+        "pt": "Datetime"
     },
     "Definir Nova Senha": {
         "en": "Set New Password",
@@ -1163,6 +1178,16 @@
         "en": "Invalid email.",
         "es": "Email inválido.",
         "pt": "Email inválido."
+    },
+    "Emitida": {
+        "en": "Issued",
+        "es": "Emitido",
+        "pt": "Emitida"
+    },
+    "Emitir": {
+        "en": "Issue",
+        "es": "Asunto",
+        "pt": "Emitir"
     },
     "Empresa": {
         "en": "Company",
@@ -1684,6 +1709,11 @@
         "es": "Islandia",
         "pt": "Islândia"
     },
+    "Icone buscar": {
+        "en": "Icon",
+        "es": "Icono",
+        "pt": "Icone buscar"
+    },
     "Icone sucesso": {
         "en": "Icon Success",
         "es": "Éxito ícono",
@@ -2074,6 +2104,11 @@
         "es": "Modificar la configuración de las cookies",
         "pt": "Modificar configurações de cookies"
     },
+    "Moeda": {
+        "en": "Coin",
+        "es": "Moneda",
+        "pt": "Moeda"
+    },
     "Moldova, Republic of": {
         "en": "MOLDOVA, Republic of",
         "es": "Moldavia, República de",
@@ -2138,6 +2173,11 @@
         "en": "Myanmar",
         "es": "Myanmar",
         "pt": "Mianmar"
+    },
+    "Método": {
+        "en": "Method",
+        "es": "Método",
+        "pt": "Método"
     },
     "Método de pagamento:": {
         "en": "Payment method:",
@@ -2443,6 +2483,11 @@
         "en": "No",
         "es": "No",
         "pt": "Não"
+    },
+    "Não Emitida": {
+        "en": "Unintended",
+        "es": "Involuntario",
+        "pt": "Não Emitida"
     },
     "Não Federados": {
         "en": "Non -federated",
@@ -3069,6 +3114,11 @@
         "es": "Reembolsado",
         "pt": "Reembolsado"
     },
+    "Reembolsar": {
+        "en": "Repay",
+        "es": "Pagar",
+        "pt": "Reembolsar"
+    },
     "Reference Trackers": {
         "en": "Reference Trackers",
         "es": "Rastreadores de referencia",
@@ -3234,6 +3284,11 @@
         "es": "Sérvia",
         "pt": "Sérvia"
     },
+    "Serviço": {
+        "en": "Service",
+        "es": "Servicio",
+        "pt": "Serviço"
+    },
     "Sessão de login:": {
         "en": "Login Session:",
         "es": "Sesión de inicio de sesión:",
@@ -3288,6 +3343,11 @@
         "en": "Seychelles",
         "es": "Seychelles",
         "pt": "Seychelles"
+    },
+    "Short Cód": {
+        "en": "Short Code",
+        "es": "Código corto",
+        "pt": "Short Cód"
     },
     "Sierra Leone": {
         "en": "Sierra Leone",
@@ -3514,6 +3574,11 @@
         "es": "Timor-Leste",
         "pt": "Timor-Leste"
     },
+    "Tipo": {
+        "en": "Type",
+        "es": "Tipo",
+        "pt": "Tipo"
+    },
     "Tipo de compra": {
         "en": "Purchase type",
         "es": "Tipo de compra",
@@ -3674,6 +3739,11 @@
         "es": "Use su cuenta en hasta",
         "pt": "Use sua conta em até"
     },
+    "Usuário": {
+        "en": "User",
+        "es": "Usuario",
+        "pt": "Usuário"
+    },
     "Usuário inexistente.": {
         "en": "Nonexistent user.",
         "es": "Usuario inexistente.",
@@ -3718,6 +3788,11 @@
         "en": "Validate your email",
         "es": "Valida tu correo electrónico",
         "pt": "Validar seu email"
+    },
+    "Valor": {
+        "en": "Value",
+        "es": "Valor",
+        "pt": "Valor"
     },
     "Vanuatu": {
         "en": "Vanuatu",
@@ -3903,6 +3978,11 @@
         "en": "in",
         "es": "en",
         "pt": "de"
+    },
+    "de um total de": {
+        "en": "of a total of",
+        "es": "de un total de",
+        "pt": "de um total de"
     },
     "desativações de": {
         "en": "deactivations of",

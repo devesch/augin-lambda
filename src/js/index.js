@@ -2305,3 +2305,129 @@ export async function saveAddPaymentMethod() {
             console.error('Error:', error);
         });
 }
+
+
+export async function updatePaginationProgressBar() {
+    let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+    let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+    let ProgressBar = document.querySelector(".progress-pagination.upload-bar");
+    ProgressBar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
+}
+
+export function refreshLocationHREF(input) {
+    window.location.href = input.value;
+}
+
+
+export async function loadMoreOnScroll(query) {
+    var last_scroll_position = -1;
+    var do_not_call_api = false;
+
+    window.onscroll = async function () {
+        let current_scroll_position = this.scrollY;
+        let last_scroll_position_input = document.getElementById("last_scroll_position");
+        last_scroll_position_input.value = current_scroll_position;
+
+        if (do_not_call_api == false) {
+            do_not_call_api = true;
+            console.log("do no call api");
+            await js.index.sleep(300);
+            console.log("you may call api");
+            do_not_call_api = false;
+        }
+    };
+
+    window.onkeydown = async function (event) {
+        console.log("event ", event);
+        if (event.keyCode == 34) {
+            let current_scroll_position = this.scrollY;
+            let last_scroll_position_input = document.getElementById("last_scroll_position");
+            last_scroll_position_input.value = current_scroll_position;
+
+            if (last_scroll_position != current_scroll_position || last_scroll_position == -1) {
+                console.log("last_scroll_position", last_scroll_position);
+                console.log("current_scroll_position", current_scroll_position);
+                last_scroll_position = current_scroll_position;
+                return
+            }
+            if (do_not_call_api == false) {
+                let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+                let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+                if (pagination_actual_itens_count_span.innerHTML != pagination_total_itens_count_span.innerHTML) {
+                    do_not_call_api = true;
+                    await loadMoreCallApiPagination();
+                    await js.index.sleep(300);
+                    last_scroll_position = -1;
+                    do_not_call_api = false;
+                }
+            }
+        }
+    };
+
+    window.onwheel = async function () {
+        let current_scroll_position = this.scrollY;
+        let last_scroll_position_input = document.getElementById("last_scroll_position");
+        last_scroll_position_input.value = current_scroll_position;
+
+        if (last_scroll_position != current_scroll_position || last_scroll_position == -1) {
+            console.log("last_scroll_position", last_scroll_position);
+            console.log("current_scroll_position", current_scroll_position);
+            last_scroll_position = current_scroll_position;
+            return
+        }
+        if (do_not_call_api == false) {
+            let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+            let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+            if (pagination_actual_itens_count_span.innerHTML != pagination_total_itens_count_span.innerHTML) {
+                do_not_call_api = true;
+                await loadMoreCallApiPagination();
+                await js.index.sleep(300);
+                last_scroll_position = -1;
+                do_not_call_api = false;
+            }
+        }
+    };
+}
+
+
+export async function loadMoreCallApiPagination() {
+    console.log("running loadMorePagination");
+    let loadingPaginationMessage = document.querySelector(".js-loading-pagination-message");
+    let countPagination = document.querySelector(".count-pagination");
+    countPagination.style.display = "none";
+    loadingPaginationMessage.style.display = "block";
+
+    let query_filter_input = document.getElementById("query_filter");
+    let query_filter_value = ""
+    if (query_filter_input) {
+        query_filter_value = query_filter_input.value
+    }
+    let last_evaluated_key_input = document.getElementById("last_evaluated_key");
+    let query_input = document.getElementById("query");
+    let pagination_queries_response = await js.index.apiCaller("pagination_queries", {
+        "query": query_input.value,
+        "last_evaluated_key": last_evaluated_key_input.value,
+        "query_filter": query_filter_value
+    });
+    let pagination_component = document.getElementById("pagination_component");
+    pagination_component.innerHTML += pagination_queries_response["success"];
+    let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+    let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+    let showing_total_count_input = document.getElementById("showing_total_count");
+    let ProgressBar = document.querySelector(".progress-pagination.upload-bar");
+
+    console.log("updating last_evaluated_key with ", pagination_queries_response["last_evaluated_key"]);
+    last_evaluated_key_input.value = JSON.stringify(pagination_queries_response["last_evaluated_key"]);
+    pagination_actual_itens_count_span.innerHTML = parseInt(pagination_actual_itens_count_span.innerHTML) + parseInt(pagination_queries_response["new_itens_count"])
+    ProgressBar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
+    showing_total_count_input.value = pagination_actual_itens_count_span.innerHTML;
+
+    if (parseInt(pagination_actual_itens_count_span.innerHTML) == parseInt(pagination_total_itens_count_span.innerHTML)) {
+        let load_more_pagination_button = document.getElementById("load_more_pagination_button");
+        load_more_pagination_button.style.display = "none";
+    }
+
+    countPagination.style.display = "block";
+    loadingPaginationMessage.style.display = "none";
+
+}

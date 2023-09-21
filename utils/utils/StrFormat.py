@@ -25,7 +25,7 @@ class StrFormat:
         if payment_method == "pix":
             return Code().translate("Pix")
         else:
-            raise Exception("TODO")
+            return ""
 
     def format_recurrency(self, recurrency):
         if recurrency == "monthly":

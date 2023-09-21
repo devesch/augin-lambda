@@ -11,8 +11,6 @@ class BackofficeOrders(BackofficePage):
 
     def render_get(self):
         html = super().parse_html()
-
-        html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
         if self.path.get("user_email"):
             html.esc("user_email_val", self.path["user_email"])
@@ -42,7 +40,6 @@ class BackofficeOrders(BackofficePage):
             html.esc("showing_total_count_val", len(orders))
 
         html.esc("html_backoffice_orders_table_rows", self.list_html_backoffice_orders_table_rows(orders))
-
         return str(html)
 
     def render_post(self):
