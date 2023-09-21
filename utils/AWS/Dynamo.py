@@ -83,9 +83,11 @@ class Dynamo:
 
     def query_paginated_user_orders(self, user_id, user_total_orders_count, page_index):
         query = []
-        start_index = int(user_total_orders_count) - (int(lambda_constants["user_orders_page_size"]) * (int(page_index) - 1))
-        for index in range(start_index, start_index - int(lambda_constants["user_orders_page_size"]), -1):
-            query.append({"pk": "user#" + user_id, "sk": "order#" + str(int(index))})
+        page_size = int(lambda_constants["user_orders_page_size"])
+        start_index = int(user_total_orders_count) - ((int(page_index) - 1) * page_size)
+        end_index = max(start_index - page_size, 0)
+        for index in range(start_index, end_index, -1):
+            query.append({"pk": "user#" + user_id, "sk": "order#" + str(index)})
         return self.execute_batch_get_item(query)
 
     ### PAYMENT METHODS ###
