@@ -207,17 +207,10 @@ class Http:
         if not Validation().check_if_local_env():
             html = html.replace("local_js_index_val", "").replace("local_css_val", "")
 
-        event_here_man = f"<div id='EVENT HERE MAN' style='display:none;'>{event}<br><br><br>{json.dumps(last_post_event)}</div>"
-
-        ### TODO REMOVE BEFORE PROD
-        body = html + event_here_man
-        # if "dev" in event.get_prefix():
-        #     body = html + event_here_man
-        # else:
-        #     if event.check_if_has_debug():
-        #         body = html + event_here_man
-        #     else:
-        #         body = html
+        if event.check_if_has_debug():
+            body = html + f"<div id='EVENT HERE MAN' style='display:none;'>{event}<br><br><br>{json.dumps(last_post_event)}</div>"
+        else:
+            body = html
 
         response = {
             "statusCode": status_code,

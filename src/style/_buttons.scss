@@ -250,4 +250,27 @@ button:disabled,
     cursor: not-allowed;
 }
 
+.button--user-folders {
+    background: none !important;
+    padding: 0;
+    border: none;
+    text-align: left;
+    font-weight: normal;
+    color: colors.color("color-black");
+}
+
+.explore__table-container__button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    button {
+        padding: .25rem;
+    }
+
+    .button--user-folders {
+        margin-left: .5rem;
+    }
+}
+
 /* Buttons - End */

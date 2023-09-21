@@ -13,19 +13,23 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
     admin = False
 
     def render_get(self):
+        user_subscription = None
+        if self.user.user_subscription_id:
+            user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+        user_plan = self.user.get_user_actual_plan()
+
         html = super().parse_html()
         html.esc("user_name_val", self.user.user_name.title())
-        self.user.update_user_plan()
-        html.esc("plan_name_val", self.user.user_plan["plan_name_" + self.lang])
+        html.esc("plan_name_val", user_plan["plan_name_" + self.lang])
         purchasable_plans = Dynamo().query_purchasable_plans()
-        html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly"))
-        html.esc("html_annually_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "annually"))
+        html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly", user_subscription))
+        html.esc("html_annually_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "annually", user_subscription))
         return str(html)
 
     def render_post(self):
         return self.render_get()
 
-    def list_html_plans_thumbs(self, purchasable_plans, recurrency="monthly"):
+    def list_html_plans_thumbs(self, purchasable_plans, recurrency, user_subscription):
         full_html = []
         if purchasable_plans:
             for plan in purchasable_plans:
@@ -59,19 +63,20 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                                 html.esc("plan_annually_savings", int(int(plan["plan_price_monthly_usd_actual"]) / int(plan["plan_price_annually_usd_actual"]) * 100))
 
                     if recurrency == "annually":
+                        html.esc("plan_recurrency_val", self.translate("ano"))
                         html.esc("save_on_annually_visibility_val", "display:none;")
                         html.esc("plan_recurrency_val", self.translate("ano"))
                         html.esc("plan_recurrency_phrase_val", self.translate("Cobrado anualmente"))
 
-                    if plan["plan_available_monthly"] == self.user.user_plan_id:
+                    if user_subscription and (user_subscription.get("subscription_plan_id") == plan["plan_id"]) and (user_subscription.get("subscription_recurrency") == recurrency):
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_your_plan_button())
                     else:
-                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"]))
+                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency))
 
                     if plan["plan_has_trial"]:
                         trial_plan_version = Dynamo().get_plan(plan["plan_id"] + "-trial")
                         if trial_plan_version and plan["plan_id"] + "-trial" not in self.user.user_used_trials:
-                            html.esc("html_trial_button", self.show_html_trial_button(plan["plan_trial_duration_in_days"]))
+                            html.esc("html_trial_button", self.show_html_trial_button(plan, recurrency))
 
                     html.esc("plan_maxium_model_size_in_mbs_val", plan["plan_maxium_model_size_in_mbs"])
                     html.esc("plan_cloud_space_in_gbs_val", int(int(plan["plan_cloud_space_in_mbs"]) / 1000))
@@ -96,12 +101,16 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_your_plan_button")
         return str(html)
 
-    def show_html_upgrade_plan_button(self, plan_id):
+    def show_html_upgrade_plan_button(self, plan_id, recurrency):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_upgrade_plan_button")
         html.esc("plan_id_val", plan_id)
+        html.esc("recurrency_val", recurrency)
+
         return str(html)
 
-    def show_html_trial_button(self, plan_trial_duration_in_days):
+    def show_html_trial_button(self, plan, recurrency):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_trial_button")
-        html.esc("plan_trial_duration_in_days_val", plan_trial_duration_in_days)
+        html.esc("plan_id_val", plan["plan_id"])
+        html.esc("plan_trial_duration_in_days_val", plan["plan_trial_duration_in_days"])
+        html.esc("recurrency_val", recurrency)
         return str(html)

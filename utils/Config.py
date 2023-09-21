@@ -30,11 +30,16 @@ base_url = f"https://{prefix_name}{domain_name}{sufix_name}"
 cdn_bucket = "cdn." + domain_name + sufix_name
 cdn_base_url = "https://" + cdn_bucket
 
-
+### TODO CHANGE CNPJ TO AUGIN
 lambda_constants = {
     "brand_api_endpoint": "https://api.branch.io/v1/",
     "branch_key": "key_live_kbPDVR9iW4fdsvi1MNpMRlnetqjvZogI",
     "ip_data_api_key": "6aa0e0c8249d4135172b977b137ee37adf36a0975f9e6367dbaa912a",
+    # "cnpj": "298218940001­62",
+    # "municipal_inscription": "62586920",
+    "company_name": "Augin",
+    "cnpj": "31758054000144",
+    "municipal_inscription": "61154822",
     "ifc_converter": ifc_converter,
     "s3_put_user_key_id": s3_put_user_key_id,
     "s3_put_user_secret_access_key": s3_put_user_secret_access_key,
@@ -45,6 +50,7 @@ lambda_constants = {
     "sqs_queue_url_process_in_ec2": "https://sqs.us-east-1.amazonaws.com/847154778207/ifc-ec2-process",
     "stepfunction_arn": "arn:aws:states:us-east-1:847154778207:stateMachine:IFC-processor-state-machine",
     "lambda_generate_folder_zip": "generate_folder_zip",
+    "lambda_move_deleted_model_files": "move_deleted_model_files",
     "maxium_ifc_project_filesize": "1073741824",
     "prefix_name": prefix_name,
     "sufix_name": sufix_name,
@@ -77,6 +83,7 @@ lambda_constants = {
         "others": {"category_id": "others", "category_name": "Others"},
     },
     "plan_reference_trackers": {"indisponível": "unavailable", "único": "unique", "múltiplo": "multiple"},
+    "user_orders_page_size": "8",
 }
 
 

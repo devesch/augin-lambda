@@ -1,3 +1,6 @@
+from utils.Code import Code
+
+
 class StrFormat:
     _instance = None
 
@@ -6,14 +9,42 @@ class StrFormat:
             cls._instance = super(StrFormat, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def format_status(self, status):
+        if status == "active":
+            return "Ativa"
+        if status == "canceled":
+            return "Cancelada"
+        else:
+            raise Exception("TODO")
+
+    def format_to_payment_method(self, payment_method):
+        if payment_method == "card":
+            return Code().translate("Cartão de crédito")
+        if payment_method == "boleto":
+            return Code().translate("Boleto")
+        if payment_method == "pix":
+            return Code().translate("Pix")
+        else:
+            raise Exception("TODO")
+
+    def format_recurrency(self, recurrency):
+        if recurrency == "monthly":
+            return Code().translate("mensalmente")
+        if recurrency == "annually":
+            return Code().translate("anualmente")
+        else:
+            raise Exception("TODO")
+
     def format_bytes_to_megabytes(self, bytes_value):
         return int(bytes_value) / (1024 * 1024)
 
     def format_currency_to_symbol(self, currency):
         if currency.lower() == "brl":
             return "R$"
-        elif currency.lower() == "usd":
+        if currency.lower() == "usd":
             return "U$"
+        else:
+            raise Exception("TODO")
 
     def format_snakecase_to_title(self, string):
         return " ".join(x.capitalize() or "_" for x in string.split("_"))

@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>{{Armazenamento}}</td>
-                    <td><strong>{{plan_cloud_space_in_mbs_val}} Mb</strong></td>
+                    <td><strong>{{plan_cloud_space_in_gbs_val}} Gb</strong></td>
                 </tr>
                 <tr>
                     <td>{{Compartilhe por QR Code ou link}}</td>
@@ -51,47 +51,79 @@
                     <td>{{Baixe seus IFCs em qualquer lugar}}</td>
                     <td><strong>{{plan_download_files_val}}</strong></td>
                 </tr>
+                <tr>
+                    <td>TeamPlay</td>
+                    <td><strong>{{plan_team_play_val}}</strong></td>
+                </tr>
             </table>
-            <div class="main-container__item__button-container">
-                <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan" class="button">Fazer upgrade</a>
-            </div>
         </div>
         <div class="my-plan__main-container__item">
             <h3>
                 {{Cobrança e pagamento}}
             </h3>
             <table class="my-plan__table">
-                <tr>
-                    <td>{{Plano}}</td>
-                    <td><strong>{{plan_name_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{Preço}}</td>
-                    <td><strong>{{user_subscription_currency_val}} {{user_subscription_price_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{Período de cobrança}}</td>
-                    <td><strong>{{user_subscription_recurrency_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{Data de renovação}}</td>
-                    <td><strong>{{user_subscription_valid_until_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{Forma de pagamento}}</td>
-                    <td><strong></strong></td>
-                </tr>
+                {{html_user_has_no_subscription}}
+                {{html_user_subscription_is_trial}}
+                {{html_user_subscription}}
             </table>
             <div class="main-container__item__button-container">
                 {{html_upgrade_plan_button}}
-                <!-- <a class="button" href="">{{Atualizar forma de pagamento}}</a>
-                <a class="main-container__item__link" href="">{{Cancelar assinatura}}</a> -->
+                {{html_cancel_subscription_button}}
+                <!-- <a class="button" href="">{{Atualizar forma de pagamento}}</a>-->
             </div>
-
-            {{html_payment_history_div}}
-            {{html_payment_methods_div}}
-
         </div>
+
+        {{html_payment_history_div}}
+        {{html_payment_methods_div}}
+
     </div>
 </main>
+
+
+<div id="cancel-subscription-modal" class="modal cancel-subscription-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Cancelando assinatura}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <h1>{{Confirme o cancelamento da sua assinatura}}.</h1>
+            </div>
+            <span class="error" id="cancel_subscription_error_span">
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.cancel-subscription-modal')">{{Fechar}}</button>
+                <button onclick="js.index.saveCancelSubscription()" class="ghost">{{Cancelar assinatura}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="add-payment-method-modal" class="modal add-payment-method-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Adicionando novo método de pagamento}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <p>number</p>
+                <input id="number" value="5555555555554444">
+                <p>exp_month</p>
+                <input id="exp_month" value="1">
+                <p>exp_year</p>
+                <input id="exp_year" value="24">
+                <p>cvc</p>
+                <input id="cvc" value="234">
+            </div>
+            <span class="error" id="add_payment_method_error_span">
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.add-payment-method-modal')" class="ghost">{{Fechar}}</button>
+                <button onclick="js.index.saveAddPaymentMethod()">{{Adicionar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{footer}}

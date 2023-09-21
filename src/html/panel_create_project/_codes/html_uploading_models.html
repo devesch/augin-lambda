@@ -1,19 +1,18 @@
 <section id="uploading_element_{{index_val}}" aria-live="polite">
     <input hidden id="has_more_than_one_file_{{index_val}}">
-    <input hidden name="model_id_{{index_val}}" id="model_id_{{index_val}}">
+    <input hidden name="model_id_{{index_val}}" id="model_id_{{index_val}}" value="{{model_id_val}}">
     <input hidden id="has_error_{{index_val}}">
-    <input hidden id="has_fbx_{{index_val}}">
+    <input hidden id="has_fbx_{{index_val}}" value="{{has_fbx_val}}">
     <input hidden id="model_filename_{{index_val}}" value="{{model_filename_val}}">
     <div class="uploading-element-header">
         <strong>{{model_filename_val}}</strong>
-        <!-- js.index.deleteUploadingElement('{{index_val}}') -->
-        <button id="delete_button_{{index_val}}" class="button--icon" onclick="js.index.openModalDeleteProject('{{index_val}}')" aria-label="{{Excluir modelo}} {{model_filename_val}}" aria-describedby="message_{{index_val}}" aria-controls="uploading_element_{{index_val}}">
+        <button id="delete_button_{{index_val}}" class="button--icon" onclick="js.index.deleteUploadingElement('{{index_val}}')" aria-label="{{Excluir modelo}} {{model_filename_val}}" aria-describedby="message_{{index_val}}" aria-controls="uploading_element_{{index_val}}">
             <img src="{{cdn_val}}/assets/icons/trash-red.svg" width="24" height="24" alt="" />
         </button>
     </div>
     <p id="message_{{index_val}}" class="uploading_element_message">
-        {{Enviando arquivo, aguarde}}
+        {{uploading_element_message_val}}
     </p>
-    <progress id="progress_{{index_val}}" value="0" max="100" aria-describedby="message_{{index_val}}"></progress>
+    <progress class="{{success_class_val}}" id="progress_{{index_val}}" value="{{actual_progress_val}}" max="100" aria-describedby="message_{{index_val}}"></progress>
     <div id="file_formats_div_{{index_val}}" class="file-formats-container">{{html_uploading_file_formats}}</div>
 </section>

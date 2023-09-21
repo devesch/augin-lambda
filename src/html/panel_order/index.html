@@ -1,0 +1,79 @@
+{{header}}
+{{menu_panel}}
+<main class="my-plan__main">
+    <div class="page-user page-mobile" id="panelOrder">
+        {{html_admin_using_another_account_advisory}}
+        <div class="box-title">
+            <p>{{Informaçōes do pedido}}</p>
+            <span>#{{order_short_id_val}}</span>
+        </div>
+
+        <div class="page-user__box-user-order box-content max-width">
+            <div class="page-user__box-user-order__section-one">
+                <div class="box-info-magipix">
+                    <img src="{{cdn_val}}/assets/images/logo-augin.svg" alt="{{Logo Augin}}">
+                    <div class="box-info-magipix__address">
+                        <p>Av. Mariland 403, Sala 802 - Porto Alegre, RS</p>
+                        <p>CNPJ 31.758.054/0001-44</p>
+                    </div>
+                </div>
+                <div class="page-user__box-user-order__section-one__item">
+                    <p>{{Código Completo:}}</p>
+                    <span>{{order_id_val}}</span>
+                </div>
+                <div class="page-user__box-user-order__section-one__item">
+                    <p>{{Método de pagamento:}}</p>
+                    <span>{{order_payment_method}}</span>
+                </div>
+                <div class="page-user__box-user-order__section-one__item">
+                    <p>{{Data e Hora:}}</p>
+                    <span>{{order_datetime_val}}</span>
+                </div>
+                <div class="page-user__box-user-order__section-one__item">
+                    <p>{{Status:}}</p>
+                    <span>{{order_status_val}}</span>
+                </div>
+            </div>
+            <div class="page-user__box-user-order__section-two">
+                <p>{{Tipo de compra}}</p>
+                <div class="page-user__box-user-order__section-two__item">
+                    <span>{{order_type_val}}</span>
+                </div>
+            </div>
+            <div class="page-user__box-user-order__section-three">
+                <p>{{Itens da Compra}}</p>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <th>{{Produto}}</th>
+                            <th>{{Total}}</th>
+                            <th class="buy-again"></th>
+                        </thead>
+                        <tbody>
+                            {{html_table_rows}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-total-order">
+                    {{html_order_cupom}}
+                    <div class="total-order total">
+                        <p>{{Total}}:</p>
+                        <span>{{order_currency_val}} {{order_total_price_val}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-user__box-user-order__section-four">
+                <div class="box-invoce-download" style="{{nfse_visibilty_val}}">
+                    <p>{{Nota Fiscal}}:</p>
+                    <div class="invoce-download">
+                        {{html_download_xml_invoice_button}}
+                        {{html_download_pdf_invoice_button}}
+                    </div>
+                </div>
+                {{html_print_payment_button}}
+            </div>
+        </div>
+    </div>
+</main>
+{{footer}}

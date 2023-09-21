@@ -2,16 +2,24 @@ from python_web_frame.base_page import BasePage
 from utils.Config import lambda_constants
 from utils.utils.Sort import Sort
 from utils.utils.ReadWrite import ReadWrite
-from utils.utils.Generate import Generate
+from utils.utils.Date import Date
 from utils.AWS.Dynamo import Dynamo
-from utils.AWS.S3 import S3
+from utils.utils.StrFormat import StrFormat
 from python_web_frame.controllers.model_controller import ModelController
+from objects.Order import translate_order_status
 from objects.User import sort_user_folders
 
 
 class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
+
+    def list_html_uploading_models(self, models_not_created):
+        full_html = []
+        if models_not_created:
+            for index, model in enumerate(models_not_created):
+                full_html.append(str(self.show_html_uploading_models(model["model_filename"], index, full_model=model)))
+        return "".join(full_html)
 
     def list_html_models_in_processing(self, event, models_in_processing):
         full_html = []
@@ -30,10 +38,22 @@ class PanelPage(BasePage):
                 full_html.append(str(html))
         return "".join(full_html)
 
-    def show_html_uploading_models(self, model_filename, index):
+    def show_html_uploading_models(self, model_filename, index, full_model=False):
         html = ReadWrite().read_html("panel_create_project/_codes/html_uploading_models")
         html.esc("model_filename_val", model_filename)
         html.esc("index_val", index)
+        if full_model:
+            html.esc("model_id_val", full_model["model_id"])
+            if full_model["model_format"] != "ifc":
+                html.esc("has_fbx_val", "True")
+            html.esc("actual_progress_val", "100")
+            html.esc("uploading_element_message_val", self.translate("Upload realizado com sucesso."))
+            html.esc("success_class_val", "success")
+            html.esc("html_uploading_file_formats", self.list_html_uploading_file_formats({full_model["model_format"]: "1"}))
+        else:
+            html.esc("actual_progress_val", "0")
+            html.esc("uploading_element_message_val", self.translate("Enviando arquivo, aguarde"))
+
         return str(html)
 
     def list_html_user_folder_rows(self, folder_id=None, model_html=""):
@@ -53,7 +73,7 @@ class PanelPage(BasePage):
 
                 for folder in user_folder["folders"]:
                     if folder["folder_user_id"] not in user_ids_name_dict:
-                        owner_user = Dynamo().get_user(Dynamo().get_user_email_with_id(folder["folder_user_id"]))
+                        owner_user = Dynamo().get_user(folder["folder_user_id"])
                         user_ids_name_dict[folder["folder_user_id"]] = owner_user["user_name"]
                     folder["owners_name"] = user_ids_name_dict[folder["folder_user_id"]]
 
@@ -81,7 +101,7 @@ class PanelPage(BasePage):
                     html.esc("folder_path_val", folder["folder_path"])
                     html.esc("folder_name_val", folder["folder_name"])
                     html.esc("folder_id_val", folder["folder_id"])
-                    html.esc("folder_created_at_val", ModelController().convert_model_created_at_to_date(folder["created_at"]))
+                    html.esc("folder_created_at_val", Date().format_to_str_time(folder["created_at"]))
                     html.esc("folder_size_in_mbs_val", f'{round(float(folder["folder_size_in_mbs"]), 2):.1f}' + " Mb")
 
                     html.esc("owners_name_val", folder["owners_name"])
@@ -117,7 +137,7 @@ class PanelPage(BasePage):
         if models:
             for model in models:
                 if model["model_user_id"] not in user_ids_name_dict:
-                    owner_user = Dynamo().get_user(Dynamo().get_user_email_with_id(model["model_user_id"]))
+                    owner_user = Dynamo().get_user(model["model_user_id"])
                     user_ids_name_dict[model["model_user_id"]] = owner_user["user_name"]
                 model["owners_name"] = user_ids_name_dict[model["model_user_id"]]
 
@@ -173,7 +193,7 @@ class PanelPage(BasePage):
 
                 html.esc("model_filename_val", model["model_filename"])
                 html.esc("model_name_val", model["model_name"])
-                html.esc("model_created_at_val", ModelController().convert_model_created_at_to_date(model["created_at"]))
+                html.esc("model_created_at_val", Date().format_to_str_time(model["created_at"]))
                 html.esc("model_filesize_val", ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
 
                 if ModelController().check_if_model_is_too_big(model["model_filesize"]):
@@ -220,10 +240,10 @@ class PanelPage(BasePage):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_update_modal_update_confirm")
         html.esc("original_model_name_val", original_model["model_name"])
         html.esc("original_model_filename_val", original_model["model_filename"])
-        html.esc("original_created_at_val", ModelController().convert_model_created_at_to_date(original_model["created_at"]))
+        html.esc("original_created_at_val", Date().format_to_str_time(original_model["created_at"]))
         html.esc("new_model_name_val", new_model["model_name"])
         html.esc("new_model_filename_val", new_model["model_filename"])
-        html.esc("new_created_at_val", ModelController().convert_model_created_at_to_date(new_model["created_at"]))
+        html.esc("new_created_at_val", Date().format_to_str_time(new_model["created_at"]))
         return str(html)
 
     def list_html_uploading_file_formats(self, file_formats):
@@ -233,4 +253,66 @@ class PanelPage(BasePage):
             html.esc("file_format_val", format.upper())
             html.esc("file_format_quantity_val", quantity)
             full_html.append(str(html))
+        return "".join(full_html)
+
+    def show_html_payment_history_div(self, user_orders):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_div")
+        html.esc("html_payment_history_rows", self.list_html_payment_history_rows(user_orders))
+        html.esc("html_payment_history_pages_buttons", self.list_html_payment_history_pages_buttons())
+        return str(html)
+
+    def list_html_payment_history_pages_buttons(self):
+        import math
+
+        full_html = []
+        pages_amount = math.ceil(int(self.user.user_total_orders_count) / int(lambda_constants["user_orders_page_size"]))
+        for index in range(pages_amount):
+            html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_pages_buttons")
+            if index == 0:
+                html.esc("selected_page_val", "selected-page")
+            html.esc("page_index_val", (index + 1))
+            full_html.append(str(html))
+        return "".join(full_html)
+
+    def list_html_payment_history_rows(self, user_orders):
+        plan_id_name_conversion = {}
+        full_html = []
+        for index, order in enumerate(user_orders):
+            html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_rows")
+            html.esc("order_created_at_val", Date().format_to_str_time(order["created_at"]))
+            html.esc("order_currency_symbol_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
+            html.esc("order_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
+            html.esc("order_status_val", translate_order_status(order["order_status"]))
+
+            if order["order_status"] == "paid":
+                html.esc("order_status_class_val", "paid")
+            else:
+                html.esc("order_status_class_val", "failed")
+
+            if order["order_plan_id"] not in plan_id_name_conversion:
+                plan_id_name_conversion[order["order_plan_id"]] = Dynamo().get_plan(order["order_plan_id"])
+            html.esc("order_plan_name_val", plan_id_name_conversion[order["order_plan_id"]]["plan_name_" + self.lang])
+            html.esc("order_id_val", order["order_id"])
+
+            full_html.append(str(html))
+        return "".join(full_html)
+
+    def show_html_payment_methods_div(self, user_payment_methods, user_subscription):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_div")
+        html.esc("html_payment_methods_rows", self.list_html_payment_methods_rows(user_payment_methods, user_subscription))
+        return str(html)
+
+    def list_html_payment_methods_rows(self, user_payment_methods, user_subscription):
+        full_html = []
+        for payment_method in user_payment_methods:
+            if payment_method["payment_method_type"] == "card":
+                html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
+                if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
+                    html.esc("active_method_val", "active")
+                html.esc("brand_val", payment_method["payment_method_card"]["brand"])
+                html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
+                html.esc("last4_val", payment_method["payment_method_card"]["last4"])
+                html.esc("exp_month_val", payment_method["payment_method_card"]["exp_month"])
+                html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
+                full_html.append(str(html))
         return "".join(full_html)

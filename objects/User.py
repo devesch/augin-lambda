@@ -3,8 +3,10 @@ from uuid import uuid4
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.Generate import Generate
+from utils.utils.Date import Date
 from objects.UserPassword import UserPassword
 from objects.UserAuthToken import UserAuthToken
+from objects.UserSubscription import UserSubscription
 from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
 from utils.utils.Sort import Sort
 from python_web_frame.controllers.model_controller import ModelController
@@ -36,11 +38,14 @@ class User:
         self.user_favorited_models = []
         self.user_favorited_folders = []
         self.user_plan_id = ""
-        self.user_plan = ""
-        self.user_subscription = ""
+        self.user_subscription_id = ""
+        self.user_subscription_valid_until = ""
+        self.user_subscription_status = ""
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
+        self.user_total_orders_count = "0"
+        self.user_pagination_count = "20"
 
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []
@@ -52,13 +57,80 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
-    def translate_cart_currency_to_symbol(self):
-        if self.user_cart_currency == "brl":
-            return "R$"
-        elif self.user_cart_currency == "usd":
-            return "U$"
+    def active_trial_plan(self, trial_plan):
+        user_subscription_id = "trial-" + Generate().generate_short_id()
+        user_subscription = UserSubscription(user_subscription_id, self.user_id).__dict__
+        user_subscription["subscription_plan_id"] = trial_plan["plan_id"]
+        user_subscription["subscription_recurrency"] = ""
+        user_subscription["subscription_status"] = "active"
+        user_subscription["subscription_default_payment_method"] = ""
+        user_subscription["subscription_price"] = "0000"
+        user_subscription["subscription_currency"] = self.user_cart_currency
+        user_subscription["subscription_currency"] = self.user_cart_currency
+        user_subscription["subscription_last_order_id"] = ""
+        user_subscription["subscription_valid_until"] = str(Date().add_days_to_current_unix_time(trial_plan["plan_trial_duration_in_days"]))
+        user_subscription["subscription_is_trial"] = True
+        Dynamo().put_entity(user_subscription)
+
+        self.user_has_subscription = "True"
+        self.user_subscription_id = user_subscription_id
+        self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
+        self.user_subscription_status = "active"
+        self.user_plan_id = trial_plan["plan_id"]
+        self.user_used_trials.append(trial_plan["plan_id"])
+        Dynamo().put_entity(self.__dict__)
+
+    def cancel_current_subscription(self):
+        user_subscription = Dynamo().get_subscription(self.user_subscription_id)
+        StripeController().cancel_subscription(self.user_subscription_id)
+        stripe_subscription = StripeController().get_subscription(self.user_subscription_id)
+        user_subscription["subscription_status"] = stripe_subscription["status"]
+        user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])
+        Dynamo().put_entity(user_subscription)
+        self.user_subscription_status = stripe_subscription["status"]
+        Dynamo().update_entity(self.__dict__, "user_subscription_status", self.user_subscription_status)
+
+    def incrase_user_total_orders_count(self):
+        self.user_total_orders_count = str(int(self.user_total_orders_count) + 1)
+        Dynamo().update_entity(self.__dict__, "user_total_orders_count", self.user_total_orders_count)
+
+    def incrase_user_total_orders_count(self):
+        self.user_total_orders_count = str(int(self.user_total_orders_count) + 1)
+        Dynamo().update_entity(self.__dict__, "user_total_orders_count", self.user_total_orders_count)
+
+    def get_user_actual_plan(self):
+        if self.check_if_subscription_is_valid():
+            return Dynamo().get_plan(self.user_plan_id)
         else:
-            raise Exception("Invalid cart currency")
+            return Dynamo().get_free_plan()
+
+    def check_if_subscription_is_valid(self):
+        if not self.user_subscription_valid_until:
+            return False
+        return float(self.user_subscription_valid_until) > float(time.time())
+
+    def update_subscription(self, order, user_stripe_subscription):
+        user_subscription = Dynamo().get_subscription(user_stripe_subscription.stripe_id)
+        if not user_subscription:
+            user_subscription = UserSubscription(user_stripe_subscription.stripe_id, self.user_id).__dict__
+
+        user_subscription["subscription_plan_id"] = order["order_plan_id"]
+        user_subscription["subscription_recurrency"] = order["order_plan_recurrency"]
+        user_subscription["subscription_status"] = user_stripe_subscription["status"]
+        user_subscription["subscription_default_payment_method"] = user_stripe_subscription["default_payment_method"]
+        user_subscription["subscription_price_id"] = user_stripe_subscription["plan"]["id"]
+        user_subscription["subscription_price"] = user_stripe_subscription["plan"]["amount_decimal"]
+        user_subscription["subscription_currency"] = user_stripe_subscription["currency"]
+        user_subscription["subscription_last_order_id"] = order["order_id"]
+        user_subscription["subscription_valid_until"] = str(user_stripe_subscription["current_period_end"])
+        Dynamo().put_entity(user_subscription)
+
+        self.user_has_subscription = "True"
+        self.user_subscription_id = user_stripe_subscription.stripe_id
+        self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
+        self.user_subscription_status = user_stripe_subscription["status"]
+        self.user_plan_id = order["order_plan_id"]
+        Dynamo().put_entity(self.__dict__)
 
     def clear_all_auth_tokens(self):
         all_users_auth_tokens = Dynamo().query_users_auth_token(self.user_email)
@@ -68,10 +140,6 @@ class User:
 
     def clear_perdonal_data(self):
         self.user_address_data = {"user_country": "", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
-
-    def update_user_plan(self):
-        if not self.user_plan_id:
-            self.user_plan = Dynamo().get_free_plan()
 
     def add_folder_to_user_shared_dicts(self, folder):
         if folder["folder_id"] not in self.user_shared_dicts["folders"]:
@@ -317,6 +385,10 @@ class User:
             StripeController().update_customer(self.user_stripe_customer_id, self)
             return True
 
+    def recreate_stripe_user(self):
+        self.user_stripe_customer_id = StripeController().create_customer(self)
+        Dynamo().update_entity(self.__dict__, "user_stripe_customer_id", self.user_stripe_customer_id)
+
     def update_cart_currency(self):
         if self.user_address_data["user_country"] == "BR":
             self.user_cart_currency = "brl"
@@ -385,7 +457,7 @@ def sort_user_folders(user, user_folders, sort_attribute="folder_name", sort_rev
 
     if sort_attribute in ["created_at", "folder_foldersize_in_mbs"]:
         sort_reverse = not sort_reverse
-    if sort_attribute in ["model_name", "owners_name"]:
+    if sort_attribute in ["folder_name", "owners_name"]:
         favorited_folders = Sort().sort_dict_list(favorited_folders, sort_attribute, reverse=sort_reverse, integer=False)
         normal_folders = Sort().sort_dict_list(normal_folders, sort_attribute, reverse=sort_reverse, integer=False)
     else:

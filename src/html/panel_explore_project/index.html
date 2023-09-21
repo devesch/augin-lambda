@@ -29,42 +29,61 @@
 
     <section class="explore__table-container">
         <div class="explore__table-container__title-container relative">
-            <h2 onclick="js.index.openFolder('', '')">{{Meus projetos}}</h2>
-            <h6 id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
-                <- </h6> <h6 id="folder_path_span">
-            </h6>
-            <input hidden id="folder_id_input">
-            <input hidden id="folder_path_input">
+            <div class="explore__table-container__button-container">
+                <button id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
+                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}"/>
+                </button>
+                <button onclick="js.index.openFolder('', '')" class="button--user-folders">
+                    <h2>{{Meus projetos}}</h2>
+                </button>
+                <h2 id="folder_path_span"></h2>
+                <input hidden id="folder_id_input">
+                <input hidden id="folder_path_input">
+            </div>
 
-            <button class="explore-create-more-options" aria-controls="explore_create_more_options" aria-expanded="false">{{Criar}} +</button>
-            <menu id="explore_create_more_options" class="menu--explore-create-options none">
-                <li>
-                    <button onclick="js.index.openModalCreateFolder()">
-                        <img src="{{cdn_val}}/assets/icons/create_new_folder.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Pasta}}</span>
-                    </button>
-                </li>
-                <li>
-                    <button onclick="js.index.openModalCreateFederatedProject()">
-                        <img src="{{cdn_val}}/assets/icons/note_stack_add.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Federado}}</span>
-                    </button>
-                </li>
-                <li>
-                    <a href="{{domain_name_url_val}}/panel_create_project">
-                        <button>
-                            <img src="{{cdn_val}}/assets/icons/cloud_upload_black.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Projeto}}</span>
+            <div>
+                <button class="explore-create-more-options" aria-controls="explore_create_more_options" aria-expanded="false">{{Criar}} +</button>
+                <menu id="explore_create_more_options" class="menu--explore-create-options none">
+                    <li>
+                        <button onclick="js.index.openModalCreateFolder()">
+                            <img src="{{cdn_val}}/assets/icons/create_new_folder.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Pasta}}</span>
                         </button>
-                    </a>
-                </li>
-            </menu>
+                    </li>
+                    <li>
+                        <button onclick="js.index.openModalCreateFederatedProject()">
+                            <img src="{{cdn_val}}/assets/icons/note_stack_add.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Federado}}</span>
+                        </button>
+                    </li>
+                    <li>
+                        <a href="{{domain_name_url_val}}/panel_create_project">
+                            <button>
+                                <img src="{{cdn_val}}/assets/icons/cloud_upload_black.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Projeto}}</span>
+                            </button>
+                        </a>
+                    </li>
+                </menu>
+            </div>
         </div>
         <table class="explore__table">
             <input hidden id="sort_attribute_input" value="model_name">
             <input hidden id="sort_reverse_input" value="False">
             <thead>
                 <tr>
-                    <th onclick="js.index.sortProjectsBy('model_name')" colspan="1">{{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
-                    <th onclick="js.index.sortProjectsBy('created_at')" colspan="1">{{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
-                    <th onclick="js.index.sortProjectsBy('model_filesize')" colspan="2">{{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"></th>
+                    <th colspan="1">
+                        <button onclick="js.index.sortProjectsBy('model_name')" class="button--user-folders">
+                            {{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                        </button>
+                    </th>
+                    <th colspan="1">
+                        <button onclick="js.index.sortProjectsBy('created_at')" class="button--user-folders">
+                            {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                        </button>
+                    </th>
+                    <th colspan="2">
+                        <button onclick="js.index.sortProjectsBy('model_filesize')" class="button--user-folders">
+                            {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                        </button>
+                    </th>
                 </tr>
             </thead>
             <tbody id="user_folder_rows_tbody">
@@ -101,7 +120,7 @@
         </div>
         <div class="modal-content">
             <div>
-                <table class="explore__table">
+                <table class="federate__table">
                     <input hidden id="create_federated_modal_folder_id">
                     <thead>
                         <tr>

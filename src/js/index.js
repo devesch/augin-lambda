@@ -23,9 +23,148 @@ export function getWebView() {
 }
 
 
-export async function checkIfUserCanUpgradePlan(plan_id) {
+
+
+
+export async function showSelectedPaymentPage(button, index) {
+    let payment_history_rows = document.getElementById("payment_history_rows");
+    let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
+
+
+    let pagination_queries_response = await apiCaller("pagination_queries", {
+        "query": "query_paginated_user_orders",
+        "page": index
+    })
+
+    payment_history_rows.innerHTML = pagination_queries_response["success"];
+
+    for (let payment_history_page_button of payment_history_page_buttons) {
+        payment_history_page_button.classList.remove("selected-page")
+    }
+    button.classList.add("selected-page");
+}
+
+
+
+export async function processStripeSubscriptionPayment(stripe_token, payment_type, plan_id, plan_recurrency) {
+    const stripe = Stripe(stripe_token);
+    console.log("const stripe ", stripe);
+    let continue_button = document.getElementById("submit");
+    let box_payment_loader = document.getElementById("box_payment_loader");
+    let elements = '';
+    let emailAddress = '';
+    let orderId = '';
+    initialize()
+    console.log("running initialize");
+    checkStatus(orderId);
+    console.log("running checkStatus");
+    document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
+
+    async function initialize() {
+        let checkout_stripe_generate_payload = await apiCaller("checkout_stripe_generate_payload", {
+            "plan_id": plan_id,
+            "plan_recurrency": plan_recurrency,
+            "payment_type": payment_type
+        });
+        const clientSecret = checkout_stripe_generate_payload["success"]["client_secret"]
+        orderId = checkout_stripe_generate_payload["success"]["order_id"]
+        console.log("clientSecret ", clientSecret)
+        console.log("orderId ", orderId)
+        const appearance = {
+            theme: 'stripe',
+        };
+        elements = stripe.elements({
+            appearance,
+            clientSecret
+        });
+        const linkAuthenticationElement = elements.create("linkAuthentication");
+        linkAuthenticationElement.mount("#link-authentication-element");
+        linkAuthenticationElement.on('change', (event) => {
+            emailAddress = event.value.email;
+        });
+        const paymentElementOptions = {
+            layout: "tabs",
+        };
+        const paymentElement = elements.create("payment", paymentElementOptions);
+        paymentElement.mount("#payment-element");
+        await sleep(200);
+        box_payment_loader.style.display = "none";
+        continue_button.style.display = "";
+    }
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setLoading(true);
+        const {
+            error
+        } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                return_url: ProjectData.props.domainNameUrlVal + "/checkout_payment_success/?order_id=" + orderId,
+                receipt_email: emailAddress,
+            },
+        });
+        if (error.type === "card_error" || error.type === "validation_error") {
+            showMessage(error.message);
+        } else {
+            showMessage("An unexpected error occurred.");
+        }
+        setLoading(false);
+    }
+    async function checkStatus() {
+        const clientSecret = new URLSearchParams(window.location.search).get(
+            "payment_intent_client_secret"
+        );
+        if (!clientSecret) {
+            return;
+        }
+        const {
+            paymentIntent
+        } = await stripe.retrievePaymentIntent(clientSecret);
+        switch (paymentIntent.status) {
+            case "succeeded":
+                showMessage("Payment succeeded!");
+                break;
+            case "processing":
+                showMessage("Your payment is processing.");
+                break;
+            case "requires_payment_method":
+                showMessage("Your payment was not successful, please try again.");
+                break;
+            default:
+                showMessage("Something went wrong.");
+                break;
+        }
+    }
+
+    function showMessage(messageText) {
+        const messageContainer = document.querySelector("#payment-message");
+        messageContainer.classList.remove("hidden");
+        messageContainer.textContent = messageText;
+        setTimeout(function () {
+            messageContainer.classList.add("hidden");
+            messageText.textContent = "";
+        }, 4000);
+    }
+
+    function setLoading(isLoading) {
+        if (isLoading) {
+            document.querySelector("#submit").disabled = true;
+            document.querySelector("#spinner").classList.remove("hidden");
+            document.querySelector("#button-text").classList.add("hidden");
+        } else {
+            document.querySelector("#submit").disabled = false;
+            document.querySelector("#spinner").classList.add("hidden");
+            document.querySelector("#button-text").classList.remove("hidden");
+        }
+    }
+}
+
+
+export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = false) {
     let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input");
+    let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
     user_selected_plan_id_input.value = plan_id
+    user_selected_plan_recurrency_input.value = recurrency
     let update_user_response = await apiCaller("update_user", {
         "command": "check_if_user_can_upgrade_his_plan",
         "plan_id": plan_id
@@ -34,7 +173,11 @@ export async function checkIfUserCanUpgradePlan(plan_id) {
     if ("error" in update_user_response) {
         showCheckoutPanelUserDataForm(update_user_response["user_client_type"]);
     } else {
-        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value)
+        if (trial) {
+            window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
+        } else {
+            window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
+        }
     }
 }
 
@@ -52,6 +195,20 @@ export async function showCheckoutPanelUserDataForm(userClientType) {
     // await floatingLabel("#panel_user_data_form_div form"); TODO FIX LABELS POSITIONS IF SOME FIELD ALREADY HAS INFO
 }
 
+export async function checkout_check_if_order_is_paid(order_id) {
+    console.log("running checkout_check_if_order_is_paid")
+    let checkout_check_if_order_is_paid_response = await apiCaller("checkout_check_if_order_is_paid", {
+        "order_id": order_id
+    })
+    if ("success" in checkout_check_if_order_is_paid_response) {
+        console.log("order paid")
+        return true
+    } else {
+        console.log("checking response again...", checkout_check_if_order_is_paid_response)
+        await sleep(3000)
+        checkout_check_if_order_is_paid(order_id)
+    }
+}
 
 export async function userRegisterGenerateCountryInput() {
     let user_country_select = document.getElementById("user_country");
@@ -146,7 +303,8 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
     if (panel_user_data_page_response.includes("suc") && panel_user_data_page_response.includes("ess")) {
         let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input")
-        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value)
+        let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
+        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&recurrency=" + user_selected_plan_recurrency_input.value)
     }
 }
 
@@ -582,6 +740,7 @@ export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable 
 
 export async function deleteUploadingElement(index) {
     let model_filename_input = document.getElementById("model_filename_" + index);
+    let model_id_input = document.getElementById("model_id_" + index);
     if (uploadedFilesNames.includes(model_filename_input.value)) {
         let filename_index_in_list = uploadedFilesNames.indexOf(model_filename_input.value);
         uploadedFilesNames.splice(filename_index_in_list, 1);
@@ -591,6 +750,11 @@ export async function deleteUploadingElement(index) {
     uploading_element.remove();
     checkIfCreateProjectSubmitButtonIsAvailable();
     checkIfCreateProjectIsFederated(false)
+
+    let update_model_response = await apiCaller("update_model", {
+        "command": "delete_model",
+        "model_id": model_id_input.value
+    });
 }
 
 
@@ -942,7 +1106,7 @@ export function activateDraggableItems() {
         const draggingItem = container.querySelector(".dragging");
         let notDraggingItems = container.querySelectorAll("tbody tr:not(.dragging)");
 
-        if (notDraggingItems.length() > 0) {
+        if (notDraggingItems.length > 0) {
             const nextSibling = notDraggingItems.find(sibling => {
                 return event.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
             });
@@ -1513,6 +1677,7 @@ export async function FavoriteFolder(folder_id, folder_is_favorite) {
 
 
 export async function refreshUpdateModal(folder_id) {
+    var model_id_update_model_input = document.getElementById("model_id_update_model_input");
     var update_modal_folder_id = document.getElementById("update_modal_folder_id");
     var update_model_user_folder_rows_tbody = document.getElementById("update_model_user_folder_rows_tbody");
     var update_modal_folder_path_span = document.getElementById("update_modal_folder_path_span");
@@ -1520,7 +1685,8 @@ export async function refreshUpdateModal(folder_id) {
 
     var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "folder_id": folder_id,
-        "model_html": "update"
+        "model_html": "update",
+        "model_id_to_be_updated": model_id_update_model_input.value
     })
 
     if (folder_id) {
@@ -2082,4 +2248,60 @@ export async function removeModelFromShared() {
 
     await js.index.showUserDicts();
     closeModal(".modal.remove-modal");
+}
+
+export async function openModalCancelSubscription() {
+    openModal(".modal.cancel-subscription-modal");
+}
+
+
+export async function saveCancelSubscription() {
+    let cancel_subscription_error_span = document.getElementById("cancel_subscription_error_span");
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "cancel_user_current_subscription"
+    });
+
+    if ("erro" in update_user_response) {
+        cancel_subscription_error_span.innerHTML = update_user_response["error"];
+    } else {
+        location.reload();
+    }
+}
+
+export async function openModalAddPaymentMethod() {
+    openModal(".modal.add-payment-method-modal");
+}
+
+export async function saveAddPaymentMethod() {
+    let number_input = document.getElementById("number");
+    let exp_month_input = document.getElementById("exp_month");
+    let exp_year_input = document.getElementById("exp_year");
+    let cvc_input = document.getElementById("cvc");
+
+    const url = 'https://api.stripe.com/v1/payment_methods';
+    const headers = new Headers({
+        'Authorization': 'Bearer sk_test_51KUDNpA9OIVeHB9yBr8fiH7gVUhfggy4zFkJib2maUawYM4tSkRQ64swJwwx4pXFZ4U3O93qPEGRZzWW1agdeBd500ev6Lx5W5',
+        'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    const body = new URLSearchParams({
+        'type': 'card',
+        'card[number]': number_input.value,
+        'card[exp_month]': exp_month_input.value,
+        'card[exp_year]': exp_year_input.value,
+        'card[cvc]': cvc_input.value,
+    }).toString();
+
+    fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: body
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }

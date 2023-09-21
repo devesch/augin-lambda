@@ -11,7 +11,7 @@ from utils.Utils import s3_client, lambda_client, lambda_constants
 
 # python_libs = "cryptography==3.4.8 dynamodb_encryption_sdk phonenumbers Pillow python_dateutil qrcode requests user_agents sl-zerobounce signxml suds"
 
-function = "magipix"
+function = "augin"
 layer_name = "default"
 python_libs = "pandas openpyxl xlsxwriter"
 # python_libs = "Pillow pillow-avif-plugin"

@@ -23,6 +23,17 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def get_already_uploaded_models(self, user):
+        already_uploaded_models = []
+        not_created_models = Dynamo().query_user_models_from_state(user, "not_created")
+        if not_created_models:
+            for model in not_created_models:
+                if not model["model_share_link_qrcode"]:
+                    self.delete_model(model, user)
+                else:
+                    already_uploaded_models.append(model)
+        return already_uploaded_models
+
     def search_models_by_name(self, search_input, user, shared=False):
 
         matching_name_models = []
@@ -208,14 +219,6 @@ class ModelController:
     def convert_model_filesize_to_mb(self, model_filesize):
         return str(round(int(model_filesize) / 1024 / 1024, 1))
 
-    def convert_model_created_at_to_date(self, created_at):
-        from datetime import datetime
-
-        # Create a datetime object from the Unix timestamp
-        dt_object = datetime.fromtimestamp(float(created_at))
-        formatted_date = dt_object.strftime("%b %d, %Y")
-        return formatted_date
-
     def delete_model(self, model, user):
         if model["model_used_in_federated_ids"]:
             for model_id in model["model_used_in_federated_ids"]:
@@ -233,10 +236,8 @@ class ModelController:
                         Dynamo().put_entity(required_model)
         if model["model_state"] == "completed":
             user.remove_model_from_user_dicts(model)
-
+        Lambda().invoke(lambda_constants["lambda_move_deleted_model_files"], "Event", {"model_upload_path": model["model_upload_path"], "model_state": model["model_state"]})
         model = self.change_model_state(model, model["model_state"], "deleted")
-        S3().copy_folder_from_one_bucket_to_another(lambda_constants["processed_bucket"], lambda_constants["archive_bucket"], model["model_upload_path"], model["model_upload_path"])
-        S3().delete_folder(lambda_constants["processed_bucket"], model["model_upload_path"])
         Dynamo().put_entity(model)
 
     def generate_new_model(self, email, filename="", federated=False, federated_required_ids=[]):

@@ -16,7 +16,6 @@ class BasePage:
     event = None
     path = {}
     post = {}
-    backoffice_data = None
     dynamo = None
     utils = None
     error_msg = ""
@@ -111,6 +110,8 @@ class BasePage:
         return self.render_get()
 
     def load_user(self, user_email):
+        if not "@" in user_email:
+            user_email = Dynamo().get_user_email_with_id(user_email)
         user = User(user_email)
         user.load_information()
         if user.user_status == "not_created":

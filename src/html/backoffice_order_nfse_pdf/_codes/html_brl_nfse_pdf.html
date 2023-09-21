@@ -1,0 +1,268 @@
+<section class="page-backoffice-order-nfse-pdf max-width">
+    {{html_brl_nfse_canceled}}
+    <div class="title-nfse">
+        <p>NFS-e - NOTA FISCAL DE SERVIÇOS ELETRÔNICA</p>
+    </div>
+    <div class="header-infos-business">
+        <table class="box-infos-issue">
+            <tr>
+                <td class="number-nfse">
+                    <p> Nº: {{nfse_year_val}}/{{nfse_number_val}}</p>
+                </td>
+                <td class="issue-date-nfse">
+                    <p>Emitida em:</p>
+                    <p><span>{{nfse_date_val}}</span> às {{nfse_time_val}}</p>
+                </td>
+                <td class="skills-nfse">
+                    <p>Competência:</p>
+                    <p>{{nfse_competency_val}}</p>
+                </td>
+                <td class="verification-code">
+                    <p>Código de Verificação:</p>
+                    <p>{{nfse_verification_code_val}}</p>
+                </td>
+            </tr>
+        </table>
+
+        <table class="box-infos-business-nfse">
+            <tr>
+                <td class="img-city-hall">
+                    <img src="{{cdn_val}}/assets/images/img-prefeitura.png" width="50" alt="">
+                </td>
+                <td class="infos-business">
+                    <p class="name-business">{{company_name_val}}</p>
+                    <p class="cpf-cnpj-business">CNPJ: {{company_cnpj_val}}</p>
+                    <p>Av. Mariland 403, Sala 802 CEP 90440-190</p>
+                    <p>Porto Alegre</p>
+                    <p>Telefone: Não Informado</p>
+                </td>
+                <td class="info-municipal-registration">
+                    <p class="code-municipal-registration">Inscrição Municipal: {{company_municipal_inscription_val}}</p>
+
+                    <p>RS</p>
+                    <p>Email: magipix@devesch.com.br</p>
+                </td>
+            </tr>
+        </table>
+
+        <div class="infos-service">
+            <p class="title-taker-service">Tomador de serviço</p>
+            <table class="box-address-registration">
+                <tr class="address-service">
+                    <td>
+                        <p class="address-cpf">CPF/CNPJ: {{nfse_cpf_val}}{{nfse_cnpj_val}}</p>
+                        <p class="address-street">{{nfse_social_reason_val}}</p>
+                        <p>{{nfse_address_val}}, {{nfse_district_val}} ­ {{nfse_address_number_val}} ­ </p>
+                        <p>{{nfse_city_val}}</p>
+                        <p>Telefone: {{user_phone_val}} </p>
+                    </td>
+                    <td class="info-municipal-registration">
+                        <p class="code-municipal-registration">Inscrição Municipal: Não Informado</p>
+                        <p>{{nfse_state_val}}</p>
+                        <p>Email: <a href="#">{{user_email_val}}</a></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="box-services-discrimination">
+            <p class="title-services-discrimination">Discriminação dos Serviços</p>
+
+            <div class="box-description">
+                {{nfse_descrimination_val}}
+            </div>
+        </div>
+
+        <div class="box-municipal-tax-code">
+            <p class="title-municipal-tax-code">Código de Tributação do Município (CTISS)</p>
+            <p>0105­0/02­00 / Cessão de direito de uso de programa de computação</p>
+        </div>
+
+        <div class="box-subitem-list-of-services">
+            <p class="title-subitem-list-of-services">Subitem Lista de Serviços LC 116/03 / Descrição:</p>
+            <p>{{nfse_service_list_val}} / Licenciamento ou cessão de direito de uso de programas de computação.</p>
+        </div>
+
+        <table class="box-municipality-code-and-nature-of-operation">
+            <tr>
+                <td class="box-municipality-code">
+                    <p class="title-municipality-code">Cód/Município da incidência do ISSQN:</p>
+                    <p>4314902 / Porto Alegre</p>
+                </td>
+                <td class="box-nature-of-operation">
+                    <p class="title-nature-of-operation">Natureza da Operação:</p>
+                    <p>Tributação no município</p>
+                </td>
+            </tr>
+        </table>
+
+        <table class="box-values-services">
+            <tr>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="title-value-service">
+                            <td>
+                                <p>Valor dos serviços:</p>
+                            </td>
+                            <td>
+                                <p>R$ {{nfse_service_value_val}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="title-value-service">
+                            <td>
+                                <p>Valor dos serviços:</p>
+                            </td>
+                            <td>
+                                <p>R$ {{nfse_service_value_val}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-discounts">
+                            <td>
+                                <p>(-­) Descontos</p>
+                            </td>
+                            <td>
+                                <p>R$ 0,00</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-deductions">
+                            <td>
+                                <p>(-­) Deduções</p>
+                            </td>
+                            <td>
+                                <p>R$ 0,00</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-federal-withholdings">
+                            <td>
+                                <p>(-­) Retenções Federais </p>
+                            </td>
+                            <td>
+                                <p>R$ 0,00</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-unconditioned-discount">
+                            <td>
+                                <p>(-­) Desconto Incondicionado </p>
+                            </td>
+                            <td>
+                                <p>R$ 0,00</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-ISS-withheld-at-source">
+                            <td>
+                                <p>(-) ISS Retido na Fonte </p>
+                            </td>
+                            <td>
+                                <p>R$ 0,00</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-calculation-basis">
+                            <td>
+                                <p>(=) Base de Cálculo </p>
+                            </td>
+                            <td>
+                                <p>R$ {{nfse_service_value_val}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-empty">
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-aliquot">
+                            <td>
+                                <p>(x) Alíquota </p>
+                            </td>
+                            <td>
+                                <p>{{nfse_aliq_val}} % </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-net-value">
+                            <td>
+                                <p>Valor Líquido</p>
+                            </td>
+                            <td>
+                                <p>R$ {{nfse_iss_val}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="box-value-service">
+                    <table>
+                        <tr class="box-inss-value">
+                            <td>
+                                <p>(=) Valor do ISS</p>
+                            </td>
+                            <td>
+                                <p>R$ {{nfse_iss_val}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <table class="box-city-hall-address">
+            <tr>
+                <td>
+                    <img src="{{cdn_val}}/assets/images/img-prefeitura.png" width="50" alt="">
+                </td>
+                <td class="city-hall-address">
+                    <p class="title">Prefeitura de Porto Alegre Secretaria da Fazenda</p>
+                    <p>Rua Siqueira Campos, 1300 4º andar Bairro Centro Histórico CEP: 90.010907 Porto Alegre RS. </p>
+                    <p>Tel: 156 (opção 4) ou (51) 32890140 (chamadas de outras cidades) </p>
+                    <p>Email: <a href="nfse@smf.prefpoa.com.br">nfse@smf.prefpoa.com.br</a></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
