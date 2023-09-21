@@ -262,18 +262,16 @@ class PanelPage(BasePage):
         return str(html)
 
     def list_html_payment_history_pages_buttons(self):
+        import math
+
         full_html = []
-        already_showed_pages = []
-        for index in range(int(self.user.user_total_orders_count)):
-            if (index + 1) > int(lambda_constants["user_orders_page_size"]):
-                html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_pages_buttons")
-                page_index = int((index + 1) / int(lambda_constants["user_orders_page_size"]))
-                if page_index not in already_showed_pages:
-                    already_showed_pages.append(page_index)
-                    if page_index == 1:
-                        html.esc("selected_page_val", "selected-page")
-                    html.esc("page_index_val", page_index)
-                full_html.append(str(html))
+        pages_amount = math.ceil(int(self.user.user_total_orders_count) / int(lambda_constants["user_orders_page_size"]))
+        for index in range(pages_amount):
+            html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_pages_buttons")
+            if index == 0:
+                html.esc("selected_page_val", "selected-page")
+            html.esc("page_index_val", (index + 1))
+            full_html.append(str(html))
         return "".join(full_html)
 
     def list_html_payment_history_rows(self, user_orders):
