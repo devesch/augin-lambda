@@ -1,19 +1,21 @@
 {{header}}
 {{menu_panel}}
-<div class="container page page-center" id="checkoutPaymentSuccess">
-    <div class="box-content max-width">
-        <div class="page__top-side-completed-purchase" style="display:none;">
-            <img src="{{cdn_val}}/assets/icons/icon-success.svg" alt="{{Ícone sucesso}}">
-            <h1>{{Pedido}} <a href="{{domain_name_url_val}}/panel_order/?order_id={{order_id_val}}">#{{order_short_id_val}}</a> {{Finalizado}}! :)</h1>
-        </div>
-        <div class="page__top-side-completed-purchase__box-button">
-            <div class="button-default">
-                <a href="{{domain_name_url_val}}/panel_order/?order_id={{order_id_val}}">{{Visualizar detalhes}}</a>
+
+<main class="my-plan__main">
+    <div>
+        <div>
+            <div id="success_message_div" style="display:none;">
+                <img src="{{cdn_val}}/assets/icons/icon-success.svg" alt="{{Ícone sucesso}}">
+                <h1>{{Pedido}} <a href="{{domain_name_url_val}}/panel_order/?order_id={{order_id_val}}">#{{order_short_id_val}}</a> {{Finalizado}}! :)</h1>
+            </div>
+            <div>
+                <div>
+                    <a href="{{domain_name_url_val}}/panel_order/?order_id={{order_id_val}}">{{Visualizar detalhes}}</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+</main>
 
 <div class="modal modal-loader-spinner" aria-hidden="true">
     <div class="content-modal max-width">
@@ -36,7 +38,7 @@
             }
             js.index.sleep(2000);
         }
-        let success_message_div = document.querySelector(".page__top-side-completed-purchase");
+        let success_message_div = document.getElementById("success_message_div");
         success_message_div.style = "";
     };
 </script>

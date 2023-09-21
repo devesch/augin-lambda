@@ -299,16 +299,18 @@ class PanelPage(BasePage):
             full_html.append(str(html))
         return "".join(full_html)
 
-    def show_html_payment_methods_div(self, user_payment_methods):
+    def show_html_payment_methods_div(self, user_payment_methods, user_subscription):
         html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_div")
-        html.esc("html_payment_methods_rows", self.list_html_payment_methods_rows(user_payment_methods))
+        html.esc("html_payment_methods_rows", self.list_html_payment_methods_rows(user_payment_methods, user_subscription))
         return str(html)
 
-    def list_html_payment_methods_rows(self, user_payment_methods):
+    def list_html_payment_methods_rows(self, user_payment_methods, user_subscription):
         full_html = []
         for payment_method in user_payment_methods:
             if payment_method["payment_method_type"] == "card":
                 html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
+                if (user_subscription) and (user_subscription.get(user_subscription["subscription_default_payment_method"]) == payment_method["payment_method_id"]):
+                    html.esc("active_method_val", "active")
                 html.esc("brand_val", payment_method["payment_method_card"]["brand"])
                 html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
                 html.esc("last4_val", payment_method["payment_method_card"]["last4"])

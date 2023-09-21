@@ -38,7 +38,7 @@ class CheckoutStripeWebHook(BasePage):
                 raise Exception("TODO SINGLE PURCHASE")
             else:
                 if not user_stripe_subscription:
-                    user_stripe_subscription = StripeController().get_stripe_subscription(order["order_payment_stripe_subscription_id"])
+                    user_stripe_subscription = StripeController().get_subscription(order["order_payment_stripe_subscription_id"])
                 self.user.update_subscription(order, user_stripe_subscription)
             if order["order_user_cart_cupom"]:
                 self.mark_cupom_as_used_and_update_cupom_count(order, self.user.user_email)

@@ -171,38 +171,27 @@
         }
     }
 </style>
-
-<div class="stripe">
-    <form id="payment-form">
-        <div id="box_payment_loader">
-            <span id="our_loader" class="loader-spinner"></span>
-        </div>
-        <div id="link-authentication-element">
-        </div>
-        <div id="payment-element">
-        </div>
-        <button id="submit" style="display:none;">
-            <div class="spinner hidden" id="spinner"></div>
-            <span id="button-text">{{Pague Agora}}</span>
-        </button>
-        <div id="payment-message" class="hidden"></div>
-        <div class="mt-2">
-            {{Precisa de ajuda? Mande uma mensagem para nosso}} <a class='whatsapp-link' href='https://wa.me/5551999859355' target='_blank'>Whatsapp</a>.
-        </div>
-    </form>
-</div>
-
-
-
-
-
-<script>
-    window.onload = function () {
-        console.log("Running on load");
-        js.index.processStripeSubscriptionPayment('{{stripe_token_val}}', 'subscription', '{{plan_id_val}}', '{{plan_recurrency_val}}');
-    };
-</script>
 <main class="my-plan__main">
+    <div class="stripe">
+        <form id="payment-form">
+            <div id="box_payment_loader">
+                <span id="our_loader" class="loader-spinner"></span>
+            </div>
+            <div id="link-authentication-element">
+            </div>
+            <div id="payment-element">
+            </div>
+            <button id="submit" style="display:none;">
+                <div class="spinner hidden" id="spinner"></div>
+                <span id="button-text">{{Pague Agora}}</span>
+            </button>
+            <div id="payment-message" class="hidden"></div>
+            <div class="mt-2">
+                {{Precisa de ajuda? Mande uma mensagem para nosso}} <a class='whatsapp-link' href='https://wa.me/5551999859355' target='_blank'>Whatsapp</a>.
+            </div>
+        </form>
+    </div>
+
     <div class="summary-container">
         <div class="user-summary box">
             <div class="user-summary-row">
@@ -261,4 +250,12 @@
         </div>
     </div>
 </main>
+
+<script>
+    window.onload = function () {
+        console.log("Running on load");
+        js.index.processStripeSubscriptionPayment('{{stripe_token_val}}', 'subscription', '{{plan_id_val}}', '{{plan_recurrency_val}}');
+    };
+</script>
+
 {{footer}}
