@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <LoteRps Id="Lote{{order_id_val}}" versao="1.00">
+        <NumeroLote>{{order_id_val}}</NumeroLote>
+        <Cnpj>{{company_cnpj_val}}</Cnpj>
+        <InscricaoMunicipal>{{company_inscription_val}}</InscricaoMunicipal>
+        <QuantidadeRps>1</QuantidadeRps>
+        <ListaRps>
+            {{rps_val}}
+        </ListaRps>
+    </LoteRps>
+</GerarNfseEnvio>

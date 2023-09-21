@@ -39,7 +39,11 @@ class CheckoutStripeWebHook(BasePage):
             else:
                 if not user_stripe_subscription:
                     user_stripe_subscription = StripeController().get_subscription(order["order_payment_stripe_subscription_id"])
+                user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+                if user_subscription and (user_subscription.get("subscription_status") == "active") and (user_stripe_subscription.stripe_id != user_subscription["subscription_id"]):
+                    self.user.cancel_current_subscription()
                 self.user.update_subscription(order, user_stripe_subscription)
+
             if order["order_user_cart_cupom"]:
                 self.mark_cupom_as_used_and_update_cupom_count(order, self.user.user_email)
             if order["order_currency"] == "brl":

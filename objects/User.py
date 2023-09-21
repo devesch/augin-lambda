@@ -79,8 +79,14 @@ class User:
         self.user_used_trials.append(trial_plan["plan_id"])
         Dynamo().put_entity(self.__dict__)
 
-    def change_user_subscription_status(self, new_status):
-        self.user_subscription_status = new_status
+    def cancel_current_subscription(self):
+        user_subscription = Dynamo().get_subscription(self.user_subscription_id)
+        StripeController().cancel_subscription(self.user_subscription_id)
+        stripe_subscription = StripeController().get_subscription(self.user_subscription_id)
+        user_subscription["subscription_status"] = stripe_subscription["status"]
+        user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])
+        Dynamo().put_entity(user_subscription)
+        self.user_subscription_status = stripe_subscription["status"]
         Dynamo().update_entity(self.__dict__, "user_subscription_status", self.user_subscription_status)
 
     def incrase_user_total_orders_count(self):
@@ -377,6 +383,10 @@ class User:
         else:
             StripeController().update_customer(self.user_stripe_customer_id, self)
             return True
+
+    def recreate_stripe_user(self):
+        self.user_stripe_customer_id = StripeController().create_customer(self)
+        Dynamo().update_entity(self.__dict__, "user_stripe_customer_id", self.user_stripe_customer_id)
 
     def update_cart_currency(self):
         if self.user_address_data["user_country"] == "BR":

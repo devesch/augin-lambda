@@ -30,11 +30,16 @@ base_url = f"https://{prefix_name}{domain_name}{sufix_name}"
 cdn_bucket = "cdn." + domain_name + sufix_name
 cdn_base_url = "https://" + cdn_bucket
 
-
+### TODO CHANGE CNPJ TO AUGIN
 lambda_constants = {
     "brand_api_endpoint": "https://api.branch.io/v1/",
     "branch_key": "key_live_kbPDVR9iW4fdsvi1MNpMRlnetqjvZogI",
     "ip_data_api_key": "6aa0e0c8249d4135172b977b137ee37adf36a0975f9e6367dbaa912a",
+    # "cnpj": "298218940001­62",
+    # "municipal_inscription": "62586920",
+    "company_name": "Augin",
+    "cnpj": "31758054000144",
+    "municipal_inscription": "61154822",
     "ifc_converter": ifc_converter,
     "s3_put_user_key_id": s3_put_user_key_id,
     "s3_put_user_secret_access_key": s3_put_user_secret_access_key,

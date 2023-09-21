@@ -53,11 +53,6 @@ url = "https://nfse-hom.procempa.com.br/bhiss-ws/nfse?wsdl"  ### TEST URL
 # url = "https://nfe.portoalegre.rs.gov.br/bhiss-ws/nfse?wsdl"  ### PROD URL
 cabecalho = "<cabecalho xmlns=" + chr(34) + "http://www.abrasf.org.br/nfse.xsd" + chr(34) + " versao=" + chr(34) + "1.00" + chr(34) + "><versaoDados >1.00</versaoDados ></cabecalho>"
 
-if os.environ.get("AWS_EXECUTION_ENV") is None:
-    temp_path = "tmp"
-else:
-    temp_path = "/tmp"
-
 
 class BillingController:
     def __init__(self) -> None:
@@ -134,13 +129,13 @@ class BillingController:
             response_xml = ET.fromstring(GerarNfse_return)
         except Exception as e:
             self.send_unable_to_generate_nfse_email(e)
-            pending_nfse = PendingNfse(order["order_id"], order["order_user_email"])
+            pending_nfse = PendingNfse(order["order_id"], order["order_user_id"])
             Dynamo().put_entity(pending_nfse.__dict__)
             return
 
         if not self.check_if_nfse_was_issued(GerarNfse_return):
-            self.send_unable_to_generate_nfse_email(GerarNfse_return)
-            pending_nfse = PendingNfse(order["order_id"], order["order_user_email"])
+            self.send_unable_to_generate_nfse_email(str(GerarNfse_return))
+            pending_nfse = PendingNfse(order["order_id"], order["order_user_id"])
             Dynamo().put_entity(pending_nfse.__dict__)
             return
 
@@ -150,8 +145,8 @@ class BillingController:
         Dynamo().update_entity(order, "order_nfse_serie", response_xml[3][0][0][0][3][1].text)
         Dynamo().update_entity(order, "order_nfse_type", response_xml[3][0][0][0][3][2].text)
         Dynamo().update_entity(order, "order_nfse_created_at", str(time()))
-        Dynamo().update_entity(order, "order_nfse_xml_link", lambda_constants["img_cdn"] + "/" + self.generate_nfse_processed_bucket_key(order["order_id"]))
-        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["img_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"]))
+        Dynamo().update_entity(order, "order_nfse_xml_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_processed_bucket_key(order["order_id"]))
+        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"]))
         order = Dynamo().get_entity(order["pk"], order["sk"])
         xml_tree = ET.ElementTree(response_xml)
         xml_tree.write(lambda_constants["tmp_path"] + "generated_nfe_response.xml")
@@ -159,7 +154,7 @@ class BillingController:
         xml_tree = ET.ElementTree(nfse_xml)
         xml_tree.write(lambda_constants["tmp_path"] + "xml_tree.xml")
         S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"]), lambda_constants["tmp_path"] + "xml_tree.xml")
-        self.generate_pdf_bill_of_sale(EncodeDecode().encode_to_b64(order["order_user_email"]), order["order_id"], None)
+        self.generate_pdf_bill_of_sale(order["order_id"], None)
         return
 
     def generate_international_pdf_bill_of_sale(self, order):
@@ -172,7 +167,7 @@ class BillingController:
     def cancel_international_pdf_bill_of_sale(self, order):
         Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_canceled_processed_bucket_key(order["order_id"], extension=".pdf"))
         S3().delete_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"], order["created_at"], extension=".pdf"))
-        self.generate_pdf_bill_of_sale(ReadWrite().encode_to_b64(order["order_user_email"]), order["order_id"], order["created_at"])
+        self.generate_pdf_bill_of_sale(order["order_id"], order["created_at"])
         S3().download_file(lambda_constants["processed_bucket"], self.generate_pdf_nfse_processed_bucket_key(order["order_id"], order["created_at"]), lambda_constants["tmp_path"] + "order_pdf.pdf")
         S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_canceled_processed_bucket_key(order["order_id"], extension=".pdf"), lambda_constants["tmp_path"] + "order_pdf.pdf")
         return
@@ -355,4 +350,4 @@ class BillingController:
         return self.remover_acentos(xml)
 
     def send_unable_to_generate_nfse_email(self, generate_nfse_response):
-        Ses().send_email("eugenio@devesch.com.br", body_html="<p>" + generate_nfse_response + "</p>", body_text="<p>" + generate_nfse_response + "</p>", subject_data="<p>" + generate_nfse_response + "</p>", region=lambda_constants["region"])
+        Ses().send_email("eugenio@devesch.com.br", body_html="<p>" + generate_nfse_response + "</p>", body_text="<p>" + generate_nfse_response + "</p>", subject_data="Unable to generate nfse in " + lambda_constants["domain_name"], region=lambda_constants["region"])

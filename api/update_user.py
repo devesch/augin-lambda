@@ -25,12 +25,7 @@ class UpdateUser(BasePage):
             return {"error": "Assinatura não encontrada"}
         if user_subscription["subscription_status"] != "active":
             return {"error": "A assinatura não se encontra ativa"}
-        StripeController().cancel_subscription(self.user.user_subscription_id)
-        stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
-        user_subscription["subscription_status"] = stripe_subscription["status"]
-        user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])
-        Dynamo().put_entity(user_subscription)
-        self.user.change_user_subscription_status(stripe_subscription["status"])
+        self.user.cancel_current_subscription()
         return {"success": "Assinatura cancelada"}
 
     def check_if_user_can_upgrade_his_plan(self):

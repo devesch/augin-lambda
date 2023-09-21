@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from utils.Config import lambda_constants
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Date import Date
+from utils.utils.Http import Http
 from utils.utils.StrFormat import StrFormat
 
 
@@ -62,7 +63,7 @@ class BackofficeOrderNfsePdf(BackofficePage):
         elif nfse_json.get("Cnpj_2"):
             html.esc("nfse_cnpj_val", StrFormat().format_to_cnpj(nfse_json["Cnpj_2"]))
         html.esc("nfse_social_reason_val", nfse_json["RazaoSocial_2"])
-        api_cep_response = self.utils.get_request_address_data_with_zip_code(nfse_json["Cep_2"])
+        api_cep_response = Http().get_request_address_data_with_zip_code(nfse_json["Cep_2"])
         if api_cep_response:
             html.esc("nfse_address_val", api_cep_response.get("street").title())
             html.esc("nfse_address_number_val", nfse_json["Numero_4"])
@@ -70,11 +71,18 @@ class BackofficeOrderNfsePdf(BackofficePage):
             html.esc("nfse_city_val", api_cep_response.get("city").title())
             html.esc("nfse_state_val", api_cep_response.get("state").upper())
         else:
-            html.esc("nfse_address_val", "NÃO INFORMADO")
-            html.esc("nfse_address_number_val", "S/N")
-            html.esc("nfse_district_val", "NÃO INFORMADO")
-            html.esc("nfse_city_val", "PORTO ALEGRE")
-            html.esc("nfse_state_val", "RS")
+            if nfse_user:
+                html.esc("nfse_address_val", "NÃO INFORMADO")
+                html.esc("nfse_address_number_val", "S/N")
+                html.esc("nfse_district_val", "NÃO INFORMADO")
+                html.esc("nfse_city_val", "PORTO ALEGRE")
+                html.esc("nfse_state_val", "RS")
+            else:
+                html.esc("nfse_address_val", "NÃO INFORMADO")
+                html.esc("nfse_address_number_val", "S/N")
+                html.esc("nfse_district_val", "NÃO INFORMADO")
+                html.esc("nfse_city_val", "PORTO ALEGRE")
+                html.esc("nfse_state_val", "RS")
 
         html.esc("user_email_val", self.path["user_email"])
 

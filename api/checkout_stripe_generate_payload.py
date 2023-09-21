@@ -13,9 +13,13 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
 
         if self.post["payment_type"] == "subscription":
             plan = Dynamo().get_plan(self.post["plan_id"])
-            stripe_request_payload = StripeController().create_subscription(self.user, plan, self.post["plan_recurrency"])
-
-            self.create_order_with_stripe_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
+            try:
+                stripe_request_payload = StripeController().create_subscription(self.user, plan, self.post["plan_recurrency"])
+                self.create_order_with_stripe_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
+            except:
+                self.user.recreate_stripe_user()
+                stripe_request_payload = StripeController().create_subscription(self.user, plan, self.post["plan_recurrency"])
+                self.create_order_with_stripe_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
 
         # if self.post["payment_recurrence"] == "unique":
         #     if self.user.user_address_data["user_country"] == "BR":
