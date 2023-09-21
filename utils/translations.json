@@ -3644,6 +3644,11 @@
         "es": "Islas menores de los Estados Unidos.",
         "pt": "Ilhas Menores Estados Unidos"
     },
+    "Upgrade de plano": {
+        "en": "Plan upgrade",
+        "es": "Plan de actualización",
+        "pt": "Upgrade de plano"
+    },
     "Upload realizado com sucesso": {
         "en": "Upload done successfully",
         "es": "Carga realizada exitosamente",

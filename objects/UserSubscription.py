@@ -18,5 +18,6 @@ class UserSubscription:
         self.subscription_last_order_id = ""
         self.subscription_valid_until = ""
         self.subscription_canceled_at = ""
+        self.subscription_is_trial = False
         self.created_at = str(time.time())
         self.entity = "subscription"

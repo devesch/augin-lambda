@@ -3,6 +3,7 @@ from uuid import uuid4
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.Generate import Generate
+from utils.utils.Date import Date
 from objects.UserPassword import UserPassword
 from objects.UserAuthToken import UserAuthToken
 from objects.UserSubscription import UserSubscription
@@ -55,6 +56,29 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def active_trial_plan(self, trial_plan):
+        user_subscription_id = "trial-" + Generate().generate_short_id()
+        user_subscription = UserSubscription(user_subscription_id, self.user_id).__dict__
+        user_subscription["subscription_plan_id"] = trial_plan["plan_id"]
+        user_subscription["subscription_recurrency"] = ""
+        user_subscription["subscription_status"] = "active"
+        user_subscription["subscription_default_payment_method"] = ""
+        user_subscription["subscription_price"] = "0000"
+        user_subscription["subscription_currency"] = self.user_cart_currency
+        user_subscription["subscription_currency"] = self.user_cart_currency
+        user_subscription["subscription_last_order_id"] = ""
+        user_subscription["subscription_valid_until"] = str(Date().add_days_to_current_unix_time(trial_plan["plan_trial_duration_in_days"]))
+        user_subscription["subscription_is_trial"] = True
+        Dynamo().put_entity(user_subscription)
+
+        self.user_has_subscription = "True"
+        self.user_subscription_id = user_subscription_id
+        self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
+        self.user_subscription_status = "active"
+        self.user_plan_id = trial_plan["plan_id"]
+        self.user_used_trials.append(trial_plan["plan_id"])
+        Dynamo().put_entity(self.__dict__)
+
     def change_user_subscription_status(self, new_status):
         self.user_subscription_status = new_status
         Dynamo().update_entity(self.__dict__, "user_subscription_status", self.user_subscription_status)
@@ -97,7 +121,7 @@ class User:
         self.user_has_subscription = "True"
         self.user_subscription_id = user_stripe_subscription.stripe_id
         self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
-        self.user_subscription_valid_until["subscription_status"] = user_stripe_subscription["status"]
+        self.user_subscription_status = user_stripe_subscription["status"]
         self.user_plan_id = order["order_plan_id"]
         Dynamo().put_entity(self.__dict__)
 

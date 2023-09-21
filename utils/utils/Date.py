@@ -21,6 +21,11 @@ class Date:
         current_int_month = datetime.datetime.now().strftime("%m")
         return br_months[int(current_int_month) - 1]
 
+    def add_days_to_current_unix_time(self, days):
+        import time
+
+        return float(time.time() + (int(days) * 86.400))
+
     def generate_delta_time_from_unix_time(self, unix_time):
         import time
 

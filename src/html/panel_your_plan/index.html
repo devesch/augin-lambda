@@ -66,31 +66,9 @@
                 {{Cobrança e pagamento}}
             </h3>
             <table class="my-plan__table">
-                <tr>
-                    <td>{{Plano}}</td>
-                    <td><strong>{{plan_name_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{Status}}</td>
-                    <td><strong>{{user_subscription_status_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{Preço}}</td>
-                    <td><strong>{{user_subscription_currency_val}} {{user_subscription_price_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{Período de cobrança}}</td>
-                    <td><strong>{{user_subscription_recurrency_val}}</strong></td>
-                </tr>
-                <tr>
-                    <td style="{{user_subscription_active_visibility_val}}">{{Data de renovação}}</td>
-                    <td style="{{user_subscription_valid_until_visibility_val}}">{{Valida até}}</td>
-                    <td><strong>{{user_subscription_valid_until_val}}</strong></td>
-                </tr>
-                <tr style="{{user_subscription_active_visibility_val}}">
-                    <td>{{Forma de pagamento}}</td>
-                    <td><strong>{{user_subscription_payment_method_val}}</strong></td>
-                </tr>
+                {{html_user_has_no_subscription}}
+                {{html_user_subscription_is_trial}}
+                {{html_user_subscription}}
             </table>
             <div class="main-container__item__button-container">
                 {{html_upgrade_plan_button}}

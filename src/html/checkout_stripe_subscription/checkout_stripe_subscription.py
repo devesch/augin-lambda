@@ -1,5 +1,6 @@
 from python_web_frame.checkout_page import CheckoutPage
 from python_web_frame.controllers.stripe_controller import stripe_token
+from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.StrFormat import StrFormat
 
@@ -19,7 +20,15 @@ class CheckoutStripeSubscription(CheckoutPage):
             return Http().redirect("panel_your_plan")
 
         if (self.path["plan_recurrency"] == "monthly" and not self.path["plan"]["plan_available_monthly"]) or (self.path["plan_recurrency"] == "annually" and not self.path["plan"]["plan_available_annually"]):
-            return Http().redirect("panel_your_plan")
+            return Http().redirect("checkout_upgrade_your_plan")
+
+        if self.path.get("plan_trial"):
+            if not self.path["plan"]["plan_has_trial"]:
+                return Http().redirect("checkout_upgrade_your_plan")
+            trial_plan_version = Dynamo().get_plan(self.path["plan"]["plan_id"] + "-trial")
+            if trial_plan_version and self.path["plan"]["plan_id"] + "-trial" not in self.user.user_used_trials:
+                self.user.active_trial_plan(trial_plan_version)
+                return Http().redirect("panel_your_plan")
 
         html = super().parse_html()
         html.esc("user_name_val", self.user.user_name)
