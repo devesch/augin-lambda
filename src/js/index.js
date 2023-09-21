@@ -2265,6 +2265,6 @@ export async function saveCancelSubscription() {
     if ("erro" in update_user_response) {
         cancel_subscription_error_span.innerHTML = update_user_response["error"];
     } else {
-        closeModal(".modal.cancel-subscription-modal");
+        location.reload();
     }
 }

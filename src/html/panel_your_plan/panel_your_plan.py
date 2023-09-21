@@ -56,7 +56,10 @@ class PanelYourPlan(PanelPage):
                 html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
             else:
                 html.esc("html_user_subscription", self.show_html_user_subscription(user_subscription, user_plan))
-                html.esc("html_cancel_subscription_button", self.show_html_cancel_subscription_button())
+                if user_subscription["subscription_status"] == "active":
+                    html.esc("html_cancel_subscription_button", self.show_html_cancel_subscription_button())
+                else:
+                    html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
 
         user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, "1")
         if user_orders:
