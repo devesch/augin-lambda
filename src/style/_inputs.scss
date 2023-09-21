@@ -333,3 +333,14 @@ input[type="checkbox"] + label {
     }
 
 }
+
+.input-search::-webkit-search-cancel-button {
+    /* Remove default */
+    -webkit-appearance: none;
+        
+    /* Now your own custom styles */
+    height: 1.5rem;
+    width: 1.5rem;
+    background: colors.color("color-red");
+    /* Will place small red box on the right of input (positioning carries over) */
+}
