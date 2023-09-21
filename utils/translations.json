@@ -49,6 +49,26 @@
         "es": "La duración del plan de prueba en días debe ser un número",
         "pt": "A duração do plano trial em dias deve ser um número"
     },
+    "A ordem já excedeu o tempo máximo de pedido de reembolso.": {
+        "en": "The order has already exceeded the maximum reimbursement request.",
+        "es": "El pedido ya ha excedido la solicitud de reembolso máximo.",
+        "pt": "A ordem já excedeu o tempo máximo de pedido de reembolso."
+    },
+    "A ordem não se encontra paga para emitir a NFSE em PDF.": {
+        "en": "The order is not paid to issue the NFSE in PDF.",
+        "es": "El pedido no se paga para emitir el NFSE en PDF.",
+        "pt": "A ordem não se encontra paga para emitir a NFSE em PDF."
+    },
+    "A ordem não se encontra paga para emitir a NFSE.": {
+        "en": "The order is not paid to issue the NFSE.",
+        "es": "El pedido no se paga para emitir el NFSE.",
+        "pt": "A ordem não se encontra paga para emitir a NFSE."
+    },
+    "A ordem não se encontra paga para realizar reembolso.": {
+        "en": "The order is not paid to make a refund.",
+        "es": "El pedido no se paga para hacer un reembolso.",
+        "pt": "A ordem não se encontra paga para realizar reembolso."
+    },
     "A quantidade máxima de dispositivos deve ser um número": {
         "en": "The maximum amount of devices should be a number",
         "es": "La cantidad máxima de dispositivos debe ser un número",
@@ -78,6 +98,11 @@
         "en": "The informed password is incorrect",
         "es": "La contraseña informada es incorrecta",
         "pt": "A senha informada está incorreta"
+    },
+    "A solicitação de reembolso foi encaminhada para o departamento responsável pelo processo de cobrança": {
+        "en": "The request for refund was sent to the department responsible for the collection process",
+        "es": "La solicitud de reembolso fue enviada al departamento responsable del proceso de recolección",
+        "pt": "A solicitação de reembolso foi encaminhada para o departamento responsável pelo processo de cobrança"
     },
     "Aceitar Tudo": {
         "en": "Accept everything",
@@ -138,6 +163,11 @@
         "en": "Wait as we process your order and generate a compressed folder.",
         "es": "Espere mientras procesamos su pedido y generamos una carpeta comprimida.",
         "pt": "Aguarde enquanto processamos seu pedido e geramos uma pasta compactada."
+    },
+    "Aguarde o prazo estabelecido pelo banco para verificar o status do seu reembolso": {
+        "en": "Wait for the deadline established by the bank to verify the status of your reimbursement",
+        "es": "Espere la fecha límite establecida por el banco para verificar el estado de su reembolso",
+        "pt": "Aguarde o prazo estabelecido pelo banco para verificar o status do seu reembolso"
     },
     "Air Conditioning": {
         "en": "Air conditioning",
@@ -2284,6 +2314,11 @@
         "es": "Usuario no encontrado",
         "pt": "Nenhum usuário encontrado"
     },
+    "Nenhum usuário encontrado como dono da ordem.": {
+        "en": "No user found as the order owner.",
+        "es": "Ningún usuario encontrado como propietario del pedido.",
+        "pt": "Nenhum usuário encontrado como dono da ordem."
+    },
     "Nenhum usuário encontrado.": {
         "en": "No user found.",
         "es": "Usuario no encontrado.",
@@ -2293,6 +2328,11 @@
         "en": "No necessary URL change",
         "es": "No hay cambio de URL necesario",
         "pt": "Nenhuma mudança de URL necessária"
+    },
+    "Nenhuma ordem encontrada com os dados informados.": {
+        "en": "No order found with the informed data.",
+        "es": "No se encuentra ningún orden con los datos informados.",
+        "pt": "Nenhuma ordem encontrada com os dados informados."
     },
     "Nenhuma order encontrada.": {
         "en": "No order found.",
@@ -2664,10 +2704,20 @@
         "es": "Pix",
         "pt": "PIX"
     },
+    "Pagamento Backoffice reembolsado com sucesso.": {
+        "en": "Backoffice payment successfully refunded.",
+        "es": "Pago de backoffice reembolsado con éxito.",
+        "pt": "Pagamento Backoffice reembolsado com sucesso."
+    },
     "Pagamento Direto": {
         "en": "Direct payment",
         "es": "Pago directo",
         "pt": "Pagamento Direto"
+    },
+    "Pagamento Stripe reembolsado com sucesso.": {
+        "en": "PAYMENT STRIPE SUCCESSFULLY REFACTED.",
+        "es": "La franja de pago refactada con éxito.",
+        "pt": "Pagamento Stripe reembolsado com sucesso."
     },
     "Pagamento anual": {
         "en": "Annual payment",
@@ -3119,6 +3169,11 @@
         "es": "Pagar",
         "pt": "Reembolsar"
     },
+    "Reembolso": {
+        "en": "Reimbursement",
+        "es": "Reembolso",
+        "pt": "Reembolso"
+    },
     "Reference Trackers": {
         "en": "Reference Trackers",
         "es": "Rastreadores de referencia",
@@ -3539,6 +3594,16 @@
         "es": "Estás seguro de que quieres continuar?",
         "pt": "Tem certeza que deseja continuar?"
     },
+    "Tentativa de emitir nota fiscal concluída.": {
+        "en": "Attempted to issue an invoice completed.",
+        "es": "Intentó emitir una factura completada.",
+        "pt": "Tentativa de emitir nota fiscal concluída."
+    },
+    "Tentativa de emitir nota fiscal em PDF concluída.": {
+        "en": "Attempted to issue PDF invoice completed.",
+        "es": "Intentó emitir la factura de PDF completada.",
+        "pt": "Tentativa de emitir nota fiscal em PDF concluída."
+    },
     "Termos e condiçōes": {
         "en": "Terms and conditions",
         "es": "Términos y Condiciones",
@@ -3848,6 +3913,11 @@
         "en": "View details",
         "es": "Ver detalles",
         "pt": "Visualizar detalhes"
+    },
+    "Visualizar detalhes da compra": {
+        "en": "View purchase details",
+        "es": "Ver detalles de compra",
+        "pt": "Visualizar detalhes da compra"
     },
     "Você acabou de iniciar uma assinatura, por favor revise as suas informações": {
         "en": "You just started a signature, please review your information",

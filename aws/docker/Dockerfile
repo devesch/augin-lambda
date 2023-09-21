@@ -25,7 +25,7 @@ RUN python3.11 -m pip install certifi
 
 WORKDIR /opt
 
-RUN python3.11 -m pip install numpy cryptography==3.4.8 dynamodb-encryption-sdk phonenumbers Pillow python-dateutil qrcode requests user-agents sl-zerobounce signxml suds stripe -t /python
+RUN python3.11 -m pip install cryptography dynamodb-encryption-sdk -t /python
 RUN find /python -name "*-info" -type d -exec rm -rdf {} +
 RUN find /python -name "tests" -type d -exec rm -rdf {} +
 RUN rm -rdf /python/boto3/

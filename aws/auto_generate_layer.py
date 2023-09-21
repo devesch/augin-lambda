@@ -8,7 +8,8 @@ from win32com import client
 
 ### DELETE ALL DOCKER CONTAINERS AND IMAGES, BEFORE INPUT THE CONTAINER ID OPEN DOCKER DESKTOP AND CLICK "START" ON IMAGE, THEN COPY CONTAINER ID
 
-python_libs = "numpy cryptography==3.4.8 dynamodb-encryption-sdk phonenumbers Pillow python-dateutil qrcode requests user-agents sl-zerobounce signxml suds stripe"
+# python_libs = "numpy cryptography dynamodb-encryption-sdk phonenumbers Pillow python-dateutil qrcode requests user-agents sl-zerobounce signxml suds stripe"
+python_libs = "cryptography dynamodb-encryption-sdk"
 
 # function = "augin"
 # layer_name = "default"
