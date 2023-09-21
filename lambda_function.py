@@ -39,7 +39,6 @@ def set_instance_attributes(class_instance, event, page, cookie_policy, path, po
     setattr(class_instance, "user", user)
     setattr(class_instance, "project_cookies", project_cookies)
     setattr(class_instance, "lang", lang)
-    setattr(class_instance, "backoffice_data", Dynamo().get_backoffice_data())
 
 
 def initialize_user(event):

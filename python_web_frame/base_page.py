@@ -16,7 +16,6 @@ class BasePage:
     event = None
     path = {}
     post = {}
-    backoffice_data = None
     dynamo = None
     utils = None
     error_msg = ""

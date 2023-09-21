@@ -39,9 +39,9 @@ class PanelYourPlan(PanelPage):
         else:
             html.esc("plan_download_files_val", self.translate("Não"))
         if int(user_plan["plan_team_play_participants"]) > 0:
-            html.esc("plan_team_play_val", self.translate("Sim"))
-        else:
             html.esc("plan_team_play_val", user_plan["plan_team_play_participants"])
+        else:
+            html.esc("plan_team_play_val", self.translate("Não"))
 
         if not user_subscription:
             html.esc("html_user_has_no_subscription", self.show_html_user_has_no_subscription())

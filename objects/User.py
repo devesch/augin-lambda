@@ -45,6 +45,7 @@ class User:
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
         self.user_total_orders_count = "0"
+        self.user_pagination_count = "20"
 
         # self.user_completed_models_total_count = "0"
         # self.user_model_datalist_builder = []

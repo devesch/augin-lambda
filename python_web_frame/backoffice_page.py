@@ -1,11 +1,67 @@
 from python_web_frame.base_page import BasePage
 from utils.utils.ReadWrite import ReadWrite
+from utils.utils.StrFormat import StrFormat
+from utils.utils.Date import Date
+from utils.AWS.Dynamo import Dynamo
 from utils.Config import lambda_constants
+from objects.Order import generate_order_short_id, translate_order_type, translate_order_status, check_if_order_is_in_refund_time, translate_order_nfse_status
 
 
 class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
+
+    def list_html_backoffice_orders_table_rows(self, all_orders):
+        plan_id_plan = {}
+        full_html = []
+        if all_orders:
+            for order in all_orders:
+                html = ReadWrite().read_html("backoffice_orders/_codes/html_backoffice_orders_table_rows")
+                html.esc("order_user_id_val", order["order_user_id"])
+                html.esc("order_short_id_val", generate_order_short_id(order["order_id"]))
+                html.esc("order_payment_service_val", order["order_payment_service"].title())
+                html.esc("order_payment_method", StrFormat().format_to_payment_method(order["order_payment_method"]))
+                html.esc("order_datetime_val", Date().format_unixtime_to_br_datetime(order["created_at"]))
+                html.esc("order_type_val", translate_order_type(order["order_type"]))
+                if order["order_user_cart_cupom"]:
+                    html.esc("order_cupom_address_val", order["order_user_cart_cupom"]["cupom_address"])
+                elif not order["order_user_cart_cupom"]:
+                    html.esc("order_cupom_address_val", "-")
+
+                if order["order_plan_id"] not in plan_id_plan:
+                    plan_id_plan[order["order_plan_id"]] = Dynamo().get_plan(order["order_plan_id"])
+                html.esc("order_plan_name_val", plan_id_plan[order["order_plan_id"]]["plan_name_" + self.lang])
+                html.esc("order_currency_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
+                html.esc("order_total_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
+                html.esc("order_status_val", translate_order_status(order["order_status"]))
+                if order["order_status"] == "paid" and check_if_order_is_in_refund_time(order["created_at"]):
+                    html.esc("html_refund_order", self.show_html_refund_order(order["order_id"]))
+                html.esc("order_nfse_xml_link_val", order["order_nfse_xml_link"])
+                html.esc("order_nfse_pdf_link_val", order["order_nfse_pdf_link"])
+                html.esc("order_nfse_status_val", translate_order_nfse_status(order.get("order_nfse_status", "")))
+                if order["order_status"] == "paid" and order["order_nfse_status"] == "not_issued":
+                    html.esc("html_re_issue_order_nfse", self.show_html_re_issue_order_nfse(order["order_id"]))
+                if order["order_status"] == "paid" and order["order_nfse_pdf_link"] == "":
+                    html.esc("html_re_issue_order_nfse_pdf", self.show_html_re_issue_order_nfse_pdf(order["order_id"]))
+                if order["order_status"] != "paid":
+                    html.esc("order_link_visibility_val", 'style="display:none;"')
+                full_html.append(str(html))
+        return "".join(full_html)
+
+    def show_html_refund_order(self, order_id):
+        html = ReadWrite().read_html("backoffice_orders/_codes/html_refund_order")
+        html.esc("order_id_val", order_id)
+        return str(html)
+
+    def show_html_re_issue_order_nfse_pdf(self, order_id):
+        html = self.utils.read_html("backoffice_orders/_codes/html_re_issue_order_nfse_pdf")
+        html.esc("order_id_val", order_id)
+        return str(html)
+
+    def show_html_re_issue_order_nfse(self, order_id):
+        html = self.utils.read_html("backoffice_orders/_codes/html_re_issue_order_nfse")
+        html.esc("order_id_val", order_id)
+        return str(html)
 
     def list_html_plan_reference_tracker_options(self):
         full_html = []
@@ -53,3 +109,23 @@ class BackofficePage(BasePage):
                 html.esc("plan_app_can_be_offline_in_days_val", plan["plan_app_can_be_offline_in_days"])
                 full_html.append(str(html))
         return "".join(full_html)
+
+    def show_html_pagination(self, itens_actual_count, itens_total_count, query, last_evaluated_key, query_filter=""):
+        html = ReadWrite().read_html("main/_codes/html_pagination")
+        html.esc("itens_actual_count_val", itens_actual_count)
+        html.esc("itens_total_count_val", itens_total_count)
+        html.esc("query_val", query)
+        if query_filter:
+            html.esc("query_filter_val", query_filter)
+        if self.post.get("showing_total_count"):
+            html.esc("last_scroll_position_val", self.post.get("last_scroll_position", "0"))
+        if not itens_total_count:
+            html.esc("pagination_visibility_val", "display: none;")
+        elif not last_evaluated_key:
+            html.esc("pagination_visibility_val", "display: none;")
+        else:
+            if str(itens_actual_count) == "0" or str(itens_total_count) == "0":
+                html.esc("pagination_visibility_val", "display: none;")
+            if int(itens_actual_count) == int(itens_total_count):
+                html.esc("pagination_visibility_val", "display: none;")
+        return str(html)

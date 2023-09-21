@@ -97,3 +97,18 @@ def translate_order_status(order_status):
         return Code().translate(translated_status)
     else:
         return order_status
+
+
+def check_if_order_is_in_refund_time(order_created_at):
+    import time
+
+    return float(order_created_at) + 604800 > time.time()
+
+
+def translate_order_nfse_status(order_nfse_status):
+    if order_nfse_status == "not_issued":
+        return Code().translate("Não Emitida")
+    elif order_nfse_status == "issued":
+        return Code().translate("Emitida")
+    elif order_nfse_status == "canceled":
+        return Code().translate("Cancelada")
