@@ -69,7 +69,7 @@ class PanelYourPlan(PanelPage):
         #     Dynamo().delete_entity(order)
         #     # order["sk"] = "order#" + str(index + 1)
         #     # Dynamo().put_entity(order)
-        # self.user_total_orders_count = str(0)
+        # self.user.user_total_orders_count = str(0)
         # Dynamo().put_entity(self.user.__dict__)
 
         user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, "1")
