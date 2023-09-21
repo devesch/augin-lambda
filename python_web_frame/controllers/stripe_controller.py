@@ -132,10 +132,10 @@ class StripeController:
     def get_stripe_payment_intent(self, payment_intent_id):
         return self.stripe.PaymentIntent.retrieve(payment_intent_id)
 
-    def get_stripe_subscription(self, subscription_id):
+    def get_subscription(self, subscription_id):
         return self.stripe.Subscription.retrieve(subscription_id)
 
-    def cancel_stripe_subscription(self, subscription_id):
+    def cancel_subscription(self, subscription_id):
         return self.stripe.Subscription.delete(subscription_id)
 
     def convert_stripe_plan_interval_to_recurrence(self, stripe_plan_interval):

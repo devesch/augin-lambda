@@ -49,9 +49,11 @@ class PanelPage(BasePage):
             html.esc("actual_progress_val", "100")
             html.esc("uploading_element_message_val", self.translate("Upload realizado com sucesso."))
             html.esc("success_class_val", "success")
+            html.esc("html_uploading_file_formats", self.list_html_uploading_file_formats({full_model["model_format"]: "1"}))
         else:
             html.esc("actual_progress_val", "0")
             html.esc("uploading_element_message_val", self.translate("Enviando arquivo, aguarde"))
+
         return str(html)
 
     def list_html_user_folder_rows(self, folder_id=None, model_html=""):

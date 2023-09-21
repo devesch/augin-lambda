@@ -45,6 +45,7 @@ lambda_constants = {
     "sqs_queue_url_process_in_ec2": "https://sqs.us-east-1.amazonaws.com/847154778207/ifc-ec2-process",
     "stepfunction_arn": "arn:aws:states:us-east-1:847154778207:stateMachine:IFC-processor-state-machine",
     "lambda_generate_folder_zip": "generate_folder_zip",
+    "lambda_move_deleted_model_files": "move_deleted_model_files",
     "maxium_ifc_project_filesize": "1073741824",
     "prefix_name": prefix_name,
     "sufix_name": sufix_name,

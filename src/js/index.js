@@ -2253,3 +2253,17 @@ export async function openModalCancelSubscription() {
 export async function saveCancelSubscription() {
     console.log("running saveCancelSubscription");
 }
+
+export async function saveCancelSubscription() {
+    let cancel_subscription_error_span = document.getElementById("cancel_subscription_error_span");
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "cancel_user_current_subscription"
+    });
+
+    if ("erro" in update_user_response) {
+        cancel_subscription_error_span.innerHTML = update_user_response["error"];
+    } else {
+        closeModal(".modal.cancel-subscription-modal");
+    }
+}

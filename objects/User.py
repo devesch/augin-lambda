@@ -39,6 +39,7 @@ class User:
         self.user_plan_id = ""
         self.user_subscription_id = ""
         self.user_subscription_valid_until = ""
+        self.user_subscription_status = ""
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
@@ -54,6 +55,14 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def change_user_subscription_status(self, new_status):
+        self.user_subscription_status = new_status
+        Dynamo().update_entity(self.user.__dict__, "user_subscription_status", self.user_subscription_status)
+
+    def incrase_user_total_orders_count(self):
+        self.user_total_orders_count = str(int(self.user_total_orders_count + 1))
+        Dynamo().update_entity(self.user.__dict__, "user_total_orders_count", self.user_total_orders_count)
+
     def incrase_user_total_orders_count(self):
         self.user_total_orders_count = str(int(self.user_total_orders_count + 1))
         Dynamo().update_entity(self.user.__dict__, "user_total_orders_count", self.user_total_orders_count)
@@ -65,7 +74,7 @@ class User:
             return Dynamo().get_free_plan()
 
     def check_if_subscription_is_valid(self):
-        if not self.user_subscription_valid_until:
+        if not self.user_subscription_valid_until or self.user_subscription_status == "canceled":
             return False
         return float(self.user_subscription_valid_until) > float(time.time())
 
@@ -88,6 +97,7 @@ class User:
         self.user_has_subscription = "True"
         self.user_subscription_id = user_stripe_subscription.stripe_id
         self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
+        self.user_subscription_valid_until["subscription_status"] = user_stripe_subscription["status"]
         self.user_plan_id = order["order_plan_id"]
         Dynamo().put_entity(self.__dict__)
 

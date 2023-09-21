@@ -236,11 +236,8 @@ class ModelController:
                         Dynamo().put_entity(required_model)
         if model["model_state"] == "completed":
             user.remove_model_from_user_dicts(model)
-
+        Lambda().invoke(lambda_constants["lambda_move_deleted_model_files"], "Event", {"model_upload_path": model["model_upload_path"], "model_state": model["model_state"]})
         model = self.change_model_state(model, model["model_state"], "deleted")
-        S3().copy_folder_from_one_bucket_to_another(lambda_constants["processed_bucket"], lambda_constants["archive_bucket"], model["model_upload_path"], model["model_upload_path"])
-        if model["model_state"] == "completed":
-            S3().delete_folder(lambda_constants["processed_bucket"], model["model_upload_path"])
         Dynamo().put_entity(model)
 
     def generate_new_model(self, email, filename="", federated=False, federated_required_ids=[]):
