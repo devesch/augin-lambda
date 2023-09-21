@@ -2250,9 +2250,6 @@ export async function openModalCancelSubscription() {
     openModal(".modal.cancel-subscription-modal");
 }
 
-export async function saveCancelSubscription() {
-    console.log("running saveCancelSubscription");
-}
 
 export async function saveCancelSubscription() {
     let cancel_subscription_error_span = document.getElementById("cancel_subscription_error_span");
