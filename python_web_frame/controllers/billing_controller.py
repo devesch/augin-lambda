@@ -147,7 +147,7 @@ class BillingController:
         Dynamo().update_entity(order, "order_nfse_created_at", str(time()))
         Dynamo().update_entity(order, "order_nfse_xml_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_processed_bucket_key(order["order_id"]))
         Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"]))
-        order = Dynamo().get_entity(order["pk"], order["sk"])
+        order = Dynamo().get_order(order["order_id"])
         xml_tree = ET.ElementTree(response_xml)
         xml_tree.write(lambda_constants["tmp_path"] + "generated_nfe_response.xml")
         nfse_xml = self.get_bill_of_sale_xml(order)
