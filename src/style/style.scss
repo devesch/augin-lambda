@@ -543,7 +543,7 @@ input[list]::-ms-clear {
     padding: 2rem 1rem;
     width: 100%;
     @media only screen and (min-width: breakpoints.$large) {
-        max-width: 350px;
+        margin-left: 350px;
     }
 }
 
