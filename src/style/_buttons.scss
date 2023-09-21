@@ -259,4 +259,10 @@ button:disabled,
     color: colors.color("color-black");
 }
 
+.explore__table-container__button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 /* Buttons - End */
