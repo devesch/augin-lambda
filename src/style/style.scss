@@ -1579,20 +1579,23 @@ input[list]::-ms-clear {
         vertical-align: middle;
     }
 
+    $checkbox-width: 1.35rem;
+    $checkbox-checked-width: 0.35rem;
+
     input[type="checkbox"] {
         border-radius: 100%;
         border-color: colors.color("color-black");
         vertical-align: middle;
         margin: 0;
         padding: 0;
-        width: 1.35rem;
+        width: $checkbox-width;
         height: 1.35rem;
     }
 
     input[type="checkbox"]:checked:after {
-        width: 0.35rem;
+        width: $checkbox-checked-width;
         height: 0.6rem;
-        left: 25%;
+        left: calc($checkbox-width - $checkbox-checked-width);
         border-color: colors.color("color-black");
     }
 
