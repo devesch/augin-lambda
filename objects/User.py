@@ -90,12 +90,12 @@ class User:
         Dynamo().update_entity(self.__dict__, "user_subscription_status", self.user_subscription_status)
 
     def incrase_user_total_orders_count(self):
-        self.user_total_orders_count = str(int(self.user_total_orders_count + 1))
-        Dynamo().update_entity(self.user.__dict__, "user_total_orders_count", self.user_total_orders_count)
+        self.user_total_orders_count = str(int(self.user_total_orders_count) + 1)
+        Dynamo().update_entity(self.__dict__, "user_total_orders_count", self.user_total_orders_count)
 
     def incrase_user_total_orders_count(self):
-        self.user_total_orders_count = str(int(self.user_total_orders_count + 1))
-        Dynamo().update_entity(self.user.__dict__, "user_total_orders_count", self.user_total_orders_count)
+        self.user_total_orders_count = str(int(self.user_total_orders_count) + 1)
+        Dynamo().update_entity(self.__dict__, "user_total_orders_count", self.user_total_orders_count)
 
     def get_user_actual_plan(self):
         if self.check_if_subscription_is_valid():

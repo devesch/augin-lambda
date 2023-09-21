@@ -15,11 +15,10 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
             plan = Dynamo().get_plan(self.post["plan_id"])
             try:
                 stripe_request_payload = StripeController().create_subscription(self.user, plan, self.post["plan_recurrency"])
-                self.create_order_with_stripe_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
             except:
                 self.user.recreate_stripe_user()
                 stripe_request_payload = StripeController().create_subscription(self.user, plan, self.post["plan_recurrency"])
-                self.create_order_with_stripe_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
+            self.create_order_with_stripe_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
 
         # if self.post["payment_recurrence"] == "unique":
         #     if self.user.user_address_data["user_country"] == "BR":
@@ -40,7 +39,8 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
         return float(string_price[:-2] + "." + string_price[-2:])
 
     def create_order_with_stripe_subscription(self, user, plan, plan_recurrency, subscription):
-        new_order = Order(user.user_id, subscription["latest_invoice"]["payment_intent"].stripe_id)
+        user.incrase_user_total_orders_count()
+        new_order = Order(user.user_id, user.user_total_orders_count)
         new_order.order_status = StripeController().convert_stripe_status_code_to_status(subscription["status"])
         new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(subscription["plan"]["interval"])
         # new_order.order_payment_method = subscription["payment_settings"]["payment_method_types"]
