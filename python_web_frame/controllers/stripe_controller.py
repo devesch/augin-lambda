@@ -165,5 +165,5 @@ class StripeController:
     def get_stripe_event(self, stripe_event_id):
         return self.stripe.Event.retrieve(stripe_event_id)
 
-    def refunded_stripe_order(self, stripe_charge_id):
+    def refunded_order(self, stripe_charge_id):
         return self.stripe.Refund.create(charge=stripe_charge_id)
