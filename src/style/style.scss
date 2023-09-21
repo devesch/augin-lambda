@@ -1541,6 +1541,67 @@ input[list]::-ms-clear {
     }
 }
 
+.federate__table {
+    margin-top: 1rem;
+    width: 100%;
+    background-color: unset;
+    border-radius: 1rem;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    border-collapse: separate;
+
+    th {
+        text-align: left;
+    }
+
+    thead {
+        font-weight: bold;
+    }
+
+    td,
+    th {
+        padding: .5rem 0;
+        text-align: left;
+    }
+
+    td {
+        border-bottom: 1px solid colors.color("color-neutral-300");
+    }
+
+    th {
+        border-bottom: 1px solid colors.color("color-neutral-400");
+    }
+
+    span,
+    button,
+    img,
+    input {
+        vertical-align: middle;
+    }
+
+    input[type="checkbox"] {
+        border-radius: 100%;
+        border-color: colors.color("color-black");
+        vertical-align: middle;
+        margin: 0;
+        padding: 0;
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+    input[type="checkbox"]:checked:after {
+        width: 0.35rem;
+        height: 0.6rem;
+        left: 25%;
+        border-color: colors.color("color-black");
+    }
+
+    label {
+        margin-left: 0.5rem;
+    }
+
+}
+
 .panel-explore-filters-container {
     $gap: 1rem;
     display: flex;
@@ -1605,6 +1666,7 @@ input[list]::-ms-clear {
 }
 
 .explore__title-container {
+    margin-top: 1rem;
     background-color: colors.color("color-neutral-50");
     border-radius: 1rem;
     padding: 1rem;
