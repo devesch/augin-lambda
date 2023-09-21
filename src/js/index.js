@@ -2441,3 +2441,14 @@ export async function updateBackofficeOrders(input) {
 
     pagination_component.innerHTML = backoffice_orders_html_response["success"];
 }
+
+
+export async function submitBackofficeForm(order_id, command) {
+    var backoffice_form = document.getElementById("backoffice_form");
+    var order_id_input = document.getElementById("order_id");
+    var command_input = document.getElementById("command");
+
+    order_id_input.value = order_id;
+    command_input.value = command;
+    backoffice_form.submit();
+}

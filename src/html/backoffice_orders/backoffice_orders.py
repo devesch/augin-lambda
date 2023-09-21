@@ -1,5 +1,6 @@
 ﻿from python_web_frame.backoffice_page import BackofficePage
 from utils.AWS.Dynamo import Dynamo
+from utils.utils.Validation import Validation
 import json
 
 
@@ -10,10 +11,16 @@ class BackofficeOrders(BackofficePage):
     admin = True
 
     def render_get(self):
+        backoffice_data = self.get_backoffice_data()
+
+        if Validation().check_if_local_env():
+            orders, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(10000000))
+            backoffice_data["backoffice_data_total_order_count"] = str(len(orders))
+            Dynamo().put_entity(backoffice_data)
+
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
 
-        backoffice_data = self.get_backoffice_data()
         if self.post.get("showing_total_count"):
             if self.path.get("order_status") and self.path.get("order_status") != "all":
                 orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.path["order_status"], limit=int(self.post["showing_total_count"]))
