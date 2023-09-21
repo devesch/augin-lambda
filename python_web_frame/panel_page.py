@@ -309,7 +309,7 @@ class PanelPage(BasePage):
         for payment_method in user_payment_methods:
             if payment_method["payment_method_type"] == "card":
                 html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
-                if (user_subscription) and (user_subscription.get(user_subscription["subscription_default_payment_method"]) == payment_method["payment_method_id"]):
+                if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
                     html.esc("active_method_val", "active")
                 html.esc("brand_val", payment_method["payment_method_card"]["brand"])
                 html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
