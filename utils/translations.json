@@ -1889,6 +1889,11 @@
         "es": "Comprar artículos",
         "pt": "Itens da Compra"
     },
+    "Itens por Página": {
+        "en": "Items per page",
+        "es": "Artículos por página",
+        "pt": "Itens por Página"
+    },
     "Jamaica": {
         "en": "Jamaica",
         "es": "Jamaica",

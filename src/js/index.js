@@ -2389,8 +2389,8 @@ export async function loadMoreOnScroll(query) {
 
 export async function loadMoreCallApiPagination() {
     console.log("running loadMorePagination");
-    let loadingPaginationMessage = document.querySelector(".js-loading-pagination-message");
-    let countPagination = document.querySelector(".count-pagination");
+    let loadingPaginationMessage = document.getElementById("pagination_loading_more_message_p");
+    let countPagination = document.getElementById("pagination_itens_count_p");
     countPagination.style.display = "none";
     loadingPaginationMessage.style.display = "block";
 
