@@ -45,12 +45,7 @@ class PanelYourPlan(PanelPage):
             html.esc("plan_team_play_val", self.translate("Não"))
 
         if not user_subscription:
-            html.esc("html_user_has_no_subscription", self.show_html_user_has_no_subscription())
-            html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
-            html.esc("user_subscription_status_val", "-")
-            html.esc("user_subscription_price_val", "-")
-            html.esc("user_subscription_recurrency_val", "-")
-            html.esc("user_subscription_valid_until_val", "-")
+            html.esc("html_user_has_no_subscription", self.show_html_user_has_no_subscription(user_plan))
             html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
         else:
             if user_subscription["subscription_is_trial"]:
@@ -88,6 +83,14 @@ class PanelYourPlan(PanelPage):
 
     def show_html_cancel_subscription_button(self):
         html = ReadWrite().read_html("panel_your_plan/_codes/html_cancel_subscription_button")
+        return str(html)
+
+    def show_html_user_has_no_subscription(self, user_plan):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_user_has_no_subscription")
+        html.esc("plan_name_val", user_plan["plan_name_" + self.lang])
+        html.esc("user_subscription_status_val", "-")
+        html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
+        html.esc("user_subscription_price_val", StrFormat().format_to_money("0000", self.user.user_cart_currency))
         return str(html)
 
     def show_html_user_subscription(self, user_subscription, user_plan):
