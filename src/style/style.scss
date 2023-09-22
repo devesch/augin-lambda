@@ -1541,12 +1541,12 @@ input[list]::-ms-clear {
     }
 }
 
-.federate__table {
+.modal-explore__table {
     margin-top: 1rem;
     width: 100%;
     background-color: unset;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 0;
     padding-bottom: 3rem;
     border-collapse: separate;
 
@@ -2004,4 +2004,8 @@ input[list]::-ms-clear {
 
 .open{
     display:block;
+}
+
+.opacity-25 {
+    opacity: .25;
 }
