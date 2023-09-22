@@ -328,6 +328,10 @@ input[type="checkbox"] + label {
         align-items: center;
     }
 
+    label:hover {
+        background-color: colors.color("color-primary-50");
+    }
+
     img {
         vertical-align: middle;
     }
