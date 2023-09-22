@@ -572,9 +572,16 @@
                     <input hidden id="move_modal_folder_id">
                     <thead>
                         <tr>
-                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span">
-                                    <-</span> <span id="move_modal_folder_path_span">
-                                </span></th>
+                            <th>
+                                <div class="explore__table-container__button-container">
+                                    <button onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span" class="button--user-folders">
+                                        <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20"/>
+                                    </button>
+                                     {{Meus Projetos}}
+                                      &gt;
+                                      <span id="move_modal_folder_path_span"></span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="move_model_user_folder_rows_tbody">
