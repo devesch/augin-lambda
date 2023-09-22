@@ -26,10 +26,12 @@ export function getWebView() {
 
 
 
-export async function showSelectedPaymentPage(button, index) {
+export async function showSelectedPaymentPage(index) {
+    let current_button = document.getElementById("payment_history_page_button_" + index);
     let payment_history_rows = document.getElementById("payment_history_rows");
+    let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
     let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
-
+    payment_history_current_page_input.value = index;
 
     let pagination_queries_response = await apiCaller("pagination_queries", {
         "query": "query_paginated_user_orders",
@@ -41,7 +43,7 @@ export async function showSelectedPaymentPage(button, index) {
     for (let payment_history_page_button of payment_history_page_buttons) {
         payment_history_page_button.classList.remove("selected-page")
     }
-    button.classList.add("selected-page");
+    current_button.classList.add("selected-page");
 }
 
 
@@ -2506,4 +2508,21 @@ export async function saveMakeDefaultPaymentMethod(payment_method_id) {
     } else {
         location.reload()
     }
+}
+
+export async function changePaymentHistoryPage(signal) {
+    let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
+    let payment_history_pages_count_input = document.getElementById("payment_history_pages_count_input");
+
+    if (signal == "increase") {
+        if (parseInt(payment_history_current_page_input.value) < parseInt(payment_history_pages_count_input.value)) {
+            payment_history_current_page_input.value = parseInt(payment_history_current_page_input.value + 1)
+        }
+    }
+    elif(signal == "decrease") {
+        if (parseInt(payment_history_current_page_input.value) > 1) {
+            payment_history_current_page_input.value = parseInt(payment_history_current_page_input.value - 1)
+        }
+    }
+    showSelectedPaymentPage(payment_history_current_page_input.value)
 }
