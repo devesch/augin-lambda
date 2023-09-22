@@ -219,9 +219,6 @@ export async function checkout_check_if_order_is_paid(order_id) {
     });
     if ("success" in checkout_check_if_order_is_paid_response) {
         return true;
-    } else {
-        await sleep(3000);
-        checkout_check_if_order_is_paid(order_id);
     }
 }
 
