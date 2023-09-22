@@ -14,6 +14,8 @@ class StrFormat:
             return "Ativa"
         if status == "canceled":
             return "Cancelada"
+        if status == "incomplete":
+            return "Incompleta"
         else:
             raise Exception("TODO")
 
