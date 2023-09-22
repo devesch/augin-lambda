@@ -2435,12 +2435,19 @@ export async function updateBackofficeOrders() {
     let search_orders_by_status_select = document.getElementById("search_orders_by_status_select")
     let pagination_component = document.getElementById("pagination_component")
 
+    let last_evaluated_key = document.getElementById("last_evaluated_key")
+    let query = document.getElementById("query")
+    let showing_total_count = document.getElementById("showing_total_count")
+
     let backoffice_orders_html_response = await apiCaller("backoffice_orders_html", {
         "search_user": search_orders_by_user_input.value,
         "search_order_status": search_orders_by_status_select.value
     });
 
     pagination_component.innerHTML = backoffice_orders_html_response["success"];
+    last_evaluated_key.value = backoffice_orders_html_response["last_evaluated_key"];
+    query.value = backoffice_orders_html_response["query"];
+    showing_total_count.value = backoffice_orders_html_response["showing_total_count"];
 }
 
 

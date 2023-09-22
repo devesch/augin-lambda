@@ -26,22 +26,25 @@ class BackofficeOrders(BackofficePage):
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
 
-        if self.post.get("showing_total_count"):
-            if self.path.get("order_status") and self.path.get("order_status") != "all":
-                orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.path["order_status"], limit=int(self.post["showing_total_count"]))
-            else:
-                orders, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.post["showing_total_count"]))
-        else:
-            if self.path.get("order_status") and self.path.get("order_status") != "all":
-                orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.path["order_status"], limit=int(self.user.user_pagination_count))
-            else:
-                orders, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.user.user_pagination_count))
+        # if self.post.get("showing_total_count"):
+        #     if self.path.get("order_status") and self.path.get("order_status") != "all":
+        #         orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.path["order_status"], limit=int(self.post["showing_total_count"]))
+        #     else:
+        #         orders, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.post["showing_total_count"]))
+        # else:
+        #     if self.path.get("order_status") and self.path.get("order_status") != "all":
+        #         orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.path["order_status"], limit=int(self.user.user_pagination_count))
+        #     else:
+        #         orders, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.user.user_pagination_count))
 
-        if self.path.get("order_status"):
-            html.esc("pre_sel_" + self.path["order_status"] + "_val", 'selected="selected"')
-            query = "query_paginated_all_orders_from_status"
-        else:
-            query = "query_paginated_all_orders"
+        # if self.path.get("order_status"):
+        #     html.esc("pre_sel_" + self.path["order_status"] + "_val", 'selected="selected"')
+        #     query = "query_paginated_all_orders_from_status"
+        # else:
+        #     query = "query_paginated_all_orders"
+
+        orders, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.user.user_pagination_count))
+        query = "query_paginated_all_orders"
 
         html.esc("html_pagination", self.show_html_pagination(len(orders), backoffice_data["backoffice_data_total_order_count"], query, last_evaluated_key, self.path.get("order_status", "")))
         html.esc("last_evaluated_key_val", json.dumps(last_evaluated_key))
