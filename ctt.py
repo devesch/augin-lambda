@@ -11,6 +11,8 @@ payload = payload.replace('"tawk"', "'tawk'")
 payload = payload.replace('"mouseflow"', "'mouseflow'")
 payload = payload.replace('"accepted"', "'accepted'")
 payload = payload.replace('"deny"', "'deny'")
+payload = payload.replace('"data": [n', '"data": [')
+
 try:
     payload_splitted = payload.split("body")
     if payload_splitted[1][4] == "{" and payload_splitted[1][3] == '"':

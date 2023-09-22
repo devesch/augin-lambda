@@ -22,7 +22,7 @@ class BackofficePage(BasePage):
                 html = ReadWrite().read_html("backoffice_orders/_codes/html_backoffice_orders_table_rows")
                 html.esc("order_user_id_val", order["order_user_id"])
                 html.esc("order_short_id_val", generate_order_short_id(order["order_id"]))
-                html.esc("order_payment_service_val", order["order_payment_service"].title())
+                html.esc("order_last_error_message_val", order.get("order_last_error_message"))
                 html.esc("order_payment_method", StrFormat().format_to_payment_method(order["order_payment_method"]))
                 html.esc("order_datetime_val", Date().format_unixtime_to_br_datetime(order["created_at"]))
                 html.esc("order_type_val", translate_order_type(order["order_type"]))

@@ -58,10 +58,14 @@ class CheckoutStripeWebHook(BasePage):
             self.user = self.load_user(stripe_customer["email"])
             order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
             if not order:
-                import time
+                for x in range(15):
+                    import time
 
-                time.sleep(15)
-                order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
+                    time.sleep(1)
+                    order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
+                    if order:
+                        break
+
             Dynamo().update_entity(order, "order_payment_stripe_charge_id", self.post["data"]["object"]["id"])
             Dynamo().update_entity(order, "order_payment_stripe_receipt_url", self.post["data"]["object"]["receipt_url"])
             Dynamo().update_entity(order, "order_payment_method", self.post["data"]["object"]["payment_method_details"]["type"])
@@ -75,6 +79,12 @@ class CheckoutStripeWebHook(BasePage):
                 payment_method["payment_method_card"] = self.post["data"]["object"]["payment_method_details"]["card"]
             Dynamo().put_entity(payment_method)
             return {"success": "Evento charge.succeeded tratado."}
+
+        if self.post["type"] == "payment_intent.payment_failed":
+            order = Dynamo().get_order(self.post["data"]["object"]["id"])
+            Dynamo().update_entity(order, "order_last_error_code", self.post["data"]["object"]["last_payment_error"]["code"])
+            Dynamo().update_entity(order, "order_last_error_message", self.post["data"]["object"]["last_payment_error"]["message"])
+            return {"success": "Evento payment_intent.payment_failed tratado."}
 
         raise Exception("TODO")
 

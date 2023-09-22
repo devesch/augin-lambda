@@ -13,6 +13,8 @@ class Order:
         self.order_plan_recurrency = ""
         self.order_status = "not_active"
         self.order_descrimination = ""
+        self.order_last_error_code = ""
+        self.order_last_error_message = ""
         self.order_nfse_id = ""
         self.order_nfse_status = "not_issued"  # "not_issued" / "issued" / "canceled"
         self.order_nfse_number = ""
@@ -84,6 +86,7 @@ def translate_order_status(order_status):
         "pending": "Incompleto",
         "paid": "Pago",
         "not_authorized": "Não autorizado",
+        "card_declined": "Cartão negado",
         "expired_card": "Cartão expirado",
         "blocked_card": "Cartão bloqueado",
         "canceled_card": "Cartão cancelado",

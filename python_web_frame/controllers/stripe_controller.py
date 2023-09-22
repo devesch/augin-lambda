@@ -152,7 +152,7 @@ class StripeController:
         if str(stripe_status_code) == "succeeded":
             return "paid"
         else:
-            return "stripe " + str(stripe_status_code)
+            return str(stripe_status_code)
 
     def verify_stripe_signature(self, payload, sig_header):
         try:
