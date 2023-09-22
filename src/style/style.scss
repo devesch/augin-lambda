@@ -1599,6 +1599,20 @@ input[list]::-ms-clear {
         border-color: colors.color("color-neutral-900");
     }
 
+    $input-radio-size: 20px;
+    input[type="radio"] {
+        border-color: colors.color("color-neutral-900");
+        width: $input-radio-size;
+        height: $input-radio-size;
+        padding: 0;
+    }
+
+    input[type="radio"]:checked::after {
+        background-color: colors.color("color-neutral-900");
+        width: calc(100% - (#{$input-radio-size} / 4));
+        height: calc(100% - (#{$input-radio-size} / 4));
+    }
+
     label {
         margin-left: 0.5rem;
     }
