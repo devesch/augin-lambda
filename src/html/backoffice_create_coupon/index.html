@@ -33,20 +33,23 @@
             </select>
         </div>
 
-        <div class="floating-input">
-            <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_brl_discount" value="{{coupon_brl_discount_val}}" id="coupon_brl_discount_input" placeholder="" required maxlength="500">
-            <label for="coupon_brl_discount_input" id="coupon_brl_discount_label">{{Desconto em R$}}</label>
+        <div id="total_discount_div">
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_brl_discount" value="{{coupon_brl_discount_val}}" id="coupon_brl_discount_input" placeholder="" required maxlength="500">
+                <label for="coupon_brl_discount_input">{{Desconto em R$}}</label>
+            </div>
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_usd_discount" value="{{coupon_usd_discount_val}}" id="coupon_usd_discount_input" placeholder="" required maxlength="500">
+                <label for="coupon_usd_discount_input">{{Desconto em U$}}</label>
+            </div>
         </div>
-        <div class="floating-input">
-            <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_usd_discount" value="{{coupon_usd_discount_val}}" id="coupon_usd_discount_input" placeholder="" required maxlength="500">
-            <label for="coupon_usd_discount_input" id="coupon_usd_discount_label">{{Desconto em U$}}</label>
-        </div>
+        <div id="percentage_discount_div">
 
-        <div class="floating-input">
-            <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_percentage_discount" value="{{coupon_percentage_discount_val}}" id="coupon_percentage_discount_input" placeholder="" required maxlength="500">
-            <label for="coupon_percentage_discount_input" id="coupon_percentage_discount_label">{{Desconto %}}</label>
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_percentage_discount" value="{{coupon_percentage_discount_val}}" id="coupon_percentage_discount_input" placeholder="" required maxlength="500">
+                <label for="coupon_percentage_discount_input">{{Desconto %}}</label>
+            </div>
         </div>
-
         <span class="error" style="{{error_msg_visibility_val}}">
             {{error_msg_val}}
         </span>
