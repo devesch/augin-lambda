@@ -165,8 +165,12 @@ class PanelPage(BasePage):
                         continue
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_update_model_user_folder_rows")
                 elif model_html == "move":
+                    if index == 5:
+                        break
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows")
                 elif model_html == "move_folder":
+                    if index == 5:
+                        break
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows")
                 elif model_html == "create_federated":
                     if model["model_is_federated"] or model["model_format"] != "ifc":

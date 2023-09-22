@@ -31,7 +31,7 @@
         <div class="explore__table-container__title-container relative">
             <div class="explore__table-container__button-container">
                 <button id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
-                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}"/>
+                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}" />
                 </button>
                 <button onclick="js.index.openFolder('', '')" class="button--user-folders">
                     <h2>{{Meus projetos}}</h2>
@@ -71,17 +71,17 @@
                 <tr>
                     <th colspan="1">
                         <button onclick="js.index.sortProjectsBy('model_name')" class="button--user-folders">
-                            {{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                            {{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                         </button>
                     </th>
                     <th colspan="1">
                         <button onclick="js.index.sortProjectsBy('created_at')" class="button--user-folders">
-                            {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                            {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                         </button>
                     </th>
                     <th colspan="2">
                         <button onclick="js.index.sortProjectsBy('model_filesize')" class="button--user-folders">
-                            {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                            {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                         </button>
                     </th>
                 </tr>
@@ -124,7 +124,7 @@
                     <input hidden id="create_federated_modal_folder_id">
                     <thead>
                         <tr>
-                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalCreateFederated()" id="create_federated_modal_return_folder_span">
+                            <th onclick="js.index.refreshCreateFederatedModal('')">{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalCreateFederated()" id="create_federated_modal_return_folder_span">
                                     <-</span> <span id="create_federated_modal_folder_path_span">
                                 </span></th>
                         </tr>
@@ -317,7 +317,7 @@
                     <input hidden id="update_modal_folder_id">
                     <thead>
                         <tr>
-                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalUpdate()" id="update_modal_return_folder_span">
+                            <th onclick="js.index.refreshUpdateModal('')">{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalUpdate()" id="update_modal_return_folder_span">
                                     <-</span> <span id="update_modal_folder_path_span">
                                 </span></th>
                         </tr>
@@ -575,10 +575,10 @@
                             <th>
                                 <div class="explore__table-container__button-container">
                                     <button onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span">
-                                        <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20"/>
+                                        <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
                                     </button>
-                                     <span class="ml-05">{{Meus Projetos}}</span>
-                                     <span id="move_modal_folder_path_span"></span>
+                                    <span onclick="js.index.refreshMoveModal('')" class="ml-05">{{Meus Projetos}}</span>
+                                    <span id="move_modal_folder_path_span"></span>
                                 </div>
                             </th>
                         </tr>
@@ -613,9 +613,9 @@
                         <th>
                             <div class="explore__table-container__button-container">
                                 <button onclick="js.index.openReturnFolderModalMoveFolder()" id="move_folder_modal_return_folder_span">
-                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20"/>
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
                                 </button>
-                                <span class="ml-05">{{Meus Projetos}}</span>
+                                <span onclick="js.index.refreshMoveFolderModal('')" class="ml-05">{{Meus Projetos}}</span>
                                 <span id="move_folder_modal_folder_path_span"></span>
                             </div>
                         </th>

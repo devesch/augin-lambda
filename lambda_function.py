@@ -112,7 +112,8 @@ def main_lambda_handler(event, context):
                     response["error"] = Code().get_translations()[response["error"]][lang]
         return Http().json_response(response)
     else:
-        return Http().respond(getattr(class_instance, f"render_{method}")(), event, user)
+        response = getattr(class_instance, f"render_{method}")()
+        return Http().respond(response, event, user)
 
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:

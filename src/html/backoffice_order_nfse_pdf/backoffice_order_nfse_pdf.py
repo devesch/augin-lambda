@@ -103,7 +103,7 @@ class BackofficeOrderNfsePdf(BackofficePage):
         return str(html)
 
     def show_html_canceled_nfse(self):
-        html = ReadWrite().read_html("backoffice_order_nfse_pdf/_codes/html_cancaled_nfse")
+        html = ReadWrite().read_html("backoffice_order_nfse_pdf/_codes/html_canceled_nfse")
         return str(html)
 
     def convert_xml_into_json(self, xml_string):
