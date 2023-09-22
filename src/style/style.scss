@@ -1603,6 +1603,12 @@ input[list]::-ms-clear {
         margin-left: 0.5rem;
     }
 
+    .explore__table-container__button-container {
+        button {
+            padding: 0;
+        }
+    }
+
 }
 
 .panel-explore-filters-container {
