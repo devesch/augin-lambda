@@ -2577,8 +2577,8 @@ export async function showCouponDiscountFields() {
         total_discount_div.style.display = "";
         percentage_discount_div.style.display = "none";
 
-        coupon_brl_discount_input.removeAttribute("required", "required");
-        coupon_usd_discount_input.removeAttribute("required", "required");
-        coupon_percentage_discount_input.setAttribute("required");
+        coupon_brl_discount_input.setAttribute("required", "required");
+        coupon_usd_discount_input.setAttribute("required", "required");
+        coupon_percentage_discount_input.removeAttribute("required");
     }
 }
