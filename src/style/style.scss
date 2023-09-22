@@ -2019,12 +2019,12 @@ input[list]::-ms-clear {
 .update-modal {
     input[type="radio"] {
         margin: 0;
-        border-color: colors.color("color-black");
+        border-color: colors.color("color-neutral-900");
     }
 
     @supports (appearance: none) or (-webkit-appearance: none) or (-moz-appearance: none) {
         input[type="radio"]:checked::after {
-            background-color: colors.color("color-black");
+            background-color: colors.color("color-neutral-900");
         }
     }
 
