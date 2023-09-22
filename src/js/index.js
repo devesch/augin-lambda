@@ -27,6 +27,11 @@ export function getWebView() {
 
 
 export async function showSelectedPaymentPage(index) {
+    let decrease_history_page_button = document.getElementById("decrease_history_page_button");
+    let increase_history_page_button = document.getElementById("increase_history_page_button");
+    let payment_history_pages_count_input = document.getElementById("payment_history_pages_count_input");
+
+
     let current_button = document.getElementById("payment_history_page_button_" + index);
     let payment_history_rows = document.getElementById("payment_history_rows");
     let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
@@ -44,6 +49,17 @@ export async function showSelectedPaymentPage(index) {
         payment_history_page_button.classList.remove("selected-page")
     }
     current_button.classList.add("selected-page");
+
+    if (index == payment_history_pages_count_input.value) {
+        increase_history_page_button.classList.add("disabled");
+    } else {
+        increase_history_page_button.classList.remove("disabled");
+    }
+    if (index == "1") {
+        decrease_history_page_button.classList.add("disabled");
+    } else {
+        decrease_history_page_button.classList.remove("disabled");
+    }
 }
 
 

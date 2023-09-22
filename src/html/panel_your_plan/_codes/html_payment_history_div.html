@@ -10,12 +10,12 @@
         <input hidden id="payment_history_current_page_input" value="1">
         <ul>
             <li>
-                <button onclick="js.index.changePaymentHistoryPage('decrease')" class="button--arrow left-arrow disabled">
+                <button onclick="js.index.changePaymentHistoryPage('decrease')" id="decrease_history_page_button" class="button--arrow left-arrow disabled">
                     <div></div>
                 </button>
             </li>
             {{html_payment_history_pages_buttons}}
-            <button onclick="js.index.changePaymentHistoryPage('increase')" class="button--arrow right-arrow">
+            <button onclick="js.index.changePaymentHistoryPage('increase')" id="decrease_history_page_button" class="button--arrow right-arrow">
                 <div></div>
             </button>
             </li>
