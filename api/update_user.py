@@ -17,6 +17,31 @@ class UpdateUser(BasePage):
 
         return getattr(self, self.post["command"])()
 
+    def make_default_payment_method(self):
+        payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["payment_method_id"])
+        if not payment_method:
+            return {"error": "Nenhum método de pagamento encontrado com os dados informados"}
+        user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+        if user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]:
+            return {"success": "Não é possível tornar padrão um método de pagamento que já é o padrão"}
+
+        StripeController().update_subscription_payment_method(user_subscription["subscription_id"], payment_method["payment_method_id"])
+        user_subscription["subscription_default_payment_method"] = payment_method["payment_method_id"]
+        Dynamo().update_entity(user_subscription, "subscription_default_payment_method", user_subscription["subscription_default_payment_method"])
+        return {"success": "Método de pagamento da assinatura atual alterado"}
+
+    def delete_payment_method(self):
+        payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["payment_method_id"])
+        if not payment_method:
+            return {"error": "Nenhum método de pagamento encontrado com os dados informados"}
+        user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+        if user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]:
+            return {"error": "Não é possível excluir o método de pagamento padrão da sua assinatura"}
+
+        StripeController().delete_payment_method(payment_method["payment_method_id"])
+        Dynamo().delete_entity(payment_method)
+        return {"success": "Método de pagamento deletado"}
+
     def update_user_pagination_count(self):
         self.user.update_user_pagination_count(self.post["user_pagination_count"])
         return {"success": "Tamanho de página de usuário atualizado"}

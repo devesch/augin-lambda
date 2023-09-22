@@ -2470,3 +2470,40 @@ export async function updateUserPaginationCount(select_input) {
     });
     location.reload();
 }
+export async function openModalDeletePaymentMethod(payment_method_id) {
+    let delete_payment_method_input = document.getElementById("delete_payment_method_input");
+    let delete_payment_method_error_span = document.getElementById("delete_payment_method_error_span");
+    delete_payment_method_error_span.innerHTML = "";
+    delete_payment_method_input.value = payment_method_id;
+    openModal('.modal.delete-payment-method-modal')
+}
+
+export async function saveDeletePaymentMethod() {
+    let delete_payment_method_input = document.getElementById("delete_payment_method_input");
+    let delete_payment_method_error_span = document.getElementById("delete_payment_method_error_span");
+
+    let update_user_response = await apiCaller('update_user', {
+        "command": "delete_payment_method",
+        "payment_method_id": delete_payment_method_input.value
+    });
+
+    if ("error" in update_user_response) {
+        delete_payment_method_error_span.innerHTML = update_user_response["error"];
+    } else {
+        location.reload()
+    }
+}
+
+
+export async function saveMakeDefaultPaymentMethod(payment_method_id) {
+    let update_user_response = await apiCaller('update_user', {
+        "command": "make_default_payment_method",
+        "payment_method_id": payment_method_id
+    });
+
+    if ("error" in update_user_response) {
+        return
+    } else {
+        location.reload()
+    }
+}

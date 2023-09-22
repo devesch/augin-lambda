@@ -308,15 +308,22 @@ class PanelPage(BasePage):
 
     def list_html_payment_methods_rows(self, user_payment_methods, user_subscription):
         full_html = []
-        for payment_method in user_payment_methods:
+        for index, payment_method in enumerate(user_payment_methods):
+            html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
+            html.esc("payment_method_id_val", payment_method["payment_method_id"])
+            html.esc("index_val", (index + 1))
+            if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
+                html.esc("active_method_val", "active")
+                html.esc("make_default_payement_method_visibility_val", "display:none;")
             if payment_method["payment_method_type"] == "card":
-                html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
-                if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
-                    html.esc("active_method_val", "active")
                 html.esc("brand_val", payment_method["payment_method_card"]["brand"])
                 html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
                 html.esc("last4_val", payment_method["payment_method_card"]["last4"])
                 html.esc("exp_month_val", payment_method["payment_method_card"]["exp_month"])
                 html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
-                full_html.append(str(html))
+            if payment_method["payment_method_type"] == "boleto":
+                html.esc("brand_val", self.translate("boleto").title())
+                html.esc("expires_in_visibility_val", "display:none;")
+                html.esc("make_default_payement_method_visibility_val", "display:none;")
+            full_html.append(str(html))
         return "".join(full_html)

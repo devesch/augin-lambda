@@ -19,6 +19,12 @@ class StripeController:
         self.stripe = __import__("stripe")
         self.stripe.api_key = stripe_secret_key
 
+    def delete_payment_method(self, payment_method_id):
+        return self.stripe.PaymentMethod.detach(payment_method_id)
+
+    def update_subscription_payment_method(self, subscription_id, payment_method_id):
+        return self.stripe.Subscription.modify(subscription_id, default_payment_method=payment_method_id)
+
     def create_customer(self, user):
         name = user.user_name
         phone = user.user_phone

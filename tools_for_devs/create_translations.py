@@ -18,6 +18,7 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "boleto",
     "Incompleta",
     "Sua compra está sendo reembolsada",
     "Não Emitida",

@@ -764,6 +764,11 @@
         "es": "Confirmar la exclusión del proyecto",
         "pt": "Confirmar exclusão do projeto"
     },
+    "Confirme a exclusão do método de pagamento": {
+        "en": "Confirm the exclusion of the payment method",
+        "es": "Confirmar la exclusión del método de pago",
+        "pt": "Confirme a exclusão do método de pagamento"
+    },
     "Confirme a renovação da sua assinatura": {
         "en": "Confirm the renewal of your signature",
         "es": "Confirme la renovación de su firma",
@@ -1433,6 +1438,11 @@
         "en": "Exceeded the limit of attempts",
         "es": "Excedió el límite de intentos",
         "pt": "Excedeu o limite de tentativas"
+    },
+    "Excluindo método de pagamento": {
+        "en": "Deleting Payment Method",
+        "es": "Eliminar el método de pago",
+        "pt": "Excluindo método de pagamento"
     },
     "Excluir modelo": {
         "en": "Delete template",
@@ -2314,6 +2324,11 @@
         "es": "No hay modelo",
         "pt": "Nenhum modelo"
     },
+    "Nenhum método de pagamento encontrado com os dados informados": {
+        "en": "No payment method found with the data informed",
+        "es": "No se encuentra ningún método de pago con los datos informados",
+        "pt": "Nenhum método de pagamento encontrado com os dados informados"
+    },
     "Nenhum projeto encontrado com o link fornecido": {
         "en": "No projects found with the link provided",
         "es": "No se encontraron proyectos con el enlace proporcionado",
@@ -2574,6 +2589,11 @@
         "es": "No fue posible enviar el correo electrónico, comunicarse con el soporte.",
         "pt": "Não foi possível enviar o email, entre em contato com o suporte."
     },
+    "Não é possível excluir o método de pagamento padrão da sua assinatura": {
+        "en": "It is not possible to delete the default payment method from your subscription",
+        "es": "No es posible eliminar el método de pago predeterminado de su suscripción",
+        "pt": "Não é possível excluir o método de pagamento padrão da sua assinatura"
+    },
     "Não é possível mover uma pasta para dentro dela própria": {
         "en": "It is not possible to move a folder into it",
         "es": "No es posible mover una carpeta a ella",
@@ -2583,6 +2603,11 @@
         "en": "It is not possible to move a folder into it.",
         "es": "No es posible mover una carpeta a ella.",
         "pt": "Não é possível mover uma pasta para dentro dela própria."
+    },
+    "Não é possível tornar padrão um método de pagamento que já é o padrão": {
+        "en": "It is not possible to make standard a payment method that is already the standard",
+        "es": "No es posible hacer de la norma un método de pago que ya sea el estándar",
+        "pt": "Não é possível tornar padrão um método de pagamento que já é o padrão"
     },
     "Número": {
         "en": "Number",
@@ -3574,6 +3599,11 @@
         "es": "República Árabe Siria",
         "pt": "República Árabe da Síria"
     },
+    "Só é possível reembolsar ordens do tipo cartão de crédito.": {
+        "en": "It is only possible to reimburse credit card orders.",
+        "es": "Solo es posible reembolsar los pedidos de tarjetas de crédito.",
+        "pt": "Só é possível reembolsar ordens do tipo cartão de crédito."
+    },
     "Taiwan, Province of China": {
         "en": "Taiwan, Province of China",
         "es": "Taiwan, provincia de China",
@@ -3693,6 +3723,11 @@
         "en": "Tong",
         "es": "Pintura",
         "pt": "Tonga"
+    },
+    "Tornar padrão": {
+        "en": "Default",
+        "es": "Por defecto",
+        "pt": "Tornar padrão"
     },
     "Tornar pasta acessível": {
         "en": "Folder",
@@ -4063,6 +4098,11 @@
         "en": "up to 5",
         "es": "hasta 5",
         "pt": "até 5"
+    },
+    "boleto": {
+        "en": "ticket",
+        "es": "boleto",
+        "pt": "boleto"
     },
     "como ferramenta para pagamentos e compras": {
         "en": "as a tool for payments and purchases",

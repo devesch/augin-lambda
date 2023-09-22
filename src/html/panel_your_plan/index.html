@@ -126,4 +126,26 @@
     </div>
 </div>
 
+
+<div id="delete-payment-method-modal" class="modal delete-payment-method-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Excluindo método de pagamento}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <p>{{Confirme a exclusão do método de pagamento}}</p>
+            </div>
+            <span class="error" id="delete_payment_method_error_span">
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="delete_payment_method_input">
+                <button onclick="js.index.closeModal('.modal.delete-payment-method-modal')">{{Fechar}}</button>
+                <button onclick="js.index.saveDeletePaymentMethod()" class="ghost">{{Remover}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 {{footer}}
