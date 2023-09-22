@@ -1019,15 +1019,25 @@
         "es": "Dinamarca",
         "pt": "Dinamarca"
     },
+    "Desconto %": {
+        "en": "Discount %",
+        "es": "Descuento %",
+        "pt": "Desconto %"
+    },
     "Desconto desconto total": {
         "en": "Total Discount",
         "es": "Descuento total",
         "pt": "Desconto desconto total"
     },
     "Desconto em R$": {
-        "en": "",
-        "es": "Descuento en r $",
+        "en": "Discount in R$",
+        "es": "Descuento en R$",
         "pt": "Desconto em R$"
+    },
+    "Desconto em U$": {
+        "en": "Discount in U$",
+        "es": "Descuento en U$",
+        "pt": "Desconto em U$"
     },
     "Desconto percentual": {
         "en": "Percentage discount",
@@ -1813,6 +1823,11 @@
         "en": "Incomplete",
         "es": "Incompleto",
         "pt": "Incompleta"
+    },
+    "Incompleta/Expirada": {
+        "en": "Incomplete/Expired",
+        "es": "Incompleto/caducado",
+        "pt": "Incompleta/Expirada"
     },
     "Incompleto": {
         "en": "Incomplete",
@@ -3638,6 +3653,11 @@
         "en": "It is only possible to reimburse credit card orders.",
         "es": "Solo es posible reembolsar los pedidos de tarjetas de crédito.",
         "pt": "Só é possível reembolsar ordens do tipo cartão de crédito."
+    },
+    "TODO POST": {
+        "en": "All post",
+        "es": "TODO POST",
+        "pt": "TODO POST"
     },
     "Taiwan, Province of China": {
         "en": "Taiwan, Province of China",

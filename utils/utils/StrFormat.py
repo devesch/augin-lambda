@@ -16,6 +16,8 @@ class StrFormat:
             return "Cancelada"
         if status == "incomplete":
             return "Incompleta"
+        if status == "incomplete_expired":
+            return "Incompleta/Expirada"
         else:
             raise Exception("TODO")
 

@@ -173,6 +173,7 @@ def upload_lambda():
     clean_json_in_folder(dest_folder + "utils/")
     shutil.copy(root_folder + "lambda_function.py", dest_folder + "lambda_function.py")
     shutil.copy(root_folder + "xml_binary.py", dest_folder + "xml_binary.py")
+    shutil.copy(root_folder + "libxslt.so.1", dest_folder + "libxslt.so.1")
     shutil.make_archive(upload_project_folder + "/archive", "zip", dest_folder)
     f = open(upload_project_folder + "/archive.zip", "rb")
     lambda_client = client("lambda", region_name=lambda_constants["region"])

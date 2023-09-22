@@ -1,6 +1,6 @@
 ﻿{{header}}
 {{menu_backoffice}}
-<div class="main-container">
+<main class="my-plan__main">
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
 
         <div class="floating-input">
@@ -27,7 +27,7 @@
         </div>
 
         <div class="floating-input">
-            <select name="coupon_discount_type" id="coupon_discount_type_select" value="{{coupon_discount_type_val}}" required>
+            <select onchange="js.index.showCouponDiscountFields(this)" name="coupon_discount_type" id="coupon_discount_type_select" value="{{coupon_discount_type_val}}" required>
                 <option value="percentage" {{percentage_pre_sel_val}}>{{Desconto percentual}}</option>
                 <option value="total" {{total_pre_sel_val}}>{{Desconto desconto total}}</option>
             </select>
@@ -54,44 +54,12 @@
             <button type="submit">{{Salvar}}</button>
         </div>
     </form>
-</div>
+    </div>
+</main>
 {{footer}}
-<!-- 
+
 <script>
     window.onload = () => {
-        let plan_price_annually_brl_input = document.getElementById("plan_price_annually_brl_input");
-        let plan_price_annually_brl_actual_input = document.getElementById("plan_price_annually_brl_actual_input");
-        let plan_price_annually_usd_input = document.getElementById("plan_price_annually_usd_input");
-        let plan_price_annually_usd_actual_input = document.getElementById("plan_price_annually_usd_actual_input");
-
-        let plan_price_monthly_brl_input = document.getElementById("plan_price_monthly_brl_input");
-        let plan_price_monthly_brl_actual_input = document.getElementById("plan_price_monthly_brl_actual_input");
-        let plan_price_monthly_usd_input = document.getElementById("plan_price_monthly_usd_input");
-        let plan_price_monthly_usd_actual_input = document.getElementById("plan_price_monthly_usd_actual_input");
-
-        let plan_cloud_space_in_mbs_input = document.getElementById("plan_cloud_space_in_mbs_input");
-        let plan_maxium_model_size_in_mbs_input = document.getElementById("plan_maxium_model_size_in_mbs_input");
-        let plan_maxium_federated_size_in_mbs_input = document.getElementById("plan_maxium_federated_size_in_mbs_input");
-        let plan_maxium_devices_available_input = document.getElementById("plan_maxium_devices_available_input");
-        let plan_maxium_devices_changes_in_30d_input = document.getElementById("plan_maxium_devices_changes_in_30d_input");
-        let plan_app_can_be_offline_in_days_input = document.getElementById("plan_app_can_be_offline_in_days_input");
-        let plan_trial_duration_in_days_input = document.getElementById("plan_trial_duration_in_days_input");
-
-        js.index.formatToMoney(plan_price_annually_brl_input);
-        js.index.formatToMoney(plan_price_annually_brl_actual_input);
-        js.index.formatToMoney(plan_price_annually_usd_input);
-        js.index.formatToMoney(plan_price_annually_usd_actual_input);
-
-        js.index.formatToMoney(plan_price_monthly_brl_input);
-        js.index.formatToMoney(plan_price_monthly_brl_actual_input);
-        js.index.formatToMoney(plan_price_monthly_usd_input);
-        js.index.formatToMoney(plan_price_monthly_usd_actual_input);
-
-        js.index.formatToNumbers(plan_cloud_space_in_mbs_input);
-        js.index.formatToNumbers(plan_maxium_model_size_in_mbs_input);
-        js.index.formatToNumbers(plan_maxium_federated_size_in_mbs_input);
-        js.index.formatToNumbers(plan_maxium_devices_available_input);
-        js.index.formatToNumbers(plan_maxium_devices_changes_in_30d_input);
-        js.index.formatToNumbers(plan_app_can_be_offline_in_days_input);
+        showCouponDiscountFields();
     };
-</script> -->
+</script>

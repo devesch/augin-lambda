@@ -2551,3 +2551,20 @@ export async function changePaymentHistoryPage(signal) {
     }
     showSelectedPaymentPage(payment_history_current_page_input.value)
 }
+
+export async function showCouponDiscountFields() {
+    let coupon_discount_type_select = document.getElementById("coupon_discount_type_select");
+    let coupon_brl_discount_input = document.getElementById("coupon_brl_discount_input");
+    let coupon_usd_discount_input = document.getElementById("coupon_usd_discount_input");
+    let coupon_percentage_discount_input = document.getElementById("coupon_percentage_discount_input");
+
+    if (coupon_discount_type_select.value == "percentage") {
+        coupon_brl_discount_input.style.display = "none";
+        coupon_usd_discount_input.style.display = "none";
+        coupon_percentage_discount_input.style.display = "";
+    } else if (coupon_discount_type_select.value == "total") {
+        coupon_brl_discount_input.style.display = "";
+        coupon_usd_discount_input.style.display = "";
+        coupon_percentage_discount_input.style.display = "none";
+    }
+}
