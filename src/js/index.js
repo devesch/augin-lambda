@@ -2288,40 +2288,50 @@ export async function saveCancelSubscription() {
 }
 
 export async function openModalAddPaymentMethod() {
+    stripe_token_input = document.getElementById("stripe_token_input");
+
+    const stripe = Stripe(stripe_token_input.value);
+    const elements = stripe.elements();
+    const card = elements.create('card');
+    card.mount('#card-element');
+    card.addEventListener('change', function (event) {
+        const displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        stripe.createPaymentMethod({
+            type: 'card',
+            card: card
+        }).then(function (result) {
+            if (result.error) {
+                // Inform the user if there was an error.
+                const errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the PaymentMethod ID to your server for further processing.
+                // For this step, you'd typically make an AJAX call to your backend.
+                saveAddPaymentMethod(result.paymentMethod.id);
+            }
+        });
+    });
+
     openModal(".modal.add-payment-method-modal");
 }
 
-export async function saveAddPaymentMethod() {
-    let number_input = document.getElementById("number");
-    let exp_month_input = document.getElementById("exp_month");
-    let exp_year_input = document.getElementById("exp_year");
-    let cvc_input = document.getElementById("cvc");
-
-    const url = 'https://api.stripe.com/v1/payment_methods';
-    const headers = new Headers({
-        'Authorization': 'Bearer sk_test_51KUDNpA9OIVeHB9yBr8fiH7gVUhfggy4zFkJib2maUawYM4tSkRQ64swJwwx4pXFZ4U3O93qPEGRZzWW1agdeBd500ev6Lx5W5',
-        'Content-Type': 'application/x-www-form-urlencoded'
+export async function saveAddPaymentMethod(new_payment_method_id) {
+    let update_user_response = await apiCaller("update_user", {
+        "command": "create_payment_method",
+        "payment_method_id": new_payment_method_id
     });
-    const body = new URLSearchParams({
-        'type': 'card',
-        'card[number]': number_input.value,
-        'card[exp_month]': exp_month_input.value,
-        'card[exp_year]': exp_year_input.value,
-        'card[cvc]': cvc_input.value,
-    }).toString();
 
-    fetch(url, {
-            method: 'POST',
-            headers: headers,
-            body: body
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    location.reload();
 }
 
 

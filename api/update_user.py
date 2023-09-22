@@ -6,6 +6,7 @@ from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
 from utils.Config import lambda_constants
 from objects.UserFolder import check_if_folder_movement_is_valid
+from objects.UserPaymentMethod import UserPaymentMethod
 
 
 class UpdateUser(BasePage):
@@ -16,6 +17,23 @@ class UpdateUser(BasePage):
             return {"error": "Nenhum usuário encontrado"}
 
         return getattr(self, self.post["command"])()
+
+    def create_payment_method(self):
+        stripe_payment_method = StripeController().get_payment_method(self.post["payment_method_id"])
+        if not stripe_payment_method:
+            return {"error": "Nenhum método de pagamento encontrado no Stripe com os dados informados"}
+
+        stripe_payment_method = StripeController().attach_payment_method_to_customer(self.user.user_stripe_customer_id, self.post["payment_method_id"])
+
+        payment_method = UserPaymentMethod(self.user.user_id, stripe_payment_method["id"]).__dict__
+        payment_method["payment_method_type"] = stripe_payment_method["type"]
+        payment_method["payment_method_card"] = {}
+        for key, val in stripe_payment_method["card"].items():
+            if type(val) == str or type(val) == int:
+                payment_method["payment_method_card"][key] = str(val)
+
+        Dynamo().put_entity(payment_method)
+        return {"success": "Novo método de pagamento adicionado"}
 
     def make_default_payment_method(self):
         payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["payment_method_id"])

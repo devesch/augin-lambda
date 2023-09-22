@@ -79,7 +79,11 @@ class CheckoutStripeWebHook(BasePage):
 
         payment_method["payment_method_type"] = self.post["data"]["object"]["payment_method_details"]["type"]
         if self.post["data"]["object"]["payment_method_details"]["type"] == "card":
-            payment_method["payment_method_card"] = self.post["data"]["object"]["payment_method_details"]["card"]
+            payment_method["payment_method_card"] = {}
+            for key, val in self.post["data"]["object"]["payment_method_details"]["card"].items():
+                if type(val) == str or type(val) == int:
+                    payment_method["payment_method_card"][key] = str(val)
+
         Dynamo().put_entity(payment_method)
         return {"success": "Evento charge_succeeded tratado."}
 

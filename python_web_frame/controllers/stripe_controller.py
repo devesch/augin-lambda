@@ -19,6 +19,12 @@ class StripeController:
         self.stripe = __import__("stripe")
         self.stripe.api_key = stripe_secret_key
 
+    def attach_payment_method_to_customer(self, customer_id, payment_method_id):
+        return self.stripe.PaymentMethod.attach(payment_method_id, customer=customer_id)
+
+    def get_payment_method(self, payment_method_id):
+        return self.stripe.PaymentMethod.retrieve(payment_method_id)
+
     def delete_payment_method(self, payment_method_id):
         return self.stripe.PaymentMethod.detach(payment_method_id)
 

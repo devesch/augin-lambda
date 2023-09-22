@@ -2329,6 +2329,11 @@
         "es": "No se encuentra ningún método de pago con los datos informados",
         "pt": "Nenhum método de pagamento encontrado com os dados informados"
     },
+    "Nenhum método de pagamento encontrado no Stripe com os dados informados": {
+        "en": "No payment method found in the stripe with the informed data",
+        "es": "No se encuentra el método de pago en la franja con los datos informados",
+        "pt": "Nenhum método de pagamento encontrado no Stripe com os dados informados"
+    },
     "Nenhum projeto encontrado com o link fornecido": {
         "en": "No projects found with the link provided",
         "es": "No se encontraron proyectos con el enlace proporcionado",

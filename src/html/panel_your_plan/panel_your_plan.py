@@ -1,4 +1,5 @@
 from python_web_frame.panel_page import PanelPage
+from python_web_frame.controllers.stripe_controller import stripe_token
 from objects.Plan import translate_reference_tracker
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
@@ -78,6 +79,8 @@ class PanelYourPlan(PanelPage):
         user_payment_methods = Dynamo().query_user_payment_methods(self.user.user_id)
         if user_payment_methods:
             html.esc("html_payment_methods_div", self.show_html_payment_methods_div(user_payment_methods, user_subscription))
+
+        html.esc("stripe_token_val", stripe_token)
         return str(html)
 
     def render_post(self):

@@ -99,29 +99,24 @@
     </div>
 </div>
 
+<script src="https://js.stripe.com/v3/"></script>
 
 <div id="add-payment-method-modal" class="modal add-payment-method-modal" aria-hidden="true">
+    <input hidden id="stripe_token_input" value="{{stripe_token_val}}">
     <div class="content-modal max-width">
         <div class="modal-header">
             <h1 class="modal-header-title">{{Adicionando novo método de pagamento}}</h1>
         </div>
         <div class="modal-content">
-            <div>
-                <p>number</p>
-                <input id="number" value="5555555555554444">
-                <p>exp_month</p>
-                <input id="exp_month" value="1">
-                <p>exp_year</p>
-                <input id="exp_year" value="24">
-                <p>cvc</p>
-                <input id="cvc" value="234">
-            </div>
-            <span class="error" id="add_payment_method_error_span">
-            </span>
-            <div class="modal-button-container">
-                <button onclick="js.index.closeModal('.modal.add-payment-method-modal')" class="ghost">{{Fechar}}</button>
-                <button onclick="js.index.saveAddPaymentMethod()">{{Adicionar}}</button>
-            </div>
+            <form id="payment-form">
+                <div id="card-element">
+                </div>
+                <div id="card-errors" role="alert"></div>
+                <div class="modal-button-container">
+                    <button onclick="js.index.closeModal('.modal.add-payment-method-modal')" class="ghost">{{Fechar}}</button>
+                    <button id="submit">{{Adicionar}}</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
