@@ -76,6 +76,8 @@ class CheckoutStripeWebHook(BasePage):
             Dynamo().put_entity(payment_method)
             return {"success": "Evento charge.succeeded tratado."}
 
+        raise Exception("TODO")
+
         return {"success": "Evento não tratado."}
 
     def get_user_first_order_from_subscription(self, user_email, subscription_last_order_id):
