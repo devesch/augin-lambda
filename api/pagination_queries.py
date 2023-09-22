@@ -1,10 +1,11 @@
 from python_web_frame.panel_page import PanelPage
+from python_web_frame.backoffice_page import BackofficePage
 from utils.AWS.Dynamo import Dynamo
 from json import loads
 from time import time
 
 
-class PaginationQueries(PanelPage):
+class PaginationQueries(BackofficePage, PanelPage):
     def run(self):
         if not self.post.get("query"):
             return {"error": "no command in post"}
@@ -18,9 +19,17 @@ class PaginationQueries(PanelPage):
             user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, self.post["page"])
             return {"success": self.list_html_payment_history_rows(user_orders)}
 
-        # if self.post["query"] == "query_paginated_all_last_login_users":
-        #     users, last_evaluated_key = self.dynamo.query_paginated_all_last_login_users(last_evaluated_key, limit=int(self.user.user_pagination_count))
-        #     html = self.list_html_backoffice_users_table_rows(users)
-        #     new_itens_count = str(len(users))
+        if self.post["query"] == "query_paginated_all_orders_from_status":
+            if not self.post.get("query_filter"):
+                return {"error": "no query_filter in post"}
 
-        # return {"success": html, "last_evaluated_key": last_evaluated_key, "new_itens_count": new_itens_count}
+            if self.post["query_filter"] == "all":
+                orders, last_evaluated_key = Dynamo().query_paginated_all_orders(last_evaluated_key, limit=int(self.user.user_pagination_count))
+                html = self.list_html_backoffice_orders_table_rows(orders)
+                new_itens_count = str(len(orders))
+            else:
+                orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.post["query_filter"], last_evaluated_key, limit=int(self.user.user_pagination_count))
+                html = self.list_html_backoffice_orders_table_rows(orders)
+                new_itens_count = str(len(orders))
+
+        return {"success": html, "last_evaluated_key": last_evaluated_key, "new_itens_count": new_itens_count}

@@ -2437,6 +2437,7 @@ export async function updateBackofficeOrders() {
 
     let last_evaluated_key = document.getElementById("last_evaluated_key")
     let query = document.getElementById("query")
+    let query_filter = document.getElementById("query_filter")
     let showing_total_count = document.getElementById("showing_total_count")
 
     let backoffice_orders_html_response = await apiCaller("backoffice_orders_html", {
@@ -2447,6 +2448,7 @@ export async function updateBackofficeOrders() {
     pagination_component.innerHTML = backoffice_orders_html_response["success"];
     last_evaluated_key.value = backoffice_orders_html_response["last_evaluated_key"];
     query.value = backoffice_orders_html_response["query"];
+    query_filter.value = backoffice_orders_html_response["query_filter"];
     showing_total_count.value = backoffice_orders_html_response["showing_total_count"];
 }
 
