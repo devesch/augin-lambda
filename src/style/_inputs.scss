@@ -315,6 +315,10 @@ input[type="checkbox"] + label {
         height: 0.1rem;
     }
 
+    input:focus + label {
+        background-color: colors.color("color-primary-50");
+    }
+
     input:checked + label {
         background-color: colors.color("color-primary-300");
     }
