@@ -574,6 +574,11 @@
         "es": "Darse de baja",
         "pt": "Cancelar assinatura"
     },
+    "Carregando mais dados. Aguarde": {
+        "en": "Loading more data.Wait",
+        "es": "Cargando más datos.Esperar",
+        "pt": "Carregando mais dados. Aguarde"
+    },
     "Cartão": {
         "en": "Card",
         "es": "Tarjeta",
@@ -1893,6 +1898,11 @@
         "en": "Items per page",
         "es": "Artículos por página",
         "pt": "Itens por Página"
+    },
+    "Itens por página": {
+        "en": "Items per page",
+        "es": "Artículos por página",
+        "pt": "Itens por página"
     },
     "Jamaica": {
         "en": "Jamaica",

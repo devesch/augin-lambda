@@ -2310,8 +2310,8 @@ export async function saveAddPaymentMethod() {
 export async function updatePaginationProgressBar() {
     let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
     let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
-    let ProgressBar = document.querySelector(".progress-pagination.upload-bar");
-    ProgressBar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
+    let progress_bar = document.getElementById("progress_upload_bar_div");
+    progress_bar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
 }
 
 
