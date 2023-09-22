@@ -2518,8 +2518,7 @@ export async function changePaymentHistoryPage(signal) {
         if (parseInt(payment_history_current_page_input.value) < parseInt(payment_history_pages_count_input.value)) {
             payment_history_current_page_input.value = parseInt(payment_history_current_page_input.value + 1)
         }
-    }
-    elif(signal == "decrease") {
+    } else if (signal == "decrease") {
         if (parseInt(payment_history_current_page_input.value) > 1) {
             payment_history_current_page_input.value = parseInt(payment_history_current_page_input.value - 1)
         }

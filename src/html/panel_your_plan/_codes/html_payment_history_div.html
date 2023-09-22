@@ -6,7 +6,8 @@
         {{html_payment_history_rows}}
     </table>
     <nav class="my-plan__history-pagination">
-        <input hidden id=payment_history_pages_count value="{{payment_history_pages_count}}">
+        <input hidden id="payment_history_pages_count_input" value="{{payment_history_pages_count_val}}">
+        <input hidden id="payment_history_current_page_input" value="1">
         <ul>
             <li>
                 <button onclick="js.index.changePaymentHistoryPage('increase')" class="button--arrow left-arrow disabled">
