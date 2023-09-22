@@ -34,16 +34,16 @@
         </div>
 
         <div class="floating-input">
-            <input type="date" oninput="js.index.formatToMoney(this)" name="coupon_brl_discount" value="{{coupon_brl_discount_val}}" id="coupon_brl_discount_input" placeholder="" required maxlength="500">
+            <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_brl_discount" value="{{coupon_brl_discount_val}}" id="coupon_brl_discount_input" placeholder="" required maxlength="500">
             <label for="coupon_brl_discount_input">{{Desconto em R$}}</label>
         </div>
         <div class="floating-input">
-            <input type="date" oninput="js.index.formatToMoney(this)" name="coupon_usd_discount" value="{{coupon_usd_discount_val}}" id="coupon_usd_discount_input" placeholder="" required maxlength="500">
+            <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_usd_discount" value="{{coupon_usd_discount_val}}" id="coupon_usd_discount_input" placeholder="" required maxlength="500">
             <label for="coupon_usd_discount_input">{{Desconto em U$}}</label>
         </div>
 
         <div class="floating-input">
-            <input type="date" name="coupon_percentage_discount" value="{{coupon_percentage_discount_val}}" id="coupon_percentage_discount_input" placeholder="" required maxlength="500">
+            <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_percentage_discount" value="{{coupon_percentage_discount_val}}" id="coupon_percentage_discount_input" placeholder="" required maxlength="500">
             <label for="coupon_percentage_discount_input">{{Desconto %}}</label>
         </div>
 
@@ -60,6 +60,6 @@
 
 <script>
     window.onload = () => {
-        showCouponDiscountFields();
+        js.index.showCouponDiscountFields();
     };
 </script>

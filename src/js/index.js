@@ -488,6 +488,16 @@ export async function toogleDiv(checkbox_input, div_id) {
     }
 }
 
+export async function formatToPercentage(input) {
+    input.value = input.value.replace(/\D/g, "");
+    if (input.value < 1) {
+        input.value = '';
+    } else if (input.value > 99) {
+        input.value = '99';
+    }
+}
+
+
 export async function formatToMoney(input) {
     input.value = input.value.replace(/\D/g, "");
     if (input.value.length > 2) {

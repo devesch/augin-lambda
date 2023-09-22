@@ -174,6 +174,11 @@ def upload_lambda():
     shutil.copy(root_folder + "lambda_function.py", dest_folder + "lambda_function.py")
     shutil.copy(root_folder + "xml_binary.py", dest_folder + "xml_binary.py")
     shutil.copy(root_folder + "libxslt.so.1", dest_folder + "libxslt.so.1")
+    shutil.copy(root_folder + "libexslt.so.0", dest_folder + "libexslt.so.0")
+    shutil.copy(root_folder + "libxml2.so.2", dest_folder + "libxml2.so.2")
+    shutil.copy(root_folder + "libgcrypt.so.11", dest_folder + "libgcrypt.so.11")
+    shutil.copy(root_folder + "libgpg-error.so.0", dest_folder + "libgpg-error.so.0")
+
     shutil.make_archive(upload_project_folder + "/archive", "zip", dest_folder)
     f = open(upload_project_folder + "/archive.zip", "rb")
     lambda_client = client("lambda", region_name=lambda_constants["region"])
