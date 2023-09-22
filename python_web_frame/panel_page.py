@@ -325,6 +325,5 @@ class PanelPage(BasePage):
             if payment_method["payment_method_type"] == "boleto":
                 html.esc("brand_val", self.translate("boleto").title())
                 html.esc("expires_in_visibility_val", "display:none;")
-                html.esc("make_default_payement_method_visibility_val", "display:none;")
             full_html.append(str(html))
         return "".join(full_html)
