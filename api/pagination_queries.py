@@ -19,6 +19,11 @@ class PaginationQueries(BackofficePage, PanelPage):
             user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, self.post["page"])
             return {"success": self.list_html_payment_history_rows(user_orders)}
 
+        if self.post["query"] == "query_paginated_all_orders":
+            orders, last_evaluated_key = Dynamo().query_paginated_all_orders(last_evaluated_key, limit=int(self.user.user_pagination_count))
+            html = self.list_html_backoffice_orders_table_rows(orders)
+            new_itens_count = str(len(orders))
+
         if self.post["query"] == "query_paginated_all_orders_from_status":
             if not self.post.get("query_filter"):
                 return {"error": "no query_filter in post"}

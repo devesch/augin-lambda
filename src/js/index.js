@@ -2411,12 +2411,12 @@ export async function loadMoreCallApiPagination() {
     let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
     let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
     let showing_total_count_input = document.getElementById("showing_total_count");
-    let ProgressBar = document.querySelector(".progress-pagination.upload-bar");
+    let progress_bar = document.getElementById("progress_upload_bar_div");
 
     console.log("updating last_evaluated_key with ", pagination_queries_response["last_evaluated_key"]);
     last_evaluated_key_input.value = JSON.stringify(pagination_queries_response["last_evaluated_key"]);
     pagination_actual_itens_count_span.innerHTML = parseInt(pagination_actual_itens_count_span.innerHTML) + parseInt(pagination_queries_response["new_itens_count"])
-    ProgressBar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
+    progress_bar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
     showing_total_count_input.value = pagination_actual_itens_count_span.innerHTML;
 
     if (parseInt(pagination_actual_itens_count_span.innerHTML) == parseInt(pagination_total_itens_count_span.innerHTML)) {
