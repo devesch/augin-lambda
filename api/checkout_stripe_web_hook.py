@@ -35,6 +35,7 @@ class CheckoutStripeWebHook(BasePage):
 
             Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
             if self.post["data"]["object"]["status"] == "succeeded":
+
                 if order["order_type"] == "unique":
                     raise Exception("TODO SINGLE PURCHASE")
                 else:
@@ -88,8 +89,21 @@ class CheckoutStripeWebHook(BasePage):
             Dynamo().update_entity(order, "order_last_error_message", self.post["data"]["object"]["last_payment_error"]["message"])
             return {"success": "Evento payment_intent.payment_failed tratado."}
 
-        raise Exception("TODO")
+        if self.post["type"] == "payment_intent.requires_action":
+            order = Dynamo().get_order(self.post["data"]["object"]["id"])
+            Dynamo().update_entity(order, "order_payment_stripe_boleto_url", self.post["data"]["object"]["next_action"]["boleto_display_details"]["pdf"])
 
+            # stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
+            # self.user = self.load_user(stripe_customer["email"])
+
+            # user_stripe_subscription = StripeController().get_subscription(order["order_payment_stripe_subscription_id"])
+            # user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+            # if user_subscription and (user_subscription.get("subscription_status") == "active") and (user_stripe_subscription.stripe_id != user_subscription["subscription_id"]):
+            #     self.user.cancel_current_subscription()
+            # self.user.update_subscription(order, user_stripe_subscription)
+            return {"success": "Evento payment_intent.requires_action tratado."}
+
+        raise Exception("TODO")
         return {"success": "Evento não tratado."}
 
     def get_user_first_order_from_subscription(self, user_email, subscription_last_order_id):
