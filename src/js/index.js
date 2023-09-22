@@ -214,17 +214,11 @@ export async function showCheckoutPanelUserDataForm(userClientType) {
 }
 
 export async function checkout_check_if_order_is_paid(order_id) {
-    console.log("running checkout_check_if_order_is_paid")
     let checkout_check_if_order_is_paid_response = await apiCaller("checkout_check_if_order_is_paid", {
         "order_id": order_id
-    })
+    });
     if ("success" in checkout_check_if_order_is_paid_response) {
-        console.log("order paid")
-        return true
-    } else {
-        console.log("checking response again...", checkout_check_if_order_is_paid_response)
-        await sleep(3000)
-        checkout_check_if_order_is_paid(order_id)
+        return true;
     }
 }
 

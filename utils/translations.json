@@ -1144,6 +1144,21 @@
         "es": "Disponible anual",
         "pt": "Disponível anual"
     },
+    "Disponível anualmente": {
+        "en": "Available annually",
+        "es": "Disponible anualmente",
+        "pt": "Disponível anualmente"
+    },
+    "Disponível em compras internacionais": {
+        "en": "Available in international purchases",
+        "es": "Disponible en compras internacionales",
+        "pt": "Disponível em compras internacionais"
+    },
+    "Disponível em compras nacionais": {
+        "en": "Available in national purchases",
+        "es": "Disponible en compras nacionales",
+        "pt": "Disponível em compras nacionais"
+    },
     "Disponível em trial": {
         "en": "Available in trial",
         "es": "Disponible en juicio",
@@ -1153,6 +1168,11 @@
         "en": "Available monthly",
         "es": "Disponible mensualmente",
         "pt": "Disponível mensal"
+    },
+    "Disponível mensalmente": {
+        "en": "Available monthly",
+        "es": "Disponible mensualmente",
+        "pt": "Disponível mensalmente"
     },
     "Disponível para compra": {
         "en": "Available for purchase",

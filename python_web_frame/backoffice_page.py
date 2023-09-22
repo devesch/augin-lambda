@@ -11,6 +11,19 @@ class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_coupon_available_plans(self, plans):
+        full_html = []
+        if plans:
+            for index, plan in enumerate(plans):
+                if (plan["plan_name_pt"].lower() == "free") or (plan["plan_is_trial"]):
+                    continue
+                html = ReadWrite().read_html("backoffice_create_coupon/_codes/html_cupon_available_plans")
+                html.esc("index_val", index)
+                html.esc("plan_id_val", plan["plan_id"])
+                html.esc("plan_name_val", plan["plan_name_pt"])
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def list_html_backoffice_orders_table_rows(self, all_orders):
         plan_id_plan = {}
         full_html = []

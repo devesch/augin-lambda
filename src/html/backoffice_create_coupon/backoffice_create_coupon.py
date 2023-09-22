@@ -1,4 +1,5 @@
 ﻿from python_web_frame.backoffice_page import BackofficePage
+from utils.AWS.Dynamo import Dynamo
 
 
 class BackofficeCreateCoupon(BackofficePage):
@@ -13,102 +14,42 @@ class BackofficeCreateCoupon(BackofficePage):
             for attribute, value in self.path["coupon"].items():
                 self.post[attribute] = value
 
-        # if self.post:
-        #     if self.post.get("plan_name_pt"):
-        #         html.esc("plan_name_pt_val", self.post["plan_name_pt"])
-        #     if self.post.get("plan_name_en"):
-        #         html.esc("plan_name_en_val", self.post["plan_name_en"])
-        #     if self.post.get("plan_name_es"):
-        #         html.esc("plan_name_es_val", self.post["plan_name_es"])
+        if self.post:
+            if self.post.get("coupon_name"):
+                html.esc("coupon_name_val", self.post["coupon_name"])
+            if self.post.get("coupon_description"):
+                html.esc("coupon_description_val", self.post["coupon_description"])
+            if self.post.get("coupon_code"):
+                html.esc("coupon_code_val", self.post["coupon_code"])
 
-        #     if self.post.get("plan_description_pt"):
-        #         html.esc("plan_description_pt_val", self.post["plan_description_pt"])
-        #     # if self.post.get("plan_description_en"):
-        #     #     html.esc("plan_description_en_val", self.post["plan_description_en"])
-        #     # if self.post.get("plan_description_es"):
-        #     #     html.esc("plan_description_es_val", self.post["plan_description_es"])
+            if self.post.get("coupon_start_date"):
+                html.esc("coupon_start_date_val", self.post["coupon_start_date"])
+            if self.post.get("coupon_end_date"):
+                html.esc("coupon_end_date_val", self.post["coupon_end_date"])
 
-        #     if self.post.get("plan_available_for_purchase"):
-        #         html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
+            if self.post.get("coupon_discount_type"):
+                html.esc("coupon_discount_type_val", self.post["coupon_discount_type"])
+                html.esc(self.post["coupon_discount_type"] + "_pre_sel_val", "selected='selected'")
 
-        #     if self.post.get("plan_available_annually"):
-        #         html.esc("plan_available_annually_checked_val", "checked='checked'")
-        #     else:
-        #         html.esc("annually_div_visibility_val", "display:none;")
-        #     if self.post.get("plan_price_annually_brl"):
-        #         html.esc("plan_price_annually_brl_val", self.post["plan_price_annually_brl"])
-        #     if self.post.get("plan_price_annually_brl_actual"):
-        #         html.esc("plan_price_annually_brl_actual_val", self.post["plan_price_annually_brl_actual"])
-        #     if self.post.get("plan_price_annually_usd"):
-        #         html.esc("plan_price_annually_usd_val", self.post["plan_price_annually_usd"])
-        #     if self.post.get("plan_price_annually_usd_actual"):
-        #         html.esc("plan_price_annually_usd_actual_val", self.post["plan_price_annually_usd_actual"])
+            if self.post.get("coupon_brl_discount"):
+                html.esc("coupon_brl_discount_val", self.post["coupon_brl_discount"])
+            if self.post.get("coupon_usd_discount"):
+                html.esc("coupon_usd_discount_val", self.post["coupon_usd_discount"])
 
-        #     if self.post.get("plan_annually_card_payment_method"):
-        #         html.esc("plan_annually_card_payment_method_checked_val", "checked='checked'")
-        #     if self.post.get("plan_annually_boleto_payment_method"):
-        #         html.esc("plan_annually_boleto_payment_method_checked_val", "checked='checked'")
-        #     if self.post.get("plan_annually_pix_payment_method"):
-        #         html.esc("plan_annually_pix_payment_method_checked_val", "checked='checked'")
+            if self.post.get("coupon_percentage_discount"):
+                html.esc("coupon_percentage_discount_val", self.post["coupon_percentage_discount"])
 
-        #     if self.post.get("plan_available_monthly"):
-        #         html.esc("plan_available_monthly_checked_val", "checked='checked'")
-        #     else:
-        #         html.esc("monthly_div_visibility_val", "display:none;")
-        #     if self.post.get("plan_price_monthly_brl"):
-        #         html.esc("plan_price_monthly_brl_val", self.post["plan_price_monthly_brl"])
-        #     if self.post.get("plan_price_monthly_brl_actual"):
-        #         html.esc("plan_price_monthly_brl_actual_val", self.post["plan_price_monthly_brl_actual"])
-        #     if self.post.get("plan_price_monthly_usd"):
-        #         html.esc("plan_price_monthly_usd_val", self.post["plan_price_monthly_usd"])
-        #     if self.post.get("plan_price_monthly_usd_actual"):
-        #         html.esc("plan_price_monthly_usd_actual_val", self.post["plan_price_monthly_usd_actual"])
+            if self.post.get("coupon_available_monthly"):
+                html.esc("coupon_available_monthly_checked_val", "checked='checked'")
+            if self.post.get("coupon_available_annually"):
+                html.esc("coupon_available_annually_checked_val", "checked='checked'")
+            if self.post.get("coupon_available_in_brl"):
+                html.esc("coupon_available_in_brl_checked_val", "checked='checked'")
+            if self.post.get("coupon_available_in_usd"):
+                html.esc("coupon_available_in_usd_checked_val", "checked='checked'")
 
-        #     if self.post.get("plan_monthly_card_payment_method"):
-        #         html.esc("plan_monthly_card_payment_method_checked_val", "checked='checked'")
-        #     if self.post.get("plan_monthly_boleto_payment_method"):
-        #         html.esc("plan_monthly_boleto_payment_method_checked_val", "checked='checked'")
-        #     if self.post.get("plan_monthly_pix_payment_method"):
-        #         html.esc("plan_monthly_pix_payment_method_checked_val", "checked='checked'")
-
-        #     if self.post.get("plan_cloud_space_in_mbs"):
-        #         html.esc("plan_cloud_space_in_mbs_val", self.post["plan_cloud_space_in_mbs"])
-        #     if self.post.get("plan_maxium_model_size_in_mbs"):
-        #         html.esc("plan_maxium_model_size_in_mbs_val", self.post["plan_maxium_model_size_in_mbs"])
-        #     if self.post.get("plan_maxium_federated_size_in_mbs"):
-        #         html.esc("plan_maxium_federated_size_in_mbs_val", self.post["plan_maxium_federated_size_in_mbs"])
-        #     if self.post.get("plan_reference_tracker_select"):
-        #         html.esc("plan_reference_tracker_select_val", self.post["plan_reference_tracker_select"])
-        #     if self.post.get("plan_maxium_devices_available"):
-        #         html.esc("plan_maxium_devices_available_val", self.post["plan_maxium_devices_available"])
-        #     if self.post.get("plan_maxium_devices_changes_in_30d"):
-        #         html.esc("plan_maxium_devices_changes_in_30d_val", self.post["plan_maxium_devices_changes_in_30d"])
-        #     if self.post.get("plan_app_can_be_offline_in_days"):
-        #         html.esc("plan_app_can_be_offline_in_days_val", self.post["plan_app_can_be_offline_in_days"])
-
-        #     if self.post.get("plan_has_trial"):
-        #         html.esc("plan_has_trial_checked_val", "checked='checked'")
-        #     else:
-        #         html.esc("trial_div_visibility_val", "display:none;")
-        #     if self.post.get("plan_trial_duration_in_days"):
-        #         html.esc("plan_trial_duration_in_days_val", self.post["plan_trial_duration_in_days"])
-        #     if self.post.get("plan_team_play_participants"):
-        #         html.esc("plan_team_play_participants_val", self.post["plan_team_play_participants"])
-
-        #     if self.post.get("plan_download_files"):
-        #         html.esc("plan_download_files_checked_val", "checked='checked'")
-        #     if self.post.get("plan_share_files"):
-        #         html.esc("plan_share_files_checked_val", "checked='checked'")
-
-        # else:
-        #     html.esc("plan_available_for_purchase_checked_val", "checked='checked'")
-        #     html.esc("plan_available_annually_checked_val", "checked='checked'")
-        #     html.esc("plan_available_monthly_checked_val", "checked='checked'")
-        #     html.esc("plan_has_trial_checked_val", "checked='checked'")
-        #     html.esc("plan_download_files_checked_val", "checked='checked'")
-        #     html.esc("plan_share_files_checked_val", "checked='checked'")
-
-        # html.esc("html_plan_reference_tracker_options", self.list_html_plan_reference_tracker_options())
+        plans = Dynamo().query_entity("plan")
+        html.esc("html_coupon_available_plans", self.list_html_coupon_available_plans(plans))
 
         return str(html)
 

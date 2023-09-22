@@ -2,7 +2,6 @@
 {{menu_backoffice}}
 <main class="my-plan__main">
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
-
         <div class="floating-input">
             <input type="text" name="coupon_name" value="{{coupon_name_val}}" id="coupon_name_input" placeholder="" required autofocus maxlength="500">
             <label for="coupon_name_input">{{Nome}}</label>
@@ -15,7 +14,6 @@
             <input type="text" name="coupon_code" value="{{coupon_code_val}}" id="coupon_code_input" placeholder="" required maxlength="500">
             <label for="coupon_code_input">{{Código}}</label>
         </div>
-
 
         <div class="floating-input">
             <input type="date" name="coupon_start_date" value="{{coupon_start_date_val}}" id="coupon_start_date_input" placeholder="" required maxlength="500">
@@ -49,9 +47,25 @@
                 <label for="coupon_percentage_discount_input">{{Desconto %}}</label>
             </div>
         </div>
+
+        {{html_coupon_available_plans}}
+
+        <input type="checkbox" name="coupon_available_monthly" id="coupon_available_monthly_input" {{coupon_available_monthly_checked_val}}>
+        <label for="coupon_available_monthly_input">{{Disponível mensalmente}}</label>
+
+        <input type="checkbox" name="coupon_available_annually" id="coupon_available_annually_input" {{coupon_available_annually_checked_val}}>
+        <label for="coupon_available_annually_input">{{Disponível anualmente}}</label>
+
+        <input type="checkbox" name="coupon_available_in_brl" id="coupon_available_in_brl_input" {{coupon_available_in_brl_checked_val}}>
+        <label for="coupon_available_in_brl_input">{{Disponível em compras nacionais}}</label>
+
+        <input type="checkbox" name="coupon_available_in_usd" id="coupon_available_in_usd_input" {{coupon_available_in_usd_checked_val}}>
+        <label for="coupon_available_in_usd_input">{{Disponível em compras internacionais}}</label>
+
         <span class="error" style="{{error_msg_visibility_val}}">
             {{error_msg_val}}
         </span>
+
         <div>
             <button type="submit">{{Salvar}}</button>
         </div>
