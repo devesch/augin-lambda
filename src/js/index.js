@@ -2567,24 +2567,24 @@ export async function showCouponDiscountFields() {
     let total_discount_div = document.getElementById("total_discount_div");
     let percentage_discount_div = document.getElementById("percentage_discount_div");
 
-    let coupon_brl_discount = document.getElementById("coupon_brl_discount");
-    let coupon_usd_discount = document.getElementById("coupon_usd_discount");
-    let coupon_percentage_discount = document.getElementById("coupon_percentage_discount");
+    let coupon_brl_discount_input = document.getElementById("coupon_brl_discount_input");
+    let coupon_usd_discount_input = document.getElementById("coupon_usd_discount_input");
+    let coupon_percentage_discount_input = document.getElementById("coupon_percentage_discount_input");
 
     if (coupon_discount_type_select.value == "percentage") {
         total_discount_div.style.display = "none";
         percentage_discount_div.style.display = "";
 
-        coupon_brl_discount.removeAttribute("required");
-        coupon_usd_discount.removeAttribute("required");
-        coupon_percentage_discount.setAttribute("required", "required");
+        coupon_brl_discount_input.removeAttribute("required");
+        coupon_usd_discount_input.removeAttribute("required");
+        coupon_percentage_discount_input.setAttribute("required", "required");
 
     } else if (coupon_discount_type_select.value == "total") {
         total_discount_div.style.display = "";
         percentage_discount_div.style.display = "none";
 
-        coupon_brl_discount.removeAttribute("required", "required");
-        coupon_usd_discount.removeAttribute("required", "required");
-        coupon_percentage_discount.setAttribute("required");
+        coupon_brl_discount_input.removeAttribute("required", "required");
+        coupon_usd_discount_input.removeAttribute("required", "required");
+        coupon_percentage_discount_input.setAttribute("required");
     }
 }
