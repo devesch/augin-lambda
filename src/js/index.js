@@ -2567,14 +2567,25 @@ export async function showCouponDiscountFields() {
     let coupon_brl_discount_input = document.getElementById("coupon_brl_discount_input");
     let coupon_usd_discount_input = document.getElementById("coupon_usd_discount_input");
     let coupon_percentage_discount_input = document.getElementById("coupon_percentage_discount_input");
+    let coupon_brl_discount_label = document.getElementById("coupon_brl_discount_label");
+    let coupon_usd_discount_label = document.getElementById("coupon_usd_discount_label");
+    let coupon_percentage_discount_label = document.getElementById("coupon_percentage_discount_label");
+
 
     if (coupon_discount_type_select.value == "percentage") {
         coupon_brl_discount_input.style.display = "none";
         coupon_usd_discount_input.style.display = "none";
         coupon_percentage_discount_input.style.display = "";
+        coupon_brl_discount_label.style.display = "none";
+        coupon_usd_discount_label.style.display = "none";
+        coupon_percentage_discount_label.style.display = "";
+
     } else if (coupon_discount_type_select.value == "total") {
         coupon_brl_discount_input.style.display = "";
         coupon_usd_discount_input.style.display = "";
         coupon_percentage_discount_input.style.display = "none";
+        coupon_brl_discount_label.style.display = "";
+        coupon_usd_discount_label.style.display = "";
+        coupon_percentage_discount_label.style.display = "none";
     }
 }
