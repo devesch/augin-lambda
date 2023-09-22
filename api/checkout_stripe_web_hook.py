@@ -34,23 +34,25 @@ class CheckoutStripeWebHook(BasePage):
                     order = self.dynamo.get_order(self.user.user_email, "stripe-" + self.post["data"]["object"]["id"])
 
             Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
-            if order["order_type"] == "unique":
-                raise Exception("TODO SINGLE PURCHASE")
-            else:
-                if not user_stripe_subscription:
-                    user_stripe_subscription = StripeController().get_subscription(order["order_payment_stripe_subscription_id"])
-                user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
-                if user_subscription and (user_subscription.get("subscription_status") == "active") and (user_stripe_subscription.stripe_id != user_subscription["subscription_id"]):
-                    self.user.cancel_current_subscription()
-                self.user.update_subscription(order, user_stripe_subscription)
+            if self.post["data"]["object"]["status"] == "succeeded":
+                if order["order_type"] == "unique":
+                    raise Exception("TODO SINGLE PURCHASE")
+                else:
+                    if not user_stripe_subscription:
+                        user_stripe_subscription = StripeController().get_subscription(order["order_payment_stripe_subscription_id"])
+                    user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+                    if user_subscription and (user_subscription.get("subscription_status") == "active") and (user_stripe_subscription.stripe_id != user_subscription["subscription_id"]):
+                        self.user.cancel_current_subscription()
+                    self.user.update_subscription(order, user_stripe_subscription)
 
-            if order["order_user_cart_cupom"]:
-                self.mark_cupom_as_used_and_update_cupom_count(order, self.user.user_email)
-            if order["order_currency"] == "brl":
-                BillingController().generate_bill_of_sale(self.user, order)
-            elif order["order_currency"] == "usd":
-                BillingController().generate_international_pdf_bill_of_sale(order)
-            self.send_payment_success_email(order)
+                if order["order_user_cart_cupom"]:
+                    self.mark_cupom_as_used_and_update_cupom_count(order, self.user.user_email)
+                if order["order_currency"] == "brl":
+                    BillingController().generate_bill_of_sale(self.user, order)
+                elif order["order_currency"] == "usd":
+                    BillingController().generate_international_pdf_bill_of_sale(order)
+                self.send_payment_success_email(order)
+
             return {"success": "Evento payment_intent.succeeded tratado."}
 
         elif self.post["type"] == "charge.succeeded":
