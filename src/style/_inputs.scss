@@ -202,10 +202,10 @@ input[type="checkbox"] + label {
         left: calc($checkbox-width / 1.5);
         width: $checkbox-width;
         height: 0.9rem;
-        transform: rotate(45deg) translate(-50%, -50%);
-        -o-transform: rotate(45deg) translate(-50%, -50%);
-        -ms-transform: rotate(45deg) translate(-50%, -50%);
-        -webkit-transform: rotate(45deg) translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
         border-bottom: 2px solid colors.color("color-success-900");
         border-right: 2px solid colors.color("color-success-900");
     }

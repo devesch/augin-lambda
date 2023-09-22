@@ -1591,13 +1591,17 @@ input[list]::-ms-clear {
         padding: 0;
         width: $checkbox-width;
         height: 1.35rem;
+        transform: rotate(45deg);
     }
 
     input[type="checkbox"]:checked:after {
         width: $checkbox-checked-width;
         height: 0.6rem;
-        left: calc(#{$checkbox-checked-width} / 1.25);
-        top: calc(#{$checkbox-checked-height} / 1.25);
+        // left: calc(#{$checkbox-checked-width} / 1.25);
+        // top: calc(#{$checkbox-checked-height} / 1.25);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
         border-color: colors.color("color-neutral-900");
     }
 
