@@ -199,7 +199,7 @@ input[type="checkbox"] + label {
 
     input[type="checkbox"]:checked::after {
         $checkbox-width: 0.45rem;
-        left: calc($checkbox-width / 2);
+        left: calc($checkbox-width / 1.5);
         width: $checkbox-width;
         height: 0.9rem;
         transform: rotate(45deg) translate(-50%, -50%);
@@ -368,3 +368,4 @@ input[type="checkbox"] + label {
     background-image: url("https://cdn.augin.app/assets/icons/close.svg") !important;
     /* Will place small red box on the right of input (positioning carries over) */
 }
+
