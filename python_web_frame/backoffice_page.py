@@ -37,7 +37,7 @@ class BackofficePage(BasePage):
                 html.esc("order_currency_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
                 html.esc("order_total_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
                 html.esc("order_status_val", translate_order_status(order["order_status"]))
-                if order["order_status"] == "paid" and check_if_order_is_in_refund_time(order["created_at"]):
+                if order["order_status"] == "paid" and order["order_payment_method"] == "card" and check_if_order_is_in_refund_time(order["created_at"]):
                     html.esc("html_refund_order", self.show_html_refund_order(order["order_id"]))
                 html.esc("order_nfse_xml_link_val", order["order_nfse_xml_link"])
                 html.esc("order_nfse_pdf_link_val", order["order_nfse_pdf_link"])

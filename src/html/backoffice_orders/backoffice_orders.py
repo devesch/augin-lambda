@@ -83,6 +83,8 @@ class BackofficeOrders(BackofficePage):
                 return self.render_get_with_error("Nenhuma ordem encontrada com os dados informados.")
             if order["order_status"] != "paid":
                 return self.render_get_with_error("A ordem não se encontra paga para realizar reembolso.")
+            if order["order_status"] != "card":
+                return self.render_get_with_error("Só é possível reembolsar ordens do tipo cartão de crédito.")
             if not check_if_order_is_in_refund_time(order["created_at"]):
                 return self.render_get_with_error("A ordem já excedeu o tempo máximo de pedido de reembolso.")
             refunded_user = self.load_user(order["order_user_id"])

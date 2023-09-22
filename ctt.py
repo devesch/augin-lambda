@@ -12,6 +12,9 @@ payload = payload.replace('"mouseflow"', "'mouseflow'")
 payload = payload.replace('"accepted"', "'accepted'")
 payload = payload.replace('"deny"', "'deny'")
 payload = payload.replace('"data": [n', '"data": [')
+payload = payload.replace('"default_tax_rates": [n', '"default_tax_rates": [')
+payload = payload.replace('"tax_rates": [n', '"tax_rates": [')
+
 
 try:
     payload_splitted = payload.split("body")

@@ -132,6 +132,9 @@ class StripeController:
     def get_stripe_payment_intent(self, payment_intent_id):
         return self.stripe.PaymentIntent.retrieve(payment_intent_id)
 
+    def get_invoice(self, invoice_id):
+        return self.stripe.Invoice.retrieve(invoice_id)
+
     def get_subscription(self, subscription_id):
         return self.stripe.Subscription.retrieve(subscription_id)
 
