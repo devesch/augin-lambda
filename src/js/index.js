@@ -2460,3 +2460,11 @@ export async function submitBackofficeForm(order_id, command) {
     command_input.value = command;
     backoffice_form.submit();
 }
+
+export async function updateUserPaginationCount(select_input) {
+    let update_user_response = await apiCaller('update_user', {
+        "command": "update_user_pagination_count",
+        "user_pagination_count": select_input.value
+    });
+    location.reload();
+}

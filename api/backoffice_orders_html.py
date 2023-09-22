@@ -16,7 +16,7 @@ class BackofficeOrdersHtml(BackofficePage):
             orders = Dynamo().query_user_orders(order_user.user_id)
             return {"success": self.list_html_backoffice_orders_table_rows(orders), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "showing_total_count": len(orders)}
         else:
-            if self.path.get("search_order_status") != "all":
+            if self.post.get("search_order_status") != "all":
                 query = "query_paginated_all_orders_from_status"
                 orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.post["search_order_status"], limit=int(self.user.user_pagination_count))
             else:

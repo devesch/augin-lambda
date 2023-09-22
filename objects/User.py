@@ -57,6 +57,10 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def update_user_pagination_count(self, user_pagination_count):
+        self.user_pagination_count = user_pagination_count
+        Dynamo().update_entity(self.__dict__, "user_pagination_count", self.user_pagination_count)
+
     def active_trial_plan(self, trial_plan):
         user_subscription_id = "trial-" + Generate().generate_short_id()
         user_subscription = UserSubscription(user_subscription_id, self.user_id).__dict__

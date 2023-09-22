@@ -17,6 +17,10 @@ class UpdateUser(BasePage):
 
         return getattr(self, self.post["command"])()
 
+    def update_user_pagination_count(self):
+        self.user.update_user_pagination_count(self.post["user_pagination_count"])
+        return {"success": "Tamanho de página de usuário atualizado"}
+
     def cancel_user_current_subscription(self):
         if not self.user.user_subscription_id:
             return {"error": "O usuário não possui nenhuma subscription_id"}
