@@ -5,7 +5,7 @@ from utils.utils.Validation import Validation
 
 class BackofficeOrdersHtml(BackofficePage):
     def run(self):
-        order_user = self.load_user(self.post["search"])
+        order_user = self.load_user(self.post["search_user"])
         if not order_user:
             return {"success": ""}
         orders = Dynamo().query_user_orders(order_user.user_id)

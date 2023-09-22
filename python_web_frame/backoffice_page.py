@@ -16,6 +16,9 @@ class BackofficePage(BasePage):
         full_html = []
         if all_orders:
             for order in all_orders:
+                if self.post.get("search_order_status"):
+                    if self.post["search_order_status"] != order["order_status"]:
+                        continue
                 html = ReadWrite().read_html("backoffice_orders/_codes/html_backoffice_orders_table_rows")
                 html.esc("order_user_id_val", order["order_user_id"])
                 html.esc("order_short_id_val", generate_order_short_id(order["order_id"]))

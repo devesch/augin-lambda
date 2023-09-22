@@ -2314,9 +2314,6 @@ export async function updatePaginationProgressBar() {
     ProgressBar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
 }
 
-export function refreshLocationHREF(input) {
-    window.location.href = input.value;
-}
 
 
 export async function loadMoreOnScroll(query) {
@@ -2433,10 +2430,14 @@ export async function loadMoreCallApiPagination() {
 }
 
 
-export async function updateBackofficeOrders(input) {
+export async function updateBackofficeOrders() {
+    let search_orders_by_user_input = document.getElementById("search_orders_by_user_input")
+    let search_orders_by_status_select = document.getElementById("search_orders_by_status_select")
     let pagination_component = document.getElementById("pagination_component")
+
     let backoffice_orders_html_response = await apiCaller("backoffice_orders_html", {
-        "search": input.value
+        "search_user": search_orders_by_user_input.value,
+        "search_order_status": search_orders_by_status_select.value
     });
 
     pagination_component.innerHTML = backoffice_orders_html_response["success"];
