@@ -1,0 +1,48 @@
+﻿{{header}}
+{{menu_backoffice}}
+<main class="my-plan__main">
+    <div>
+        <div>
+            <p>{{Cupons}}</p>
+        </div>
+        <div class="">
+            <a href="{{domain_name_url_val}}/backoffice_create_coupon">{{Criar Cupom}}</a>
+        </div>
+        <div>
+            <div>
+                {{html_dropdown_select_user_pagination}}
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>{{Usuário}}</th>
+                        <th>{{Short Cód}}</th>
+                        <th>{{Último erro}}</th>
+                        <th>{{Método}}</th>
+                        <th>{{Datetime}}</th>
+                        <th>{{Tipo}}</th>
+                        <th>{{Cupom}}</th>
+                        <th>{{Créditos}}</th>
+                        <th>{{Moeda}}</th>
+                        <th>{{Valor}}</th>
+                        <th>{{Status}}</th>
+                        <th>Nota Fiscal</th>
+                    </thead>
+                    <tbody id="pagination_component">
+                        {{html_backoffice_cupons_table_rows}}
+                    </tbody>
+                </table>
+            </div>
+            {{html_pagination}}
+        </div>
+    </div>
+</main>
+
+<script>
+    window.onload = async function () {
+        js.index.updatePaginationProgressBar();
+        js.index.loadMoreOnScroll();
+    };
+</script>
+<input id="last_evaluated_key" value='{{last_evaluated_key_val}}' hidden>
+{{footer}}

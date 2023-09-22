@@ -77,6 +77,12 @@ class Dynamo:
             filtered_query = Sort().sort_dict_list(filtered_query, "plan_price_monthly_brl_actual", reverse=False, integer=True)
         return filtered_query
 
+    ### COUPONS ###
+    def query_paginated_all_cupons(self, last_evaluated_key=None, limit=10):
+        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "coupon"}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
+
     ### ORDER ###
     def query_user_orders(self, user_id):
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "order#"}}})
