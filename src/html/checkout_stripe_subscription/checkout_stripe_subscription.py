@@ -52,6 +52,7 @@ class CheckoutStripeSubscription(CheckoutPage):
         html.esc("user_cart_currency_symbol", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
         html.esc("stripe_token_val", stripe_token)
         html.esc("plan_id_val", self.path["plan"]["plan_id"])
+        html.esc("plan_recurrency_val", self.path["plan_recurrency"])
         return str(html)
 
     def render_post(self):
