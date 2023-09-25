@@ -310,7 +310,7 @@ class ModelController:
                     return {"error": "O projeto excede o tamanho máximo de 1Gb."}
                 else:
                     return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."}
-            if os.path.getsize(ifc_location / (10**6)) > user_plan["plan_maxium_model_size_in_mbs"]:
+            if os.path.getsize(ifc_location / (10**6)) > int(user_plan["plan_maxium_model_size_in_mbs"]):
                 if index == 0:
                     return {"error": "O projeto excede o tamanho máximo da suportado pela sua conta."}
                 else:
