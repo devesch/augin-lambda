@@ -94,9 +94,10 @@ class BackofficeCreateCoupon(BackofficePage):
         if not Validation().check_if_valid_url_param(self.post["coupon_code"]):
             return self.render_get_with_error("O código do cupom não pode conter caracteres que não possam ser usados em uma URL")
 
-        coupon_check = Dynamo().get_coupon(self.post["coupon_code"])
-        if coupon_check:
-            return self.render_get_with_error("Já existe um cupom com este código")
+        if not self.path.get("coupon"):
+            coupon_check = Dynamo().get_coupon(self.post["coupon_code"])
+            if coupon_check:
+                return self.render_get_with_error("Já existe um cupom com este código")
 
         if self.post.get("coupon_available_for_limited_time"):
             if not self.post.get("coupon_start_date") or not self.post.get("coupon_end_date"):
