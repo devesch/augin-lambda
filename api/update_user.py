@@ -19,12 +19,30 @@ class UpdateUser(BasePage):
         return getattr(self, self.post["command"])()
 
     def add_coupon_to_user(self):
+        import time
+
         coupon = Dynamo().get_coupon(self.post["coupon_code"])
         if not coupon:
             return {"error": "Nenhum cupom encontrado com este código"}
-
-        if self.user.check_if_already_used_coupom(coupon):
-            return {"error": "Você já utilizou este cupom"}
+        if self.post["plan_recurrency"] not in ("monthly", "annually"):
+            return {"error": "Recorrência inválida para se adicionar cupom"}
+        if self.post["plan_id"] not in coupon["coupons_plans_ids"]:
+            return {"error": "Este cupom não está disponível para este plano"}
+        if self.post["plan_recurrency"] == "monthly" and not coupon["coupon_available_monthly"]:
+            return {"error": "Este cupom não está disponível para a recorrência mensal"}
+        if self.post["plan_recurrency"] == "annually" and not coupon["coupon_available_annually"]:
+            return {"error": "Este cupom não está disponível para a recorrência anual"}
+        if (self.user.user_cart_currency == "brl" and not coupon["coupon_available_in_brl"]) or (self.user.user_cart_currency == "usd" and not coupon["coupon_available_in_usd"]):
+            return {"error": "Este cupom não está disponível para a sua localidade"}
+        if coupon["coupon_has_limited_uses_count"] and (int(coupon["coupon_actual_uses_count"]) >= int(coupon["coupon_maxium_uses_count"])):
+            return {"error": "Este cupom já atingiu a quantidade máxima de utilizações disponíveis"}
+        if coupon["coupon_available_for_limited_time"] and (int(time.time()) < int(coupon["coupon_start_date"] or int(time.time()) > int(coupon["coupon_end_date"]))):
+            return {"error": "Este cupom se encontra fora da data de válidade"}
+        ## TODO
+        # if self.user.check_if_already_used_coupom(coupon):
+        #     return {"error": "Você já utilizou este cupom"}
+        self.user.add_coupon_to_user(coupon["coupon_code"])
+        return {"success": "Cupom adicionado"}
 
     def create_payment_method(self):
         stripe_payment_method = StripeController().get_payment_method(self.post["payment_method_id"])

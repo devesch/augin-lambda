@@ -53,6 +53,9 @@ class CheckoutStripeSubscription(CheckoutPage):
         html.esc("stripe_token_val", stripe_token)
         html.esc("plan_id_val", self.path["plan"]["plan_id"])
         html.esc("plan_recurrency_val", self.path["plan_recurrency"])
+        if self.user.user_cart_coupon_code:
+            html.esc("user_cart_coupon_code_val", self.user.user_cart_coupon_code)
+
         return str(html)
 
     def render_post(self):

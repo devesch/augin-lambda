@@ -34,6 +34,7 @@ class User:
         self.user_credential = ""
         self.user_ip = ""
         self.user_cart_currency = ""
+        self.user_cart_coupon_code = ""
         self.user_dicts = {"folders": [], "files": []}
         self.user_shared_dicts = {"folders": [], "files": []}
         self.user_models_size_in_mbs = "0"
@@ -58,6 +59,13 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def add_coupon_to_user(self, coupon_code):
+        self.user_cart_coupon_code = coupon_code
+        Dynamo().update_entity(self.__dict__, "user_cart_coupon_code", self.user_cart_coupon_code)
+
+    def check_if_already_used_coupom(self):
+        raise Exception("TODO")
 
     def update_user_pagination_count(self, user_pagination_count):
         self.user_pagination_count = user_pagination_count
