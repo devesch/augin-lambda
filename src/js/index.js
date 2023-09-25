@@ -2582,3 +2582,23 @@ export async function showCouponDiscountFields() {
         coupon_percentage_discount_input.removeAttribute("required");
     }
 }
+
+export async function addCouponToUser() {
+    let coupon_code_input = document.getElementById("coupon_code_input");
+    let plan_id_input = document.getElementById("plan_id_input");
+    let plan_recurrency_input = document.getElementById("plan_recurrency_input");
+    let coupon_error_msg_span = document.getElementById("coupon_error_msg_span");
+
+    let update_user_response = await apiCaller('update_user', {
+        "command": "add_coupon_to_user",
+        "coupon_code": coupon_code_input.value,
+        "plan_id": plan_id_input.value,
+        "plan_recurrency": plan_recurrency_input.value,
+    });
+
+    if ("error" in update_user_response) {
+        coupon_error_msg_span.innerHTML = coupon_error_msg_span["error"]
+    } else {
+        coupon_error_msg_span.innerHTML = coupon_error_msg_span["success"]
+    }
+}

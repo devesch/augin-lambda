@@ -18,6 +18,14 @@ class UpdateUser(BasePage):
 
         return getattr(self, self.post["command"])()
 
+    def add_coupon_to_user(self):
+        coupon = Dynamo().get_coupon(self.post["coupon_code"])
+        if not coupon:
+            return {"error": "Nenhum cupom encontrado com este código"}
+
+        if self.user.check_if_already_used_coupom(coupon):
+            return {"error": "Você já utilizou este cupom"}
+
     def create_payment_method(self):
         stripe_payment_method = StripeController().get_payment_method(self.post["payment_method_id"])
         if not stripe_payment_method:
