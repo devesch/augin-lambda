@@ -3,6 +3,7 @@ from python_web_frame.controllers.model_controller import ModelController
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.Date import Date
+from utils.Config import lambda_constants
 import time
 
 
@@ -14,6 +15,11 @@ class PanelCreateProject(PanelPage):
 
     def render_get(self):
         html = super().parse_html()
+        user_plan = self.user.get_user_actual_plan()
+        html.esc("plan_maxium_model_size_in_mbs_val", user_plan["plan_maxium_model_size_in_mbs"])
+        if user_plan["plan_id"] == lambda_constants["free_plan_id"]:
+            html.esc("html_make_an_upgrade_link", self.show_html_make_an_upgrade_link())
+
         self.check_error_msg(html, self.error_msg)
         already_uploaded_models = ModelController().get_already_uploaded_models(self.user)
         if already_uploaded_models:

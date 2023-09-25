@@ -14,6 +14,10 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def show_html_make_an_upgrade_link(self):
+        html = ReadWrite().read_html("panel_create_project/_codes/html_make_an_upgrade_link")
+        return str(html)
+
     def list_html_uploading_models(self, models_not_created):
         full_html = []
         if models_not_created:
