@@ -24,9 +24,6 @@ RUN python3.11 -m pip install --upgrade pip
 RUN python3.11 -m pip install certifi
 
 WORKDIR /opt
-COPY ../requirements.txt /opt/requirements.txt
-RUN sed -i 's/^bpy/#bpy/' requirements.txt
-RUN sed -i 's/^pywin32/#pywin32/' requirements.txt
 
 RUN python3.11 -m pip install -r requirements.txt -t /python
 RUN python3.11 -m pip install signxml -t /python
