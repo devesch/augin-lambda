@@ -13,7 +13,6 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
 
         if self.post["payment_type"] == "subscription":
             plan = Dynamo().get_plan(self.post["plan_id"])
-            raise Exception("TODO")
             try:
                 stripe_request_payload = StripeController().create_subscription(self.user, plan, self.post["plan_recurrency"])
             except:

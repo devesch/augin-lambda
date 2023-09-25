@@ -1,5 +1,4 @@
-from os import environ
-from json import load
+from utils.AWS.Dynamo import Dynamo
 
 
 stripe_token = "pk_test_51KUDNpA9OIVeHB9yQ6ngZSyKDmLUpgaq8iO10XRUy8bfLHzar7vgQ7AdXN6BFSUbTEe8O7DP3hDJ1DxFigcAbGzV00ZtwONkpc"
@@ -128,6 +127,25 @@ class StripeController:
             if plan["plan_monthly_card_payment_method"]:
                 payment_method_types.append("card")
 
+        if user.user_cart_coupon_code:
+            new_subscription_price = None
+            coupom = Dynamo().get_coupon(user.user_cart_coupon_code)
+            if coupom:
+                if coupom["coupon_discount_type"] == "total":
+                    if plan_recurrency == "annually":
+                        if user.user_cart_currency == "brl":
+                            new_subscription_price = int(plan["plan_price_annually_brl"]) - int(coupom["coupon_brl_discount"])
+                        if user.user_cart_currency == "usd":
+                            raise Exception("TODO")
+                    if plan_recurrency == "monthly":
+                        if user.user_cart_currency == "brl":
+                            raise Exception("TODO")
+                        if user.user_cart_currency == "usd":
+                            raise Exception("TODO")
+
+            if new_subscription_price:
+                price_id = self.create_price(plan["plan_id"], user.user_cart_currency, new_subscription_price, self.convert_recurrence_stripe_plan_interval(plan_recurrency))
+
         return self.stripe.Subscription.create(
             customer=user.user_stripe_customer_id,
             items=[
@@ -158,6 +176,12 @@ class StripeController:
             return "monthly"
         if stripe_plan_interval == "year":
             return "annually"
+
+    def convert_recurrence_stripe_plan_interval(self, stripe_plan_interval):
+        if stripe_plan_interval == "monthly":
+            return "month"
+        if stripe_plan_interval == "annually":
+            return "year"
 
     def convert_stripe_status_code_to_status(self, stripe_status_code):
         if str(stripe_status_code) == "incomplete":
