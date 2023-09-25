@@ -197,15 +197,15 @@ input[type="checkbox"] + label {
         position: absolute;
     }
 
+    $checkbox-width: 0.45rem;
     input[type="checkbox"]:checked::after {
-        $checkbox-width: 0.45rem;
-        left: calc($checkbox-width / 1.5);
+        left: calc($checkbox-width / 2);
         width: $checkbox-width;
         height: 0.9rem;
-        transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
+        transform: rotate(45deg) translate(-50%, -50%);
+        -o-transform: rotate(45deg) translate(-50%, -50%);
+        -ms-transform: rotate(45deg) translate(-50%, -50%);
+        -webkit-transform: rotate(45deg) translate(-50%, -50%);
         border-bottom: 2px solid colors.color("color-success-900");
         border-right: 2px solid colors.color("color-success-900");
     }
@@ -368,4 +368,3 @@ input[type="checkbox"] + label {
     background-image: url("https://cdn.augin.app/assets/icons/close.svg") !important;
     /* Will place small red box on the right of input (positioning carries over) */
 }
-
