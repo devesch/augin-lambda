@@ -39,6 +39,16 @@
         "es": "La categoría seleccionada no es válida.",
         "pt": "A categoria selecionada é inválida."
     },
+    "A data de início de vigência deve ser antes da data de término": {
+        "en": "The start date must be before the end date",
+        "es": "La fecha de inicio debe ser antes de la fecha de finalización",
+        "pt": "A data de início de vigência deve ser antes da data de término"
+    },
+    "A duração da recorrência deve ser valor entre 1 e 99": {
+        "en": "The duration of recurrence must be value between 1 and 99",
+        "es": "La duración de la recurrencia debe ser un valor entre 1 y 99",
+        "pt": "A duração da recorrência deve ser valor entre 1 e 99"
+    },
     "A duração do APP offline em dias deve ser um número": {
         "en": "The duration of the offline app on days should be a number",
         "es": "La duración de la aplicación fuera de línea en los días debe ser un número",
@@ -2009,6 +2019,11 @@
         "es": "Jordán",
         "pt": "Jordânia"
     },
+    "Já existe um cupom com este código": {
+        "en": "There is already a coupon with this code",
+        "es": "Ya hay un cupón con este código",
+        "pt": "Já existe um cupom com este código"
+    },
     "Já existe uma conta com este email cadastrado.": {
         "en": "There is already an account with this registered email.",
         "es": "Ya hay una cuenta con este correo electrónico registrado.",
@@ -2708,6 +2723,11 @@
         "en": "The name of the folder cannot contain bars '/'.",
         "es": "El nombre de la carpeta no puede contener barras '/'.",
         "pt": "O nome da pasta não pode conter barras '/'."
+    },
+    "O percentual de desconto deve ser um valor entre 1 e 99": {
+        "en": "The discount percentage must be a value between 1 and 99",
+        "es": "El porcentaje de descuento debe ser un valor entre 1 y 99",
+        "pt": "O percentual de desconto deve ser um valor entre 1 e 99"
     },
     "O preço atual do plano anual em BRL deve ser um número": {
         "en": "The current price of the annual BRL plan must be a number",
@@ -4479,6 +4499,11 @@
         "es": "Islas Aland",
         "pt": "Ilhas Aland"
     },
+    "É informar durante quantos meses de recorrência o cupom será aplicado": {
+        "en": "Is to inform how many months of recurrence the coupon will be applied",
+        "es": "Es informar cuántos meses de recurrencia se aplicará el cupón",
+        "pt": "É informar durante quantos meses de recorrência o cupom será aplicado"
+    },
     "É necessário escolher um arquivo diferente do original para a substitução": {
         "en": "It is necessary to choose a different file from the original for the replacement",
         "es": "Es necesario elegir un archivo diferente del original para el reemplazo",
@@ -4493,6 +4518,31 @@
         "en": "It is necessary to send the files",
         "es": "Es necesario enviar los archivos",
         "pt": "É necessário fazer o envio dos arquivos"
+    },
+    "É necessário informar a quantidade máxima de usos do cupom quando ele está limitado em quantidade": {
+        "en": "It is necessary to inform the maximum amount of coupon uses when it is limited in quantity",
+        "es": "Es necesario informar la cantidad máxima de usos de cupón cuando está limitado en cantidad",
+        "pt": "É necessário informar a quantidade máxima de usos do cupom quando ele está limitado em quantidade"
+    },
+    "É necessário informar o percentual de desconto": {
+        "en": "It is necessary to inform the discount percentage",
+        "es": "Es necesario informar el porcentaje de descuento",
+        "pt": "É necessário informar o percentual de desconto"
+    },
+    "É necessário informar o valor de desconto em R$ e U$ quando o desconto de valor total está ativo": {
+        "en": "It is necessary to inform the discount value of R $ and U $ when the total discount is active",
+        "es": "Es necesario informar el valor de descuento de R $ y u $ cuando el descuento total está activo",
+        "pt": "É necessário informar o valor de desconto em R$ e U$ quando o desconto de valor total está ativo"
+    },
+    "É necessário informar um código": {
+        "en": "It is necessary to inform a code",
+        "es": "Es necesario informar un código",
+        "pt": "É necessário informar um código"
+    },
+    "É necessário informar um nome": {
+        "en": "It is necessary to inform a name",
+        "es": "Es necesario informar un nombre",
+        "pt": "É necessário informar um nome"
     },
     "É necessário informar um nome para o federado": {
         "en": "It is necessary to inform a name for the federate",
@@ -4518,6 +4568,16 @@
         "en": "It is necessary to inform a name for the federated project",
         "es": "Es necesario informar un nombre para el proyecto federado",
         "pt": "É necessário informar um nome para o projeto federado"
+    },
+    "É necessário informar uma data de início e de término quando o cupom for por tempo ilimitado": {
+        "en": "It is necessary to enter a start and end date when the coupon is unlimited time",
+        "es": "Es necesario ingresar una fecha de inicio y finalización cuando el cupón es tiempo ilimitado",
+        "pt": "É necessário informar uma data de início e de término quando o cupom for por tempo ilimitado"
+    },
+    "É necessário informar uma descrição": {
+        "en": "It is necessary to inform a description",
+        "es": "Es necesario informar una descripción",
+        "pt": "É necessário informar uma descrição"
     },
     "É necessário informar uma senha": {
         "en": "It is necessary to enter a password",
