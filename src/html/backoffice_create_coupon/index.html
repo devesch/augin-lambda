@@ -114,5 +114,18 @@
 <script>
     window.onload = () => {
         js.index.showCouponDiscountFields();
+
+        let coupon_brl_discount_input = document.getElementById("coupon_brl_discount_input");
+        let coupon_usd_discount_input = document.getElementById("coupon_usd_discount_input");
+        let coupon_maxium_uses_count_input = document.getElementById("coupon_maxium_uses_count_input");
+        let coupon_percentage_discount_input = document.getElementById("coupon_percentage_discount_input");
+        let coupon_recurrence_months_input = document.getElementById("coupon_recurrence_months_input");
+
+
+        js.index.formatToMoney(coupon_brl_discount_input);
+        js.index.formatToMoney(coupon_usd_discount_input);
+        js.index.formatToNumbers(coupon_maxium_uses_count_input);
+        js.index.formatToPercentage(coupon_percentage_discount_input);
+        js.index.formatToPercentage(coupon_recurrence_months_input);
     };
 </script>
