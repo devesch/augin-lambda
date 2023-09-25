@@ -22,10 +22,20 @@ class BackofficeCreateCoupon(BackofficePage):
             if self.post.get("coupon_code"):
                 html.esc("coupon_code_val", self.post["coupon_code"])
 
+            if self.post.get("coupon_available_for_limited_time"):
+                html.esc("coupon_available_for_limited_time_checked_val", "checked='checked'")
+            else:
+                html.esc("coupon_available_for_limited_time_div_visibility_val", "display:none;")
+
             if self.post.get("coupon_start_date"):
                 html.esc("coupon_start_date_val", self.post["coupon_start_date"])
             if self.post.get("coupon_end_date"):
                 html.esc("coupon_end_date_val", self.post["coupon_end_date"])
+
+            if self.post.get("coupon_has_limited_quantity"):
+                html.esc("coupon_has_limited_quantity_checked_val", "checked='checked'")
+            else:
+                html.esc("coupon_has_limited_quantity_div_visibility_val", "display:none;")
 
             if self.post.get("coupon_discount_type"):
                 html.esc("coupon_discount_type_val", self.post["coupon_discount_type"])

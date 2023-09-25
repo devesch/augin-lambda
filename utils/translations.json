@@ -1179,6 +1179,11 @@
         "es": "Disponible para compra",
         "pt": "Disponível para compra"
     },
+    "Disponível por tempo limitado": {
+        "en": "Limited time available",
+        "es": "Tiempo limitado disponible",
+        "pt": "Disponível por tempo limitado"
+    },
     "Dispositivos": {
         "en": "Devices",
         "es": "Dispositivos",
@@ -2078,6 +2083,11 @@
         "en": "Liechtenstein",
         "es": "Liechtenstein",
         "pt": "Liechtenstein"
+    },
+    "Limitar a quantidade de usos": {
+        "en": "Limit the amount of uses",
+        "es": "Limite la cantidad de usos",
+        "pt": "Limitar a quantidade de usos"
     },
     "Limite de dispositivos": {
         "en": "Device limit",
@@ -3248,6 +3258,21 @@
         "en": "Number of people in Team Play",
         "es": "Número de personas en el juego del equipo",
         "pt": "Quantidade de pessoas no team play"
+    },
+    "Quantidade de usos disponíveis": {
+        "en": "Amount of available uses",
+        "es": "Cantidad de usos disponibles",
+        "pt": "Quantidade de usos disponíveis"
+    },
+    "Quantidade de utilizações": {
+        "en": "Number of uses",
+        "es": "Número de usos",
+        "pt": "Quantidade de utilizações"
+    },
+    "Quantidade total de utilizações": {
+        "en": "Total amount of uses",
+        "es": "Cantidad total de usos",
+        "pt": "Quantidade total de utilizações"
     },
     "Realiza compartilhamentos": {
         "en": "Performs shares",

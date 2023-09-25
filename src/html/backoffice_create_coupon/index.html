@@ -15,13 +15,44 @@
             <label for="coupon_code_input">{{Código}}</label>
         </div>
 
-        <div class="floating-input">
-            <input type="date" name="coupon_start_date" value="{{coupon_start_date_val}}" id="coupon_start_date_input" placeholder="" required maxlength="500">
-            <label for="coupon_start_date_input">{{Inicia em}}</label>
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input onchange="js.index.toogleDiv(this, 'coupon_available_for_limited_time_div')" type="checkbox" name="coupon_available_for_limited_time" id="coupon_available_for_limited_time_input" {{coupon_available_for_limited_time_checked_val}}>
+                <label class="switch" for="coupon_available_for_limited_time_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="coupon_available_for_limited_time_input">{{Disponível por tempo limitado}}</label>
         </div>
-        <div class="floating-input">
-            <input type="date" name="coupon_end_date" value="{{coupon_end_date_val}}" id="coupon_end_date_input" placeholder="" required maxlength="500">
-            <label for="coupon_end_date_input">{{Termina em}}</label>
+
+        <div id="coupon_available_for_limited_time_div" style="{{coupon_available_for_limited_time_div_visibility_val}}">
+            <div class="floating-input">
+                <input type="date" name="coupon_start_date" value="{{coupon_start_date_val}}" id="coupon_start_date_input" placeholder="" maxlength="500">
+                <label for="coupon_start_date_input">{{Inicia em}}</label>
+            </div>
+            <div class="floating-input">
+                <input type="date" name="coupon_end_date" value="{{coupon_end_date_val}}" id="coupon_end_date_input" placeholder="" maxlength="500">
+                <label for="coupon_end_date_input">{{Termina em}}</label>
+            </div>
+        </div>
+
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input onchange="js.index.toogleDiv(this, 'coupon_has_limited_quantity_div')" type="checkbox" name="coupon_has_limited_quantity" id="coupon_has_limited_quantity_input" {{coupon_has_limited_quantity_checked_val}}>
+                <label class="switch" for="coupon_has_limited_quantity_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="coupon_has_limited_quantity_input">{{Limitar a quantidade de usos}}</label>
+        </div>
+
+        <div id="coupon_has_limited_quantity_div" style="{{coupon_has_limited_quantity_div_visibility_val}}">
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToNumbers(this)" name="coupon_total_uses_count" value="{{coupon_total_uses_count_val}}" id="coupon_total_uses_count_input" placeholder="" maxlength="10">
+                <label for="coupon_total_uses_count_input">{{Quantidade total de utilizações}}</label>
+            </div>
         </div>
 
         <div class="floating-input">
@@ -30,6 +61,7 @@
                 <option value="total" {{total_pre_sel_val}}>{{Desconto desconto total}}</option>
             </select>
         </div>
+
 
         <div id="total_discount_div">
             <div class="floating-input">
