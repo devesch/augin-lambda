@@ -100,5 +100,10 @@ class Validation:
     def check_if_br_phone(self, phone):
         return self.check_if_phone(phone, "BR")
 
+    def check_if_valid_url_param(self, param):
+        import urllib.parse
+
+        return param == urllib.parse.quote_plus(param)
+
     def check_if_local_env(self):
         return os.environ.get("AWS_EXECUTION_ENV") is None

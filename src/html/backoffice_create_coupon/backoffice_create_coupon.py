@@ -3,6 +3,7 @@ from objects.Coupon import Coupon
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Date import Date
 from utils.utils.Http import Http
+from utils.utils.Validation import Validation
 
 
 class BackofficeCreateCoupon(BackofficePage):
@@ -16,7 +17,10 @@ class BackofficeCreateCoupon(BackofficePage):
         self.check_error_msg(html, self.error_msg)
         if self.path.get("coupon") and not self.post:
             for attribute, value in self.path["coupon"].items():
-                self.post[attribute] = value
+                if attribute in ["coupon_start_date", "coupon_end_date"]:
+                    self.post[attribute] = Date().format_unixtime_to_html_time(self.path["coupon"][attribute])
+                else:
+                    self.post[attribute] = value
 
         if self.post:
             if self.post.get("coupon_name"):
@@ -87,6 +91,9 @@ class BackofficeCreateCoupon(BackofficePage):
         if not self.post.get("coupon_recurrence_months"):
             return self.render_get_with_error("É informar durante quantos meses de recorrência o cupom será aplicado")
 
+        if not Validation().check_if_valid_url_param(self.post["coupon_code"]):
+            return self.render_get_with_error("O código do cupom não pode conter caracteres que não possam ser usados em uma URL")
+
         coupon_check = Dynamo().get_coupon(self.post["coupon_code"])
         if coupon_check:
             return self.render_get_with_error("Já existe um cupom com este código")
@@ -114,7 +121,10 @@ class BackofficeCreateCoupon(BackofficePage):
             return self.render_get_with_error("A duração da recorrência deve ser valor entre 1 e 99")
 
         if not self.path.get("coupon"):
+            self.increase_backoffice_data_total_count("order")
             coupon = Coupon(self.post["coupon_code"]).__dict__
+        else:
+            coupon = self.path["coupon"]
 
         coupon["coupon_name"] = self.post["coupon_name"]
         coupon["coupon_description"] = self.post["coupon_description"]

@@ -79,7 +79,7 @@ class Dynamo:
 
     ### COUPONS ###
     def get_coupon(self, coupon_code):
-        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#" + coupon_code}, "sk": {"S": "plan#" + coupon_code}}})
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "coupon#" + coupon_code}, "sk": {"S": "coupon#" + coupon_code}}})
 
     def query_paginated_all_coupons(self, last_evaluated_key=None, limit=10):
         key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}

@@ -2719,6 +2719,11 @@
         "es": "O .zip contiene archivos duplicados.",
         "pt": "O .zip contem arquivos duplicados."
     },
+    "O código do cupom não pode conter caracteres que não possam ser usados em uma URL": {
+        "en": "The coupon code cannot contain characters that cannot be used in a URL",
+        "es": "El código de cupón no puede contener caracteres que no se pueden usar en una URL",
+        "pt": "O código do cupom não pode conter caracteres que não possam ser usados em uma URL"
+    },
     "O código postal informado é inválido.": {
         "en": "The informed postal code is invalid.",
         "es": "El código postal informado no es válido.",

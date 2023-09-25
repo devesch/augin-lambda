@@ -47,6 +47,9 @@ class Date:
         t_in_seconds = parsed_t.timestamp()
         return str(round(int(t_in_seconds)))
 
+    def format_unixtime_to_html_time(self, unix_time):
+        return self.format_unixtime(int(float(unix_time)), "%Y-%m-%d")
+
     def format_unixtime(self, unix_time, format_str):
         import datetime
 
