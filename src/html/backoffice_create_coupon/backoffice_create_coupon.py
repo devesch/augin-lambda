@@ -92,7 +92,7 @@ class BackofficeCreateCoupon(BackofficePage):
         if self.post.get("coupon_available_for_limited_time"):
             if not self.post.get("coupon_start_date") or not self.post.get("coupon_end_date"):
                 return self.render_get_with_error("É necessário informar uma data de início e de término quando o cupom for por tempo ilimitado")
-            if Date().format_html_time_to_unixtime(self.post["coupon_start_date"]) > Date().format_html_time_to_unixtime(self.post["coupon_end_date"]):
+            if int(Date().format_html_time_to_unixtime(self.post["coupon_start_date"])) > int(Date().format_html_time_to_unixtime(self.post["coupon_end_date"])):
                 return self.render_get_with_error("A data de início de vigência deve ser antes da data de término")
 
         if self.post.get("coupon_has_limited_uses_count") and not (self.post.get("coupon_maxium_uses_count")):
