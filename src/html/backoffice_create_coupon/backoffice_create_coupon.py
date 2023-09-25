@@ -2,10 +2,11 @@
 from objects.Coupon import Coupon
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Date import Date
+from utils.utils.Http import Http
 
 
 class BackofficeCreateCoupon(BackofficePage):
-    name = "Backoffice - Criar Cupon"
+    name = "Backoffice - Criar Cupom"
     public = False
     bypass = False
     admin = True
@@ -138,4 +139,5 @@ class BackofficeCreateCoupon(BackofficePage):
         coupon["coupon_recurrence_months"] = self.post["coupon_recurrence_months"]
         coupon["coupons_plans_ids"] = self.post["coupons_plans_ids"]
 
-        return self.render_get_with_error("TODO POST")
+        Dynamo().put_entity(coupon)
+        return Http().redirect("backoffice_coupons")
