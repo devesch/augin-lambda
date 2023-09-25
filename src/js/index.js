@@ -2582,3 +2582,19 @@ export async function showCouponDiscountFields() {
         coupon_percentage_discount_input.removeAttribute("required");
     }
 }
+
+export async function addCouponToUser() {
+    let coupon_code = document.getElementById("coupon_code");
+    let coupon_error_msg_span = document.getElementById("coupon_error_msg_span");
+
+    let update_user_response = await apiCaller('update_user', {
+        "command": "add_coupon_to_user",
+        "coupon_code": coupon_code.value
+    });
+
+    if ("error" in update_user_response) {
+        coupon_error_msg_span.innerHTML = coupon_error_msg_span["error"]
+    } else {
+        coupon_error_msg_span.innerHTML = coupon_error_msg_span["success"]
+    }
+}
