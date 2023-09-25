@@ -5,7 +5,7 @@
 <form action="{{domain_name_url_val}}/panel_user_data/?user_client_type=company" method="POST" id="form">
     <div class="box-inputs">
         <div class="input-default floating-input">
-            <input type="email" name="user_email" id="user_email" value="{{user_email_val}}" class="floating" readonly minlength="3" maxlength="255" required>
+            <input type="email" name="user_email" id="user_email" value="{{user_email_val}}" class="floating" readonly minlength="3" maxlength="255" required placeholder="">
             <label for="user_email" class="floating-label">Seu Email</label>
         </div>
         <div class="input-default floating-input">
@@ -13,42 +13,42 @@
             <label for="user_phone" class="floating-label">Seu telefone</label>
         </div>
         <div class="input-default focus floating-input">
-            <input type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" required maxlength="18">
+            <input type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" required maxlength="18" placeholder="">
             <input hidden type="text" name="user_cpf" id="user_cpf" class="floating" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" minlength="14" maxlength="14">
             <label for="user_cnpj" class="floating-label">Seu CNPJ</label>
         </div>
         <div class="page-user__box-user-data__box-inputs__box-adress box-inputs" style="{{box_inputs_style_val}}">
             <div class="input-default floating-input">
-                <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" maxlength="50" minlength="1" readonly>
+                <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" maxlength="50" minlength="1" readonly placeholder="">
                 <label for="user_name" class="floating-label">Seu nome</label>
             </div>
             <div class="input-default focus floating-input">
-                <input type="text" name="user_zip_code" id="user_zip_code" value="{{user_zip_code_val}}" class="floating" readonly>
+                <input type="text" name="user_zip_code" id="user_zip_code" value="{{user_zip_code_val}}" class="floating" readonly placeholder="">
                 <label for="user_zip_code" class="floating-label">Seu CEP</label>
             </div>
             <div class="input-default focus floating-input">
-                <input type="text" name="user_state" id="user_state" class="floating" value="{{user_state_val}}" readonly>
+                <input type="text" name="user_state" id="user_state" class="floating" value="{{user_state_val}}" readonly placeholder="">
                 <label for="user_state" class="floating-label">Estado</label>
             </div>
             <div class="input-default focus floating-input">
-                <input type="text" name="user_city" id="user_city" class="floating" value="{{user_city_val}}" readonly>
+                <input type="text" name="user_city" id="user_city" class="floating" value="{{user_city_val}}" readonly placeholder="">
                 <label for="user_state" class="floating-label">Cidade</label>
             </div>
             <input placeholder="{{Código da Cidade}}" type="text" name="user_city_code" id="user_city_code" value="{{user_city_code_val}}" readonly style="display:none;">
             <div class="input-default focus floating-input">
-                <input type="text" name="user_neighborhood" id="user_neighborhood" class="floating" value="{{user_neighborhood_val}}" readonly>
+                <input type="text" name="user_neighborhood" id="user_neighborhood" class="floating" value="{{user_neighborhood_val}}" readonly placeholder="">
                 <label for="user_neighborhood" class="floating-label">Bairro</label>
             </div>
             <div class="input-default focus floating-input">
-                <input type="text" name="user_street" id="user_street" class="floating" value="{{user_street_val}}" readonly>
+                <input type="text" name="user_street" id="user_street" class="floating" value="{{user_street_val}}" readonly placeholder="">
                 <label for="user_street" class="floating-label">Rua</label>
             </div>
             <div class="input-default focus floating-input">
-                <input type="text" name="user_street_number" id="user_street_number" class="floating" value="{{user_street_number_val}}" readonly>
+                <input type="text" name="user_street_number" id="user_street_number" class="floating" value="{{user_street_number_val}}" readonly placeholder="">
                 <label for="user_street_number" class="floating-label">Número</label>
             </div>
             <div class="input-default focus floating-input">
-                <input type="text" name="user_complement" id="user_complement" class="floating" value="{{user_complement_val}}">
+                <input type="text" name="user_complement" id="user_complement" class="floating" value="{{user_complement_val}}" placeholder="">
                 <label for="user_complement" class="floating-label">Complemento</label>
             </div>
         </div>
