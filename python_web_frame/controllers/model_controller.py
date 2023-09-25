@@ -295,8 +295,10 @@ class ModelController:
 
         response = {"success": {"models_ids": [], "file_formats": {}}}
 
+        user_plan = user.get_user_actual_plan()
         files_hashes = []
         for index, ifc_location in enumerate(ifcs_locations):
+
             file_hash = ReadWrite().get_file_hash(ifc_location)
             if file_hash not in files_hashes:
                 files_hashes.append(file_hash)
@@ -308,6 +310,12 @@ class ModelController:
                     return {"error": "O projeto excede o tamanho máximo de 1Gb."}
                 else:
                     return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."}
+            if os.path.getsize(ifc_location / (10**6)) > user_plan["plan_maxium_model_size_in_mbs"]:
+                if index == 0:
+                    return {"error": "O projeto excede o tamanho máximo da suportado pela sua conta."}
+                else:
+                    return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta."}
+
             if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location) and not self.is_glb_file(ifc_location):
                 return {"error": "Algum arquivo dentro do .zip é inválido."}
             if self.is_ifc_file(ifc_location):

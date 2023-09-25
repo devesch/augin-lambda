@@ -194,6 +194,11 @@
         "es": "Biblioteca",
         "pt": "Algeria"
     },
+    "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta.": {
+        "en": "Some files within .zip exceeds the maximum size of the supported by your account.",
+        "es": "Algunos archivos dentro de .zip exceden el tamaño máximo de la compatible con su cuenta.",
+        "pt": "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta."
+    },
     "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb.": {
         "en": "Some file within .zip exceeds the maximum size of 1GB.",
         "es": "Algunos archivos dentro de .zip excede el tamaño máximo de 1 GB.",
@@ -338,6 +343,11 @@
         "en": "Drag and drop your file (IFC or FBX) here or",
         "es": "Arrastre y suelte su archivo (IFC o FBX) aquí o",
         "pt": "Arraste e solte seu arquivo (IFC ou FBX) aqui ou"
+    },
+    "Arraste e solte seu arquivo (IFC, FBX, GLB ou ZIP) aqui ou": {
+        "en": "Drag and release your file (IFC, FBX, GLB or Zip) here or",
+        "es": "Arrastre y suelte su archivo (IFC, FBX, GLB o ZIP) aquí o",
+        "pt": "Arraste e solte seu arquivo (IFC, FBX, GLB ou ZIP) aqui ou"
     },
     "Aruba": {
         "en": "Aruba",
@@ -2818,6 +2828,11 @@
         "en": "The price of the monthly USD plan should be a number",
         "es": "El precio del plan USD mensual debe ser un número",
         "pt": "O preço do plano mensal em USD deve ser um número"
+    },
+    "O projeto excede o tamanho máximo da suportado pela sua conta.": {
+        "en": "The project exceeds the maximum size of the supported by your account.",
+        "es": "El proyecto excede el tamaño máximo de los compatibles con su cuenta.",
+        "pt": "O projeto excede o tamanho máximo da suportado pela sua conta."
     },
     "O projeto excede o tamanho máximo de 1Gb.": {
         "en": "The project exceeds the maximum size of 1GB.",

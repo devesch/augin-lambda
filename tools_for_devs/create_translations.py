@@ -18,6 +18,8 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "O projeto excede o tamanho máximo da suportado pela sua conta.",
+    "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta.",
     "Incompleta/Expirada",
     "boleto",
     "Incompleta",
