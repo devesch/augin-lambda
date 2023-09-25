@@ -377,3 +377,14 @@ input[type="checkbox"] + label {
     background-image: url("https://cdn.augin.app/assets/icons/close.svg") !important;
     /* Will place small red box on the right of input (positioning carries over) */
 }
+
+.input-default-icon {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+
+    img {
+        vertical-align: middle;
+    }
+
+}
