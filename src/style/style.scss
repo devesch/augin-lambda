@@ -1452,6 +1452,10 @@ input[list]::-ms-clear {
     top: 0.5rem;
     width: max-content;
     z-index: 1;
+
+    a {
+        text-decoration: unset;
+    }
     
     button,
     .button {
