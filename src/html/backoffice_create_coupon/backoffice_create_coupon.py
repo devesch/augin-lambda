@@ -57,6 +57,9 @@ class BackofficeCreateCoupon(BackofficePage):
                 html.esc("coupon_available_in_brl_checked_val", "checked='checked'")
             if self.post.get("coupon_available_in_usd"):
                 html.esc("coupon_available_in_usd_checked_val", "checked='checked'")
+        else:
+            html.esc("coupon_available_for_limited_time_div_visibility_val", "display:none;")
+            html.esc("coupon_has_limited_quantity_div_visibility_val", "display:none;")
 
         plans = Dynamo().query_entity("plan")
         html.esc("html_coupon_available_plans", self.list_html_coupon_available_plans(plans))
@@ -64,6 +67,7 @@ class BackofficeCreateCoupon(BackofficePage):
         return str(html)
 
     def render_post(self):
+        self.post["coupons plans"] = [value for key, value in self.post.items() if key.startswith("coupon_plan_")]
         return self.render_get_with_error("TODO POST")
         # if not self.post.get("plan_name_pt"):
         #     return self.render_get_with_error("É necessárion informar um nome em PT")
