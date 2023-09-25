@@ -86,20 +86,7 @@ def main_lambda_handler(event, context):
 
     if page == "api":
         class_instance = initialize_api_class_instance(event)
-    else:
-        if "error" in path:
-            page = "error"
-        class_instance = initialize_page_class_instance(page)
-        if user and class_instance.bypass:
-            return Http().respond(Http().redirect(""), event)
-        if not user and not class_instance.public:
-            return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você precisa estar logado para acessar esta página')}"), event)
-        if user and user.user_credential != "admin" and class_instance.admin:
-            return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você não possui as credenciais para acessar esta página')}"), event)
-
-    set_instance_attributes(class_instance, event, page, cookie_policy, path, post, lang, user, project_cookies, path.get("error_msg"))
-
-    if page == "api":
+        set_instance_attributes(class_instance, event, page, cookie_policy, path, post, lang, user, project_cookies, path.get("error_msg"))
         response = getattr(class_instance, "run")()
         response["event"] = str(event)
         if response.get("success"):
@@ -112,6 +99,16 @@ def main_lambda_handler(event, context):
                     response["error"] = Code().get_translations()[response["error"]][lang]
         return Http().json_response(response)
     else:
+        if "error" in path:
+            page = "error"
+        class_instance = initialize_page_class_instance(page)
+        if user and class_instance.bypass:
+            return Http().respond(Http().redirect(""), event)
+        if not user and not class_instance.public:
+            return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você precisa estar logado para acessar esta página')}"), event)
+        if user and user.user_credential != "admin" and class_instance.admin:
+            return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você não possui as credenciais para acessar esta página')}"), event)
+        set_instance_attributes(class_instance, event, page, cookie_policy, path, post, lang, user, project_cookies, path.get("error_msg"))
         response = getattr(class_instance, f"render_{method}")()
         return Http().respond(response, event, user)
 
