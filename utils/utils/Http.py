@@ -9,6 +9,36 @@ last_post_event = None
 class Http:
     _instance = None
 
+    dangerous_characters = ("<", ">", "?", ";", "[", "\\", "]", "|")
+    format_to_number_fields = (
+            "user_phone",
+            "user_cpf",
+            "user_cnpj",
+            "user_zip_code",
+            "plan_price_annually_brl_actual",
+            "plan_price_annually_usd_actual",
+            "plan_price_monthly_brl_actual",
+            "plan_price_monthly_usd_actual",
+            "plan_price_annually_brl",
+            "plan_price_annually_usd",
+            "plan_price_monthly_brl",
+            "plan_price_monthly_usd",
+            "plan_cloud_space_in_mbs",
+            "plan_maxium_model_size_in_mbs",
+            "plan_maxium_federated_size_in_mbs",
+            "plan_maxium_devices_available",
+            "plan_maxium_devices_changes_in_30d",
+            "plan_trial_duration_in_days",
+            "plan_app_can_be_offline_in_days",
+            "coupon_maxium_uses_count",
+            "coupon_percentage_discount",
+            "coupon_brl_discount",
+            "coupon_usd_discount",
+            "coupon_recurrence_months",
+    )
+    format_to_letter_fields = ("user_name", "user_complement")
+    acceptable_json_fields = ("last_evaluated_key")
+
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super(Http, cls).__new__(cls, *args, **kwargs)
@@ -112,46 +142,17 @@ class Http:
         return value.replace(dangerous_character, "")
 
     def format_post_data(self, post):
-        dangerous_characters = ["<", ">", "?", ";", "[", "\\", "]", "|"]
-        format_to_number_fields = [
-            "user_phone",
-            "user_cpf",
-            "user_cnpj",
-            "user_zip_code",
-            "plan_price_annually_brl_actual",
-            "plan_price_annually_usd_actual",
-            "plan_price_monthly_brl_actual",
-            "plan_price_monthly_usd_actual",
-            "plan_price_annually_brl",
-            "plan_price_annually_usd",
-            "plan_price_monthly_brl",
-            "plan_price_monthly_usd",
-            "plan_cloud_space_in_mbs",
-            "plan_maxium_model_size_in_mbs",
-            "plan_maxium_federated_size_in_mbs",
-            "plan_maxium_devices_available",
-            "plan_maxium_devices_changes_in_30d",
-            "plan_trial_duration_in_days",
-            "plan_app_can_be_offline_in_days",
-            "coupon_maxium_uses_count",
-            "coupon_percentage_discount",
-            "coupon_brl_discount",
-            "coupon_usd_discount",
-            "coupon_recurrence_months",
-        ]
-        format_to_letter_fields = ["user_name", "user_complement"]
-        acceptable_json_fields = ["last_evaluated_key"]
-        ignore_param = []
+        ignore_param = ()
         if not post:
             return {}
-
+        
         for param, value in post.items():
             if isinstance(value, str):
                 if param not in ignore_param:
-                    for dangerous_character in dangerous_characters:
+                    for dangerous_character in self.dangerous_characters:
                         if dangerous_character in value:
                             post[param] = self.format_post_value_without_dangerous_character(post[param], dangerous_character)
-                        if param not in acceptable_json_fields:
+                        if param not in self.acceptable_json_fields:
                             if Validation().check_if_is_json(value):
                                 post[param] = ""
 
@@ -162,9 +163,9 @@ class Http:
                 post[param] = True
             elif value == "false":
                 post[param] = False
-            elif param in format_to_number_fields:
+            elif param in self.format_to_number_fields:
                 post[param] = StrFormat().format_to_numbers(value)
-            elif param in format_to_letter_fields:
+            elif param in self.format_to_letter_fields:
                 post[param] = StrFormat().format_to_letters(value)
             if param == "user_email":
                 post[param] = post[param].lower()
