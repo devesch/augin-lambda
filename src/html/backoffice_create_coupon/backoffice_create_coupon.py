@@ -12,6 +12,7 @@ class BackofficeCreateCoupon(BackofficePage):
 
     def render_get(self):
         html = super().parse_html()
+        self.check_error_msg(html, self.error_msg)
         if self.path.get("coupon") and not self.post:
             for attribute, value in self.path["coupon"].items():
                 self.post[attribute] = value
