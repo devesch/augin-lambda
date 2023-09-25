@@ -15,8 +15,9 @@ class Event:
         if hasattr(self, "cookies"):
             for cookie in self.cookies:
                 if "__Secure-cookie-policy" in cookie:
-                    if parse_qs(cookie):
-                        return loads(parse_qs(cookie)["__Secure-cookie-policy"][0].replace("'", '"'))
+                    parsed_cookie = parse_qs(cookie)
+                    if parsed_cookie:
+                        return loads(parsed_cookie["__Secure-cookie-policy"][0].replace("'", '"'))
         return {}
 
     def get_referer(self):

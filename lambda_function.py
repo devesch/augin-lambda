@@ -45,7 +45,7 @@ def initialize_user(event):
     user = User()
     user_auth_token = event.get_user_auth_token()
     user.load_information_with_auth_token(user_auth_token)
-    if user.user_status in ["not_created", "pending_password"]:
+    if user.user_status in ("not_created", "pending_password"):
         user = None
         if user:
             user.update_last_login_at()
@@ -69,7 +69,7 @@ def main_lambda_handler(event, context):
     method, page = event.get_method(), event.get_first_param_in_raw_path()
     print(json.dumps(method) + " -> " + str(page) + " -> " + str(event))
 
-    if method not in ["get", "post"]:
+    if method not in ("get", "post"):
         return Http().respond("", event, status_code=405)
     # if page not in ["api", "error", "login", "no_projects_yet", "pending_projects", "processing_projects", "projects_customer", "projects", "project_create", "project_create_upload_file", "user_exit", "user_login", "user_password", "user_password_reset", "user_register", "user_set_auth_token", "user_terms", "webview", "webview_password"]:
     #     return Http().respond("", event)
