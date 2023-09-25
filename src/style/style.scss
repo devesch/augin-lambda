@@ -570,6 +570,7 @@ input[list]::-ms-clear {
     color: colors.color("color-white");
     font-weight: bold;
     font-size: fonts.$font-paragraph-3-size;
+    gap: 0;
 
     a {
         display: flex;
@@ -595,11 +596,14 @@ input[list]::-ms-clear {
         vertical-align: middle;
     }
 
+    li {
+        padding-block: 0.5rem;
+    }
+
     li.active {
         position: relative;
         margin-inline: -2rem;
         padding-inline: 2rem;
-        padding-block: 0.5rem;
         background-color: colors.color("color-neutral-700");
     }
 
