@@ -8,6 +8,7 @@ class BackofficeData:
         self.backoffice_data_total_user_count = "0"
         self.backoffice_data_total_order_count = "0"
         self.backoffice_data_total_model_count = "0"
+        self.backoffice_data_total_coupon_count = "0"
         self.backoffice_data_total_page = {}
         self.created_at = str(time())
         self.entity = "backoffice_data"

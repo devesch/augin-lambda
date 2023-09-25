@@ -11,6 +11,34 @@ class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_backoffice_coupons_table_rows(self, coupons):
+        full_html = []
+        if coupons:
+            for coupon in coupons:
+                html = ReadWrite().read_html("backoffice_coupons/_codes/html_backoffice_coupons_table_rows")
+                html.esc("coupon_name_val", coupon["coupon_name"])
+                html.esc("coupon_code_val", coupon["coupon_code"])
+                html.esc("coupon_description_val", coupon["coupon_description"])
+                html.esc("coupon_available_for_limited_time_val", coupon["coupon_available_for_limited_time"])
+                html.esc("coupon_start_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_start_date"]))
+                html.esc("coupon_end_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_end_date"]))
+                html.esc("coupon_has_limited_uses_count_val", coupon["coupon_has_limited_uses_count"])
+                html.esc("coupon_actual_uses_count_val", coupon["coupon_actual_uses_count"])
+                html.esc("coupon_maxium_uses_count_val", coupon["coupon_maxium_uses_count"])
+                html.esc("coupon_discount_type_val", coupon["coupon_discount_type"])
+                html.esc("coupon_brl_discount_val", coupon["coupon_brl_discount"])
+                html.esc("coupon_usd_discount_val", coupon["coupon_usd_discount"])
+                html.esc("coupon_percentage_discount_val", coupon["coupon_percentage_discount"])
+                html.esc("coupon_recurrence_months_val", coupon["coupon_recurrence_months"])
+                html.esc("coupon_available_monthly_val", coupon["coupon_available_monthly"])
+                html.esc("coupon_available_annually_val", coupon["coupon_available_annually"])
+                html.esc("coupon_available_in_brl_val", coupon["coupon_available_in_brl"])
+                html.esc("coupon_available_in_usd_val", coupon["coupon_available_in_usd"])
+                html.esc("coupons_plans_ids_val", coupon["coupons_plans_ids"])
+                html.esc("created_at_val", Date().format_unixtime_to_br_datetime(coupon["created_at"]))
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def list_html_coupon_available_plans(self, plans):
         full_html = []
         if plans:
