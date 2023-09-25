@@ -19,6 +19,18 @@ class StripeController:
         self.stripe = __import__("stripe")
         self.stripe.api_key = stripe_secret_key
 
+    def attach_payment_method_to_customer(self, customer_id, payment_method_id):
+        return self.stripe.PaymentMethod.attach(payment_method_id, customer=customer_id)
+
+    def get_payment_method(self, payment_method_id):
+        return self.stripe.PaymentMethod.retrieve(payment_method_id)
+
+    def delete_payment_method(self, payment_method_id):
+        return self.stripe.PaymentMethod.detach(payment_method_id)
+
+    def update_subscription_payment_method(self, subscription_id, payment_method_id):
+        return self.stripe.Subscription.modify(subscription_id, default_payment_method=payment_method_id)
+
     def create_customer(self, user):
         name = user.user_name
         phone = user.user_phone
@@ -132,6 +144,9 @@ class StripeController:
     def get_stripe_payment_intent(self, payment_intent_id):
         return self.stripe.PaymentIntent.retrieve(payment_intent_id)
 
+    def get_invoice(self, invoice_id):
+        return self.stripe.Invoice.retrieve(invoice_id)
+
     def get_subscription(self, subscription_id):
         return self.stripe.Subscription.retrieve(subscription_id)
 
@@ -152,7 +167,7 @@ class StripeController:
         if str(stripe_status_code) == "succeeded":
             return "paid"
         else:
-            return "stripe " + str(stripe_status_code)
+            return str(stripe_status_code)
 
     def verify_stripe_signature(self, payload, sig_header):
         try:
@@ -165,5 +180,5 @@ class StripeController:
     def get_stripe_event(self, stripe_event_id):
         return self.stripe.Event.retrieve(stripe_event_id)
 
-    def refunded_stripe_order(self, stripe_charge_id):
+    def refunded_order(self, stripe_charge_id):
         return self.stripe.Refund.create(charge=stripe_charge_id)

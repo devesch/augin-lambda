@@ -6,6 +6,7 @@ from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
 from utils.Config import lambda_constants
 from objects.UserFolder import check_if_folder_movement_is_valid
+from objects.UserPaymentMethod import UserPaymentMethod
 
 
 class UpdateUser(BasePage):
@@ -16,6 +17,52 @@ class UpdateUser(BasePage):
             return {"error": "Nenhum usuário encontrado"}
 
         return getattr(self, self.post["command"])()
+
+    def create_payment_method(self):
+        stripe_payment_method = StripeController().get_payment_method(self.post["payment_method_id"])
+        if not stripe_payment_method:
+            return {"error": "Nenhum método de pagamento encontrado no Stripe com os dados informados"}
+
+        stripe_payment_method = StripeController().attach_payment_method_to_customer(self.user.user_stripe_customer_id, self.post["payment_method_id"])
+
+        payment_method = UserPaymentMethod(self.user.user_id, stripe_payment_method["id"]).__dict__
+        payment_method["payment_method_type"] = stripe_payment_method["type"]
+        payment_method["payment_method_card"] = {}
+        for key, val in stripe_payment_method["card"].items():
+            if type(val) == str or type(val) == int:
+                payment_method["payment_method_card"][key] = str(val)
+
+        Dynamo().put_entity(payment_method)
+        return {"success": "Novo método de pagamento adicionado"}
+
+    def make_default_payment_method(self):
+        payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["payment_method_id"])
+        if not payment_method:
+            return {"error": "Nenhum método de pagamento encontrado com os dados informados"}
+        user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+        if user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]:
+            return {"success": "Não é possível tornar padrão um método de pagamento que já é o padrão"}
+
+        StripeController().update_subscription_payment_method(user_subscription["subscription_id"], payment_method["payment_method_id"])
+        user_subscription["subscription_default_payment_method"] = payment_method["payment_method_id"]
+        Dynamo().update_entity(user_subscription, "subscription_default_payment_method", user_subscription["subscription_default_payment_method"])
+        return {"success": "Método de pagamento da assinatura atual alterado"}
+
+    def delete_payment_method(self):
+        payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["payment_method_id"])
+        if not payment_method:
+            return {"error": "Nenhum método de pagamento encontrado com os dados informados"}
+        user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+        if user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]:
+            return {"error": "Não é possível excluir o método de pagamento padrão da sua assinatura"}
+
+        StripeController().delete_payment_method(payment_method["payment_method_id"])
+        Dynamo().delete_entity(payment_method)
+        return {"success": "Método de pagamento deletado"}
+
+    def update_user_pagination_count(self):
+        self.user.update_user_pagination_count(self.post["user_pagination_count"])
+        return {"success": "Tamanho de página de usuário atualizado"}
 
     def cancel_user_current_subscription(self):
         if not self.user.user_subscription_id:

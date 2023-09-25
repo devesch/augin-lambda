@@ -16,6 +16,7 @@ class BackofficeCreatePlan(BackofficePage):
 
     def render_get(self):
         html = super().parse_html()
+        self.check_error_msg(html, self.error_msg)
         if self.path.get("plan") and not self.post:
             for attribute, value in self.path["plan"].items():
                 self.post[attribute] = value

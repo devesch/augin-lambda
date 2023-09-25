@@ -29,14 +29,14 @@
 {{footer}}
 <script>
     window.onload = async function () {
-        console.log("Running on load");
+        js.index.sleep(3000);
         js.index.openModal('.modal.modal-loader-spinner');
         while (true) {
             if (await js.index.checkout_check_if_order_is_paid('{{order_id_val}}')) {
                 js.index.closeModal('.modal.modal-loader-spinner');
                 break;
             }
-            js.index.sleep(2000);
+            js.index.sleep(3000);
         }
         let success_message_div = document.getElementById("success_message_div");
         success_message_div.style = "";

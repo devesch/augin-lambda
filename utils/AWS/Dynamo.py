@@ -53,7 +53,7 @@ class Dynamo:
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#" + plan_id}, "sk": {"S": "plan#" + plan_id}}})
 
     def get_free_plan(self):
-        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#149765c4adca"}, "sk": {"S": "plan#149765c4adca"}}})
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#" + lambda_constants["free_plan_id"]}, "sk": {"S": "plan#" + lambda_constants["free_plan_id"]}}})
 
     def query_purchasable_plans(self):
         filtered_query = []
@@ -76,6 +76,15 @@ class Dynamo:
         if filtered_query:
             filtered_query = Sort().sort_dict_list(filtered_query, "plan_price_monthly_brl_actual", reverse=False, integer=True)
         return filtered_query
+
+    ### COUPONS ###
+    def get_coupon(self, coupon_code):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "coupon#" + coupon_code}, "sk": {"S": "coupon#" + coupon_code}}})
+
+    def query_paginated_all_coupons(self, last_evaluated_key=None, limit=10):
+        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "coupon"}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
 
     ### ORDER ###
     def query_user_orders(self, user_id):

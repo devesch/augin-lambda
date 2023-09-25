@@ -22,6 +22,7 @@ class PanelUserData(PanelPage, UserPage):
             return Http().redirect("panel_user_data/?user_client_type=" + self.user.user_client_type)
 
         html = super().parse_html()
+        self.check_error_msg(html, self.error_msg)
         if self.user.user_client_type != self.path["user_client_type"]:
             self.user.clear_perdonal_data()
 

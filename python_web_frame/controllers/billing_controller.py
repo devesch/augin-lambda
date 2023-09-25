@@ -1,6 +1,5 @@
 import tempfile
 import signxml
-import os
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from time import time
@@ -94,7 +93,7 @@ class BillingController:
 
         Dynamo().update_entity(order, "order_nfse_status", "canceled")
         Dynamo().update_entity(order, "order_nfse_canceled_at", str(time()))
-        Dynamo().update_entity(order, "order_nfse_xml_link", lambda_constants["img_cdn"] + "/" + self.generate_nfse_canceled_processed_bucket_key(order["order_id"]))
+        Dynamo().update_entity(order, "order_nfse_xml_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_canceled_processed_bucket_key(order["order_id"]))
 
         xml_tree = ET.ElementTree(response_xml)
         xml_tree.write(lambda_constants["tmp_path"] + "cancel_nfe_response.xml")
@@ -103,7 +102,7 @@ class BillingController:
         xml_tree.write(lambda_constants["tmp_path"] + "xml_tree.xml")
         S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_canceled_processed_bucket_key(order["order_id"]), lambda_constants["tmp_path"] + "xml_tree.xml")
         S3().delete_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"], order["order_nfse_created_at"]))
-        self.generate_pdf_bill_of_sale(EncodeDecode().encode_to_b64(order["order_user_email"]), order["order_id"], order["order_nfse_created_at"])
+        self.generate_pdf_bill_of_sale(order["order_id"], order["order_nfse_created_at"])
         return
 
     def generate_bill_of_sale(self, user, order):

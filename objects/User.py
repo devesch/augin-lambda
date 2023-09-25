@@ -26,6 +26,8 @@ class User:
         self.user_password = ""
         self.user_status = "not_created"
         self.user_phone = ""
+        self.user_cpf = ""
+        self.user_cnpj = ""
         self.user_address_data = {"user_country": "BR", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
         self.user_client_type = "physical"  # physical / company / international
         self.user_aggre_with_communication = False
@@ -57,6 +59,10 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def update_user_pagination_count(self, user_pagination_count):
+        self.user_pagination_count = user_pagination_count
+        Dynamo().update_entity(self.__dict__, "user_pagination_count", self.user_pagination_count)
+
     def active_trial_plan(self, trial_plan):
         user_subscription_id = "trial-" + Generate().generate_short_id()
         user_subscription = UserSubscription(user_subscription_id, self.user_id).__dict__
@@ -80,13 +86,18 @@ class User:
         self.user_used_trials.append(trial_plan["plan_id"])
         Dynamo().put_entity(self.__dict__)
 
-    def cancel_current_subscription(self):
+    def cancel_current_subscription(self, valid_until_now=False):
         user_subscription = Dynamo().get_subscription(self.user_subscription_id)
         StripeController().cancel_subscription(self.user_subscription_id)
         stripe_subscription = StripeController().get_subscription(self.user_subscription_id)
         user_subscription["subscription_status"] = stripe_subscription["status"]
         user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])
+        if valid_until_now:
+            user_subscription["subscription_valid_until"] = str(time.time())
         Dynamo().put_entity(user_subscription)
+        if valid_until_now:
+            self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
+            Dynamo().update_entity(self.__dict__, "user_subscription_valid_until", self.user_subscription_valid_until)
         self.user_subscription_status = stripe_subscription["status"]
         Dynamo().update_entity(self.__dict__, "user_subscription_status", self.user_subscription_status)
 
@@ -379,6 +390,7 @@ class User:
 
         if not self.user_payment_ready:
             return False
+
         if not self.user_stripe_customer_id:
             self.user_stripe_customer_id = StripeController().create_customer(self)
         else:

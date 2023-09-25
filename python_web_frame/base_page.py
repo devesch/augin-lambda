@@ -45,6 +45,8 @@ class BasePage:
                 html.esc("footer", self.render_footer(common_changes))
         if "user_url_val" in html.placeholders:
             html.esc("user_url_val", self.event.get_url())
+        if "html_dropdown_select_user_pagination" in html.placeholders:
+            html.esc("html_dropdown_select_user_pagination", self.show_html_dropdown_select_user_pagination(self.user.user_pagination_count))
         return html
 
     def render_header(self, common_changes={}):
@@ -112,6 +114,8 @@ class BasePage:
     def load_user(self, user_email):
         if not "@" in user_email:
             user_email = Dynamo().get_user_email_with_id(user_email)
+        if not user_email:
+            return None
         user = User(user_email)
         user.load_information()
         if user.user_status == "not_created":
@@ -168,4 +172,9 @@ class BasePage:
         html = ReadWrite().read_html("main/_codes/html_trial_plan_promo_thumb")
         html.esc("plan_name_val", trial_plan["plan_name_" + self.lang])
         html.esc("plan_trial_duration_in_days_val", trial_plan["plan_trial_duration_in_days"])
+        return str(html)
+
+    def show_html_dropdown_select_user_pagination(self, user_pagination_count):
+        html = ReadWrite().read_html("main/_codes/html_dropdown_select_user_pagination")
+        html.esc(user_pagination_count + "_presel_val", "selected='selected'")
         return str(html)

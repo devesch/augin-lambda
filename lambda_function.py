@@ -14,19 +14,20 @@ from python_web_frame.verify_path import get_path_data
 
 
 def lambda_handler(event, context):
-    try:
-        return main_lambda_handler(event, context)
-    except Exception as e:
-        event = Event(event)
-        Ses().send_error_email(event, lambda_constants["domain_name"] + event.get_prefix() + " pages lambda", e)
-        lang = event.get_lang() or "pt"
-        page = "error"
+    return main_lambda_handler(event, context)
+    # try:
+    #     return main_lambda_handler(event, context)
+    # except Exception as e:
+    #     event = Event(event)
+    #     Ses().send_error_email(event, lambda_constants["domain_name"] + event.get_prefix() + " pages lambda", e)
+    #     lang = event.get_lang() or "pt"
+    #     page = "error"
 
-        importlib.import_module("src.html." + page + "." + page)
-        class_instance = getattr(getattr(importlib.import_module("src.html." + page), page), StrFormat().format_snakecase_to_camelcase(page))()
+    #     importlib.import_module("src.html." + page + "." + page)
+    #     class_instance = getattr(getattr(importlib.import_module("src.html." + page), page), StrFormat().format_snakecase_to_camelcase(page))()
 
-        set_instance_attributes(class_instance, event, page, None, None, None, lang, user=None, project_cookies=None, error_msg=None)
-        return Http().respond(getattr(class_instance, "render_get")(), event, status_code=201)
+    #     set_instance_attributes(class_instance, event, page, None, None, None, lang, user=None, project_cookies=None, error_msg=None)
+    #     return Http().respond(getattr(class_instance, "render_get")(), event, status_code=201)
 
 
 def set_instance_attributes(class_instance, event, page, cookie_policy, path, post, lang, user, project_cookies, error_msg):
@@ -112,7 +113,8 @@ def main_lambda_handler(event, context):
                     response["error"] = Code().get_translations()[response["error"]][lang]
         return Http().json_response(response)
     else:
-        return Http().respond(getattr(class_instance, f"render_{method}")(), event, user)
+        response = getattr(class_instance, f"render_{method}")()
+        return Http().respond(response, event, user)
 
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:

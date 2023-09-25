@@ -1,19 +1,21 @@
-<div class="pagination" style="{{pagination_visibility_val}}">
-    <p class="count-pagination"> {{Exibindo}}
+<div class="" style="{{pagination_visibility_val}}">
+    <p id="pagination_loading_more_message_p" style="display: none;">
+        {{Carregando mais dados. Aguarde}}<span class="">.</span><span class="">.</span><span class="">.</span>
+    </p>
+    <p id="pagination_itens_count_p"> {{Exibindo}}
         <span id="pagination_actual_itens_count_span">{{itens_actual_count_val}}</span>
-        {{de um total de}}
+        {{de}}
         <span id="pagination_total_itens_count_span">{{itens_total_count_val}}</span>
         {{resultados}}
     </p>
     <div id="progress_upload_bar">
-        <div class="progress-pagination upload-bar">-</div>
+        <div id="progress_upload_bar_div">-</div>
     </div>
-    <div class="load-more-pagination-button-container button-magipix">
-        <button onclick="js.index.loadMoreCallApiPagination()" id="load_more_pagination_button" class="load-more-pagination-button" aria-label="Ver mais">
+    <div>
+        <button onclick="js.index.loadMoreCallApiPagination()" id="load_more_pagination_button" class="">
             {{Ver Mais}}
         </button>
     </div>
-    <input type="hidden" name="last_evaluated_key" id="last_evaluated_key" value='{{last_evaluated_key_val}}'>
     <input type="hidden" name="query" id="query" value="{{query_val}}">
     <input type="hidden" name="query_filter" id="query_filter" value='{{query_filter_val}}'>
     <input type="text" name="showing_total_count" id="showing_total_count" value="{{itens_actual_count_val}}" hidden readonly required>

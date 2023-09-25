@@ -14,6 +14,10 @@ class StrFormat:
             return "Ativa"
         if status == "canceled":
             return "Cancelada"
+        if status == "incomplete":
+            return "Incompleta"
+        if status == "incomplete_expired":
+            return "Incompleta/Expirada"
         else:
             raise Exception("TODO")
 
@@ -25,7 +29,7 @@ class StrFormat:
         if payment_method == "pix":
             return Code().translate("Pix")
         else:
-            raise Exception("TODO")
+            return "-"
 
     def format_recurrency(self, recurrency):
         if recurrency == "monthly":

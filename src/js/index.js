@@ -26,10 +26,17 @@ export function getWebView() {
 
 
 
-export async function showSelectedPaymentPage(button, index) {
-    let payment_history_rows = document.getElementById("payment_history_rows");
-    let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
+export async function showSelectedPaymentPage(index) {
+    let decrease_history_page_button = document.getElementById("decrease_history_page_button");
+    let increase_history_page_button = document.getElementById("increase_history_page_button");
+    let payment_history_pages_count_input = document.getElementById("payment_history_pages_count_input");
 
+
+    let current_button = document.getElementById("payment_history_page_button_" + index);
+    let payment_history_rows = document.getElementById("payment_history_rows");
+    let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
+    let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
+    payment_history_current_page_input.value = index;
 
     let pagination_queries_response = await apiCaller("pagination_queries", {
         "query": "query_paginated_user_orders",
@@ -41,7 +48,18 @@ export async function showSelectedPaymentPage(button, index) {
     for (let payment_history_page_button of payment_history_page_buttons) {
         payment_history_page_button.classList.remove("selected-page")
     }
-    button.classList.add("selected-page");
+    current_button.classList.add("selected-page");
+
+    if (index == payment_history_pages_count_input.value) {
+        increase_history_page_button.classList.add("disabled");
+    } else {
+        increase_history_page_button.classList.remove("disabled");
+    }
+    if (index == "1") {
+        decrease_history_page_button.classList.add("disabled");
+    } else {
+        decrease_history_page_button.classList.remove("disabled");
+    }
 }
 
 
@@ -196,17 +214,11 @@ export async function showCheckoutPanelUserDataForm(userClientType) {
 }
 
 export async function checkout_check_if_order_is_paid(order_id) {
-    console.log("running checkout_check_if_order_is_paid")
     let checkout_check_if_order_is_paid_response = await apiCaller("checkout_check_if_order_is_paid", {
         "order_id": order_id
-    })
+    });
     if ("success" in checkout_check_if_order_is_paid_response) {
-        console.log("order paid")
-        return true
-    } else {
-        console.log("checking response again...", checkout_check_if_order_is_paid_response)
-        await sleep(3000)
-        checkout_check_if_order_is_paid(order_id)
+        return true;
     }
 }
 
@@ -469,6 +481,16 @@ export async function toogleDiv(checkbox_input, div_id) {
         div.style.display = "none";
     }
 }
+
+export async function formatToPercentage(input) {
+    input.value = input.value.replace(/\D/g, "");
+    if (input.value < 1) {
+        input.value = '';
+    } else if (input.value > 99) {
+        input.value = '99';
+    }
+}
+
 
 export async function formatToMoney(input) {
     input.value = input.value.replace(/\D/g, "");
@@ -2270,38 +2292,293 @@ export async function saveCancelSubscription() {
 }
 
 export async function openModalAddPaymentMethod() {
+    stripe_token_input = document.getElementById("stripe_token_input");
+
+    const stripe = Stripe(stripe_token_input.value);
+    const elements = stripe.elements();
+    const card = elements.create('card');
+    card.mount('#card-element');
+    card.addEventListener('change', function (event) {
+        const displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        stripe.createPaymentMethod({
+            type: 'card',
+            card: card
+        }).then(function (result) {
+            if (result.error) {
+                // Inform the user if there was an error.
+                const errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the PaymentMethod ID to your server for further processing.
+                // For this step, you'd typically make an AJAX call to your backend.
+                saveAddPaymentMethod(result.paymentMethod.id);
+            }
+        });
+    });
+
     openModal(".modal.add-payment-method-modal");
 }
 
-export async function saveAddPaymentMethod() {
-    let number_input = document.getElementById("number");
-    let exp_month_input = document.getElementById("exp_month");
-    let exp_year_input = document.getElementById("exp_year");
-    let cvc_input = document.getElementById("cvc");
-
-    const url = 'https://api.stripe.com/v1/payment_methods';
-    const headers = new Headers({
-        'Authorization': 'Bearer sk_test_51KUDNpA9OIVeHB9yBr8fiH7gVUhfggy4zFkJib2maUawYM4tSkRQ64swJwwx4pXFZ4U3O93qPEGRZzWW1agdeBd500ev6Lx5W5',
-        'Content-Type': 'application/x-www-form-urlencoded'
+export async function saveAddPaymentMethod(new_payment_method_id) {
+    let update_user_response = await apiCaller("update_user", {
+        "command": "create_payment_method",
+        "payment_method_id": new_payment_method_id
     });
-    const body = new URLSearchParams({
-        'type': 'card',
-        'card[number]': number_input.value,
-        'card[exp_month]': exp_month_input.value,
-        'card[exp_year]': exp_year_input.value,
-        'card[cvc]': cvc_input.value,
-    }).toString();
 
-    fetch(url, {
-            method: 'POST',
-            headers: headers,
-            body: body
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    location.reload();
+}
+
+
+export async function updatePaginationProgressBar() {
+    let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+    let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+    let progress_bar = document.getElementById("progress_upload_bar_div");
+    progress_bar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
+}
+
+
+
+export async function loadMoreOnScroll(query) {
+    var last_scroll_position = -1;
+    var do_not_call_api = false;
+
+    window.onscroll = async function () {
+        let current_scroll_position = this.scrollY;
+        let last_scroll_position_input = document.getElementById("last_scroll_position");
+        last_scroll_position_input.value = current_scroll_position;
+
+        if (do_not_call_api == false) {
+            do_not_call_api = true;
+            console.log("do no call api");
+            await js.index.sleep(300);
+            console.log("you may call api");
+            do_not_call_api = false;
+        }
+    };
+
+    window.onkeydown = async function (event) {
+        console.log("event ", event);
+        if (event.keyCode == 34) {
+            let current_scroll_position = this.scrollY;
+            let last_scroll_position_input = document.getElementById("last_scroll_position");
+            last_scroll_position_input.value = current_scroll_position;
+
+            if (last_scroll_position != current_scroll_position || last_scroll_position == -1) {
+                console.log("last_scroll_position", last_scroll_position);
+                console.log("current_scroll_position", current_scroll_position);
+                last_scroll_position = current_scroll_position;
+                return
+            }
+            if (do_not_call_api == false) {
+                let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+                let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+                if (pagination_actual_itens_count_span.innerHTML != pagination_total_itens_count_span.innerHTML) {
+                    do_not_call_api = true;
+                    await loadMoreCallApiPagination();
+                    await js.index.sleep(300);
+                    last_scroll_position = -1;
+                    do_not_call_api = false;
+                }
+            }
+        }
+    };
+
+    window.onwheel = async function () {
+        let current_scroll_position = this.scrollY;
+        let last_scroll_position_input = document.getElementById("last_scroll_position");
+        last_scroll_position_input.value = current_scroll_position;
+
+        if (last_scroll_position != current_scroll_position || last_scroll_position == -1) {
+            console.log("last_scroll_position", last_scroll_position);
+            console.log("current_scroll_position", current_scroll_position);
+            last_scroll_position = current_scroll_position;
+            return
+        }
+        if (do_not_call_api == false) {
+            let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+            let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+            if (pagination_actual_itens_count_span.innerHTML != pagination_total_itens_count_span.innerHTML) {
+                do_not_call_api = true;
+                await loadMoreCallApiPagination();
+                await js.index.sleep(300);
+                last_scroll_position = -1;
+                do_not_call_api = false;
+            }
+        }
+    };
+}
+
+
+export async function loadMoreCallApiPagination() {
+    console.log("running loadMorePagination");
+    let loadingPaginationMessage = document.getElementById("pagination_loading_more_message_p");
+    let countPagination = document.getElementById("pagination_itens_count_p");
+    countPagination.style.display = "none";
+    loadingPaginationMessage.style.display = "block";
+
+    let query_filter_input = document.getElementById("query_filter");
+    let query_filter_value = ""
+    if (query_filter_input) {
+        query_filter_value = query_filter_input.value
+    }
+    let last_evaluated_key_input = document.getElementById("last_evaluated_key");
+    let query_input = document.getElementById("query");
+    let pagination_queries_response = await apiCaller("pagination_queries", {
+        "query": query_input.value,
+        "last_evaluated_key": last_evaluated_key_input.value,
+        "query_filter": query_filter_value
+    });
+    let pagination_component = document.getElementById("pagination_component");
+    pagination_component.innerHTML += pagination_queries_response["success"];
+    let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
+    let pagination_total_itens_count_span = document.getElementById("pagination_total_itens_count_span");
+    let showing_total_count_input = document.getElementById("showing_total_count");
+    let progress_bar = document.getElementById("progress_upload_bar_div");
+
+    console.log("updating last_evaluated_key with ", pagination_queries_response["last_evaluated_key"]);
+    last_evaluated_key_input.value = JSON.stringify(pagination_queries_response["last_evaluated_key"]);
+    pagination_actual_itens_count_span.innerHTML = parseInt(pagination_actual_itens_count_span.innerHTML) + parseInt(pagination_queries_response["new_itens_count"])
+    progress_bar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
+    showing_total_count_input.value = pagination_actual_itens_count_span.innerHTML;
+
+    if (parseInt(pagination_actual_itens_count_span.innerHTML) == parseInt(pagination_total_itens_count_span.innerHTML)) {
+        let load_more_pagination_button = document.getElementById("load_more_pagination_button");
+        load_more_pagination_button.style.display = "none";
+    }
+
+    countPagination.style.display = "block";
+    loadingPaginationMessage.style.display = "none";
+
+}
+
+
+export async function updateBackofficeOrders() {
+    let search_orders_by_user_input = document.getElementById("search_orders_by_user_input")
+    let search_orders_by_status_select = document.getElementById("search_orders_by_status_select")
+    let pagination_component = document.getElementById("pagination_component")
+
+    let last_evaluated_key = document.getElementById("last_evaluated_key")
+    let query = document.getElementById("query")
+    let query_filter = document.getElementById("query_filter")
+    let showing_total_count = document.getElementById("showing_total_count")
+
+    let backoffice_orders_html_response = await apiCaller("backoffice_orders_html", {
+        "search_user": search_orders_by_user_input.value,
+        "search_order_status": search_orders_by_status_select.value
+    });
+
+    pagination_component.innerHTML = backoffice_orders_html_response["success"];
+    last_evaluated_key.value = backoffice_orders_html_response["last_evaluated_key"];
+    query.value = backoffice_orders_html_response["query"];
+    query_filter.value = backoffice_orders_html_response["query_filter"];
+    showing_total_count.value = backoffice_orders_html_response["showing_total_count"];
+}
+
+
+export async function submitBackofficeForm(order_id, command) {
+    var backoffice_form = document.getElementById("backoffice_form");
+    var order_id_input = document.getElementById("order_id");
+    var command_input = document.getElementById("command");
+
+    order_id_input.value = order_id;
+    command_input.value = command;
+    backoffice_form.submit();
+}
+
+export async function updateUserPaginationCount(select_input) {
+    let update_user_response = await apiCaller('update_user', {
+        "command": "update_user_pagination_count",
+        "user_pagination_count": select_input.value
+    });
+    location.reload();
+}
+export async function openModalDeletePaymentMethod(payment_method_id) {
+    let delete_payment_method_input = document.getElementById("delete_payment_method_input");
+    let delete_payment_method_error_span = document.getElementById("delete_payment_method_error_span");
+    delete_payment_method_error_span.innerHTML = "";
+    delete_payment_method_input.value = payment_method_id;
+    openModal('.modal.delete-payment-method-modal')
+}
+
+export async function saveDeletePaymentMethod() {
+    let delete_payment_method_input = document.getElementById("delete_payment_method_input");
+    let delete_payment_method_error_span = document.getElementById("delete_payment_method_error_span");
+
+    let update_user_response = await apiCaller('update_user', {
+        "command": "delete_payment_method",
+        "payment_method_id": delete_payment_method_input.value
+    });
+
+    if ("error" in update_user_response) {
+        delete_payment_method_error_span.innerHTML = update_user_response["error"];
+    } else {
+        location.reload()
+    }
+}
+
+
+export async function saveMakeDefaultPaymentMethod(payment_method_id) {
+    let update_user_response = await apiCaller('update_user', {
+        "command": "make_default_payment_method",
+        "payment_method_id": payment_method_id
+    });
+
+    if ("error" in update_user_response) {
+        return
+    } else {
+        location.reload()
+    }
+}
+
+export async function changePaymentHistoryPage(signal) {
+    let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
+    let payment_history_pages_count_input = document.getElementById("payment_history_pages_count_input");
+
+    if (signal == "increase") {
+        if (parseInt(payment_history_current_page_input.value) < parseInt(payment_history_pages_count_input.value)) {
+            payment_history_current_page_input.value = parseInt(payment_history_current_page_input.value) + 1
+        }
+    } else if (signal == "decrease") {
+        if (parseInt(payment_history_current_page_input.value) > 1) {
+            payment_history_current_page_input.value = parseInt(payment_history_current_page_input.value) - 1
+        }
+    }
+    showSelectedPaymentPage(payment_history_current_page_input.value)
+}
+
+export async function showCouponDiscountFields() {
+    let coupon_discount_type_select = document.getElementById("coupon_discount_type_select");
+    let total_discount_div = document.getElementById("total_discount_div");
+    let percentage_discount_div = document.getElementById("percentage_discount_div");
+
+    let coupon_brl_discount_input = document.getElementById("coupon_brl_discount_input");
+    let coupon_usd_discount_input = document.getElementById("coupon_usd_discount_input");
+    let coupon_percentage_discount_input = document.getElementById("coupon_percentage_discount_input");
+
+    if (coupon_discount_type_select.value == "percentage") {
+        total_discount_div.style.display = "none";
+        percentage_discount_div.style.display = "";
+
+        coupon_brl_discount_input.removeAttribute("required");
+        coupon_usd_discount_input.removeAttribute("required");
+        coupon_percentage_discount_input.setAttribute("required", "required");
+
+    } else if (coupon_discount_type_select.value == "total") {
+        total_discount_div.style.display = "";
+        percentage_discount_div.style.display = "none";
+
+        coupon_brl_discount_input.setAttribute("required", "required");
+        coupon_usd_discount_input.setAttribute("required", "required");
+        coupon_percentage_discount_input.removeAttribute("required");
+    }
 }

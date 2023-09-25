@@ -8,7 +8,7 @@
                 <option value="" selected>{{Todos}}</option>
                 {{html_project_filter_options}}
             </select>
-            <input oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search">
+            <input oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search">
         </section>
         <div class="my-plan__title-container__button-container">
             <button class="black my-plan__title-container__button">
@@ -31,7 +31,7 @@
         <div class="explore__table-container__title-container relative">
             <div class="explore__table-container__button-container">
                 <button id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
-                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}"/>
+                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}" />
                 </button>
                 <button onclick="js.index.openFolder('', '')" class="button--user-folders">
                     <h2>{{Meus projetos}}</h2>
@@ -71,17 +71,17 @@
                 <tr>
                     <th colspan="1">
                         <button onclick="js.index.sortProjectsBy('model_name')" class="button--user-folders">
-                            {{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                            {{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                         </button>
                     </th>
                     <th colspan="1">
                         <button onclick="js.index.sortProjectsBy('created_at')" class="button--user-folders">
-                            {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                            {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                         </button>
                     </th>
                     <th colspan="2">
                         <button onclick="js.index.sortProjectsBy('model_filesize')" class="button--user-folders">
-                            {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24"/>
+                            {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                         </button>
                     </th>
                 </tr>
@@ -120,11 +120,11 @@
         </div>
         <div class="modal-content">
             <div>
-                <table class="federate__table">
+                <table class="modal-explore__table">
                     <input hidden id="create_federated_modal_folder_id">
                     <thead>
                         <tr>
-                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalCreateFederated()" id="create_federated_modal_return_folder_span">
+                            <th onclick="js.index.refreshCreateFederatedModal('')">{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalCreateFederated()" id="create_federated_modal_return_folder_span">
                                     <-</span> <span id="create_federated_modal_folder_path_span">
                                 </span></th>
                         </tr>
@@ -313,11 +313,11 @@
         </div>
         <div class="modal-content">
             <div>
-                <table class="explore__table">
+                <table class="modal-explore__table">
                     <input hidden id="update_modal_folder_id">
                     <thead>
                         <tr>
-                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalUpdate()" id="update_modal_return_folder_span">
+                            <th onclick="js.index.refreshUpdateModal('')">{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalUpdate()" id="update_modal_return_folder_span">
                                     <-</span> <span id="update_modal_folder_path_span">
                                 </span></th>
                         </tr>
@@ -368,84 +368,84 @@
         <div class="modal-content">
             <ul class="select-category-list">
                 <li>
-                    <input type="radio" name="select_category" value="air_conditioning" id="air_conditioning">
+                    <input type="radio" name="select_category" value="air_conditioning" id="air_conditioning" tabindex="0">
                     <label for="air_conditioning">
                         <img src="{{cdn_val}}/assets/icons/air_conditioning_category.svg" alt="" width="24" height="24">
                         <p>{{Ar condicionado}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="hydraulics" id="hydraulics">
+                    <input type="radio" name="select_category" value="hydraulics" id="hydraulics" tabindex="0">
                     <label for="hydraulics">
                         <img src="{{cdn_val}}/assets/icons/hydraulics_category.svg" alt="" width="24" height="24">
                         <p>{{Hidrosanitário}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="architecture" id="architecture">
+                    <input type="radio" name="select_category" value="architecture" id="architecture" tabindex="0">
                     <label for="architecture">
                         <img src="{{cdn_val}}/assets/icons/architecture_category.svg" alt="" width="24" height="24">
                         <p>{{Arquitetura}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="fire" id="fire">
+                    <input type="radio" name="select_category" value="fire" id="fire" tabindex="0">
                     <label for="fire">
                         <img src="{{cdn_val}}/assets/icons/fire_category.svg" alt="" width="24" height="24">
                         <p>{{Incêndio}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="electric" id="electric">
+                    <input type="radio" name="select_category" value="electric" id="electric" tabindex="0">
                     <label for="electric">
                         <img src="{{cdn_val}}/assets/icons/electric_category.svg" alt="" width="24" height="24">
                         <p>{{Elétrica}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="infrastructure" id="infrastructure">
+                    <input type="radio" name="select_category" value="infrastructure" id="infrastructure" tabindex="0">
                     <label for="infrastructure">
                         <img src="{{cdn_val}}/assets/icons/infrastructure_category.svg" alt="" width="24" height="24">
                         <p>{{Infraestrutura}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="structural" id="structural">
+                    <input type="radio" name="select_category" value="structural" id="structural" tabindex="0">
                     <label for="structural">
                         <img src="{{cdn_val}}/assets/icons/structural_category.svg" alt="" width="24" height="24">
                         <p>{{Estrutural}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="interiors" id="interiors">
+                    <input type="radio" name="select_category" value="interiors" id="interiors" tabindex="0">
                     <label for="interiors">
                         <img src="{{cdn_val}}/assets/icons/interiors_category.svg" alt="" width="24" height="24">
                         <p>{{Interiores}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="executive" id="executive">
+                    <input type="radio" name="select_category" value="executive" id="executive" tabindex="0">
                     <label for="executive">
                         <img src="{{cdn_val}}/assets/icons/executive_category.svg" alt="" width="24" height="24">
                         <p>{{Executivo}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="federated" id="federated">
+                    <input type="radio" name="select_category" value="federated" id="federated" tabindex="0">
                     <label for="federated">
                         <img src="{{cdn_val}}/assets/icons/federated_category.svg" alt="" width="24" height="24">
                         <p>{{Projetos federado}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="gas" id="gas">
+                    <input type="radio" name="select_category" value="gas" id="gas" tabindex="0">
                     <label for="gas">
                         <img src="{{cdn_val}}/assets/icons/gas_category.svg" alt="" width="24" height="24">
                         <p>{{Gás}}</p>
                     </label>
                 </li>
                 <li>
-                    <input type="radio" name="select_category" value="others" id="others">
+                    <input type="radio" name="select_category" value="others" id="others" tabindex="0">
                     <label for="others">
                         <img src="{{cdn_val}}/assets/icons/others_category.svg" alt="" width="24" height="24">
                         <p>{{Outros}}</p>
@@ -568,13 +568,19 @@
         </div>
         <div class="modal-content">
             <div>
-                <table class="explore__table">
+                <table class="modal-explore__table">
                     <input hidden id="move_modal_folder_id">
                     <thead>
                         <tr>
-                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span">
-                                    <-</span> <span id="move_modal_folder_path_span">
-                                </span></th>
+                            <th>
+                                <div class="explore__table-container__button-container">
+                                    <button onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span">
+                                        <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
+                                    </button>
+                                    <span onclick="js.index.refreshMoveModal('')" class="ml-05">{{Meus Projetos}}</span>
+                                    <span id="move_modal_folder_path_span"></span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="move_model_user_folder_rows_tbody">
@@ -601,14 +607,18 @@
         </div>
         <div class="modal-content">
             <div>
-                <table class="explore__table">
+                <table class="modal-explore__table">
                     <input hidden id="move_folder_modal_folder_id">
                     <thead>
-                        <tr>
-                            <th>{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalMoveFolder()" id="move_folder_modal_return_folder_span">
-                                    <-</span> <span id="move_folder_modal_folder_path_span">
-                                </span></th>
-                        </tr>
+                        <th>
+                            <div class="explore__table-container__button-container">
+                                <button onclick="js.index.openReturnFolderModalMoveFolder()" id="move_folder_modal_return_folder_span">
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
+                                </button>
+                                <span onclick="js.index.refreshMoveFolderModal('')" class="ml-05">{{Meus Projetos}}</span>
+                                <span id="move_folder_modal_folder_path_span"></span>
+                            </div>
+                        </th>
                     </thead>
                     <tbody id="move_folder_model_user_folder_rows_tbody">
                         {{html_move_folder_model_user_folder_rows}}

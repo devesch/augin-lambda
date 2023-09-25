@@ -173,6 +173,12 @@ def upload_lambda():
     clean_json_in_folder(dest_folder + "utils/")
     shutil.copy(root_folder + "lambda_function.py", dest_folder + "lambda_function.py")
     shutil.copy(root_folder + "xml_binary.py", dest_folder + "xml_binary.py")
+    shutil.copy(root_folder + "libxslt.so.1", dest_folder + "libxslt.so.1")
+    shutil.copy(root_folder + "libexslt.so.0", dest_folder + "libexslt.so.0")
+    shutil.copy(root_folder + "libxml2.so.2", dest_folder + "libxml2.so.2")
+    shutil.copy(root_folder + "libgcrypt.so.11", dest_folder + "libgcrypt.so.11")
+    shutil.copy(root_folder + "libgpg-error.so.0", dest_folder + "libgpg-error.so.0")
+
     shutil.make_archive(upload_project_folder + "/archive", "zip", dest_folder)
     f = open(upload_project_folder + "/archive.zip", "rb")
     lambda_client = client("lambda", region_name=lambda_constants["region"])
@@ -293,8 +299,8 @@ def run():
 
     update_lambda_thread = run_threaded(lambda: upload_lambda())
 
-    if assets_change:
-        # if assets_change and not "eugen" in root_folder:
+    # if assets_change:
+    if assets_change and not "eugen" in root_folder:
         process_delete_web_view = subprocess.Popen("aws s3 rm s3://" + lambda_constants["cdn_bucket"] + "/assets/web_view --recursive", shell=True)
         process_delete_fonts = subprocess.Popen("aws s3 rm s3://" + lambda_constants["cdn_bucket"] + "/assets/fonts --recursive", shell=True)
         process_delete_icons = subprocess.Popen("aws s3 rm s3://" + lambda_constants["cdn_bucket"] + "/assets/icons --recursive", shell=True)

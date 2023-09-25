@@ -1,4 +1,5 @@
 from python_web_frame.panel_page import PanelPage
+from python_web_frame.controllers.stripe_controller import stripe_token
 from objects.Plan import translate_reference_tracker
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
@@ -44,12 +45,7 @@ class PanelYourPlan(PanelPage):
             html.esc("plan_team_play_val", self.translate("Não"))
 
         if not user_subscription:
-            html.esc("html_user_has_no_subscription", self.show_html_user_has_no_subscription())
-            html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
-            html.esc("user_subscription_status_val", "-")
-            html.esc("user_subscription_price_val", "-")
-            html.esc("user_subscription_recurrency_val", "-")
-            html.esc("user_subscription_valid_until_val", "-")
+            html.esc("html_user_has_no_subscription", self.show_html_user_has_no_subscription(user_plan))
             html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
         else:
             if user_subscription["subscription_is_trial"]:
@@ -78,6 +74,8 @@ class PanelYourPlan(PanelPage):
         user_payment_methods = Dynamo().query_user_payment_methods(self.user.user_id)
         if user_payment_methods:
             html.esc("html_payment_methods_div", self.show_html_payment_methods_div(user_payment_methods, user_subscription))
+
+        html.esc("stripe_token_val", stripe_token)
         return str(html)
 
     def render_post(self):
@@ -85,6 +83,14 @@ class PanelYourPlan(PanelPage):
 
     def show_html_cancel_subscription_button(self):
         html = ReadWrite().read_html("panel_your_plan/_codes/html_cancel_subscription_button")
+        return str(html)
+
+    def show_html_user_has_no_subscription(self, user_plan):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_user_has_no_subscription")
+        html.esc("plan_name_val", user_plan["plan_name_" + self.lang])
+        html.esc("user_subscription_status_val", "-")
+        html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
+        html.esc("user_subscription_price_val", StrFormat().format_to_money("0000", self.user.user_cart_currency))
         return str(html)
 
     def show_html_user_subscription(self, user_subscription, user_plan):
@@ -95,8 +101,12 @@ class PanelYourPlan(PanelPage):
         html.esc("user_subscription_price_val", StrFormat().format_to_money(user_subscription["subscription_price"], user_subscription["subscription_currency"]))
         html.esc("user_subscription_recurrency_val", StrFormat().format_recurrency(user_subscription["subscription_recurrency"]).title())
         html.esc("user_subscription_valid_until_val", Date().format_to_str_time(user_subscription["subscription_valid_until"]))
-        subscription_payment_method = Dynamo().get_payment_method(self.user.user_id, user_subscription["subscription_default_payment_method"])
-        html.esc("user_subscription_payment_method_val", StrFormat().format_to_payment_method(subscription_payment_method["payment_method_type"]))
+        if user_subscription["subscription_default_payment_method"]:
+            subscription_payment_method = Dynamo().get_payment_method(self.user.user_id, user_subscription["subscription_default_payment_method"])
+            html.esc("user_subscription_payment_method_val", StrFormat().format_to_payment_method(subscription_payment_method["payment_method_type"]))
+        else:
+            html.esc("user_subscription_payment_method_val", "-")
+
         if user_subscription["subscription_status"] == "active":
             html.esc("user_subscription_valid_until_visibility_val", "display:none;")
         else:

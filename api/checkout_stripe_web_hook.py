@@ -9,6 +9,7 @@ from utils.AWS.Ses import Ses
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.utils.EncodeDecode import EncodeDecode
+import time
 
 
 class CheckoutStripeWebHook(BasePage):
@@ -18,22 +19,26 @@ class CheckoutStripeWebHook(BasePage):
             if not verified_stripe_event:
                 return {"error": "Evento não verificado pelo stripe."}
 
-        if self.post["type"] == "payment_intent.succeeded":
-            stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
-            self.user = self.load_user(stripe_customer["email"])
-            order = Dynamo().get_order(self.post["data"]["object"]["id"])
-            user_stripe_subscription = None
-            if not order and self.post["data"]["object"]["description"] == "Subscription update":
-                raise Exception("TODO")
-                self.utils.send_payload_email(self.event, "AUGIN SUBSCRIPTION STRIPE PAYMENT")
-                if self.user.user_subscription:  ### TODO MAKE MORE CHECKS TO MAKE SURE SUBSCRIPTION UPDATE IS FROM THE SAME SUB_ID, CHECK WHEN CHARGE ID COMES
-                    user_stripe_subscription = StripeController().get_stripe_subscription(self.user.user_subscription["subscription_stripe_id"])
-                    user_first_order_from_subscription = self.get_user_first_order_from_subscription(self.user.user_email, self.user.user_subscription["subscription_last_order_id"])
-                    product_subscription = self.user.user_subscription["subscription_product"]
-                    self.create_order_from_subscription_update(self.user, user_stripe_subscription, self.post["data"]["object"], user_first_order_from_subscription)
-                    order = self.dynamo.get_order(self.user.user_email, "stripe-" + self.post["data"]["object"]["id"])
+        return getattr(self, self.post["type"].replace(".", "_"))()
 
-            Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
+    def payment_intent_succeeded(self):
+        stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
+        self.user = self.load_user(stripe_customer["email"])
+        order = Dynamo().get_order(self.post["data"]["object"]["id"])
+        user_stripe_subscription = None
+        if not order and self.post["data"]["object"]["description"] == "Subscription update":
+            raise Exception("TODO")
+            self.utils.send_payload_email(self.event, "AUGIN SUBSCRIPTION STRIPE PAYMENT")
+            if self.user.user_subscription:  ### TODO MAKE MORE CHECKS TO MAKE SURE SUBSCRIPTION UPDATE IS FROM THE SAME SUB_ID, CHECK WHEN CHARGE ID COMES
+                user_stripe_subscription = StripeController().get_stripe_subscription(self.user.user_subscription["subscription_stripe_id"])
+                user_first_order_from_subscription = self.get_user_first_order_from_subscription(self.user.user_email, self.user.user_subscription["subscription_last_order_id"])
+                product_subscription = self.user.user_subscription["subscription_product"]
+                self.create_order_from_subscription_update(self.user, user_stripe_subscription, self.post["data"]["object"], user_first_order_from_subscription)
+                order = self.dynamo.get_order(self.user.user_email, "stripe-" + self.post["data"]["object"]["id"])
+
+        Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
+        if self.post["data"]["object"]["status"] == "succeeded":
+
             if order["order_type"] == "unique":
                 raise Exception("TODO SINGLE PURCHASE")
             else:
@@ -51,32 +56,58 @@ class CheckoutStripeWebHook(BasePage):
             elif order["order_currency"] == "usd":
                 BillingController().generate_international_pdf_bill_of_sale(order)
             self.send_payment_success_email(order)
-            return {"success": "Evento payment_intent.succeeded tratado."}
 
-        elif self.post["type"] == "charge.succeeded":
-            stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
-            self.user = self.load_user(stripe_customer["email"])
-            order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
-            if not order:
-                import time
+        return {"success": "Evento payment_intent_succeeded tratado."}
 
-                time.sleep(15)
+    def charge_succeeded(self):
+        stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
+        self.user = self.load_user(stripe_customer["email"])
+        order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
+        if not order:
+            for x in range(15):
+                time.sleep(1)
                 order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
-            Dynamo().update_entity(order, "order_payment_stripe_charge_id", self.post["data"]["object"]["id"])
-            Dynamo().update_entity(order, "order_payment_stripe_receipt_url", self.post["data"]["object"]["receipt_url"])
-            Dynamo().update_entity(order, "order_payment_method", self.post["data"]["object"]["payment_method_details"]["type"])
+                if order:
+                    break
+        Dynamo().update_entity(order, "order_payment_stripe_charge_id", self.post["data"]["object"]["id"])
+        Dynamo().update_entity(order, "order_payment_stripe_receipt_url", self.post["data"]["object"]["receipt_url"])
+        Dynamo().update_entity(order, "order_payment_method", self.post["data"]["object"]["payment_method_details"]["type"])
 
-            payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["data"]["object"]["payment_method"])
-            if not payment_method:
-                payment_method = UserPaymentMethod(self.user.user_id, self.post["data"]["object"]["payment_method"]).__dict__
+        payment_method = Dynamo().get_payment_method(self.user.user_id, self.post["data"]["object"]["payment_method"])
+        if not payment_method:
+            payment_method = UserPaymentMethod(self.user.user_id, self.post["data"]["object"]["payment_method"]).__dict__
 
-            payment_method["payment_method_type"] = self.post["data"]["object"]["payment_method_details"]["type"]
-            if self.post["data"]["object"]["payment_method_details"]["type"] == "card":
-                payment_method["payment_method_card"] = self.post["data"]["object"]["payment_method_details"]["card"]
-            Dynamo().put_entity(payment_method)
-            return {"success": "Evento charge.succeeded tratado."}
+        payment_method["payment_method_type"] = self.post["data"]["object"]["payment_method_details"]["type"]
+        if self.post["data"]["object"]["payment_method_details"]["type"] == "card":
+            payment_method["payment_method_card"] = {}
+            for key, val in self.post["data"]["object"]["payment_method_details"]["card"].items():
+                if type(val) == str or type(val) == int:
+                    payment_method["payment_method_card"][key] = str(val)
 
-        return {"success": "Evento não tratado."}
+        Dynamo().put_entity(payment_method)
+        return {"success": "Evento charge_succeeded tratado."}
+
+    def payment_intent_payment_failed(self):
+        order = Dynamo().get_order(self.post["data"]["object"]["id"])
+        Dynamo().update_entity(order, "order_last_error_code", self.post["data"]["object"]["last_payment_error"]["code"])
+        Dynamo().update_entity(order, "order_last_error_message", self.post["data"]["object"]["last_payment_error"]["message"])
+        return {"success": "Evento payment_intent_payment_failed tratado."}
+
+    def payment_intent_requires_action(self):
+        order = Dynamo().get_order(self.post["data"]["object"]["id"])
+        Dynamo().update_entity(order, "order_payment_stripe_boleto_url", self.post["data"]["object"]["next_action"]["boleto_display_details"]["pdf"])
+        return {"success": "Evento payment_intent_requires_action tratado."}
+
+    def customer_subscription_updated(self):
+        user_stripe_subscription = StripeController().get_subscription(self.post["data"]["object"]["id"])
+        stripe_customer = StripeController().get_stripe_customer(user_stripe_subscription["customer"])
+        self.user = self.load_user(stripe_customer["email"])
+        invoice = StripeController().get_invoice(user_stripe_subscription["latest_invoice"])
+        order = Dynamo().get_order(invoice["payment_intent"])
+        self.user.update_subscription(order, user_stripe_subscription)
+        return {"success": "Evento customer_subscription_updated tratado."}
+
+    ######################################################################################################
 
     def get_user_first_order_from_subscription(self, user_email, subscription_last_order_id):
         return self.dynamo.get_order(user_email, subscription_last_order_id)

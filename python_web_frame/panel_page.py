@@ -165,8 +165,12 @@ class PanelPage(BasePage):
                         continue
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_update_model_user_folder_rows")
                 elif model_html == "move":
+                    if index == 5:
+                        break
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows")
                 elif model_html == "move_folder":
+                    if index == 5:
+                        break
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows")
                 elif model_html == "create_federated":
                     if model["model_is_federated"] or model["model_format"] != "ifc":
@@ -256,16 +260,17 @@ class PanelPage(BasePage):
         return "".join(full_html)
 
     def show_html_payment_history_div(self, user_orders):
-        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_div")
-        html.esc("html_payment_history_rows", self.list_html_payment_history_rows(user_orders))
-        html.esc("html_payment_history_pages_buttons", self.list_html_payment_history_pages_buttons())
-        return str(html)
-
-    def list_html_payment_history_pages_buttons(self):
         import math
 
-        full_html = []
         pages_amount = math.ceil(int(self.user.user_total_orders_count) / int(lambda_constants["user_orders_page_size"]))
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_div")
+        html.esc("html_payment_history_rows", self.list_html_payment_history_rows(user_orders))
+        html.esc("payment_history_pages_count_val", pages_amount)
+        html.esc("html_payment_history_pages_buttons", self.list_html_payment_history_pages_buttons(pages_amount))
+        return str(html)
+
+    def list_html_payment_history_pages_buttons(self, pages_amount):
+        full_html = []
         for index in range(pages_amount):
             html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_pages_buttons")
             if index == 0:
@@ -304,15 +309,21 @@ class PanelPage(BasePage):
 
     def list_html_payment_methods_rows(self, user_payment_methods, user_subscription):
         full_html = []
-        for payment_method in user_payment_methods:
+        for index, payment_method in enumerate(user_payment_methods):
+            html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
+            html.esc("payment_method_id_val", payment_method["payment_method_id"])
+            html.esc("index_val", (index + 1))
+            if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
+                html.esc("active_method_val", "active")
+                html.esc("make_default_payement_method_visibility_val", "display:none;")
             if payment_method["payment_method_type"] == "card":
-                html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
-                if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
-                    html.esc("active_method_val", "active")
                 html.esc("brand_val", payment_method["payment_method_card"]["brand"])
                 html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
                 html.esc("last4_val", payment_method["payment_method_card"]["last4"])
                 html.esc("exp_month_val", payment_method["payment_method_card"]["exp_month"])
                 html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
-                full_html.append(str(html))
+            if payment_method["payment_method_type"] == "boleto":
+                html.esc("brand_val", self.translate("boleto").title())
+                html.esc("expires_in_visibility_val", "display:none;")
+            full_html.append(str(html))
         return "".join(full_html)

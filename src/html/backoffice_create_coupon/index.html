@@ -1,0 +1,130 @@
+﻿{{header}}
+{{menu_backoffice}}
+<main class="my-plan__main">
+    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <div class="floating-input">
+            <input type="text" name="coupon_name" value="{{coupon_name_val}}" id="coupon_name_input" placeholder="" required autofocus maxlength="500">
+            <label for="coupon_name_input">{{Nome}}</label>
+        </div>
+        <div class="floating-input">
+            <input type="text" name="coupon_description" value="{{coupon_description_val}}" id="coupon_description_input" placeholder="" required maxlength="500">
+            <label for="coupon_description_input">{{Descrição}}</label>
+        </div>
+        <div class="floating-input">
+            <input type="text" name="coupon_code" value="{{coupon_code_val}}" id="coupon_code_input" placeholder="" required maxlength="500">
+            <label for="coupon_code_input">{{Código}}</label>
+        </div>
+
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input onchange="js.index.toogleDiv(this, 'coupon_available_for_limited_time_div')" type="checkbox" name="coupon_available_for_limited_time" id="coupon_available_for_limited_time_input" {{coupon_available_for_limited_time_checked_val}}>
+                <label class="switch" for="coupon_available_for_limited_time_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="coupon_available_for_limited_time_input">{{Disponível por tempo limitado}}</label>
+        </div>
+
+        <div id="coupon_available_for_limited_time_div" style="{{coupon_available_for_limited_time_div_visibility_val}}">
+            <div class="floating-input">
+                <input type="date" name="coupon_start_date" value="{{coupon_start_date_val}}" id="coupon_start_date_input" placeholder="" maxlength="500">
+                <label for="coupon_start_date_input">{{Inicia em}}</label>
+            </div>
+            <div class="floating-input">
+                <input type="date" name="coupon_end_date" value="{{coupon_end_date_val}}" id="coupon_end_date_input" placeholder="" maxlength="500">
+                <label for="coupon_end_date_input">{{Termina em}}</label>
+            </div>
+        </div>
+
+
+        <div class="switch-container">
+            <div class="input-container">
+                <input onchange="js.index.toogleDiv(this, 'coupon_has_limited_uses_count_div')" type="checkbox" name="coupon_has_limited_uses_count" id="coupon_has_limited_uses_count_input" {{coupon_has_limited_uses_count_checked_val}}>
+                <label class="switch" for="coupon_has_limited_uses_count_input">
+                    <div class="slider"></div>
+                </label>
+            </div>
+            <label for="coupon_has_limited_uses_count_input">{{Limitar a quantidade de usos}}</label>
+        </div>
+
+        <div id="coupon_has_limited_uses_count_div" style="{{coupon_has_limited_uses_count_div_visibility_val}}">
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToNumbers(this)" name="coupon_maxium_uses_count" value="{{coupon_maxium_uses_count_val}}" id="coupon_maxium_uses_count_input" placeholder="" maxlength="10">
+                <label for="coupon_maxium_uses_count_input">{{Quantidade total de utilizações}}</label>
+            </div>
+        </div>
+
+        <div class="floating-input">
+            <select onchange="js.index.showCouponDiscountFields(this)" name="coupon_discount_type" id="coupon_discount_type_select" value="{{coupon_discount_type_val}}" required>
+                <option value="percentage" {{percentage_pre_sel_val}}>{{Desconto percentual}}</option>
+                <option value="total" {{total_pre_sel_val}}>{{Desconto desconto total}}</option>
+            </select>
+        </div>
+
+
+        <div id="total_discount_div">
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_brl_discount" value="{{coupon_brl_discount_val}}" id="coupon_brl_discount_input" placeholder="" maxlength="500">
+                <label for="coupon_brl_discount_input">{{Desconto em R$}}</label>
+            </div>
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_usd_discount" value="{{coupon_usd_discount_val}}" id="coupon_usd_discount_input" placeholder="" maxlength="500">
+                <label for="coupon_usd_discount_input">{{Desconto em U$}}</label>
+            </div>
+        </div>
+        <div id="percentage_discount_div">
+            <div class="floating-input">
+                <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_percentage_discount" value="{{coupon_percentage_discount_val}}" id="coupon_percentage_discount_input" placeholder="" maxlength="500">
+                <label for="coupon_percentage_discount_input">{{Desconto %}}</label>
+            </div>
+        </div>
+
+        <div class="floating-input">
+            <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_recurrence_months" value="{{coupon_recurrence_months_val}}" id="coupon_recurrence_months_input" placeholder="" required maxlength="10">
+            <label for="coupon_recurrence_months_input">{{Será aplicado em quantas parcelas (meses)}}</label>
+        </div>
+        <p class="input-hint">{{Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade}}</p>
+
+        {{html_coupon_available_plans}}
+
+        <input type="checkbox" name="coupon_available_monthly" id="coupon_available_monthly_input" {{coupon_available_monthly_checked_val}}>
+        <label for="coupon_available_monthly_input">{{Disponível mensalmente}}</label>
+
+        <input type="checkbox" name="coupon_available_annually" id="coupon_available_annually_input" {{coupon_available_annually_checked_val}}>
+        <label for="coupon_available_annually_input">{{Disponível anualmente}}</label>
+
+        <input type="checkbox" name="coupon_available_in_brl" id="coupon_available_in_brl_input" {{coupon_available_in_brl_checked_val}}>
+        <label for="coupon_available_in_brl_input">{{Disponível em compras nacionais}}</label>
+
+        <input type="checkbox" name="coupon_available_in_usd" id="coupon_available_in_usd_input" {{coupon_available_in_usd_checked_val}}>
+        <label for="coupon_available_in_usd_input">{{Disponível em compras internacionais}}</label>
+
+        <span class="error" style="{{error_msg_visibility_val}}">
+            {{error_msg_val}}
+        </span>
+
+        <div>
+            <button type="submit">{{Salvar}}</button>
+        </div>
+    </form>
+</main>
+{{footer}}
+
+<script>
+    window.onload = () => {
+        js.index.showCouponDiscountFields();
+
+        let coupon_brl_discount_input = document.getElementById("coupon_brl_discount_input");
+        let coupon_usd_discount_input = document.getElementById("coupon_usd_discount_input");
+        let coupon_maxium_uses_count_input = document.getElementById("coupon_maxium_uses_count_input");
+        let coupon_percentage_discount_input = document.getElementById("coupon_percentage_discount_input");
+        let coupon_recurrence_months_input = document.getElementById("coupon_recurrence_months_input");
+
+        js.index.formatToMoney(coupon_brl_discount_input);
+        js.index.formatToMoney(coupon_usd_discount_input);
+        js.index.formatToNumbers(coupon_maxium_uses_count_input);
+        js.index.formatToPercentage(coupon_percentage_discount_input);
+        js.index.formatToPercentage(coupon_recurrence_months_input);
+    };
+</script>

@@ -133,6 +133,11 @@ class Http:
             "plan_maxium_devices_changes_in_30d",
             "plan_trial_duration_in_days",
             "plan_app_can_be_offline_in_days",
+            "coupon_maxium_uses_count",
+            "coupon_percentage_discount",
+            "coupon_brl_discount",
+            "coupon_usd_discount",
+            "coupon_recurrence_months",
         ]
         format_to_letter_fields = ["user_name", "user_complement"]
         acceptable_json_fields = ["last_evaluated_key"]

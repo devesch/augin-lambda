@@ -39,6 +39,16 @@
         "es": "La categoría seleccionada no es válida.",
         "pt": "A categoria selecionada é inválida."
     },
+    "A data de início de vigência deve ser antes da data de término": {
+        "en": "The start date must be before the end date",
+        "es": "La fecha de inicio debe ser antes de la fecha de finalización",
+        "pt": "A data de início de vigência deve ser antes da data de término"
+    },
+    "A duração da recorrência deve ser valor entre 1 e 99": {
+        "en": "The duration of recurrence must be value between 1 and 99",
+        "es": "La duración de la recurrencia debe ser un valor entre 1 y 99",
+        "pt": "A duração da recorrência deve ser valor entre 1 e 99"
+    },
     "A duração do APP offline em dias deve ser um número": {
         "en": "The duration of the offline app on days should be a number",
         "es": "La duración de la aplicación fuera de línea en los días debe ser un número",
@@ -48,6 +58,26 @@
         "en": "The duration of the trial plan in days should be a number",
         "es": "La duración del plan de prueba en días debe ser un número",
         "pt": "A duração do plano trial em dias deve ser um número"
+    },
+    "A ordem já excedeu o tempo máximo de pedido de reembolso.": {
+        "en": "The order has already exceeded the maximum reimbursement request.",
+        "es": "El pedido ya ha excedido la solicitud de reembolso máximo.",
+        "pt": "A ordem já excedeu o tempo máximo de pedido de reembolso."
+    },
+    "A ordem não se encontra paga para emitir a NFSE em PDF.": {
+        "en": "The order is not paid to issue the NFSE in PDF.",
+        "es": "El pedido no se paga para emitir el NFSE en PDF.",
+        "pt": "A ordem não se encontra paga para emitir a NFSE em PDF."
+    },
+    "A ordem não se encontra paga para emitir a NFSE.": {
+        "en": "The order is not paid to issue the NFSE.",
+        "es": "El pedido no se paga para emitir el NFSE.",
+        "pt": "A ordem não se encontra paga para emitir a NFSE."
+    },
+    "A ordem não se encontra paga para realizar reembolso.": {
+        "en": "The order is not paid to make a refund.",
+        "es": "El pedido no se paga para hacer un reembolso.",
+        "pt": "A ordem não se encontra paga para realizar reembolso."
     },
     "A quantidade máxima de dispositivos deve ser um número": {
         "en": "The maximum amount of devices should be a number",
@@ -78,6 +108,11 @@
         "en": "The informed password is incorrect",
         "es": "La contraseña informada es incorrecta",
         "pt": "A senha informada está incorreta"
+    },
+    "A solicitação de reembolso foi encaminhada para o departamento responsável pelo processo de cobrança": {
+        "en": "The request for refund was sent to the department responsible for the collection process",
+        "es": "La solicitud de reembolso fue enviada al departamento responsable del proceso de recolección",
+        "pt": "A solicitação de reembolso foi encaminhada para o departamento responsável pelo processo de cobrança"
     },
     "Aceitar Tudo": {
         "en": "Accept everything",
@@ -138,6 +173,11 @@
         "en": "Wait as we process your order and generate a compressed folder.",
         "es": "Espere mientras procesamos su pedido y generamos una carpeta comprimida.",
         "pt": "Aguarde enquanto processamos seu pedido e geramos uma pasta compactada."
+    },
+    "Aguarde o prazo estabelecido pelo banco para verificar o status do seu reembolso": {
+        "en": "Wait for the deadline established by the bank to verify the status of your reimbursement",
+        "es": "Espere la fecha límite establecida por el banco para verificar el estado de su reembolso",
+        "pt": "Aguarde o prazo estabelecido pelo banco para verificar o status do seu reembolso"
     },
     "Air Conditioning": {
         "en": "Air conditioning",
@@ -289,10 +329,10 @@
         "es": "Archivo de procesamiento",
         "pt": "Arquivo em processamento"
     },
-    "Arraste e solte seu arquivo (IFC ou FBX ou GLB) aqui ou": {
-        "en": "Drag and release your file (IFC or FBX or GLB) here or",
-        "es": "Arrastre y suelte su archivo (IFC o FBX o GLB) aquí o",
-        "pt": "Arraste e solte seu arquivo (IFC ou FBX ou GLB) aqui ou"
+    "Arraste e solte seu arquivo (IFC ou FBX ou GLB ou ZIP) aqui ou": {
+        "en": "Drag and release your file (IFC or FBX or GLB or Zip) here or",
+        "es": "Arrastre y suelte su archivo (IFC o FBX o GLB o ZIP) aquí o",
+        "pt": "Arraste e solte seu arquivo (IFC ou FBX ou GLB ou ZIP) aqui ou"
     },
     "Arraste e solte seu arquivo (IFC ou FBX) aqui ou": {
         "en": "Drag and drop your file (IFC or FBX) here or",
@@ -499,6 +539,11 @@
         "es": "Burundi",
         "pt": "Burundi"
     },
+    "Buscar usuários": {
+        "en": "Seek users",
+        "es": "Buscar usuarios",
+        "pt": "Buscar usuários"
+    },
     "Cabo Verde": {
         "en": "Cape Green",
         "es": "Cabo Verde",
@@ -538,6 +583,11 @@
         "en": "Unsubscribe",
         "es": "Darse de baja",
         "pt": "Cancelar assinatura"
+    },
+    "Carregando mais dados. Aguarde": {
+        "en": "Loading more data.Wait",
+        "es": "Cargando más datos.Esperar",
+        "pt": "Carregando mais dados. Aguarde"
     },
     "Cartão": {
         "en": "Card",
@@ -724,6 +774,11 @@
         "es": "Confirmar la exclusión del proyecto",
         "pt": "Confirmar exclusão do projeto"
     },
+    "Confirme a exclusão do método de pagamento": {
+        "en": "Confirm the exclusion of the payment method",
+        "es": "Confirmar la exclusión del método de pago",
+        "pt": "Confirme a exclusão do método de pagamento"
+    },
     "Confirme a renovação da sua assinatura": {
         "en": "Confirm the renewal of your signature",
         "es": "Confirme la renovación de su firma",
@@ -799,6 +854,11 @@
         "es": "Crear",
         "pt": "Criar"
     },
+    "Criar Cupom": {
+        "en": "Create Cupom",
+        "es": "Crea Cupom",
+        "pt": "Criar Cupom"
+    },
     "Criar conta": {
         "en": "Create an account",
         "es": "Crea una cuenta",
@@ -849,6 +909,11 @@
         "es": "Cuba",
         "pt": "Cuba"
     },
+    "Cupom": {
+        "en": "Coupon",
+        "es": "Cupón",
+        "pt": "Cupom"
+    },
     "Cupom:": {
         "en": "Coupon:",
         "es": "Cupón:",
@@ -873,6 +938,11 @@
         "en": "Czechia",
         "es": "Chequia",
         "pt": "Tchechia"
+    },
+    "Código": {
+        "en": "Code",
+        "es": "Código",
+        "pt": "Código"
     },
     "Código Completo:": {
         "en": "Full Code:",
@@ -924,6 +994,11 @@
         "es": "Fecha y hora:",
         "pt": "Data e Hora:"
     },
+    "Datetime": {
+        "en": "Datetime",
+        "es": "Fecha y hora",
+        "pt": "Datetime"
+    },
     "Definir Nova Senha": {
         "en": "Set New Password",
         "es": "Establecer nueva contraseña",
@@ -953,6 +1028,31 @@
         "en": "Denmark",
         "es": "Dinamarca",
         "pt": "Dinamarca"
+    },
+    "Desconto %": {
+        "en": "Discount %",
+        "es": "Descuento %",
+        "pt": "Desconto %"
+    },
+    "Desconto desconto total": {
+        "en": "Total Discount",
+        "es": "Descuento total",
+        "pt": "Desconto desconto total"
+    },
+    "Desconto em R$": {
+        "en": "Discount in R$",
+        "es": "Descuento en R$",
+        "pt": "Desconto em R$"
+    },
+    "Desconto em U$": {
+        "en": "Discount in U$",
+        "es": "Descuento en U$",
+        "pt": "Desconto em U$"
+    },
+    "Desconto percentual": {
+        "en": "Percentage discount",
+        "es": "Descuento porcentual",
+        "pt": "Desconto percentual"
     },
     "Descrição": {
         "en": "Description",
@@ -1054,6 +1154,21 @@
         "es": "Disponible anual",
         "pt": "Disponível anual"
     },
+    "Disponível anualmente": {
+        "en": "Available annually",
+        "es": "Disponible anualmente",
+        "pt": "Disponível anualmente"
+    },
+    "Disponível em compras internacionais": {
+        "en": "Available in international purchases",
+        "es": "Disponible en compras internacionales",
+        "pt": "Disponível em compras internacionais"
+    },
+    "Disponível em compras nacionais": {
+        "en": "Available in national purchases",
+        "es": "Disponible en compras nacionales",
+        "pt": "Disponível em compras nacionais"
+    },
     "Disponível em trial": {
         "en": "Available in trial",
         "es": "Disponible en juicio",
@@ -1064,10 +1179,20 @@
         "es": "Disponible mensualmente",
         "pt": "Disponível mensal"
     },
+    "Disponível mensalmente": {
+        "en": "Available monthly",
+        "es": "Disponible mensualmente",
+        "pt": "Disponível mensalmente"
+    },
     "Disponível para compra": {
         "en": "Available for purchase",
         "es": "Disponible para compra",
         "pt": "Disponível para compra"
+    },
+    "Disponível por tempo limitado": {
+        "en": "Limited time available",
+        "es": "Tiempo limitado disponible",
+        "pt": "Disponível por tempo limitado"
     },
     "Dispositivos": {
         "en": "Devices",
@@ -1113,6 +1238,11 @@
         "en": "Ecurator",
         "es": "Ecurador",
         "pt": "Ecuador"
+    },
+    "Editar": {
+        "en": "To edit",
+        "es": "Para editar",
+        "pt": "Editar"
     },
     "Egypt": {
         "en": "Egypt",
@@ -1163,6 +1293,16 @@
         "en": "Invalid email.",
         "es": "Email inválido.",
         "pt": "Email inválido."
+    },
+    "Emitida": {
+        "en": "Issued",
+        "es": "Emitido",
+        "pt": "Emitida"
+    },
+    "Emitir": {
+        "en": "Issue",
+        "es": "Asunto",
+        "pt": "Emitir"
     },
     "Empresa": {
         "en": "Company",
@@ -1373,6 +1513,11 @@
         "en": "Exceeded the limit of attempts",
         "es": "Excedió el límite de intentos",
         "pt": "Excedeu o limite de tentativas"
+    },
+    "Excluindo método de pagamento": {
+        "en": "Deleting Payment Method",
+        "es": "Eliminar el método de pago",
+        "pt": "Excluindo método de pagamento"
     },
     "Excluir modelo": {
         "en": "Delete template",
@@ -1684,6 +1829,11 @@
         "es": "Islandia",
         "pt": "Islândia"
     },
+    "Icone buscar": {
+        "en": "Icon",
+        "es": "Icono",
+        "pt": "Icone buscar"
+    },
     "Icone sucesso": {
         "en": "Icon Success",
         "es": "Éxito ícono",
@@ -1708,6 +1858,16 @@
         "en": "Import your file",
         "es": "Importa tu archivo",
         "pt": "Importe seu arquivo"
+    },
+    "Incompleta": {
+        "en": "Incomplete",
+        "es": "Incompleto",
+        "pt": "Incompleta"
+    },
+    "Incompleta/Expirada": {
+        "en": "Incomplete/Expired",
+        "es": "Incompleto/caducado",
+        "pt": "Incompleta/Expirada"
     },
     "Incompleto": {
         "en": "Incomplete",
@@ -1753,6 +1913,11 @@
         "en": "Infrastructure",
         "es": "Infraestructura",
         "pt": "Infraestrutura"
+    },
+    "Inicia em": {
+        "en": "Starts in",
+        "es": "Empieza en",
+        "pt": "Inicia em"
     },
     "Insira abaixo o código que enviamos para o email": {
         "en": "Insert below the code we sent to the email",
@@ -1829,6 +1994,16 @@
         "es": "Comprar artículos",
         "pt": "Itens da Compra"
     },
+    "Itens por Página": {
+        "en": "Items per page",
+        "es": "Artículos por página",
+        "pt": "Itens por Página"
+    },
+    "Itens por página": {
+        "en": "Items per page",
+        "es": "Artículos por página",
+        "pt": "Itens por página"
+    },
     "Jamaica": {
         "en": "Jamaica",
         "es": "Jamaica",
@@ -1848,6 +2023,11 @@
         "en": "Jordan",
         "es": "Jordán",
         "pt": "Jordânia"
+    },
+    "Já existe um cupom com este código": {
+        "en": "There is already a coupon with this code",
+        "es": "Ya hay un cupón con este código",
+        "pt": "Já existe um cupom com este código"
     },
     "Já existe uma conta com este email cadastrado.": {
         "en": "There is already an account with this registered email.",
@@ -1923,6 +2103,11 @@
         "en": "Liechtenstein",
         "es": "Liechtenstein",
         "pt": "Liechtenstein"
+    },
+    "Limitar a quantidade de usos": {
+        "en": "Limit the amount of uses",
+        "es": "Limite la cantidad de usos",
+        "pt": "Limitar a quantidade de usos"
     },
     "Limite de dispositivos": {
         "en": "Device limit",
@@ -2074,6 +2259,11 @@
         "es": "Modificar la configuración de las cookies",
         "pt": "Modificar configurações de cookies"
     },
+    "Moeda": {
+        "en": "Coin",
+        "es": "Moneda",
+        "pt": "Moeda"
+    },
     "Moldova, Republic of": {
         "en": "MOLDOVA, Republic of",
         "es": "Moldavia, República de",
@@ -2138,6 +2328,11 @@
         "en": "Myanmar",
         "es": "Myanmar",
         "pt": "Mianmar"
+    },
+    "Método": {
+        "en": "Method",
+        "es": "Método",
+        "pt": "Método"
     },
     "Método de pagamento:": {
         "en": "Payment method:",
@@ -2224,6 +2419,16 @@
         "es": "No hay modelo",
         "pt": "Nenhum modelo"
     },
+    "Nenhum método de pagamento encontrado com os dados informados": {
+        "en": "No payment method found with the data informed",
+        "es": "No se encuentra ningún método de pago con los datos informados",
+        "pt": "Nenhum método de pagamento encontrado com os dados informados"
+    },
+    "Nenhum método de pagamento encontrado no Stripe com os dados informados": {
+        "en": "No payment method found in the stripe with the informed data",
+        "es": "No se encuentra el método de pago en la franja con los datos informados",
+        "pt": "Nenhum método de pagamento encontrado no Stripe com os dados informados"
+    },
     "Nenhum projeto encontrado com o link fornecido": {
         "en": "No projects found with the link provided",
         "es": "No se encontraron proyectos con el enlace proporcionado",
@@ -2244,6 +2449,11 @@
         "es": "Usuario no encontrado",
         "pt": "Nenhum usuário encontrado"
     },
+    "Nenhum usuário encontrado como dono da ordem.": {
+        "en": "No user found as the order owner.",
+        "es": "Ningún usuario encontrado como propietario del pedido.",
+        "pt": "Nenhum usuário encontrado como dono da ordem."
+    },
     "Nenhum usuário encontrado.": {
         "en": "No user found.",
         "es": "Usuario no encontrado.",
@@ -2253,6 +2463,11 @@
         "en": "No necessary URL change",
         "es": "No hay cambio de URL necesario",
         "pt": "Nenhuma mudança de URL necessária"
+    },
+    "Nenhuma ordem encontrada com os dados informados.": {
+        "en": "No order found with the informed data.",
+        "es": "No se encuentra ningún orden con los datos informados.",
+        "pt": "Nenhuma ordem encontrada com os dados informados."
     },
     "Nenhuma order encontrada.": {
         "en": "No order found.",
@@ -2444,6 +2659,11 @@
         "es": "No",
         "pt": "Não"
     },
+    "Não Emitida": {
+        "en": "Unintended",
+        "es": "Involuntario",
+        "pt": "Não Emitida"
+    },
     "Não Federados": {
         "en": "Non -federated",
         "es": "No federado",
@@ -2469,6 +2689,11 @@
         "es": "No fue posible enviar el correo electrónico, comunicarse con el soporte.",
         "pt": "Não foi possível enviar o email, entre em contato com o suporte."
     },
+    "Não é possível excluir o método de pagamento padrão da sua assinatura": {
+        "en": "It is not possible to delete the default payment method from your subscription",
+        "es": "No es posible eliminar el método de pago predeterminado de su suscripción",
+        "pt": "Não é possível excluir o método de pagamento padrão da sua assinatura"
+    },
     "Não é possível mover uma pasta para dentro dela própria": {
         "en": "It is not possible to move a folder into it",
         "es": "No es posible mover una carpeta a ella",
@@ -2478,6 +2703,11 @@
         "en": "It is not possible to move a folder into it.",
         "es": "No es posible mover una carpeta a ella.",
         "pt": "Não é possível mover uma pasta para dentro dela própria."
+    },
+    "Não é possível tornar padrão um método de pagamento que já é o padrão": {
+        "en": "It is not possible to make standard a payment method that is already the standard",
+        "es": "No es posible hacer de la norma un método de pago que ya sea el estándar",
+        "pt": "Não é possível tornar padrão um método de pagamento que já é o padrão"
     },
     "Número": {
         "en": "Number",
@@ -2489,6 +2719,11 @@
         "es": "O .zip contiene archivos duplicados.",
         "pt": "O .zip contem arquivos duplicados."
     },
+    "O código do cupom não pode conter caracteres que não possam ser usados em uma URL": {
+        "en": "The coupon code cannot contain characters that cannot be used in a URL",
+        "es": "El código de cupón no puede contener caracteres que no se pueden usar en una URL",
+        "pt": "O código do cupom não pode conter caracteres que não possam ser usados em uma URL"
+    },
     "O código postal informado é inválido.": {
         "en": "The informed postal code is invalid.",
         "es": "El código postal informado no es válido.",
@@ -2498,6 +2733,11 @@
         "en": "The name of the folder cannot contain bars '/'.",
         "es": "El nombre de la carpeta no puede contener barras '/'.",
         "pt": "O nome da pasta não pode conter barras '/'."
+    },
+    "O percentual de desconto deve ser um valor entre 1 e 99": {
+        "en": "The discount percentage must be a value between 1 and 99",
+        "es": "El porcentaje de descuento debe ser un valor entre 1 y 99",
+        "pt": "O percentual de desconto deve ser um valor entre 1 e 99"
     },
     "O preço atual do plano anual em BRL deve ser um número": {
         "en": "The current price of the annual BRL plan must be a number",
@@ -2619,10 +2859,20 @@
         "es": "Pix",
         "pt": "PIX"
     },
+    "Pagamento Backoffice reembolsado com sucesso.": {
+        "en": "Backoffice payment successfully refunded.",
+        "es": "Pago de backoffice reembolsado con éxito.",
+        "pt": "Pagamento Backoffice reembolsado com sucesso."
+    },
     "Pagamento Direto": {
         "en": "Direct payment",
         "es": "Pago directo",
         "pt": "Pagamento Direto"
+    },
+    "Pagamento Stripe reembolsado com sucesso.": {
+        "en": "PAYMENT STRIPE SUCCESSFULLY REFACTED.",
+        "es": "La franja de pago refactada con éxito.",
+        "pt": "Pagamento Stripe reembolsado com sucesso."
     },
     "Pagamento anual": {
         "en": "Annual payment",
@@ -2899,6 +3149,11 @@
         "es": "Por favor, inténtelo de nuevo más tarde.",
         "pt": "Por favor, tente novamente mais tarde."
     },
+    "Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade": {
+        "en": "How long the user will have a discount on their monthly/annuity",
+        "es": "¿Cuánto tiempo el usuario tendrá un descuento en su mensual?",
+        "pt": "Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade"
+    },
     "Portugal": {
         "en": "Portugal",
         "es": "Portugal",
@@ -3039,6 +3294,21 @@
         "es": "Número de personas en el juego del equipo",
         "pt": "Quantidade de pessoas no team play"
     },
+    "Quantidade de usos disponíveis": {
+        "en": "Amount of available uses",
+        "es": "Cantidad de usos disponibles",
+        "pt": "Quantidade de usos disponíveis"
+    },
+    "Quantidade de utilizações": {
+        "en": "Number of uses",
+        "es": "Número de usos",
+        "pt": "Quantidade de utilizações"
+    },
+    "Quantidade total de utilizações": {
+        "en": "Total amount of uses",
+        "es": "Cantidad total de usos",
+        "pt": "Quantidade total de utilizações"
+    },
     "Realiza compartilhamentos": {
         "en": "Performs shares",
         "es": "Realiza acciones",
@@ -3068,6 +3338,16 @@
         "en": "Reimbursed",
         "es": "Reembolsado",
         "pt": "Reembolsado"
+    },
+    "Reembolsar": {
+        "en": "Repay",
+        "es": "Pagar",
+        "pt": "Reembolsar"
+    },
+    "Reembolso": {
+        "en": "Reimbursement",
+        "es": "Reembolso",
+        "pt": "Reembolso"
     },
     "Reference Trackers": {
         "en": "Reference Trackers",
@@ -3234,6 +3514,16 @@
         "es": "Sérvia",
         "pt": "Sérvia"
     },
+    "Serviço": {
+        "en": "Service",
+        "es": "Servicio",
+        "pt": "Serviço"
+    },
+    "Será aplicado em quantas parcelas (meses)": {
+        "en": "Will be applied in how many installments (months)",
+        "es": "Se aplicará en cuántas cuotas (meses)",
+        "pt": "Será aplicado em quantas parcelas (meses)"
+    },
     "Sessão de login:": {
         "en": "Login Session:",
         "es": "Sesión de inicio de sesión:",
@@ -3288,6 +3578,11 @@
         "en": "Seychelles",
         "es": "Seychelles",
         "pt": "Seychelles"
+    },
+    "Short Cód": {
+        "en": "Short Code",
+        "es": "Código corto",
+        "pt": "Short Cód"
     },
     "Sierra Leone": {
         "en": "Sierra Leone",
@@ -3379,6 +3674,11 @@
         "es": "Su firma",
         "pt": "Sua Assinatura"
     },
+    "Sua compra está sendo reembolsada": {
+        "en": "Your purchase is being reimbursed",
+        "es": "Su compra está siendo reembolsada",
+        "pt": "Sua compra está sendo reembolsada"
+    },
     "Sua senha acabou de ser alterada!": {
         "en": "Your password has just been changed!",
         "es": "¡Tu contraseña acaba de ser cambiada!",
@@ -3434,6 +3734,16 @@
         "es": "República Árabe Siria",
         "pt": "República Árabe da Síria"
     },
+    "Só é possível reembolsar ordens do tipo cartão de crédito.": {
+        "en": "It is only possible to reimburse credit card orders.",
+        "es": "Solo es posible reembolsar los pedidos de tarjetas de crédito.",
+        "pt": "Só é possível reembolsar ordens do tipo cartão de crédito."
+    },
+    "TODO POST": {
+        "en": "All post",
+        "es": "TODO POST",
+        "pt": "TODO POST"
+    },
     "Taiwan, Province of China": {
         "en": "Taiwan, Province of China",
         "es": "Taiwan, provincia de China",
@@ -3479,6 +3789,21 @@
         "es": "Estás seguro de que quieres continuar?",
         "pt": "Tem certeza que deseja continuar?"
     },
+    "Tentativa de emitir nota fiscal concluída.": {
+        "en": "Attempted to issue an invoice completed.",
+        "es": "Intentó emitir una factura completada.",
+        "pt": "Tentativa de emitir nota fiscal concluída."
+    },
+    "Tentativa de emitir nota fiscal em PDF concluída.": {
+        "en": "Attempted to issue PDF invoice completed.",
+        "es": "Intentó emitir la factura de PDF completada.",
+        "pt": "Tentativa de emitir nota fiscal em PDF concluída."
+    },
+    "Termina em": {
+        "en": "Ends in",
+        "es": "Termina en",
+        "pt": "Termina em"
+    },
     "Termos e condiçōes": {
         "en": "Terms and conditions",
         "es": "Términos y Condiciones",
@@ -3514,6 +3839,11 @@
         "es": "Timor-Leste",
         "pt": "Timor-Leste"
     },
+    "Tipo": {
+        "en": "Type",
+        "es": "Tipo",
+        "pt": "Tipo"
+    },
     "Tipo de compra": {
         "en": "Purchase type",
         "es": "Tipo de compra",
@@ -3538,6 +3868,11 @@
         "en": "Tong",
         "es": "Pintura",
         "pt": "Tonga"
+    },
+    "Tornar padrão": {
+        "en": "Default",
+        "es": "Por defecto",
+        "pt": "Tornar padrão"
     },
     "Tornar pasta acessível": {
         "en": "Folder",
@@ -3674,6 +4009,11 @@
         "es": "Use su cuenta en hasta",
         "pt": "Use sua conta em até"
     },
+    "Usuário": {
+        "en": "User",
+        "es": "Usuario",
+        "pt": "Usuário"
+    },
     "Usuário inexistente.": {
         "en": "Nonexistent user.",
         "es": "Usuario inexistente.",
@@ -3718,6 +4058,11 @@
         "en": "Validate your email",
         "es": "Valida tu correo electrónico",
         "pt": "Validar seu email"
+    },
+    "Valor": {
+        "en": "Value",
+        "es": "Valor",
+        "pt": "Valor"
     },
     "Vanuatu": {
         "en": "Vanuatu",
@@ -3773,6 +4118,11 @@
         "en": "View details",
         "es": "Ver detalles",
         "pt": "Visualizar detalhes"
+    },
+    "Visualizar detalhes da compra": {
+        "en": "View purchase details",
+        "es": "Ver detalles de compra",
+        "pt": "Visualizar detalhes da compra"
     },
     "Você acabou de iniciar uma assinatura, por favor revise as suas informações": {
         "en": "You just started a signature, please review your information",
@@ -3894,6 +4244,11 @@
         "es": "hasta 5",
         "pt": "até 5"
     },
+    "boleto": {
+        "en": "ticket",
+        "es": "boleto",
+        "pt": "boleto"
+    },
     "como ferramenta para pagamentos e compras": {
         "en": "as a tool for payments and purchases",
         "es": "como herramienta para pagos y compras",
@@ -3903,6 +4258,11 @@
         "en": "in",
         "es": "en",
         "pt": "de"
+    },
+    "de um total de": {
+        "en": "of a total of",
+        "es": "de un total de",
+        "pt": "de um total de"
     },
     "desativações de": {
         "en": "deactivations of",
@@ -4059,15 +4419,10 @@
         "es": "para aumentar este límite.",
         "pt": "para aumentar esse limite."
     },
-    "para ser visualizado  no Augin": {
+    "para ser visualizado no Augin": {
         "en": "to be viewed at Augin",
         "es": "ser visto en Augin",
-        "pt": "para ser visualizado  no Augin"
-    },
-    "para ser visualizado  no Augin.": {
-        "en": "to be viewed in Augin.",
-        "es": "para ver en Augin.",
-        "pt": "para ser visualizado  no Augin."
+        "pt": "para ser visualizado no Augin"
     },
     "pessoas": {
         "en": "people",
@@ -4154,6 +4509,11 @@
         "es": "Islas Aland",
         "pt": "Ilhas Aland"
     },
+    "É informar durante quantos meses de recorrência o cupom será aplicado": {
+        "en": "Is to inform how many months of recurrence the coupon will be applied",
+        "es": "Es informar cuántos meses de recurrencia se aplicará el cupón",
+        "pt": "É informar durante quantos meses de recorrência o cupom será aplicado"
+    },
     "É necessário escolher um arquivo diferente do original para a substitução": {
         "en": "It is necessary to choose a different file from the original for the replacement",
         "es": "Es necesario elegir un archivo diferente del original para el reemplazo",
@@ -4168,6 +4528,31 @@
         "en": "It is necessary to send the files",
         "es": "Es necesario enviar los archivos",
         "pt": "É necessário fazer o envio dos arquivos"
+    },
+    "É necessário informar a quantidade máxima de usos do cupom quando ele está limitado em quantidade": {
+        "en": "It is necessary to inform the maximum amount of coupon uses when it is limited in quantity",
+        "es": "Es necesario informar la cantidad máxima de usos de cupón cuando está limitado en cantidad",
+        "pt": "É necessário informar a quantidade máxima de usos do cupom quando ele está limitado em quantidade"
+    },
+    "É necessário informar o percentual de desconto": {
+        "en": "It is necessary to inform the discount percentage",
+        "es": "Es necesario informar el porcentaje de descuento",
+        "pt": "É necessário informar o percentual de desconto"
+    },
+    "É necessário informar o valor de desconto em R$ e U$ quando o desconto de valor total está ativo": {
+        "en": "It is necessary to inform the discount value of R $ and U $ when the total discount is active",
+        "es": "Es necesario informar el valor de descuento de R $ y u $ cuando el descuento total está activo",
+        "pt": "É necessário informar o valor de desconto em R$ e U$ quando o desconto de valor total está ativo"
+    },
+    "É necessário informar um código": {
+        "en": "It is necessary to inform a code",
+        "es": "Es necesario informar un código",
+        "pt": "É necessário informar um código"
+    },
+    "É necessário informar um nome": {
+        "en": "It is necessary to inform a name",
+        "es": "Es necesario informar un nombre",
+        "pt": "É necessário informar um nome"
     },
     "É necessário informar um nome para o federado": {
         "en": "It is necessary to inform a name for the federate",
@@ -4193,6 +4578,16 @@
         "en": "It is necessary to inform a name for the federated project",
         "es": "Es necesario informar un nombre para el proyecto federado",
         "pt": "É necessário informar um nome para o projeto federado"
+    },
+    "É necessário informar uma data de início e de término quando o cupom for por tempo ilimitado": {
+        "en": "It is necessary to enter a start and end date when the coupon is unlimited time",
+        "es": "Es necesario ingresar una fecha de inicio y finalización cuando el cupón es tiempo ilimitado",
+        "pt": "É necessário informar uma data de início e de término quando o cupom for por tempo ilimitado"
+    },
+    "É necessário informar uma descrição": {
+        "en": "It is necessary to inform a description",
+        "es": "Es necesario informar una descripción",
+        "pt": "É necessário informar uma descrição"
     },
     "É necessário informar uma senha": {
         "en": "It is necessary to enter a password",
@@ -4288,6 +4683,11 @@
         "en": "Successful icon",
         "es": "Icono exitoso",
         "pt": "Ícone sucesso"
+    },
+    "Último erro": {
+        "en": "Last error",
+        "es": "Último error",
+        "pt": "Último erro"
     },
     "Único": {
         "en": "Single",

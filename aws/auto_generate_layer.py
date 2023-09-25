@@ -5,15 +5,15 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 import time
 import os
 from win32com import client
-from utils.Utils import s3_client, lambda_client, lambda_constants
 
 ### DELETE ALL DOCKER CONTAINERS AND IMAGES, BEFORE INPUT THE CONTAINER ID OPEN DOCKER DESKTOP AND CLICK "START" ON IMAGE, THEN COPY CONTAINER ID
 
-# python_libs = "cryptography==3.4.8 dynamodb_encryption_sdk phonenumbers Pillow python_dateutil qrcode requests user_agents sl-zerobounce signxml suds"
+python_libs = "numpy cryptography dynamodb-encryption-sdk phonenumbers Pillow python-dateutil qrcode requests user-agents sl-zerobounce suds signxml stripe"
+# python_libs = "signxml"
 
-function = "augin"
-layer_name = "default"
-python_libs = "pandas openpyxl xlsxwriter"
+# function = "augin"
+# layer_name = "default"
+# python_libs = "pandas openpyxl xlsxwriter"
 # python_libs = "Pillow pillow-avif-plugin"
 
 

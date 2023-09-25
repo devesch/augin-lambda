@@ -11,15 +11,61 @@ class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_backoffice_coupons_table_rows(self, coupons):
+        full_html = []
+        if coupons:
+            for coupon in coupons:
+                html = ReadWrite().read_html("backoffice_coupons/_codes/html_backoffice_coupons_table_rows")
+                html.esc("coupon_name_val", coupon["coupon_name"])
+                html.esc("coupon_code_val", coupon["coupon_code"])
+                html.esc("coupon_description_val", coupon["coupon_description"])
+                html.esc("coupon_available_for_limited_time_val", coupon["coupon_available_for_limited_time"])
+                html.esc("coupon_start_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_start_date"]))
+                html.esc("coupon_end_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_end_date"]))
+                html.esc("coupon_has_limited_uses_count_val", coupon["coupon_has_limited_uses_count"])
+                html.esc("coupon_actual_uses_count_val", coupon["coupon_actual_uses_count"])
+                html.esc("coupon_maxium_uses_count_val", coupon["coupon_maxium_uses_count"])
+                html.esc("coupon_discount_type_val", coupon["coupon_discount_type"])
+                html.esc("coupon_brl_discount_val", coupon["coupon_brl_discount"])
+                html.esc("coupon_usd_discount_val", coupon["coupon_usd_discount"])
+                html.esc("coupon_percentage_discount_val", coupon["coupon_percentage_discount"])
+                html.esc("coupon_recurrence_months_val", coupon["coupon_recurrence_months"])
+                html.esc("coupon_available_monthly_val", coupon["coupon_available_monthly"])
+                html.esc("coupon_available_annually_val", coupon["coupon_available_annually"])
+                html.esc("coupon_available_in_brl_val", coupon["coupon_available_in_brl"])
+                html.esc("coupon_available_in_usd_val", coupon["coupon_available_in_usd"])
+                html.esc("coupons_plans_ids_val", coupon["coupons_plans_ids"])
+                html.esc("created_at_val", Date().format_unixtime_to_br_datetime(coupon["created_at"]))
+                full_html.append(str(html))
+        return "".join(full_html)
+
+    def list_html_coupon_available_plans(self, plans):
+        full_html = []
+        if plans:
+            for index, plan in enumerate(plans):
+                if (plan["plan_id"] == lambda_constants["free_plan_id"]) or (plan["plan_is_trial"]):
+                    continue
+                html = ReadWrite().read_html("backoffice_create_coupon/_codes/html_cupon_available_plans")
+                if self.post and self.post.get("coupons_plans_ids") and (plan["plan_id"] in self.post["coupons_plans_ids"]):
+                    html.esc("coupon_plan_checked_val", "checked='checked'")
+                html.esc("index_val", index)
+                html.esc("plan_id_val", plan["plan_id"])
+                html.esc("plan_name_val", plan["plan_name_pt"])
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def list_html_backoffice_orders_table_rows(self, all_orders):
         plan_id_plan = {}
         full_html = []
         if all_orders:
             for order in all_orders:
+                if self.post.get("search_order_status"):
+                    if (self.post["search_order_status"] != order["order_status"]) and (self.post["search_order_status"] != "all"):
+                        continue
                 html = ReadWrite().read_html("backoffice_orders/_codes/html_backoffice_orders_table_rows")
                 html.esc("order_user_id_val", order["order_user_id"])
                 html.esc("order_short_id_val", generate_order_short_id(order["order_id"]))
-                html.esc("order_payment_service_val", order["order_payment_service"].title())
+                html.esc("order_last_error_message_val", order.get("order_last_error_message"))
                 html.esc("order_payment_method", StrFormat().format_to_payment_method(order["order_payment_method"]))
                 html.esc("order_datetime_val", Date().format_unixtime_to_br_datetime(order["created_at"]))
                 html.esc("order_type_val", translate_order_type(order["order_type"]))
@@ -34,7 +80,7 @@ class BackofficePage(BasePage):
                 html.esc("order_currency_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
                 html.esc("order_total_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
                 html.esc("order_status_val", translate_order_status(order["order_status"]))
-                if order["order_status"] == "paid" and check_if_order_is_in_refund_time(order["created_at"]):
+                if order["order_status"] == "paid" and order["order_payment_method"] == "card" and check_if_order_is_in_refund_time(order["created_at"]):
                     html.esc("html_refund_order", self.show_html_refund_order(order["order_id"]))
                 html.esc("order_nfse_xml_link_val", order["order_nfse_xml_link"])
                 html.esc("order_nfse_pdf_link_val", order["order_nfse_pdf_link"])

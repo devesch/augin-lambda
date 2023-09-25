@@ -6,6 +6,11 @@ def get_path_data(path, user):
     if path.get("error_msg"):
         path["error_msg"] = path["error_msg"].replace("u00ea", "ê").replace("u00e1", "á")
 
+    if path.get("coupon_code"):
+        path["coupon"] = Dynamo().get_coupon(path["coupon_code"])
+        if not path["coupon"]:
+            return {"error": "error"}
+
     if path.get("order_id"):
         path["order"] = Dynamo().get_order(path["order_id"])
         if not path["order"]:

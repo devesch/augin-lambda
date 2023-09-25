@@ -4,10 +4,22 @@
         <span>{{title_brand_val}}</span>
         <span>***{{last4_val}} {{active_method_val}}</span>
     </td>
-    <td>{{Expira em}} {{exp_month_val}}/{{exp_year_val}}</td>
-    <td>
-        <button class="see-more-button" aria-label="Ver mais opções">
-            <img src="{{cdn_val}}/assets/icons/more_horiz.svg" alt="" width="24" height="24">
+    <td style="{{expires_in_visibility_val}}">{{Expira em}} {{exp_month_val}}/{{exp_year_val}}</td>
+    <td class="relative" colspan="1">
+        <button class="button--explore-more-options button--icon" aria-controls="payment_method_options_menu_{{index_val}}" aria-expanded="false" onclick="js.index.toggleExploreMenu(this)">
+            <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
         </button>
+        <menu id="payment_method_options_menu_{{index_val}}" class="menu--explore-more-options none">
+            <li style="{{make_default_payement_method_visibility_val}}">
+                <button onclick=" js.index.saveMakeDefaultPaymentMethod('{{payment_method_id_val}}')">
+                    <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Tornar padrão}}</span>
+                </button>
+            </li>
+            <li>
+                <button onclick="js.index.openModalDeletePaymentMethod('{{payment_method_id_val}}')">
+                    <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>
+                </button>
+            </li>
+        </menu>
     </td>
 </tr>
