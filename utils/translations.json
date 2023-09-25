@@ -1454,6 +1454,36 @@
         "es": "Esta cookie se utiliza para el monitoreo y el análisis opcional de nuestro sitio.",
         "pt": "Este cookie é utilizado para o monitoramento e análise opcional de nosso site."
     },
+    "Este cupom já atingiu a quantidade máxima de utilizações disponíveis": {
+        "en": "This coupon has already reached the maximum amount of available uses",
+        "es": "Este cupón ya ha alcanzado la cantidad máxima de usos disponibles",
+        "pt": "Este cupom já atingiu a quantidade máxima de utilizações disponíveis"
+    },
+    "Este cupom não está disponível para a recorrência anual": {
+        "en": "This coupon is not available for the annual recurrence",
+        "es": "Este cupón no está disponible para la recurrencia anual",
+        "pt": "Este cupom não está disponível para a recorrência anual"
+    },
+    "Este cupom não está disponível para a recorrência mensal": {
+        "en": "This coupon is not available for monthly recurrence",
+        "es": "Este cupón no está disponible para la recurrencia mensual",
+        "pt": "Este cupom não está disponível para a recorrência mensal"
+    },
+    "Este cupom não está disponível para a sua localidade": {
+        "en": "This coupon is not available for your locality",
+        "es": "Este cupón no está disponible para su localidad.",
+        "pt": "Este cupom não está disponível para a sua localidade"
+    },
+    "Este cupom não está disponível para este plano": {
+        "en": "This coupon is not available for this plan",
+        "es": "Este cupón no está disponible para este plan.",
+        "pt": "Este cupom não está disponível para este plano"
+    },
+    "Este cupom se encontra fora da data de válidade": {
+        "en": "This coupon is outside the date of various",
+        "es": "Este cupón está fuera de la fecha de varios",
+        "pt": "Este cupom se encontra fora da data de válidade"
+    },
     "Este mesmo arquivo já se encontra na fila de processamento.": {
         "en": "This same file is already in the processing queue.",
         "es": "Este mismo archivo ya está en la cola de procesamiento.",
@@ -3343,6 +3373,11 @@
         "en": "Invalid payment recurrence.",
         "es": "Recurrencia de pago no válida.",
         "pt": "Recorrência de pagamento inválida."
+    },
+    "Recorrência inválida para se adicionar cupom": {
+        "en": "Invalid recurrence to add coupon",
+        "es": "Recurrencia inválida para agregar cupón",
+        "pt": "Recorrência inválida para se adicionar cupom"
     },
     "Reembolsado": {
         "en": "Reimbursed",
