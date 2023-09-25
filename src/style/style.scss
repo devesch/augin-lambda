@@ -1621,6 +1621,10 @@ input[list]::-ms-clear {
         background-color: colors.color("color-neutral-900");
         width: calc(100% - (#{$input-radio-size} / 4));
         height: calc(100% - (#{$input-radio-size} / 4));
+        transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
     }
 
     label {
