@@ -2584,12 +2584,12 @@ export async function showCouponDiscountFields() {
 }
 
 export async function addCouponToUser() {
-    let coupon_code = document.getElementById("coupon_code");
+    let coupon_code_input = document.getElementById("coupon_code_input");
     let coupon_error_msg_span = document.getElementById("coupon_error_msg_span");
 
     let update_user_response = await apiCaller('update_user', {
         "command": "add_coupon_to_user",
-        "coupon_code": coupon_code.value
+        "coupon_code": coupon_code_input.value
     });
 
     if ("error" in update_user_response) {
