@@ -34,6 +34,8 @@ class BackofficeCreateCoupon(BackofficePage):
 
             if self.post.get("coupon_has_limited_quantity"):
                 html.esc("coupon_has_limited_quantity_checked_val", "checked='checked'")
+                if self.post.get("coupon_total_uses_count"):
+                    html.esc("coupon_total_uses_count_val", self.post["coupon_total_uses_count"])
             else:
                 html.esc("coupon_has_limited_quantity_div_visibility_val", "display:none;")
 
