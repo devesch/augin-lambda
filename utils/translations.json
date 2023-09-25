@@ -2404,6 +2404,11 @@
         "es": "No hay comando válido en la publicación",
         "pt": "Nenhum command válido no post"
     },
+    "Nenhum cupom encontrado com este código": {
+        "en": "No coupon found with this code",
+        "es": "No se encuentra cupón con este código",
+        "pt": "Nenhum cupom encontrado com este código"
+    },
     "Nenhum código postal fornecido": {
         "en": "No postal code provided",
         "es": "No se proporciona código postal",
@@ -4168,6 +4173,11 @@
         "en": "You are removing the project",
         "es": "Estás eliminando el proyecto",
         "pt": "Você está removendo o projeto"
+    },
+    "Você já utilizou este cupom": {
+        "en": "You already used this coupon",
+        "es": "Ya usaste este cupón",
+        "pt": "Você já utilizou este cupom"
     },
     "Você não está conseguindo se lembrar da sua senha? Não se preocupe": {
         "en": "Are you having trouble remembering your password?Don't worry",
