@@ -18,7 +18,7 @@ class BackofficePage(BasePage):
                 if (plan["plan_id"] == lambda_constants["free_plan_id"]) or (plan["plan_is_trial"]):
                     continue
                 html = ReadWrite().read_html("backoffice_create_coupon/_codes/html_cupon_available_plans")
-                if self.post and self.post.get("coupons plans") and (plan["plan_id"] in self.post["coupons plans"]):
+                if self.post and self.post.get("coupons_plans_ids") and (plan["plan_id"] in self.post["coupons_plans_ids"]):
                     html.esc("coupon_plan_checked_val", "checked='checked'")
                 html.esc("index_val", index)
                 html.esc("plan_id_val", plan["plan_id"])

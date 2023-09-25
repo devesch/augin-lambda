@@ -40,18 +40,18 @@
 
         <div class="switch-container">
             <div class="input-container">
-                <input onchange="js.index.toogleDiv(this, 'coupon_has_limited_quantity_div')" type="checkbox" name="coupon_has_limited_quantity" id="coupon_has_limited_quantity_input" {{coupon_has_limited_quantity_checked_val}}>
-                <label class="switch" for="coupon_has_limited_quantity_input">
+                <input onchange="js.index.toogleDiv(this, 'coupon_has_limited_uses_count_div')" type="checkbox" name="coupon_has_limited_uses_count" id="coupon_has_limited_uses_count_input" {{coupon_has_limited_uses_count_checked_val}}>
+                <label class="switch" for="coupon_has_limited_uses_count_input">
                     <div class="slider"></div>
                 </label>
             </div>
-            <label for="coupon_has_limited_quantity_input">{{Limitar a quantidade de usos}}</label>
+            <label for="coupon_has_limited_uses_count_input">{{Limitar a quantidade de usos}}</label>
         </div>
 
-        <div id="coupon_has_limited_quantity_div" style="{{coupon_has_limited_quantity_div_visibility_val}}">
+        <div id="coupon_has_limited_uses_count_div" style="{{coupon_has_limited_uses_count_div_visibility_val}}">
             <div class="floating-input">
-                <input type="text" oninput="js.index.formatToNumbers(this)" name="coupon_total_uses_count" value="{{coupon_total_uses_count_val}}" id="coupon_total_uses_count_input" placeholder="" maxlength="10">
-                <label for="coupon_total_uses_count_input">{{Quantidade total de utilizações}}</label>
+                <input type="text" oninput="js.index.formatToNumbers(this)" name="coupon_maxium_uses_count" value="{{coupon_maxium_uses_count_val}}" id="coupon_maxium_uses_count_input" placeholder="" maxlength="10">
+                <label for="coupon_maxium_uses_count_input">{{Quantidade total de utilizações}}</label>
             </div>
         </div>
 
@@ -81,7 +81,7 @@
         </div>
 
         <div class="floating-input">
-            <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_recurrence_months" value="{{coupon_recurrence_months_val}}" id="coupon_recurrence_months_input" placeholder="" maxlength="50">
+            <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_recurrence_months" value="{{coupon_recurrence_months_val}}" id="coupon_recurrence_months_input" placeholder="" required maxlength="10">
             <label for="coupon_recurrence_months_input">{{Será aplicado em quantas parcelas (meses)}}</label>
         </div>
         <p class="input-hint">{{Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade}}</p>
