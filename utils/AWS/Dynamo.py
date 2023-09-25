@@ -53,7 +53,7 @@ class Dynamo:
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#" + plan_id}, "sk": {"S": "plan#" + plan_id}}})
 
     def get_free_plan(self):
-        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#149765c4adca"}, "sk": {"S": "plan#149765c4adca"}}})
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "plan#" + lambda_constants["free_plan_id"]}, "sk": {"S": "plan#" + lambda_constants["free_plan_id"]}}})
 
     def query_purchasable_plans(self):
         filtered_query = []
