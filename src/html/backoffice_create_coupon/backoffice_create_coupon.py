@@ -51,6 +51,9 @@ class BackofficeCreateCoupon(BackofficePage):
             if self.post.get("coupon_percentage_discount"):
                 html.esc("coupon_percentage_discount_val", self.post["coupon_percentage_discount"])
 
+            if self.post.get("coupon_recurrence_months"):
+                html.esc("coupon_recurrence_months_val", self.post["coupon_recurrence_months"])
+
             if self.post.get("coupon_available_monthly"):
                 html.esc("coupon_available_monthly_checked_val", "checked='checked'")
             if self.post.get("coupon_available_annually"):
@@ -62,6 +65,8 @@ class BackofficeCreateCoupon(BackofficePage):
         else:
             html.esc("coupon_available_for_limited_time_div_visibility_val", "display:none;")
             html.esc("coupon_has_limited_quantity_div_visibility_val", "display:none;")
+            html.esc("coupon_total_uses_count_val", "1")
+            html.esc("coupon_recurrence_months_val", "1")
 
         plans = Dynamo().query_entity("plan")
         html.esc("html_coupon_available_plans", self.list_html_coupon_available_plans(plans))

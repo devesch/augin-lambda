@@ -3119,6 +3119,11 @@
         "es": "Por favor, inténtelo de nuevo más tarde.",
         "pt": "Por favor, tente novamente mais tarde."
     },
+    "Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade": {
+        "en": "How long the user will have a discount on their monthly/annuity",
+        "es": "¿Cuánto tiempo el usuario tendrá un descuento en su mensual?",
+        "pt": "Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade"
+    },
     "Portugal": {
         "en": "Portugal",
         "es": "Portugal",
@@ -3483,6 +3488,11 @@
         "en": "Service",
         "es": "Servicio",
         "pt": "Serviço"
+    },
+    "Será aplicado em quantas parcelas (meses)": {
+        "en": "Will be applied in how many installments (months)",
+        "es": "Se aplicará en cuántas cuotas (meses)",
+        "pt": "Será aplicado em quantas parcelas (meses)"
     },
     "Sessão de login:": {
         "en": "Login Session:",
