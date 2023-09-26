@@ -59,6 +59,11 @@
         "es": "La duración del plan de prueba en días debe ser un número",
         "pt": "A duração do plano trial em dias deve ser um número"
     },
+    "A maioria dos navegadores permite que você controle os cookies por meio de suas preferências de configuração": {
+        "en": "Most browsers allow you to control cookies through your configuration preferences",
+        "es": "La mayoría de los navegadores le permiten controlar las cookies a través de sus preferencias de configuración",
+        "pt": "A maioria dos navegadores permite que você controle os cookies por meio de suas preferências de configuração"
+    },
     "A ordem já excedeu o tempo máximo de pedido de reembolso.": {
         "en": "The order has already exceeded the maximum reimbursement request.",
         "es": "El pedido ya ha excedido la solicitud de reembolso máximo.",
@@ -254,6 +259,11 @@
         "es": "Cambiar contraseña",
         "pt": "Alterar senha"
     },
+    "Alterações a esta política de privacidade": {
+        "en": "Changes to this privacy policy",
+        "es": "Cambios a esta Política de privacidad",
+        "pt": "Alterações a esta política de privacidade"
+    },
     "American Samoa": {
         "en": "American Samoa",
         "es": "Samoa Americana",
@@ -293,6 +303,11 @@
         "en": "By proceeding, this device will no longer be linked to your account.",
         "es": "Al continuar, este dispositivo ya no estará vinculado a su cuenta.",
         "pt": "Ao prosseguir, este dispositivo não estará mais vinculado a sua conta."
+    },
+    "Ao utilizar o nosso site, está a consentir a utilização de cookies, de acordo com a nossa política de cookies": {
+        "en": "When using our site, you are consenting to use cookies, according to our cookies policy",
+        "es": "Al usar nuestro sitio, tiene consentimiento para usar cookies, de acuerdo con nuestra política de cookies",
+        "pt": "Ao utilizar o nosso site, está a consentir a utilização de cookies, de acordo com a nossa política de cookies"
     },
     "Apagar": {
         "en": "To switch off",
@@ -824,6 +839,16 @@
         "es": "Satisfacer la",
         "pt": "Conheça o"
     },
+    "Consentimento": {
+        "en": "Consent",
+        "es": "Consentir",
+        "pt": "Consentimento"
+    },
+    "Contate-nos": {
+        "en": "Contact us",
+        "es": "Contáctenos",
+        "pt": "Contate-nos"
+    },
     "Contato": {
         "en": "Contact",
         "es": "Contacto",
@@ -839,6 +864,26 @@
         "es": "Islas Cook",
         "pt": "Ilhas Cook"
     },
+    "Cookies Essenciais": {
+        "en": "Essential cookies",
+        "es": "Galletas esenciales",
+        "pt": "Cookies Essenciais"
+    },
+    "Cookies de Funcionalidade": {
+        "en": "Functionality cookies",
+        "es": "Cookies de funcionalidad",
+        "pt": "Cookies de Funcionalidade"
+    },
+    "Cookies de Performance": {
+        "en": "Performance cookies",
+        "es": "Cookies de rendimiento",
+        "pt": "Cookies de Performance"
+    },
+    "Cookies de Terceiros": {
+        "en": "Third party cookies",
+        "es": "Galletas de terceros",
+        "pt": "Cookies de Terceiros"
+    },
     "Cookies necessários de terceiros": {
         "en": "Necessary cookies from third parties",
         "es": "Cookies necesarias de terceros",
@@ -848,6 +893,11 @@
         "en": "Optional third party cookies",
         "es": "Galletas de terceros opcionales",
         "pt": "Cookies opcionais de terceiros"
+    },
+    "Cookies são pequenos arquivos de texto que são colocados em seu computador, dispositivo móvel ou qualquer outro dispositivo por sites que você visita": {
+        "en": "Cookies are small text files that are placed on your computer, mobile device or any other device by sites you visit",
+        "es": "Las cookies son pequeños archivos de texto que se colocan en su computadora, dispositivo móvil o cualquier otro dispositivo por sitios que visite",
+        "pt": "Cookies são pequenos arquivos de texto que são colocados em seu computador, dispositivo móvel ou qualquer outro dispositivo por sites que você visita"
     },
     "Copiado!": {
         "en": "Copied!",
@@ -1304,6 +1354,11 @@
         "es": "Eléctrico",
         "pt": "Elétrica"
     },
+    "Eles incluem, por exemplo, cookies que permitem que você faça login em áreas seguras do nosso site, use um carrinho de compras ou faça uso de serviços de faturamento eletrônico": {
+        "en": "They include, for example, cookies that allow you to log in to safe areas of our site, use a shopping cart or use electronic billing services",
+        "es": "Incluyen, por ejemplo, cookies que le permiten iniciar sesión en áreas seguras de nuestro sitio, usar un carrito de compras o usar servicios de facturación electrónica",
+        "pt": "Eles incluem, por exemplo, cookies que permitem que você faça login em áreas seguras do nosso site, use um carrinho de compras ou faça uso de serviços de faturamento eletrônico"
+    },
     "Elétrica": {
         "en": "Electrical",
         "es": "Eléctrico",
@@ -1454,6 +1509,11 @@
         "es": "Esta carpeta no es accesible al compartir",
         "pt": "Esta pasta não se encontra acessível através de compartilhamento"
     },
+    "Esta política descreve o que são cookies, os tipos de cookies que usamos, por que os usamos e como você pode gerenciar esses cookies": {
+        "en": "This policy describes what cookies are, the types of cookies we use, why we use them and how you can manage these cookies",
+        "es": "Esta política describe qué son las cookies, los tipos de cookies que usamos, por qué las usamos y cómo puede administrar estas cookies.",
+        "pt": "Esta política descreve o que são cookies, os tipos de cookies que usamos, por que os usamos e como você pode gerenciar esses cookies"
+    },
     "Estado": {
         "en": "State",
         "es": "Estado",
@@ -1543,6 +1603,16 @@
         "en": "This project is not accessible through sharing",
         "es": "Este proyecto no es accesible a través del intercambio",
         "pt": "Este projeto não se encontra acessível através de compartilhamento"
+    },
+    "Estes permitem-nos contar visitas e fontes de tráfego para que possamos medir e melhorar o desempenho do nosso site": {
+        "en": "These allow us to count visits and sources of traffic so that we can measure and improve the performance of our site",
+        "es": "Estos nos permiten contar visitas y fuentes de tráfico para que podamos medir y mejorar el rendimiento de nuestro sitio.",
+        "pt": "Estes permitem-nos contar visitas e fontes de tráfego para que possamos medir e melhorar o desempenho do nosso site"
+    },
+    "Estes são necessários para o funcionamento do nosso website e não podem ser desativados nos nossos sistemas": {
+        "en": "These are necessary for the operation of our website and cannot be deactivated in our systems",
+        "es": "Estos son necesarios para la operación de nuestro sitio web y no se pueden desactivar en nuestros sistemas.",
+        "pt": "Estes são necessários para o funcionamento do nosso website e não podem ser desativados nos nossos sistemas"
     },
     "Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos.": {
         "en": "These are the mandatory cookies for the operation of our site, including, for example, those that allow visitors to browse safely on the site, login, store preferences, store items in the cart and make payments.",
@@ -1763,6 +1833,11 @@
         "en": "Generating compressed folder ...",
         "es": "Generar carpeta comprimida ...",
         "pt": "Gerando pasta compactada..."
+    },
+    "Gerenciando Cookies": {
+        "en": "Managing cookies",
+        "es": "Gestión de cookies",
+        "pt": "Gerenciando Cookies"
     },
     "Gerencie seus dispositivos": {
         "en": "Manage your devices",
@@ -2034,6 +2109,11 @@
         "es": "Interior",
         "pt": "Interiores"
     },
+    "Introdução": {
+        "en": "Introduction",
+        "es": "Introducción",
+        "pt": "Introdução"
+    },
     "Iran, Islamic Republic of": {
         "en": "Iran, Islamic Republic of",
         "es": "Irán (República Islámica de",
@@ -2058,6 +2138,11 @@
         "en": "Israel",
         "es": "Israel",
         "pt": "Israel"
+    },
+    "Isso nos permite personalizar nosso conteúdo para você, lembrar suas preferências e fornecer recursos aprimorados e mais pessoais": {
+        "en": "This allows us to customize our content to you, remember your preferences and provide improved and more personal resources",
+        "es": "Esto nos permite personalizar nuestro contenido con usted, recordar sus preferencias y proporcionar recursos mejorados y más personales.",
+        "pt": "Isso nos permite personalizar nosso conteúdo para você, lembrar suas preferências e fornecer recursos aprimorados e mais pessoais"
     },
     "Isto irá deletar todos os arquivos e pastas que também existam dentro dela": {
         "en": "This will delete all files and folders that also exist inside it",
@@ -2629,6 +2714,11 @@
         "es": "Niue",
         "pt": "Niue"
     },
+    "No entanto, se você limitar a capacidade dos sites de definir cookies, poderá piorar sua experiência geral do usuário, pois não será mais personalizado para você": {
+        "en": "However, if you limit the capacity of the websites to define cookies, you can make your general user experience worse, as it will no longer be personalized for you",
+        "es": "Sin embargo, si limita la capacidad de los sitios web para definir cookies, puede empeorar su experiencia general del usuario, ya que ya no será personalizado para usted.",
+        "pt": "No entanto, se você limitar a capacidade dos sites de definir cookies, poderá piorar sua experiência geral do usuário, pois não será mais personalizado para você"
+    },
     "Nome": {
         "en": "Name",
         "es": "Nombre",
@@ -2708,6 +2798,16 @@
         "en": "Our team is working to resolve the situation as soon as possible.",
         "es": "Nuestro equipo está trabajando para resolver la situación lo antes posible.",
         "pt": "Nossa equipe está trabalhando para resolver a situação o mais rápido possível."
+    },
+    "Nosso site usa os seguintes tipos de cookies": {
+        "en": "Our site uses the following types of cookies",
+        "es": "Nuestro sitio utiliza los siguientes tipos de cookies",
+        "pt": "Nosso site usa os seguintes tipos de cookies"
+    },
+    "Nosso site, Augin, utiliza cookies para melhorar sua experiência de usuário e nossos serviços, e aderimos a toda a legislação vigente em relação à sua privacidade": {
+        "en": "Our site, Augin, uses cookies to improve your user experience and our services, and we adhere to all current legislation regarding your privacy",
+        "es": "Nuestro sitio, Augin, utiliza cookies para mejorar su experiencia de usuario y nuestros servicios, y nos adherimos a toda la legislación actual con respecto a su privacidad.",
+        "pt": "Nosso site, Augin, utiliza cookies para melhorar sua experiência de usuário e nossos serviços, e aderimos a toda a legislação vigente em relação à sua privacidade"
     },
     "Nota Fiscal": {
         "en": "Invoice",
@@ -2814,6 +2914,11 @@
         "es": "O .zip contiene archivos duplicados.",
         "pt": "O .zip contem arquivos duplicados."
     },
+    "O Mouseflow usa cookies para rastrear as interações do usuário": {
+        "en": "Mouseflow uses cookies to track user interactions",
+        "es": "MouseFlow usa cookies para rastrear las interacciones de los usuarios",
+        "pt": "O Mouseflow usa cookies para rastrear as interações do usuário"
+    },
     "O código do cupom não pode conter caracteres que não possam ser usados em uma URL": {
         "en": "The coupon code cannot contain characters that cannot be used in a URL",
         "es": "El código de cupón no puede contener caracteres que no se pueden usar en una URL",
@@ -2889,6 +2994,11 @@
         "es": "El proyecto seleccionado no es válido",
         "pt": "O projeto selecionado é inválido"
     },
+    "O que são cookies": {
+        "en": "What are cookies",
+        "es": "¿Qué son las galletas?",
+        "pt": "O que são cookies"
+    },
     "O tamanho de federado máximo deve ser um número": {
         "en": "The maximum federated size should be a number",
         "es": "El tamaño federado máximo debe ser un número",
@@ -2943,6 +3053,11 @@
         "en": "IFC -supported shapes are: IFC2x3 and IFC4.",
         "es": "IFC Las formas soportadas son: IFC2X3 e IFC4.",
         "pt": "Os formartos suportados de IFC são: IFC2x3 e IFC4."
+    },
+    "Os tipos de cookies que usamos": {
+        "en": "The types of cookies we use",
+        "es": "Los tipos de cookies que usamos",
+        "pt": "Os tipos de cookies que usamos"
     },
     "Others": {
         "en": "Others",
@@ -3128,6 +3243,11 @@
         "en": "Plans",
         "es": "Planes",
         "pt": "Planos"
+    },
+    "Podemos atualizar esta Política de tempos em tempos": {
+        "en": "We can update this policy from time to time",
+        "es": "Podemos actualizar esta política de vez en cuando",
+        "pt": "Podemos atualizar esta Política de tempos em tempos"
     },
     "Poland": {
         "en": "Poland",
@@ -3569,6 +3689,16 @@
         "es": "Arabia Saudita",
         "pt": "Arábia Saudita"
     },
+    "Se fizermos alterações significativas, informaremos você, mas verifique regularmente esta Política para garantir que você esteja ciente da versão mais atualizada": {
+        "en": "If we make significant changes, we will inform you, but check this policy regularly to ensure that you are aware of the most up -to -date version",
+        "es": "Si realizamos cambios significativos, le informaremos, pero verifique esta política regularmente para asegurarse de que está al tanto de la versión más actualizada para determinar",
+        "pt": "Se fizermos alterações significativas, informaremos você, mas verifique regularmente esta Política para garantir que você esteja ciente da versão mais atualizada"
+    },
+    "Se você tiver alguma dúvida sobre o uso de cookies, entre em contato conosco no rodapé da página em Fale Conosco através do WhatsApp ou pelo chat de Atendimento online através do Tawk.to": {
+        "en": "If you have any questions about using cookies, please contact us at the bottom of the page in Contact Us through WhatsApp or online service chat through Tawk.to",
+        "es": "Si tiene alguna pregunta sobre el uso de cookies, contáctenos al final de la página en contáctenos a través de WhatsApp o chat de servicio en línea a través de Tawk.TO",
+        "pt": "Se você tiver alguma dúvida sobre o uso de cookies, entre em contato conosco no rodapé da página em Fale Conosco através do WhatsApp ou pelo chat de Atendimento online através do Tawk.to"
+    },
     "Seguinte": {
         "en": "Following",
         "es": "Siguiente",
@@ -3739,6 +3869,11 @@
         "es": "Eslovenia",
         "pt": "Eslovênia"
     },
+    "Solicitaremos seu consentimento antes que quaisquer cookies não essenciais sejam colocados em seu dispositivo": {
+        "en": "We will request your consent before any non -essential cookies are placed on your device",
+        "es": "Solicitaremos su consentimiento antes de que se coloquen cookies no esenciales en su dispositivo.",
+        "pt": "Solicitaremos seu consentimento antes que quaisquer cookies não essenciais sejam colocados em seu dispositivo"
+    },
     "Solomon Islands": {
         "en": "Solomon Islands",
         "es": "Islas Salomón",
@@ -3788,6 +3923,11 @@
         "en": "Status:",
         "es": "Estado:",
         "pt": "Status:"
+    },
+    "Stripe usa cookies para lembrar quem você é e para nos permitir processar pagamentos sem armazenar nenhuma informação de cartão de crédito em nossos servidores": {
+        "en": "Stripe uses cookies to remember who you are and to allow us to process payments without storing any credit card information on our servers",
+        "es": "Stripe usa cookies para recordar quién es usted y para permitirnos procesar pagos sin almacenar ninguna información de tarjeta de crédito en nuestros servidores",
+        "pt": "Stripe usa cookies para lembrar quem você é e para nos permitir processar pagamentos sem armazenar nenhuma informação de cartão de crédito em nossos servidores"
     },
     "Structural": {
         "en": "Structural",
@@ -3864,6 +4004,11 @@
         "es": "República Árabe Siria",
         "pt": "República Árabe da Síria"
     },
+    "São amplamente utilizados para fazer com que os sites funcionem, ou funcionem com mais eficiência, bem como para fornecer informações aos proprietários do site": {
+        "en": "They are widely used to make sites work, or work more efficiently, as well as to provide information to the site owners",
+        "es": "Se utilizan ampliamente para hacer que los sitios funcionen, o funcionen de manera más eficiente, así como para proporcionar información a los propietarios del sitio.",
+        "pt": "São amplamente utilizados para fazer com que os sites funcionem, ou funcionem com mais eficiência, bem como para fornecer informações aos proprietários do site"
+    },
     "Só é possível reembolsar ordens do tipo cartão de crédito.": {
         "en": "It is only possible to reimburse credit card orders.",
         "es": "Solo es posible reembolsar los pedidos de tarjetas de crédito.",
@@ -3903,6 +4048,11 @@
         "en": "Maximum size per design (MBS)",
         "es": "Tamaño máximo por diseño (MBS)",
         "pt": "Tamanho máximo por projeto (Mbs)"
+    },
+    "Também pode impedir que você salve configurações personalizadas, como informações de login": {
+        "en": "Can also prevent you from saving custom settings, such as login information",
+        "es": "También puede evitar que guarde la configuración personalizada, como la información de inicio de sesión",
+        "pt": "Também pode impedir que você salve configurações personalizadas, como informações de login"
     },
     "Tanzania, United Republic of": {
         "en": "Tanzania, United Republic of",
@@ -4149,6 +4299,21 @@
         "es": "Uruguay",
         "pt": "Uruguai"
     },
+    "Usamos o Mouseflow para entender como os usuários interagem com nosso site, ajudando-nos a melhorar a funcionalidade de nosso site e sua experiência de usuário": {
+        "en": "We use mouseflow to understand how users interact with our site, helping us improve the functionality of our site and their user experience",
+        "es": "Usamos MouseFlow para comprender cómo los usuarios interactúan con nuestro sitio, ayudándonos a mejorar la funcionalidad de nuestro sitio y su experiencia de usuario.",
+        "pt": "Usamos o Mouseflow para entender como os usuários interagem com nosso site, ajudando-nos a melhorar a funcionalidade de nosso site e sua experiência de usuário"
+    },
+    "Usamos o Stripe para processar pagamentos em nosso site": {
+        "en": "We use the stripe to process payments on our website",
+        "es": "Utilizamos la franja para procesar pagos en nuestro sitio web",
+        "pt": "Usamos o Stripe para processar pagamentos em nosso site"
+    },
+    "Usamos vários cookies de terceiros em nosso site para fornecer funcionalidades e recursos adicionais": {
+        "en": "We use several third party cookies on our site to provide additional features and features",
+        "es": "Utilizamos varias cookies de terceros en nuestro sitio para proporcionar características y características adicionales.",
+        "pt": "Usamos vários cookies de terceiros em nosso site para fornecer funcionalidades e recursos adicionais"
+    },
     "Use sua conta em até": {
         "en": "Use your account in up to",
         "es": "Use su cuenta en hasta",
@@ -4213,6 +4378,11 @@
         "en": "Vanuatu",
         "es": "Vanuatu",
         "pt": "Vanuatu"
+    },
+    "Veja como os usamos": {
+        "en": "See how we use them",
+        "es": "Vea cómo los usamos",
+        "pt": "Veja como os usamos"
     },
     "Veja seus dispositivos conectados ao Augin.": {
         "en": "View your devices connected to Augin.",
