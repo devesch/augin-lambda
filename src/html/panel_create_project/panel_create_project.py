@@ -42,7 +42,11 @@ class PanelCreateProject(PanelPage):
 
         for model_id in models_ids:
             model = Dynamo().get_model(model_id)
-            ModelController().process_model_file_uploaded(model, federated_model)
+            if model["model_state"] == "not_created":
+                ModelController().process_model_file_uploaded(model, federated_model)
+            else:
+                if federated_model:
+                    raise Exception("ADD ALREADY EXISTING PROJECT TO FEDERATED PROJECTS")
 
         return Http().redirect("panel_explore_project")
 

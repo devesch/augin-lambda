@@ -654,10 +654,6 @@ export async function checkUploadModelFile(post_data) {
         model_id.value = panel_create_project_check_file_response["success"]["models_ids"];
         has_more_than_one_file.value = panel_create_project_check_file_response["success"]["has_more_than_one_file"];
 
-        let translate_response = await apiCaller("translate", {
-            "key": "Upload realizado com sucesso."
-        });
-
         let has_fbx = document.getElementById("has_fbx_" + post_data["element_index"]);
         if (panel_create_project_check_file_response["success"]["has_fbx"]) {
             has_fbx.value = "True";
@@ -666,7 +662,7 @@ export async function checkUploadModelFile(post_data) {
         }
 
         let message = document.getElementById("message_" + post_data["element_index"]);
-        message.innerHTML = translate_response["success"];
+        message.innerHTML = panel_create_project_check_file_response["success"]["message"] + " " + panel_create_project_check_file_response["success"]["model_already_exists_name"];
         let has_error = document.getElementById("has_error_" + post_data["element_index"]);
         has_error.value = "False";
         let file_formats_div = document.getElementById("file_formats_div_" + post_data["element_index"]);
@@ -2076,10 +2072,9 @@ export async function refreshCreateFederatedModal(folder_id) {
 
 }
 
-const federated_required_ids_list = [];
+var federated_required_ids_list = [];
 
 export async function addOrRemoveModelFromCreateFederatedList(input) {
-    console.log("input", input);
     console.log("input.checked", input.checked);
 
     if (federated_required_ids_list.includes(input.value) && !input.checked) {
@@ -2601,4 +2596,80 @@ export async function addCouponToUser() {
     } else {
         coupon_error_msg_span.innerHTML = coupon_error_msg_span["success"]
     }
+}
+
+
+export async function openModalEditFederatedProject(federated_model_id) {
+    let federated_required_ids = document.getElementById(federated_model_id + "_federated_required_ids");
+
+    federated_required_ids_list = JSON.parse(federated_required_ids.value.replace(/'/g, "\""));
+    console.log("federated_required_ids_list", federated_required_ids_list);
+
+    let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
+    let edit_federated_model_rows_tbody = document.getElementById("edit_federated_model_rows_tbody");
+    let edit_federated_model_error_span = document.getElementById("edit_federated_model_error_span");
+
+
+    edit_federated_model_id_input.value = federated_model_id;
+    edit_federated_model_error_span.innerHTML = "";
+
+    let panel_explore_projects_modal_edit_federated_model_html_response = await apiCaller('panel_explore_projects_modal_edit_federated_model_html', {
+        "federated_model_id": federated_model_id
+    });
+
+    edit_federated_model_rows_tbody.innerHTML = panel_explore_projects_modal_edit_federated_model_html_response["success"];
+    openModal('.modal.edit-federated-model-modal');
+}
+
+
+export async function openModalAddModelToFederatedProject(folder_id) {
+    let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
+    var folder_id_add_model_to_federated_modal_input = document.getElementById("folder_id_add_model_to_federated_modal_input");
+    var add_model_to_federated_modal_error_span = document.getElementById("add_model_to_federated_modal_error_span");
+    var add_model_to_federated_model_user_folder_rows_tbody = document.getElementById("add_model_to_federated_model_user_folder_rows_tbody");
+    var add_model_to_federated_modal_return_folder_span = document.getElementById("add_model_to_federated_modal_return_folder_span");
+    var add_model_to_federated_modal_folder_path_span = document.getElementById("add_model_to_federated_modal_folder_path_span");
+    var add_model_to_federated_modal_folder_id = document.getElementById("add_model_to_federated_modal_folder_id");
+
+    add_model_to_federated_modal_return_folder_span.style.display = "none";
+    add_model_to_federated_modal_folder_path_span.style.display = "none";
+
+    var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
+        "model_html": "add_project_to_federated",
+        "federated_model_id": edit_federated_model_id_input.value
+    })
+
+    folder_id_add_model_to_federated_modal_input.value = folder_id;
+    add_model_to_federated_modal_error_span.innerHTML = "";
+    add_model_to_federated_modal_folder_id.value = "";
+    add_model_to_federated_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
+
+
+    openModal(".add-model-to-federated-modal");
+}
+
+
+export async function saveAddProjectsToFederatedProject() {
+    let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
+    let add_model_to_federated_modal_error_span = document.getElementById("add_model_to_federated_modal_error_span");
+    let federated_required_ids = document.getElementById(edit_federated_model_id_input.value + "_federated_required_ids");
+
+    var update_model = await apiCaller("update_model", {
+        "command": "update_federated_model_required_ids",
+        "federated_model_id": federated_required_ids_list
+    })
+
+    if ("error" in update_model) {
+        add_model_to_federated_modal_error_span.innerHTML = update_model["error"];
+    } else {
+        let federated_required_ids = document.getElementById(federated_model_id + "_federated_required_ids");
+        federated_required_ids.value = update_model["success"]["federated_model_required_ids"];
+        returnToModalEditFederatedProject()
+    }
+}
+
+export async function returnToModalEditFederatedProject() {
+    let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
+    closeModal(".modal.add-model-to-federated-modal")
+    openModalEditFederatedProject(edit_federated_model_id_input.value)
 }

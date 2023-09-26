@@ -45,7 +45,7 @@ class ModelController:
             matching_name_models = self.add_folder_files_to_matching_name_models(search_input, user.user_shared_dicts["files"], matching_name_models)
 
         else:
-            completed_models = Dynamo().query_user_models_name_from_state(user, "completed")
+            completed_models = Dynamo().query_user_models_from_state(user, "completed")
             if completed_models:
                 for model in completed_models:
                     if search_input.lower() in model["model_name"].lower():
@@ -293,7 +293,7 @@ class ModelController:
             ifc_location = lambda_constants["tmp_path"] + original_name
             ifcs_locations = [ifc_location]
 
-        response = {"success": {"models_ids": [], "file_formats": {}}}
+        response = {"success": {"models_ids": [], "file_formats": {}, "message": "", "model_already_exists_name": ""}}
 
         user_plan = user.get_user_actual_plan()
         files_hashes = []
@@ -310,7 +310,7 @@ class ModelController:
                     return {"error": "O projeto excede o tamanho máximo de 1Gb."}
                 else:
                     return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."}
-            if os.path.getsize(ifc_location / (10**6)) > int(user_plan["plan_maxium_model_size_in_mbs"]):
+            if (os.path.getsize(ifc_location) / (10**6)) > int(user_plan["plan_maxium_model_size_in_mbs"]):
                 if index == 0:
                     return {"error": "O projeto excede o tamanho máximo da suportado pela sua conta."}
                 else:
@@ -369,10 +369,21 @@ class ModelController:
                 os.rename(ifc_location, new_ifc_location)
                 ifc_location = new_ifc_location
 
-            model_with_same_filehash = Dynamo().get_model_by_filehash(ReadWrite().get_file_hash(ifc_location))
-            if model_with_same_filehash and (user.user_id == model_with_same_filehash["model_user_id"]):
-                response["success"]["model_already_exists"] = model_with_same_filehash["model_name"]
+            models_with_same_filehash = Dynamo().query_models_by_filehash(ReadWrite().get_file_hash(ifc_location))
+            model_already_exits = False
+            if models_with_same_filehash:
+                for model_with_same_filehash in models_with_same_filehash:
+                    if model_with_same_filehash["model_user_id"] == user.user_id and model_with_same_filehash["model_state"] == "completed":
+                        response["success"]["model_already_exists_name"] = model_with_same_filehash["model_name"]
+                        response["success"]["message"] = "Já existe um projeto com este arquivo chamado: "
+                        response["success"]["models_ids"].append(model_with_same_filehash["model_id"])
+                        model_already_exits = True
+                        break
+
+            if model_already_exits:
                 continue
+            else:
+                response["success"]["message"] = "Upload realizado com sucesso."
 
             if index == 0:
                 model = Dynamo().get_model(self.get_model_id_from_uploaded_file(uploaded_file))

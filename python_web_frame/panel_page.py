@@ -14,6 +14,15 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_edit_federated_model_rows(self, federated_required_models):
+        full_html = []
+        if federated_required_models:
+            for federated_required_models in federated_required_models:
+                html = ReadWrite().read_html("panel_explore_project/_codes/html_edit_federated_model_rows")
+                html.esc("model_name_val", federated_required_models["model_name"])
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def show_html_make_an_upgrade_link(self):
         html = ReadWrite().read_html("panel_create_project/_codes/html_make_an_upgrade_link")
         return str(html)
@@ -63,10 +72,14 @@ class PanelPage(BasePage):
     def list_html_user_folder_rows(self, folder_id=None, model_html=""):
         full_html = []
         shared = False
+        federated_model = None
         user_ids_name_dict = {self.user.user_id: self.user.user_name}
 
         if self.route == "panel_shared_project" or self.post.get("page") == "panel_shared_project":
             shared = True
+
+        if self.post.get("federated_model_id"):
+            federated_model = Dynamo().get_model(self.post["federated_model_id"])
 
         if self.post.get("model_id_to_be_updated"):
             model_to_be_updated = Dynamo().get_model(self.post.get("model_id_to_be_updated"))
@@ -96,9 +109,8 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows_folders")
                     elif model_html == "move_folder":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows_folders")
-                    elif model_html == "create_federated":
+                    elif model_html == "create_federated" or model_html == "add_project_to_federated":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows_folders")
-
                     if shared and self.post.get("folder_id"):
                         html.esc("remove_folder_visibility_val", "display:none;")
 
@@ -176,10 +188,12 @@ class PanelPage(BasePage):
                     if index == 5:
                         break
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows")
-                elif model_html == "create_federated":
+                elif model_html == "create_federated" or model_html == "add_project_to_federated":
                     if model["model_is_federated"] or model["model_format"] != "ifc":
                         continue
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows")
+                    if federated_model and model["model_id"] in federated_model["model_federated_required_ids"]:
+                        html.esc("checked_val", "checked='checked'")
 
                 if shared and self.post.get("folder_id"):
                     html.esc("remove_model_visibility_val", "display:none;")
@@ -192,8 +206,10 @@ class PanelPage(BasePage):
                     html.esc("model_icon_val", "note_stack")
                     html.esc("model_update_visibility_val", "display:none;")
                     html.esc("model_category_visibility_val", "display:none;")
+                    html.esc("model_federated_required_ids_val", str(model["model_federated_required_ids"]))
 
                 else:
+                    html.esc("model_edit_federated_visibility_val", "display:none;")
                     if model["model_category"]:
                         html.esc("model_icon_val", model["model_category"] + "_category")
                     else:

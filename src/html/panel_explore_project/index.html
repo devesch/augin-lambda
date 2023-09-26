@@ -676,6 +676,74 @@
     </div>
 </div>
 
+<div id="edit-federated-model-modal" class="modal edit-federated-model-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Editando projeto federado}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <table class="modal-explore__table">
+                    <thead>
+                        <th>
+                            <div class="explore__table-container__button-container">
+                                <span class="ml-05">{{Projetos}}</span>
+                            </div>
+                        </th>
+                    </thead>
+                    <tbody id="edit_federated_model_rows_tbody">
+                        {{html_edit_federated_model_rows}}
+                    </tbody>
+                </table>
+            </div>
+            <span class="error" id="edit_federated_model_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="edit_federated_model_id_input">
+                <button onclick="js.index.closeModal('.modal.edit-federated-model-modal')" class="ghost">{{Fechar}}</button>
+                <button onclick="js.index.openModalAddModelToFederatedProject('')">{{Adicionar projeto ao federado}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="add-model-to-federated-modal" class="modal add-model-to-federated-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Escolher novo projeto para federado}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <table class="modal-explore__table">
+                    <input hidden id="add_model_to_federated_modal_folder_id">
+                    <thead>
+                        <th>
+                            <div class="explore__table-container__button-container">
+                                <button onclick="js.index.openReturnFolderModalAddModelToFederated()" id="add_model_to_federated_modal_return_folder_span">
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
+                                </button>
+                                <span onclick="js.index.refreshAddModelToFederatedModal('')" class="ml-05">{{Meus Projetos}}</span>
+                                <span id="add_model_to_federated_modal_folder_path_span"></span>
+                            </div>
+                        </th>
+                    </thead>
+                    <tbody id="add_model_to_federated_model_user_folder_rows_tbody">
+                        {{html_add_model_to_federated_model_user_folder_rows}}
+                    </tbody>
+                </table>
+            </div>
+            <span class="error" id="add_model_to_federated_modal_error_span">
+                {{error_msg_val}}
+            </span>
+            <div class="modal-button-container">
+                <input hidden id="folder_id_add_model_to_federated_modal_input">
+                <button onclick="js.index.returnToModalEditFederatedProject()" class="ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveAddProjectsToFederatedProject()">{{Adicionar projetos}}</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script>

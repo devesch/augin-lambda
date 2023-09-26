@@ -168,12 +168,10 @@ class Dynamo:
                 return None
         return model
 
-    def get_model_by_filehash(self, user_id, model_filehash):
-        model = self.execute_get_item({"TableName": lambda_constants["table_project"], "IndexName": "model_filehash-sk-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_filehash"}, "ExpressionAttributeValues": {":bef90": {"S": model_filehash}}})
-        if model:
-            if model["model_state"] != "deleted":
-                return None
-        return model
+    def query_models_by_filehash(self, model_filehash, last_evaluated_key=None, limit=10000, reverse=False):
+        key_schema = {"created_at": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_filehash-sk-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_filehash"}, "ExpressionAttributeValues": {":bef90": {"S": model_filehash}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
+        return self.execute_batch_get_item(query)
 
     def batch_get_models(self, models_ids):
         query = []
@@ -195,11 +193,6 @@ class Dynamo:
             return "500000"
 
     def query_user_models_from_state(self, user, model_state, last_evaluated_key=None, limit=10000, reverse=False):
-        key_schema = {"created_at": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}
-        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_user_id_state-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_user_id_state"}, "ExpressionAttributeValues": {":bef90": {"S": user.user_id + "#" + model_state}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
-        return self.execute_batch_get_item(query)
-
-    def query_user_models_name_from_state(self, user, model_state, last_evaluated_key=None, limit=10000, reverse=False):
         key_schema = {"created_at": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_user_id_state-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_user_id_state"}, "ExpressionAttributeValues": {":bef90": {"S": user.user_id + "#" + model_state}}}, limit, last_evaluated_key, key_schema, reverse=reverse)
         return self.execute_batch_get_item(query)

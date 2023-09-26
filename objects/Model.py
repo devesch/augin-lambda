@@ -16,7 +16,7 @@ class Model:
         self.model_branch_url_qrcode = ""
 
         self.model_name = ""
-        self.model_filehash = ""
+        self.model_filehash = str(time.time())
         self.model_filename = ""
         self.model_filename_zip = ""
         self.model_format = ""
