@@ -175,6 +175,15 @@ input[type="tel"][readonly] + label {
     margin-top: 4rem;
 }
 
+.verify-code-button-container {
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .checkbox-container {
     margin-top: 1rem;
 }
