@@ -344,16 +344,6 @@
         "es": "Archivo de procesamiento",
         "pt": "Arquivo em processamento"
     },
-    "Arraste e solte seu arquivo (IFC ou FBX ou GLB ou ZIP) aqui ou": {
-        "en": "Drag and release your file (IFC or FBX or GLB or Zip) here or",
-        "es": "Arrastre y suelte su archivo (IFC o FBX o GLB o ZIP) aquí o",
-        "pt": "Arraste e solte seu arquivo (IFC ou FBX ou GLB ou ZIP) aqui ou"
-    },
-    "Arraste e solte seu arquivo (IFC ou FBX) aqui ou": {
-        "en": "Drag and drop your file (IFC or FBX) here or",
-        "es": "Arrastre y suelte su archivo (IFC o FBX) aquí o",
-        "pt": "Arraste e solte seu arquivo (IFC ou FBX) aqui ou"
-    },
     "Arraste e solte seu arquivo (IFC, FBX, GLB ou ZIP) aqui ou": {
         "en": "Drag and release your file (IFC, FBX, GLB or Zip) here or",
         "es": "Arrastre y suelte su archivo (IFC, FBX, GLB o ZIP) aquí o",
