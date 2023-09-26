@@ -145,6 +145,28 @@ input[type="tel"][readonly] + label {
         text-align: center;
     }
 
+    @media only screen and (max-width: 680px) {
+        flex-wrap: wrap;
+        gap: 0.15rem;
+        justify-content: space-between;
+
+        input {
+            padding: .75rem;
+        }
+
+    }
+
+    @media only screen and (max-width: 350px) {
+        flex-wrap: wrap;
+        gap: 0.05rem;
+        justify-content: space-between;
+
+        input {
+            padding: .5rem;
+        }
+
+    }
+
 }
 
 .verify-code-button-container,

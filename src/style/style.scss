@@ -783,6 +783,8 @@ input[list]::-ms-clear {
 
 .login__title-container,
 .create-account__title-container {
+    word-break: break-word;
+
     h2 {
         color: colors.color("color-black");
         font-size: fonts.$font-heading-3-size;
