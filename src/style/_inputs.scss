@@ -191,13 +191,13 @@ input[type="tel"][readonly] + label {
 .checkbox-default {
     display: flex;
     flex-direction: row;
-    gap: .25rem;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-wrap: unset;
+    align-items: start;
+    gap: 1rem;
 }
 
 .checkbox-default + .checkbox-default {
-    margin-top: .5rem;
+    margin-top: 1rem;
 }
 
 input[type="checkbox"],
