@@ -1883,7 +1883,6 @@ export async function refreshMoveModal(folder_id) {
 
     move_modal_folder_id.value = folder_id;
     move_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
-
 }
 
 export async function openReturnFolderModalMove() {
@@ -2069,7 +2068,6 @@ export async function refreshCreateFederatedModal(folder_id) {
             federated_required_id_input.checked = false;
         }
     }
-
 }
 
 var federated_required_ids_list = [];
@@ -2600,10 +2598,11 @@ export async function addCouponToUser() {
 
 
 export async function openModalEditFederatedProject(federated_model_id) {
-    let federated_required_ids = document.getElementById(federated_model_id + "_federated_required_ids");
+    let federated_required_ids = document.getElementById("federated_required_ids_" + federated_model_id);
+    console.log("federated_required_ids", federated_required_ids);
+    console.log("federated_required_ids.value", federated_required_ids.value);
 
-    federated_required_ids_list = JSON.parse(federated_required_ids.value.replace(/'/g, "\""));
-    console.log("federated_required_ids_list", federated_required_ids_list);
+    federated_required_ids_list = federated_required_ids.value.split(',');
 
     let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
     let edit_federated_model_rows_tbody = document.getElementById("edit_federated_model_rows_tbody");
@@ -2644,7 +2643,14 @@ export async function openModalAddModelToFederatedProject(folder_id) {
     add_model_to_federated_modal_folder_id.value = "";
     add_model_to_federated_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
 
-
+    var federated_required_id_inputs = document.querySelectorAll('[id$="_federated_required_id_input"]');
+    for (let federated_required_id_input of federated_required_id_inputs) {
+        if (federated_required_ids_list.includes(federated_required_id_input.value)) {
+            federated_required_id_input.checked = true;
+        } else {
+            federated_required_id_input.checked = false;
+        }
+    }
     openModal(".add-model-to-federated-modal");
 }
 
@@ -2652,19 +2658,20 @@ export async function openModalAddModelToFederatedProject(folder_id) {
 export async function saveAddProjectsToFederatedProject() {
     let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
     let add_model_to_federated_modal_error_span = document.getElementById("add_model_to_federated_modal_error_span");
-    let federated_required_ids = document.getElementById(edit_federated_model_id_input.value + "_federated_required_ids");
+    let federated_required_ids = document.getElementById("federated_required_ids_" + edit_federated_model_id_input.value);
 
     var update_model = await apiCaller("update_model", {
         "command": "update_federated_model_required_ids",
-        "federated_model_id": federated_required_ids_list
+        "model_id": edit_federated_model_id_input.value,
+        "federated_required_ids": federated_required_ids_list
     })
 
     if ("error" in update_model) {
         add_model_to_federated_modal_error_span.innerHTML = update_model["error"];
     } else {
-        let federated_required_ids = document.getElementById(federated_model_id + "_federated_required_ids");
-        federated_required_ids.value = update_model["success"]["federated_model_required_ids"];
-        returnToModalEditFederatedProject()
+        federated_required_ids.value = update_model["federated_required_ids"];
+        returnToModalEditFederatedProject();
+        showUserDicts();
     }
 }
 
@@ -2672,4 +2679,76 @@ export async function returnToModalEditFederatedProject() {
     let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
     closeModal(".modal.add-model-to-federated-modal")
     openModalEditFederatedProject(edit_federated_model_id_input.value)
+}
+
+export async function refreshEditFederatedProjectModal(folder_id) {
+    let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
+    var folder_id_add_model_to_federated_modal_input = document.getElementById("folder_id_add_model_to_federated_modal_input");
+    var add_model_to_federated_model_user_folder_rows_tbody = document.getElementById("add_model_to_federated_model_user_folder_rows_tbody");
+    var add_model_to_federated_modal_return_folder_span = document.getElementById("add_model_to_federated_modal_return_folder_span");
+    var add_model_to_federated_modal_folder_path_span = document.getElementById("add_model_to_federated_modal_folder_path_span");
+
+    var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
+        "folder_id": folder_id,
+        "model_html": "add_project_to_federated",
+        "federated_model_id": edit_federated_model_id_input.value
+    })
+
+    if (folder_id) {
+        var update_user_response = await apiCaller("update_user", {
+            "command": "get_folder",
+            "folder_id": folder_id
+        });
+        add_model_to_federated_modal_return_folder_span.style.display = "";
+        add_model_to_federated_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        add_model_to_federated_modal_folder_path_span.style.display = "";
+    } else {
+        add_model_to_federated_modal_return_folder_span.style.display = "none";
+        add_model_to_federated_modal_folder_path_span.style.display = "none";
+    }
+
+    folder_id_add_model_to_federated_modal_input.value = folder_id;
+    add_model_to_federated_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
+
+    var federated_required_id_inputs = document.querySelectorAll('[id$="_federated_required_id_input"]');
+    for (let federated_required_id_input of federated_required_id_inputs) {
+        if (federated_required_ids_list.includes(federated_required_id_input.value)) {
+            federated_required_id_input.checked = true;
+        } else {
+            federated_required_id_input.checked = false;
+        }
+    }
+}
+
+export async function openReturnFolderModalAddModelToFederated() {
+    var folder_id_add_model_to_federated_modal_input = document.getElementById("folder_id_add_model_to_federated_modal_input");
+
+    var update_user_response = await apiCaller("update_user", {
+        "command": "get_root_folder",
+        "folder_id": folder_id_add_model_to_federated_modal_input.value
+    });
+    if ("success" in update_user_response) {
+        refreshEditFederatedProjectModal(update_user_response["success"]["folder_id"]);
+    } else {
+        refreshEditFederatedProjectModal("");
+    }
+}
+
+export async function removeModelFromFederatedProject(model_id_to_be_removed) {
+    let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
+    let edit_federated_model_rows_tbody = document.getElementById("edit_federated_model_rows_tbody");
+
+    var update_model = await apiCaller("update_model", {
+        "command": "remove_model_id_from_federated_model",
+        "model_id": edit_federated_model_id_input.value,
+        "model_id_to_be_removed": model_id_to_be_removed
+    })
+
+    let panel_explore_projects_modal_edit_federated_model_html_response = await apiCaller('panel_explore_projects_modal_edit_federated_model_html', {
+        "federated_model_id": edit_federated_model_id_input.value
+    });
+
+    edit_federated_model_rows_tbody.innerHTML = panel_explore_projects_modal_edit_federated_model_html_response["success"];
+
+    showUserDicts();
 }

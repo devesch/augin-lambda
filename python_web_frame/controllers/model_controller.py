@@ -23,6 +23,40 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def remove_model_id_from_federated_model(self, federated_model, model_id_to_be_removed):
+        model_to_be_removed = Dynamo().get_model(model_id_to_be_removed)
+        if model_to_be_removed and model_to_be_removed.get("model_used_in_federated_ids") and federated_model["model_id"] in model_to_be_removed["model_used_in_federated_ids"]:
+            model_to_be_removed["model_used_in_federated_ids"].remove(federated_model["model_id"])
+            Dynamo().put_entity(model_to_be_removed)
+
+        if model_id_to_be_removed in federated_model["model_federated_required_ids"]:
+            federated_model["model_federated_required_ids"].remove(model_id_to_be_removed)
+
+            federated_model_filesize = 0
+            federated_required_models = Dynamo().batch_get_models(federated_model["model_federated_required_ids"])
+            if federated_required_models:
+                for required_model in federated_required_models:
+                    federated_model_filesize += int(required_model["model_filesize"])
+
+            federated_model["model_filesize"] = str(federated_model_filesize)
+
+        Dynamo().put_entity(federated_model)
+
+    def update_federated_required_models(self, federated_model, federated_required_models):
+        federated_model_required_ids = []
+        federated_model_filesize = 0
+
+        for required_model in federated_required_models:
+            federated_model_required_ids.append(required_model["model_id"])
+            if federated_model["model_id"] not in required_model["model_used_in_federated_ids"]:
+                required_model["model_used_in_federated_ids"].append(federated_model["model_id"])
+                Dynamo().put_entity(required_model)
+            federated_model_filesize += int(required_model["model_filesize"])
+
+        federated_model["model_federated_required_ids"] = federated_model_required_ids
+        federated_model["model_filesize"] = str(federated_model_filesize)
+        Dynamo().put_entity(federated_model)
+
     def get_already_uploaded_models(self, user):
         already_uploaded_models = []
         not_created_models = Dynamo().query_user_models_from_state(user, "not_created")
@@ -35,7 +69,6 @@ class ModelController:
         return already_uploaded_models
 
     def search_models_by_name(self, search_input, user, shared=False):
-
         matching_name_models = []
         if shared:
             for folder_id in user.user_shared_dicts["folders"]:

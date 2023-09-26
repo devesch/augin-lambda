@@ -20,6 +20,7 @@ class PanelPage(BasePage):
             for federated_required_models in federated_required_models:
                 html = ReadWrite().read_html("panel_explore_project/_codes/html_edit_federated_model_rows")
                 html.esc("model_name_val", federated_required_models["model_name"])
+                html.esc("model_id_val", federated_required_models["model_id"])
                 full_html.append(str(html))
         return "".join(full_html)
 
@@ -109,8 +110,10 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_model_user_folder_rows_folders")
                     elif model_html == "move_folder":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows_folders")
-                    elif model_html == "create_federated" or model_html == "add_project_to_federated":
+                    elif model_html == "create_federated":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows_folders")
+                    elif model_html == "add_project_to_federated":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_add_project_to_federated_model_user_folder_rows_folders")
                     if shared and self.post.get("folder_id"):
                         html.esc("remove_folder_visibility_val", "display:none;")
 
@@ -188,12 +191,15 @@ class PanelPage(BasePage):
                     if index == 5:
                         break
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_move_folder_model_user_folder_rows")
-                elif model_html == "create_federated" or model_html == "add_project_to_federated":
+                elif model_html == "create_federated" or "add_project_to_federated":
                     if model["model_is_federated"] or model["model_format"] != "ifc":
                         continue
-                    html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows")
-                    if federated_model and model["model_id"] in federated_model["model_federated_required_ids"]:
-                        html.esc("checked_val", "checked='checked'")
+                    if model_html == "create_federated":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows")
+                    if model_html == "add_project_to_federated":
+                        html = ReadWrite().read_html("panel_explore_project/_codes/html_add_project_to_federated_model_user_folder_rows")
+                        # if federated_model and model["model_id"] in federated_model["model_federated_required_ids"]:
+                        #     html.esc("checked_val", "checked='checked'")
 
                 if shared and self.post.get("folder_id"):
                     html.esc("remove_model_visibility_val", "display:none;")
@@ -206,7 +212,7 @@ class PanelPage(BasePage):
                     html.esc("model_icon_val", "note_stack")
                     html.esc("model_update_visibility_val", "display:none;")
                     html.esc("model_category_visibility_val", "display:none;")
-                    html.esc("model_federated_required_ids_val", str(model["model_federated_required_ids"]))
+                    html.esc("model_federated_required_ids_val", ",".join(model["model_federated_required_ids"]))
 
                 else:
                     html.esc("model_edit_federated_visibility_val", "display:none;")

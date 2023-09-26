@@ -1649,6 +1649,11 @@
         "es": "Federado",
         "pt": "Federado"
     },
+    "Federado atualizado": {
+        "en": "Updated federated",
+        "es": "Federado actualizado",
+        "pt": "Federado atualizado"
+    },
     "Federated": {
         "en": "Federated",
         "es": "Federado",
@@ -2483,6 +2488,11 @@
         "en": "No model",
         "es": "No hay modelo",
         "pt": "Nenhum modelo"
+    },
+    "Nenhum modelo selecionado encontrado": {
+        "en": "No selected model found",
+        "es": "No se encuentra ningún modelo seleccionado",
+        "pt": "Nenhum modelo selecionado encontrado"
     },
     "Nenhum método de pagamento encontrado com os dados informados": {
         "en": "No payment method found with the data informed",
@@ -4033,6 +4043,21 @@
         "en": "One of the selected models does not exist.",
         "es": "Uno de los modelos seleccionados no existe.",
         "pt": "Um dos modelos selecionados não existe."
+    },
+    "Um dos modelos selecionados não foi processado": {
+        "en": "One of the selected models was not processed",
+        "es": "Uno de los modelos seleccionados no fue procesado",
+        "pt": "Um dos modelos selecionados não foi processado"
+    },
+    "Um dos modelos selecionados não pertence a este usuário": {
+        "en": "One of the selected models does not belong to this user",
+        "es": "Uno de los modelos seleccionados no pertenece a este usuario",
+        "pt": "Um dos modelos selecionados não pertence a este usuário"
+    },
+    "Um dos modelos selecionados não é do tipo IFC": {
+        "en": "One of the selected models is not IFC type",
+        "es": "Uno de los modelos seleccionados no es tipo IFC",
+        "pt": "Um dos modelos selecionados não é do tipo IFC"
     },
     "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento": {
         "en": "One or more of your files has an error, please delete the files with error to perform the processing",
