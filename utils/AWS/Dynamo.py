@@ -168,6 +168,13 @@ class Dynamo:
                 return None
         return model
 
+    def get_model_by_filehash(self, user_id, model_filehash):
+        model = self.execute_get_item({"TableName": lambda_constants["table_project"], "IndexName": "model_filehash-sk-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_filehash"}, "ExpressionAttributeValues": {":bef90": {"S": model_filehash}}})
+        if model:
+            if model["model_state"] != "deleted":
+                return None
+        return model
+
     def batch_get_models(self, models_ids):
         query = []
         filtered_query = []

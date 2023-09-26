@@ -369,6 +369,11 @@ class ModelController:
                 os.rename(ifc_location, new_ifc_location)
                 ifc_location = new_ifc_location
 
+            model_with_same_filehash = Dynamo().get_model_by_filehash(ReadWrite().get_file_hash(ifc_location))
+            if model_with_same_filehash and (user.user_id == model_with_same_filehash["model_user_id"]):
+                response["success"]["model_already_exists"] = model_with_same_filehash["model_name"]
+                continue
+
             if index == 0:
                 model = Dynamo().get_model(self.get_model_id_from_uploaded_file(uploaded_file))
             else:
