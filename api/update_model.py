@@ -60,7 +60,7 @@ class UpdateModel(BasePage):
             if required_model["model_user_id"] != self.user.user_id:
                 return {"error": "Um dos modelos não pertence a este usuário"}
 
-        federated_model = ModelController().generate_new_model(self.user.user_id, filename=self.post["federated_name"].strip(), federated=True, federated_required_ids=federated_required_ids)
+        federated_model = ModelController().generate_new_model(self.user, filename=self.post["federated_name"].strip(), federated=True, federated_required_ids=federated_required_ids)
         federated_model = ModelController().publish_federated_model(federated_model["model_id"])
         self.user.add_model_to_user_dicts(federated_model)
         return {"success": "create_federated completed"}

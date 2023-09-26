@@ -273,27 +273,35 @@ class ModelController:
         model = self.change_model_state(model, model["model_state"], "deleted")
         Dynamo().put_entity(model)
 
-    def generate_new_model(self, email, filename="", federated=False, federated_required_ids=[]):
+    def generate_new_model(self, user, filename="", federated=False, federated_required_ids=[]):
         import datetime
 
         model_id = Dynamo().get_next_model_id()
-        new_model = Model(email, model_id, model_id, "not_created").__dict__
+        new_model = Model(user.user_id, model_id, model_id, "not_created").__dict__
         new_model["model_upload_path"] = datetime.datetime.fromtimestamp(int(float(new_model["created_at"]))).strftime("%Y/%m/%d") + "/" + model_id + "/"
+
         if filename:
             new_model["model_name"] = filename
             new_model["model_filename"] = filename
         if federated:
+            federated_model_already_completed = True
+            federated_filesize = 0
             filtered_federated_required_ids = []
             for required_model_id in federated_required_ids:
                 required_model = Dynamo().get_model(required_model_id)
                 if required_model:
-                    if required_model.get("model_format") == "ifc":
+                    if required_model["model_format"] == "ifc":
                         filtered_federated_required_ids.append(required_model_id)
-
+                    if required_model["model_state"] != "completed":
+                        federated_model_already_completed = False
+                    federated_filesize += int(required_model["model_filesize"])
             new_model["model_is_federated"] = True
             new_model["model_federated_required_ids"] = filtered_federated_required_ids
             new_model["model_category"] = "federated"
-
+            if federated_model_already_completed:
+                new_model = self.change_model_state(new_model, "not_created", "completed")
+                new_model["model_filesize"] = str(federated_filesize)
+                user.add_model_to_user_dicts(new_model)
         Dynamo().put_entity(new_model)
         return new_model
 
@@ -421,7 +429,7 @@ class ModelController:
             if index == 0:
                 model = Dynamo().get_model(self.get_model_id_from_uploaded_file(uploaded_file))
             else:
-                model = self.generate_new_model(user.user_id, os.path.basename(ifc_location))
+                model = self.generate_new_model(user, os.path.basename(ifc_location))
 
             ReadWrite().zip_file(ifc_location, lambda_constants["tmp_path"] + "file_ok.zip")
 

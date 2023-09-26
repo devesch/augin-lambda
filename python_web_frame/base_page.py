@@ -170,7 +170,7 @@ class BasePage:
 
     def show_html_trial_plan_promo_thumb(self, trial_plan):
         html = ReadWrite().read_html("main/_codes/html_trial_plan_promo_thumb")
-        html.esc("plan_name_val", trial_plan["plan_name_" + self.lang])
+        html.esc("plan_name_val", trial_plan["plan_name_" + self.lang].replace(" Trial", ""))
         html.esc("plan_trial_duration_in_days_val", trial_plan["plan_trial_duration_in_days"])
         return str(html)
 

@@ -125,6 +125,8 @@ class BackofficePage(BasePage):
         if plans:
             for plan in plans:
                 html = ReadWrite().read_html("backoffice_plans/_codes/html_backoffice_plans_table_rows")
+                if plan["plan_is_trial"]:
+                    html.esc("edit_plan_visibility_val", "display:none;")
                 html.esc("plan_id_val", plan["plan_id"])
                 html.esc("plan_name_pt_val", plan["plan_name_pt"])
                 html.esc("plan_name_en_val", plan["plan_name_en"])

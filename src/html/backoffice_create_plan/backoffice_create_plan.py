@@ -317,14 +317,18 @@ class BackofficeCreatePlan(BackofficePage):
                 trial_plan["pk"] = "plan#" + plan["plan_id"] + "-trial"
                 trial_plan["sk"] = "plan#" + plan["plan_id"] + "-trial"
                 trial_plan["plan_id"] = plan["plan_id"] + "-trial"
-                trial_plan["plan_name_pt"] = plan["plan_name_pt"] + " Trial"
-                trial_plan["plan_name_en"] = plan["plan_name_en"] + " Trial"
-                trial_plan["plan_name_es"] = plan["plan_name_es"] + " Trial"
-
-                trial_plan["plan_available_for_purchase"] = False
-                trial_plan["plan_is_trial"] = True
-                trial_plan["plan_has_trial"] = False
                 Dynamo().put_entity(trial_plan)
+                trial_plan = Dynamo().get_plan(plan["plan_id"] + "-trial")
+
+            trial_plan["plan_name_pt"] = plan["plan_name_pt"] + " Trial"
+            trial_plan["plan_name_en"] = plan["plan_name_en"] + " Trial"
+            trial_plan["plan_name_es"] = plan["plan_name_es"] + " Trial"
+            trial_plan["plan_description_pt"] = plan["plan_description_pt"] + " Trial"
+            trial_plan["plan_available_for_purchase"] = False
+            trial_plan["plan_is_trial"] = True
+            trial_plan["plan_has_trial"] = False
+            trial_plan["plan_trial_duration_in_days"] = plan["plan_trial_duration_in_days"]
+            Dynamo().put_entity(trial_plan)
         else:
             if trial_plan:
                 Dynamo().delete_entity(trial_plan)

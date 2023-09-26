@@ -5,7 +5,8 @@
         <h1 class="my-plan__title">{{Explorar}}</h1>
         <section class="panel-explore-filters-container">
             <select onchange="js.index.showUserDicts()" name="explore_filter" id="explore_filter" required>
-                <option value="" selected>{{Todos}}</option>
+                <option value="" selected disabled>{{Filtrar}}</option>
+                <option value="">{{Todos}}</option>
                 {{html_project_filter_options}}
             </select>
             <input oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search">
@@ -49,11 +50,7 @@
                             <img src="{{cdn_val}}/assets/icons/create_new_folder.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Pasta}}</span>
                         </button>
                     </li>
-                    <li>
-                        <button onclick="js.index.openModalCreateFederatedProject()">
-                            <img src="{{cdn_val}}/assets/icons/note_stack_add.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Federado}}</span>
-                        </button>
-                    </li>
+                    {{html_create_federated_button}}
                     <li>
                         <a href="{{domain_name_url_val}}/panel_create_project">
                             <button>

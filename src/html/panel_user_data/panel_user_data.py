@@ -225,7 +225,7 @@ class PanelUserData(PanelPage, UserPage):
         elif self.user.user_aggre_with_communication:
             html.esc("user_aggre_with_communication_checked_val", "checked='checked'")
 
-        if not self.user.user_address_data["user_zip_code"]:
+        if not self.user.user_address_data["user_zip_code"] and not self.post.get("user_zip_code"):
             html.esc("box_inputs_style_val", "display:none;")
 
         if not self.render_props:
@@ -304,7 +304,7 @@ class PanelUserData(PanelPage, UserPage):
         elif self.user.user_aggre_with_communication:
             html.esc("user_aggre_with_communication_checked_val", "checked='checked'")
 
-        if not self.user.user_address_data["user_zip_code"]:
+        if not self.user.user_address_data["user_zip_code"] and not self.post.get("user_zip_code"):
             html.esc("box_inputs_style_val", "display:none;")
 
         if not self.render_props:

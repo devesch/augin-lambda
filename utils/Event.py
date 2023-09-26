@@ -93,9 +93,9 @@ class Event:
         if hasattr(self, "rawPath"):
             first_param = self.rawPath.split("/")[1]
             if first_param == "":
-                return "home"
+                return "user_login"
             return first_param
-        return "home"
+        return "user_login"
 
     def get_second_param_in_raw_path(self):
         if hasattr(self, "rawPath"):

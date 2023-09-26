@@ -58,9 +58,9 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                             html.esc("save_on_annually_visibility_val", "display:none;")
                         else:
                             if self.user.user_cart_currency == "brl":
-                                html.esc("plan_annually_savings", int(int(plan["plan_price_monthly_brl_actual"]) / int(plan["plan_price_annually_brl_actual"]) * 100))
+                                html.esc("plan_annually_savings", 100 - int(int(plan["plan_price_annually_brl_actual"]) / (int(plan["plan_price_monthly_brl_actual"]) * 12) * 100))
                             elif self.user.user_cart_currency == "usd":
-                                html.esc("plan_annually_savings", int(int(plan["plan_price_monthly_usd_actual"]) / int(plan["plan_price_annually_usd_actual"]) * 100))
+                                html.esc("plan_annually_savings", 100 - int(int(plan["plan_price_annually_usd_actual"]) / (int(plan["plan_price_monthly_usd_actual"]) * 12) * 100))
 
                     if recurrency == "annually":
                         html.esc("plan_recurrency_val", self.translate("ano"))

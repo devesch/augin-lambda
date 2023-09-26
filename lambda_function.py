@@ -103,7 +103,7 @@ def main_lambda_handler(event, context):
             page = "error"
         class_instance = initialize_page_class_instance(page)
         if user and class_instance.bypass:
-            return Http().respond(Http().redirect(""), event)
+            return Http().respond(Http().redirect("panel_your_plan"), event)
         if not user and not class_instance.public:
             return Http().respond(Http().redirect(f"user_login/?error_msg={EncodeDecode().encode_to_url('Você precisa estar logado para acessar esta página')}"), event)
         if user and user.user_credential != "admin" and class_instance.admin:

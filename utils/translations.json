@@ -419,6 +419,11 @@
         "es": "Bahrain",
         "pt": "Bahrein"
     },
+    "Bairro": {
+        "en": "Neighborhood",
+        "es": "Vecindario",
+        "pt": "Bairro"
+    },
     "Baixar": {
         "en": "To go down",
         "es": "Bajar",
@@ -673,6 +678,11 @@
         "en": "Christmas Island",
         "es": "Isla de Navidad",
         "pt": "Ilha do Natal"
+    },
+    "Cidade": {
+        "en": "City",
+        "es": "Ciudad",
+        "pt": "Cidade"
     },
     "Cobrado anualmente": {
         "en": "Charged annually",
@@ -1444,6 +1454,11 @@
         "es": "Esta carpeta no es accesible al compartir",
         "pt": "Esta pasta não se encontra acessível através de compartilhamento"
     },
+    "Estado": {
+        "en": "State",
+        "es": "Estado",
+        "pt": "Estado"
+    },
     "Estado/Região/Provincia": {
         "en": "State/Region/Province",
         "es": "Estado/Región/Provincia",
@@ -1903,6 +1918,11 @@
         "en": "Language",
         "es": "Idioma",
         "pt": "Idioma"
+    },
+    "Ilimitado": {
+        "en": "Unlimited",
+        "es": "Ilimitado",
+        "pt": "Ilimitado"
     },
     "Importar arquivo": {
         "en": "Import file",
@@ -3464,6 +3484,11 @@
         "es": "Rumania",
         "pt": "Romênia"
     },
+    "Rua": {
+        "en": "Road",
+        "es": "Camino",
+        "pt": "Rua"
+    },
     "Russian Federation": {
         "en": "Russian Federation",
         "es": "Federación Rusa",
@@ -3614,6 +3639,21 @@
         "es": "Sesión de inicio de sesión:",
         "pt": "Sessão de login:"
     },
+    "Seu CEP": {
+        "en": "Your zip code",
+        "es": "Su código postal",
+        "pt": "Seu CEP"
+    },
+    "Seu CNPJ": {
+        "en": "Your CNPJ",
+        "es": "Tu CNPJ",
+        "pt": "Seu CNPJ"
+    },
+    "Seu CPF": {
+        "en": "Your CPF",
+        "es": "Tu CPF",
+        "pt": "Seu CPF"
+    },
     "Seu Email": {
         "en": "Your email",
         "es": "Su e-mail",
@@ -3763,6 +3803,11 @@
         "en": "Your purchase is being reimbursed",
         "es": "Su compra está siendo reembolsada",
         "pt": "Sua compra está sendo reembolsada"
+    },
+    "Sua conta não pode criar projetos federados": {
+        "en": "Your account cannot create federated projects",
+        "es": "Su cuenta no puede crear proyectos federados",
+        "pt": "Sua conta não pode criar projetos federados"
     },
     "Sua senha acabou de ser alterada!": {
         "en": "Your password has just been changed!",
@@ -4618,6 +4663,11 @@
         "en": "Is to inform how many months of recurrence the coupon will be applied",
         "es": "Es informar cuántos meses de recurrencia se aplicará el cupón",
         "pt": "É informar durante quantos meses de recorrência o cupom será aplicado"
+    },
+    "É necessário atualizar os seus dados para processeguir na compra": {
+        "en": "You need to update your data to process the purchase",
+        "es": "Debe actualizar sus datos para procesar la compra",
+        "pt": "É necessário atualizar os seus dados para processeguir na compra"
     },
     "É necessário escolher um arquivo diferente do original para a substitução": {
         "en": "It is necessary to choose a different file from the original for the replacement",

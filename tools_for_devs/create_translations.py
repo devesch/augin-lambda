@@ -18,6 +18,8 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "É necessário atualizar os seus dados para processeguir na compra",
+    "Ilimitado",
     "Já existe um projeto com este arquivo chamado: ",
     "O projeto excede o tamanho máximo da suportado pela sua conta.",
     "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta.",

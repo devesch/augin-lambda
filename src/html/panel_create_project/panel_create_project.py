@@ -20,6 +20,9 @@ class PanelCreateProject(PanelPage):
         if user_plan["plan_id"] == lambda_constants["free_plan_id"]:
             html.esc("html_make_an_upgrade_link", self.show_html_make_an_upgrade_link())
 
+        if user_plan["plan_maxium_federated_size_in_mbs"] == "0":
+            html.esc("federated_switch_div_visibility_val", "display:none;")
+
         self.check_error_msg(html, self.error_msg)
         already_uploaded_models = ModelController().get_already_uploaded_models(self.user)
         if already_uploaded_models:
@@ -36,17 +39,17 @@ class PanelCreateProject(PanelPage):
 
         federated_model = None
         if self.post.get("create_federated_project_with_processed_files"):
+            user_plan = self.user.get_user_actual_plan()
+            if user_plan["plan_maxium_federated_size_in_mbs"] == "0":
+                return self.render_get_with_error("Sua conta não pode criar projetos federados")
             if not self.post.get("federated_name"):
                 return self.render_get_with_error("É necessário informar um nome para o projeto federado")
-            federated_model = ModelController().generate_new_model(self.user.user_id, filename=self.post["federated_name"], federated=True, federated_required_ids=models_ids)
+            federated_model = ModelController().generate_new_model(self.user, filename=self.post["federated_name"], federated=True, federated_required_ids=models_ids)
 
         for model_id in models_ids:
             model = Dynamo().get_model(model_id)
             if model["model_state"] == "not_created":
                 ModelController().process_model_file_uploaded(model, federated_model)
-            else:
-                if federated_model:
-                    raise Exception("ADD ALREADY EXISTING PROJECT TO FEDERATED PROJECTS")
 
         return Http().redirect("panel_explore_project")
 

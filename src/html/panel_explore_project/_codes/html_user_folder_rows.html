@@ -16,11 +16,7 @@
             <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
         </button>
         <menu id="explore_table_item_menu_{{index_val}}" class="menu--explore-more-options none">
-            <li>
-                <button onclick="js.index.openModalShareProject('{{model_id_val}}', '{{model_name_val}}', '{{model_share_link_val}}',  '{{model_share_link_qrcode_val}}', '{{model_is_password_protected_val}}', '{{model_password_val}}', '{{model_is_accessible_val}}')">
-                    <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Compartilhar}}</span>
-                </button>
-            </li>
+            {{html_share_project_button}}
             <li style="{{model_update_visibility_val}}">
                 <button onclick="js.index.openModalUpdateProject('{{model_id_val}}')">
                     <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Atualizar}}</span>
@@ -52,11 +48,7 @@
                     <img src="{{cdn_val}}/assets/icons/drive_file_move.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Mover}}</span>
                 </button>
             </li>
-            <li>
-                <button onclick="js.index.openModalDownloadProject('{{model_id_val}}')">
-                    <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
-                </button>
-            </li>
+            {{html_download_project_button}}
             <li>
                 <button onclick="js.index.openModalDeleteProject('{{model_id_val}}', '{{model_name_val}}', '{{model_used_in_federated_ids_val}}')">
                     <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>

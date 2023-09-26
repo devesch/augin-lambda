@@ -6,17 +6,17 @@
     <div class="box-inputs">
         <div class="input-default focus floating-input">
             <input type="email" name="user_email" id="user_email" value="{{user_email_val}}" class="floating" readonly minlength="3" maxlength="255" required placeholder="">
-            <label for="user_email" class="floating-label">Seu Email</label>
+            <label for="user_email" class="floating-label">{{Seu Email}}</label>
         </div>
         <div class="input-default floating-input">
             <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.maskToLetter(this)" maxlength="50" minlength="1" required placeholder="">
-            <label for="user_name" class="floating-label">Seu nome</label>
+            <label for="user_name" class="floating-label">{{Seu nome}}</label>
         </div>
         <div class="input-default">
             <select onchange="js.index.panelUserDataChangeCountryForm('physical')" class="floating" name="user_country" id="user_country" value="{{user_country_val}}" required>
                 {{html_user_country_options}}
             </select>
-            <label for="user_country" class="floating-label">País</label>
+            <label for="user_country" class="floating-label">{{País}}</label>
         </div>
         <div class="input-default-icon focus" id="user_phone_div">
             {{html_user_phone_input}}
@@ -24,44 +24,43 @@
         <div class="input-default floating-input">
             <input hidden type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" maxlength="18">
             <input type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder="">
-            <label for="user_cpf" class="floating-label">Seu CPF</label>
+            <label for="user_cpf" class="floating-label">{{Seu CPF}}</label>
         </div>
         <div class="input-default floating-input">
             <input type="text" name="user_zip_code" id="user_zip_code" class="floating" value="{{user_zip_code_val}}" oninput="js.index.showUserPhysicalAddressData()" minlength="9" maxlength="9" placeholder="">
-            <label for="user_zip_code" class="floating-label">Seu CEP</label>
+            <label for="user_zip_code" class="floating-label">{{Seu CEP}}</label>
         </div>
         <div class="page-user__box-user-data__box-inputs__box-adress box-inputs" style="{{box_inputs_style_val}}">
             <div class="input-default focus floating-input">
                 <input type="text" name="user_state" id="user_state" value="{{user_state_val}}" class="floating" readonly required placeholder="">
-                <label for="user_state" class="floating-label">Estado</label>
+                <label for="user_state" class="floating-label">{{Estado}}</label>
             </div>
             <div class="input-default focus floating-input">
                 <input type="text" name="user_city" id="user_city" value="{{user_city_val}}" class="floating" readonly required placeholder="">
-                <label for="user_city" class="floating-label">Cidade</label>
+                <label for="user_city" class="floating-label">{{Cidade}}</label>
             </div>
             <input type="text" name="user_city_code" id="user_city_code" value="{{user_city_code_val}}" readonly style="display:none;">
             <div class="input-default focus floating-input">
                 <input type="text" name="user_neighborhood" id="user_neighborhood" value="{{user_neighborhood_val}}" class="floating" readonly required placeholder="">
-                <label for="user_neighborhood" class="floating-label">Bairro</label>
+                <label for="user_neighborhood" class="floating-label">{{Bairro}}</label>
             </div>
             <div class="input-default focus floating-input">
                 <input type="text" name="user_street" id="user_street" value="{{user_street_val}}" class="floating" readonly required placeholder="">
-                <label for="user_street" class="floating-label">Rua</label>
+                <label for="user_street" class="floating-label">{{Rua}}</label>
             </div>
             <div class="input-default floating-input">
                 <input type="text" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" class="floating" oninput="js.index.maskToNumber(this)" placeholder="">
-                <label for="user_street_number" class="floating-label">Número</label>
+                <label for="user_street_number" class="floating-label">{{Número}}</label>
             </div>
             <div class="input-default floating-input">
                 <input type="text" name="user_complement" id="user_complement" class="floating" value="{{user_complement_val}}" placeholder="">
-                <label for="user_complement" class="floating-label">Complemento</label>
+                <label for="user_complement" class="floating-label">{{Complemento}}</label>
             </div>
         </div>
-        <div class="checkbox-default mt-1">
+        <!-- <div class="checkbox-default mt-1">
             <input type="checkbox" id="user_aggre_with_communication" name="user_aggre_with_communication" {{user_aggre_with_communication_checked_val}}>
             <label for="user_aggre_with_communication">{{Concordo em receber comunicados.}}</label>
-        </div>
-
+        </div> -->
         <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
             {{error_msg_val}}
         </span>

@@ -14,6 +14,10 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def show_html_create_federated_button(self):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_button")
+        return str(html)
+
     def list_html_edit_federated_model_rows(self, federated_required_models):
         full_html = []
         if federated_required_models:
@@ -70,7 +74,7 @@ class PanelPage(BasePage):
 
         return str(html)
 
-    def list_html_user_folder_rows(self, folder_id=None, model_html=""):
+    def list_html_user_folder_rows(self, user_plan=None, folder_id=None, model_html=""):
         full_html = []
         shared = False
         federated_model = None
@@ -104,6 +108,11 @@ class PanelPage(BasePage):
                             html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows_folders")
                         else:
                             html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows_folders")
+                            if user_plan and user_plan.get("plan_share_files"):
+                                html.esc("html_share_folder_button", self.show_html_share_folder_button(folder))
+                            if user_plan and user_plan.get("plan_download_files") and (folder["folders"] or folder["files"]):
+                                html.esc("html_download_folder_button", self.show_html_download_folder_button(folder))
+
                     elif model_html == "update":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_update_model_user_folder_rows_folders")
                     elif model_html == "move":
@@ -122,17 +131,7 @@ class PanelPage(BasePage):
                     html.esc("folder_id_val", folder["folder_id"])
                     html.esc("folder_created_at_val", Date().format_to_str_time(folder["created_at"]))
                     html.esc("folder_size_in_mbs_val", f'{round(float(folder["folder_size_in_mbs"]), 2):.1f}' + " Mb")
-
                     html.esc("owners_name_val", folder["owners_name"])
-
-                    html.esc("folder_password_val", folder["folder_password"])
-                    html.esc("folder_is_accessible_val", folder["folder_is_accessible"])
-                    html.esc("folder_share_link_val", folder["folder_share_link"])
-                    html.esc("folder_share_link_qrcode_val", folder["folder_share_link_qrcode"])
-                    html.esc("folder_is_password_protected_val", folder["folder_is_password_protected"])
-
-                    if not folder["folders"] and not folder["files"]:
-                        html.esc("download_folder_visibility_val", "display:none;")
 
                     if folder["folder_id"] in self.user.user_favorited_folders:
                         html.esc("html_folder_is_favorite", self.show_html_model_is_favorite())
@@ -179,6 +178,11 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows")
                     else:
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
+                        if user_plan and user_plan.get("plan_share_files"):
+                            html.esc("html_share_project_button", self.show_html_share_project_button(model))
+                        if user_plan and user_plan.get("plan_download_files"):
+                            html.esc("html_download_project_button", self.show_html_download_project_button(model))
+
                 elif model_html == "update":
                     if model["model_is_federated"] or (model_to_be_updated["model_format"] == "ifc" and model["model_format"] != "ifc") or (model_to_be_updated["model_format"] in ["fbx", "glb"] and model["model_format"] == "ifc") or (model_to_be_updated["model_id"] == model["model_id"]):
                         continue
@@ -229,15 +233,9 @@ class PanelPage(BasePage):
                 if ModelController().check_if_model_is_too_big(model["model_filesize"]):
                     html.esc("html_need_to_upgrade_your_plan", self.show_html_need_to_upgrade_your_plan(index))
 
-                html.esc("model_share_link_val", model["model_share_link"])
-                html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
-                html.esc("model_is_password_protected_val", model["model_is_password_protected"])
-                html.esc("model_password_val", model["model_password"])
                 html.esc("model_category_val", model["model_category"])
                 # html.esc("model_upload_path_zip_val", S3().generate_presigned_url(lambda_constants["processed_bucket"], model["model_upload_path_zip"]))
                 html.esc("model_upload_path_zip_val", ModelController().generate_model_download_link(model))
-
-                html.esc("model_is_accessible_val", model["model_is_accessible"])
 
                 if model["model_id"] in self.user.user_favorited_models:
                     html.esc("html_model_is_favorite", self.show_html_model_is_favorite())
@@ -256,6 +254,37 @@ class PanelPage(BasePage):
 
                 full_html.append(str(html))
         return "".join(full_html)
+
+    def show_html_download_folder_button(self, folder):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_download_folder_button")
+        html.esc("folder_id_val", folder["folder_id"])
+        return str(html)
+
+    def show_html_share_folder_button(self, folder):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_share_folder_button")
+        html.esc("folder_name_val", folder["folder_name"])
+        html.esc("folder_id_val", folder["folder_id"])
+        html.esc("folder_password_val", folder["folder_password"])
+        html.esc("folder_is_accessible_val", folder["folder_is_accessible"])
+        html.esc("folder_share_link_val", folder["folder_share_link"])
+        html.esc("folder_share_link_qrcode_val", folder["folder_share_link_qrcode"])
+        html.esc("folder_is_password_protected_val", folder["folder_is_password_protected"])
+        return str(html)
+
+    def show_html_download_project_button(self, model):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_download_project_button")
+        html.esc("model_id_val", model["model_id"])
+        return str(html)
+
+    def show_html_share_project_button(self, model):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_share_project_button")
+        html.esc("model_id_val", model["model_id"])
+        html.esc("model_share_link_val", model["model_share_link"])
+        html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
+        html.esc("model_is_password_protected_val", model["model_is_password_protected"])
+        html.esc("model_password_val", model["model_password"])
+        html.esc("model_is_accessible_val", model["model_is_accessible"])
+        return str(html)
 
     def show_html_need_to_upgrade_your_plan(self, index):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_need_to_upgrade_your_plan")

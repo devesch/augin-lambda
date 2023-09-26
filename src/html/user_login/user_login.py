@@ -7,7 +7,7 @@ from utils.utils.EncodeDecode import EncodeDecode
 class UserLogin(UserPage):
     name = "Login"
     public = True
-    bypass = True
+    bypass = False
     admin = False
 
     def render_get(self):

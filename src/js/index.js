@@ -181,8 +181,12 @@ export async function processStripeSubscriptionPayment(stripe_token, payment_typ
 export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = false) {
     let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input");
     let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
+    let user_selected_plan_is_trial_input = document.getElementById("user_selected_plan_is_trial_input");
+
     user_selected_plan_id_input.value = plan_id
     user_selected_plan_recurrency_input.value = recurrency
+    user_selected_plan_is_trial_input.value = trial
+
     let update_user_response = await apiCaller("update_user", {
         "command": "check_if_user_can_upgrade_his_plan",
         "plan_id": plan_id
@@ -191,7 +195,7 @@ export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = fal
     if ("error" in update_user_response) {
         showCheckoutPanelUserDataForm(update_user_response["user_client_type"]);
     } else {
-        if (trial) {
+        if (user_selected_plan_is_trial_input.value) {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
         } else {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
@@ -316,7 +320,12 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
     if (panel_user_data_page_response.includes("suc") && panel_user_data_page_response.includes("ess")) {
         let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input")
         let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
-        window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&recurrency=" + user_selected_plan_recurrency_input.value)
+        let user_selected_plan_is_trial_input = document.getElementById("user_selected_plan_is_trial_input");
+        if (user_selected_plan_is_trial_input.value) {
+            window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
+        } else {
+            window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
+        }
     }
 }
 

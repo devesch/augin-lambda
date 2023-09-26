@@ -17,12 +17,7 @@
             <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
         </button>
         <menu id="explore_table_item_menu_{{folder_id_val}}" class="menu--explore-more-options none">
-            <li>
-                <button onclick="js.index.openModalShareFolder('{{folder_id_val}}', '{{folder_name_val}}', '{{folder_share_link_val}}',  '{{folder_share_link_qrcode_val}}', '{{folder_is_password_protected_val}}', '{{folder_password_val}}', '{{folder_is_accessible_val}}')">
-                    <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Compartilhar}}</span>
-                </button>
-            </li>
-
+            {{html_share_folder_button}}
             <li>
                 <button onclick="js.index.FavoriteFolder('{{folder_id_val}}', '{{opposite_folder_is_favorite_val}}')">
                     <img src="{{cdn_val}}/assets/icons/{{favorite_icon_val}}.svg" width="24" height="24" alt="" loading="lazy"> <span>{{favorite_or_unfavorite_val}}</span>
@@ -38,11 +33,7 @@
                     <img src="{{cdn_val}}/assets/icons/drive_file_move.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Mover}}</span>
                 </button>
             </li>
-            <li style="{{download_folder_visibility_val}}">
-                <a onclick="js.index.downloadFolders('{{folder_id_val}}')" class="model-options-container__item button">
-                    <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
-                </a>
-            </li>
+            {{html_download_folder_button}}
             <li>
                 <button onclick="js.index.openModalDeleteFolder('{{folder_id_val}}', '{{folder_name_val}}')">
                     <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>
