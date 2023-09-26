@@ -1151,11 +1151,13 @@ input[list]::-ms-clear {
 }
 
 .form-main-button-container {
-    margin-top: 3rem;
+    margin: 3rem auto 0;
+    max-width: 600px;
     text-align: center;
 }
 
 .form-main-button {
+    margin-top: 2rem;
     padding-inline: 2rem;
     border-radius: .25rem;
 }
