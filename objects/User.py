@@ -164,8 +164,7 @@ class User:
     def clear_perdonal_data(self):
         self.user_address_data = {"user_country": "", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
 
-    def add_folder_to_user_shared_dicts(self, folder):
-        user_shared_dicts = Dynamo().get_folder(self.user_shared_dicts_folder_id)
+    def add_folder_to_user_shared_dicts(self, user_shared_dicts, folder):
         if folder["folder_id"] not in user_shared_dicts["folders"]:
             user_shared_dicts["folders"].append(folder["folder_id"])
             Dynamo().put_entity(user_shared_dicts)

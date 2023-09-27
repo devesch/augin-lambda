@@ -165,7 +165,8 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhum projeto encontrado com o link fornecido"}
             if not model["model_is_accessible"]:
                 return {"error": "Este projeto não se encontra acessível através de compartilhamento"}
-            if model["model_id"] in self.user.user_shared_dicts["files"]:
+            user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
+            if model["model_id"] in user_shared_dicts:
                 return {"error": "Este modelo já se encontra nos seus compartilhados"}
             if model["model_is_password_protected"] and not self.post.get("shared_password"):
                 return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
@@ -179,13 +180,14 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhuma pasta encontrada com o link fornecido"}
             if not folder["folder_is_accessible"]:
                 return {"error": "Esta pasta não se encontra acessível através de compartilhamento"}
-            if folder["folder_id"] in self.user.user_shared_dicts["folders"]:
+            user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
+            if folder["folder_id"] in user_shared_dicts["folders"]:
                 return {"error": "Esta pasta já se encontra nos seus compartilhados"}
             if folder["folder_is_password_protected"] and not self.post.get("shared_password"):
                 return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
             if folder["folder_is_password_protected"] and (folder["folder_password"] != self.post.get("shared_password")):
                 return {"error": "A senha informada está incorreta"}
-            self.user.add_folder_to_user_shared_dicts(folder)
+            self.user.add_folder_to_user_shared_dicts(user_shared_dicts, folder)
             return {"success": "Pasta adicionada aos compartilhados"}
 
     def create_folder(self):
