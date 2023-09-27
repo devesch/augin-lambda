@@ -99,9 +99,9 @@ class PanelPage(BasePage):
                 user_folder = Dynamo().get_folder(folder_id)
             else:
                 if shared:
-                    user_folder = Dynamo().get_folder(self.user_shared_dicts_folder_id)
+                    user_folder = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
                 else:
-                    user_folder = Dynamo().get_folder(self.user_dicts_folder_id)
+                    user_folder = Dynamo().get_folder(self.user.user_dicts_folder_id)
 
             user_folder = generate_folder_data(user_folder)
             if user_folder["folders"]:
