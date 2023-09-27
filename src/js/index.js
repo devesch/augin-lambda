@@ -1146,6 +1146,13 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     let project_password_div = document.getElementById("project_password_div");
     let project_password_input = document.getElementById("project_password_input");
     let project_password_error_span = document.getElementById("project_password_error_span");
+    let project_is_accessible_input = document.getElementById("project_is_accessible_input");
+
+    if (model_is_acessible) {
+        project_is_accessible_input.checked = "checked";
+    } else {
+        project_is_accessible_input.checked = "";
+    }
 
 
     if (model_is_password_protected == "True") {
@@ -2130,6 +2137,12 @@ export async function openModalShareFolder(folder_id, folder_name, folder_share_
     let folder_password_input = document.getElementById("folder_password_input");
     let folder_password_error_span = document.getElementById("folder_password_error_span");
     let folder_is_accessible_input = document.getElementById("folder_is_accessible_input");
+
+    if (folder_is_acessible) {
+        folder_is_accessible_input.checked = "checked";
+    } else {
+        folder_is_accessible_input.checked = "";
+    }
 
     if (folder_is_password_protected == "True") {
         folder_is_password_protected_input.checked = "checked";
