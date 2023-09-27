@@ -1882,9 +1882,11 @@ input[list]::-ms-clear {
     left: 100%;
     transform: translateX(-100%);
     position: fixed;
+    overflow: auto;
     width: 100%;
     z-index: 2000;
     max-width: 500px;
+    max-height: 100vh;
     background-color: colors.color("color-white");
     border: 1px solid colors.color("color-neutral-900");
     padding: 1rem;

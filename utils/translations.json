@@ -3694,11 +3694,6 @@
         "es": "Si realizamos cambios significativos, le informaremos, pero verifique esta política regularmente para asegurarse de que está al tanto de la versión más actualizada para determinar",
         "pt": "Se fizermos alterações significativas, informaremos você, mas verifique regularmente esta Política para garantir que você esteja ciente da versão mais atualizada"
     },
-    "Se você tiver alguma dúvida sobre o uso de cookies, entre em contato conosco no rodapé da página em Fale Conosco através do WhatsApp ou pelo chat de Atendimento online através do Tawk.to": {
-        "en": "If you have any questions about using cookies, please contact us at the bottom of the page in Contact Us through WhatsApp or online service chat through Tawk.to",
-        "es": "Si tiene alguna pregunta sobre el uso de cookies, contáctenos al final de la página en contáctenos a través de WhatsApp o chat de servicio en línea a través de Tawk.TO",
-        "pt": "Se você tiver alguma dúvida sobre o uso de cookies, entre em contato conosco no rodapé da página em Fale Conosco através do WhatsApp ou pelo chat de Atendimento online através do Tawk.to"
-    },
     "Seguinte": {
         "en": "Following",
         "es": "Siguiente",
@@ -4748,6 +4743,11 @@
         "en": "people",
         "es": "gente",
         "pt": "pessoas"
+    },
+    "política de cookies do Google Analytics": {
+        "en": "google Analytics Cookies Policy",
+        "es": "política de cookies de Google Analytics",
+        "pt": "política de cookies do Google Analytics"
     },
     "política de cookies do Mouseflow": {
         "en": "mouseflow cookies policy",
