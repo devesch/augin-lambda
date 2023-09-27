@@ -205,12 +205,10 @@ class User:
     def move_folder_to_another_folder(self, folder, destiny_folder=""):
         if folder["folder_root_id"]:
             root_folder = Dynamo().get_folder(folder["folder_root_id"])
-        else:
-            root_folder = Dynamo().get_folder(self.user_dicts_folder_id)
-        remove_folder_from_folder(root_folder, folder)
+            remove_folder_from_folder(root_folder, folder)
 
         if not destiny_folder:
-            destiny_folder = self.user_dicts_folder_id
+            destiny_folder = Dynamo().get_folder(self.user_dicts_folder_id)
         add_folder_to_folder(destiny_folder, folder)
 
     def move_model_to_another_folder(self, model, new_folder=""):
