@@ -8,6 +8,7 @@ from utils.utils.StrFormat import StrFormat
 from python_web_frame.controllers.model_controller import ModelController
 from objects.Order import translate_order_status
 from objects.User import sort_user_folders
+from objects.UserFolder import generate_folder_data
 
 
 class PanelPage(BasePage):
@@ -78,7 +79,11 @@ class PanelPage(BasePage):
         full_html = []
         shared = False
         federated_model = None
-        user_ids_name_dict = {self.user.user_id: self.user.user_name}
+
+        if self.user:
+            user_ids_name_dict = {self.user.user_id: self.user.user_name}
+        else:
+            user_ids_name_dict = {}
 
         if self.route == "panel_shared_project" or self.post.get("page") == "panel_shared_project":
             shared = True
@@ -90,7 +95,15 @@ class PanelPage(BasePage):
             model_to_be_updated = Dynamo().get_model(self.post.get("model_id_to_be_updated"))
 
         if not self.post.get("explore_input_search"):
-            user_folder = self.user.generate_folder_data(folder_id, shared)
+            if folder_id:
+                user_folder = Dynamo().get_folder(folder_id)
+            else:
+                if shared:
+                    user_folder = Dynamo().get_folder(self.user_shared_dicts_folder_id)
+                else:
+                    user_folder = Dynamo().get_folder(self.user_dicts_folder_id)
+
+            user_folder = generate_folder_data(user_folder)
             if user_folder["folders"]:
 
                 for folder in user_folder["folders"]:
@@ -155,8 +168,8 @@ class PanelPage(BasePage):
         if models:
             for model in models:
                 if model["model_user_id"] not in user_ids_name_dict:
-                    owner_user = Dynamo().get_user(model["model_user_id"])
-                    user_ids_name_dict[model["model_user_id"]] = owner_user["user_name"]
+                    owner_user = self.load_user(model["model_user_id"])
+                    user_ids_name_dict[model["model_user_id"]] = owner_user.user_name
                 model["owners_name"] = user_ids_name_dict[model["model_user_id"]]
 
             models = ModelController().sort_models(self.user, models, self.post.get("sort_attribute"), self.post.get("sort_reverse"))
@@ -237,7 +250,7 @@ class PanelPage(BasePage):
                 # html.esc("model_upload_path_zip_val", S3().generate_presigned_url(lambda_constants["processed_bucket"], model["model_upload_path_zip"]))
                 html.esc("model_upload_path_zip_val", ModelController().generate_model_download_link(model))
 
-                if model["model_id"] in self.user.user_favorited_models:
+                if self.user and model["model_id"] in self.user.user_favorited_models:
                     html.esc("html_model_is_favorite", self.show_html_model_is_favorite())
                     html.esc("opposite_model_is_favorite_val", False)
                     html.esc("favorite_or_unfavorite_val", self.translate("Desfavoritar"))

@@ -222,60 +222,6 @@ class User:
 
         add_file_to_folder(new_folder, model["model_id"], model["model_filesize"])
 
-    def generate_folder_data(self, folder_id=None, shared=False):
-        if not folder_id:
-            if shared:
-                user_folder = Dynamo().get_folder(self.user_shared_dicts_folder_id)
-            else:
-                user_folder = Dynamo().get_folder(self.user_dicts_folder_id)
-        else:
-            user_folder = Dynamo().get_folder(folder_id)
-
-        folder_folders = []
-        folder_files = []
-
-        deleted_folders = []
-        deleted_files = []
-
-        if user_folder["folders"]:
-            folder_folders.extend(Dynamo().batch_get_folders(user_folder["folders"]))
-            if len(user_folder["folders"]) != len(folder_folders):
-                for folder_id in user_folder["folders"]:
-                    folder_id_in_folder_folders = False
-                    for folder in folder_folders:
-                        if folder_id == folder["folder_id"]:
-                            folder_id_in_folder_folders = True
-                            break
-                    if not folder_id_in_folder_folders:
-                        deleted_folders.append(folder_id)
-
-        if user_folder["files"]:
-            folder_files.extend(Dynamo().batch_get_models(user_folder["files"]))
-            if len(user_folder["files"]) != len(folder_files):
-                for model_id in user_folder["files"]:
-                    model_id_in_folder_files = False
-                    for model in folder_files:
-                        if model_id == model["model_id"]:
-                            model_id_in_folder_files = True
-                            break
-                    if not model_id_in_folder_files:
-                        deleted_files.append(model_id)
-
-        if deleted_folders:
-            for folder_id in deleted_folders:
-                user_folder["folders"].remove(folder_id)
-
-        if deleted_files:
-            for model_id in deleted_files:
-                user_folder["files"].remove(model_id)
-
-        if deleted_files or deleted_folders:
-            Dynamo().put_entity(user_folder)
-
-        user_folder["folders"] = folder_folders
-        user_folder["files"] = folder_files
-
-        return user_folder
 
     def create_new_folder(self, new_folder_name, root_folder_id="", is_user_root_folder=False):
         if not is_user_root_folder:

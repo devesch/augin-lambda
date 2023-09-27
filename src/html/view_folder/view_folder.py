@@ -17,9 +17,8 @@ class ViewFolder(PanelPage):
 
         html = super().parse_html()
 
-        html.esc(
-            "folder_id_val",
-        )
+        html.esc("folder_id_val", self.path["folder"]["folder_id"])
+        html.esc("html_user_folder_rows", self.list_html_user_folder_rows(folder_id=self.path["folder"]["folder_id"]))
         return str(html)
 
     def render_post(self):

@@ -227,7 +227,7 @@ class ModelController:
         sorted_models = []
         if models:
             for model in models:
-                if model["model_id"] in user.user_favorited_models:
+                if user and model["model_id"] in user.user_favorited_models:
                     favorited_models.append(model)
                 else:
                     normal_models.append(model)
