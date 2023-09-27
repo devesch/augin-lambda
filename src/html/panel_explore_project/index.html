@@ -10,11 +10,12 @@
                 {{html_project_filter_options}}
             </select>
             <div class="floating-input">
-                <input oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search" placeholder="">
+                <input oninput="js.index.showUserDicts(), js.index.changeSearchIcon(this)" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search" placeholder="">
                 <label for="explore_input_search">
                     {{Pesquisar}}
                 </label>
-                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon">
+                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
+                <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none">
             </div>
         </section>
         <div class="my-plan__title-container__button-container">
