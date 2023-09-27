@@ -275,6 +275,8 @@ class UpdateUser(BasePage):
             folder = Dynamo().get_folder(self.post["selected_folder_id"])
             if folder["folder_user_id"] != self.user.user_id:
                 return {"error": "Esta pasta não pertence a este usuário"}
+            if model["model_folder_id"] == folder["folder_id"]:
+                return {"error": "Este arquivo já se encontra neste diretório"}
             self.user.move_model_to_another_folder(model, folder)
         else:
             self.user.move_model_to_another_folder(model)

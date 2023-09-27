@@ -1534,6 +1534,11 @@
         "es": "¡Estamos casi alli!Complete la información a continuación y crearemos su cuenta.",
         "pt": "Estamos quase lá! Preencha as informações abaixo e vamos criar sua conta."
     },
+    "Este arquivo já se encontra neste diretório": {
+        "en": "This file is already in this directory",
+        "es": "Este archivo ya está en este directorio",
+        "pt": "Este arquivo já se encontra neste diretório"
+    },
     "Este arquivo se encontra protegido por senha": {
         "en": "This file is protected by password",
         "es": "Este archivo está protegido por contraseña",

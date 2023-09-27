@@ -28,39 +28,42 @@ class UserFolder:
 
 
 def add_folder_to_folder(folder, folder_to_be_added):
-    folder["folders"].append(folder_to_be_added["folder_id"])
-    folder["folder_foldersize_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder_to_be_added["folder_size_in_mbs"]))
-    folder["folder_size_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder["folder_filesize_in_mbs"]))
+    if folder_to_be_added["folder_id"] not in folder["folders"]:
+        folder["folders"].append(folder_to_be_added["folder_id"])
+        folder["folder_foldersize_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder_to_be_added["folder_size_in_mbs"]))
+        folder["folder_size_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder["folder_filesize_in_mbs"]))
 
-    Dynamo().put_entity(folder)
+        Dynamo().put_entity(folder)
 
-    folder_to_be_added["folder_root_id"] = folder["folder_id"]
-    Dynamo().put_entity(folder_to_be_added)
+        folder_to_be_added["folder_root_id"] = folder["folder_id"]
+        Dynamo().put_entity(folder_to_be_added)
 
-    if folder["folder_root_id"]:
-        update_root_folder_size(folder["folder_root_id"])
+        if folder["folder_root_id"]:
+            update_root_folder_size(folder["folder_root_id"])
 
 
 def add_file_to_folder(folder, model_id, model_filesize):
-    folder["files"].append(model_id)
-    folder["folder_filesize_in_mbs"] = str(float(folder["folder_filesize_in_mbs"]) + float(ModelController().convert_model_filesize_to_mb(model_filesize)))
-    folder["folder_size_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder["folder_filesize_in_mbs"]))
-    Dynamo().put_entity(folder)
-    if folder["folder_root_id"]:
-        update_root_folder_size(folder["folder_root_id"])
+    if model_id not in folder["files"]:
+        folder["files"].append(model_id)
+        folder["folder_filesize_in_mbs"] = str(float(folder["folder_filesize_in_mbs"]) + float(ModelController().convert_model_filesize_to_mb(model_filesize)))
+        folder["folder_size_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder["folder_filesize_in_mbs"]))
+        Dynamo().put_entity(folder)
+        if folder["folder_root_id"]:
+            update_root_folder_size(folder["folder_root_id"])
 
 
 def remove_folder_from_folder(folder, folder_to_be_removed):
-    folder["folders"].remove(folder_to_be_removed["folder_id"])
-    folder["folder_foldersize_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) - float(folder_to_be_removed["folder_size_in_mbs"]))
-    folder["folder_size_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder["folder_filesize_in_mbs"]))
+    if folder_to_be_removed["folder_id"] in folder["folders"]:
+        folder["folders"].remove(folder_to_be_removed["folder_id"])
+        folder["folder_foldersize_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) - float(folder_to_be_removed["folder_size_in_mbs"]))
+        folder["folder_size_in_mbs"] = str(float(folder["folder_foldersize_in_mbs"]) + float(folder["folder_filesize_in_mbs"]))
 
-    Dynamo().put_entity(folder)
+        Dynamo().put_entity(folder)
 
-    folder_to_be_removed["folder_root_id"] = ""
-    Dynamo().put_entity(folder_to_be_removed)
-    if folder["folder_root_id"]:
-        update_root_folder_size(folder["folder_root_id"])
+        folder_to_be_removed["folder_root_id"] = ""
+        Dynamo().put_entity(folder_to_be_removed)
+        if folder["folder_root_id"]:
+            update_root_folder_size(folder["folder_root_id"])
 
 
 def remove_file_from_folder(folder, model_id, model_filesize):
