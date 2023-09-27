@@ -1,5 +1,5 @@
 ﻿{{header}}
-{{menu_no_icons}}
+{{menu_panel_no_icons}}
 <main class="my-plan__main">
     <section class="explore__table-container">
         <div class="explore__table-container__title-container relative">
@@ -7,14 +7,13 @@
                 <button id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}" />
                 </button>
-                <button onclick="js.index.openFolder('', '')" class="button--user-folders">
-                    <h2>{{Meus projetos}}</h2>
+                <button onclick="js.index.openFolder('{{folder_id_val}}', '')" class="button--user-folders">
+                    <h2>{{Pasta compartilhada}}</h2>
                 </button>
                 <h2 id="folder_path_span"></h2>
                 <input hidden id="folder_id_input">
                 <input hidden id="folder_path_input">
             </div>
-
         </div>
         <table class="explore__table">
             <input hidden id="sort_attribute_input" value="model_name">

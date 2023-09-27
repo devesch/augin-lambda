@@ -63,7 +63,7 @@ class Http:
     def request(self, method="GET", url="", headers={}, data={}, json_res=True):
         import requests
 
-        if method.upper == "GET":
+        if method.upper() == "GET":
             response = requests.request(method.upper(), url, headers=headers, data=json.dumps(data))
         else:
             response = requests.post(url, headers=headers, data=json.dumps(data))

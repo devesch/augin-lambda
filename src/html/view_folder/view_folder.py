@@ -16,6 +16,10 @@ class ViewFolder(PanelPage):
             return Http().redirect("panel_shared_project/?folder_id=" + self.path["folder"]["folder_id"])
 
         html = super().parse_html()
+
+        html.esc(
+            "folder_id_val",
+        )
         return str(html)
 
     def render_post(self):

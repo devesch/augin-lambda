@@ -3184,6 +3184,11 @@
         "es": "Carpeta",
         "pt": "Pasta"
     },
+    "Pasta compartilhada": {
+        "en": "Shared folder",
+        "es": "Carpeta compartida",
+        "pt": "Pasta compartilhada"
+    },
     "Pasta de destino não pertence a este usuário": {
         "en": "Destination folder does not belong to this user",
         "es": "La carpeta de destino no pertenece a este usuario",
