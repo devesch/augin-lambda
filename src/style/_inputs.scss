@@ -391,22 +391,9 @@ input[type="checkbox"] + label {
 
 .input-search::-webkit-search-decoration,
 .input-search::-webkit-search-results-button,
-.input-search::-webkit-search-results-decoration {
-    display: none;
-}
-
+.input-search::-webkit-search-results-decoration,
 .input-search::-webkit-search-cancel-button {
-    /* Remove default */
-    appearance: none !important;
-    -moz-appearance: none !important;
-    -webkit-appearance: none !important;
-    
-    /* Now your own custom styles */
-    cursor: pointer !important;
-    height: 24px !important;
-    width: 24px !important;
-    background-image: url("https://cdn.augin.app/assets/icons/close.svg") !important;
-    /* Will place small red box on the right of input (positioning carries over) */
+    display: none;
 }
 
 .input-default-icon {

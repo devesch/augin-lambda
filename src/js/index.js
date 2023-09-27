@@ -2753,7 +2753,8 @@ export async function changeSearchIcon(input) {
     }
 }
 
-export async function clearSearchInput(input, clearIcon) {
+export async function clearSearchInput(clearIcon, inputId) {
+    const input = document.getElementById(inputId);
     input.value = "";
     clearIcon.classList.add("none");
     document.querySelector(".search-icon").remove("none");
