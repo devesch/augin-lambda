@@ -9,7 +9,13 @@
                 <option value="">{{Todos}}</option>
                 {{html_project_filter_options}}
             </select>
-            <input oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search">
+            <div class="floating-input">
+                <input oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search">
+                <label for="explore_input_search">
+                    {{Pesquisar}}
+                </label>
+                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon">
+            </div>
         </section>
         <div class="my-plan__title-container__button-container">
             <button class="black my-plan__title-container__button">
