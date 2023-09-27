@@ -85,7 +85,7 @@ class PanelPage(BasePage):
         else:
             user_ids_name_dict = {}
 
-        if self.route == "panel_shared_project" or self.post.get("page") == "panel_shared_project":
+        if self.route == "panel_shared_project" or self.post.get("page") == "panel_shared_project" or self.route == "view_folder" or self.post.get("page") == "view_folder":
             shared = True
 
         if self.post.get("federated_model_id"):
