@@ -1148,7 +1148,7 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     let project_password_error_span = document.getElementById("project_password_error_span");
     let project_is_accessible_input = document.getElementById("project_is_accessible_input");
 
-    if (model_is_acessible) {
+    if (model_is_acessible == "True") {
         project_is_accessible_input.checked = "checked";
     } else {
         project_is_accessible_input.checked = "";
@@ -2138,7 +2138,7 @@ export async function openModalShareFolder(folder_id, folder_name, folder_share_
     let folder_password_error_span = document.getElementById("folder_password_error_span");
     let folder_is_accessible_input = document.getElementById("folder_is_accessible_input");
 
-    if (folder_is_acessible) {
+    if (folder_is_acessible == "True") {
         folder_is_accessible_input.checked = "checked";
     } else {
         folder_is_accessible_input.checked = "";
