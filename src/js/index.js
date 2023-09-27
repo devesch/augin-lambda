@@ -2759,4 +2759,5 @@ export async function clearSearchInput(clearIcon, inputId) {
     clearIcon.classList.add("none");
     // document.querySelector(".search-icon").remove("none");
     changeSearchIcon(input);
+    showUserDicts();
 }
