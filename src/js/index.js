@@ -2742,8 +2742,8 @@ export async function removeModelFromFederatedProject(model_id_to_be_removed) {
 
 export async function changeSearchIcon(input) {
     const inputLength = input.value.length;
-    const searchIcon = document.querySelector("search-icon");
-    const closeIcon = document.querySelector("close-icon");
+    const searchIcon = document.querySelector(".search-icon");
+    const closeIcon = document.querySelector(".close-icon");
     if (inputLength > 0) {
         searchIcon.classList.add("none");
         closeIcon.classList.remove("none");
