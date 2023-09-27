@@ -2752,3 +2752,9 @@ export async function changeSearchIcon(input) {
         closeIcon.classList.add("none");
     }
 }
+
+export async function clearSearchInput(input, clearIcon) {
+    input.value = "";
+    clearIcon.classList.add("none");
+    document.querySelector(".search-icon").remove("none");
+}
