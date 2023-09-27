@@ -23,7 +23,7 @@
             <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Alterar email}}</a>
             <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
                 <input type="hidden" name="send_new_code" value="send_new_code">
-                <button id="resend_code_button" type="submit" class="button ghost" disabled>{{Reenviar código}}</button>
+                <button id="resend_code_button" type="submit" class="button" disabled>{{Reenviar código}}</button>
             </form>
         </div>
     </div>
@@ -38,6 +38,5 @@
         await js.index.sleep(15000);
         let resend_code_button = document.getElementById("resend_code_button");
         resend_code_button.removeAttribute("disabled");
-        resend_code_button.classList.remove("ghost");
     };
 </script>
