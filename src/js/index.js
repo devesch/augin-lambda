@@ -1235,8 +1235,8 @@ export async function showUserDicts() {
 
     var user_dicts_return_to_root_span = document.getElementById("user_dicts_return_to_root_span");
 
-    let parts = location.href.split("/");
-    let page = parts.pop();
+    let match = location.href.match(/\/([^\/]+)\/?(\?|$)/);
+    let page = match ? match[1] : null;
 
     let panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "sort_attribute": sort_attribute_input.value,
