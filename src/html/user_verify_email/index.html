@@ -18,14 +18,14 @@
                 <input id="verify_email_code_6" aria-label="{{Digite o sexto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_6" value="{{verify_email_code_6_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder="" inputmode="numeric" required />
             </div>
             <span class="error" style="{{error_msg_visibility_val}}">{{error_msg_val}}</span>
-            <div class="verify-code-button-container">
-                <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Alterar email}}</a>
-                <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
-                    <input type="hidden" name="send_new_code" value="send_new_code">
-                    <button class="button">Reenviar código</button>
-                </form>
-            </div>
         </form>
+        <div class="verify-code-button-container">
+            <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Alterar email}}</a>
+            <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+                <input type="hidden" name="send_new_code" value="send_new_code">
+                <button class="button">Reenviar código</button>
+            </form>
+        </div>
     </div>
 </main>
 <script>
