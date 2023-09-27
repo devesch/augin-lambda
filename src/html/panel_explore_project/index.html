@@ -10,7 +10,7 @@
                 {{html_project_filter_options}}
             </select>
             <div class="floating-input">
-                <input oninput="js.index.showUserDicts(), js.index.changeSearchIcon(this)" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search" placeholder="">
+                <input oninput="js.index.showUserDicts(), js.index.changeSearchIcon(this)" onclick="" type="search" name="explore_input_search" id="explore_input_search" class="input-search" results="10" autosave="explore_input_search" placeholder="">
                 <label for="explore_input_search">
                     {{Pesquisar}}
                 </label>
@@ -38,7 +38,7 @@
     <section class="explore__table-container">
         <div class="explore__table-container__title-container relative">
             <div class="explore__table-container__button-container">
-                <button id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
+                <button id="user_dicts_return_to_root_span" class="ghost" onclick="js.index.openReturnFolder()" style="display: none;">
                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}" />
                 </button>
                 <button onclick="js.index.openFolder('', '')" class="button--user-folders">
@@ -580,7 +580,7 @@
                         <tr>
                             <th>
                                 <div class="explore__table-container__button-container">
-                                    <button onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span">
+                                    <button onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span" class="ghost">
                                         <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
                                     </button>
                                     <span onclick="js.index.refreshMoveModal('')" class="ml-05">{{Meus Projetos}}</span>
@@ -618,7 +618,7 @@
                     <thead>
                         <th>
                             <div class="explore__table-container__button-container">
-                                <button onclick="js.index.openReturnFolderModalMoveFolder()" id="move_folder_modal_return_folder_span">
+                                <button onclick="js.index.openReturnFolderModalMoveFolder()" id="move_folder_modal_return_folder_span" class="ghost">
                                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
                                 </button>
                                 <span onclick="js.index.refreshMoveFolderModal('')" class="ml-05">{{Meus Projetos}}</span>
@@ -726,7 +726,7 @@
                     <thead>
                         <th>
                             <div class="explore__table-container__button-container">
-                                <button onclick="js.index.openReturnFolderModalAddModelToFederated()" id="add_model_to_federated_modal_return_folder_span">
+                                <button onclick="js.index.openReturnFolderModalAddModelToFederated()" id="add_model_to_federated_modal_return_folder_span" class="ghost">
                                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
                                 </button>
                                 <span onclick="js.index.refreshAddModelToFederatedModal('')" class="ml-05">{{Meus Projetos}}</span>

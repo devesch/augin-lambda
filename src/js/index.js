@@ -2757,5 +2757,6 @@ export async function clearSearchInput(clearIcon, inputId) {
     const input = document.getElementById(inputId);
     input.value = "";
     clearIcon.classList.add("none");
-    document.querySelector(".search-icon").remove("none");
+    // document.querySelector(".search-icon").remove("none");
+    changeSearchIcon(input);
 }
