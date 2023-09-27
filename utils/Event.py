@@ -45,6 +45,9 @@ class Event:
                 if "__Secure-token" in cookie:
                     if parse_qs(cookie):
                         return parse_qs(cookie)["__Secure-token"][0]
+        if hasattr(self, "headers"):
+            if "__secure-token" in self.headers:
+                return self.headers["__secure-token"]
         return None
 
     def get_project_cookies(self):

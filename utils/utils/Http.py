@@ -11,33 +11,33 @@ class Http:
 
     dangerous_characters = ("<", ">", "?", ";", "[", "\\", "]", "|")
     format_to_number_fields = (
-            "user_phone",
-            "user_cpf",
-            "user_cnpj",
-            "user_zip_code",
-            "plan_price_annually_brl_actual",
-            "plan_price_annually_usd_actual",
-            "plan_price_monthly_brl_actual",
-            "plan_price_monthly_usd_actual",
-            "plan_price_annually_brl",
-            "plan_price_annually_usd",
-            "plan_price_monthly_brl",
-            "plan_price_monthly_usd",
-            "plan_cloud_space_in_mbs",
-            "plan_maxium_model_size_in_mbs",
-            "plan_maxium_federated_size_in_mbs",
-            "plan_maxium_devices_available",
-            "plan_maxium_devices_changes_in_30d",
-            "plan_trial_duration_in_days",
-            "plan_app_can_be_offline_in_days",
-            "coupon_maxium_uses_count",
-            "coupon_percentage_discount",
-            "coupon_brl_discount",
-            "coupon_usd_discount",
-            "coupon_recurrence_months",
+        "user_phone",
+        "user_cpf",
+        "user_cnpj",
+        "user_zip_code",
+        "plan_price_annually_brl_actual",
+        "plan_price_annually_usd_actual",
+        "plan_price_monthly_brl_actual",
+        "plan_price_monthly_usd_actual",
+        "plan_price_annually_brl",
+        "plan_price_annually_usd",
+        "plan_price_monthly_brl",
+        "plan_price_monthly_usd",
+        "plan_cloud_space_in_mbs",
+        "plan_maxium_model_size_in_mbs",
+        "plan_maxium_federated_size_in_mbs",
+        "plan_maxium_devices_available",
+        "plan_maxium_devices_changes_in_30d",
+        "plan_trial_duration_in_days",
+        "plan_app_can_be_offline_in_days",
+        "coupon_maxium_uses_count",
+        "coupon_percentage_discount",
+        "coupon_brl_discount",
+        "coupon_usd_discount",
+        "coupon_recurrence_months",
     )
     format_to_letter_fields = ("user_name", "user_complement")
-    acceptable_json_fields = ("last_evaluated_key")
+    acceptable_json_fields = "last_evaluated_key"
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -63,7 +63,10 @@ class Http:
     def request(self, method="GET", url="", headers={}, data={}, json_res=True):
         import requests
 
-        response = requests.request(method.upper(), url, headers=headers, data=json.dumps(data))
+        if method.upper == "GET":
+            response = requests.request(method.upper(), url, headers=headers, data=json.dumps(data))
+        else:
+            response = requests.post(url, headers=headers, data=json.dumps(data))
         if json_res:
             return json.loads(response.text)
         return response.text
@@ -145,7 +148,7 @@ class Http:
         ignore_param = ()
         if not post:
             return {}
-        
+
         for param, value in post.items():
             if isinstance(value, str):
                 if param not in ignore_param:
