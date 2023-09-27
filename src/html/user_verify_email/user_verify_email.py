@@ -25,12 +25,17 @@ class UserVerifyEmail(UserPage):
         return str(html)
 
     def render_post(self):
-        self.post["verify_email_code"] = self.generate_verification_code()
-        if not self.post.get("verify_email_code"):
-            return self.render_get_with_error("Por favor informe um código de verificação de 6 dígitos")
-        verify_email = Dynamo().get_verify_email(self.path["user_email"], self.post["verify_email_code"])
-        if not verify_email:
-            return self.render_get_with_error("Código de verificação inválido.")
-        if check_if_verify_email_expired(verify_email["created_at"]):
-            return self.render_get_with_error("Código de verificação expirado.")
-        return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.path["user_email"]) + "&verify_email_code=" + self.post["verify_email_code"])
+        if self.post.get("send_new_code"):
+            self.post["user_email"] = self.path["user_email"]
+            self.generate_and_send_email_verification_code()
+            return self.render_get_with_error("Um novo código foi enviado para o seu email")
+        else:
+            self.post["verify_email_code"] = self.generate_verification_code()
+            if not self.post.get("verify_email_code"):
+                return self.render_get_with_error("Por favor informe um código de verificação de 6 dígitos")
+            verify_email = Dynamo().get_verify_email(self.path["user_email"], self.post["verify_email_code"])
+            if not verify_email:
+                return self.render_get_with_error("Código de verificação inválido.")
+            if check_if_verify_email_expired(verify_email["created_at"]):
+                return self.render_get_with_error("Código de verificação expirado.")
+            return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.path["user_email"]) + "&verify_email_code=" + self.post["verify_email_code"])
