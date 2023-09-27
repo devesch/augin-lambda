@@ -136,7 +136,7 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows_folders")
                     elif model_html == "add_project_to_federated":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_add_project_to_federated_model_user_folder_rows_folders")
-                    if shared and self.post.get("folder_id"):
+                    if shared and folder_id:
                         html.esc("remove_folder_visibility_val", "display:none;")
 
                     html.esc("folder_path_val", folder["folder_path"])
@@ -186,7 +186,7 @@ class PanelPage(BasePage):
                         elif self.post["explore_filter"] != model["model_category"]:
                             continue
                     if shared:
-                        if not model["model_is_accessible"] and not self.post.get("folder_id") and not self.post.get("explore_input_search"):
+                        if not model["model_is_accessible"] and not folder_id and not self.post.get("explore_input_search"):
                             continue
                         html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows")
                     else:
@@ -218,7 +218,7 @@ class PanelPage(BasePage):
                         # if federated_model and model["model_id"] in federated_model["model_federated_required_ids"]:
                         #     html.esc("checked_val", "checked='checked'")
 
-                if shared and self.post.get("folder_id"):
+                if shared and folder_id:
                     html.esc("remove_model_visibility_val", "display:none;")
 
                 html.esc("index_val", str(index))
