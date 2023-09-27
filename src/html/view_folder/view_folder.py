@@ -16,7 +16,7 @@ class ViewFolder(PanelPage):
             return Http().redirect("panel_shared_project/?folder_id=" + self.path["folder"]["folder_id"])
 
         html = super().parse_html()
-
+        html.esc("html_project_filter_options", self.list_html_project_filter_options())
         html.esc("folder_id_val", self.path["folder"]["folder_id"])
         html.esc("html_user_folder_rows", self.list_html_user_folder_rows(folder_id=self.path["folder"]["folder_id"]))
         return str(html)
