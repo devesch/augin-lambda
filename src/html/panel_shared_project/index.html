@@ -144,5 +144,18 @@
         </div>
     </div>
 </div>
-
 {{footer}}
+
+<input hidden id="on_load_open_folder_id_input" value="{{on_load_open_folder_id_val}}">
+<input hidden id="on_load_open_folder_path_input" value="{{on_load_open_folder_path_val}}">
+
+<script>
+    window.onload = async function () {
+        let on_load_open_folder_id_input = document.getElementById("on_load_open_folder_id_input");
+        let on_load_open_folder_path_input = document.getElementById("on_load_open_folder_path_input");
+
+        if (on_load_open_folder_id_input.value != "") {
+            await js.index.openFolder(on_load_open_folder_id_input.value, on_load_open_folder_path_input.value)
+        }
+    };
+</script>

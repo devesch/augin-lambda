@@ -1,5 +1,6 @@
 from python_web_frame.panel_page import PanelPage
 from utils.utils.ReadWrite import ReadWrite
+from utils.AWS.Dynamo import Dynamo
 from utils.Config import lambda_constants
 
 
@@ -10,9 +11,19 @@ class PanelSharedProject(PanelPage):
     admin = False
 
     def render_get(self):
+        if self.path.get("folder"):
+            user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
+            if self.path["folder"]["folder_id"] not in user_shared_dicts["folders"]:
+                self.user.add_folder_to_user_shared_dicts(user_shared_dicts, self.path["folder"])
+
         html = super().parse_html()
         html.esc("html_project_filter_options", self.list_html_project_filter_options())
-        html.esc("html_user_folder_rows", self.list_html_user_folder_rows())
+
+        if self.path.get("folder"):
+            html.esc("on_load_open_folder_id_val", self.path["folder"]["folder_id"])
+            html.esc("on_load_open_folder_path_val", self.path["folder"]["folder_path"])
+        else:
+            html.esc("html_user_folder_rows", self.list_html_user_folder_rows())
         return str(html)
 
     def render_post(self):
