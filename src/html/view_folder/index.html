@@ -9,6 +9,7 @@
                 <option value="">{{Todos}}</option>
                 {{html_project_filter_options}}
             </select>
+            <input hidden oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search">
         </section>
     </div>
 
@@ -22,7 +23,7 @@
                     <h2>{{Pasta compartilhada}}</h2>
                 </button>
                 <h2 id="folder_path_span"></h2>
-                <input hidden id="folder_id_input">
+                <input hidden id="folder_id_input" value="{{folder_id_val}}">
                 <input hidden id="folder_path_input">
             </div>
         </div>
