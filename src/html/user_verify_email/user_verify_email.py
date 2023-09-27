@@ -25,6 +25,18 @@ class UserVerifyEmail(UserPage):
         return str(html)
 
     def render_post(self):
+        import boto3
+
+        ses = boto3.client("ses")
+
+        try:
+            response = ses.get_template(TemplateName="email-validation-pt")
+
+            return response
+        except Exception as e:
+            print(f"Error retrieving template: {e}")
+            return None
+
         if self.post.get("send_new_code"):
             self.post["user_email"] = self.path["user_email"]
             self.generate_and_send_email_verification_code()
