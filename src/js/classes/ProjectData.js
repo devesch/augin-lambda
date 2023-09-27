@@ -1,7 +1,3 @@
-import {
-    Color,
-    Vector3
-} from "../augin-webgl/threejs/three.module";
 import environment_variables from "../../../.vscode/enviroment_variables.json"
 
 var props = {

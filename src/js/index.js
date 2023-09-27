@@ -8,19 +8,6 @@ import {
     apiCaller,
     request
 } from "./api.js";
-import AnchorLinkUtils from "./utils.js";
-// import "./tooltip.js";
-
-import * as _accordion from "./accordion.js";
-export function getAccordion() {
-    return _accordion;
-}
-
-
-import * as _webView from "./webview.js";
-export function getWebView() {
-    return _webView;
-}
 
 
 
