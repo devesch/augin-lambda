@@ -4669,6 +4669,11 @@
         "es": "disponible y realizado",
         "pt": "isponíveis e realizou"
     },
+    "link": {
+        "en": "link",
+        "es": "enlace",
+        "pt": "link"
+    },
     "mensalmente": {
         "en": "monthly",
         "es": "mensual",
@@ -4728,6 +4733,11 @@
         "en": "no Valid Command in Post",
         "es": "no hay comando válido en la publicación",
         "pt": "no valid command in post"
+    },
+    "nome": {
+        "en": "name",
+        "es": "nombre",
+        "pt": "nome"
     },
     "ou": {
         "en": "or",
