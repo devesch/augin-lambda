@@ -1608,7 +1608,7 @@ export async function openReturnFolder() {
         "folder_id": folder_id_input.value
     });
 
-    if ("success" in update_user_response) {
+    if (update_user_response["success"]["folder_path"] != "") {
         openFolder(update_user_response["success"]["folder_id"], update_user_response["success"]["folder_path"], true)
     } else {
         openFolder("", "")

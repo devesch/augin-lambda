@@ -2289,6 +2289,11 @@
         "es": "Límite mensual de desvinculaciones",
         "pt": "Limite mensal de desvinculações"
     },
+    "Link ativo": {
+        "en": "Active link",
+        "es": "Enlace activo",
+        "pt": "Link ativo"
+    },
     "Link do projeto ou pasta": {
         "en": "Project Link or Folder",
         "es": "Enlace o carpeta del proyecto",
