@@ -20,7 +20,10 @@
             <span class="error" style="{{error_msg_visibility_val}}">{{error_msg_val}}</span>
             <div class="verify-code-button-container">
                 <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Alterar email}}</a>
-                <a href="" class="button">Reenviar código</a>
+                <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+                    <input type="hidden" name="send_new_code" value="send_new_code">
+                    <button class="button">Reenviar código</button>
+                </form>
             </div>
         </form>
     </div>
