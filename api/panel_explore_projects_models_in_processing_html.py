@@ -4,5 +4,7 @@ from utils.AWS.Dynamo import Dynamo
 
 class PanelExploreProjectsModelsInProcessingHtml(PanelPage):
     def run(self):
+        if not self.user:
+            return {"error": "Nenhum usuário encontrado"}
         models_in_processing = Dynamo().query_user_models_from_state(self.user, "in_processing")
         return {"success": self.list_html_models_in_processing(self.event, models_in_processing)}

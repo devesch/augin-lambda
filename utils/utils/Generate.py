@@ -26,6 +26,8 @@ class Generate:
         S3().upload_file(bucket, key, file_path)
 
     def generate_image_format_from_user_agent(self, user_agent):
+        import user_agents
+
         # browser_image_support = {
         #     "Chrome": {"1": "jpeg", "4": "png", "32": "webp", "85": "avif"},
         #     "Edge": {"1": "jpeg", "12": "png", "18": "webp"},

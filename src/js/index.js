@@ -1160,18 +1160,6 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     let project_password_input = document.getElementById("project_password_input");
     let project_password_error_span = document.getElementById("project_password_error_span");
 
-    let project_is_accessible_input = document.getElementById("project_is_accessible_input");
-    let share_project_modal_content_div = document.getElementById("share_project_modal_content_div");
-
-    if (model_is_acessible == "True") {
-        project_is_accessible_input.checked = "checked";
-        share_project_modal_content_div.style.display = "block";
-        share_project_modal_content_div.classList.add("open");
-    } else {
-        project_is_accessible_input.checked = "";
-        share_project_modal_content_div.style.display = "none";
-        share_project_modal_content_div.classList.remove("open");
-    }
 
     if (model_is_password_protected == "True") {
         project_is_password_protected_input.checked = "checked";
@@ -2161,17 +2149,6 @@ export async function openModalShareFolder(folder_id, folder_name, folder_share_
     let folder_password_input = document.getElementById("folder_password_input");
     let folder_password_error_span = document.getElementById("folder_password_error_span");
     let folder_is_accessible_input = document.getElementById("folder_is_accessible_input");
-    let share_folder_modal_content_div = document.getElementById("share_folder_modal_content_div");
-
-    if (folder_is_acessible == "True") {
-        folder_is_accessible_input.checked = "checked";
-        share_folder_modal_content_div.style.display = "block";
-        share_folder_modal_content_div.classList.add("open");
-    } else {
-        folder_is_accessible_input.checked = "";
-        share_folder_modal_content_div.style.display = "none";
-        share_folder_modal_content_div.classList.remove("open");
-    }
 
     if (folder_is_password_protected == "True") {
         folder_is_password_protected_input.checked = "checked";

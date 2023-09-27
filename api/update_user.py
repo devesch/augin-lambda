@@ -157,10 +157,10 @@ class UpdateUser(BasePage):
 
     def add_shared(self):
         ### TODO BEFORE PROD: NOT LET USER ADD HIS OWN FOLDERS AND FILES TO SHARED
-        if not "model_id" in self.post["shared_link"] and not "folder_id" in self.post["shared_link"]:
+        if not "model_code" in self.post["shared_link"] and not "folder_id" in self.post["shared_link"]:
             return {"error": "Nenhum arquivo encontrado com o link fornecido"}
-        if "model_id" in self.post["shared_link"]:
-            model = Dynamo().get_model(self.post["shared_link"].split("model_id=")[1])
+        if "model_code" in self.post["shared_link"]:
+            model = Dynamo().get_model_by_code(self.post["shared_link"].split("model_code=")[1])
             if not model:
                 return {"error": "Nenhum projeto encontrado com o link fornecido"}
             if not model["model_is_accessible"]:

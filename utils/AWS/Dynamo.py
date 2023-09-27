@@ -164,9 +164,18 @@ class Dynamo:
     def get_model(self, model_id):
         model = self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "model#" + model_id}, "sk": {"S": "model#" + model_id}}})
         if model:
-            if model["model_state"] == "deleted":
-                return None
-        return model
+            if model["model_state"] != "deleted":
+                return model
+        return None
+
+    def get_model_by_code(self, model_code):
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "model_code-sk-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "model_code"}, "ExpressionAttributeValues": {":0b430": {"S": model_code}}})
+        if query:
+            model = self.get_entity(query[0]["pk"], query[0]["sk"])
+            if model:
+                if model["model_state"] != "deleted":
+                    return model
+        return None
 
     def query_models_by_filehash(self, model_filehash, last_evaluated_key=None, limit=10000, reverse=False):
         key_schema = {"created_at": {"S": ""}, "sk": {"S": ""}, "pk": {"S": ""}}

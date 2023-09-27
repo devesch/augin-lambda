@@ -35,9 +35,13 @@ class User:
         self.user_ip = ""
         self.user_cart_currency = ""
         self.user_cart_coupon_code = ""
-        self.user_dicts = {"folders": [], "files": []}
-        self.user_shared_dicts = {"folders": [], "files": []}
-        self.user_models_size_in_mbs = "0"
+        # self.user_dicts = {"folders": [], "files": []}
+        # self.user_shared_dicts = {"folders": [], "files": []}
+
+        self.user_dicts_folder_id = ""
+        self.user_shared_dicts_folder_id = ""
+
+        self.user_models_size_in_mbs = "0.0"
         self.user_favorited_models = []
         self.user_favorited_folders = []
         self.user_plan_id = ""
@@ -161,19 +165,22 @@ class User:
         self.user_address_data = {"user_country": "", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
 
     def add_folder_to_user_shared_dicts(self, folder):
-        if folder["folder_id"] not in self.user_shared_dicts["folders"]:
-            self.user_shared_dicts["folders"].append(folder["folder_id"])
-            Dynamo().put_entity(self.__dict__)
+        user_shared_dicts = Dynamo().get_folder(self.user_shared_dicts_folder_id)
+        if folder["folder_id"] not in user_shared_dicts["folders"]:
+            user_shared_dicts["folders"].append(folder["folder_id"])
+            Dynamo().put_entity(user_shared_dicts)
 
     def remove_folder_from_user_shared_dicts(self, folder_id):
-        if folder_id in self.user_shared_dicts["folders"]:
-            self.user_shared_dicts["folders"].remove(folder_id)
-            Dynamo().put_entity(self.__dict__)
+        user_shared_dicts = Dynamo().get_folder(self.user_shared_dicts_folder_id)
+        if folder_id in user_shared_dicts["folders"]:
+            user_shared_dicts["folders"].remove(folder_id)
+            Dynamo().put_entity(user_shared_dicts)
 
     def remove_model_from_user_shared_dicts(self, model_id):
-        if model_id in self.user_shared_dicts["files"]:
-            self.user_shared_dicts["files"].remove(model_id)
-            Dynamo().put_entity(self.__dict__)
+        user_shared_dicts = Dynamo().get_folder(self.user_shared_dicts_folder_id)
+        if model_id in user_shared_dicts["files"]:
+            user_shared_dicts["files"].remove(model_id)
+            Dynamo().put_entity(user_shared_dicts)
 
     def remove_folder_id_from_favorites(self, folder_id):
         if folder_id in self.user_favorited_folders:
@@ -198,42 +205,32 @@ class User:
     def move_folder_to_another_folder(self, folder, destiny_folder=""):
         if folder["folder_root_id"]:
             root_folder = Dynamo().get_folder(folder["folder_root_id"])
-            remove_folder_from_folder(root_folder, folder)
         else:
-            self.user_dicts["folders"].remove(folder["folder_id"])
+            root_folder = Dynamo().get_folder(self.user_dicts_folder_id)
+        remove_folder_from_folder(root_folder, folder)
 
-        if destiny_folder:
-            add_folder_to_folder(destiny_folder, folder)
-        else:
-            self.user_dicts["folders"].append(folder["folder_id"])
-        Dynamo().put_entity(self.__dict__)
+        if not destiny_folder:
+            destiny_folder = self.user_dicts_folder_id
+        add_folder_to_folder(destiny_folder, folder)
 
     def move_model_to_another_folder(self, model, new_folder=""):
-        if model["model_folder_id"]:
-            model_folder = Dynamo().get_folder(model["model_folder_id"])
-            remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
-        else:
-            self.user_dicts["files"].remove(model["model_id"])
+        model_folder = Dynamo().get_folder(model["model_folder_id"])
+        remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
 
-        if new_folder:
-            model["model_folder_id"] = new_folder["folder_id"]
-            add_file_to_folder(new_folder, model["model_id"], model["model_filesize"])
+        if not new_folder:
+            new_folder = Dynamo().get_folder(self.user_dicts_folder_id)
 
-        else:
-            model["model_folder_id"] = ""
-            self.user_dicts["files"].append(model["model_id"])
+        model["model_folder_id"] = new_folder["folder_id"]
+        Dynamo().update_entity(model, "model_folder_id", model["model_folder_id"])
 
-        Dynamo().put_entity(self.__dict__)
-        Dynamo().put_entity(model)
+        add_file_to_folder(new_folder, model["model_id"], model["model_filesize"])
 
     def generate_folder_data(self, folder_id=None, shared=False):
-        user_folder_is_user = False
         if not folder_id:
             if shared:
-                user_folder = self.user_shared_dicts
+                user_folder = Dynamo().get_folder(self.user_shared_dicts_folder_id)
             else:
-                user_folder = self.user_dicts
-            user_folder_is_user = True
+                user_folder = Dynamo().get_folder(self.user_dicts_folder_id)
         else:
             user_folder = Dynamo().get_folder(folder_id)
 
@@ -276,36 +273,37 @@ class User:
                 user_folder["files"].remove(model_id)
 
         if deleted_files or deleted_folders:
-            if user_folder_is_user:
-                Dynamo().put_entity(self.__dict__)
-            else:
-                Dynamo().put_entity(user_folder)
+            Dynamo().put_entity(user_folder)
 
         user_folder["folders"] = folder_folders
         user_folder["files"] = folder_files
 
         return user_folder
 
-    def create_new_folder(self, new_folder_name, root_folder_id=""):
-        root_folder = None
-        if root_folder_id:
-            root_folder = Dynamo().get_folder(root_folder_id)
+    def create_new_folder(self, new_folder_name, root_folder_id="", is_user_root_folder=False):
+        if not is_user_root_folder:
+            if root_folder_id:
+                root_folder = Dynamo().get_folder(root_folder_id)
+            else:
+                root_folder = Dynamo().get_folder(self.user_dicts_folder_id)
 
-        folder_path = root_folder["folder_path"] if root_folder else ""
-        parent_id = root_folder["folder_id"] if root_folder else ""
+            folder_path = root_folder["folder_path"] + "/" if root_folder else ""
+            parent_id = root_folder["folder_id"] if root_folder else ""
+        else:
+            folder_path = ""
+            parent_id = ""
 
         new_folder = UserFolder(self.user_id, Generate().generate_short_id(), new_folder_name, folder_path, parent_id).__dict__
-        new_folder["folder_share_link"] = f'{lambda_constants["domain_name_url"]}/webview/?folder_id={new_folder["folder_id"]}'
+        new_folder["folder_share_link"] = f'{lambda_constants["domain_name_url"]}/view_folder/?folder_id={new_folder["folder_id"]}'
         new_folder["folder_share_link_qrcode"] = f'{lambda_constants["processed_bucket_cdn"]}/folders_qrcodes/{new_folder["folder_id"]}.png'
         Generate().generate_qr_code(new_folder["folder_share_link"], lambda_constants["processed_bucket"], f'folders_qrcodes/{new_folder["folder_id"]}.png')
         Dynamo().put_entity(new_folder)
 
-        if root_folder:
+        if not is_user_root_folder:
             root_folder["folders"].append(new_folder["folder_id"])
             Dynamo().put_entity(root_folder)
-        else:
-            self.user_dicts["folders"].append(new_folder["folder_id"])
-            Dynamo().put_entity(self.__dict__)
+
+        return new_folder
 
     def delete_folder(self, folder):
         if folder["folders"]:
@@ -330,31 +328,23 @@ class User:
         Dynamo().delete_entity(folder)
 
     def add_model_to_user_dicts(self, model, shared=False):
-        appended = False
         if shared:
-            if model["model_id"] not in self.user_shared_dicts["files"]:
-                self.user_shared_dicts["files"].append(model["model_id"])
-        elif model["model_id"] not in self.user_dicts["files"]:
-            self.user_dicts["files"].append(model["model_id"])
-            appended = True
+            user_folder = Dynamo().get_folder(self.user_shared_dicts_folder_id)
+        else:
+            user_folder = Dynamo().get_folder(self.user_dicts_folder_id)
 
-        if not model["model_is_federated"] and appended:
-            self.user_models_size_in_mbs = str(round(float(self.user_models_size_in_mbs) + float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))))
-        Dynamo().put_entity(self.__dict__)
+        if model["model_id"] not in user_folder["files"]:
+            user_folder["files"].append(model["model_id"])
+            if not model["model_is_federated"]:
+                self.user_models_size_in_mbs = str(float(self.user_models_size_in_mbs) + float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
+
+        Dynamo().put_entity(user_folder)
 
     def remove_model_from_user_dicts(self, model, shared=False):
-        if shared:
-            if model["model_id"] in self.user_shared_dicts["files"]:
-                self.user_shared_dicts["files"].remove(model["model_id"])
-        elif model["model_id"] in self.user_dicts["files"]:
-            self.user_dicts["files"].remove(model["model_id"])
-        else:
-            model_folder = Dynamo().get_folder(model["model_folder_id"])
-            remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
-            Dynamo().put_entity(model_folder)
-
+        model_folder = Dynamo().get_folder(model["model_folder_id"])
+        remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
         if not model["model_is_federated"] and not shared:
-            self.user_models_size_in_mbs = str(round(float(self.user_models_size_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))))
+            self.user_models_size_in_mbs = str(float(self.user_models_size_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
         Dynamo().put_entity(self.__dict__)
 
     def update_last_login_at(self):

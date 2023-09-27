@@ -88,6 +88,12 @@ class UserRegister(UserPage):
         user.user_status = "created"
         user.user_id = Dynamo().get_next_user_id()
         user.user_ip = self.event.get_user_ip()
+
+        user_dicts_folder = user.create_new_folder("", is_user_root_folder=True)
+        user_shared_dicts_folder = user.create_new_folder("", is_user_root_folder=True)
+        user.user_dicts_folder_id = user_dicts_folder["folder_id"]
+        user.user_shared_dicts_folder_id = user_shared_dicts_folder["folder_id"]
+
         user.update_cart_currency()
         self.increase_backoffice_data_total_count("user")
 

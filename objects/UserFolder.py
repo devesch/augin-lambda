@@ -10,7 +10,7 @@ class UserFolder:
         self.folder_id = folder_id
         self.folder_name = folder_name
         self.folder_user_id = folder_user_id
-        self.folder_path = folder_path + "/" + folder_name
+        self.folder_path = folder_path + folder_name
         self.folder_root_id = folder_root_id
         self.folder_size_in_mbs = "0"
         self.folder_foldersize_in_mbs = "0"

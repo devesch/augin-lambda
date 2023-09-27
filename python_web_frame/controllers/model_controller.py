@@ -102,7 +102,7 @@ class ModelController:
                 return False
             model["model_filesize"] = str(int(model["model_filesize"]) + int(required_model["model_filesize"]))
         model["model_upload_path_zip"] = (model["model_upload_path"]) + model["model_name"] + ".zip"
-        model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
+        model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_code=" + model["model_code"]
         model["model_share_link_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(".zip", ".png")
         Generate().generate_qr_code(model["model_share_link"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(".zip", ".png"))
 
@@ -277,7 +277,7 @@ class ModelController:
         import datetime
 
         model_id = Dynamo().get_next_model_id()
-        new_model = Model(user.user_id, model_id, model_id, "not_created").__dict__
+        new_model = Model(user.user_id, model_id, model_id, "not_created", user.user_dicts_folder_id).__dict__
         new_model["model_upload_path"] = datetime.datetime.fromtimestamp(int(float(new_model["created_at"]))).strftime("%Y/%m/%d") + "/" + model_id + "/"
 
         if filename:
@@ -449,7 +449,7 @@ class ModelController:
             model["model_format"] = file_format
             model["model_filesize"] = str(os.path.getsize(ifc_location))
             model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
-            model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_id=" + model["model_id"]
+            model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_code=" + model["model_code"]
             if model["model_format"] in ["fbx", "glb"]:
                 model["model_upload_path_glb"] = model["model_upload_path_zip"].replace(".zip", "-glb.zip")
                 if model["model_format"] == "glb":
