@@ -15,6 +15,24 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_project_filter_options(self):
+        full_html = []
+        for category_id, category in lambda_constants["available_categories"].items():
+            html = ReadWrite().read_html("panel_explore_project/_codes/html_project_filter_option")
+            html.esc("category_val", category_id)
+            html.esc("category_name_val", self.translate(category["category_name"]))
+            full_html.append(str(html))
+
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_project_filter_option")
+        html.esc("category_val", "favorite")
+        html.esc("category_name_val", self.translate("Favoritos"))
+        full_html.append(str(html))
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_project_filter_option")
+        html.esc("category_val", "not_federated")
+        html.esc("category_name_val", self.translate("Não Federados"))
+        full_html.append(str(html))
+        return "".join(full_html)
+
     def show_html_create_federated_button(self):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_button")
         return str(html)
