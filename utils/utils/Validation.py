@@ -13,8 +13,15 @@ class Validation:
     def check_if_zip_is_password_protected(self, zip_path):
         import zipfile
 
-        with zipfile.ZipFile(zip_path, "r") as zipf:
-            return zipf.is_encrypted
+        try:
+            with zipfile.ZipFile(zip_path, "r") as zipf:
+                zipf.testzip()
+        except RuntimeError as e:
+            if "encrypted" in str(e):
+                return True
+            else:
+                raise
+        return False
 
     def check_if_is_json(self, value):
         try:
