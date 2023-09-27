@@ -10,6 +10,12 @@ class Validation:
             cls._instance = super(Validation, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def check_if_zip_is_password_protected(self, zip_path):
+        import zipfile
+
+        with zipfile.ZipFile(zip_path, "r") as zipf:
+            return zipf.is_encrypted
+
     def check_if_is_json(self, value):
         try:
             post_dict = json.loads(value)

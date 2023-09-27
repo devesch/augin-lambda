@@ -321,11 +321,15 @@ class ModelController:
         ifc_location = None
         ifcs_locations = []
         if self.is_zip_using_magic_number(lambda_constants["tmp_path"] + original_name):
+            if Validation().check_if_zip_is_password_protected(lambda_constants["tmp_path"] + original_name):
+                return {"error": "O arquivo .zip se encontra trancado com senha."}
             ReadWrite().extract_zip_file(lambda_constants["tmp_path"] + original_name, lambda_constants["tmp_path"] + "unzip")
             ifc_location = ReadWrite().find_file_with_extension_in_directory(lambda_constants["tmp_path"] + "unzip", ["ifc", "fbx"])
             if not ifc_location:
                 return {"error": "Nenhum arquivo IFC ou FBX encontrado."}
             if self.is_zip_using_magic_number(ifc_location):
+                if Validation().check_if_zip_is_password_protected(ifc_location):
+                    return {"error": "O arquivo .zip se encontra trancado com senha."}
                 ReadWrite().extract_zip_file(ifc_location, lambda_constants["tmp_path"] + "unzipunzip")
                 ifcs_locations = self.find_all_files_with_extension_in_directory(lambda_constants["tmp_path"] + "unzipunzip", ["ifc", "fbx", "glb"])
             else:
