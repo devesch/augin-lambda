@@ -649,6 +649,11 @@
         "es": "Si no recibes el código, revisa la dirección de correo electrónico ingresada y revisa tu carpeta de SPAM.",
         "pt": "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM."
     },
+    "Caso perca o acesso ao site, insira o código nesta": {
+        "en": "If you lose access to the site, enter the code in this",
+        "es": "Si pierde acceso al sitio, ingrese el código en este",
+        "pt": "Caso perca o acesso ao site, insira o código nesta"
+    },
     "Categoria": {
         "en": "Category",
         "es": "Categoría",
@@ -2899,6 +2904,11 @@
         "es": "No fue posible enviar el correo electrónico, comunicarse con el soporte.",
         "pt": "Não foi possível enviar o email, entre em contato com o suporte."
     },
+    "Não responda a esta mensagem. Este e-mail foi enviado por um sistema automático que não processa respostas.": {
+        "en": "Do not respond to this message.This email was sent by an automatic system that does not process answers.",
+        "es": "No responda a este mensaje.Este correo electrónico fue enviado por un sistema automático que no procesa respuestas.",
+        "pt": "Não responda a esta mensagem. Este e-mail foi enviado por um sistema automático que não processa respostas."
+    },
     "Não é possível excluir o método de pagamento padrão da sua assinatura": {
         "en": "It is not possible to delete the default payment method from your subscription",
         "es": "No es posible eliminar el método de pago predeterminado de su suscripción",
@@ -3593,6 +3603,11 @@
         "en": "Reimbursement",
         "es": "Reembolso",
         "pt": "Reembolso"
+    },
+    "Reenviar código": {
+        "en": "Resend code",
+        "es": "Reenviar código",
+        "pt": "Reenviar código"
     },
     "Reference Trackers": {
         "en": "Reference Trackers",
@@ -4838,6 +4853,11 @@
         "en": "project Doesnt Belong to User",
         "es": "el proyecto no pertenece al usuario",
         "pt": "project doesnt belong to user"
+    },
+    "página": {
+        "en": "page",
+        "es": "página",
+        "pt": "página"
     },
     "resultados": {
         "en": "results",
