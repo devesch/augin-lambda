@@ -116,7 +116,7 @@ class PanelPage(BasePage):
                 for folder in user_folder["folders"]:
                     if not model_html:
                         if shared:
-                            if not folder["folder_is_accessible"] and not self.post.get("folder_id"):
+                            if not folder["folder_is_accessible"] and not folder_id:
                                 continue
                             html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows_folders")
                         else:
