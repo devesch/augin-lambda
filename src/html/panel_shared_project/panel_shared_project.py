@@ -20,11 +20,12 @@ class PanelSharedProject(PanelPage):
 
         if self.path.get("folder"):
             user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
+            if self.path["folder"]["folder_id"] in user_shared_dicts["folders"]:
+                html.esc("on_load_open_folder_id_val", self.path["folder"]["folder_id"])
+                html.esc("on_load_open_folder_path_val", self.path["folder"]["folder_path"])
+                return str(html)
 
-            html.esc("on_load_open_folder_id_val", self.path["folder"]["folder_id"])
-            html.esc("on_load_open_folder_path_val", self.path["folder"]["folder_path"])
-        else:
-            html.esc("html_user_folder_rows", self.list_html_user_folder_rows())
+        html.esc("html_user_folder_rows", self.list_html_user_folder_rows())
         return str(html)
 
     def render_post(self):
