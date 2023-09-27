@@ -137,6 +137,8 @@ class PanelPage(BasePage):
                             if not folder["folder_is_accessible"] and not folder_id:
                                 continue
                             html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows_folders")
+                            if not self.user:
+                                html.esc("actions_visibility_val", "display:none;")
                         else:
                             html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows_folders")
                             if user_plan and user_plan.get("plan_share_files"):
@@ -207,6 +209,8 @@ class PanelPage(BasePage):
                         if not model["model_is_accessible"] and not folder_id and not self.post.get("explore_input_search"):
                             continue
                         html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows")
+                        if not self.user:
+                            html.esc("actions_visibility_val", "display:none;")
                     else:
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
                         if user_plan and user_plan.get("plan_share_files"):
