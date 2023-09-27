@@ -222,7 +222,6 @@ class User:
 
         add_file_to_folder(new_folder, model["model_id"], model["model_filesize"])
 
-
     def create_new_folder(self, new_folder_name, root_folder_id="", is_user_root_folder=False):
         if not is_user_root_folder:
             if root_folder_id:
@@ -403,7 +402,7 @@ def sort_user_folders(user, user_folders, sort_attribute="folder_name", sort_rev
     sorted_folders = []
     if user_folders:
         for folder in user_folders:
-            if folder["folder_id"] in user.user_favorited_folders:
+            if user and folder["folder_id"] in user.user_favorited_folders:
                 sorted_folders.append(folder)
             else:
                 normal_folders.append(folder)

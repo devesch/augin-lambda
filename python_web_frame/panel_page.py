@@ -108,8 +108,8 @@ class PanelPage(BasePage):
 
                 for folder in user_folder["folders"]:
                     if folder["folder_user_id"] not in user_ids_name_dict:
-                        owner_user = Dynamo().get_user(folder["folder_user_id"])
-                        user_ids_name_dict[folder["folder_user_id"]] = owner_user["user_name"]
+                        owner_user = self.load_user(folder["folder_user_id"])
+                        user_ids_name_dict[folder["folder_user_id"]] = owner_user.user_name
                     folder["owners_name"] = user_ids_name_dict[folder["folder_user_id"]]
 
                 user_folder["folders"] = sort_user_folders(self.user, user_folder["folders"], self.post.get("sort_attribute"), self.post.get("sort_reverse"))
