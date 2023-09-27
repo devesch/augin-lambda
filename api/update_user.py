@@ -174,8 +174,11 @@ class UpdateUser(BasePage):
                 return {"error": "A senha informada está incorreta"}
             self.user.add_model_to_user_dicts(model, shared=True)
             return {"success": "Modelo adicionado aos compartilhados"}
-        if "folder_id" in self.post["shared_link"]:
-            folder = Dynamo().get_folder(self.post["shared_link"].split("folder_id=")[1])
+        else:
+            folder_id = self.post["shared_link"]
+            if "folder_id=" in self.post["shared_link"]:
+                folder_id = self.post["shared_link"].split("folder_id=")[1]
+            folder = Dynamo().get_folder(folder_id)
             if not folder:
                 return {"error": "Nenhuma pasta encontrada com o link fornecido"}
             if not folder["folder_is_accessible"]:
