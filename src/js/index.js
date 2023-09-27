@@ -1257,6 +1257,14 @@ export async function showUserDicts() {
     user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
     folder_path_span.innerHTML = folder_path_input.value;
 
+    if (location.href.includes("view_folder")) {
+        var shared_folder_id_input = document.getElementById("shared_folder_id_input");
+        if (shared_folder_id_input.value == folder_id_input.value) {
+            user_dicts_return_to_root_span.style.display = "none";
+            return
+        }
+    }
+
     if (folder_path_input.value) {
         user_dicts_return_to_root_span.style.display = "";
     } else {

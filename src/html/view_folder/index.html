@@ -61,3 +61,10 @@
     </section>
 </main>
 {{footer}}
+
+<input hidden id="shared_folder_id_input" value="{{folder_id_val}}">
+<script>
+    window.onload = async function () {
+        js.index.showUserDicts();
+    };
+</script>
