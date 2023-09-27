@@ -1730,6 +1730,29 @@ input[list]::-ms-clear {
     }
 
 }
+
+.panel-explore-filters-container {
+    .floating-input {
+        display: flex;
+        margin-top: 0;
+
+        input {
+            flex-grow: 1;
+        }
+
+        label {
+            position: absolute;
+            left: 0;
+        }
+
+        img {
+            position: absolute;
+            right: 0.25rem;
+            top: 1rem;
+        }
+
+    }
+}
 /* Explore - End */
 
 /* Login - Start */
