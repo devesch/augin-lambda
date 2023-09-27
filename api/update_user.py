@@ -13,8 +13,10 @@ class UpdateUser(BasePage):
     def run(self):
         if not self.post.get("command"):
             return {"error": "Nenhum command no post"}
-        if not self.user:
-            return {"error": "Nenhum usuário encontrado"}
+
+        if self.post["command"] not in ("get_root_folder"):
+            if not self.user:
+                return {"error": "Nenhum usuário encontrado"}
 
         return getattr(self, self.post["command"])()
 
