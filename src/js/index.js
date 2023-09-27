@@ -1602,12 +1602,10 @@ export async function openFolder(folder_id, folder_path, return_folder_path = fa
 
 export async function openReturnFolder() {
     var folder_id_input = document.getElementById("folder_id_input");
-
     var update_user_response = await apiCaller("update_user", {
         "command": "get_root_folder",
         "folder_id": folder_id_input.value
     });
-
     if (update_user_response["success"]["folder_path"] != "") {
         openFolder(update_user_response["success"]["folder_id"], update_user_response["success"]["folder_path"], true)
     } else {
@@ -1722,12 +1720,11 @@ export async function refreshUpdateModal(folder_id) {
 
 export async function openReturnFolderModalUpdate() {
     var update_modal_folder_id = document.getElementById("update_modal_folder_id");
-
     var update_user_response = await apiCaller("update_user", {
         "command": "get_root_folder",
         "folder_id": update_modal_folder_id.value
     });
-    if ("success" in update_user_response) {
+    if (update_user_response["success"]["folder_path"] != "") {
         refreshUpdateModal(update_user_response["success"]["folder_id"]);
     } else {
         refreshUpdateModal("");
@@ -1818,12 +1815,11 @@ export async function refreshMoveFolderModal(folder_id) {
 
 export async function openReturnFolderModalMoveFolder() {
     var move_folder_modal_folder_id = document.getElementById("move_folder_modal_folder_id");
-
     var update_user_response = await apiCaller("update_user", {
         "command": "get_root_folder",
         "folder_id": move_folder_modal_folder_id.value
     });
-    if ("success" in update_user_response) {
+    if (update_user_response["success"]["folder_path"] != "") {
         refreshMoveFolderModal(update_user_response["success"]["folder_id"]);
     } else {
         refreshMoveFolderModal("");
@@ -1884,12 +1880,11 @@ export async function refreshMoveModal(folder_id) {
 
 export async function openReturnFolderModalMove() {
     var move_modal_folder_id = document.getElementById("move_modal_folder_id");
-
     var update_user_response = await apiCaller("update_user", {
         "command": "get_root_folder",
         "folder_id": move_modal_folder_id.value
     });
-    if ("success" in update_user_response) {
+    if (update_user_response["success"]["folder_path"] != "") {
         refreshMoveModal(update_user_response["success"]["folder_id"]);
     } else {
         refreshMoveModal("");
@@ -2018,12 +2013,11 @@ export async function saveConfirmCreateFederatedProject() {
 
 export async function openReturnFolderModalCreateFederated() {
     var create_federated_modal_folder_id = document.getElementById("create_federated_modal_folder_id");
-
     var update_user_response = await apiCaller("update_user", {
         "command": "get_root_folder",
         "folder_id": create_federated_modal_folder_id.value
     });
-    if ("success" in update_user_response) {
+    if (update_user_response["success"]["folder_path"] != "") {
         refreshCreateFederatedModal(update_user_response["success"]["folder_id"]);
     } else {
         refreshCreateFederatedModal("");
@@ -2708,12 +2702,11 @@ export async function refreshEditFederatedProjectModal(folder_id) {
 
 export async function openReturnFolderModalAddModelToFederated() {
     var folder_id_add_model_to_federated_modal_input = document.getElementById("folder_id_add_model_to_federated_modal_input");
-
     var update_user_response = await apiCaller("update_user", {
         "command": "get_root_folder",
         "folder_id": folder_id_add_model_to_federated_modal_input.value
     });
-    if ("success" in update_user_response) {
+    if (update_user_response["success"]["folder_path"] != "") {
         refreshEditFederatedProjectModal(update_user_response["success"]["folder_id"]);
     } else {
         refreshEditFederatedProjectModal("");
