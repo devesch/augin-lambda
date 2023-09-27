@@ -146,7 +146,7 @@ class PanelPage(BasePage):
                     html.esc("folder_size_in_mbs_val", f'{round(float(folder["folder_size_in_mbs"]), 2):.1f}' + " Mb")
                     html.esc("owners_name_val", folder["owners_name"])
 
-                    if folder["folder_id"] in self.user.user_favorited_folders:
+                    if self.user and folder["folder_id"] in self.user.user_favorited_folders:
                         html.esc("html_folder_is_favorite", self.show_html_model_is_favorite())
                         html.esc("opposite_folder_is_favorite_val", False)
                         html.esc("favorite_or_unfavorite_val", self.translate("Desfavoritar"))
