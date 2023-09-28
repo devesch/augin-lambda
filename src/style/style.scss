@@ -1667,7 +1667,8 @@ input[list]::-ms-clear {
     gap: $gap;
 
     select,
-    input {
+    input,
+    .floating-input {
         // flex-basis: calc(50% - ($gap / 2));
         flex-grow: unset;
         @media only screen and (min-width: breakpoints.$large) {
