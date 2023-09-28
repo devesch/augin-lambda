@@ -174,3 +174,37 @@
 .input-password__icon-show-password-off {
     cursor: pointer;
 }
+
+/* Update Modal - Start */
+.update-confirm-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.update-confirm-row {
+    border: 1px solid colors.color("color-neutral-700");
+    padding-bottom: 1rem;
+}
+
+.update-confirm-title {
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    padding: 0.25rem 1rem;
+    background-color: colors.color("color-neutral-600");
+    color: colors.color("color-white");
+}
+
+.update-confirm-model-name,
+.update-confirm-file-name {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+.update-confirm-created-date {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+/* Update Modal - End */
