@@ -7,9 +7,9 @@
     <div class="change-plan__upgrade-plan-button-container">
         {{html_your_plan_button_or_upgrade_plan_button}}
         {{html_trial_button}}
-        <div onclick="js.index.showPlansThumbs('annually')" style="{{save_on_annually_visibility_val}}">
-            <p>{{Economize com pagamento anual}} ({{plan_annually_savings}}% off) <img src="{{cdn_val}}/assets/icons/arrow_forward.svg" width="12" height="12" alt="" /></p>
-        </div>
+        <button onclick="js.index.showPlansThumbs('annually')" class="button--save-25" style="{{save_on_annually_visibility_val}}">
+            <p>{{Economize com pagamento anual}} ({{plan_annually_savings}}% off) <img src="{{cdn_val}}/assets/icons/arrow_forward.svg" width="24" height="24" alt="" /></p>
+        </button>
     </div>
     <ul>
         <li>{{Crie projetos de até}} {{plan_maxium_model_size_in_mbs_val}}Mb</li>

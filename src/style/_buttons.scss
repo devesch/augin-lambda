@@ -273,4 +273,15 @@ button:disabled,
     }
 }
 
+
+.button--save-25 {
+    padding: unset;
+    background-color: unset;
+    color: colors.color("color-primary-900");
+    border: none;
+    width: fit-content;
+    margin: auto;
+    font-weight: normal;
+}
+
 /* Buttons - End */
