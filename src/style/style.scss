@@ -1558,7 +1558,7 @@ input[list]::-ms-clear {
     span,
     button,
     img {
-        vertical-align: middle;
+        vertical-align: bottom;
     }
 }
 
@@ -1654,6 +1654,11 @@ input[list]::-ms-clear {
         }
     }
 
+}
+
+.custom-explore__table {
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .panel-explore-filters-container {

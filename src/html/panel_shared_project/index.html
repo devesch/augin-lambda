@@ -29,37 +29,39 @@
             </div>
         </div>
 
-        <table class="explore__table">
-            <input hidden id="sort_attribute_input" value="model_name">
-            <input hidden id="sort_reverse_input" value="False">
-            <thead>
-                <tr>
-                    <th colspan="1">
-                        <button onclick="js.index.sortProjectsBy('model_name')" class="button--user-folders">
-                            {{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
-                        </button>
-                    </th>
-                    <th colspan="1">
-                        <button onclick="js.index.sortProjectsBy('owners_name')" class="button--user-folders">
-                            {{Properietário}} <img id="owners_name_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
-                        </button>
-                    </th>
-                    <th colspan="1">
-                        <button onclick="js.index.sortProjectsBy('created_at')" class="button--user-folders">
-                            {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
-                        </button>
-                    </th>
-                    <th colspan="2">
-                        <button onclick="js.index.sortProjectsBy('model_filesize')" class="button--user-folders">
-                            {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
-                        </button>
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="user_folder_rows_tbody">
-                {{html_user_folder_rows}}
-            </tbody>
-        </table>
+        <div class="custom-explore__table">
+            <table class="explore__table">
+                <input hidden id="sort_attribute_input" value="model_name">
+                <input hidden id="sort_reverse_input" value="False">
+                <thead>
+                    <tr>
+                        <th colspan="1">
+                            <button onclick="js.index.sortProjectsBy('model_name')" class="button--user-folders">
+                                {{Nome}} <img id="model_name_sort_image" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
+                            </button>
+                        </th>
+                        <th colspan="1">
+                            <button onclick="js.index.sortProjectsBy('owners_name')" class="button--user-folders">
+                                {{Properietário}} <img id="owners_name_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
+                            </button>
+                        </th>
+                        <th colspan="1">
+                            <button onclick="js.index.sortProjectsBy('created_at')" class="button--user-folders">
+                                {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
+                            </button>
+                        </th>
+                        <th colspan="2">
+                            <button onclick="js.index.sortProjectsBy('model_filesize')" class="button--user-folders">
+                                {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="user_folder_rows_tbody">
+                    {{html_user_folder_rows}}
+                </tbody>
+            </table>
+        </div>
     </section>
 </main>
 
