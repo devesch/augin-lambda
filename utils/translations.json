@@ -134,6 +134,11 @@
         "es": "Acceso",
         "pt": "Acesso"
     },
+    "Active card": {
+        "en": "Active card",
+        "es": "Tarjeta activa",
+        "pt": "Active card"
+    },
     "Adicionando novo método de pagamento": {
         "en": "Adding new payment method",
         "es": "Agregar un nuevo método de pago",
