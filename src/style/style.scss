@@ -742,6 +742,11 @@ input[list]::-ms-clear {
 .my-plan__title {
     font-size: 2rem;
     font-weight: bold;
+
+    @media only screen and (max-width: 1200px) {
+        flex-basis: 100%;
+    }
+
 }
 
 .my-plan__title-container {
