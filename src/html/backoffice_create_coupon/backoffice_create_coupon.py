@@ -17,7 +17,7 @@ class BackofficeCreateCoupon(BackofficePage):
         self.check_error_msg(html, self.error_msg)
         if self.path.get("coupon") and not self.post:
             for attribute, value in self.path["coupon"].items():
-                if attribute in ["coupon_start_date", "coupon_end_date"]:
+                if attribute in ["coupon_start_date", "coupon_end_date"] and self.path["coupon"]["coupon_available_for_limited_time"]:
                     self.post[attribute] = Date().format_unixtime_to_html_time(self.path["coupon"][attribute])
                 else:
                     self.post[attribute] = value
