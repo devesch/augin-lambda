@@ -4009,6 +4009,11 @@
         "es": "Configuración de su cookies",
         "pt": "Suas configurações de Cookies"
     },
+    "Sub-total": {
+        "en": "Subtotal",
+        "es": "Total parcial",
+        "pt": "Sub-total"
+    },
     "Sub-total:": {
         "en": "Subtotal:",
         "es": "Total parcial:",

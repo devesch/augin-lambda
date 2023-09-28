@@ -69,16 +69,13 @@ class PanelOrder(PanelPage):
 
     def show_html_order_coupon(self):
         html = ReadWrite().read_html("panel_order/_codes/html_order_coupon")
-        html.esc("order_currency_val", ReadWrite().convert_currency_to_symbol(self.path["order"]["order_currency"]))
-        if self.path["order"]["order_user_cart_cupom"]["cupom_type"] == "percentage_discount" or self.path["order"]["order_user_cart_cupom"]["cupom_type"] == "total_discount":
-            if self.path["order"]["order_currency"] == "brl":
-                html.esc("order_sub_total_brl_price_val", ReadWrite().format_to_money(self.path["order"]["order_sub_total_brl_price"], "brl"))
-                html.esc("order_coupon_feature_val", "- " + ReadWrite().convert_currency_to_symbol(self.path["order"]["order_currency"]) + " " + ReadWrite().format_to_money(self.path["order"]["order_brl_discount"], "brl"))
-            elif self.path["order"]["order_currency"] == "usd":
-                html.esc("order_sub_total_usd_price_val", ReadWrite().format_to_money(self.path["order"]["order_sub_total_usd_price"], "usd"))
-                html.esc("order_coupon_feature_val", "- " + StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]) + " " + ReadWrite().format_to_money(self.path["order"]["order_usd_discount"], "usd"))
-            elif self.user.user_cart_cupom["cupom_type"] == "free_product":
-                html.esc("order_coupon_feature_val", self.path["order"]["order_user_cart_cupom"]["cupom_product_address"])
+        html.esc("order_currency_val", StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]))
+        if self.path["order"]["order_currency"] == "brl":
+            html.esc("order_sub_total_brl_price_val", StrFormat().format_to_money(self.path["order"]["order_sub_total_brl_price"], "brl"))
+            html.esc("order_coupon_feature_val", "- " + StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]) + " " + StrFormat().format_to_money(self.path["order"]["order_brl_discount"], "brl"))
+        elif self.path["order"]["order_currency"] == "usd":
+            html.esc("order_sub_total_usd_price_val", StrFormat().format_to_money(self.path["order"]["order_sub_total_usd_price"], "usd"))
+            html.esc("order_coupon_feature_val", "- " + StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]) + " " + StrFormat().format_to_money(self.path["order"]["order_usd_discount"], "usd"))
         return str(html)
 
     def list_html_table_rows(self, order, order_plan):
