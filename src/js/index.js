@@ -820,7 +820,6 @@ export function closeModal(css_class) {
 
 
 export async function userSendResetPassEmail() {
-    console.log("Running userSendResetPassEmail");
     let error_msg = document.getElementById("error_msg");
     let user_email = document.getElementById("user_email");
     let user_send_reset_password_email_response = await apiCaller("user_send_reset_password_email", {
