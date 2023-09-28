@@ -3,14 +3,7 @@
 <main class="my-plan__main">
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Explorar}}</h1>
-        <section class="panel-explore-filters-container">
-            <select onchange="js.index.showUserDicts()" name="explore_filter" id="explore_filter" required>
-                <option value="" selected disabled>{{Filtrar}}</option>
-                <option value="">{{Todos}}</option>
-                {{html_project_filter_options}}
-            </select>
-            <input hidden oninput="js.index.showUserDicts()" type="search" name="explore_input_search" id="explore_input_search">
-        </section>
+        {{html_filter_and_search_section}}
     </div>
 
     <section class="explore__table-container">

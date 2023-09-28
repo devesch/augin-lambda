@@ -15,6 +15,14 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+
+    def show_html_filter_and_search_section(self, show_search=True):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_filter_and_search_section")
+        html.esc("html_project_filter_options", self.list_html_project_filter_options())
+        if not show_search:
+            html.esc("search_project_visibility_val", "display:none;")
+        return str(html)
+
     def list_html_project_filter_options(self):
         full_html = []
         for category_id, category in lambda_constants["available_categories"].items():

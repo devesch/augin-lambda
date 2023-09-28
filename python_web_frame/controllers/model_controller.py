@@ -71,11 +71,12 @@ class ModelController:
     def search_models_by_name(self, search_input, user, shared=False):
         matching_name_models = []
         if shared:
-            for folder_id in user.user_shared_dicts["folders"]:
+            user_shared_dicts = Dynamo().get_folder(user.user_shared_dicts_folder_id)
+            for folder_id in user_shared_dicts["folders"]:
                 folder = Dynamo().get_folder(folder_id)
                 if folder:
                     matching_name_models = self.add_folder_files_to_matching_name_models(search_input, folder["files"], matching_name_models)
-            matching_name_models = self.add_folder_files_to_matching_name_models(search_input, user.user_shared_dicts["files"], matching_name_models)
+            matching_name_models = self.add_folder_files_to_matching_name_models(search_input, user_shared_dicts["files"], matching_name_models)
 
         else:
             completed_models = Dynamo().query_user_models_from_state(user, "completed")

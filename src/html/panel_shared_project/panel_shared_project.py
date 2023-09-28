@@ -16,7 +16,7 @@ class PanelSharedProject(PanelPage):
             api_response = Http().api_caller("update_user", {"command": "add_shared", "shared_link": self.path["folder"]["folder_id"]}, user_auth_token=self.user.user_auth_token)
 
         html = super().parse_html()
-        html.esc("html_project_filter_options", self.list_html_project_filter_options())
+        html.esc("html_filter_and_search_section", self.show_html_filter_and_search_section())
 
         if self.path.get("folder"):
             user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
