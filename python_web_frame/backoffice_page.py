@@ -20,8 +20,13 @@ class BackofficePage(BasePage):
                 html.esc("coupon_code_val", coupon["coupon_code"])
                 html.esc("coupon_description_val", coupon["coupon_description"])
                 html.esc("coupon_available_for_limited_time_val", coupon["coupon_available_for_limited_time"])
-                html.esc("coupon_start_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_start_date"]))
-                html.esc("coupon_end_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_end_date"]))
+                if coupon["coupon_available_for_limited_time"]:
+                    html.esc("coupon_start_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_start_date"]))
+                    html.esc("coupon_end_date_val", Date().format_unixtime_to_br_datetime(coupon["coupon_end_date"]))
+                else:
+                    html.esc("coupon_start_date_val", "-")
+                    html.esc("coupon_end_date_val", "-")
+
                 html.esc("coupon_has_limited_uses_count_val", coupon["coupon_has_limited_uses_count"])
                 html.esc("coupon_actual_uses_count_val", coupon["coupon_actual_uses_count"])
                 html.esc("coupon_maxium_uses_count_val", coupon["coupon_maxium_uses_count"])
