@@ -2579,7 +2579,7 @@ export async function addCouponToUser() {
     if ("error" in update_user_response) {
         coupon_error_msg_span.innerHTML = update_user_response["error"]
     } else {
-        coupon_error_msg_span.innerHTML = update_user_response["success"]
+        location.reload()
     }
 }
 

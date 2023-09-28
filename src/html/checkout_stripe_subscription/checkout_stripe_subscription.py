@@ -35,6 +35,9 @@ class CheckoutStripeSubscription(CheckoutPage):
         html.esc("user_email_val", self.user.user_email)
         html.esc("plan_name_val", self.path["plan"]["plan_name_" + self.lang])
 
+        if self.user.user_cart_coupon_code:
+            plan_discounted_price, discount_value = self.user.generate_plan_price_with_coupon_discount(self.path["plan"], self.path["plan_recurrency"])
+
         if self.path["plan_recurrency"] == "annually":
             html.esc("plan_recurrency_phrase_val", self.translate("ano"))
             if self.user.user_cart_currency == "brl":
@@ -48,6 +51,10 @@ class CheckoutStripeSubscription(CheckoutPage):
                 html.esc("plan_price_val", StrFormat().format_to_money(self.path["plan"]["plan_price_monthly_brl_actual"], self.user.user_cart_currency))
             if self.user.user_cart_currency == "usd":
                 html.esc("plan_price_val", StrFormat().format_to_money(self.path["plan"]["plan_price_monthly_usd_actual"], self.user.user_cart_currency))
+
+        if plan_discounted_price and discount_value:
+            html.esc("discount_value_val", StrFormat().format_to_money(discount_value, self.user.user_cart_currency))
+            html.esc("plan_discounted_price_val", StrFormat().format_to_money(plan_discounted_price, self.user.user_cart_currency))
 
         html.esc("user_cart_currency_symbol", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
         html.esc("stripe_token_val", stripe_token)
