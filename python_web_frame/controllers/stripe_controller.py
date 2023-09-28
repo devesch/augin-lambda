@@ -128,7 +128,7 @@ class StripeController:
                 payment_method_types.append("card")
 
         if user.user_cart_coupon_code:
-            new_subscription_price, coupon_discount_value = user.generate_plan_price_with_coupon_discount(plan, plan_recurrency)
+            new_subscription_price, coupon_discount_value = user.generate_plan_price_with_coupon_discount(plan, plan_recurrency, user.user_cart_currency)
             if new_subscription_price:
                 price_id = self.create_price(plan["plan_id"], user.user_cart_currency, new_subscription_price, self.convert_recurrence_stripe_plan_interval(plan_recurrency))
 

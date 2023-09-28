@@ -36,7 +36,7 @@ class CheckoutStripeSubscription(CheckoutPage):
         html.esc("plan_name_val", self.path["plan"]["plan_name_" + self.lang])
 
         if self.user.user_cart_coupon_code:
-            plan_discounted_price, discount_value = self.user.generate_plan_price_with_coupon_discount(self.path["plan"], self.path["plan_recurrency"])
+            plan_discounted_price, discount_value = self.user.generate_plan_price_with_coupon_discount(self.path["plan"], self.path["plan_recurrency"], self.user.user_cart_currency)
 
         if self.path["plan_recurrency"] == "annually":
             html.esc("plan_recurrency_phrase_val", self.translate("ano"))
