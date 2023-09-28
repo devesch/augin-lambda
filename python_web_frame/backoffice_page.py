@@ -69,10 +69,10 @@ class BackofficePage(BasePage):
                 html.esc("order_payment_method", StrFormat().format_to_payment_method(order["order_payment_method"]))
                 html.esc("order_datetime_val", Date().format_unixtime_to_br_datetime(order["created_at"]))
                 html.esc("order_type_val", translate_order_type(order["order_type"]))
-                if order["order_user_cart_cupom"]:
-                    html.esc("order_cupom_address_val", order["order_user_cart_cupom"]["cupom_address"])
-                elif not order["order_user_cart_cupom"]:
-                    html.esc("order_cupom_address_val", "-")
+                if order["order_user_cart_coupon_code"]:
+                    html.esc("order_user_cart_coupon_code_val", order["order_user_cart_coupon_code"])
+                else:
+                    html.esc("order_user_cart_coupon_code_val", "-")
 
                 if order["order_plan_id"] not in plan_id_plan:
                     plan_id_plan[order["order_plan_id"]] = Dynamo().get_plan(order["order_plan_id"])

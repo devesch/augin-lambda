@@ -49,8 +49,8 @@ class CheckoutStripeWebHook(BasePage):
                     self.user.cancel_current_subscription()
                 self.user.update_subscription(order, user_stripe_subscription)
 
-            if order["order_user_cart_cupom"]:
-                self.mark_cupom_as_used_and_update_cupom_count(order, self.user.user_email)
+            if order["order_user_cart_coupon_code"]:
+                self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_email)
             if order["order_currency"] == "brl":
                 BillingController().generate_bill_of_sale(self.user, order)
             elif order["order_currency"] == "usd":

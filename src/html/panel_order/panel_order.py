@@ -35,8 +35,8 @@ class PanelOrder(PanelPage):
 
         order_plan = Dynamo().get_plan(self.path["order"]["order_plan_id"])
         html.esc("html_table_rows", self.list_html_table_rows(self.path["order"], order_plan))
-        if self.path["order"]["order_user_cart_cupom"]:
-            html.esc("html_order_cupom", self.show_html_order_cupom())
+        if self.path["order"]["order_user_cart_coupon_code"]:
+            html.esc("html_order_coupon", self.show_html_order_coupon())
         if self.path["order"]["order_status"] == "paid":
             html.esc("html_print_payment_button", self.show_html_print_payment_button())
             if self.path["order"]["order_nfse_xml_link"]:
@@ -67,18 +67,18 @@ class PanelOrder(PanelPage):
         html.esc("order_nfse_pdf_link_val", order_nfse_pdf_link)
         return str(html)
 
-    def show_html_order_cupom(self):
-        html = ReadWrite().read_html("panel_order/_codes/html_order_cupom")
+    def show_html_order_coupon(self):
+        html = ReadWrite().read_html("panel_order/_codes/html_order_coupon")
         html.esc("order_currency_val", ReadWrite().convert_currency_to_symbol(self.path["order"]["order_currency"]))
         if self.path["order"]["order_user_cart_cupom"]["cupom_type"] == "percentage_discount" or self.path["order"]["order_user_cart_cupom"]["cupom_type"] == "total_discount":
             if self.path["order"]["order_currency"] == "brl":
                 html.esc("order_sub_total_brl_price_val", ReadWrite().format_to_money(self.path["order"]["order_sub_total_brl_price"], "brl"))
-                html.esc("order_cupom_feature_val", "- " + ReadWrite().convert_currency_to_symbol(self.path["order"]["order_currency"]) + " " + ReadWrite().format_to_money(self.path["order"]["order_brl_discount"], "brl"))
+                html.esc("order_coupon_feature_val", "- " + ReadWrite().convert_currency_to_symbol(self.path["order"]["order_currency"]) + " " + ReadWrite().format_to_money(self.path["order"]["order_brl_discount"], "brl"))
             elif self.path["order"]["order_currency"] == "usd":
                 html.esc("order_sub_total_usd_price_val", ReadWrite().format_to_money(self.path["order"]["order_sub_total_usd_price"], "usd"))
-                html.esc("order_cupom_feature_val", "- " + StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]) + " " + ReadWrite().format_to_money(self.path["order"]["order_usd_discount"], "usd"))
+                html.esc("order_coupon_feature_val", "- " + StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]) + " " + ReadWrite().format_to_money(self.path["order"]["order_usd_discount"], "usd"))
             elif self.user.user_cart_cupom["cupom_type"] == "free_product":
-                html.esc("order_cupom_feature_val", self.path["order"]["order_user_cart_cupom"]["cupom_product_address"])
+                html.esc("order_coupon_feature_val", self.path["order"]["order_user_cart_cupom"]["cupom_product_address"])
         return str(html)
 
     def list_html_table_rows(self, order, order_plan):
