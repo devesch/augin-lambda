@@ -1,3 +1,4 @@
+from utils.AWS.Dynamo import Dynamo
 import time
 
 
@@ -27,3 +28,8 @@ class Coupon:
         self.coupons_plans_ids = []
         self.created_at = str(time.time())
         self.entity = "coupon"
+
+
+def increase_coupon_actual_uses_count(coupon):
+    coupon["coupon_actual_uses_count"] = str(int(coupon["coupon_actual_uses_count"]) + 1)
+    Dynamo().update_entity(coupon, "coupon_actual_uses_count", coupon["coupon_actual_uses_count"])

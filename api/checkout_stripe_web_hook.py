@@ -50,7 +50,8 @@ class CheckoutStripeWebHook(BasePage):
                 self.user.update_subscription(order, user_stripe_subscription)
 
             if order["order_user_cart_coupon_code"]:
-                self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_email)
+                self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_id)
+                self.user.remove_user_cart_coupon_code()
             if order["order_currency"] == "brl":
                 BillingController().generate_bill_of_sale(self.user, order)
             elif order["order_currency"] == "usd":
@@ -155,3 +156,12 @@ class CheckoutStripeWebHook(BasePage):
         html.esc("order_id_val", order["order_id"])
         ### TODO EM PROD ADD EVERYONES EMAILS
         Ses().send_email("eugenio@devesch.com.br", body_html=str(html), body_text=str(html), subject_data="Pagamento realizado com sucesso")
+
+    def mark_coupon_as_used_and_update_coupon_count(self, order, user_id):
+        from objects.UsedCoupon import UsedCoupon
+        from objects.Coupon import increase_coupon_actual_uses_count
+
+        used_coupon = UsedCoupon(order["order_user_cart_coupon_code"], user_id)
+        Dynamo().put_entity(used_coupon.__dict__)
+        cupom = Dynamo().get_coupon(order["order_user_cart_coupon_code"])
+        increase_coupon_actual_uses_count(cupom)

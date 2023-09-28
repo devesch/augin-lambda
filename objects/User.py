@@ -65,6 +65,13 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def remove_user_cart_coupon_code(self):
+        self.user_cart_coupon_code = ""
+        Dynamo().update_entity(self.__dict__, "user_cart_coupon_code", self.user_cart_coupon_code)
+
+    def check_if_already_used_coupom(self, coupon):
+        return bool(Dynamo().get_used_coupon(coupon["coupon_code"], self.user_id))
+
     def generate_plan_price_with_coupon_discount(self, plan, plan_recurrency, currency):
         coupom = Dynamo().get_coupon(self.user_cart_coupon_code)
         new_plan_price = None
@@ -112,9 +119,6 @@ class User:
     def add_coupon_to_user(self, coupon_code):
         self.user_cart_coupon_code = coupon_code
         Dynamo().update_entity(self.__dict__, "user_cart_coupon_code", self.user_cart_coupon_code)
-
-    def check_if_already_used_coupom(self):
-        raise Exception("TODO")
 
     def update_user_pagination_count(self, user_pagination_count):
         self.user_pagination_count = user_pagination_count
