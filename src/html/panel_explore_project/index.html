@@ -310,9 +310,16 @@
                     <input hidden id="update_modal_folder_id">
                     <thead>
                         <tr>
-                            <th onclick="js.index.refreshUpdateModal('')">{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalUpdate()" id="update_modal_return_folder_span">
-                                    <-</span> <span id="update_modal_folder_path_span">
-                                </span></th>
+                            <th class="explore__table-container__button-container">
+                                <button onclick="js.index.openReturnFolderModalUpdate()" id="update_modal_return_folder_span" class="ghost">
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" alt="" width="20" height="20">
+                                </button>
+                                <button onclick="js.index.refreshUpdateModal('')" class="button--user-folders">
+                                    {{Meus Projetos}} 
+                                </button>
+                                <span id="update_modal_folder_path_span">
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="update_model_user_folder_rows_tbody">
