@@ -1,8 +1,10 @@
-<tr>
+<tr class="payment-method-row">
     <td>
-        <img src="{{cdn_val}}/assets/icons/{{brand_val}}.svg" alt="" width="28" height="20">
-        <span>{{title_brand_val}}</span>
-        <span>***{{last4_val}} {{active_method_val}}</span>
+        <img class="mr-05" src="{{cdn_val}}/assets/icons/{{brand_val}}.svg" alt="" width="28" height="20">
+        <span class="mr-05">{{title_brand_val}}</span>
+        <span class="mr-05">***{{last4_val}}</span>
+        <img class="mr-05" src="{{cdn_val}}/assets/icons/check.svg" alt="{{Active card}}" width="20" height="20">
+        {{active_method_val}}
     </td>
     <td style="{{expires_in_visibility_val}}">{{Expira em}} {{exp_month_val}}/{{exp_year_val}}</td>
     <td class="relative" colspan="1">
