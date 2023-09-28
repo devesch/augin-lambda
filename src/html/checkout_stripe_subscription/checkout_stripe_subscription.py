@@ -35,6 +35,8 @@ class CheckoutStripeSubscription(CheckoutPage):
         html.esc("user_email_val", self.user.user_email)
         html.esc("plan_name_val", self.path["plan"]["plan_name_" + self.lang])
 
+        plan_discounted_price = None
+        discount_value = None
         if self.user.user_cart_coupon_code:
             plan_discounted_price, discount_value = self.user.generate_plan_price_with_coupon_discount(self.path["plan"], self.path["plan_recurrency"], self.user.user_cart_currency)
 
