@@ -41,7 +41,7 @@ class Order:
         self.order_payment_stripe_charge_id = ""
         self.order_payment_stripe_receipt_url = ""
         self.order_payment_stripe_boleto_url = ""
-        self.order_user_cart_cupom = {}
+        self.order_user_cart_coupon_code = ""
         self.created_at = str(time())
         self.entity = "order"
 

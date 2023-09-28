@@ -44,7 +44,7 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
         new_order.order_status = StripeController().convert_stripe_status_code_to_status(subscription["status"])
         new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(subscription["plan"]["interval"])
 
-        if self.user_cart_coupon_code:
+        if user.user_cart_coupon_code:
             if plan_recurrency == "annually":
                 new_order.order_sub_total_brl_price = plan["plan_price_annually_brl"]
                 new_order.order_sub_total_usd_price = plan["plan_price_annually_usd"]
@@ -88,7 +88,7 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
         new_order.order_payment_stripe_subscription_id = subscription.stripe_id
         new_order.order_plan_id = plan["plan_id"]
         new_order.order_plan_recurrency = plan_recurrency
-        new_order.order_user_cart_cupom = self.user_cart_coupon_code
+        new_order.order_user_cart_coupon_code = user.user_cart_coupon_code
         new_order.order_descrimination = generate_order_descrimination(plan["plan_name_pt"], new_order.order_brl_price)
         Dynamo().put_entity(new_order.__dict__)
         self.increase_backoffice_data_total_count("order")
