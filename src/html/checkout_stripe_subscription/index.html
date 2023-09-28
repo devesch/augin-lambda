@@ -261,8 +261,11 @@
 <span id="coupon_error_msg_span"></span>
 
 <script>
-    window.onload = function () {
-        console.log("Running on load");
+    window.onload = async function () {
+        let coupon_code_input = document.getElementById("coupon_code_input");
+        if (coupon_code_input.value != "") {
+            await checkIfCouponIsStillValid();
+        }
         js.index.processStripeSubscriptionPayment('{{stripe_token_val}}', 'subscription', '{{plan_id_val}}', '{{plan_recurrency_val}}');
     };
 </script>
