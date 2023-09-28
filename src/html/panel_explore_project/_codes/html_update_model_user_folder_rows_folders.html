@@ -1,7 +1,9 @@
 <tr>
-    <td onclick="js.index.refreshUpdateModal('{{folder_id_val}}')">
-        <img src="{{cdn_val}}/assets/icons/folder.svg" alt="" width="24" height="24">
-        <span class="ml-05">{{folder_name_val}}</span>
-        {{html_folder_is_favorite}}
+    <td>
+        <button onclick="js.index.refreshUpdateModal('{{folder_id_val}}')" class="button--user-folders">
+            <img src="{{cdn_val}}/assets/icons/folder.svg" alt="" width="24" height="24">
+            <span class="ml-05">{{folder_name_val}}</span>
+            {{html_folder_is_favorite}}
+        </button>
     </td>
 </tr>
