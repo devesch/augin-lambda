@@ -122,7 +122,7 @@ class BackofficeCreateCoupon(BackofficePage):
             return self.render_get_with_error("A duração da recorrência deve ser valor entre 1 e 99")
 
         if not self.path.get("coupon"):
-            self.increase_backoffice_data_total_count("order")
+            self.increase_backoffice_data_total_count("coupon")
             coupon = Coupon(self.post["coupon_code"]).__dict__
         else:
             coupon = self.path["coupon"]
