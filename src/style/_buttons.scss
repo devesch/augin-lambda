@@ -273,6 +273,11 @@ button:disabled,
     }
 }
 
+button.button--explore-more-options:disabled {
+    opacity: 0.25 !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
 
 .button--save-25 {
     padding: unset;

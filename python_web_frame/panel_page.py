@@ -412,8 +412,11 @@ class PanelPage(BasePage):
             html.esc("payment_method_id_val", payment_method["payment_method_id"])
             html.esc("index_val", (index + 1))
             if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
-                html.esc("active_method_val", "active")
                 html.esc("make_default_payement_method_visibility_val", "display:none;")
+                html.esc("html_active_method_icon", self.show_html_active_method_icon())
+                html.esc("button_disabled_val", "disabled")
+            else:
+                html.esc("button_onclick_val", "onclick='js.index.toggleExploreMenu(this)'")
             if payment_method["payment_method_type"] == "card":
                 html.esc("brand_val", payment_method["payment_method_card"]["brand"])
                 html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
@@ -425,3 +428,7 @@ class PanelPage(BasePage):
                 html.esc("expires_in_visibility_val", "display:none;")
             full_html.append(str(html))
         return "".join(full_html)
+    
+    def show_html_active_method_icon(self):
+        html = ReadWrite().read_html("panel_your_plan/_codes/html_active_method_icon")
+        return str(html)
