@@ -649,6 +649,11 @@
         "es": "Si no recibes el código, revisa la dirección de correo electrónico ingresada y revisa tu carpeta de SPAM.",
         "pt": "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM."
     },
+    "Caso perca o acesso ao site, acesse a ": {
+        "en": "If you lose access to the site, go to",
+        "es": "Si pierde acceso al sitio, vaya a",
+        "pt": "Caso perca o acesso ao site, acesse a "
+    },
     "Caso perca o acesso ao site, insira o código nesta": {
         "en": "If you lose access to the site, enter the code in this",
         "es": "Si pierde acceso al sitio, ingrese el código en este",
