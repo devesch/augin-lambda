@@ -308,7 +308,7 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
         let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input")
         let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
         let user_selected_plan_is_trial_input = document.getElementById("user_selected_plan_is_trial_input");
-        if (user_selected_plan_is_trial_input.value) {
+        if (user_selected_plan_is_trial_input.value == true) {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
         } else {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
@@ -2578,9 +2578,9 @@ export async function addCouponToUser() {
     });
 
     if ("error" in update_user_response) {
-        coupon_error_msg_span.innerHTML = coupon_error_msg_span["error"]
+        coupon_error_msg_span.innerHTML = update_user_response["error"]
     } else {
-        coupon_error_msg_span.innerHTML = coupon_error_msg_span["success"]
+        coupon_error_msg_span.innerHTML = update_user_response["success"]
     }
 }
 
