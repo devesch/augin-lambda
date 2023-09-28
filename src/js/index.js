@@ -696,7 +696,7 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
                 console.log("TODO SHOW TOOLTIP ERROR MSG");
                 clearTimeout(tooltip_timer);
                 federated_tooltip_div.classList.add("block");
-                tooltip_timer = setTimeout(function() {
+                tooltip_timer = setTimeout(function () {
                     federated_tooltip_div.classList.remove("block");
                 }, 5000);
             }
@@ -709,7 +709,7 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
             console.log("TODO SHOW TOOLTIP ERROR MSG");
             clearTimeout(tooltip_timer);
             federated_tooltip_div.classList.add("block");
-            tooltip_timer = setTimeout(function() {
+            tooltip_timer = setTimeout(function () {
                 federated_tooltip_div.classList.remove("block");
             }, 5000);
         }
@@ -724,7 +724,7 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
                     console.log("TODO SHOW TOOLTIP ERROR MSG");
                     clearTimeout(tooltip_timer);
                     federated_tooltip_div.classList.add("block");
-                    tooltip_timer = setTimeout(function() {
+                    tooltip_timer = setTimeout(function () {
                         federated_tooltip_div.classList.remove("block");
                     }, 5000);
                 }
@@ -2003,10 +2003,13 @@ export async function openModalCreateFederatedProject() {
 
 export async function saveCreateFederatedProject() {
     var create_federated_model_user_folder_rows_tbody = document.getElementById("create_federated_model_user_folder_rows_tbody");
+    var create_federated_modal_return_folder_span = document.getElementById("create_federated_modal_return_folder_span");
     var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "model_html": "create_federated"
     })
+    federated_required_ids_list = [];
     create_federated_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
+    create_federated_modal_return_folder_span.style.display = "none";
     closeModal(".modal.create-federated-modal");
     openModal(".modal.create-federated-select-models-modal");
 }
@@ -2739,6 +2742,8 @@ export async function openReturnFolderModalAddModelToFederated() {
     }
 }
 
+
+
 export async function removeModelFromFederatedProject(model_id_to_be_removed) {
     let edit_federated_model_id_input = document.getElementById("edit_federated_model_id_input");
     let edit_federated_model_rows_tbody = document.getElementById("edit_federated_model_rows_tbody");
@@ -2797,4 +2802,22 @@ export async function checkIfCouponIsStillValid() {
     if ("error" in update_user_response) {
         location.reload()
     }
+}
+
+export async function callBackofficeApi(order_id, command) {
+    let backoffice_orders_error_span = document.getElementById("backoffice_orders_error_span");
+    backoffice_orders_error_span.innerHTML = ""
+
+    let update_backoffice_response = await apiCaller('update_backoffice', {
+        "command": command,
+        "order_id": order_id
+    });
+
+    if ("error" in update_backoffice_response) {
+        backoffice_orders_error_span.innerHTML = update_backoffice_response["error"]
+    } else {
+        backoffice_orders_error_span.innerHTML = update_backoffice_response["success"]
+    }
+    backoffice_orders_error_span.style.display = "";
+    updateBackofficeOrders()
 }

@@ -64,10 +64,25 @@
         "es": "La mayoría de los navegadores le permiten controlar las cookies a través de sus preferencias de configuración",
         "pt": "A maioria dos navegadores permite que você controle os cookies por meio de suas preferências de configuração"
     },
+    "A ordem já excedeu o tempo máximo de pedido de reembolso": {
+        "en": "The order has already exceeded the maximum reimbursement request",
+        "es": "El pedido ya ha excedido la solicitud de reembolso máximo",
+        "pt": "A ordem já excedeu o tempo máximo de pedido de reembolso"
+    },
     "A ordem já excedeu o tempo máximo de pedido de reembolso.": {
         "en": "The order has already exceeded the maximum reimbursement request.",
         "es": "El pedido ya ha excedido la solicitud de reembolso máximo.",
         "pt": "A ordem já excedeu o tempo máximo de pedido de reembolso."
+    },
+    "A ordem não se encontra paga para emitir a NFSE": {
+        "en": "The order is not paid to issue the NFSE",
+        "es": "El pedido no se paga para emitir el NFSE",
+        "pt": "A ordem não se encontra paga para emitir a NFSE"
+    },
+    "A ordem não se encontra paga para emitir a NFSE em PDF": {
+        "en": "The order is not paid to issue the NFSE in PDF",
+        "es": "El pedido no se paga para emitir el NFSE en PDF",
+        "pt": "A ordem não se encontra paga para emitir a NFSE em PDF"
     },
     "A ordem não se encontra paga para emitir a NFSE em PDF.": {
         "en": "The order is not paid to issue the NFSE in PDF.",
@@ -78,6 +93,11 @@
         "en": "The order is not paid to issue the NFSE.",
         "es": "El pedido no se paga para emitir el NFSE.",
         "pt": "A ordem não se encontra paga para emitir a NFSE."
+    },
+    "A ordem não se encontra paga para realizar reembolso": {
+        "en": "The order is not paid to make a refund",
+        "es": "El pedido no se paga para hacer un reembolso",
+        "pt": "A ordem não se encontra paga para realizar reembolso"
     },
     "A ordem não se encontra paga para realizar reembolso.": {
         "en": "The order is not paid to make a refund.",
@@ -1339,6 +1359,11 @@
         "es": "Para editar",
         "pt": "Editar"
     },
+    "Editor": {
+        "en": "Editor",
+        "es": "Editor",
+        "pt": "Editor"
+    },
     "Egypt": {
         "en": "Egypt",
         "es": "Egipto",
@@ -1628,6 +1653,11 @@
         "en": "This project is not accessible through sharing",
         "es": "Este proyecto no es accesible a través del intercambio",
         "pt": "Este projeto não se encontra acessível através de compartilhamento"
+    },
+    "Este usuário não possui as credenciais para realizar este comando": {
+        "en": "This user does not have the credentials to carry out this command",
+        "es": "Este usuario no tiene las credenciales para llevar a cabo este comando",
+        "pt": "Este usuário não possui as credenciais para realizar este comando"
     },
     "Estes permitem-nos contar visitas e fontes de tráfego para que possamos medir e melhorar o desempenho do nosso site": {
         "en": "These allow us to count visits and sources of traffic so that we can measure and improve the performance of our site",
@@ -2349,6 +2379,11 @@
         "es": "Lituania",
         "pt": "Lituânia"
     },
+    "Logar": {
+        "en": "Log into",
+        "es": "Iniciar sesión en",
+        "pt": "Logar"
+    },
     "Login": {
         "en": "Login",
         "es": "Acceso",
@@ -2659,6 +2694,11 @@
         "es": "Usuario no encontrado",
         "pt": "Nenhum usuário encontrado"
     },
+    "Nenhum usuário encontrado como dono da ordem": {
+        "en": "No user found as the order owner",
+        "es": "Ningún usuario encontrado como propietario del pedido",
+        "pt": "Nenhum usuário encontrado como dono da ordem"
+    },
     "Nenhum usuário encontrado como dono da ordem.": {
         "en": "No user found as the order owner.",
         "es": "Ningún usuario encontrado como propietario del pedido.",
@@ -2673,6 +2713,11 @@
         "en": "No necessary URL change",
         "es": "No hay cambio de URL necesario",
         "pt": "Nenhuma mudança de URL necessária"
+    },
+    "Nenhuma ordem encontrada com os dados informados": {
+        "en": "No order found with the data informed",
+        "es": "No se encuentra ningún orden con los datos informados",
+        "pt": "Nenhuma ordem encontrada com os dados informados"
     },
     "Nenhuma ordem encontrada com os dados informados.": {
         "en": "No order found with the informed data.",
@@ -3238,6 +3283,11 @@
         "en": "Order",
         "es": "Orden",
         "pt": "Pedido"
+    },
+    "Pedidos": {
+        "en": "Requests",
+        "es": "Peticiones",
+        "pt": "Pedidos"
     },
     "Pendências": {
         "en": "Pendencies",
@@ -4063,6 +4113,11 @@
         "en": "They are widely used to make sites work, or work more efficiently, as well as to provide information to the site owners",
         "es": "Se utilizan ampliamente para hacer que los sitios funcionen, o funcionen de manera más eficiente, así como para proporcionar información a los propietarios del sitio.",
         "pt": "São amplamente utilizados para fazer com que os sites funcionem, ou funcionem com mais eficiência, bem como para fornecer informações aos proprietários do site"
+    },
+    "Só é possível reembolsar ordens do tipo cartão de crédito": {
+        "en": "It is only possible to refund credit card types",
+        "es": "Solo es posible reembolsar los tipos de tarjeta de crédito",
+        "pt": "Só é possível reembolsar ordens do tipo cartão de crédito"
     },
     "Só é possível reembolsar ordens do tipo cartão de crédito.": {
         "en": "It is only possible to reimburse credit card orders.",
@@ -4963,6 +5018,11 @@
         "en": "It is necessary to inform a code",
         "es": "Es necesario informar un código",
         "pt": "É necessário informar um código"
+    },
+    "É necessário informar um email de usuário.": {
+        "en": "It is necessary to inform a user email.",
+        "es": "Es necesario informar al correo electrónico de un usuario.",
+        "pt": "É necessário informar um email de usuário."
     },
     "É necessário informar um nome": {
         "en": "It is necessary to inform a name",

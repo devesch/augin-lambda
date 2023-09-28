@@ -4,9 +4,7 @@
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Seu plano}}</h1>
         <div class="my-plan__title-container__button-container">
-            <button class="black my-plan__title-container__button">
-                Upgrade
-            </button>
+            {{html_upgrade_button}}
             <button class="ghost my-plan__title-container__button">
                 <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="Notificações" width="24" height="24">
             </button>
@@ -71,13 +69,10 @@
             </table>
             <div class="main-container__item__button-container">
                 {{html_cancel_subscription_button}}
-                <!-- <a class="button" href="">{{Atualizar forma de pagamento}}</a>-->
             </div>
         </div>
-
         {{html_payment_history_div}}
         {{html_payment_methods_div}}
-
     </div>
 </main>
 

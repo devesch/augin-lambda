@@ -97,6 +97,7 @@ class ModelController:
 
     def publish_federated_model(self, federated_model_id):
         model = Dynamo().get_model(federated_model_id)
+        model["model_filesize"] = "0"
         for model_id in model["model_federated_required_ids"]:
             required_model = Dynamo().get_model(model_id)
             if required_model["model_state"] != "completed":

@@ -68,8 +68,8 @@ class BillingController:
         return ET.fromstring(ConsultarNfsePorRps_return)
 
     def generate_only_pdf_nfse(self, order):
-        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["img_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"], order["order_nfse_created_at"]))
-        self.generate_pdf_bill_of_sale(EncodeDecode().encode_to_b64(order["order_user_email"]), order["order_id"], order["order_nfse_created_at"])
+        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"], order["order_nfse_created_at"]))
+        self.generate_pdf_bill_of_sale(order["order_id"], order["order_nfse_created_at"])
         return
 
     def refund_bill_of_sale(self, order):

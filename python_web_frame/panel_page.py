@@ -16,6 +16,13 @@ class PanelPage(BasePage):
         super().__init__()
 
 
+    def show_html_upgrade_button(self, user_plan):
+        html = ""
+        if user_plan["plan_id"] == lambda_constants["free_plan_id"] or user_plan["plan_is_trial"]:
+            html = ReadWrite().read_html("panel_create_project/_codes/html_upgrade_button")
+        return str(html)
+
+
     def show_html_filter_and_search_section(self, show_search=True):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_filter_and_search_section")
         html.esc("html_project_filter_options", self.list_html_project_filter_options())

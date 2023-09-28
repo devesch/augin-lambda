@@ -117,6 +117,12 @@ class Dynamo:
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "payment_method#"}}})
 
     ### USER ###
+
+    def query_paginated_all_last_login_users(self, last_evaluated_key=None, limit=20):
+        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "user_last_login_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-user_last_login_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "user"}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
+
     def get_user_email_with_id(self, user_id):
         query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "user_id-user_email-index", "KeyConditionExpression": "#0b430 = :0b430", "ExpressionAttributeNames": {"#0b430": "user_id"}, "ExpressionAttributeValues": {":0b430": {"S": user_id}}})
         if query:

@@ -3,6 +3,7 @@ from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.utils.Date import Date
 from utils.AWS.Dynamo import Dynamo
+from utils.AWS.Ses import Ses
 from utils.Config import lambda_constants
 from objects.Order import generate_order_short_id, translate_order_type, translate_order_status, check_if_order_is_in_refund_time, translate_order_nfse_status
 
@@ -59,6 +60,11 @@ class BackofficePage(BasePage):
                 full_html.append(str(html))
         return "".join(full_html)
 
+    def send_refund_order_email(self, user_email, order_id):
+        html = ReadWrite().read_html("backoffice_orders/_codes/html_email_order_refund")
+        html.esc("order_id_val", order_id)
+        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data="Augin - " + self.translate("Sua compra está sendo reembolsada"))
+
     def list_html_backoffice_orders_table_rows(self, all_orders):
         plan_id_plan = {}
         full_html = []
@@ -74,7 +80,7 @@ class BackofficePage(BasePage):
                 html.esc("order_payment_method", StrFormat().format_to_payment_method(order["order_payment_method"]))
                 html.esc("order_datetime_val", Date().format_unixtime_to_br_datetime(order["created_at"]))
                 html.esc("order_type_val", translate_order_type(order["order_type"]))
-                if order["order_user_cart_coupon_code"]:
+                if order.get("order_user_cart_coupon_code"):
                     html.esc("order_user_cart_coupon_code_val", order["order_user_cart_coupon_code"])
                 else:
                     html.esc("order_user_cart_coupon_code_val", "-")
@@ -94,7 +100,7 @@ class BackofficePage(BasePage):
                     html.esc("html_re_issue_order_nfse", self.show_html_re_issue_order_nfse(order["order_id"]))
                 if order["order_status"] == "paid" and order["order_nfse_pdf_link"] == "":
                     html.esc("html_re_issue_order_nfse_pdf", self.show_html_re_issue_order_nfse_pdf(order["order_id"]))
-                if order["order_status"] != "paid":
+                if order["order_status"] not in ["paid", "refunded"]:
                     html.esc("order_link_visibility_val", 'style="display:none;"')
                 full_html.append(str(html))
         return "".join(full_html)
@@ -105,12 +111,12 @@ class BackofficePage(BasePage):
         return str(html)
 
     def show_html_re_issue_order_nfse_pdf(self, order_id):
-        html = self.utils.read_html("backoffice_orders/_codes/html_re_issue_order_nfse_pdf")
+        html = ReadWrite().read_html("backoffice_orders/_codes/html_re_issue_order_nfse_pdf")
         html.esc("order_id_val", order_id)
         return str(html)
 
     def show_html_re_issue_order_nfse(self, order_id):
-        html = self.utils.read_html("backoffice_orders/_codes/html_re_issue_order_nfse")
+        html = ReadWrite().read_html("backoffice_orders/_codes/html_re_issue_order_nfse")
         html.esc("order_id_val", order_id)
         return str(html)
 

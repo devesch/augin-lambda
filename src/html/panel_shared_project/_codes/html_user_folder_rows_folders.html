@@ -1,8 +1,10 @@
 <tr>
-    <td colspan="1" onclick="js.index.openFolder('{{folder_id_val}}', '{{folder_path_val}}')">
-        <img src="{{cdn_val}}/assets/icons/folder.svg" alt="" width="24" height="24">
-        <span class="ml-05">{{folder_name_val}}</span>
-        {{html_folder_is_favorite}}
+    <td colspan="1">
+        <button class="button--user-folders" onclick="js.index.openFolder('{{folder_id_val}}', '{{folder_path_val}}')">
+            <img src="{{cdn_val}}/assets/icons/folder.svg" alt="" width="24" height="24">
+            <span class="ml-05">{{folder_name_val}}</span>
+            {{html_folder_is_favorite}}
+        </button>
     </td>
     <td colspan="1">
         {{owners_name_val}}

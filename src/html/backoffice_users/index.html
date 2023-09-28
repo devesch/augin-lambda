@@ -1,4 +1,4 @@
-﻿{{header}}
+{{header}}
 {{menu_backoffice}}
 <main class="my-plan__main">
     <div>
@@ -48,17 +48,23 @@
                     </tbody>
                 </table>
             </div>
-            <span class="error" style="display:none;" id="backoffice_orders_error_span">
-                {{error_msg_val}}
-            </span>
             {{html_pagination}}
         </div>
     </div>
 </main>
 
+<form action="{{domain_name_url_val}}/backoffice_orders" method="POST" id="backoffice_form">
+    <input name="user_email" id="user_email" hidden readonly required>
+    <input name="order_id" id="order_id" hidden readonly required>
+    <input name="command" id="command" hidden readonly required>
+    <input name="showing_total_count" id="showing_total_count" value="{{showing_total_count_val}}" hidden readonly required>
+    <input name="last_scroll_position" id="last_scroll_position" value="{{last_scroll_position_val}}" hidden readonly required>
+</form>
 
 <script>
     window.onload = async function () {
+        let last_scroll_position_input = document.getElementById("last_scroll_position");
+        window.scrollBy(0, parseFloat(last_scroll_position_input.value));
         js.index.updatePaginationProgressBar();
         js.index.loadMoreOnScroll();
     };

@@ -4,11 +4,8 @@
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Explorar}}</h1>
         {{html_filter_and_search_section}}
-
         <div class="my-plan__title-container__button-container">
-            <button class="black my-plan__title-container__button">
-                Upgrade
-            </button>
+            {{html_upgrade_button}}
             <button class="ghost my-plan__title-container__button">
                 <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="{{Notificações}}" width="24" height="24">
             </button>
@@ -119,9 +116,16 @@
                     <input hidden id="create_federated_modal_folder_id">
                     <thead>
                         <tr>
-                            <th onclick="js.index.refreshCreateFederatedModal('')">{{Meus Projetos}} <span onclick="js.index.openReturnFolderModalCreateFederated()" id="create_federated_modal_return_folder_span">
-                                    <-</span> <span id="create_federated_modal_folder_path_span">
-                                </span></th>
+                            <th class="explore__table-container__button-container">
+                                <button onclick="js.index.openReturnFolderModalCreateFederated()" id="create_federated_modal_return_folder_span" class="ghost">
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" alt="" width="20" height="20">
+                                </button>
+                                <button onclick="js.index.refreshCreateFederatedModal('')" class="button--user-folders">
+                                    {{Meus Projetos}}
+                                </button>
+                                <span id="create_federated_modal_folder_path_span">
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="create_federated_model_user_folder_rows_tbody">
@@ -317,7 +321,7 @@
                                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" alt="" width="20" height="20">
                                 </button>
                                 <button onclick="js.index.refreshUpdateModal('')" class="button--user-folders">
-                                    {{Meus Projetos}} 
+                                    {{Meus Projetos}}
                                 </button>
                                 <span id="update_modal_folder_path_span">
                                 </span>
@@ -574,14 +578,15 @@
                     <input hidden id="move_modal_folder_id">
                     <thead>
                         <tr>
-                            <th>
-                                <div class="explore__table-container__button-container">
-                                    <button onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span" class="ghost">
-                                        <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
-                                    </button>
-                                    <span onclick="js.index.refreshMoveModal('')" class="ml-05">{{Meus Projetos}}</span>
-                                    <span id="move_modal_folder_path_span"></span>
-                                </div>
+                            <th class="explore__table-container__button-container">
+                                <button onclick="js.index.openReturnFolderModalMove()" id="move_modal_return_folder_span" class="ghost">
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" alt="" width="20" height="20">
+                                </button>
+                                <button onclick="js.index.refreshMoveModal('')" class="button--user-folders">
+                                    {{Meus Projetos}}
+                                </button>
+                                <span id="move_modal_folder_path_span">
+                                </span>
                             </th>
                         </tr>
                     </thead>
@@ -612,15 +617,18 @@
                 <table class="modal-explore__table">
                     <input hidden id="move_folder_modal_folder_id">
                     <thead>
-                        <th>
-                            <div class="explore__table-container__button-container">
+                        <tr>
+                            <th class="explore__table-container__button-container">
                                 <button onclick="js.index.openReturnFolderModalMoveFolder()" id="move_folder_modal_return_folder_span" class="ghost">
-                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" alt="" width="20" height="20">
                                 </button>
-                                <span onclick="js.index.refreshMoveFolderModal('')" class="ml-05">{{Meus Projetos}}</span>
-                                <span id="move_folder_modal_folder_path_span"></span>
-                            </div>
-                        </th>
+                                <button onclick="js.index.refreshMoveFolderModal('')" class="button--user-folders">
+                                    {{Meus Projetos}}
+                                </button>
+                                <span id="move_folder_modal_folder_path_span">
+                                </span>
+                            </th>
+                        </tr>
                     </thead>
                     <tbody id="move_folder_model_user_folder_rows_tbody">
                         {{html_move_folder_model_user_folder_rows}}
@@ -720,15 +728,18 @@
                 <table class="modal-explore__table">
                     <input hidden id="add_model_to_federated_modal_folder_id">
                     <thead>
-                        <th>
-                            <div class="explore__table-container__button-container">
+                        <tr>
+                            <th class="explore__table-container__button-container">
                                 <button onclick="js.index.openReturnFolderModalAddModelToFederated()" id="add_model_to_federated_modal_return_folder_span" class="ghost">
-                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" />
+                                    <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" alt="" width="20" height="20">
                                 </button>
-                                <span onclick="js.index.refreshAddModelToFederatedModal('')" class="ml-05">{{Meus Projetos}}</span>
-                                <span id="add_model_to_federated_modal_folder_path_span"></span>
-                            </div>
-                        </th>
+                                <button onclick="js.index.refreshEditFederatedProjectModal('')" class="button--user-folders">
+                                    {{Meus Projetos}}
+                                </button>
+                                <span id="add_model_to_federated_modal_folder_path_span">
+                                </span>
+                            </th>
+                        </tr>
                     </thead>
                     <tbody id="add_model_to_federated_model_user_folder_rows_tbody">
                         {{html_add_model_to_federated_model_user_folder_rows}}

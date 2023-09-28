@@ -14,10 +14,13 @@ class PanelExploreProject(PanelPage):
         html = super().parse_html()
 
         user_plan = self.user.get_user_actual_plan()
+
+        html.esc("html_filter_and_search_section", self.show_html_filter_and_search_section())
+
         if user_plan["plan_maxium_federated_size_in_mbs"] != "0":
             html.esc("html_create_federated_button", self.show_html_create_federated_button())
 
-        html.esc("html_filter_and_search_section", self.show_html_filter_and_search_section())
+        html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
         models_in_processing = Dynamo().query_user_models_from_state(self.user, "in_processing")
         if models_in_processing:
             html.esc("html_models_in_processing", self.list_html_models_in_processing(self.event, models_in_processing))
