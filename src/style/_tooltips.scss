@@ -12,7 +12,8 @@
 
 }
 
-.tooltip-content {
+.tooltip-content--hover,
+.tooltip-content--click {
     display: none;
     position: absolute;
     top: 100%;
@@ -28,7 +29,7 @@
     white-space: nowrap;
 }
 
-.tooltip-container:hover .tooltip-content {
+.tooltip-content--hover:hover .tooltip-content {
     display: block;
 }
 

@@ -683,13 +683,17 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
     let uploading_element_has_more_than_one_file = document.querySelectorAll('[id^="has_more_than_one_file_"]');
     let has_fbxs = document.querySelectorAll('[id^="has_fbx_"]');
     let uploading_element_message = document.querySelectorAll(".uploading_element_message");
+    let federated_tooltip_div = federated_switch_div.querySelector(".tooltip-content");
 
     for (let has_fbx of has_fbxs) {
         console.log("has_fbx.value", has_fbx.value);
         if (has_fbx.value === "True") {
             create_federated_project_with_processed_files_checkbox.checked = false;
             if (checkbox) {
-                console.log("TODO SHOW TOOLTIP ERROR MSG")
+                console.log("TODO SHOW TOOLTIP ERROR MSG");
+                federated_tooltip_div.classList.add("block");
+            } else {
+                federated_tooltip_div.classList.remove("block");
             }
         }
     }
@@ -697,7 +701,10 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
     if (uploadedFilesNames.length === 0) {
         create_federated_project_with_processed_files_checkbox.checked = false;
         if (checkbox) {
-            console.log("TODO SHOW TOOLTIP ERROR MSG")
+            console.log("TODO SHOW TOOLTIP ERROR MSG");
+            federated_tooltip_div.classList.add("block");
+        } else {
+            federated_tooltip_div.classList.remove("block");
         }
     }
 
@@ -707,7 +714,10 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
             if (has_more_than_one_file_input.value != "true") {
                 create_federated_project_with_processed_files_checkbox.checked = false;
                 if (checkbox) {
-                    console.log("TODO SHOW TOOLTIP ERROR MSG")
+                    console.log("TODO SHOW TOOLTIP ERROR MSG");
+                    federated_tooltip_div.classList.add("block");
+                } else {
+                    federated_tooltip_div.classList.remove("block");
                 }
             }
         }
