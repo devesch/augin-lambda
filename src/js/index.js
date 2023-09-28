@@ -685,15 +685,20 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
     let uploading_element_message = document.querySelectorAll(".uploading_element_message");
     let federated_tooltip_div = federated_switch_div.querySelector(".tooltip-content--click");
 
+    federated_tooltip_div.classList.remove("block");
+    let tooltip_timer = "";
+
     for (let has_fbx of has_fbxs) {
         console.log("has_fbx.value", has_fbx.value);
         if (has_fbx.value === "True") {
             create_federated_project_with_processed_files_checkbox.checked = false;
             if (checkbox) {
                 console.log("TODO SHOW TOOLTIP ERROR MSG");
+                clearTimeout(tooltip_timer);
                 federated_tooltip_div.classList.add("block");
-            } else {
-                federated_tooltip_div.classList.remove("block");
+                tooltip_timer = setTimeout(function() {
+                    federated_tooltip_div.classList.remove("block");
+                }, 5000);
             }
         }
     }
@@ -702,9 +707,11 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
         create_federated_project_with_processed_files_checkbox.checked = false;
         if (checkbox) {
             console.log("TODO SHOW TOOLTIP ERROR MSG");
+            clearTimeout(tooltip_timer);
             federated_tooltip_div.classList.add("block");
-        } else {
-            federated_tooltip_div.classList.remove("block");
+            tooltip_timer = setTimeout(function() {
+                federated_tooltip_div.classList.remove("block");
+            }, 5000);
         }
     }
 
@@ -715,9 +722,11 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
                 create_federated_project_with_processed_files_checkbox.checked = false;
                 if (checkbox) {
                     console.log("TODO SHOW TOOLTIP ERROR MSG");
+                    clearTimeout(tooltip_timer);
                     federated_tooltip_div.classList.add("block");
-                } else {
-                    federated_tooltip_div.classList.remove("block");
+                    tooltip_timer = setTimeout(function() {
+                        federated_tooltip_div.classList.remove("block");
+                    }, 5000);
                 }
             }
         }
