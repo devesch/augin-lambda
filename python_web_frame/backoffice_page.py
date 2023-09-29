@@ -12,6 +12,24 @@ class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_backoffice_users_table_rows(self, users):
+        full_html = []
+        if users:
+            for user in users:
+                html = ReadWrite().read_html("backoffice_users/_codes/html_backoffice_users_table_rows")
+                html.esc("user_name_val", user["user_name"])
+                html.esc("user_phone_val", user["user_phone"])
+                if user["user_client_type"] == "physical":
+                    html.esc("user_cpf_or_cnpj_val", user["user_cpf"])
+                if user["user_client_type"] == "company":
+                    html.esc("user_cpf_or_cnpj_val", user["user_cnpj"])
+                html.esc("user_client_type_val", user["user_client_type"])
+                html.esc("user_last_login_at_val", user["user_last_login_at"])
+                html.esc("user_cart_currency_val", user["user_cart_currency"])
+                html.esc("user_country_val", user["user_address_data"]["user_country"])
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def list_html_backoffice_coupons_table_rows(self, coupons):
         full_html = []
         if coupons:
@@ -27,7 +45,6 @@ class BackofficePage(BasePage):
                 else:
                     html.esc("coupon_start_date_val", "-")
                     html.esc("coupon_end_date_val", "-")
-
                 html.esc("coupon_has_limited_uses_count_val", coupon["coupon_has_limited_uses_count"])
                 html.esc("coupon_actual_uses_count_val", coupon["coupon_actual_uses_count"])
                 html.esc("coupon_maxium_uses_count_val", coupon["coupon_maxium_uses_count"])

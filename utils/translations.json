@@ -2984,6 +2984,16 @@
         "es": "No es posible hacer de la norma un método de pago que ya sea el estándar",
         "pt": "Não é possível tornar padrão um método de pagamento que já é o padrão"
     },
+    "Não é possível trocar o método de pagamento de uma assinatura que não está ativa": {
+        "en": "It is not possible to exchange the payment method of a signature that is not active",
+        "es": "No es posible intercambiar el método de pago de una firma que no esté activa",
+        "pt": "Não é possível trocar o método de pagamento de uma assinatura que não está ativa"
+    },
+    "Não é possível trocar o método de pagamento de uma assinatura trial": {
+        "en": "It is not possible to exchange the payment method of a trial signature",
+        "es": "No es posible cambiar el método de pago de una firma de prueba",
+        "pt": "Não é possível trocar o método de pagamento de uma assinatura trial"
+    },
     "Número": {
         "en": "Number",
         "es": "Número",
@@ -3323,6 +3333,11 @@
         "en": "Philippines",
         "es": "Filipinas",
         "pt": "Filipinas"
+    },
+    "Phone": {
+        "en": "Phone",
+        "es": "Teléfono",
+        "pt": "Phone"
     },
     "Pitcairn": {
         "en": "Pitcairn",
@@ -4183,6 +4198,11 @@
         "en": "Teamplay for even",
         "es": "TeamPlay por pares",
         "pt": "TeamPlay para até "
+    },
+    "Telefone": {
+        "en": "Telephone",
+        "es": "Teléfono",
+        "pt": "Telefone"
     },
     "Tem certeza que deseja continuar?": {
         "en": "Are you sure you want to continue?",
@@ -5158,6 +5178,11 @@
         "en": "Successful icon",
         "es": "Icono exitoso",
         "pt": "Ícone sucesso"
+    },
+    "Último Login": {
+        "en": "Last login",
+        "es": "Último acceso",
+        "pt": "Último Login"
     },
     "Último erro": {
         "en": "Last error",

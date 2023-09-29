@@ -1,19 +1,11 @@
-<tr class="table-users">
-    <td class="email"><a href="{{domain_name_url_val}}/backoffice_user/?user_encoded_email={{user_encoded_email_val}}" class="backoffice-user-email">{{user_email_val}}</a></td>
-    <td class="name">{{user_name_val}} {{user_last_name_val}}</td>
+<tr>
+    <td><a href="{{domain_name_url_val}}/backoffice_user/?user_id={{user_id_val}}">{{user_id_val}}</a></td>
+    <td><a href="{{domain_name_url_val}}/backoffice_user/?user_id={{user_id_val}}">{{user_email_val}}</a></td>
+    <td>{{user_name_val}}</td>
     <td>{{user_phone_val}}</td>
     <td>{{user_cpf_or_cnpj_val}}</td>
-    <td>{{user_subscription_name_val}} - {{user_subscription_status_val}} - {{subscription_valid_until_val}} </td>
-    <td>{{user_credits_val}}</td>
-    <td>{{user_country_val}}</td>
+    <td>{{user_client_type_val}}</td>
     <td>{{user_last_login_at_val}}</td>
-    <td>
-        <form action="{{domain_name_url_val}}/backoffice_users" method="POST" class="form-buttons form-buttons--backoffice">
-            <input hidden name="user_email" value="{{user_email_val}}">
-            <button type="submit" name="add_credits" value="add_credits">+{{Créditos}}</button>
-            <button type="submit" name="user_orders" value="user_orders">{{Pedidos}}</button>
-            <button type="submit" name="user_projects" value="user_projects">{{Editor}}</button>
-            <button type="submit" name="user_login_as" value="user_login_as">{{Logar}}</button>
-        </form>
-    </td>
+    <td>{{user_cart_currency_val}}</td>
+    <td>{{user_country_val}}</td>
 </tr>

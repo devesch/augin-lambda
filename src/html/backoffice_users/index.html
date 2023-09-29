@@ -11,37 +11,22 @@
             </div>
             <div>
                 <div>
-                    <img src="{{cdn_val}}/assets/icons/icon-search.svg" width="24" height="24" alt="{{Icone buscar}}">
-                    <input type="text" name="search" onkeyup="js.index.updateBackofficeOrders()" value="{{user_email_val}}" id="search_orders_by_user_input" placeholder="{{Buscar usuários}}">
+                    <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="{{Icone buscar}}">
+                    <input type="text" name="search" onkeyup="js.index.updateBackofficeUsers()" id="search_users_by_email_or_id_input" placeholder="{{Buscar usuários}}">
                 </div>
-                <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()">
-                    <option value="all" {{pre_sel_all_val}}>Todas</option>
-                    <option value="pending" {{pre_sel_pending_val}}>Incompleto</option>
-                    <option value="paid" {{pre_sel_paid_val}}>Pago</option>
-                    <option value="not_authorized" {{pre_sel_not_authorized_val}}>Não autorizado</option>
-                    <option value="expired_card" {{pre_sel_expired_card_val}}>Cartão expirado</option>
-                    <option value="blocked_card" {{pre_sel_blocked_card_val}}>Cartão bloqueado</option>
-                    <option value="canceled_card" {{pre_sel_canceled_card_val}}>Cartão cancelado</option>
-                    <option value="problems_with_card" {{pre_sel_problems_with_card_val}}>Problemas no cartão</option>
-                    <option value="time_out" {{pre_sel_time_out_val}}>Excedeu o limite de tentativas</option>
-                    <option value="refunded" {{pre_sel_refunded_val}}>Reembolsado</option>
-                </select>
             </div>
             <div class="table">
                 <table>
                     <thead>
-                        <th>{{Usuário}}</th>
-                        <th>{{Short Cód}}</th>
-                        <th>{{Último erro}}</th>
-                        <th>{{Método}}</th>
-                        <th>{{Datetime}}</th>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>{{Nome}}</th>
+                        <th>{{Telefone}}</th>
+                        <th>CPF/CNPJ</th>
                         <th>{{Tipo}}</th>
-                        <th>{{Cupom}}</th>
-                        <th>{{Créditos}}</th>
+                        <th>{{Último Login}}</th>
                         <th>{{Moeda}}</th>
-                        <th>{{Valor}}</th>
-                        <th>{{Status}}</th>
-                        <th>Nota Fiscal</th>
+                        <th>País</th>
                     </thead>
                     <tbody id="pagination_component">
                         {{html_backoffice_orders_table_rows}}
@@ -53,18 +38,8 @@
     </div>
 </main>
 
-<form action="{{domain_name_url_val}}/backoffice_orders" method="POST" id="backoffice_form">
-    <input name="user_email" id="user_email" hidden readonly required>
-    <input name="order_id" id="order_id" hidden readonly required>
-    <input name="command" id="command" hidden readonly required>
-    <input name="showing_total_count" id="showing_total_count" value="{{showing_total_count_val}}" hidden readonly required>
-    <input name="last_scroll_position" id="last_scroll_position" value="{{last_scroll_position_val}}" hidden readonly required>
-</form>
-
 <script>
     window.onload = async function () {
-        let last_scroll_position_input = document.getElementById("last_scroll_position");
-        window.scrollBy(0, parseFloat(last_scroll_position_input.value));
         js.index.updatePaginationProgressBar();
         js.index.loadMoreOnScroll();
     };

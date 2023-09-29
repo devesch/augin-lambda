@@ -76,9 +76,12 @@ class UpdateUser(BasePage):
         if not payment_method:
             return {"error": "Nenhum método de pagamento encontrado com os dados informados"}
         user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+        if user_subscription["subscription_is_trial"]:
+            return {"error": "Não é possível trocar o método de pagamento de uma assinatura trial"}
+        if user_subscription["subscription_status"] != "active":
+            return {"error": "Não é possível trocar o método de pagamento de uma assinatura que não está ativa"}
         if user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]:
             return {"success": "Não é possível tornar padrão um método de pagamento que já é o padrão"}
-
         StripeController().update_subscription_payment_method(user_subscription["subscription_id"], payment_method["payment_method_id"])
         user_subscription["subscription_default_payment_method"] = payment_method["payment_method_id"]
         Dynamo().update_entity(user_subscription, "subscription_default_payment_method", user_subscription["subscription_default_payment_method"])
