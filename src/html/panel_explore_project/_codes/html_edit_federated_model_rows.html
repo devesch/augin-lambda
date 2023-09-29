@@ -2,7 +2,9 @@
     <td>
         {{model_name_val}}
     </td>
-    <td onclick="js.index.removeModelFromFederatedProject('{{model_id_val}}')">
-        {{Remover}}
+    <td>
+        <button class="button--icon" onclick="js.index.removeModelFromFederatedProject('{{model_id_val}}')">
+            <img src="{{cdn_val}}/assets/icons/trash-red.svg" alt="{{Remover}}" width="24" height="24"/>
+        </button>
     </td>
 </tr>
