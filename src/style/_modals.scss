@@ -75,6 +75,11 @@
     flex-wrap: wrap;
 }
 
+.modal-header .switch-container {
+    margin-bottom: 0;
+    flex-direction: row;
+}
+
 .modal-header-title {
     font-weight: normal;
     font-size: 1.5rem;
@@ -115,7 +120,7 @@
 }
 
 .qrcode__input {
-    background: transparent;
+    background: unset;
     border: none;
     padding: 0.15rem;
 }
@@ -125,11 +130,10 @@
     color: colors.color("white");
     font-weight: bold;
     border: 1px solid colors.color("color-primary-500");
-    padding: 0.15rem 0.5rem;
     font-size: .875rem;
     background-color: colors.color("color-white");
-    border-color: colors.color("color-white");
-    border-radius: 100%;
+    border-color: colors.color("color-primary-700");
+    border-radius: 0.15rem;
 }
 
 .share-protection-container {
