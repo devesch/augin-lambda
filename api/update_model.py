@@ -26,6 +26,8 @@ class UpdateModel(BasePage):
         return {"success": "Federado atualizado"}
 
     def update_federated_model_required_ids(self, model):
+        if not self.post.get("federated_required_ids"):
+            return {"error": "É necessário selecionar algum projeto para compor o federado"}
         federated_required_models_ids = self.post["federated_required_ids"].split(",")
         federated_required_models = Dynamo().batch_get_models(federated_required_models_ids)
         if not federated_required_models:

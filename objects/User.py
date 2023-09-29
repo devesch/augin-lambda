@@ -48,7 +48,7 @@ class User:
         self.user_plan_id = ""
         self.user_subscription_id = ""
         self.user_subscription_valid_until = ""
-        self.user_subscription_status = ""
+        self.user_subscription_status = "none"
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
