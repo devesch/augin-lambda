@@ -2044,6 +2044,11 @@
         "es": "Hidrosanitario",
         "pt": "Hidrosanitário"
     },
+    "ID do plano": {
+        "en": "Plan ID",
+        "es": "ID de plan",
+        "pt": "ID do plano"
+    },
     "Iceland": {
         "en": "Iceland",
         "es": "Islandia",
@@ -2123,6 +2128,11 @@
         "en": "Indonesia",
         "es": "Indonesia",
         "pt": "Indonesia"
+    },
+    "Informações do usuário": {
+        "en": "User Information",
+        "es": "Informacion del usuario",
+        "pt": "Informações do usuário"
     },
     "Informaçōes do pedido": {
         "en": "Order Information",
