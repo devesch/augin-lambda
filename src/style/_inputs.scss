@@ -237,13 +237,11 @@ input[type="checkbox"] + label {
         position: absolute;
     }
 
-    $checkbox-width: 0.45rem;
-    $checkbox-height: 0.9rem;
     input[type="checkbox"]:checked::after {
-        left: calc($checkbox-width / 1.5);
-        top: calc($checkbox-height / 1.5);
-        width: $checkbox-width;
-        height: $checkbox-height;
+        left: calc(0.45rem / 2);
+        top: calc(0.9rem / 1.5);
+        width: 0.45rem;
+        height: 0.9rem;
         transform: rotate(45deg) translate(-50%, -50%);
         -o-transform: rotate(45deg) translate(-50%, -50%);
         -ms-transform: rotate(45deg) translate(-50%, -50%);
