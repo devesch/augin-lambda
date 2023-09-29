@@ -23,12 +23,10 @@
     }
 }
 
-$font-family: 'Roboto';
+$font-family: 'Manrope';
 $font-path: $cdn_val + 'assets/fonts/';
-@each $weight in 400, 700 {
-    @include font-face($font-family, '#{$font-path}roboto-#{$weight}-webfont', $weight, normal);
-    @include font-face($font-family, '#{$font-path}roboto-#{$weight}-italic-webfont', $weight, italic);
-}
+@include font-face($font-family, '#{$font-path}Manrope-SemiBold', 400, normal);
+@include font-face($font-family, '#{$font-path}Manrope-ExtraBold', 700, normal);
 
 
 // RESET - START
@@ -36,7 +34,7 @@ $font-path: $cdn_val + 'assets/fonts/';
 *:before,
 *:after {
     box-sizing: border-box;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: "Manrope", Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-display: swap;
     font-size: inherit;
@@ -141,7 +139,7 @@ video {
 }
 
 html {
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: "Manrope", Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-display: swap;
 }
@@ -779,7 +777,8 @@ input[list]::-ms-clear {
 .change-plan__sub-title-container,
 .devices__title-container,
 .login__title-container,
-.create-account__title-container {
+.create-account__title-container
+.error__title-container {
     margin-top: 1rem;
     padding: 2rem 1rem;
     background-color: colors.color("color-neutral-50");
@@ -787,7 +786,8 @@ input[list]::-ms-clear {
 }
 
 .login__title-container,
-.create-account__title-container {
+.create-account__title-container,
+.error__title-container {
     word-break: break-word;
 
     h2 {
