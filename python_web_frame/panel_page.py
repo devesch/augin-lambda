@@ -328,6 +328,7 @@ class PanelPage(BasePage):
     def show_html_share_project_button(self, model):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_share_project_button")
         html.esc("model_id_val", model["model_id"])
+        html.esc("model_name_val", model["model_name"])
         html.esc("model_share_link_val", model["model_share_link"])
         html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
         html.esc("model_is_password_protected_val", model["model_is_password_protected"])
