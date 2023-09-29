@@ -1616,7 +1616,7 @@ input[list]::-ms-clear {
     }
 
     input[type="checkbox"]:checked:after {
-        left: 50%;
+        left: 25%;
         top: 45%;
         width: $checkbox-checked-width;
         height: $checkbox-checked-height;
