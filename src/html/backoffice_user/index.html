@@ -1,0 +1,61 @@
+{{header}}
+{{menu_backoffice}}
+<main class="my-plan__main">
+    <div>
+        <div>
+            <p>{{Usuários}}</p>
+        </div>
+        <div>
+            <div>
+                {{html_dropdown_select_user_pagination}}
+            </div>
+            <section class="panel-explore-filters-container">
+                <select onchange="js.index.updateBackofficeUsers()" name="search_users_by_subscription_select" id="search_users_by_subscription_select" required>
+                    <option value="" selected disabled>{{Filtrar}}</option>
+                    <option value="">{{Todos}}</option>
+                    <option value="active">{{Ativos}}</option>
+                    <option value="canceled">{{Cancelados}}</option>
+                    <option value="incomplete_expired">{{Incomplete/Expired}}</option>
+
+                </select>
+                <div class="floating-input">
+                    <input oninput="js.index.updateBackofficeUsers(), js.index.changeSearchIcon(this)" type="search" name="backoffice_search_users_by_email_or_id_input" id="backoffice_search_users_by_email_or_id_input" class="input-search" results="10" autosave="backoffice_search_users_by_email_or_id_input" placeholder="">
+                    <label for="backoffice_search_users_by_email_or_id_input">
+                        {{Pesquisar}}
+                    </label>
+                    <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
+                    <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'backoffice_search_users_by_email_or_id_input')">
+                </div>
+            </section>
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>{{Nome}}</th>
+                        <th>{{Telefone}}</th>
+                        <th>CPF/CNPJ</th>
+                        <th>{{Tipo}}</th>
+                        <th>{{Status da assinatura}}</th>
+                        <th>{{Último Login}}</th>
+                        <th>{{Moeda}}</th>
+                        <th>{{País}}</th>
+                    </thead>
+                    <tbody id="pagination_component">
+                        {{html_backoffice_users_table_rows}}
+                    </tbody>
+                </table>
+            </div>
+            {{html_pagination}}
+        </div>
+    </div>
+</main>
+
+<script>
+    window.onload = async function () {
+        js.index.updatePaginationProgressBar();
+        js.index.loadMoreOnScroll();
+    };
+</script>
+<input id="last_evaluated_key" value='{{last_evaluated_key_val}}' hidden>
+{{footer}}

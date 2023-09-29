@@ -2530,16 +2530,18 @@ export async function saveDeletePaymentMethod() {
 
 
 export async function saveMakeDefaultPaymentMethod(payment_method_id) {
+    let payment_method_error_msg_span = document.getElementById("payment_method_error_msg_span");
+    payment_method_error_msg_span.innerHTML = ""
     let update_user_response = await apiCaller('update_user', {
         "command": "make_default_payment_method",
         "payment_method_id": payment_method_id
     });
-
     if ("error" in update_user_response) {
-        return
+        payment_method_error_msg_span.innerHTML = update_user_response["error"];
     } else {
         location.reload()
     }
+
 }
 
 export async function changePaymentHistoryPage(signal) {
