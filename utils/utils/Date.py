@@ -55,6 +55,9 @@ class Date:
 
         return datetime.datetime.fromtimestamp(int(float(unix_time))).strftime(format_str)
 
+    def format_unixtime_to_br_date(self, unix_time):
+        return self.format_unixtime(int(float(unix_time)) - 10800, "%d/%m/%y")
+
     def format_unixtime_to_br_datetime(self, unix_time):
         return self.format_unixtime(int(float(unix_time)) - 10800, "%d/%m/%y %H:%M")
 

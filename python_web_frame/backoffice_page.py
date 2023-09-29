@@ -26,7 +26,8 @@ class BackofficePage(BasePage):
                 if user["user_client_type"] == "company":
                     html.esc("user_cpf_or_cnpj_val", user["user_cnpj"])
                 html.esc("user_client_type_val", user["user_client_type"])
-                html.esc("user_last_login_at_val", user["user_last_login_at"])
+                html.esc("user_subscription_status_val", user["user_subscription_status"])
+                html.esc("user_last_login_at_val", Date().format_unixtime_to_br_date(user["user_last_login_at"]))
                 html.esc("user_cart_currency_val", user["user_cart_currency"])
                 html.esc("user_country_val", user["user_address_data"]["user_country"])
                 full_html.append(str(html))
