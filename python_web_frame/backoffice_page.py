@@ -17,6 +17,8 @@ class BackofficePage(BasePage):
         if users:
             for user in users:
                 html = ReadWrite().read_html("backoffice_users/_codes/html_backoffice_users_table_rows")
+                html.esc("user_id_val", user["user_id"])
+                html.esc("user_email_val", user["user_email"])
                 html.esc("user_name_val", user["user_name"])
                 html.esc("user_phone_val", user["user_phone"])
                 if user["user_client_type"] == "physical":

@@ -2821,3 +2821,30 @@ export async function callBackofficeApi(order_id, command) {
     backoffice_orders_error_span.style.display = "";
     updateBackofficeOrders()
 }
+
+
+
+
+
+
+export async function updateBackofficeUsers() {
+    let backoffice_search_users_by_email_or_id_input = document.getElementById("backoffice_search_users_by_email_or_id_input")
+    let search_users_by_subscription_select = document.getElementById("search_users_by_subscription_select")
+    let pagination_component = document.getElementById("pagination_component")
+
+    let last_evaluated_key = document.getElementById("last_evaluated_key")
+    let query = document.getElementById("query")
+    let query_filter = document.getElementById("query_filter")
+    let showing_total_count = document.getElementById("showing_total_count")
+
+    let backoffice_users_html_response = await apiCaller("backoffice_users_html", {
+        "search_user": backoffice_search_users_by_email_or_id_input.value,
+        "search_order_status": search_users_by_subscription_select.value
+    });
+
+    pagination_component.innerHTML = backoffice_users_html_response["success"];
+    last_evaluated_key.value = backoffice_users_html_response["last_evaluated_key"];
+    query.value = backoffice_users_html_response["query"];
+    query_filter.value = backoffice_users_html_response["query_filter"];
+    showing_total_count.value = backoffice_users_html_response["showing_total_count"];
+}
