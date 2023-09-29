@@ -118,6 +118,15 @@ class Dynamo:
 
     ### USER ###
 
+    def query_all_users_first_tree_letters_name(self, user_first_tree_letters_name):
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "user_first_three_letters_name-user_email-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "user_first_three_letters_name"}, "ExpressionAttributeValues": {":bef90": {"S": user_first_tree_letters_name}}})
+        return self.execute_batch_get_item(query)
+
+    def query_paginated_all_last_login_users_with_signature(self, user_subscription_status, last_evaluated_key=None, limit=20):
+        key_schema = {"user_subscription_status": {"S": ""}, "sk": {"S": ""}, "user_last_login_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "user_subscription_status-user_last_login_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "user_subscription_status"}, "ExpressionAttributeValues": {":bef90": {"S": user_subscription_status}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
+
     def query_paginated_all_last_login_users(self, last_evaluated_key=None, limit=20):
         key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "user_last_login_at": {"S": ""}, "pk": {"S": ""}}
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-user_last_login_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "user"}}}, limit, last_evaluated_key, key_schema)

@@ -2839,7 +2839,7 @@ export async function updateBackofficeUsers() {
 
     let backoffice_users_html_response = await apiCaller("backoffice_users_html", {
         "search_user": backoffice_search_users_by_email_or_id_input.value,
-        "search_order_status": search_users_by_subscription_select.value
+        "search_users_subscription": search_users_by_subscription_select.value
     });
 
     pagination_component.innerHTML = backoffice_users_html_response["success"];

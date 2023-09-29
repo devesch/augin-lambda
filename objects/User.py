@@ -139,7 +139,6 @@ class User:
         user_subscription["subscription_is_trial"] = True
         Dynamo().put_entity(user_subscription)
 
-        self.user_has_subscription = "True"
         self.user_subscription_id = user_subscription_id
         self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
         self.user_subscription_status = "active"
@@ -197,7 +196,6 @@ class User:
         user_subscription["subscription_valid_until"] = str(user_stripe_subscription["current_period_end"])
         Dynamo().put_entity(user_subscription)
 
-        self.user_has_subscription = "True"
         self.user_subscription_id = user_stripe_subscription.stripe_id
         self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
         self.user_subscription_status = user_stripe_subscription["status"]

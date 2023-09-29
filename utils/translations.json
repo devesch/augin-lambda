@@ -414,6 +414,11 @@
         "es": "Activado el",
         "pt": "Ativado em"
     },
+    "Ativos": {
+        "en": "Active",
+        "es": "Activo",
+        "pt": "Ativos"
+    },
     "Atualizar": {
         "en": "To update",
         "es": "Actualizar",
@@ -628,6 +633,11 @@
         "en": "Canceled",
         "es": "Cancelado",
         "pt": "Cancelada"
+    },
+    "Cancelados": {
+        "en": "Canceled",
+        "es": "Cancelado",
+        "pt": "Cancelados"
     },
     "Cancelando assinatura": {
         "en": "CANCELING SIGNATURE",
@@ -2083,6 +2093,11 @@
         "en": "Incomplete/Expired",
         "es": "Incompleto/caducado",
         "pt": "Incompleta/Expirada"
+    },
+    "Incomplete/Expired": {
+        "en": "INCOMPLETE/EXPIRED",
+        "es": "Incompleto/caducado",
+        "pt": "Incomplete/Expired"
     },
     "Incompleto": {
         "en": "Incomplete",
@@ -4034,6 +4049,11 @@
         "es": "Estado",
         "pt": "Status"
     },
+    "Status da assinatura": {
+        "en": "Signature status",
+        "es": "Estado de firma",
+        "pt": "Status da assinatura"
+    },
     "Status do pedido": {
         "en": "Order status",
         "es": "Estado de pedido",
@@ -4718,6 +4738,11 @@
         "en": "ticket",
         "es": "boleto",
         "pt": "boleto"
+    },
+    "cancelados": {
+        "en": "canceled",
+        "es": "cancelado",
+        "pt": "cancelados"
     },
     "como ferramenta para pagamentos e compras": {
         "en": "as a tool for payments and purchases",
