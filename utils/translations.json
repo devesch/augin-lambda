@@ -5139,6 +5139,11 @@
         "es": "Es necesario ingresar una contraseña.",
         "pt": "É necessário informar uma senha."
     },
+    "É necessário selecionar algum projeto para compor o federado": {
+        "en": "It is necessary to select some project to compose the federate",
+        "es": "Es necesario seleccionar algún proyecto para componer la federación",
+        "pt": "É necessário selecionar algum projeto para compor o federado"
+    },
     "É necessário selecionar no mínimo 2 arquivos que servirão como base do federado": {
         "en": "It is necessary to select at least 2 files that will serve as the base of the federated",
         "es": "Es necesario seleccionar al menos 2 archivos que sirvan como base de la federada",
