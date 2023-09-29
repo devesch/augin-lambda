@@ -777,7 +777,7 @@ input[list]::-ms-clear {
 .change-plan__sub-title-container,
 .devices__title-container,
 .login__title-container,
-.create-account__title-container
+.create-account__title-container,
 .error__title-container {
     margin-top: 1rem;
     padding: 2rem 1rem;
@@ -1829,7 +1829,8 @@ input[list]::-ms-clear {
 }
 
 .login__button-container,
-.create-account__button-container {
+.create-account__button-container,
+.error__button-container {
     margin-top: 4rem;
     display: flex;
     flex-direction: row;
@@ -1843,6 +1844,11 @@ input[list]::-ms-clear {
         border-radius: .25rem;
     }
     
+}
+
+.error-icon {
+    display: block;
+    margin: auto;
 }
 
 .input-hint {

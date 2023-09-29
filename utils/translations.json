@@ -3629,6 +3629,11 @@
         "es": "Puerto Rico",
         "pt": "Porto Rico"
     },
+    "Página inicial": {
+        "en": "Home page",
+        "es": "Página de inicio",
+        "pt": "Página inicial"
+    },
     "QRCODE": {
         "en": "Qrcode",
         "es": "Código QR",
