@@ -595,14 +595,19 @@ input[list]::-ms-clear {
     }
 
     li {
+        position: relative;
         padding-block: 0.5rem;
+        margin-inline: -2rem;
+        padding-inline: 2rem;
+        transition: background-color 0.5s ease;
     }
 
     li.active {
-        position: relative;
-        margin-inline: -2rem;
-        padding-inline: 2rem;
         background-color: colors.color("color-neutral-700");
+    }
+
+    li:hover {
+        background-color: colors.color("color-black");
     }
 
     li.active::after {
@@ -1855,7 +1860,9 @@ input[list]::-ms-clear {
 
 .input-hint {
     color: colors.color("color-neutral-600");
-    padding-left: 2rem;
+    padding-left: 2.5rem;
+    margin-top: 0.25rem !important;
+    text-align: left !important;
 }
 /* Login - End */
 
