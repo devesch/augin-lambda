@@ -30,6 +30,7 @@ class BackofficePage(BasePage):
                 html.esc("user_last_login_at_val", Date().format_unixtime_to_br_date(user["user_last_login_at"]))
                 html.esc("user_cart_currency_val", user["user_cart_currency"])
                 html.esc("user_country_val", user["user_address_data"]["user_country"])
+                html.esc("user_auth_token_val", user["user_auth_token"])
                 full_html.append(str(html))
         return "".join(full_html)
 
