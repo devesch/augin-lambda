@@ -15,13 +15,11 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
-
     def show_html_upgrade_button(self, user_plan):
         html = ""
         if user_plan["plan_id"] == lambda_constants["free_plan_id"] or user_plan["plan_is_trial"]:
             html = ReadWrite().read_html("panel_create_project/_codes/html_upgrade_button")
         return str(html)
-
 
     def show_html_filter_and_search_section(self, show_search=True):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_filter_and_search_section")
@@ -260,6 +258,7 @@ class PanelPage(BasePage):
 
                 html.esc("index_val", str(index))
                 html.esc("model_id_val", model["model_id"])
+                html.esc("model_name_val", model["model_name"])
                 html.esc("owners_name_val", model["owners_name"])
 
                 if model["model_is_federated"]:
@@ -435,7 +434,7 @@ class PanelPage(BasePage):
                 html.esc("expires_in_visibility_val", "display:none;")
             full_html.append(str(html))
         return "".join(full_html)
-    
+
     def show_html_active_method_icon(self):
         html = ReadWrite().read_html("panel_your_plan/_codes/html_active_method_icon")
         return str(html)
