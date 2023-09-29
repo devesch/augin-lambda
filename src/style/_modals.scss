@@ -90,8 +90,9 @@
 
 .qrcode-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
     flex-wrap: wrap;
@@ -106,6 +107,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 1rem;
 }
 
 .qrcode__button-container {
@@ -113,22 +115,21 @@
 }
 
 .qrcode__input {
-    border: 1px solid color("color-neutral-900");
-    background-color: transparent;
+    background: transparent;
+    border: none;
     padding: 0.15rem;
 }
 
-.qrcode__input:focus {
-    outline: 1px solid color("color-primary-500");
-}
-
 .qrcode__button {
-    background-color: color("color-primary-500");
-    color: color("white");
+    background-color: colors.color("color-primary-500");
+    color: colors.color("white");
     font-weight: bold;
-    border: 1px solid color("color-primary-500");
+    border: 1px solid colors.color("color-primary-500");
     padding: 0.15rem 0.5rem;
     font-size: .875rem;
+    background-color: colors.color("color-white");
+    border-color: colors.color("color-white");
+    border-radius: 100%;
 }
 
 .share-protection-container {

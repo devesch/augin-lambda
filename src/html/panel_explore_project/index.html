@@ -176,9 +176,6 @@
     <div class="content-modal max-width">
         <div class="modal-header">
             <h1 class="modal-header-title">{{Compartilhar}}</h1>
-        </div>
-        <div class="modal-content">
-
             <div class="switch-container" id="folder_is_accessible_switch_div">
                 <div class="input-container">
                     <input type="checkbox" name="folder_is_accessible" id="folder_is_accessible_input">
@@ -188,6 +185,8 @@
                 </div>
                 <label for="folder_is_accessible_input">{{Link ativo}}</label>
             </div>
+        </div>
+        <div class="modal-content">
 
             <div id="share_folder_modal_content_div">
                 <input hidden id="update_folder_id_input">
@@ -197,7 +196,9 @@
                     <div class="qrcode__input-container">
                         <input class="qrcode__input" value="" id="copy_folder_share_link_input" readonly>
                         <div class="qrcode__button-container">
-                            <button class="qrcode__button" onclick="js.index.copyValueToClipboard(this)" value="" id="copy_folder_share_link_button">Copiar</button>
+                            <button class="qrcode__button" onclick="js.index.copyValueToClipboard(this)" value="" id="copy_folder_share_link_button">
+                                <img src="{{cdn_val}}/assets/icons/share_icon.svg" width="24" height="24" alt=""/>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -240,9 +241,6 @@
     <div class="content-modal max-width">
         <div class="modal-header">
             <h1 class="modal-header-title">{{Compartilhar}}</h1>
-        </div>
-        <div class="modal-content">
-
             <div class="switch-container" id="project_is_accessible_switch_div">
                 <div class="input-container">
                     <input type="checkbox" name="project_is_accessible" id="project_is_accessible_input">
@@ -252,6 +250,8 @@
                 </div>
                 <label for="project_is_accessible_input">{{Link ativo}}</label>
             </div>
+        </div>
+        <div class="modal-content">
 
             <div id="share_project_modal_content_div">
                 <input hidden id="update_model_id_input">
@@ -261,7 +261,9 @@
                     <div class="qrcode__input-container">
                         <input class="qrcode__input" value="" id="copy_project_share_link_input" readonly>
                         <div class="qrcode__button-container">
-                            <button class="qrcode__button" onclick="js.index.copyValueToClipboard(this)" value="" id="copy_project_share_link_button">Copiar</button>
+                            <button class="qrcode__button" onclick="js.index.copyValueToClipboard(this)" value="" id="copy_project_share_link_button">
+                                <img src="{{cdn_val}}/assets/icons/share_icon.svg" width="24" height="24" alt=""/>
+                            </button>
                         </div>
                     </div>
                 </div>
