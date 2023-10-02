@@ -824,10 +824,10 @@ input[list]::-ms-clear {
 .my-plan__sub-title,
 .new-project__sub-title,
 .change-plan__sub-title {
-    font-size: fonts.$font-heading-4-size;
     font-family: "Manrope";
     font-weight: normal;
     text-align: center;
+    font-size: 1.5rem;
 
     strong {
         font-weight: bold;
@@ -899,6 +899,8 @@ input[list]::-ms-clear {
     }
 
     h3 {
+        font-weight: normal;
+        font-family: "Manrope";
         font-size: 1.3rem;
         font-weight: bold;
         color: colors.color("color-black");
