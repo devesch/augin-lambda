@@ -3874,6 +3874,11 @@
         "es": "Selecciona una categoría",
         "pt": "Selecionar categoria"
     },
+    "Sem assinatura": {
+        "en": "Without signature",
+        "es": "Sin firma",
+        "pt": "Sem assinatura"
+    },
     "Sem root folder": {
         "en": "Root folder",
         "es": "Carpeta raíz",
