@@ -39,8 +39,23 @@ class ModelController:
                     federated_model_filesize += int(required_model["model_filesize"])
 
             federated_model["model_filesize"] = str(federated_model_filesize)
+            federated_model["model_filesize_bracket"] = self.generate_model_filesize_bracket(federated_model["model_filesize"])
 
         Dynamo().put_entity(federated_model)
+
+    def generate_model_filesize_bracket(self, model_filesize):
+        if int(model_filesize) >= 0 and (int(model_filesize) / (1024 * 1024)) < 50:
+            return "0mb-50mb"
+        elif (int(model_filesize) / (1024 * 1024)) >= 50 and (int(model_filesize) / (1024 * 1024)) < 250:
+            return "50mb-250mb"
+        elif (int(model_filesize) / (1024 * 1024)) >= 250 and (int(model_filesize) / (1024 * 1024)) < 500:
+            return "250mb-500mb"
+        elif (int(model_filesize) / (1024 * 1024)) >= 500 and (int(model_filesize) / (1024 * 1024)) < 1000:
+            return "500mb-1000mb"
+        elif (int(model_filesize) / (1024 * 1024)) >= 1000 and (int(model_filesize) / (1024 * 1024)) < 2000:
+            return "1000mb-2000mb"
+        else:
+            return "2000mb+"
 
     def update_federated_required_models(self, federated_model, federated_required_models):
         federated_model_required_ids = []
@@ -55,6 +70,7 @@ class ModelController:
 
         federated_model["model_federated_required_ids"] = federated_model_required_ids
         federated_model["model_filesize"] = str(federated_model_filesize)
+        federated_model["model_filesize_bracket"] = self.generate_model_filesize_bracket(federated_model["model_filesize"])
         Dynamo().put_entity(federated_model)
 
     def get_already_uploaded_models(self, user):
@@ -136,6 +152,7 @@ class ModelController:
             S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_mini_bin"], destination_model["model_upload_path_mini_bin"])
 
             destination_model["model_filesize"] = source_model["model_filesize"]
+            destination_model["model_filesize_bracket"] = source_model["model_filesize_bracket"]
             destination_model["model_filesize_zip"] = source_model["model_filesize_zip"]
             destination_model["model_filesize_xml"] = source_model["model_filesize_xml"]
             destination_model["model_filesize_aug"] = source_model["model_filesize_aug"]
@@ -177,6 +194,7 @@ class ModelController:
             S3().copy_file_in_bucket(lambda_constants["processed_bucket"], source_model["model_upload_path_glb"], destination_model["model_upload_path_glb"])
 
             destination_model["model_filesize"] = source_model["model_filesize"]
+            destination_model["model_filesize_bracket"] = self.generate_model_filesize_bracket(source_model["model_filesize"])
             destination_model["model_filesize_glb"] = source_model["model_filesize_glb"]
 
         Dynamo().put_entity(destination_model)
@@ -303,6 +321,7 @@ class ModelController:
             if federated_model_already_completed:
                 new_model = self.change_model_state(new_model, "not_created", "completed")
                 new_model["model_filesize"] = str(federated_filesize)
+                new_model["model_filesize_bracket"] = self.generate_model_filesize_bracket(federated_filesize)
                 user.add_model_to_user_dicts(new_model)
         Dynamo().put_entity(new_model)
         return new_model
@@ -450,6 +469,7 @@ class ModelController:
 
             model["model_format"] = file_format
             model["model_filesize"] = str(os.path.getsize(ifc_location))
+            model["model_filesize_bracket"] = self.generate_model_filesize_bracket(model["model_filesize"])
             model["model_filesize_zip"] = str(os.path.getsize(lambda_constants["tmp_path"] + "file_ok.zip"))
             model["model_share_link"] = lambda_constants["domain_name_url"] + "/webview/?model_code=" + model["model_code"]
             if model["model_format"] in ["fbx", "glb"]:

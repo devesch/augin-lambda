@@ -12,6 +12,18 @@ class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def list_html_backoffice_models_table_rows(self, all_models):
+        plan_id_plan = {}
+        full_html = []
+        if all_models:
+            for model in all_models:
+                # if self.post.get("search_order_status"):
+                #     if (self.post["search_order_status"] != model["order_status"]) and (self.post["search_order_status"] != "all"):
+                #         continue
+                html = ReadWrite().read_html("backoffice_models/_codes/html_backoffice_models_table_rows")
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def list_html_backoffice_users_table_rows(self, users):
         full_html = []
         if users:

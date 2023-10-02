@@ -36,6 +36,7 @@ class Model:
         self.model_upload_path_glb = ""
 
         self.model_filesize = "0"
+        self.model_filesize_bracket = "0mb-50mb"
         self.model_filesize_zip = "0"
         self.model_filesize_xml = "0"
         self.model_filesize_aug = "0"
