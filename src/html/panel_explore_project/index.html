@@ -551,14 +551,14 @@
 <div id="delete-folder-modal" class="modal delete-folder-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
-            <h1 class="modal-header-title">{{Deletar pasta}}</h1>
+            <h1 class="modal-header-title">{{Confirmar exclusão de pasta}}</h1>
         </div>
         <div class="modal-content">
-            <div>
+            <div class="delete-modal-container">
                 <p>{{Você está excluindo definitivamente a pasta}}</p>
-                <p>{{Isto irá deletar todos os arquivos e pastas que também existam dentro dela}}</p>
                 <strong id="delete_folder_name_span"></strong>
-                <p>{{Tem certeza que deseja continuar?}}</p>
+                <p>{{Os arquivos dentro da pasta também serão excluídos.}}</p>
+                <p class="mt-1">{{Tem certeza que deseja continuar?}}</p>
             </div>
             <span class="error" id="delete_folder_error_span">
                 {{error_msg_val}}
