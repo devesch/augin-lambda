@@ -26,7 +26,7 @@
                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}" />
                 </button>
                 <button onclick="js.index.openFolder('', '')" class="button--user-folders">
-                    <h2>{{Meus projetos}}</h2>
+                    <h2 class="my-plan__sub-title">{{Meus projetos}}</h2>
                 </button>
                 <h2 id="folder_path_span"></h2>
                 <input hidden id="folder_id_input">
@@ -34,7 +34,10 @@
             </div>
 
             <div>
-                <button class="explore-create-more-options" aria-controls="explore_create_more_options" aria-expanded="false">{{Criar}} +</button>
+                <button class="explore-create-more-options" aria-controls="explore_create_more_options" aria-expanded="false">
+                    <span>{{Criar}}</span>
+                    <img src="{{cdn_val}}/assets/icons/add.svg" width="13" height="13" alt="" />
+                </button>
                 <menu id="explore_create_more_options" class="menu--explore-create-options none">
                     <li>
                         <button onclick="js.index.openModalCreateFolder()">

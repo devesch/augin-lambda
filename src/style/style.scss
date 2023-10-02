@@ -1534,7 +1534,12 @@ input[list]::-ms-clear {
 }
 
 .explore-create-more-options {
-    padding: .25rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 2rem;
+    padding-right: 0.5rem;
 }
 
 .explore__table {
@@ -1549,6 +1554,10 @@ input[list]::-ms-clear {
     th {
         text-align: left;
     }
+    
+    th .button--user-folders {
+        font-weight: bold !important;
+    }
 
     thead {
         font-weight: bold;
@@ -1558,7 +1567,7 @@ input[list]::-ms-clear {
     th {
         padding: .5rem;
         text-align: left;
-        border-bottom: 2px solid colors.color("color-neutral-200");
+        border-bottom: 1px solid colors.color("color-neutral-400");
         vertical-align: middle;
     }
 
@@ -1572,9 +1581,12 @@ input[list]::-ms-clear {
     }
 
     span,
-    button,
-    img {
+    button {
         vertical-align: bottom;
+    }
+
+    img {
+        vertical-align: middle;
     }
 }
 
