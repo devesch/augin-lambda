@@ -2084,11 +2084,6 @@
         "es": "Ilimitado",
         "pt": "Ilimitado"
     },
-    "Importar arquivo": {
-        "en": "Import file",
-        "es": "Importar archivo",
-        "pt": "Importar arquivo"
-    },
     "Importar novo projeto": {
         "en": "Import new project",
         "es": "Importar nuevo proyecto",
@@ -3578,6 +3573,11 @@
         "en": "Card Problems",
         "es": "Problemas de tarjetas",
         "pt": "Problemas no cartão"
+    },
+    "Processar arquivo": {
+        "en": "Process file",
+        "es": "Procesar archivo",
+        "pt": "Processar arquivo"
     },
     "Produto": {
         "en": "Product",
