@@ -15,11 +15,26 @@ class PaginationQueries(BackofficePage, PanelPage):
                 return {"error": "undefined last_evaluated_key"}
             last_evaluated_key = loads(self.post["last_evaluated_key"])
 
+        if self.post["query"] in ["get_model"]:
+            return {"error": "Esta query não é possível de ser paginada"}
+
         if self.post["query"] == "query_paginated_user_orders":
             user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, self.post["page"])
             return {"success": self.list_html_payment_history_rows(user_orders)}
 
         return getattr(self, self.post["query"])(last_evaluated_key)
+
+    def query_paginated_all_models(self, last_evaluated_key):
+        models, last_evaluated_key = Dynamo().query_paginated_all_models(last_evaluated_key, limit=int(self.user.user_pagination_count))
+        html = self.list_html_backoffice_models_table_rows(models)
+        new_itens_count = str(len(models))
+        return {"success": html, "last_evaluated_key": last_evaluated_key, "new_itens_count": new_itens_count}
+
+    def query_paginated_all_models_by_state(self, last_evaluated_key):
+        models, last_evaluated_key = Dynamo().query_paginated_all_models_by_state(self.post["query_filter"], last_evaluated_key, limit=int(self.user.user_pagination_count))
+        html = self.list_html_backoffice_models_table_rows(models)
+        new_itens_count = str(len(models))
+        return {"success": html, "last_evaluated_key": last_evaluated_key, "new_itens_count": new_itens_count}
 
     def query_paginated_all_last_login_users_with_signature(self, last_evaluated_key):
         users, last_evaluated_key = Dynamo().query_paginated_all_last_login_users_with_signature(self.post["query_filter"], last_evaluated_key, limit=int(self.user.user_pagination_count))

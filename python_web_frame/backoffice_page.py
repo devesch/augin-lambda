@@ -11,9 +11,9 @@ from objects.Order import generate_order_short_id, translate_order_type, transla
 class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
+        self.admin = True
 
     def list_html_backoffice_models_table_rows(self, all_models):
-        plan_id_plan = {}
         full_html = []
         if all_models:
             for model in all_models:
@@ -98,6 +98,8 @@ class BackofficePage(BasePage):
                 html.esc("model_processing_percentage_val", model["model_processing_percentage"])
                 html.esc("model_state_val", model["model_state"])
                 html.esc("model_valid_until_val", model["model_valid_until"])
+                if model["model_state"] != "completed":
+                    html.esc("reprocess_button_visitility_val", "display:none;")
                 full_html.append(str(html))
         return "".join(full_html)
 

@@ -2873,3 +2873,17 @@ export async function updateBackofficeUsers() {
     query_filter.value = backoffice_users_html_response["query_filter"];
     showing_total_count.value = backoffice_users_html_response["showing_total_count"];
 }
+
+export async function reprocessModel(pressed_button, model_id) {
+    translate_response = apiCaller("translate", {
+        "key": "Reprocessando..."
+    });
+    pressed_button.innerHTML = translate_response["success"];
+
+    await sleep(10000);
+    translate_response = apiCaller("translate", {
+        "key": "Reprocessar"
+    });
+    pressed_button.innerHTML = translate_response["success"];
+
+}

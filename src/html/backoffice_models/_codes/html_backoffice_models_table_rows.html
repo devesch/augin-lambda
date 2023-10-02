@@ -75,5 +75,5 @@
     <td>{{model_processing_total_time_val}}</td>
     <td>{{model_processing_percentage_val}}</td>
     <td>{{model_valid_until_val}}</td>
-    <td><a class="button" href="{{domain_name_url_val}}/backoffice_create_coupon/?coupon_code={{coupon_code_val}}">{{Reprocessar}}</a></td>
+    <td><button onclick="js.index.reprocessModel(this, '{{model_id_val}}')" style="{{reprocess_button_visitility_val}}" class="button">{{Reprocessar}}</button></td>
 </tr>

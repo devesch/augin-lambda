@@ -1594,6 +1594,11 @@
         "es": "Esta política describe qué son las cookies, los tipos de cookies que usamos, por qué las usamos y cómo puede administrar estas cookies.",
         "pt": "Esta política descreve o que são cookies, os tipos de cookies que usamos, por que os usamos e como você pode gerenciar esses cookies"
     },
+    "Esta query não é possível de ser paginada": {
+        "en": "This query is not possible to be paginated",
+        "es": "Esta consulta no es posible ser paginada",
+        "pt": "Esta query não é possível de ser paginada"
+    },
     "Estado": {
         "en": "State",
         "es": "Estado",
@@ -4893,6 +4898,11 @@
         "en": "unavailable",
         "es": "indisponible",
         "pt": "indisponível"
+    },
+    "invalid query": {
+        "en": "invalid query",
+        "es": "consulta no válida",
+        "pt": "invalid query"
     },
     "isponíveis e realizou": {
         "en": "available and performed",

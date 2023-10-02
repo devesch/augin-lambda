@@ -12,7 +12,9 @@ class BackofficeModelsHtml(BackofficePage):
             query = "get_model"
             model = Dynamo().get_model(self.post["search_user"])
             if not model:
-                return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
+                model = Dynamo().get_model_by_code(self.post["search_user"])
+                if not model:
+                    return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
             models = [model]
             return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
         else:
