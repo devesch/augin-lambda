@@ -822,6 +822,8 @@ input[list]::-ms-clear {
 .new-project__sub-title,
 .change-plan__sub-title {
     font-size: fonts.$font-heading-4-size;
+    font-family: "Manrope";
+    font-weight: normal;
     text-align: center;
 
     strong {
@@ -835,7 +837,7 @@ input[list]::-ms-clear {
     text-decoration-line: underline;
     text-decoration-style: dotted;
     text-underline-offset: 0.35rem;
-    font-weight: bold;
+    font-weight: normal;
     transition: color 0.25s linear;
 
     &:hover {
@@ -1078,6 +1080,8 @@ input[list]::-ms-clear {
 
 /* New Project - Start */
 .upload-file-container {
+    font-weight: bold;
+
     input {
         width: 0.1px;
         height: 0.1px;
