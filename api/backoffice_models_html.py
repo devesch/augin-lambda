@@ -24,9 +24,9 @@ class BackofficeModelsHtml(BackofficePage):
                 models = Dynamo().query_user_models_from_state(searched_user, self.post["search_model_state"])
             else:
                 if self.post.get("search_model_state") != "all":
-                    query = "query_paginated_all_models"
-                    models, last_evaluated_key = Dynamo().query_paginated_all_models(limit=int(self.user.user_pagination_count))
-                else:
                     query = "query_paginated_all_models_by_state"
                     models, last_evaluated_key = Dynamo().query_paginated_all_models_by_state(self.post["search_model_state"], limit=int(self.user.user_pagination_count))
+                else:
+                    query = "query_paginated_all_models"
+                    models, last_evaluated_key = Dynamo().query_paginated_all_models(limit=int(self.user.user_pagination_count))
             return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
