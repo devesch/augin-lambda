@@ -21,13 +21,13 @@ class BackofficeUsersHtml(BackofficePage):
                     users = []
                 return {"success": self.list_html_backoffice_users_table_rows(users), "last_evaluated_key": json.dumps(last_evaluated_key), "query": "query_all_users_first_tree_letters_name", "query_filter": query_filter, "showing_total_count": len(users)}
         else:
-            if self.post.get("search_users_subscription"):
+            if self.post.get("search_users_subscription") and self.post.get("search_users_subscription") != "all":
                 query = "query_paginated_all_last_login_users_with_signature"
                 users, last_evaluated_key = Dynamo().query_paginated_all_last_login_users_with_signature(self.post["search_users_subscription"], limit=int(self.user.user_pagination_count))
             else:
                 query = "query_paginated_all_last_login_users"
                 users, last_evaluated_key = Dynamo().query_paginated_all_last_login_users(limit=int(self.user.user_pagination_count))
-            return {"success": self.list_html_backoffice_users_table_rows(users), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(users)}
+            return {"success": self.list_html_backoffice_users_table_rows(users), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": self.post["search_users_subscription"], "showing_total_count": len(users)}
 
     def filter_users_by_name(self, users):
         filtered_users = []

@@ -21,6 +21,12 @@ class PaginationQueries(BackofficePage, PanelPage):
 
         return getattr(self, self.post["query"])(last_evaluated_key)
 
+    def query_paginated_all_last_login_users_with_signature(self, last_evaluated_key):
+        users, last_evaluated_key = Dynamo().query_paginated_all_last_login_users_with_signature(self.post["search_users_subscription"], limit=int(self.user.user_pagination_count))
+        html = self.list_html_backoffice_users_table_rows(users)
+        new_itens_count = str(len(users))
+        return {"success": html, "last_evaluated_key": last_evaluated_key, "new_itens_count": new_itens_count}
+
     def query_paginated_all_coupons(self, last_evaluated_key):
         coupons, last_evaluated_key = Dynamo().query_paginated_all_coupons(last_evaluated_key, limit=int(self.user.user_pagination_count))
         html = self.list_html_backoffice_coupons_table_rows(coupons)

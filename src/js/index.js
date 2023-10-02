@@ -2830,14 +2830,14 @@ export async function callBackofficeApi(order_id, command) {
 
 
 export async function updateBackofficeUsers() {
-    let backoffice_search_users_by_email_or_id_input = document.getElementById("backoffice_search_users_by_email_or_id_input")
-    let search_users_by_subscription_select = document.getElementById("search_users_by_subscription_select")
-    let pagination_component = document.getElementById("pagination_component")
+    let backoffice_search_users_by_email_or_id_input = document.getElementById("backoffice_search_users_by_email_or_id_input");
+    let search_users_by_subscription_select = document.getElementById("search_users_by_subscription_select");
+    let pagination_component = document.getElementById("pagination_component");
 
-    let last_evaluated_key = document.getElementById("last_evaluated_key")
-    let query = document.getElementById("query")
-    let query_filter = document.getElementById("query_filter")
-    let showing_total_count = document.getElementById("showing_total_count")
+    let last_evaluated_key = document.getElementById("last_evaluated_key");
+    let query = document.getElementById("query");
+    let query_filter = document.getElementById("query_filter");
+    let showing_total_count = document.getElementById("showing_total_count");
 
     let backoffice_users_html_response = await apiCaller("backoffice_users_html", {
         "search_user": backoffice_search_users_by_email_or_id_input.value,
