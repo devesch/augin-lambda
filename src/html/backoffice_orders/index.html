@@ -6,7 +6,19 @@
         <div>
             {{html_dropdown_select_user_pagination}}
         </div>
-        <div>
+        <section class="panel-explore-filters-container">
+            <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()">
+                <option value="all">{{Todas}}</option>
+                <option value="pending">{{Incompleto}}</option>
+                <option value="paid">{{Pago}}</option>
+                <option value="not_authorized">{{Não autorizado}}</option>
+                <option value="expired_card">{{Cartão expirado}}</option>
+                <option value="blocked_card">{{Cartão bloqueado}}</option>
+                <option value="canceled_card">{{Cartão cancelado}}</option>
+                <option value="problems_with_card">{{Problemas no cartão}}</option>
+                <option value="time_out">{{Excedeu o limite de tentativas}}</option>
+                <option value="refunded">{{Reembolsado}}</option>
+            </select>
             <div class="floating-input">
                 <input oninput="js.index.updateBackofficeOrders(), js.index.changeSearchIcon(this)" type="search" name="search_payment_for_user" id="search_payment_for_user" class="input-search" results="10" autosave="search_payment_for_user" placeholder="">
                 <label for="search_payment_for_user">
@@ -15,19 +27,7 @@
                 <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
                 <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_payment_for_user')">
             </div>
-            <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()">
-                <option value="all" {{pre_sel_all_val}}>Todas</option>
-                <option value="pending" {{pre_sel_pending_val}}>Incompleto</option>
-                <option value="paid" {{pre_sel_paid_val}}>Pago</option>
-                <option value="not_authorized" {{pre_sel_not_authorized_val}}>{{Não autorizado}}</option>
-                <option value="expired_card" {{pre_sel_expired_card_val}}>{{Cartão expirado}}</option>
-                <option value="blocked_card" {{pre_sel_blocked_card_val}}>{{Cartão bloqueado}}</option>
-                <option value="canceled_card" {{pre_sel_canceled_card_val}}>{{Cartão cancelado}}</option>
-                <option value="problems_with_card" {{pre_sel_problems_with_card_val}}>{{Problemas no cartão}}</option>
-                <option value="time_out" {{pre_sel_time_out_val}}>{{Excedeu o limite de tentativas}}</option>
-                <option value="refunded" {{pre_sel_refunded_val}}>{{Reembolsado}}</option>
-            </select>
-        </div>
+        </section>
         <div>
             <table class="explore__table">
                 <thead>
