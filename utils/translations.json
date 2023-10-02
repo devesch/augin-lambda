@@ -2184,6 +2184,11 @@
         "es": "Empieza en",
         "pt": "Inicia em"
     },
+    "Iniciando o reprocessamento do modelo": {
+        "en": "Starting the reprocessing of the model",
+        "es": "Comenzando el reprocesamiento del modelo",
+        "pt": "Iniciando o reprocessamento do modelo"
+    },
     "Insira abaixo o código que enviamos para o email": {
         "en": "Insert below the code we sent to the email",
         "es": "Inserte debajo el código que le enviamos al correo electrónico",
@@ -2719,6 +2724,11 @@
         "es": "No hay modelo",
         "pt": "Nenhum modelo"
     },
+    "Nenhum modelo encontrado com os dados informados": {
+        "en": "No model found with informed data",
+        "es": "No se encuentra ningún modelo con datos informados",
+        "pt": "Nenhum modelo encontrado com os dados informados"
+    },
     "Nenhum modelo selecionado encontrado": {
         "en": "No selected model found",
         "es": "No se encuentra ningún modelo seleccionado",
@@ -2763,6 +2773,11 @@
         "en": "No user found as the order owner.",
         "es": "Ningún usuario encontrado como propietario del pedido.",
         "pt": "Nenhum usuário encontrado como dono da ordem."
+    },
+    "Nenhum usuário encontrado como dono deste modelo": {
+        "en": "No user found as owner of this model",
+        "es": "Ningún usuario encontrado como propietario de este modelo",
+        "pt": "Nenhum usuário encontrado como dono deste modelo"
     },
     "Nenhum usuário encontrado.": {
         "en": "No user found.",
@@ -3044,6 +3059,11 @@
         "es": "No es posible mover una carpeta a ella.",
         "pt": "Não é possível mover uma pasta para dentro dela própria."
     },
+    "Não é possível reprocessar um modelo federado": {
+        "en": "It is not possible to reprocess a federated model",
+        "es": "No es posible reprocesar un modelo federado",
+        "pt": "Não é possível reprocessar um modelo federado"
+    },
     "Não é possível tornar padrão um método de pagamento que já é o padrão": {
         "en": "It is not possible to make standard a payment method that is already the standard",
         "es": "No es posible hacer de la norma un método de pago que ya sea el estándar",
@@ -3088,6 +3108,11 @@
         "en": "The informed postal code is invalid.",
         "es": "El código postal informado no es válido.",
         "pt": "O código postal informado é inválido."
+    },
+    "O modelo não se encontra no estado completo": {
+        "en": "The model is not in the full state",
+        "es": "El modelo no está en el estado completo",
+        "pt": "O modelo não se encontra no estado completo"
     },
     "O nome da pasta não pode conter barras '/'.": {
         "en": "The name of the folder cannot contain bars '/'.",

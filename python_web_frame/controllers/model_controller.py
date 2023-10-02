@@ -23,6 +23,49 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def clear_model_data_for_reprocess(self, model):
+        current_model_filename_zip = model["model_filename_zip"].replace(".zip", "")
+        new_model_filename = Generate().generate_short_id()
+        model["model_upload_path_aug"] = model["model_upload_path_aug"].replace(current_model_filename_zip, new_model_filename)
+        model["model_upload_path_bin"] = model["model_upload_path_bin"].replace(current_model_filename_zip, new_model_filename)
+        model["model_upload_path_glb"] = model["model_upload_path_glb"].replace(current_model_filename_zip, new_model_filename)
+        model["model_upload_path_mini_bin"] = model["model_upload_path_mini_bin"].replace(current_model_filename_zip, new_model_filename)
+        model["model_upload_path_sd_aug"] = model["model_upload_path_sd_aug"].replace(current_model_filename_zip, new_model_filename)
+        model["model_upload_path_xml"] = model["model_upload_path_xml"].replace(current_model_filename_zip, new_model_filename)
+        model["model_filesize_xml"] = "0"
+        model["model_filesize_aug"] = "0"
+        model["model_filesize_sd_aug"] = "0"
+        model["model_filesize_bin "] = "0"
+        model["model_filesize_mini_bin "] = "0"
+        model["model_filesize_glb "] = "0"
+        model["model_xml_ec2_machine"] = ""
+        model["model_aug_ec2_machine"] = ""
+        model["model_aug_sd_ec2_machine"] = ""
+        model["model_memory_usage_in_gbs"] = "0.0"
+        model["model_was_processed_where"] = "lambda10gb"
+        model["model_xml_started"] = ""
+        model["model_xml_memory_usage"] = "0.0"
+        model["model_xml_completed"] = ""
+        model["model_xml_total_time"] = "0.0"
+        model["model_xml_to_dynamo_start"] = ""
+        model["model_xml_to_dynamo_completed"] = ""
+        model["model_xml_to_dynamo_total_time"] = "0.0"
+        model["model_aug_started"] = ""
+        model["model_aug_percent"] = "0"
+        model["model_aug_memory_usage"] = "0.0"
+        model["model_aug_completed"] = ""
+        model["model_aug_total_time"] = "0.0"
+        model["model_aug_sd_started"] = ""
+        model["model_aug_sd_percent"] = "0"
+        model["model_aug_sd_memory_usage"] = "0.0"
+        model["model_aug_sd_completed"] = ""
+        model["model_aug_sd_total_time"] = "0.0"
+        model["model_processing_total_time"] = "0.0"
+        model["model_processing_percentage"] = "0"
+        model = self.change_model_state(model, "completed", "in_processing")
+        Dynamo().put_entity(model)
+        return model
+
     def remove_model_id_from_federated_model(self, federated_model, model_id_to_be_removed):
         model_to_be_removed = Dynamo().get_model(model_id_to_be_removed)
         if model_to_be_removed and model_to_be_removed.get("model_used_in_federated_ids") and federated_model["model_id"] in model_to_be_removed["model_used_in_federated_ids"]:

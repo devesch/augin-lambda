@@ -40,7 +40,6 @@ class Model:
         self.model_filesize_mini_bin = "0"
         self.model_filesize_glb = "0"
         self.model_upload_path = ""
-        self.model_category = ""
         self.model_password = ""
         self.model_is_accessible = False
         self.model_is_password_protected = False
@@ -51,12 +50,7 @@ class Model:
         self.model_share_link = ""
         self.model_share_link_qrcode = ""
         self.model_name = str(time.time())
-        self.model_work = ""
-        self.model_region = ""
-        self.model_city = ""
-        self.model_builder = ""
         self.model_category = ""
-        self.model_city_region = ""
         self.model_xml_ec2_machine = ""
         self.model_aug_ec2_machine = ""
         self.model_aug_sd_ec2_machine = ""

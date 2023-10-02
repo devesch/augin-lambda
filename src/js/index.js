@@ -2880,7 +2880,13 @@ export async function reprocessModel(pressed_button, model_id) {
     });
     pressed_button.innerHTML = translate_response["success"];
 
-    await sleep(10000);
+
+    let update_backoffice_response = await apiCaller('update_backoffice', {
+        "command": "reprocess_model",
+        "model_id": model_id
+    });
+
+    await sleep(2000);
     translate_response = await apiCaller("translate", {
         "key": "Reprocessar"
     });

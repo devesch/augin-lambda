@@ -1,6 +1,7 @@
 from python_web_frame.backoffice_page import BackofficePage
 from python_web_frame.controllers.billing_controller import BillingController
 from python_web_frame.controllers.stripe_controller import StripeController
+from python_web_frame.controllers.model_controller import ModelController
 from objects.Order import check_if_order_is_in_refund_time
 from utils.AWS.Dynamo import Dynamo
 
@@ -15,6 +16,23 @@ class UpdateBackoffice(BackofficePage):
             return {"error": "Este usuário não possui as credenciais para realizar este comando"}
 
         return getattr(self, self.post["command"])()
+
+    def reprocess_model(self):
+        model = Dynamo().get_model(self.post["model_id"])
+        if not model:
+            return {"error": "Nenhum modelo encontrado com os dados informados"}
+        if model["model_state"] != "completed":
+            return {"error": "O modelo não se encontra no estado completo"}
+        if model["model_category"] == "federated":
+            return {"error": "Não é possível reprocessar um modelo federado"}
+        model_user = self.load_user(model["model_user_id"])
+        if not model_user:
+            return {"error": "Nenhum usuário encontrado como dono deste modelo"}
+
+        model_user.remove_model_from_user_dicts(model)
+        model = ModelController().clear_model_data_for_reprocess(model)
+        ModelController().process_model_file_uploaded(model)
+        return {"error": "Iniciando o reprocessamento do modelo"}
 
     def refund_order(self):
         order = Dynamo().get_order(self.post["order_id"])

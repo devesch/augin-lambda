@@ -66,12 +66,7 @@ class BackofficePage(BasePage):
                 html.esc("model_share_link_val", model["model_share_link"])
                 html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
                 html.esc("model_name_val", model["model_name"])
-                html.esc("model_work_val", model["model_work"])
-                html.esc("model_region_val", model["model_region"])
-                html.esc("model_city_val", model["model_city"])
-                html.esc("model_builder_val", model["model_builder"])
                 html.esc("model_category_val", model["model_category"])
-                html.esc("model_city_region_val", model["model_city_region"])
                 html.esc("model_xml_ec2_machine_val", model["model_xml_ec2_machine"])
                 html.esc("model_aug_ec2_machine_val", model["model_aug_ec2_machine"])
                 html.esc("model_aug_sd_ec2_machine_val", model["model_aug_sd_ec2_machine"])
@@ -98,7 +93,7 @@ class BackofficePage(BasePage):
                 html.esc("model_processing_percentage_val", model["model_processing_percentage"])
                 html.esc("model_state_val", model["model_state"])
                 html.esc("model_valid_until_val", model["model_valid_until"])
-                if model["model_state"] != "completed":
+                if model["model_state"] != "completed" or model["model_category"] == "federated":
                     html.esc("reprocess_button_visitility_val", "display:none;")
                 full_html.append(str(html))
         return "".join(full_html)
