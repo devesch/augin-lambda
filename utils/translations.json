@@ -1054,6 +1054,11 @@
         "es": "Curaçao",
         "pt": "Curaçao"
     },
+    "Currency": {
+        "en": "Currency",
+        "es": "Divisa",
+        "pt": "Currency"
+    },
     "Cyprus": {
         "en": "Cyprus",
         "es": "Chipre",
