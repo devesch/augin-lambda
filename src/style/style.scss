@@ -1558,7 +1558,7 @@ input[list]::-ms-clear {
     th .button--user-folders {
         font-weight: bold !important;
     }
-    
+
     thead {
         font-weight: bold;
     }
@@ -1567,7 +1567,7 @@ input[list]::-ms-clear {
     th {
         padding: .5rem;
         text-align: left;
-        border-bottom: 2px solid colors.color("color-neutral-200");
+        border-bottom: 1px solid colors.color("color-neutral-400");
         vertical-align: middle;
     }
 
