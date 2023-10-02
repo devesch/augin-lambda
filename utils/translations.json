@@ -975,7 +975,7 @@
         "pt": "Creditado pela Augin"
     },
     "Criar": {
-        "en": "To create",
+        "en": "Create",
         "es": "Crear",
         "pt": "Criar"
     },
@@ -1765,8 +1765,8 @@
         "pt": "Expira em"
     },
     "Explorar": {
-        "en": "To explore",
-        "es": "Para explorar",
+        "en": "Explore",
+        "es": "Explorar",
         "pt": "Explorar"
     },
     "Falhou": {
