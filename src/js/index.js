@@ -2875,7 +2875,7 @@ export async function updateBackofficeUsers() {
 }
 
 export async function reprocessModel(pressed_button, model_id) {
-    translate_response = apiCaller("translate", {
+    let translate_response = apiCaller("translate", {
         "key": "Reprocessando..."
     });
     pressed_button.innerHTML = translate_response["success"];

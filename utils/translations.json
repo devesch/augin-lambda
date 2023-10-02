@@ -3789,6 +3789,11 @@
         "es": "Carpeta",
         "pt": "Renomear pasta"
     },
+    "Reprocessando...": {
+        "en": "Reprocessing ...",
+        "es": "Reprocesamiento ...",
+        "pt": "Reprocessando..."
+    },
     "Reprocessar": {
         "en": "Reprocess",
         "es": "Reprocesar",
