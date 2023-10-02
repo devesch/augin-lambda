@@ -799,6 +799,7 @@ input[list]::-ms-clear {
     word-break: break-word;
 
     h2 {
+        font-family: "Manrope";
         color: colors.color("color-black");
         font-size: 1.6875rem;
         text-align: center;
@@ -806,6 +807,7 @@ input[list]::-ms-clear {
     }
 
     h3 {
+        font-family: "Manrope";
         color: colors.color("color-black");
         font-size: fonts.$font-heading-4-size;
         text-align: center;
