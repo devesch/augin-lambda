@@ -1274,7 +1274,7 @@ input[list]::-ms-clear {
     }
 
     label {
-        padding: .5rem 1rem;
+        padding: .5rem 2rem;
         transition: background-color 0.5s ease;
         font-weight: bold;
         border-radius: 1rem;
@@ -1308,11 +1308,12 @@ input[list]::-ms-clear {
 
     h2 {
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     h3 {
         font-weight: bold;
+        font-size: 1.25rem;
     }
 
     section {
@@ -1333,7 +1334,7 @@ input[list]::-ms-clear {
         }
 
         li + li {
-            border-top: 2px solid colors.color("color-neutral-200");
+            border-top: 1px solid colors.color("color-neutral-300");
         }
     }
 
@@ -1359,6 +1360,9 @@ input[list]::-ms-clear {
 
     button {
         border-radius: .25rem;
+        padding: 0.5rem 2rem;
+        width: fit-content;
+        margin: auto;
     }
 
     a {
