@@ -19,6 +19,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
         user_plan = self.user.get_user_actual_plan()
 
         html = super().parse_html()
+        html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
         html.esc("user_name_val", self.user.user_name.title())
         html.esc("plan_name_val", user_plan["plan_name_" + self.lang])
         purchasable_plans = Dynamo().query_purchasable_plans()

@@ -4,6 +4,7 @@ from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Generate import Generate
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
+from utils.Config import lambda_constants
 
 
 class BasePage:
@@ -105,6 +106,12 @@ class BasePage:
 
         html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openCookiesContainer()")
         html.esc("user_url_val", self.event.get_url())
+        return str(html)
+
+    def show_html_upgrade_button(self, user_plan):
+        html = ""
+        if user_plan["plan_id"] == lambda_constants["free_plan_id"] or user_plan["plan_is_trial"]:
+            html = ReadWrite().read_html("panel_create_project/_codes/html_upgrade_button")
         return str(html)
 
     def render_get_with_error(self, error_msg):
