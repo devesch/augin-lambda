@@ -219,4 +219,17 @@
 .update-confirm-icon {
     margin: 0 auto;
 }
+
+.update-confirm-row.new {
+    border-color: colors.color("color-primary-900");
+
+    .update-confirm-title {
+        background-color: colors.color("color-primary-900");
+    }
+
+    .update-confirm-file-name {
+        font-weight: bold;
+    }
+
+}
 /* Update Modal - End */
