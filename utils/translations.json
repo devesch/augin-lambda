@@ -809,6 +809,11 @@
         "es": "Complementar",
         "pt": "Complemento"
     },
+    "Completo": {
+        "en": "Complete",
+        "es": "Completo",
+        "pt": "Completo"
+    },
     "Comprar novamente": {
         "en": "Buy again",
         "es": "Compra otra vez",
@@ -1144,6 +1149,11 @@
         "es": "Establecer nueva contraseña",
         "pt": "Definir nova senha"
     },
+    "Deletado": {
+        "en": "Deleted",
+        "es": "Eliminado",
+        "pt": "Deletado"
+    },
     "Deletar": {
         "en": "Delete",
         "es": "Borrar",
@@ -1423,6 +1433,11 @@
         "en": "Electrical",
         "es": "Eléctrico",
         "pt": "Elétrica"
+    },
+    "Em processamento": {
+        "en": "Processing",
+        "es": "Procesando",
+        "pt": "Em processamento"
     },
     "Email": {
         "en": "Email",
@@ -2983,6 +2998,11 @@
         "en": "Not authorized",
         "es": "No autorizado",
         "pt": "Não autorizado"
+    },
+    "Não criado": {
+        "en": "Uninteed",
+        "es": "Invintivo",
+        "pt": "Não criado"
     },
     "Não foi possível encontrar dados com o CNPJ informado": {
         "en": "It was not possible to find data with the CNPJ informed",
