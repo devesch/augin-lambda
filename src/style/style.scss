@@ -664,7 +664,8 @@ input[list]::-ms-clear {
 
 .my-plan__profile {
     margin-inline: -2rem;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
+    word-break: break-word;
     background-color: colors.color("color-neutral-800");
     height: 100%;
 
@@ -729,9 +730,11 @@ input[list]::-ms-clear {
 
 .my-plan__profile-menu {
     margin: 0;
+    padding: 0;
     list-style: none;
     display: flex;
     gap: 1rem;
+    justify-content: space-between;
 }
 
 .my-plan__header-footer-container {
@@ -1291,6 +1294,15 @@ input[list]::-ms-clear {
 
     input:checked + label {
         background-color: colors.color("color-neutral-200");
+    }
+
+    @media only screen and (max-width: 620px) {
+        justify-content: center;
+
+        label {
+            flex-grow: 1;
+        }
+
     }
 
 }

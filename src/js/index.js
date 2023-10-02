@@ -2012,6 +2012,13 @@ export async function saveCreateFederatedProject() {
     create_federated_modal_return_folder_span.style.display = "none";
     closeModal(".modal.create-federated-modal");
     openModal(".modal.create-federated-select-models-modal");
+
+    if ("error" in update_model_response) {
+
+    } else {
+        
+    }
+
 }
 
 export async function saveConfirmCreateFederatedProject() {
