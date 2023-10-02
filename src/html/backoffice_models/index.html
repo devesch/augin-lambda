@@ -7,13 +7,31 @@
         <div>
             {{html_dropdown_select_user_pagination}}
         </div>
+        <section class="panel-explore-filters-container">
+            <select name="model_state" id="search_models_by_state_select" onchange="js.index.updateBackofficeModels()">
+                <option value="all" selected disabled>{{Filtrar}}</option>
+                <option value="all">{{Todos}}</option>
+                <option value="not_created">{{Não criado}}</option>
+                <option value="in_processing">{{Em processamento}}</option>
+                <option value="completed">{{Completo}}</option>
+                <option value="deleted">{{Deletado}}</option>
+            </select>
+            <div class="floating-input">
+                <input oninput="js.index.updateBackofficeModels(), js.index.changeSearchIcon(this)" type="search" name="search_models_by_user_input" id="search_models_by_user_input" class="input-search" results="10" autosave="search_models_by_user_input" placeholder="">
+                <label for="search_models_by_user_input">
+                    {{Pesquisar}}
+                </label>
+                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
+                <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_models_by_user_input')">
+            </div>
+        </section>
         <div>
             <table class="explore__table">
                 <thead>
                     <th>id</th>
                     <th>user_id</th>
                     <th>project_id</th>
-                    <th>user_id_state</th>
+                    <th>state</th>
                     <th>folder_id</th>
                     <th>branch_id</th>
                     <th>branch_url</th>
@@ -85,7 +103,6 @@
                     <th>aug_sd_total_time</th>
                     <th>processing_total_time</th>
                     <th>processing_percentage</th>
-                    <th>state</th>
                     <th>valid_until</th>
                     <th></th>
                 </thead>
