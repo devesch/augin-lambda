@@ -3764,6 +3764,11 @@
         "es": "Carpeta",
         "pt": "Renomear pasta"
     },
+    "Reprocessar": {
+        "en": "Reprocess",
+        "es": "Reprocesar",
+        "pt": "Reprocessar"
+    },
     "Resumo do pedido": {
         "en": "Order Summary",
         "es": "Resumen de pedido",
