@@ -863,6 +863,7 @@ input[list]::-ms-clear {
 }
 
 .new-project__sub-title {
+    margin-bottom: 1rem;
     font-size: 1.4rem;
 }
 
@@ -1105,7 +1106,7 @@ input[list]::-ms-clear {
     background-color: colors.color("color-neutral-50");
     border: 3px dashed colors.color("color-primary-300");
     border-radius: 1rem;
-    padding: 5rem 2rem;
+    padding: 2rem;
     font-size: 1.4rem;
 }
 
