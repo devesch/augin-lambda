@@ -757,7 +757,8 @@ input[list]::-ms-clear {
 .my-plan__title-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    // align-items: center;
+    align-items: end;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
@@ -1693,7 +1694,8 @@ input[list]::-ms-clear {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    // align-items: center;
+    align-items: end;
     justify-content: right;
     flex-grow: 1;
     gap: $gap;
