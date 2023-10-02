@@ -1764,19 +1764,23 @@ input[list]::-ms-clear {
     border-radius: 1rem;
     padding: 1rem;
 
-    h3 {
-        font-size: 1.4rem;
-    }
-
+    
     ul {
         margin-top: 1rem;
-
+        
         li + li {
             border-top: 2px solid colors.color("color-neutral-200");
         }
-
+        
     }
+    
+}
 
+.explore__title-container__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: "Manrope";
+    font-weight: normal;
 }
 
 .panel-explore-filters-container {
