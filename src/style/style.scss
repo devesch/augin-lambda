@@ -799,6 +799,7 @@ input[list]::-ms-clear {
     word-break: break-word;
 
     h2 {
+        font-family: "Manrope";
         color: colors.color("color-black");
         font-size: 1.6875rem;
         text-align: center;
@@ -806,6 +807,7 @@ input[list]::-ms-clear {
     }
 
     h3 {
+        font-family: "Manrope";
         color: colors.color("color-black");
         font-size: fonts.$font-heading-4-size;
         text-align: center;
@@ -822,10 +824,10 @@ input[list]::-ms-clear {
 .my-plan__sub-title,
 .new-project__sub-title,
 .change-plan__sub-title {
-    font-size: fonts.$font-heading-4-size;
     font-family: "Manrope";
     font-weight: normal;
     text-align: center;
+    font-size: 1.5rem;
 
     strong {
         font-weight: bold;
@@ -897,6 +899,8 @@ input[list]::-ms-clear {
     }
 
     h3 {
+        font-weight: normal;
+        font-family: "Manrope";
         font-size: 1.3rem;
         font-weight: bold;
         color: colors.color("color-black");
@@ -1270,7 +1274,7 @@ input[list]::-ms-clear {
     }
 
     label {
-        padding: .5rem 1rem;
+        padding: .5rem 2rem;
         transition: background-color 0.5s ease;
         font-weight: bold;
         border-radius: 1rem;
@@ -1304,11 +1308,12 @@ input[list]::-ms-clear {
 
     h2 {
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     h3 {
         font-weight: bold;
+        font-size: 1.25rem;
     }
 
     section {
@@ -1329,7 +1334,7 @@ input[list]::-ms-clear {
         }
 
         li + li {
-            border-top: 2px solid colors.color("color-neutral-200");
+            border-top: 1px solid colors.color("color-neutral-300");
         }
     }
 
@@ -1355,6 +1360,9 @@ input[list]::-ms-clear {
 
     button {
         border-radius: .25rem;
+        padding: 0.5rem 2rem;
+        width: fit-content;
+        margin: auto;
     }
 
     a {

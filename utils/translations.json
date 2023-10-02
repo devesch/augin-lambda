@@ -335,7 +335,7 @@
         "pt": "Ao utilizar o nosso site, está a consentir a utilização de cookies, de acordo com a nossa política de cookies"
     },
     "Apagar": {
-        "en": "To switch off",
+        "en": "Delete",
         "es": "Apagar",
         "pt": "Apagar"
     },
@@ -846,7 +846,7 @@
     },
     "Confirmar exclusão de arquivo": {
         "en": "Confirm file deletion",
-        "es": "Confirmar la eliminación de archivos",
+        "es": "Confirmar la eliminación de archivo",
         "pt": "Confirmar exclusão de arquivo"
     },
     "Confirmar exclusão de pasta": {
@@ -1158,11 +1158,6 @@
         "en": "Delete",
         "es": "Borrar",
         "pt": "Deletar"
-    },
-    "Deletar pasta": {
-        "en": "Folder",
-        "es": "Carpeta",
-        "pt": "Deletar pasta"
     },
     "Denmark": {
         "en": "Denmark",
@@ -2259,11 +2254,6 @@
         "es": "Esto nos permite personalizar nuestro contenido con usted, recordar sus preferencias y proporcionar recursos mejorados y más personales.",
         "pt": "Isso nos permite personalizar nosso conteúdo para você, lembrar suas preferências e fornecer recursos aprimorados e mais pessoais"
     },
-    "Isto irá deletar todos os arquivos e pastas que também existam dentro dela": {
-        "en": "This will delete all files and folders that also exist inside it",
-        "es": "Esto eliminará todos los archivos y carpetas que también existen dentro de él.",
-        "pt": "Isto irá deletar todos os arquivos e pastas que também existam dentro dela"
-    },
     "Italy": {
         "en": "Italy",
         "es": "Italia",
@@ -3233,6 +3223,11 @@
         "en": "Order found but is not paid.",
         "es": "Orden encontrado pero no se paga.",
         "pt": "Ordem encontrada porém não se encontra paga."
+    },
+    "Os arquivos dentro da pasta também serão excluídos.": {
+        "en": "Files inside the folder will also be deleted.",
+        "es": "Los archivos dentro de la carpeta también se eliminarán.",
+        "pt": "Os arquivos dentro da pasta também serão excluídos."
     },
     "Os formartos suportados de IFC são: IFC2x3 e IFC4.": {
         "en": "IFC -supported shapes are: IFC2x3 and IFC4.",

@@ -28,7 +28,7 @@
                 <button onclick="js.index.openFolder('', '')" class="button--user-folders">
                     <h2 class="my-plan__sub-title">{{Meus projetos}}</h2>
                 </button>
-                <h2 id="folder_path_span"></h2>
+                <h2 id="folder_path_span" class="my-plan__sub-title"></h2>
                 <input hidden id="folder_id_input">
                 <input hidden id="folder_path_input">
             </div>
@@ -484,8 +484,8 @@
             <div class="delete-modal-container">
                 <p>{{Você está excluindo definitivamente o arquivo}}</p>
                 <strong id="delete_model_name_span"></strong>
+                <p id="delete_model_used_in_federated_ids_span">{{Este modelo está sendo usado como base em um projeto federado}}</p>
                 <p class="mt-1">{{Tem certeza que deseja continuar?}}</p>
-                <strong id="delete_model_used_in_federated_ids_span">{{Este modelo está sendo usado como base em um projeto federado}}</strong>
             </div>
             <span class="error" id="model_delete_error_span">
                 {{error_msg_val}}
@@ -551,14 +551,14 @@
 <div id="delete-folder-modal" class="modal delete-folder-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
-            <h1 class="modal-header-title">{{Deletar pasta}}</h1>
+            <h1 class="modal-header-title">{{Confirmar exclusão de pasta}}</h1>
         </div>
         <div class="modal-content">
-            <div>
+            <div class="delete-modal-container">
                 <p>{{Você está excluindo definitivamente a pasta}}</p>
-                <p>{{Isto irá deletar todos os arquivos e pastas que também existam dentro dela}}</p>
                 <strong id="delete_folder_name_span"></strong>
-                <p>{{Tem certeza que deseja continuar?}}</p>
+                <p>{{Os arquivos dentro da pasta também serão excluídos.}}</p>
+                <p class="mt-1">{{Tem certeza que deseja continuar?}}</p>
             </div>
             <span class="error" id="delete_folder_error_span">
                 {{error_msg_val}}

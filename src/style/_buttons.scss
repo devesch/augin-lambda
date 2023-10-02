@@ -20,6 +20,7 @@ button,
     transition: background-color .5s ease-in-out,
      color .5s ease-in-out,
      border-color .5s ease-in-out;
+     line-height: 1.5;
 
     svg,
     img {
@@ -289,6 +290,7 @@ button.button--explore-more-options:disabled {
     width: fit-content;
     margin: auto;
     font-weight: normal;
+    font-size: 0.9rem;
 }
 
 .button--save-25:hover,
