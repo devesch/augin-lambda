@@ -4839,10 +4839,10 @@
         "es": "en",
         "pt": "em"
     },
-    "faça um upgrade": {
-        "en": "upgrade",
-        "es": "mejora",
-        "pt": "faça um upgrade"
+    "Faça um upgrade": {
+        "en": "Upgrade your plan",
+        "es": "Actualiza tu plan",
+        "pt": "Faça um upgrade"
     },
     "flag": {
         "en": "flag",
