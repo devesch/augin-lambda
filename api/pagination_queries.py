@@ -21,7 +21,13 @@ class PaginationQueries(BackofficePage, PanelPage):
 
         if self.post["query"] == "query_paginated_all_coupons":
             coupons = Dynamo().query_paginated_all_coupons(last_evaluated_key, limit=int(self.user.user_pagination_count))
+            html = self.list_html_backoffice_coupons_table_rows(coupons)
             new_itens_count = str(len(coupons))
+
+        if self.post["query"] == "query_paginated_all_last_login_users":
+            all_users = Dynamo().query_paginated_all_last_login_users(last_evaluated_key, limit=int(self.user.user_pagination_count))
+            html = self.list_html_backoffice_users_table_rows(all_users)
+            new_itens_count = str(len(all_users))
 
         if self.post["query"] == "query_paginated_all_orders":
             orders, last_evaluated_key = Dynamo().query_paginated_all_orders(last_evaluated_key, limit=int(self.user.user_pagination_count))

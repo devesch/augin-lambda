@@ -1,59 +1,55 @@
 ﻿{{header}}
 {{menu_backoffice}}
 <main class="my-plan__main">
+    <h1 class="my-plan__title">{{Pagamentos}}</h1>
     <div>
         <div>
-            <p>{{Pagamentos}}</p>
+            {{html_dropdown_select_user_pagination}}
         </div>
         <div>
             <div>
-                {{html_dropdown_select_user_pagination}}
+                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="{{Icone buscar}}">
+                <input type="text" name="search" onkeyup="js.index.updateBackofficeOrders()" value="{{user_email_val}}" id="search_orders_by_user_input" placeholder="{{Buscar usuários}}">
             </div>
-            <div>
-                <div>
-                    <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="{{Icone buscar}}">
-                    <input type="text" name="search" onkeyup="js.index.updateBackofficeOrders()" value="{{user_email_val}}" id="search_orders_by_user_input" placeholder="{{Buscar usuários}}">
-                </div>
-                <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()">
-                    <option value="all" {{pre_sel_all_val}}>Todas</option>
-                    <option value="pending" {{pre_sel_pending_val}}>Incompleto</option>
-                    <option value="paid" {{pre_sel_paid_val}}>Pago</option>
-                    <option value="not_authorized" {{pre_sel_not_authorized_val}}>Não autorizado</option>
-                    <option value="expired_card" {{pre_sel_expired_card_val}}>Cartão expirado</option>
-                    <option value="blocked_card" {{pre_sel_blocked_card_val}}>Cartão bloqueado</option>
-                    <option value="canceled_card" {{pre_sel_canceled_card_val}}>Cartão cancelado</option>
-                    <option value="problems_with_card" {{pre_sel_problems_with_card_val}}>Problemas no cartão</option>
-                    <option value="time_out" {{pre_sel_time_out_val}}>Excedeu o limite de tentativas</option>
-                    <option value="refunded" {{pre_sel_refunded_val}}>Reembolsado</option>
-                </select>
-            </div>
-            <div>
-                <table class="explore__table">
-                    <thead>
-                        <th>{{Usuário}}</th>
-                        <th>{{Short Cód}}</th>
-                        <th>{{Último erro}}</th>
-                        <th>{{Método}}</th>
-                        <th>{{Datetime}}</th>
-                        <th>{{Tipo}}</th>
-                        <th>{{Cupom}}</th>
-                        <th>{{Créditos}}</th>
-                        <th>{{Moeda}}</th>
-                        <th>{{Valor}}</th>
-                        <th>{{Status}}</th>
-                        <th>Nota Fiscal</th>
-                        <th></th>
-                    </thead>
-                    <tbody id="pagination_component">
-                        {{html_backoffice_orders_table_rows}}
-                    </tbody>
-                </table>
-            </div>
-            <span class="error" style="display:none;" id="backoffice_orders_error_span">
-                {{error_msg_val}}
-            </span>
-            {{html_pagination}}
+            <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()">
+                <option value="all" {{pre_sel_all_val}}>Todas</option>
+                <option value="pending" {{pre_sel_pending_val}}>Incompleto</option>
+                <option value="paid" {{pre_sel_paid_val}}>Pago</option>
+                <option value="not_authorized" {{pre_sel_not_authorized_val}}>{{Não autorizado}}</option>
+                <option value="expired_card" {{pre_sel_expired_card_val}}>{{Cartão expirado}}</option>
+                <option value="blocked_card" {{pre_sel_blocked_card_val}}>{{Cartão bloqueado}}</option>
+                <option value="canceled_card" {{pre_sel_canceled_card_val}}>{{Cartão cancelado}}</option>
+                <option value="problems_with_card" {{pre_sel_problems_with_card_val}}>{{Problemas no cartão}}</option>
+                <option value="time_out" {{pre_sel_time_out_val}}>{{Excedeu o limite de tentativas}}</option>
+                <option value="refunded" {{pre_sel_refunded_val}}>{{Reembolsado}}</option>
+            </select>
         </div>
+        <div>
+            <table class="explore__table">
+                <thead>
+                    <th>{{Usuário}}</th>
+                    <th>{{Short Cód}}</th>
+                    <th>{{Último erro}}</th>
+                    <th>{{Método}}</th>
+                    <th>{{Datetime}}</th>
+                    <th>{{Tipo}}</th>
+                    <th>{{Cupom}}</th>
+                    <th>{{Plano}}</th>
+                    <th>{{Currency}}</th>
+                    <th>{{Valor}}</th>
+                    <th>{{Status}}</th>
+                    <th>Nota Fiscal</th>
+                    <th></th>
+                </thead>
+                <tbody id="pagination_component">
+                    {{html_backoffice_orders_table_rows}}
+                </tbody>
+            </table>
+        </div>
+        <span class="error" style="display:none;" id="backoffice_orders_error_span">
+            {{error_msg_val}}
+        </span>
+        {{html_pagination}}
     </div>
 </main>
 
