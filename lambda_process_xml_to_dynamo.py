@@ -623,7 +623,7 @@ def find_xml_file(root_directory):
 
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:
-    with open("_testnow_xml_to_dynamo.json", "r") as read_file:
+    with open("_testnow_lambda_process_xml_to_dynamo.json", "r") as read_file:
         event = json.load(read_file)
         html = main_lambda_handler(event, None)
     print("END")

@@ -26,6 +26,12 @@ class ModelController:
     def clear_model_data_for_reprocess(self, model):
         current_model_filename_zip = model["model_filename_zip"].replace(".zip", "")
         new_model_filename = Generate().generate_short_id()
+        new_model_upload_path_zip = model["model_upload_path_zip"].replace(current_model_filename_zip, new_model_filename)
+        S3().copy_file_in_bucket(lambda_constants["processed_bucket"], model["model_upload_path_zip"], new_model_upload_path_zip)
+        S3().delete_file(lambda_constants["processed_bucket"], model["model_upload_path_zip"])
+
+        model["model_filename_zip"] = new_model_filename + ".zip"
+        model["model_upload_path_zip"] = model["model_upload_path_zip"].replace(current_model_filename_zip, new_model_filename)
         model["model_upload_path_aug"] = model["model_upload_path_aug"].replace(current_model_filename_zip, new_model_filename)
         model["model_upload_path_bin"] = model["model_upload_path_bin"].replace(current_model_filename_zip, new_model_filename)
         model["model_upload_path_glb"] = model["model_upload_path_glb"].replace(current_model_filename_zip, new_model_filename)
