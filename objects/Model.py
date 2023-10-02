@@ -14,7 +14,6 @@ class Model:
         self.model_branch_id = ""
         self.model_branch_url = ""
         self.model_branch_url_qrcode = ""
-        self.model_name = ""
         self.model_code = Generate().generate_long_id()
         self.model_filehash = Generate().generate_long_id()
         self.model_filename = ""
