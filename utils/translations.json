@@ -1799,6 +1799,11 @@
         "es": "Hacer login",
         "pt": "Fazer login"
     },
+    "Faça um upgrade": {
+        "en": "Make an upgrade",
+        "es": "Hacer una actualización",
+        "pt": "Faça um upgrade"
+    },
     "Fechar": {
         "en": "To close",
         "es": "Cerrar",
@@ -4839,10 +4844,10 @@
         "es": "en",
         "pt": "em"
     },
-    "Faça um upgrade": {
-        "en": "Upgrade your plan",
-        "es": "Actualiza tu plan",
-        "pt": "Faça um upgrade"
+    "faça um upgrade": {
+        "en": "make an upgrade",
+        "es": "hacer una actualización",
+        "pt": "faça um upgrade"
     },
     "flag": {
         "en": "flag",
