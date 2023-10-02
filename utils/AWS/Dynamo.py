@@ -185,6 +185,11 @@ class Dynamo:
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "model"}}}, limit, last_evaluated_key, key_schema)
         return self.execute_batch_get_item(query), last_evaluated_key
 
+    def query_paginated_all_models_by_state(self, model_state, last_evaluated_key=None, limit=10):
+        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_state-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_state"}, "ExpressionAttributeValues": {":bef90": {"S": model_state}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
+
     def get_model(self, model_id):
         model = self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "model#" + model_id}, "sk": {"S": "model#" + model_id}}})
         if model:
