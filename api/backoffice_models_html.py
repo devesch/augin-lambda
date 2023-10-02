@@ -26,4 +26,4 @@ class BackofficeModelsHtml(BackofficePage):
             else:
                 query = "query_paginated_all_orders"
                 models, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.user.user_pagination_count))
-            return {"success": self.list_html_backoffice_orders_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
+            return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
