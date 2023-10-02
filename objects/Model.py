@@ -7,15 +7,13 @@ class Model:
         self.pk = "model#" + model_id
         self.sk = "model#" + model_id
         self.model_id = model_id
-        self.model_project_id = model_project_id
         self.model_user_id = model_user_id
+        self.model_project_id = model_project_id
         self.model_user_id_state = model_user_id + "#" + model_state
         self.model_folder_id = model_folder_id
-
         self.model_branch_id = ""
         self.model_branch_url = ""
         self.model_branch_url_qrcode = ""
-
         self.model_name = ""
         self.model_code = Generate().generate_long_id()
         self.model_filehash = Generate().generate_long_id()
@@ -23,10 +21,8 @@ class Model:
         self.model_filename_zip = ""
         self.model_format = ""
         self.model_is_federated = False
-
         self.model_used_in_federated_ids = []
         self.model_federated_required_ids = []
-
         self.model_upload_path_zip = ""
         self.model_upload_path_xml = ""
         self.model_upload_path_aug = ""
@@ -34,7 +30,6 @@ class Model:
         self.model_upload_path_bin = ""
         self.model_upload_path_mini_bin = ""
         self.model_upload_path_glb = ""
-
         self.model_filesize = "0"
         self.model_filesize_bracket = "0mb-50mb"
         self.model_filesize_zip = "0"
@@ -44,14 +39,11 @@ class Model:
         self.model_filesize_bin = "0"
         self.model_filesize_mini_bin = "0"
         self.model_filesize_glb = "0"
-
         self.model_upload_path = ""
         self.model_category = ""
-
         self.model_password = ""
         self.model_is_accessible = False
         self.model_is_password_protected = False
-
         self.model_sw_version = ""
         self.model_plugin_version = ""
         self.model_thumb_filename = ""
