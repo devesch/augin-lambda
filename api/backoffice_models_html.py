@@ -18,9 +18,12 @@ class BackofficeModelsHtml(BackofficePage):
         else:
             if self.post.get("search_model_state") != "all":
                 query_filter = self.post["search_model_state"]
-                query = "query_paginated_all_orders_from_status"
-                orders, last_evaluated_key = Dynamo().query_paginated_all_orders_from_status(self.post["search_model_state"], limit=int(self.user.user_pagination_count))
+                searched_user = self.load_user(self.post["search_user"])
+                query = "query_user_models_from_state"
+                if not searched_user:
+                    return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
+                models = Dynamo().query_user_models_from_state(searched_user, "in_processing")
             else:
                 query = "query_paginated_all_orders"
-                orders, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.user.user_pagination_count))
+                models, last_evaluated_key = Dynamo().query_paginated_all_orders(limit=int(self.user.user_pagination_count))
             return {"success": self.list_html_backoffice_orders_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
