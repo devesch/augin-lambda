@@ -1553,9 +1553,12 @@ input[list]::-ms-clear {
 
     th {
         text-align: left;
+    }
+    
+    th .button--user-folders {
         font-weight: bold !important;
     }
-
+    
     thead {
         font-weight: bold;
     }
