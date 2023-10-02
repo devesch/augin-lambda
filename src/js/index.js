@@ -2488,7 +2488,7 @@ export async function updateBackofficeOrders() {
 
 export async function updateBackofficeModels() {
     let search_models_by_user_input = document.getElementById("search_models_by_user_input");
-    let search_models_by_status_select = document.getElementById("search_models_by_status_select");
+    let search_models_by_state_select = document.getElementById("search_models_by_state_select");
     let pagination_component = document.getElementById("pagination_component");
 
     let last_evaluated_key = document.getElementById("last_evaluated_key");
@@ -2498,7 +2498,7 @@ export async function updateBackofficeModels() {
 
     let backoffice_models_html_response = await apiCaller("backoffice_models_html", {
         "search_user": search_models_by_user_input.value,
-        "search_model_state": search_models_by_status_select.value
+        "search_model_state": search_models_by_state_select.value
     });
 
     pagination_component.innerHTML = backoffice_models_html_response["success"];
