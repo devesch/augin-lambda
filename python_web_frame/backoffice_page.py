@@ -92,7 +92,8 @@ class BackofficePage(BasePage):
                 html.esc("model_processing_total_time_val", model["model_processing_total_time"])
                 html.esc("model_processing_percentage_val", model["model_processing_percentage"])
                 html.esc("model_state_val", model["model_state"])
-                html.esc("model_valid_until_val", model["model_valid_until"])
+                html.esc("model_valid_until_val", Date().format_unixtime_to_br_date(model["model_valid_until"]))
+                html.esc("created_at_val", Date().format_unixtime_to_br_date(model["created_at"]))
                 if model["model_state"] != "completed" or model["model_category"] == "federated":
                     html.esc("reprocess_button_visitility_val", "display:none;")
                 full_html.append(str(html))
