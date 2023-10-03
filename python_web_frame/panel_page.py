@@ -8,7 +8,7 @@ from utils.utils.StrFormat import StrFormat
 from python_web_frame.controllers.model_controller import ModelController
 from objects.Order import translate_order_status
 from objects.User import sort_user_folders
-from objects.UserFolder import generate_folder_data
+from objects.UserFolder import generate_folder_data, increase_folder_visualization_count
 
 
 class PanelPage(BasePage):
@@ -128,6 +128,8 @@ class PanelPage(BasePage):
                 else:
                     user_folder = Dynamo().get_folder(self.user.user_dicts_folder_id)
 
+            if (shared and not self.user) or (shared and user_folder["folder_user_id"] != self.user.user_id):
+                user_folder = increase_folder_visualization_count(user_folder)
             user_folder = generate_folder_data(user_folder)
             if user_folder["folders"]:
 
@@ -309,6 +311,7 @@ class PanelPage(BasePage):
         html.esc("folder_id_val", folder["folder_id"])
         html.esc("folder_password_val", folder["folder_password"])
         html.esc("folder_is_accessible_val", folder["folder_is_accessible"])
+        html.esc("folder_visualization_count_val", folder["folder_visualization_count"])
         html.esc("folder_share_link_val", folder["folder_share_link"])
         html.esc("folder_share_link_qrcode_val", folder["folder_share_link_qrcode"])
         html.esc("folder_is_password_protected_val", folder["folder_is_password_protected"])

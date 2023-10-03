@@ -2162,7 +2162,7 @@ export async function saveAddPasswordSharedProject() {
 
 
 
-export async function openModalShareFolder(folder_id, folder_name, folder_share_link, folder_share_link_qrcode, folder_is_password_protected, folder_password, folder_is_acessible) {
+export async function openModalShareFolder(folder_id, folder_name, folder_visualization_count, folder_share_link, folder_share_link_qrcode, folder_is_password_protected, folder_password, folder_is_acessible) {
     let share_folder_name_span = document.getElementById("share_folder_name_span");
     let copy_folder_share_link_button = document.getElementById("copy_folder_share_link_button");
     let update_folder_id_input = document.getElementById("update_folder_id_input");
@@ -2171,6 +2171,7 @@ export async function openModalShareFolder(folder_id, folder_name, folder_share_
     let folder_is_password_protected_input = document.getElementById("folder_is_password_protected_input");
     let folder_password_div = document.getElementById("folder_password_div");
     let folder_password_input = document.getElementById("folder_password_input");
+    let folder_visualization_count_span = document.getElementById("folder_visualization_count_span");
     let folder_password_error_span = document.getElementById("folder_password_error_span");
     let folder_is_accessible_input = document.getElementById("folder_is_accessible_input");
 
@@ -2191,6 +2192,7 @@ export async function openModalShareFolder(folder_id, folder_name, folder_share_
     }
 
     folder_password_error_span.innerHTML = "";
+    folder_visualization_count_span.innerHTML = folder_visualization_count;
     folder_password_input.value = folder_password;
     update_folder_id_input.value = folder_id;
     share_folder_name_span.innerText = folder_name;
