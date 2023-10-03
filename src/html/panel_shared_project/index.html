@@ -21,7 +21,7 @@
                 <button onclick="js.index.openFolder('', '')" class="button--user-folders">
                     <h2 class="my-plan__sub-title">{{Compartilhados comigo}}</h2>
                 </button>
-                <h2 id="folder_path_span"></h2>
+                <h2 id="folder_path_span" class="my-plan__sub-title"></h2>
                 <input hidden id="folder_id_input">
                 <input hidden id="folder_path_input">
             </div>
@@ -118,10 +118,10 @@
             <h1 class="modal-header-title">{{Confirmar exclusão de projeto}}</h1>
         </div>
         <div class="modal-content">
-            <div>
+            <div class="delete-modal-container">
                 <p>{{Você está removendo o projeto}}</p>
                 <strong id="remove_model_name_span"></strong>
-                <p>{{Tem certeza que deseja continuar?}}</p>
+                <p class="mt-1">{{Tem certeza que deseja continuar?}}</p>
             </div>
             <span class="error" id="model_remove_error_span">
                 {{error_msg_val}}
@@ -141,10 +141,10 @@
             <h1 class="modal-header-title">{{Confirmar exclusão de pasta}}</h1>
         </div>
         <div class="modal-content">
-            <div>
+            <div class="delete-modal-container">
                 <p>{{Você está removendo a pasta}}</p>
                 <strong id="remove_folder_name_span"></strong>
-                <p>{{Tem certeza que deseja continuar?}}</p>
+                <p class="mt-1">{{Tem certeza que deseja continuar?}}</p>
             </div>
             <span class="error" id="folder_remove_error_span">
                 {{error_msg_val}}
