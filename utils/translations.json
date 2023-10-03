@@ -2189,6 +2189,11 @@
         "es": "Ingrese un enlace para agregar el archivo a su cuenta",
         "pt": "Informe um link para adicionar o arquivo a sua conta"
     },
+    "Informe um link para adicionar o arquivo à sua conta": {
+        "en": "Enter a link to add the file to your account",
+        "es": "Ingrese un enlace para agregar el archivo a su cuenta",
+        "pt": "Informe um link para adicionar o arquivo à sua conta"
+    },
     "Infraestrutura": {
         "en": "Infrastructure",
         "es": "Infraestructura",
