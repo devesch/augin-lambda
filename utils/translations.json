@@ -59,10 +59,20 @@
         "es": "La duración del plan de prueba en días debe ser un número",
         "pt": "A duração do plano trial em dias deve ser um número"
     },
+    "A imagem excede o tamanho máximo de 2mb": {
+        "en": "The image exceeds the maximum size of 2MB",
+        "es": "La imagen excede el tamaño máximo de 2 MB",
+        "pt": "A imagem excede o tamanho máximo de 2mb"
+    },
     "A maioria dos navegadores permite que você controle os cookies por meio de suas preferências de configuração": {
         "en": "Most browsers allow you to control cookies through your configuration preferences",
         "es": "La mayoría de los navegadores le permiten controlar las cookies a través de sus preferencias de configuración",
         "pt": "A maioria dos navegadores permite que você controle os cookies por meio de suas preferências de configuração"
+    },
+    "A o upload da imagem não ocorreu com sucesso": {
+        "en": "A the upload of the image did not occur successfully",
+        "es": "A La carga de la imagen no ocurrió con éxito",
+        "pt": "A o upload da imagem não ocorreu com sucesso"
     },
     "A ordem já excedeu o tempo máximo de pedido de reembolso": {
         "en": "The order has already exceeded the maximum reimbursement request",
@@ -2804,6 +2814,11 @@
         "es": "Usuario no encontrado.",
         "pt": "Nenhum usuário encontrado."
     },
+    "Nenhuma key de imagem foi recebida": {
+        "en": "No image key has been received",
+        "es": "No se ha recibido ninguna tecla de imagen",
+        "pt": "Nenhuma key de imagem foi recebida"
+    },
     "Nenhuma mudança de URL necessária": {
         "en": "No necessary URL change",
         "es": "No hay cambio de URL necesario",
@@ -5273,6 +5288,11 @@
         "en": "It is necessary to enter a password.",
         "es": "Es necesario ingresar una contraseña.",
         "pt": "É necessário informar uma senha."
+    },
+    "É necessário que a imagem seja do tipo JPG/JPEG/PNG": {
+        "en": "It is necessary that the image is of the type JPG/JPEG/PNG",
+        "es": "Es necesario que la imagen sea del tipo jpg/jpeg/png",
+        "pt": "É necessário que a imagem seja do tipo JPG/JPEG/PNG"
     },
     "É necessário selecionar algum projeto para compor o federado": {
         "en": "It is necessary to select some project to compose the federate",

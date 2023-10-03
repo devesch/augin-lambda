@@ -3016,7 +3016,7 @@ export async function uploadUserThumb(input) {
         "original_name": file["name"],
     };
 
-    uploadWithoutProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
+    await uploadWithoutProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
 
     let update_user_response = await apiCaller('update_user', {
         "command": "update_user_thumb",
@@ -3026,6 +3026,7 @@ export async function uploadUserThumb(input) {
     if ("error" in update_user_response) {
         update_user_thumb_error_msg_span.innerHTML = update_user_response["error"];
     } else {
+        console.log("updating user_thumb image in src");
         user_thumb_img.src = "https://processed.augin.app/" + update_user_response["user_thumb"];
     }
 }

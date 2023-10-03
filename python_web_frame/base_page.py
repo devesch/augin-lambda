@@ -83,6 +83,7 @@ class BasePage:
         html.esc("user_email_val", self.user.user_email)
         html.esc("user_client_type_val", self.user.user_client_type)
         html.esc("user_url_val", self.event.get_url())
+        html.esc("user_thumb_val", self.user.generate_user_thumb_url())
         if not self.user.user_plan_id:
             trial_plans = Dynamo().query_trial_plans()
             if trial_plans:

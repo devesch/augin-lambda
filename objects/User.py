@@ -66,6 +66,12 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def generate_user_thumb_url(self):
+        if self.user_thumb:
+            return lambda_constants["processed_bucket_cdn"] + self.user_thumb
+        else:
+            return lambda_constants["cdn_bucket"] + "/assets/icons/person.svg"
+
     def update_user_thumb(self, new_thumb_key):
         self.user_thumb = new_thumb_key
         Dynamo().update_entity(self.__dict__, "user_thumb", self.user_thumb)
