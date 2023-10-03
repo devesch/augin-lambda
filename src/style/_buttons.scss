@@ -283,21 +283,21 @@ button.button--explore-more-options:disabled {
 }
 
 .button--save-25 {
-    padding: unset;
-    background-color: unset;
-    color: colors.color("color-primary-900");
-    border: none;
-    width: fit-content;
-    margin: auto;
-    font-weight: normal;
-    font-size: 0.9rem;
+    padding: unset !important;
+    background-color: unset !important;
+    color: colors.color("color-primary-900") !important;
+    border: none !important;
+    width: fit-content !important;
+    margin: auto !important;
+    font-weight: normal !important;
+    font-size: 0.9rem !important;
 }
 
 .button--save-25:hover,
 .button--save-25:active {
-    background-color: unset;
-    color: colors.color("color-primary-900");
-    border: none;
+    background-color: unset !important;
+    color: colors.color("color-primary-900") !important;
+    border: none !important;
 }
 
 /* Buttons - End */
