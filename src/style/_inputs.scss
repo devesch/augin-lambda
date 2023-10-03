@@ -412,3 +412,21 @@ input[type="checkbox"] + label {
 .input-search-icon.close-icon {
     cursor: pointer;
 }
+
+/* Backoffice Forms - Start */
+.input-country-code {
+    width: fit-content !important;
+}
+
+.panel_user_data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    .floating-input {
+        margin-top: 0;
+        width: 100%;
+    }
+}
+
+/* Backoffice Forms - End */
