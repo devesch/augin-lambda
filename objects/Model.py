@@ -19,6 +19,7 @@ class Model:
         self.model_filename = ""
         self.model_filename_zip = ""
         self.model_format = ""
+        self.model_visualization_count = "0"
         self.model_is_federated = False
         self.model_used_in_federated_ids = []
         self.model_federated_required_ids = []

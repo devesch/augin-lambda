@@ -180,6 +180,11 @@ class Dynamo:
 
     ### MODEL ###
 
+    def query_paginated_all_models_by_filesize_bracket(self, model_filesize_bracket, last_evaluated_key=None, limit=10):
+        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "model_filesize_bracket-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "model_filesize_bracket"}, "ExpressionAttributeValues": {":bef90": {"S": model_filesize_bracket}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
+
     def query_paginated_all_models(self, last_evaluated_key=None, limit=10):
         key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "model"}}}, limit, last_evaluated_key, key_schema)

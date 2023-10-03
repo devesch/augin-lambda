@@ -14,14 +14,14 @@ class BackofficeModels(BackofficePage):
     def render_get(self):
         backoffice_data = self.get_backoffice_data()
 
-        # if Validation().check_if_local_env():
-        #     models, last_evaluated_key = Dynamo().query_paginated_all_models(limit=int(10000000))
-        #     backoffice_data["backoffice_data_total_model_count"] = str(len(models))
-        #     Dynamo().put_entity(backoffice_data)
-        #     if models:
-        #         for model in models:
-        #             model["model_filesize_bracket"] = ModelController().generate_model_filesize_bracket(model["model_filesize"])
-        #             Dynamo().put_entity(model)
+        if Validation().check_if_local_env():
+            models, last_evaluated_key = Dynamo().query_paginated_all_models(limit=int(10000000))
+            backoffice_data["backoffice_data_total_model_count"] = str(len(models))
+            Dynamo().put_entity(backoffice_data)
+            if models:
+                for model in models:
+                    model["model_visualization_count"] = "0"
+                    Dynamo().put_entity(model)
 
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)

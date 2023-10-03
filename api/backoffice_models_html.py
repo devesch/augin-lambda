@@ -18,12 +18,16 @@ class BackofficeModelsHtml(BackofficePage):
             models = [model]
             return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
         else:
+
             if self.post.get("search_model_state") != "all" and self.post.get("search_user"):
                 searched_user = self.load_user(self.post["search_user"])
                 query = "query_user_models_from_state"
                 if not searched_user:
                     return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
                 models = Dynamo().query_user_models_from_state(searched_user, self.post["search_model_state"])
+            elif self.post.get("search_model_filesize_bracket") != "all":
+                query = "query_paginated_all_models_by_filesize_bracket"
+                models, last_evaluated_key = Dynamo().query_paginated_all_models_by_filesize_bracket(self.post["search_model_filesize_bracket"], limit=int(self.user.user_pagination_count))
             else:
                 if self.post.get("search_model_state") != "all":
                     query = "query_paginated_all_models_by_state"
