@@ -1859,6 +1859,16 @@
         "es": "Filtrar",
         "pt": "Filtrar"
     },
+    "Filtrar estado": {
+        "en": "Filter state",
+        "es": "Estado de filtro",
+        "pt": "Filtrar estado"
+    },
+    "Filtrar tamanho": {
+        "en": "Shut up",
+        "es": "Callarse la boca",
+        "pt": "Filtrar tamanho"
+    },
     "Finalizado": {
         "en": "Finished",
         "es": "Finalizado",

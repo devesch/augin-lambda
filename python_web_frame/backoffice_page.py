@@ -17,8 +17,11 @@ class BackofficePage(BasePage):
         full_html = []
         if all_models:
             for model in all_models:
-                if self.post.get("model_state"):
-                    if (self.post["model_state"] != model["model_state"]) and (self.post["model_state"] != "all"):
+                if self.post.get("search_model_state"):
+                    if (self.post["search_model_state"] != model["model_state"]) and (self.post["search_model_state"] != "all"):
+                        continue
+                if self.post.get("search_model_filesize_bracket"):
+                    if (self.post["search_model_filesize_bracket"] != model["model_filesize_bracket"]) and (self.post["search_model_filesize_bracket"] != "all"):
                         continue
                 html = ReadWrite().read_html("backoffice_models/_codes/html_backoffice_models_table_rows")
                 html.esc("model_id_val", model["model_id"])

@@ -8,8 +8,18 @@
             {{html_dropdown_select_user_pagination}}
         </div>
         <section class="panel-explore-filters-container">
+            <select name="model_filesize_bracket" id="search_models_by_filesize_bracket_select" onchange="js.index.updateBackofficeModels()">
+                <option value="all" selected disabled>{{Filtrar tamanho}}</option>
+                <option value="all">{{Todos}}</option>
+                <option value="0mb-50mb">0mb-50mb</option>
+                <option value="50mb-250mb">50mb-250mb</option>
+                <option value="250mb-500mb">250mb-500mb</option>
+                <option value="500mb-1000mb">500mb-1000mb</option>
+                <option value="1000mb-2000mb">1000mb-2000mb</option>
+                <option value="2000mb+">2000mb+</option>
+            </select>
             <select name="model_state" id="search_models_by_state_select" onchange="js.index.updateBackofficeModels()">
-                <option value="all" selected disabled>{{Filtrar}}</option>
+                <option value="all" selected disabled>{{Filtrar estado}}</option>
                 <option value="all">{{Todos}}</option>
                 <option value="not_created">{{Não criado}}</option>
                 <option value="in_processing">{{Em processamento}}</option>

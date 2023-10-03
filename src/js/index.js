@@ -2016,7 +2016,7 @@ export async function saveCreateFederatedProject() {
     if ("error" in update_model_response) {
 
     } else {
-        
+
     }
 
 }
@@ -2496,6 +2496,7 @@ export async function updateBackofficeOrders() {
 export async function updateBackofficeModels() {
     let search_models_by_user_input = document.getElementById("search_models_by_user_input");
     let search_models_by_state_select = document.getElementById("search_models_by_state_select");
+    let search_models_by_filesize_bracket_select = document.getElementById("search_models_by_filesize_bracket_select");
     let pagination_component = document.getElementById("pagination_component");
 
     let last_evaluated_key = document.getElementById("last_evaluated_key");
@@ -2505,7 +2506,8 @@ export async function updateBackofficeModels() {
 
     let backoffice_models_html_response = await apiCaller("backoffice_models_html", {
         "search_user": search_models_by_user_input.value,
-        "search_model_state": search_models_by_state_select.value
+        "search_model_state": search_models_by_state_select.value,
+        "search_model_filesize_bracket": search_models_by_filesize_bracket_select.value
     });
 
     pagination_component.innerHTML = backoffice_models_html_response["success"];
@@ -2899,4 +2901,24 @@ export async function reprocessModel(pressed_button, model_id) {
     });
     pressed_button.innerHTML = translate_response["success"];
 
+}
+
+export async function updateBackofficeCoupons() {
+    let search_coupons_by_name_or_code_input = document.getElementById("search_coupons_by_name_or_code_input");
+    let pagination_component = document.getElementById("pagination_component");
+
+    let last_evaluated_key = document.getElementById("last_evaluated_key");
+    let query = document.getElementById("query");
+    let query_filter = document.getElementById("query_filter");
+    let showing_total_count = document.getElementById("showing_total_count");
+
+    let backoffice_coupons_html_response = await apiCaller("backoffice_coupons_html", {
+        "search_coupon": search_coupons_by_name_or_code_input.value
+    });
+
+    pagination_component.innerHTML = backoffice_coupons_html_response["success"];
+    last_evaluated_key.value = backoffice_coupons_html_response["last_evaluated_key"];
+    query.value = backoffice_coupons_html_response["query"];
+    query_filter.value = backoffice_coupons_html_response["query_filter"];
+    showing_total_count.value = backoffice_coupons_html_response["showing_total_count"];
 }
