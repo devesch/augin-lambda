@@ -164,6 +164,6 @@ def check_if_folder_movement_is_valid(folder, destiny_folder):
 
 
 def increase_folder_visualization_count(folder):
-    folder["folder_visualization_count"] = str(int(folder["folder_visualization_count"] + 1))
+    folder["folder_visualization_count"] = str(int(folder["folder_visualization_count"]) + 1)
     Dynamo().update_entity(folder, "folder_visualization_count", folder["folder_visualization_count"])
     return folder
