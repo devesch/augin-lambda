@@ -2084,7 +2084,6 @@ input[list]::-ms-clear {
 
 .open-cookies-button {
     justify-content: center;
-    margin-top: 2rem;
 }
 
 .user-register-section-label {
@@ -2285,5 +2284,22 @@ input[list]::-ms-clear {
 .panel-user-data-header {
     text-align: center;
     margin-bottom: 2rem;
+}
+
+.panel-user-data__main-container,
+.panel-user-data__sub-container {
+    margin-top: 1rem;
+    padding: 2rem 1rem;
+    background-color: colors.color("color-neutral-50");
+    border-radius: 1rem;
+
+}
+
+.panel-user-data__sub-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;
 }
 /* panel user data - end */
