@@ -3029,6 +3029,16 @@
         "es": "No autorizado",
         "pt": "Não autorizado"
     },
+    "Não baixa arquivos": {
+        "en": "Do not download files",
+        "es": "No descargue archivos",
+        "pt": "Não baixa arquivos"
+    },
+    "Não compartilha": {
+        "en": "Does not share",
+        "es": "No comparte",
+        "pt": "Não compartilha"
+    },
     "Não criado": {
         "en": "Uninteed",
         "es": "Invintivo",
@@ -3048,6 +3058,11 @@
         "en": "It was not possible to send the email, contact the support.",
         "es": "No fue posible enviar el correo electrónico, comunicarse con el soporte.",
         "pt": "Não foi possível enviar o email, entre em contato com o suporte."
+    },
+    "Não possui TeamPlay": {
+        "en": "No Teamplay",
+        "es": "Sin juego de equipo",
+        "pt": "Não possui TeamPlay"
     },
     "Não responda a esta mensagem. Este e-mail foi enviado por um sistema automático que não processa respostas.": {
         "en": "Do not respond to this message.This email was sent by an automatic system that does not process answers.",

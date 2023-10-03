@@ -83,17 +83,22 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                     html.esc("plan_cloud_space_in_gbs_val", int(int(plan["plan_cloud_space_in_mbs"]) / 1000))
                     if not plan["plan_share_files"]:
                         html.esc("plan_share_files_visibility_val", "display:none;")
+                    else:
+                        html.esc("not_plan_share_files_visibility_val", "display:none;")
 
                     html.esc("plan_reference_tracker_val", self.translate(translate_reference_tracker(plan["plan_reference_tracker"])))
                     html.esc("plan_maxium_federated_size_in_mbs_val", plan["plan_maxium_federated_size_in_mbs"])
                     html.esc("plan_maxium_devices_available_val", plan["plan_maxium_devices_available"])
                     if not plan["plan_download_files"]:
                         html.esc("plan_download_files_visibility_val", "display:none;")
+                    else:
+                        html.esc("not_plan_download_files_visibility_val", "display:none;")
 
                     if plan["plan_team_play_participants"] == "0":
                         html.esc("plan_team_play_participants_visibility_val", "display:none;")
                     else:
                         html.esc("plan_team_play_participants_val", plan["plan_team_play_participants"])
+                        html.esc("not_plan_team_play_participants_visibility_val", "display:none;")
 
                     full_html.append(str(html))
         return "".join(full_html)
