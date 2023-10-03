@@ -67,6 +67,7 @@ class BackofficePage(BasePage):
                 html.esc("model_thumb_filename_val", model["model_thumb_filename"])
                 html.esc("model_zip_key_val", model["model_zip_key"])
                 html.esc("model_share_link_val", model["model_share_link"])
+                html.esc("model_visualization_count_val", model["model_visualization_count"])
                 html.esc("model_share_link_qrcode_val", model["model_share_link_qrcode"])
                 html.esc("model_category_val", model["model_category"])
                 html.esc("model_xml_ec2_machine_val", model["model_xml_ec2_machine"])

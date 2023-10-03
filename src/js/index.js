@@ -1154,7 +1154,7 @@ export function activateDraggableItems() {
 
 }
 
-export async function openModalShareProject(model_id, model_name, model_share_link, model_share_link_qrcode, model_is_password_protected, model_password, model_is_acessible) {
+export async function openModalShareProject(model_id, model_name, model_visualization_count, model_share_link, model_share_link_qrcode, model_is_password_protected, model_password, model_is_acessible) {
     let share_project_name_span = document.getElementById("share_project_name_span");
     let copy_project_share_link_button = document.getElementById("copy_project_share_link_button");
     let update_model_id_input = document.getElementById("update_model_id_input");
@@ -1163,6 +1163,7 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     let project_is_password_protected_input = document.getElementById("project_is_password_protected_input");
     let project_password_div = document.getElementById("project_password_div");
     let project_password_input = document.getElementById("project_password_input");
+    let model_visualization_count_span = document.getElementById("model_visualization_count_span");
     let project_password_error_span = document.getElementById("project_password_error_span");
     let project_is_accessible_input = document.getElementById("project_is_accessible_input");
 
@@ -1184,6 +1185,7 @@ export async function openModalShareProject(model_id, model_name, model_share_li
     }
 
     project_password_error_span.innerHTML = "";
+    model_visualization_count_span.innerHTML = model_visualization_count;
     project_password_input.value = model_password;
     update_model_id_input.value = model_id;
     share_project_name_span.innerText = model_name;
