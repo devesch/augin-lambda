@@ -4,9 +4,7 @@
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Gerencie seus dispositivos}}</h1>
         <div class="my-plan__title-container__button-container">
-            <button class="black my-plan__title-container__button">
-                Upgrade
-            </button>
+            {{html_upgrade_button}}
             <button class="ghost my-plan__title-container__button">
                 <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="Notificações" width="24" height="24">
             </button>
@@ -14,9 +12,9 @@
     </div>
 
     <div class="devices__title-container">
-        <h1>{{Veja seus dispositivos conectados ao Augin.}}</h1>
-        <h2>{{Atualmente você tem}} 3 {{dispositivos conectados de}} 4 d{{isponíveis e realizou}} 0 {{desativações de}} 4 {{possíveis}}.</h2>
-        <h3>{{Seu plano permite conectar até }}4 {{dispositivos. Faça um upgrade para aumentar esse limite.}}</h3>
+        <h1>{{Veja seus dispositivos conectados ao Augin}}.</h1>
+        <h2>{{Atualmente você tem}} 3 {{dispositivos conectados de}} {{plan_maxium_devices_available_val}} {{disponíveis e realizou}} 0 {{desativações de}} {{plan_maxium_devices_changes_in_30d_val}} {{possíveis}}.</h2>
+        <h3>{{Seu plano permite conectar até}} {{plan_maxium_devices_available_val}} {{dispositivos}}. {{make_and_upgrade_phrase_val}}</h3>
     </div>
 
     <section class="devices__limit-container">
@@ -94,6 +92,6 @@
             <button class="black">{{Desvincular}}</button>
         </div>
     </section>
-    
 </main>
+
 {{footer}}

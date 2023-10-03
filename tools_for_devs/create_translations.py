@@ -18,6 +18,7 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Faça um upgrade para aumentar esse limite.",
     "Reprocessar",
     "Reprocessando...",
     "O arquivo .zip se encontra trancado com senha.",
