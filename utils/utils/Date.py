@@ -1,4 +1,5 @@
 from datetime import datetime
+from utils.Config import lambda_constants
 
 
 class Date:
@@ -12,7 +13,12 @@ class Date:
     def format_to_str_time(self, created_at):
         dt_object = datetime.fromtimestamp(float(created_at))
         formatted_date = dt_object.strftime("%b %d, %Y")
-        return formatted_date
+        if lambda_constants["current_language"] == "en":
+            return formatted_date
+        if lambda_constants["current_language"] == "es":
+            return formatted_date.replace("Jan", "Ene").replace("Apr", "Abr").replace("May", "Mai").replace("Aug", "Ago").replace("Dec", "Dic")
+        else:
+            return formatted_date.replace("Feb", "Fev").replace("Apr", "Abr").replace("May", "Mai").replace("Aug", "Ago").replace("Sep", "Set").replace("Oct", "Out").replace("Dec", "Dez")
 
     def get_current_br_month(self):
         import datetime
