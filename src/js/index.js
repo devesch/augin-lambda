@@ -182,7 +182,7 @@ export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = fal
     if ("error" in update_user_response) {
         showCheckoutPanelUserDataForm(update_user_response["user_client_type"]);
     } else {
-        if (user_selected_plan_is_trial_input.value == true) {
+        if (user_selected_plan_is_trial_input.value == "true") {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
         } else {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
@@ -308,7 +308,7 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
         let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input")
         let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
         let user_selected_plan_is_trial_input = document.getElementById("user_selected_plan_is_trial_input");
-        if (user_selected_plan_is_trial_input.value == true) {
+        if (user_selected_plan_is_trial_input.value == "true") {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
         } else {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
