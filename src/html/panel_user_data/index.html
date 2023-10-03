@@ -7,7 +7,7 @@
         <h1 class="my-plan__title">{{Atualize seus dados}}</h1>
     </div>
     <div class="login__title-container">
-        <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
+        <input onchange="js.index.uploadUserThumb(this, '{{user_id_val}}')" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
 
         {{html_physical_or_company_form}}
         {{html_change_password_link}}

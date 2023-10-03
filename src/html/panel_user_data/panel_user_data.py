@@ -27,7 +27,9 @@ class PanelUserData(PanelPage, UserPage):
             self.user.clear_perdonal_data()
 
         if self.render_props:
+
             html.esc("my_plan_main_class_val", "my-plan__main")
+            html.esc("user_id_val", self.user.user_id)
             html.esc("html_paneluserdata_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserdata_div"))
             html.esc("html_paneluserdata_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserdata_div"))
             html.esc("html_paneluserbox_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserbox_div"))

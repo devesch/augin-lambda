@@ -827,6 +827,35 @@ const uploadWithProgressBar = (url, post_data) =>
         xhr.send(formData);
     });
 
+const uploadWithoutProgressBar = (url, post_data) =>
+    new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        let current_progress;
+        xhr.upload.addEventListener('progress', (e) => {
+            current_progress = Math.round((e.loaded / e.total) * 100);
+            console.log(current_progress);
+        });
+        xhr.addEventListener('load', () => {
+            resolve({
+                status: xhr.status,
+                body: xhr.responseText
+            });
+        });
+        xhr.addEventListener('error', () => {
+            reject(new Error('File upload failed'))
+        });
+        xhr.addEventListener('abort', () => {
+            reject(new Error('File upload aborted'))
+        });
+        xhr.open('POST', url, true);
+        let formData = new FormData();
+        for (let property in post_data) {
+            formData.append(property, post_data[property]);
+        }
+        xhr.send(formData);
+    });
+
+
 export function openModal(css_class) {
     let modal = document.querySelector(css_class);
     modal.classList.add('active');
@@ -2962,15 +2991,15 @@ export async function checkIfShareFolderIsAvailable() {
 
 export async function uploadUserThumb(input, user_id) {
     const files = input.files;
-    const process_to_bucket = "processed.augin.app";
-    const file = files[i];
+    const process_to_bucket = "upload.augin.app";
+    const file = files[0];
 
     let file_name_array = file["name"].split(".");
     let file_name_extension = file_name_array[file_name_array.length - 1];
 
     let panel_get_aws_upload_keys_response = await apiCaller("panel_get_aws_upload_keys", {
         "key_extension": file_name_extension,
-        "key_path": "user_thumbs/" + user_id + "/",
+        // "key_path": "user_thumbs/" + user_id + "/",
         "bucket": process_to_bucket
     });
 
@@ -2981,8 +3010,13 @@ export async function uploadUserThumb(input, user_id) {
         "signature": panel_get_aws_upload_keys_response["success"]['signature'],
         "file": file,
         "original_name": file["name"],
-        "element_index": current_index
     };
 
-    uploadWithProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
+    uploadWithoutProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
+
+    let update_user_response = await apiCaller('update_user', {
+        "command": "update_user_thumb",
+        "thumb_key": panel_get_aws_upload_keys_response["success"]['key']
+    });
+
 }
