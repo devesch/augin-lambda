@@ -146,6 +146,19 @@
     padding: 0.25rem 0.5rem;
 }
 
+.qrcode__views-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    align-items: start;
+    margin-top: -0.75rem;
+
+    img {
+        vertical-align: middle;
+    }
+
+}
+
 .share-protection-container {
     display: flex;
     flex-direction: row;
