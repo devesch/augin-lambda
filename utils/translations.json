@@ -1844,6 +1844,11 @@
         "es": "Hacer una actualización",
         "pt": "Faça um upgrade"
     },
+    "Faça um upgrade para aumentar esse limite.": {
+        "en": "Make an upgrade to increase this limit.",
+        "es": "Realice una actualización para aumentar este límite.",
+        "pt": "Faça um upgrade para aumentar esse limite."
+    },
     "Fechar": {
         "en": "To close",
         "es": "Cerrar",
@@ -4104,6 +4109,11 @@
         "es": "Tu plan actual",
         "pt": "Seu plano atual"
     },
+    "Seu plano permite conectar até": {
+        "en": "Your plan allows you to connect to",
+        "es": "Su plan le permite conectarse",
+        "pt": "Seu plano permite conectar até"
+    },
     "Seu plano permite conectar até ": {
         "en": "Your plan allows you to connect up to",
         "es": "Tu plan te permite conectarte hasta",
@@ -4714,6 +4724,11 @@
         "es": "Vea cómo los usamos",
         "pt": "Veja como os usamos"
     },
+    "Veja seus dispositivos conectados ao Augin": {
+        "en": "See your devices connected to augin",
+        "es": "Vea sus dispositivos conectados a Augin",
+        "pt": "Veja seus dispositivos conectados ao Augin"
+    },
     "Veja seus dispositivos conectados ao Augin.": {
         "en": "View your devices connected to Augin.",
         "es": "Visualiza tus dispositivos conectados a Augin.",
@@ -4948,6 +4963,11 @@
         "en": "days ago",
         "es": "dias atras",
         "pt": "dias atrás"
+    },
+    "disponíveis e realizou": {
+        "en": "available and performed",
+        "es": "disponible y realizado",
+        "pt": "disponíveis e realizou"
     },
     "dispositivos": {
         "en": "devices",
