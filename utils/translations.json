@@ -1584,6 +1584,16 @@
         "es": "Esta carpeta no es accesible al compartir",
         "pt": "Esta pasta não se encontra acessível através de compartilhamento"
     },
+    "Esta pasta se encontra protegida por senha": {
+        "en": "This folder is protected by password",
+        "es": "Esta carpeta está protegida por contraseña",
+        "pt": "Esta pasta se encontra protegida por senha"
+    },
+    "Esta pasta se encontra protegido por senha": {
+        "en": "This folder is protected by password",
+        "es": "Esta carpeta está protegida por contraseña",
+        "pt": "Esta pasta se encontra protegido por senha"
+    },
     "Esta política descreve o que são cookies, os tipos de cookies que usamos, por que os usamos e como você pode gerenciar esses cookies": {
         "en": "This policy describes what cookies are, the types of cookies we use, why we use them and how you can manage these cookies",
         "es": "Esta política describe qué son las cookies, los tipos de cookies que usamos, por qué las usamos y cómo puede administrar estas cookies.",
@@ -2560,7 +2570,7 @@
         "pt": "Modificar configurações de cookies"
     },
     "Moeda": {
-        "en": "Coin",
+        "en": "Currency",
         "es": "Moneda",
         "pt": "Moeda"
     },

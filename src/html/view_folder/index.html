@@ -12,12 +12,12 @@
                 <button id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}" />
                 </button>
-                <button onclick="js.index.openFolder('{{folder_id_val}}', '')" class="button--user-folders">
+                <button onclick="js.index.openFolder('{{folder_id_val}}', '{{folder_path_val}}')" class="button--user-folders">
                     <h2>{{Pasta compartilhada}}</h2>
                 </button>
                 <h2 id="folder_path_span"></h2>
                 <input hidden id="folder_id_input" value="{{folder_id_val}}">
-                <input hidden id="folder_path_input">
+                <input hidden id="folder_path_input" value="{{folder_path_val}}">
             </div>
         </div>
         <div class="custom-explore__table">
@@ -55,11 +55,38 @@
         </div>
     </section>
 </main>
+
+<div id="password-shared-project-modal" class="modal password-shared-project-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Esta pasta se encontra protegida por senha}}</h1>
+        </div>
+        <div class="modal-content">
+            <div>
+                <div class="floating-input">
+                    <input type="password" name="shared_asset_password" value="" id="shared_asset_password_input" placeholder="" required autofocus minlength="1" maxlength="500">
+                    <label for="shared_asset_password_input">{{Digite a senha do arquivo}}</label>
+                    <button type="button" class="toggle-password-button button--icon" onclick="js.index.togglePasswordText(this, 'shared_asset_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
+                        <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="{{Ícone de olho}}" width="24" height="24">
+                    </button>
+                </div>
+            </div>
+            <span class="error" id="shared_asset_password_error_span">
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.saveAddPasswordSharedProject()">{{Adicionar}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{footer}}
 
+<input hidden id="shared_asset_link_input" value="{{domain_name_url_val}}/{{user_url_val}}">
 <input hidden id="shared_folder_id_input" value="{{folder_id_val}}">
+<input hidden id="folder_is_password_protected" value="{{folder_is_password_protected_val}}">
 <script>
     window.onload = async function () {
-        js.index.showUserDicts();
+        js.index.checkIfShareFolderIsAvailable();
     };
 </script>

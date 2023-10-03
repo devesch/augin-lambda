@@ -119,7 +119,7 @@ class BackofficePage(BasePage):
                 html.esc("user_subscription_status_val", user["user_subscription_status"])
                 html.esc("user_plan_id_val", user["user_plan_id"])
                 html.esc("user_last_login_at_val", Date().format_unixtime_to_br_date(user["user_last_login_at"]))
-                html.esc("user_cart_currency_val", user["user_cart_currency"])
+                html.esc("user_cart_currency_val", StrFormat().format_currency_to_symbol(user["user_cart_currency"]))
                 html.esc("user_country_val", user["user_address_data"]["user_country"])
                 html.esc("user_auth_token_val", user["user_auth_token"])
                 full_html.append(str(html))
@@ -213,7 +213,7 @@ class BackofficePage(BasePage):
                 if order["order_status"] == "paid" and order["order_nfse_pdf_link"] == "":
                     html.esc("html_re_issue_order_nfse_pdf", self.show_html_re_issue_order_nfse_pdf(order["order_id"]))
                 if order["order_status"] not in ["paid", "refunded"]:
-                    html.esc("order_link_visibility_val", 'style="display:none;"')
+                    html.esc("order_link_visibility_val", "display:none;")
                 full_html.append(str(html))
         return "".join(full_html)
 

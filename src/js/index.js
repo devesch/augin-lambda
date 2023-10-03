@@ -2154,6 +2154,10 @@ export async function saveAddPasswordSharedProject() {
     })
 
     if ("success" in update_user_response) {
+        if (location.href.includes("view_folder") && update_user_response["has_user"] == "True") {
+            location.href = ProjectData.props.domainNameUrlVal + "/panel_shared_project/?folder_id=" + update_user_response["folder_id"];
+            return
+        }
         await showUserDicts();
         closeModal(".password-shared-project-modal");
     }
@@ -2451,6 +2455,10 @@ export async function loadMoreCallApiPagination() {
         "last_evaluated_key": last_evaluated_key_input.value,
         "query_filter": query_filter_value
     });
+
+    if ("error" in pagination_queries_response) {
+        return
+    }
     let pagination_component = document.getElementById("pagination_component");
     pagination_component.innerHTML += pagination_queries_response["success"];
     let pagination_actual_itens_count_span = document.getElementById("pagination_actual_itens_count_span");
@@ -2925,4 +2933,13 @@ export async function updateBackofficeCoupons() {
     query.value = backoffice_coupons_html_response["query"];
     query_filter.value = backoffice_coupons_html_response["query_filter"];
     showing_total_count.value = backoffice_coupons_html_response["showing_total_count"];
+}
+
+export async function checkIfShareFolderIsAvailable() {
+    let shared_folder_id_input = document.getElementById("shared_folder_id_input");
+    let folder_is_password_protected = document.getElementById("folder_is_password_protected");
+
+    if (folder_is_password_protected.value == "True") {
+        openModal(".password-shared-project-modal");
+    }
 }

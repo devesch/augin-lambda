@@ -14,7 +14,7 @@ class UpdateUser(BasePage):
         if not self.post.get("command"):
             return {"error": "Nenhum command no post"}
 
-        if self.post["command"] not in ("get_root_folder"):
+        if self.post["command"] not in ("get_root_folder", "add_shared"):
             if not self.user:
                 return {"error": "Nenhum usuário encontrado"}
 
@@ -194,15 +194,16 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhuma pasta encontrada com o link fornecido"}
             if not folder["folder_is_accessible"]:
                 return {"error": "Esta pasta não se encontra acessível através de compartilhamento"}
-            user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
-            if folder["folder_id"] in user_shared_dicts["folders"]:
-                return {"error": "Esta pasta já se encontra nos seus compartilhados"}
             if folder["folder_is_password_protected"] and not self.post.get("shared_password"):
                 return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
             if folder["folder_is_password_protected"] and (folder["folder_password"] != self.post.get("shared_password")):
                 return {"error": "A senha informada está incorreta"}
-            self.user.add_folder_to_user_shared_dicts(user_shared_dicts, folder)
-            return {"success": "Pasta adicionada aos compartilhados"}
+
+            if self.user:
+                user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
+                if folder["folder_id"] not in user_shared_dicts["folders"]:
+                    self.user.add_folder_to_user_shared_dicts(user_shared_dicts, folder)
+            return {"success": "Pasta adicionada aos compartilhados", "has_user": bool(self.user), "folder_id": folder_id}
 
     def create_folder(self):
         if not self.post.get("folder_name"):

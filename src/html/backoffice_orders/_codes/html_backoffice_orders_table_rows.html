@@ -10,10 +10,10 @@
     <td>{{order_currency_val}}</td>
     <td>{{order_total_price_val}}</td>
     <td>{{order_status_val}}</td>
-    <td {{order_link_visibility_val}}><a href="{{order_nfse_xml_link_val}}">XML</a> / <a href="{{order_nfse_pdf_link_val}}">PDF</a> - {{order_nfse_status_val}}</td>
     <td>
-        <div>
-            {{html_re_issue_order_nfse}} {{html_re_issue_order_nfse_pdf}} {{html_refund_order}}
-        </div>
+        <a style="{{order_link_visibility_val}}" href="{{order_nfse_xml_link_val}}">XML</a> / <a href="{{order_nfse_pdf_link_val}}">PDF</a> - {{order_nfse_status_val}}
+    </td>
+    <td>
+        {{html_re_issue_order_nfse}} {{html_re_issue_order_nfse_pdf}} {{html_refund_order}}
     </td>
 </tr>

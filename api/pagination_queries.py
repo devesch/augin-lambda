@@ -10,13 +10,13 @@ class PaginationQueries(BackofficePage, PanelPage):
         if not self.post.get("query"):
             return {"error": "no command in post"}
 
+        if self.post["query"] in ["get_model", "query_user_models_from_state"]:
+            return {"error": "Esta query não é possível de ser paginada"}
+
         if self.post.get("last_evaluated_key"):
             if self.post.get("last_evaluated_key") == "undefined":
                 return {"error": "undefined last_evaluated_key"}
             last_evaluated_key = loads(self.post["last_evaluated_key"])
-
-        if self.post["query"] in ["get_model"]:
-            return {"error": "Esta query não é possível de ser paginada"}
 
         if self.post["query"] == "query_paginated_user_orders":
             user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, self.post["page"])
