@@ -4629,11 +4629,6 @@
         "es": "Uzbekistán",
         "pt": "Uzbequistão"
     },
-    "Valida até": {
-        "en": "Valid until",
-        "es": "Válido hasta",
-        "pt": "Valida até"
-    },
     "Validar Email": {
         "en": "Validate Email",
         "es": "Validar correo electrónico",
@@ -4798,6 +4793,11 @@
         "en": "Return",
         "es": "Para volver",
         "pt": "Voltar"
+    },
+    "Válida até": {
+        "en": "Valid until",
+        "es": "Válido hasta",
+        "pt": "Válida até"
     },
     "Wallis and Futuna": {
         "en": "Wallis and Futuna",
