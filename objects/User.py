@@ -68,7 +68,7 @@ class User:
 
     def generate_user_thumb_url(self):
         if self.user_thumb:
-            return lambda_constants["processed_bucket_cdn"] + self.user_thumb
+            return lambda_constants["processed_bucket_cdn"] + "/" + self.user_thumb
         else:
             return lambda_constants["cdn_bucket"] + "/assets/icons/person.svg"
 

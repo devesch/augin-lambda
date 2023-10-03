@@ -2992,6 +2992,7 @@ export async function checkIfShareFolderIsAvailable() {
 export async function uploadUserThumb(input) {
     var user_thumb_img = document.getElementById("user_thumb_img");
     var update_user_thumb_error_msg_span = document.getElementById("update_user_thumb_error_msg_span");
+    var panel_menu_user_thumb_img = document.getElementById("panel_menu_user_thumb_img");
 
     update_user_thumb_error_msg_span.innerHTML = "";
 
@@ -3027,6 +3028,8 @@ export async function uploadUserThumb(input) {
         update_user_thumb_error_msg_span.innerHTML = update_user_response["error"];
     } else {
         console.log("updating user_thumb image in src");
-        user_thumb_img.src = "https://processed.augin.app/" + update_user_response["user_thumb"];
+        let new_source_for_image = "https://processed.augin.app/" + update_user_response["user_thumb"];
+        panel_menu_user_thumb_img.src = new_source_for_image;
+        user_thumb_img.src = new_source_for_image;
     }
 }
