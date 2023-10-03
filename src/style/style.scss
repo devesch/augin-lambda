@@ -1561,7 +1561,8 @@ input[list]::-ms-clear {
     }
 }
 
-.explore-create-more-options {
+.explore-create-more-options,
+.shared-create-more-options {
     display: flex;
     flex-direction: row;
     align-items: center;

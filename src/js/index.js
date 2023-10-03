@@ -986,8 +986,19 @@ export function detectClickOutsideElement() {
         hideExploreMenuWhenClickedOutside(event.target);
 
         if (exploreCreateButton) {
+            if (!exploreCreateButton) {
+                return;
+            };
+
+            if (!exploreCreateButton.getAttribute("aria-controls")) {
+                return;
+            };
+
             let currentMenu = document.getElementById(exploreCreateButton.getAttribute("aria-controls"));
-            activateExploreCreateMenu(event.target, exploreCreateButton, currentMenu);
+            if (currentMenu) {
+                activateExploreCreateMenu(event.target, exploreCreateButton, currentMenu);
+            }
+
         }
 
     });
