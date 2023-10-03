@@ -13,10 +13,18 @@ class BackofficePage(BasePage):
         super().__init__()
         self.admin = True
 
-    def list_html_backoffice_models_table_rows(self, all_models):
+    def list_html_backoffice_products_table_rows(self, products):
         full_html = []
-        if all_models:
-            for model in all_models:
+        if products:
+            for product in products:
+                html = ReadWrite().read_html("backoffice_models/_codes/html_backoffice_products_table_rows")
+                full_html.append(str(html))
+        return "".join(full_html)
+
+    def list_html_backoffice_models_table_rows(self, models):
+        full_html = []
+        if models:
+            for model in models:
                 if self.post.get("search_model_state"):
                     if (self.post["search_model_state"] != model["model_state"]) and (self.post["search_model_state"] != "all"):
                         continue
