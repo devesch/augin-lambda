@@ -53,8 +53,16 @@ class PanelUserData(PanelPage, UserPage):
         if self.path.get("render_props") == "False":
             self.render_props = False
 
+        if not self.post.get("user_email"):
+            return self.render_get_with_error("Por favor informe um email.")
+        user_changed_email = False
+        if self.post["user_email"] != self.user.user_email:
+            check_user = self.load_user(self.post["user_email"])
+            if check_user:
+                return self.render_get_with_error("Já existe um usuário com este email cadastrado.")
+            user_changed_email = True
+
         if self.path["user_client_type"] == "physical":
-            # TODO: como vai ficar a tradução aqui nessas mensagens hardcoded?
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
             if not self.post.get("user_phone"):
@@ -116,6 +124,7 @@ class PanelUserData(PanelPage, UserPage):
             if not Validation().check_if_phone(self.post["user_phone"], self.post["user_country"]):
                 return self.render_get_with_error("Por favor informe um número de telefone válido.")
 
+        self.user.user_email = self.post["user_email"]
         self.user.user_name = self.post["user_name"]
         self.user.user_first_three_letters_name = self.user.user_name[:3]
         self.user.user_phone = self.post["user_phone"]
@@ -145,7 +154,10 @@ class PanelUserData(PanelPage, UserPage):
         if not self.render_props:
             if not self.user.user_payment_ready:
                 return self.render_get_with_error("Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra")
-        return self.render_get_with_error("Perfil atualizado com sucesso.")
+
+        if user_changed_email:
+            self.user.update_auth_token()
+        return {"html": self.render_get_with_error("Perfil atualizado com sucesso."), "command": "login", "user_auth_token": self.user.user_auth_token}
 
     def show_html_physical_form(self):
         html = ReadWrite().read_html("panel_user_data/_codes/html_physical_form")
