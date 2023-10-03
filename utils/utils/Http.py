@@ -9,7 +9,7 @@ last_post_event = None
 class Http:
     _instance = None
 
-    dangerous_characters = ("<", ">", "?", ";", "[", "\\", "]", "|")
+    dangerous_characters = ("<", ">", "?", ";", "[", "\\", "]", "|", "'")
     format_to_number_fields = (
         "user_phone",
         "user_cpf",
