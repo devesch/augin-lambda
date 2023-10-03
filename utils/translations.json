@@ -3189,6 +3189,11 @@
         "es": "El proyecto seleccionado no es válido",
         "pt": "O projeto selecionado é inválido"
     },
+    "O proprietário marcou esta pasta como inacessível": {
+        "en": "The owner marked this folder as inaccessible",
+        "es": "El propietario marcó esta carpeta como inaccesible",
+        "pt": "O proprietário marcou esta pasta como inacessível"
+    },
     "O que são cookies": {
         "en": "What are cookies",
         "es": "¿Qué son las galletas?",

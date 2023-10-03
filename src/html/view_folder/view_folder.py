@@ -19,6 +19,7 @@ class ViewFolder(PanelPage):
         html.esc("html_filter_and_search_section", self.show_html_filter_and_search_section(show_search=False))
         html.esc("folder_id_val", self.path["folder"]["folder_id"])
         html.esc("folder_path_val", self.path["folder"]["folder_path"])
+        html.esc("folder_is_accessible_val", self.path["folder"]["folder_is_accessible"])
         html.esc("folder_is_password_protected_val", self.path["folder"]["folder_is_password_protected"])
         return str(html)
 

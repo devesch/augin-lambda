@@ -2154,7 +2154,7 @@ export async function saveAddPasswordSharedProject() {
     })
 
     if ("success" in update_user_response) {
-        if (location.href.includes("view_folder") && update_user_response["has_user"] == "True") {
+        if (location.href.includes("view_folder") && update_user_response["has_user"] == true) {
             location.href = ProjectData.props.domainNameUrlVal + "/panel_shared_project/?folder_id=" + update_user_response["folder_id"];
             return
         }
@@ -2936,10 +2936,14 @@ export async function updateBackofficeCoupons() {
 }
 
 export async function checkIfShareFolderIsAvailable() {
-    let shared_folder_id_input = document.getElementById("shared_folder_id_input");
     let folder_is_password_protected = document.getElementById("folder_is_password_protected");
+    let folder_is_accessible_input = document.getElementById("folder_is_accessible_input");
 
-    if (folder_is_password_protected.value == "True") {
+    if (folder_is_accessible_input.value == "False") {
+        openModal(".not-acessible-folder-modal");
+    } else if (folder_is_password_protected.value == "True") {
         openModal(".password-shared-project-modal");
+    } else {
+        showUserDicts();
     }
 }
