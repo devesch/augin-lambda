@@ -12,6 +12,7 @@ class UserFolder:
         self.folder_user_id = folder_user_id
         self.folder_path = folder_path + folder_name
         self.folder_root_id = folder_root_id
+        self.folder_visualization_count = "0"
         self.folder_size_in_mbs = "0"
         self.folder_foldersize_in_mbs = "0"
         self.folder_filesize_in_mbs = "0.0"
