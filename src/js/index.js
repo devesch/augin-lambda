@@ -2958,3 +2958,31 @@ export async function checkIfShareFolderIsAvailable() {
         showUserDicts();
     }
 }
+
+
+export async function uploadUserThumb(input, user_id) {
+    const files = input.files;
+    const process_to_bucket = "processed.augin.app";
+    const file = files[i];
+
+    let file_name_array = file["name"].split(".");
+    let file_name_extension = file_name_array[file_name_array.length - 1];
+
+    let panel_get_aws_upload_keys_response = await apiCaller("panel_get_aws_upload_keys", {
+        "key_extension": file_name_extension,
+        "key_path": "user_thumbs/" + user_id + "/",
+        "bucket": process_to_bucket
+    });
+
+    let post_data = {
+        "key": panel_get_aws_upload_keys_response["success"]['key'],
+        "AWSAccessKeyId": panel_get_aws_upload_keys_response["success"]['AWSAccessKeyId'],
+        "policy": panel_get_aws_upload_keys_response["success"]['policy'],
+        "signature": panel_get_aws_upload_keys_response["success"]['signature'],
+        "file": file,
+        "original_name": file["name"],
+        "element_index": current_index
+    };
+
+    uploadWithProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
+}
