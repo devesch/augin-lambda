@@ -145,7 +145,7 @@ class Http:
         return value.replace(dangerous_character, "")
 
     def format_post_data(self, post):
-        ignore_param = ()
+        ignore_param = "last_evaluated_key"
         if not post:
             return {}
 
