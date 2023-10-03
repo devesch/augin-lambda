@@ -22,6 +22,7 @@ class User:
         self.user_id = str(time.time())
 
         self.user_name = ""
+        self.user_thumb = ""
         self.user_first_three_letters_name = ""
         self.user_password = ""
         self.user_status = "not_created"
@@ -64,6 +65,10 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def update_user_thumb(self, new_thumb_key):
+        self.user_thumb = new_thumb_key
+        Dynamo().update_entity(self.__dict__, "user_thumb", self.user_thumb)
 
     def remove_user_cart_coupon_code(self):
         self.user_cart_coupon_code = ""

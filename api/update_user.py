@@ -4,6 +4,7 @@ from python_web_frame.controllers.project_controller import ProjectController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
+from utils.AWS.S3 import S3
 from utils.Config import lambda_constants
 from objects.UserFolder import check_if_folder_movement_is_valid
 from objects.UserPaymentMethod import UserPaymentMethod
@@ -19,6 +20,20 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhum usuário encontrado"}
 
         return getattr(self, self.post["command"])()
+
+    def update_user_thumb(self):
+        if not self.post.get("thumb_key"):
+            return {"error": "Nenhuma key de imagem foi recebida"}
+        if not S3().check_if_file_exists(lambda_constants["upload_bucket"], self.post["thumb_key"]):
+            return {"error": "A o upload da imagem não ocorreu com sucesso"}
+        if self.post["thumb_key"].split(".")[-1].lower() not in ["jpg", "jpeg", "png"]:
+            return {"error": "É necessário que a imagem seja do tipo JPG/JPEG/PNG"}
+        if int(S3().get_filesize(lambda_constants["upload_bucket"], self.post["thumb_key"])) / 1024 / 1024 > 2:
+            return {"error": "A imagem excede o tamanho máximo de 2mb"}
+        new_image_key = "user_thumbs/" + self.user.user_id + "/" + self.post["thumb_key"]
+        S3().copy_file_from_one_bucket_to_another(lambda_constants["upload_bucket"], self.post["thumb_key"], lambda_constants["processed_bucket"], new_image_key)
+        self.user.update_user_thumb(new_image_key)
+        return {"success": "Imagem atualizada com sucesso", "user_thumb": new_image_key}
 
     def add_coupon_to_user(self):
         import time

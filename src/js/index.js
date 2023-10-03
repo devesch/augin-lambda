@@ -2989,17 +2989,21 @@ export async function checkIfShareFolderIsAvailable() {
 }
 
 
-export async function uploadUserThumb(input, user_id) {
-    const files = input.files;
-    const process_to_bucket = "upload.augin.app";
-    const file = files[0];
+export async function uploadUserThumb(input) {
+    var user_thumb_img = document.getElementById("user_thumb_img");
+    var update_user_thumb_error_msg_span = document.getElementById("update_user_thumb_error_msg_span");
+
+    update_user_thumb_error_msg_span.innerHTML = "";
+
+    var files = input.files;
+    var process_to_bucket = "upload.augin.app";
+    var file = files[0];
 
     let file_name_array = file["name"].split(".");
     let file_name_extension = file_name_array[file_name_array.length - 1];
 
     let panel_get_aws_upload_keys_response = await apiCaller("panel_get_aws_upload_keys", {
         "key_extension": file_name_extension,
-        // "key_path": "user_thumbs/" + user_id + "/",
         "bucket": process_to_bucket
     });
 
@@ -3019,4 +3023,9 @@ export async function uploadUserThumb(input, user_id) {
         "thumb_key": panel_get_aws_upload_keys_response["success"]['key']
     });
 
+    if ("error" in update_user_response) {
+        update_user_thumb_error_msg_span.innerHTML = update_user_response["error"];
+    } else {
+        user_thumb_img.src = "https://processed.augin.app/" + update_user_response["user_thumb"];
+    }
 }
