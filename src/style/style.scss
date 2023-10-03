@@ -509,7 +509,7 @@ input[list]::-ms-clear {
 }
 
 .header--my-plan.open {
-    display: flex;
+    display: flex !important;
 }
 
 .menu-mobile-open-button {
