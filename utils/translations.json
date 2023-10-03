@@ -1014,6 +1014,11 @@
         "es": "Crear carpeta",
         "pt": "Criar pasta"
     },
+    "Criar produto": {
+        "en": "Create Product",
+        "es": "Crear productos",
+        "pt": "Criar produto"
+    },
     "Criar projeto federado com os arquivos processados": {
         "en": "Create federated project with processed files",
         "es": "Crear proyecto federado con archivos procesados",

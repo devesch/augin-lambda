@@ -11,7 +11,9 @@
     <td>{{order_total_price_val}}</td>
     <td>{{order_status_val}}</td>
     <td>
-        <a style="{{order_link_visibility_val}}" href="{{order_nfse_xml_link_val}}">XML</a> / <a href="{{order_nfse_pdf_link_val}}">PDF</a> - {{order_nfse_status_val}}
+        <div style="{{order_link_visibility_val}}">
+            <a href="{{order_nfse_xml_link_val}}">XML</a> / <a href="{{order_nfse_pdf_link_val}}">PDF</a> - {{order_nfse_status_val}}
+        </div>
     </td>
     <td>
         {{html_re_issue_order_nfse}} {{html_re_issue_order_nfse_pdf}} {{html_refund_order}}
