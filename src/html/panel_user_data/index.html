@@ -7,10 +7,10 @@
         <h1 class="my-plan__title">{{Atualize seus dados}}</h1>
     </div>
     <div class="panel-user-data__main-container">
+        {{html_physical_or_company_form}}
         <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
         <span id="update_user_thumb_error_msg_span"></span>
         <img id="user_thumb_img" src="{{processed_bucket_cdn_val}}/{{user_thumb_val}}" width="24" height="24" alt="">
-        {{html_physical_or_company_form}}
         {{html_close_div}}
         {{html_close_div}}
         {{html_close_div}}
