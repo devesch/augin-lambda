@@ -29,6 +29,7 @@ class PanelPage(BasePage):
             for device in connected_devides:
                 html = ReadWrite().read_html("panel_devices/_codes/html_user_devices_thumbs")
                 html.esc("device_icon_val", generate_device_icon(device))
+                html.esc("device_id_val", device["device_id"])
                 html.esc("device_name_val", device["device_name"])
                 html.esc("device_last_access_at_val", Date().format_to_ago_str_time(device["device_last_access_at"]))
                 html.esc("device_first_access_at_val", Date().format_to_str_time(device["device_first_access_at"]))

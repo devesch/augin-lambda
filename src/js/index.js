@@ -3042,3 +3042,10 @@ export async function addRandomDeviceToUser() {
     });
     location.reload();
 }
+
+
+export async function openModalDisconnectDevice(device_id) {
+    let disconnect_device_id_input = document.getElementById("disconnect_device_id_input");
+    disconnect_device_id_input.value = device_id;
+    openModal('.modal.disconnect-device-modal');
+}
