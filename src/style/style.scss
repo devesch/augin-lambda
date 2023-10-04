@@ -1157,12 +1157,13 @@ input[list]::-ms-clear {
     width: fit-content;
     margin: 1rem auto;
     border-radius: 100%;
-    transition: border-style 0.5s ease;
+    transition: border-style 0.5s ease, filter 0.5s ease;
     padding: 0;
 }
 
 .panel-user-data__file-label:hover {
     border-style: solid;
+    filter: brightness(0.75);
 }
 
 .panel-user-data__file-image {
