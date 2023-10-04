@@ -1,6 +1,6 @@
 from python_web_frame.checkout_page import CheckoutPage
 from utils.Config import lambda_constants
-from objects.Plan import translate_reference_tracker
+from objects.Plan import translate_reference_tracker, generate_plans_hierarchy
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
@@ -23,14 +23,15 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
         html.esc("user_name_val", self.user.user_name.title())
         html.esc("plan_name_val", user_plan["plan_name_" + self.lang])
         purchasable_plans = Dynamo().query_purchasable_plans()
-        html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly", user_subscription))
-        html.esc("html_annually_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "annually", user_subscription))
+        plans_hierarchy = generate_plans_hierarchy(purchasable_plans)
+        html.esc("html_monthly_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "monthly", user_subscription, plans_hierarchy))
+        html.esc("html_annually_plans_thumbs", self.list_html_plans_thumbs(purchasable_plans, "annually", user_subscription, plans_hierarchy))
         return str(html)
 
     def render_post(self):
         return self.render_get()
 
-    def list_html_plans_thumbs(self, purchasable_plans, recurrency, user_subscription):
+    def list_html_plans_thumbs(self, purchasable_plans, recurrency, user_subscription, plans_hierarchy):
         full_html = []
         if purchasable_plans:
             for plan in purchasable_plans:
@@ -71,8 +72,10 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
 
                     if user_subscription and (user_subscription.get("subscription_plan_id") == plan["plan_id"]) and (user_subscription.get("subscription_recurrency") == recurrency):
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_your_plan_button())
+                    elif user_subscription and (user_subscription.get("subscription_plan_id") + "-" + user_subscription.get("subscription_recurrency") in plans_hierarchy) and (int(plans_hierarchy[user_subscription.get("subscription_plan_id") + "-" + user_subscription.get("subscription_recurrency")]) < int(plans_hierarchy[plan["plan_id"] + "-" + recurrency])):
+                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency, "downgrade"))
                     else:
-                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency))
+                        html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency, "upgrade"))
 
                     if plan["plan_has_trial"]:
                         trial_plan_version = Dynamo().get_plan(plan["plan_id"] + "-trial")
@@ -107,11 +110,14 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_your_plan_button")
         return str(html)
 
-    def show_html_upgrade_plan_button(self, plan_id, recurrency):
+    def show_html_upgrade_plan_button(self, plan_id, recurrency, change):
         html = ReadWrite().read_html("checkout_upgrade_your_plan/_codes/html_upgrade_plan_button")
         html.esc("plan_id_val", plan_id)
         html.esc("recurrency_val", recurrency)
-
+        if change == "downgrade":
+            html.esc("upgrade_or_downgrade_val", self.translate("Downgrade de plano"))
+        else:
+            html.esc("upgrade_or_downgrade_val", self.translate("Upgrade de plano"))
         return str(html)
 
     def show_html_trial_button(self, plan, recurrency):

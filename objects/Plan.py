@@ -102,3 +102,12 @@ def translate_reference_tracker(plan_reference_tracker):
     for reference_tracker_name, reference_tracker_value in lambda_constants["plan_reference_trackers"].items():
         if plan_reference_tracker == reference_tracker_value:
             return reference_tracker_name.title()
+
+
+def generate_plans_hierarchy(plans):
+    plans_hierarchy = {}
+    if plans:
+        for plan in plans:
+            plans_hierarchy[plan["plan_id"] + "-annually"] = int(plan["plan_price_annually_brl"])
+            plans_hierarchy[plan["plan_id"] + "-monthly"] = int(plan["plan_price_monthly_brl"]) * 8
+    return plans_hierarchy

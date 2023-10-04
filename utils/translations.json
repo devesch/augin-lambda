@@ -1454,6 +1454,11 @@
         "es": "República Dominicana",
         "pt": "República Dominicana"
     },
+    "Downgrade de plano": {
+        "en": "Plan Downgrade",
+        "es": "Planificar degradación",
+        "pt": "Downgrade de plano"
+    },
     "Duração do APP offline em dias": {
         "en": "Duration of the offline app in days",
         "es": "Duración de la aplicación fuera de línea en días",
