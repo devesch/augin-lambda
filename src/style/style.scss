@@ -734,6 +734,11 @@ input[list]::-ms-clear {
     text-align: center;
     border-radius: 100%;
 
+    picture {
+        display: inline;
+        line-height: 0;
+    }
+
     img {
         vertical-align: middle;
         height: 100%;
@@ -1161,10 +1166,8 @@ input[list]::-ms-clear {
 }
 
 .panel-user-data__file-image {
-    width: 100%;
-    height: 100%;
-    max-width: 6rem;
-    max-height: 6rem;
+    width: 6rem;
+    height: 6rem;
     object-fit: cover;
     border-radius: 100%;
 }
