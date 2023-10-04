@@ -32,7 +32,7 @@ class UpdateUser(BasePage):
             return {"error": "A imagem excede o tamanho máximo de 2mb"}
         new_image_key = "user_thumbs/" + self.user.user_id + "/" + self.post["thumb_key"]
         S3().copy_file_from_one_bucket_to_another(lambda_constants["upload_bucket"], self.post["thumb_key"], lambda_constants["processed_bucket"], new_image_key)
-        self.user.update_user_attribute("user_thumb", new_image_key)
+        self.user.update_attribute("user_thumb", new_image_key)
         return {"success": "Imagem atualizada com sucesso", "user_thumb": new_image_key}
 
     def add_coupon_to_user(self):
@@ -67,7 +67,7 @@ class UpdateUser(BasePage):
             self.user.remove_user_cart_coupon_code()
             return {"error": "Você já utilizou este cupom"}
 
-        self.user.update_user_attribute("user_cart_coupon_code", coupon["coupon_code"])
+        self.user.update_attribute("user_cart_coupon_code", coupon["coupon_code"])
         return {"success": "Cupom adicionado"}
 
     def create_payment_method(self):
@@ -116,7 +116,7 @@ class UpdateUser(BasePage):
         return {"success": "Método de pagamento deletado"}
 
     def update_user_pagination_count(self):
-        self.user.update_user_attribute("user_pagination_count", self.post["user_pagination_count"])
+        self.user.update_attribute("user_pagination_count", self.post["user_pagination_count"])
         return {"success": "Tamanho de página de usuário atualizado"}
 
     def cancel_user_current_subscription(self):

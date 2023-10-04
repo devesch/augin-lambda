@@ -66,9 +66,11 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
-    def update_user_attribute(self, attribute, new_value):
+    def update_attribute(self, attribute, new_value):
         setattr(self, attribute, new_value)
         Dynamo().update_entity(self.__dict__, attribute, new_value)
+        if attribute in ("user_name", "user_phone", "user_email") and self.user_stripe_customer_id:
+            StripeController().update_customer(self.user_stripe_customer_id, self)
 
     def generate_user_thumb_url(self):
         if self.user_thumb:
@@ -159,12 +161,12 @@ class User:
             user_subscription["subscription_valid_until"] = str(time.time())
         Dynamo().put_entity(user_subscription)
         if valid_until_now:
-            self.update_user_attribute("user_subscription_valid_until", user_subscription["subscription_valid_until"])
-        self.update_user_attribute("user_subscription_status", stripe_subscription["status"])
+            self.update_attribute("user_subscription_valid_until", user_subscription["subscription_valid_until"])
+        self.update_attribute("user_subscription_status", stripe_subscription["status"])
 
     def incrase_user_total_orders_count(self):
         new_user_total_orders_count = str(int(self.user_total_orders_count) + 1)
-        self.update_user_attribute("user_total_orders_count", new_user_total_orders_count)
+        self.update_attribute("user_total_orders_count", new_user_total_orders_count)
 
     def get_user_actual_plan(self):
         if self.check_if_subscription_is_valid():
@@ -335,7 +337,7 @@ class User:
 
     def update_last_login_at(self):
         if int(float(self.user_last_login_at)) + 3000 < int(time()):
-            self.update_user_attribute("user_last_login_at", str(time()))
+            self.update_attribute("user_last_login_at", str(time()))
 
     def check_if_is_payment_ready(self):
         self.user_payment_ready = True
@@ -382,7 +384,7 @@ class User:
 
     def recreate_stripe_user(self):
         new_user_stripe_customer_id = StripeController().create_customer(self)
-        self.update_user_attribute("user_stripe_customer_id", new_user_stripe_customer_id)
+        self.update_attribute("user_stripe_customer_id", new_user_stripe_customer_id)
 
     def update_cart_currency(self):
         if self.user_address_data["user_country"] == "BR":
