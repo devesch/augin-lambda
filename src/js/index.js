@@ -3066,3 +3066,11 @@ export async function saveDisconnectDevice() {
         location.reload();
     }
 }
+
+export async function checkAllCookies() {
+    let main_checkbox = document.getElementById("third-party-optional-cookies-label");
+    let tawkto_optional_cookie_consent = document.getElementById("tawkto_optional_cookie_consent");
+    let mouseflow_optional_cookie_consent = document.getElementById("mouseflow_optional_cookie_consent");
+    console.log(main_checkbox);
+    console.log(main_checkbox.checked);
+}
