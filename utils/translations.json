@@ -14,6 +14,36 @@
         "es": ".Elija su nuevo plan.",
         "pt": ". Escolha seu novo plano."
     },
+    "1 ano atrás": {
+        "en": "1 year ago",
+        "es": "hace 1 año",
+        "pt": "1 ano atrás"
+    },
+    "1 dia atrás": {
+        "en": "1 day ago",
+        "es": "hace 1 día",
+        "pt": "1 dia atrás"
+    },
+    "1 hora atrás": {
+        "en": "1 hour ago",
+        "es": "1 hora antes",
+        "pt": "1 hora atrás"
+    },
+    "1 minuto atrás": {
+        "en": "1 minute ago",
+        "es": "hace 1 minuto",
+        "pt": "1 minuto atrás"
+    },
+    "1 mês atrás": {
+        "en": "1 month ago",
+        "es": "hace 1 mes",
+        "pt": "1 mês atrás"
+    },
+    "1 segundo atrás": {
+        "en": "1 second behind",
+        "es": "1 segundo detrás",
+        "pt": "1 segundo atrás"
+    },
     "8 caracteres ou mais. Pode conter letras, números e símbolos.": {
         "en": "8 characters or more.It may contain letters, numbers and symbols.",
         "es": "8 caracteres o más.Puede contener letras, números y símbolos.",
@@ -5029,6 +5059,11 @@
         "es": "año",
         "pt": "ano"
     },
+    "anos atrás": {
+        "en": "years ago",
+        "es": "años atrás",
+        "pt": "anos atrás"
+    },
     "anualmente": {
         "en": "annually",
         "es": "anualmente",
@@ -5134,6 +5169,11 @@
         "es": "bandera",
         "pt": "flag"
     },
+    "horas atrás": {
+        "en": "hours ago",
+        "es": "horas atras",
+        "pt": "horas atrás"
+    },
     "indisponível": {
         "en": "unavailable",
         "es": "indisponible",
@@ -5158,6 +5198,16 @@
         "en": "monthly",
         "es": "mensual",
         "pt": "mensalmente"
+    },
+    "meses atrás": {
+        "en": "months ago",
+        "es": "hace meses",
+        "pt": "meses atrás"
+    },
+    "minutos atrás": {
+        "en": "minutes ago",
+        "es": "hace minutos",
+        "pt": "minutos atrás"
     },
     "mês": {
         "en": "month",
@@ -5303,6 +5353,11 @@
         "en": "results",
         "es": "resultados",
         "pt": "resultados"
+    },
+    "segundos atrás": {
+        "en": "seconds ago",
+        "es": "hace segundos",
+        "pt": "segundos atrás"
     },
     "selecione um em seu computador": {
         "en": "select one on your computer",

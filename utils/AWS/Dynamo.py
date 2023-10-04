@@ -117,6 +117,8 @@ class Dynamo:
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "payment_method#"}}})
 
     ### USER ###
+    def query_all_user_devices(self, user_id):
+        return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "device#"}}})
 
     def query_all_users_first_tree_letters_name(self, user_first_tree_letters_name):
         query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "user_first_three_letters_name-user_id-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "user_first_three_letters_name"}, "ExpressionAttributeValues": {":bef90": {"S": user_first_tree_letters_name}}})

@@ -9,11 +9,24 @@ from python_web_frame.controllers.model_controller import ModelController
 from objects.Order import translate_order_status
 from objects.User import sort_user_folders
 from objects.UserFolder import generate_folder_data, increase_folder_visualization_count
+from objects.UserDevice import generate_device_icon
 
 
 class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
+
+    def list_html_user_devices_thumbs(self, user_devices):
+        full_html = []
+        if user_devices:
+            for device in user_devices:
+                html = ReadWrite().read_html("panel_devices/_codes/html_user_devices_thumbs")
+                html.esc("device_icon_val", generate_device_icon(device))
+                html.esc("device_name_val", device["device_name"])
+                html.esc("device_last_access_at_val", Date().format_to_ago_str_time(device["device_last_access_at"]))
+                html.esc("device_first_access_at_val", Date().format_to_str_time(device["device_first_access_at"]))
+                full_html.append(str(html))
+        return "".join(full_html)
 
     def show_html_filter_and_search_section(self, show_search=True):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_filter_and_search_section")

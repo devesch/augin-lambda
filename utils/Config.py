@@ -87,6 +87,93 @@ lambda_constants = {
     "free_plan_id": "ee15916d5acc",
 }
 
+devices = {
+    "0a6c5368e8f8eadd46124b98bd1a3fac": {
+        "device_id": "0a6c5368e8f8eadd46124b98bd1a3fac",
+        "device_model": "samsung SM-G780G",
+        "device_name": "S20 FE de Juan",
+        "device_os": "Android OS 12 / API-31 (SP1A.210812.016/G780GXXS3BVB3)",
+    },
+    "28476a00666104fb7166395e4486a7d4": {
+        "device_id": "28476a00666104fb7166395e4486a7d4",
+        "device_model": "samsung SM-G780G",
+        "device_name": "S20 FE de Juan",
+        "device_os": "Android OS 12 / API-31 (SP1A.210812.016/G780GXXS3CVJ1)",
+    },
+    "2a6edd29ee0457cd563937e280e577cc": {
+        "device_id": "2a6edd29ee0457cd563937e280e577cc",
+        "device_model": "samsung SM-A125M",
+        "device_name": "Galaxy A12 de Cristian",
+        "device_os": "Android OS 12 / API-31 (SP1A.210812.016/A125MUBS3CVH3)",
+    },
+    "48bbbc3d6d2ad34cd2d5a0c980c3ef60": {
+        "device_id": "48bbbc3d6d2ad34cd2d5a0c980c3ef60",
+        "device_model": "samsung SM-S916U1",
+        "device_name": "Juan's S23+",
+        "device_os": "Android OS 13 / API-33 (TP1A.220624.014/S916U1UES1AWBM)",
+    },
+    "51dd07118cc1cd0b6bac06b9b51703bcfd74c63a": {
+        "device_id": "51dd07118cc1cd0b6bac06b9b51703bcfd74c63a",
+        "device_model": "System Product Name (ASUS)",
+        "device_name": "DESKTOP-QN6LRVD",
+        "device_os": "Windows 11  (10.0.22621) 64bit",
+    },
+    "51dd07118cc1cd0b6bac06b9b51703bcfd74c63a": {
+        "device_id": "51dd07118cc1cd0b6bac06b9b51703bcfd74c63a",
+        "device_model": "System Product Name (ASUS)",
+        "device_name": "DESKTOP-QN6LRVD",
+        "device_os": "Windows 11  (10.0.22621) 64bit",
+    },
+    "52c2dd9502490b6f1069b09143dde3e8": {
+        "device_id": "52c2dd9502490b6f1069b09143dde3e8",
+        "device_model": "samsung SM-S916U1",
+        "device_name": "Juan's S23+",
+        "device_os": "Android OS 13 / API-33 (TP1A.220624.014/S916U1UES1AWBM)",
+    },
+    "546af9e3fa01404def65a9a5fb1b9b186f8c449d": {
+        "device_id": "546af9e3fa01404def65a9a5fb1b9b186f8c449d",
+        "device_model": "System Product Name (System manufacturer)",
+        "device_name": "DESKTOP-IIKVFSG",
+        "device_os": "Windows 10  (10.0.19045) 64bit",
+    },
+    "75a3a0983e653e194be2cb6732ea44587edaa95e": {
+        "device_id": "75a3a0983e653e194be2cb6732ea44587edaa95e",
+        "device_model": "HP ENVY x360 2-in-1 Laptop 15-ew0xxx (HP)",
+        "device_name": "JUANCARLOS",
+        "device_os": "Windows 11  (10.0.22621) 64bit",
+    },
+    "7929acd96a40fa8c7b34b6f239000fcbf9ec916d": {
+        "device_id": "7929acd96a40fa8c7b34b6f239000fcbf9ec916d",
+        "device_model": "System Product Name (ASUS)",
+        "device_name": "DESKTOP-QN6LRVD",
+        "device_os": "Windows 11  (10.0.22000) 64bit",
+    },
+    "868bea1f78a2b4aa21cbc5b8db94862a": {
+        "device_id": "868bea1f78a2b4aa21cbc5b8db94862a",
+        "device_model": "samsung SM-A145M",
+        "device_name": "Galaxy A14",
+        "device_os": "Android OS 13 / API-33 (TP1A.220624.014/A145MUBU2AWF5)",
+    },
+    "51dd07118cc1cd0b6bac06b9b51703bcfd74c63a": {
+        "device_id": "51dd07118cc1cd0b6bac06b9b51703bcfd74c63a",
+        "device_model": "System Product Name (ASUS)",
+        "device_name": "DESKTOP-QN6LRVD",
+        "device_os": "Windows 11  (10.0.22621) 64bit",
+    },
+    "a6e43cde6c9fda02cc776870c49bac60a727ce59": {
+        "device_id": "a6e43cde6c9fda02cc776870c49bac60a727ce59",
+        "device_model": "Inspiron 3583 (Dell Inc.)",
+        "device_name": "DESKTOP-GFKK43B",
+        "device_os": "Windows 11  (10.0.22621) 64bit",
+    },
+    "ffaa073c10207f34812f6102fee1b020804eec1c": {
+        "device_id": "ffaa073c10207f34812f6102fee1b020804eec1c",
+        "device_model": "Inspiron 7559 (Dell Inc.)",
+        "device_name": "DESKTOP-BNTB2OP",
+        "device_os": "Windows 10  (10.0.19045) 64bit",
+    },
+}
+
 
 class Config:
     _instance = None

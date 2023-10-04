@@ -18,6 +18,18 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "1 segundo atrás",
+    "1 minuto atrás",
+    "1 hora atrás",
+    "1 dia atrás",
+    "1 mês atrás",
+    "1 ano atrás",
+    "segundos atrás",
+    "minutos atrás",
+    "horas atrás",
+    "dias atrás",
+    "meses atrás",
+    "anos atrás",
     "Não foi possível encontrar esta pasta",
     "Não foi possível encontrar este cupom",
     "Não foi possível encontrar esta ordem",

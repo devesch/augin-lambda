@@ -7,6 +7,7 @@ from utils.utils.Date import Date
 from objects.UserPassword import UserPassword
 from objects.UserAuthToken import UserAuthToken
 from objects.UserSubscription import UserSubscription
+from objects.UserDevice import UserDevice
 from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
 from utils.utils.Sort import Sort
 from python_web_frame.controllers.model_controller import ModelController
@@ -65,6 +66,21 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def connect_device(self, new_device_data):
+        user_devices = Dynamo().query_all_user_devices(self.user_id)
+        user_already_has_device = False
+        if user_devices:
+            for device in user_devices:
+                if device["device_id"] == new_device_data["device_id"]:
+                    user_already_has_device = True
+                    break
+
+        if user_already_has_device:
+            raise Exception("TODO")
+
+        new_device = UserDevice(self.user_id, new_device_data["device_id"], new_device_data["device_name"], new_device_data["device_model"], new_device_data["device_os"])
+        Dynamo().put_entity(new_device.__dict__)
 
     def update_attribute(self, attribute, new_value):
         setattr(self, attribute, new_value)

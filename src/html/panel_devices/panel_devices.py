@@ -23,6 +23,9 @@ class PanelDevices(PanelPage):
 
         html.esc("plan_maxium_devices_available_val", user_plan["plan_maxium_devices_available"])
         html.esc("plan_maxium_devices_changes_in_30d_val", user_plan["plan_maxium_devices_changes_in_30d"])
+
+        user_devices = Dynamo().query_all_user_devices(self.user.user_id)
+        html.esc("html_user_devices_thumbs", self.list_html_user_devices_thumbs(user_devices))
         return str(html)
 
     def render_post(self):

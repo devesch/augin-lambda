@@ -21,6 +21,14 @@ class UpdateUser(BasePage):
 
         return getattr(self, self.post["command"])()
 
+    def add_random_device(self):
+        import random
+        from utils.Config import devices
+
+        new_device = devices[random.choice(list(devices.keys()))]
+        self.user.connect_device(new_device)
+        return {"success": "Dispositivo atualizado com sucesso"}
+
     def update_user_thumb(self):
         if not self.post.get("thumb_key"):
             return {"error": "Nenhuma key de imagem foi recebida"}
