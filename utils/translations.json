@@ -1249,6 +1249,11 @@
         "es": "Dinamarca",
         "pt": "Dinamarca"
     },
+    "Desconectando dispositivo": {
+        "en": "Disconnecting device",
+        "es": "Dispositivo de desconexión",
+        "pt": "Desconectando dispositivo"
+    },
     "Desconto %": {
         "en": "Discount %",
         "es": "Descuento %",
