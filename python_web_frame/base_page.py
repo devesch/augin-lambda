@@ -111,6 +111,12 @@ class BasePage:
 
         html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openCookiesContainer()")
         html.esc("user_url_val", self.event.get_url())
+        if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted":
+            html.esc("tawk_checked_val", 'checked="checked"')
+        if self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
+            html.esc("mouseflow_checked_val", 'checked="checked"')
+        if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted" and self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
+            html.esc("all_cookies_checked_val", 'checked="checked"')
         return str(html)
 
     def show_html_backoffice_button(self):

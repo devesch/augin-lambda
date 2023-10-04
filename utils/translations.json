@@ -1659,6 +1659,11 @@
         "es": "Olvide mi contraseña",
         "pt": "Esqueci minha senha"
     },
+    "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação": {
+        "en": "These cookies resemble your language preferences, ensuring that you view our site in your favorite language during your navigation session",
+        "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
+        "pt": "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação"
+    },
     "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação.": {
         "en": "These cookies resemble their language preferences, ensuring that you view our site in your favorite language during your browsing session.",
         "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
@@ -1838,6 +1843,11 @@
         "en": "These are necessary for the operation of our website and cannot be deactivated in our systems",
         "es": "Estos son necesarios para la operación de nuestro sitio web y no se pueden desactivar en nuestros sistemas.",
         "pt": "Estes são necessários para o funcionamento do nosso website e não podem ser desativados nos nossos sistemas"
+    },
+    "Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos": {
+        "en": "These are the mandatory cookies for the operation of our site, including, for example, those that allow visitors to browse safely on the site, log in, store preferences, store items in the cart and make payments",
+        "es": "Estas son las cookies obligatorias para la operación de nuestro sitio, incluidas, por ejemplo, aquellas que permiten a los visitantes navegar de manera segura en el sitio, iniciar sesión, almacenar preferencias, almacenar artículos en el carrito y hacer pagos",
+        "pt": "Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos"
     },
     "Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos.": {
         "en": "These are the mandatory cookies for the operation of our site, including, for example, those that allow visitors to browse safely on the site, login, store preferences, store items in the cart and make payments.",
@@ -3839,6 +3849,11 @@
         "es": "¿Necesita ayuda?Enviar un mensaje a nuestro",
         "pt": "Precisa de ajuda? Mande uma mensagem para nosso"
     },
+    "Preferências de idioma": {
+        "en": "Language Preferences",
+        "es": "Preferencias del idioma",
+        "pt": "Preferências de idioma"
+    },
     "Preferências de idioma:": {
         "en": "Language Preferences:",
         "es": "Preferencias del idioma:",
@@ -4243,6 +4258,11 @@
         "en": "Will be applied in how many installments (months)",
         "es": "Se aplicará en cuántas cuotas (meses)",
         "pt": "Será aplicado em quantas parcelas (meses)"
+    },
+    "Sessão de login": {
+        "en": "Login session",
+        "es": "Sesión de inicio de sesión",
+        "pt": "Sessão de login"
     },
     "Sessão de login:": {
         "en": "Login Session:",
@@ -4869,10 +4889,20 @@
         "es": "Usuarios",
         "pt": "Usuários"
     },
+    "Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta": {
+        "en": "We use cookies to manage your login session and ensure safe access to your account.These cookies are essential for user authentication and account features",
+        "es": "Utilizamos cookies para administrar su sesión de inicio de sesión y garantizar un acceso seguro a su cuenta.Estas cookies son esenciales para la autenticación del usuario y las características de la cuenta.",
+        "pt": "Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta"
+    },
     "Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta.": {
         "en": "We use cookies to manage your login session and ensure safe access to your account. These cookies are essential for user authentication and account-related features.",
         "es": "Utilizamos cookies para administrar su sesión de inicio de sesión y garantizar un acceso seguro a su cuenta. Estas cookies son esenciales para la autenticación del usuario y las características relacionadas con la cuenta.",
         "pt": "Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta."
+    },
+    "Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso": {
+        "en": "We use cookies to optimize our site and collect statistics for use",
+        "es": "Utilizamos cookies para optimizar nuestro sitio y recopilar estadísticas para su uso",
+        "pt": "Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso"
     },
     "Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso.": {
         "en": "We use cookies to optimize our site and collect use statistics.",

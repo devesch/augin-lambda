@@ -3067,10 +3067,14 @@ export async function saveDisconnectDevice() {
     }
 }
 
-export async function checkAllCookies() {
-    let main_checkbox = document.getElementById("third-party-optional-cookies-label");
+export async function checkAllOptionalCookies(checkbox) {
     let tawkto_optional_cookie_consent = document.getElementById("tawkto_optional_cookie_consent");
     let mouseflow_optional_cookie_consent = document.getElementById("mouseflow_optional_cookie_consent");
-    console.log(main_checkbox);
-    console.log(main_checkbox.checked);
+    if (checkbox.checked) {
+        tawkto_optional_cookie_consent.checked = true;
+        mouseflow_optional_cookie_consent.checked = true;
+    } else {
+        tawkto_optional_cookie_consent.checked = false;
+        mouseflow_optional_cookie_consent.checked = false;
+    }
 }

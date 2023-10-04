@@ -7,7 +7,7 @@
         <div class="footer-cookies-container open">
             <h2>{{Suas configurações de Cookies}}</h2>
             <div class="footer-cookies__paragraph-container">
-                <p>{{Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso.}}</p>
+                <p>{{Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso}}.</p>
                 <p>
                     <a class="policy-link" href="{{domain_name_url_val}}/privacy_policy" title="Política de Privacidade" target="_blank">{{Política de Privacidade}}</a> {{e}}
                     <a class="policy-link" href="{{domain_name_url_val}}/cookies_policy" title="Política de Cookies" target="_blank">{{Política de Cookies}}</a>.
@@ -26,15 +26,15 @@
                         <input aria-labelledby="necessary-cookies-label" class="cookies-summary__checkbox" type="checkbox" disabled="disabled" checked>
                         <p id="necessary-cookies-label">{{Necessários}}</p>
                     </summary>
-                    <p>{{Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos.}}</p>
+                    <p>{{Estes são os cookies obrigatórios para o funcionamento do nosso site, incluindo, por exemplo, aqueles que permitem aos visitantes navegar em segurança no site, fazer login, guardar as preferências, guardar itens no carrinho e efetuar pagamentos}}.</p>
                     <ul>
                         <li>
-                            <dfn><strong>{{Sessão de login:}}</strong></dfn>
-                            {{Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta.}}
+                            <dfn><strong>{{Sessão de login}}:</strong></dfn>
+                            {{Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta}}.
                         </li>
                         <li>
-                            <dfn><strong>{{Preferências de idioma:}}</strong></dfn>
-                            {{Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação.}}
+                            <dfn><strong>{{Preferências de idioma}}:</strong></dfn>
+                            {{Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação}}.
                         </li>
                     </ul>
                 </details>
@@ -53,12 +53,12 @@
                 </details>
                 <details>
                     <summary>
-                        <input aria-labelledby="third-party-optional-cookies-label" class="cookies-summary__checkbox js-parent-checkbox" type="checkbox">
+                        <input onclick="js.index.checkAllOptionalCookies(this)" aria-labelledby="third-party-optional-cookies-label" class="cookies-summary__checkbox js-parent-checkbox" type="checkbox" {{all_cookies_checked_val}}>
                         <p id="third-party-optional-cookies-label">{{Cookies opcionais de terceiros}}</p>
                     </summary>
                     <details>
                         <summary>
-                            <input aria-labelledby="tawk-to" class="cookies-summary__checkbox js-child-checkbox" type="checkbox" name="tawk" id="tawkto_optional_cookie_consent" />
+                            <input aria-labelledby="tawk-to" class="cookies-summary__checkbox js-child-checkbox" type="checkbox" name="tawk" id="tawkto_optional_cookie_consent" {{tawk_checked_val}} />
                             <p>Tawk.to</p>
                         </summary>
                         <p>
@@ -74,7 +74,7 @@
                     </details>
                     <details>
                         <summary>
-                            <input aria-labelledby="mouseflow" class="cookies-summary__checkbox js-child-checkbox" type="checkbox" name="mouseflow" id="mouseflow_optional_cookie_consent" />
+                            <input aria-labelledby="mouseflow" class="cookies-summary__checkbox js-child-checkbox" type="checkbox" name="mouseflow" id="mouseflow_optional_cookie_consent" {{mouseflow_checked_val}} />
                             <p>Mouseflow</p>
                         </summary>
                         <p>
