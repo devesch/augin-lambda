@@ -1799,6 +1799,11 @@
         "es": "Este usuario no tiene las credenciales para llevar a cabo este comando",
         "pt": "Este usuário não possui as credenciais para realizar este comando"
     },
+    "Este usuário não possui este dispositivo": {
+        "en": "This user does not have this device",
+        "es": "Este usuario no tiene este dispositivo",
+        "pt": "Este usuário não possui este dispositivo"
+    },
     "Estes permitem-nos contar visitas e fontes de tráfego para que possamos medir e melhorar o desempenho do nosso site": {
         "en": "These allow us to count visits and sources of traffic so that we can measure and improve the performance of our site",
         "es": "Estos nos permiten contar visitas y fuentes de tráfico para que podamos medir y mejorar el rendimiento de nuestro sitio.",

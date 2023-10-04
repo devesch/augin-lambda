@@ -7,6 +7,7 @@ from utils.AWS.Lambda import Lambda
 from utils.AWS.S3 import S3
 from utils.Config import lambda_constants
 from objects.UserFolder import check_if_folder_movement_is_valid
+from objects.UserDevice import disconnect_device
 from objects.UserPaymentMethod import UserPaymentMethod
 
 
@@ -20,6 +21,15 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhum usuário encontrado"}
 
         return getattr(self, self.post["command"])()
+
+    def disconnect_device(self):
+        if not self.post.get("device_id"):
+            return {"error": "Nenhum device_id informado no formulário"}
+        user_device = Dynamo().get_user_device(self.user_id, self.post["device_id"])
+        if not user_device:
+            return {"error": "Este usuário não possui este dispositivo"}
+        disconnect_device(user_device)
+        return {"success": "Dispositivo disconectado com sucesso"}
 
     def add_random_device(self):
         import random

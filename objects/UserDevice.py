@@ -1,3 +1,4 @@
+from utils.AWS.Dynamo import Dynamo
 import time
 
 
@@ -31,3 +32,10 @@ def generate_device_icon(device):
                     return icon
 
     return "unknown_device"
+
+
+def disconnect_device(device):
+    device["device_status"] = "disconnected"
+    device["device_desconnected_at"] = str(time.time())
+    Dynamo().put_entity(device)
+    return device

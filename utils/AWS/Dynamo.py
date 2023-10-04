@@ -117,6 +117,10 @@ class Dynamo:
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "payment_method#"}}})
 
     ### USER ###
+
+    def get_user_device(self, user_id, device_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "user#" + user_id}, "sk": {"S": "device#" + device_id}}})
+
     def query_all_user_devices(self, user_id):
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "device#"}}})
 
