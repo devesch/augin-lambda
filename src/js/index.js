@@ -3017,6 +3017,12 @@ export async function uploadUserThumb(input) {
         "original_name": file["name"],
     };
 
+    let loader = document.querySelector(".panel-user-data__file-loader");
+    if (loader) {
+        user_thumb_img.classList.add("none");
+        loader.classList.remove("none");
+    }
+
     await uploadWithoutProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
 
     let update_user_response = await apiCaller('update_user', {
@@ -3031,6 +3037,11 @@ export async function uploadUserThumb(input) {
         let new_source_for_image = "https://processed.augin.app/" + update_user_response["user_thumb"];
         panel_menu_user_thumb_img.src = new_source_for_image;
         user_thumb_img.src = new_source_for_image;
+    }
+
+    if (loader) {
+        user_thumb_img.classList.remove("none");
+        loader.classList.add("none");
     }
 }
 

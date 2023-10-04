@@ -1148,12 +1148,13 @@ input[list]::-ms-clear {
 }
 
 .panel-user-data__file-loader {
-    border: 10px solid colors.color("color-white");
+    border: 10px solid colors.color("color-neutral-200");
     border-top: 10px solid colors.color("color-primary-700");
     border-radius: 50%;
-    width: 6rem;
-    height: 6rem;
-    animation: spin 2s linear infinite;
+    width: 4rem;
+    height: 4rem;
+    margin: 1rem;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
