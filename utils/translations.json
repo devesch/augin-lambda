@@ -459,6 +459,11 @@
         "es": "Actualmente tienes",
         "pt": "Atualmente você tem"
     },
+    "Augin - Seu código de verficação é ": {
+        "en": "Augin - Your verification code is",
+        "es": "Augin: su código de verificación es",
+        "pt": "Augin - Seu código de verficação é "
+    },
     "Augin - Solicitação de troca de email código ": {
         "en": "AUGIN - Email exchange request code",
         "es": "Augin - Código de solicitud de intercambio de correo electrónico",
