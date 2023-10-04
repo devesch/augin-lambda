@@ -374,6 +374,11 @@
         "es": "Antigua y Barbuda",
         "pt": "Antígua e Barbuda"
     },
+    "Ao prosseguir, este dispositivo não estará mais vinculado a sua conta": {
+        "en": "When proceeding, this device will no longer be linked to your account",
+        "es": "Al proceder, este dispositivo ya no estará vinculado a su cuenta",
+        "pt": "Ao prosseguir, este dispositivo não estará mais vinculado a sua conta"
+    },
     "Ao prosseguir, este dispositivo não estará mais vinculado a sua conta.": {
         "en": "By proceeding, this device will no longer be linked to your account.",
         "es": "Al continuar, este dispositivo ya no estará vinculado a su cuenta.",
@@ -1040,7 +1045,7 @@
         "pt": "Copiar"
     },
     "Copie e cole o código informado para confirmar a troca do seu email na sua conta Augin": {
-        "en": "Copy and paste the informed code to confirm the exchange of your email in your augin account",
+        "en": "Copy and paste the informed code to confirm the exchange of your email in your Augin account",
         "es": "Copie y pegue el código informado para confirmar el intercambio de su correo electrónico en su cuenta de Augin",
         "pt": "Copie e cole o código informado para confirmar a troca do seu email na sua conta Augin"
     },
@@ -1769,6 +1774,11 @@
         "es": "Este cupón está fuera de la fecha de varios",
         "pt": "Este cupom se encontra fora da data de válidade"
     },
+    "Este dispositivo já se encontra conectado": {
+        "en": "This device is already connected",
+        "es": "Este dispositivo ya está conectado",
+        "pt": "Este dispositivo já se encontra conectado"
+    },
     "Este mesmo arquivo já se encontra na fila de processamento.": {
         "en": "This same file is already in the processing queue.",
         "es": "Este mismo archivo ya está en la cola de procesamiento.",
@@ -1793,6 +1803,16 @@
         "en": "This project is not accessible through sharing",
         "es": "Este proyecto no es accesible a través del intercambio",
         "pt": "Este projeto não se encontra acessível através de compartilhamento"
+    },
+    "Este usuário já atingiu o limite máximo de desativações no último mês": {
+        "en": "This user has already reached the maximum deactivation limit in the last month",
+        "es": "Este usuario ya ha alcanzado el límite máximo de desactivación en el último mes",
+        "pt": "Este usuário já atingiu o limite máximo de desativações no último mês"
+    },
+    "Este usuário já atingiu o número máximo de dispositivos conectados": {
+        "en": "This user has already reached the maximum number of connected devices",
+        "es": "Este usuario ya ha alcanzado el número máximo de dispositivos conectados",
+        "pt": "Este usuário já atingiu o número máximo de dispositivos conectados"
     },
     "Este usuário não possui as credenciais para realizar este comando": {
         "en": "This user does not have the credentials to carry out this command",
@@ -4885,7 +4905,7 @@
         "pt": "Veja como os usamos"
     },
     "Veja seus dispositivos conectados ao Augin": {
-        "en": "See your devices connected to augin",
+        "en": "See your devices connected to Augin",
         "es": "Vea sus dispositivos conectados a Augin",
         "pt": "Veja seus dispositivos conectados ao Augin"
     },
@@ -5118,6 +5138,11 @@
         "en": "deactivations of",
         "es": "desactivaciones de",
         "pt": "desativações de"
+    },
+    "desvinculações este mês": {
+        "en": "detachments this month",
+        "es": "destacamentos este mes",
+        "pt": "desvinculações este mês"
     },
     "desvinculações este mês.": {
         "en": "releases this month.",

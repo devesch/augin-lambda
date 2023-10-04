@@ -1,13 +1,12 @@
 from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.model_controller import ModelController
-from python_web_frame.controllers.project_controller import ProjectController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
 from utils.AWS.S3 import S3
 from utils.Config import lambda_constants
 from objects.UserFolder import check_if_folder_movement_is_valid
-from objects.UserDevice import disconnect_device
+from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices, generate_disconnected_devices_in_last_30d
 from objects.UserPaymentMethod import UserPaymentMethod
 
 
@@ -25,9 +24,17 @@ class UpdateUser(BasePage):
     def disconnect_device(self):
         if not self.post.get("device_id"):
             return {"error": "Nenhum device_id informado no formulário"}
-        user_device = Dynamo().get_user_device(self.user_id, self.post["device_id"])
+        user_device = Dynamo().get_user_device(self.user.user_id, self.post["device_id"])
         if not user_device:
             return {"error": "Este usuário não possui este dispositivo"}
+
+        user_plan = self.user.get_user_actual_plan()
+        user_devices = Dynamo().query_all_user_devices(self.user.user_id)
+        connected_devices, disconnected_devices = generate_connected_and_disconnected_devices(user_devices)
+        disconnected_devices_in_last_30d = generate_disconnected_devices_in_last_30d(disconnected_devices)
+        if len(disconnected_devices_in_last_30d) >= int(user_plan["plan_maxium_devices_changes_in_30d"]):
+            return {"error": "Este usuário já atingiu o limite máximo de desativações no último mês"}
+
         disconnect_device(user_device)
         return {"success": "Dispositivo disconectado com sucesso"}
 
@@ -36,6 +43,18 @@ class UpdateUser(BasePage):
         from utils.Config import devices
 
         new_device = devices[random.choice(list(devices.keys()))]
+
+        user_device = Dynamo().get_user_device(self.user.user_id, new_device["device_id"])
+        if user_device and user_device["device_status"] == "connected":
+            return {"error": "Este dispositivo já se encontra conectado"}
+
+        user_plan = self.user.get_user_actual_plan()
+        user_devices = Dynamo().query_all_user_devices(self.user.user_id)
+        connected_devices, disconnected_devices = generate_connected_and_disconnected_devices(user_devices)
+
+        if len(connected_devices) >= int(user_plan["plan_maxium_devices_available"]):
+            return {"error": "Este usuário já atingiu o número máximo de dispositivos conectados"}
+
         self.user.connect_device(new_device)
         return {"success": "Dispositivo atualizado com sucesso"}
 

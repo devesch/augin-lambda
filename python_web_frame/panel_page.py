@@ -23,7 +23,7 @@ class PanelPage(BasePage):
             full_html.append(str(html))
         return "".join(full_html)
 
-    def list_html_user_devices_thumbs(self, connected_devides):
+    def list_html_user_devices_thumbs(self, connected_devides, disconnected_devices_in_last_30d, plan_maxium_devices_changes_in_30d):
         full_html = []
         if connected_devides:
             for device in connected_devides:
@@ -33,8 +33,15 @@ class PanelPage(BasePage):
                 html.esc("device_name_val", device["device_name"])
                 html.esc("device_last_access_at_val", Date().format_to_ago_str_time(device["device_last_access_at"]))
                 html.esc("device_first_access_at_val", Date().format_to_str_time(device["device_first_access_at"]))
+                if len(disconnected_devices_in_last_30d) < int(plan_maxium_devices_changes_in_30d):
+                    html.esc("html_disconnect_device_button", self.show_html_disconnect_device_button(device))
                 full_html.append(str(html))
         return "".join(full_html)
+
+    def show_html_disconnect_device_button(self, device):
+        html = ReadWrite().read_html("panel_devices/_codes/html_disconnect_device_button")
+        html.esc("device_id_val", device["device_id"])
+        return str(html)
 
     def show_html_filter_and_search_section(self, show_search=True):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_filter_and_search_section")

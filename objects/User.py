@@ -7,7 +7,7 @@ from utils.utils.Date import Date
 from objects.UserPassword import UserPassword
 from objects.UserAuthToken import UserAuthToken
 from objects.UserSubscription import UserSubscription
-from objects.UserDevice import UserDevice
+from objects.UserDevice import UserDevice, reconnect_device
 from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
 from utils.utils.Sort import Sort
 from python_web_frame.controllers.model_controller import ModelController
@@ -68,19 +68,14 @@ class User:
         self.entity = "user"
 
     def connect_device(self, new_device_data):
-        user_devices = Dynamo().query_all_user_devices(self.user_id)
-        user_already_has_device = False
-        if user_devices:
-            for device in user_devices:
-                if device["device_id"] == new_device_data["device_id"]:
-                    user_already_has_device = True
-                    break
+        user_device = Dynamo().get_user_device(self.user_id, new_device_data["device_id"])
+        if not user_device:
+            new_device = UserDevice(self.user_id, new_device_data["device_id"], new_device_data["device_name"], new_device_data["device_model"], new_device_data["device_os"]).__dict__
+            Dynamo().put_entity(new_device)
+            return new_device
 
-        if user_already_has_device:
-            raise Exception("TODO")
-
-        new_device = UserDevice(self.user_id, new_device_data["device_id"], new_device_data["device_name"], new_device_data["device_model"], new_device_data["device_os"])
-        Dynamo().put_entity(new_device.__dict__)
+        reconnect_device(user_device)
+        return user_device
 
     def update_attribute(self, attribute, new_value):
         setattr(self, attribute, new_value)

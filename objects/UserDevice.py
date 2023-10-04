@@ -1,3 +1,4 @@
+from utils.utils.Validation import Validation
 from utils.AWS.Dynamo import Dynamo
 import time
 
@@ -15,10 +16,10 @@ class UserDevice:
         self.device_status = "connected"  # connected/disconnected
         self.device_first_access_at = str(time.time())
         self.device_last_access_at = str(time.time())
-        self.device_desconnected_at = ""
+        self.device_disconnected_at = ""
 
         self.created_at = str(time.time())
-        self.entity = "folder"
+        self.entity = "device"
 
 
 def generate_device_icon(device):
@@ -36,6 +37,34 @@ def generate_device_icon(device):
 
 def disconnect_device(device):
     device["device_status"] = "disconnected"
-    device["device_desconnected_at"] = str(time.time())
+    device["device_disconnected_at"] = str(time.time())
     Dynamo().put_entity(device)
     return device
+
+
+def reconnect_device(device):
+    device["device_status"] = "connected"
+    device["device_first_access_at"] = str(time.time())
+    Dynamo().put_entity(device)
+    return device
+
+
+def generate_connected_and_disconnected_devices(user_devices):
+    connected_devices = []
+    disconnected_devices = []
+    if user_devices:
+        for device in user_devices:
+            if device["device_status"] == "connected":
+                connected_devices.append(device)
+            else:
+                disconnected_devices.append(device)
+    return connected_devices, disconnected_devices
+
+
+def generate_disconnected_devices_in_last_30d(disconnected_devices):
+    disconnected_devices_in_last_30d = []
+    if disconnected_devices:
+        for device in disconnected_devices:
+            if Validation().check_if_less_than_30_days_ago(device["device_disconnected_at"]):
+                disconnected_devices_in_last_30d.append(device)
+    return disconnected_devices_in_last_30d

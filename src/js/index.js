@@ -304,7 +304,7 @@ export async function postCheckoutPanelUserDataForm(userClientType) {
     }, false);
     console.log("panel_user_data_page_response ", panel_user_data_page_response);
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
-    if (panel_user_data_page_response.includes("suc") && panel_user_data_page_response.includes("ess")) {
+    if (panel_user_data_page_response.toLowerCase().includes("suc") && panel_user_data_page_response.includes("ess")) {
         let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input")
         let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
         let user_selected_plan_is_trial_input = document.getElementById("user_selected_plan_is_trial_input");
@@ -3074,6 +3074,6 @@ export async function saveDisconnectDevice() {
     if ("error" in update_user_response) {
         disconnect_device_error_span.innerHTML = update_user_response["error"]
     } else {
-        closeModal('.modal.disconnect-device-modal');
+        location.reload();
     }
 }

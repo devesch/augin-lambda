@@ -15,16 +15,16 @@
 
     <div class="devices__title-container">
         <h1>{{Veja seus dispositivos conectados ao Augin}}.</h1>
-        <h2>{{Atualmente você tem}} 3 {{dispositivos conectados de}} {{plan_maxium_devices_available_val}} {{disponíveis e realizou}} 0 {{desativações de}} {{plan_maxium_devices_changes_in_30d_val}} {{possíveis}}.</h2>
+        <h2>{{Atualmente você tem}} {{lenght_of_connected_devices_val}} {{dispositivos conectados de}} {{plan_maxium_devices_available_val}} {{disponíveis e realizou}} {{lenght_of_disconnected_devices_in_last_30d_val}} {{desativações de}} {{plan_maxium_devices_changes_in_30d_val}} {{possíveis}}.</h2>
         <h3>{{Seu plano permite conectar até}} {{plan_maxium_devices_available_val}} {{dispositivos}}. {{make_and_upgrade_phrase_val}}</h3>
     </div>
 
     <section class="devices__limit-container">
         <p>
-            {{Limite mensal de desvinculações}} 0 {{de}} 4
+            {{Limite mensal de desvinculações}} {{lenght_of_disconnected_devices_in_last_30d_val}} {{de}} {{plan_maxium_devices_changes_in_30d_val}}
         </p>
         <p>
-            {{Limite de dispositivos}} 4 {{de}} 4
+            {{Limite de dispositivos}} {{lenght_of_connected_devices_val}} {{de}} {{plan_maxium_devices_available_val}}
         </p>
     </section>
 
@@ -43,8 +43,8 @@
             <h1 class="modal-header-title">{{Desconectando dispositivo}}</h1>
         </div>
         <div class="modal-content">
-            <p>{{Ao prosseguir, este dispositivo não estará mais vinculado a sua conta.}}</p>
-            <p><strong>{{Você utilizou}} 0 {{de}} {{plan_maxium_devices_changes_in_30d_val}} {{desvinculações este mês.}}</strong></p>
+            <p>{{Ao prosseguir, este dispositivo não estará mais vinculado a sua conta}}.</p>
+            <p><strong>{{Você utilizou}} {{lenght_of_disconnected_devices_in_last_30d_val}} {{de}} {{plan_maxium_devices_changes_in_30d_val}} {{desvinculações este mês}}.</strong></p>
             <p>{{Tem certeza que deseja continuar?}}</p>
             <span class="error" id="disconnect_device_error_span">
             </span>

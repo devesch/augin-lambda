@@ -10,6 +10,13 @@ class Validation:
             cls._instance = super(Validation, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def check_if_less_than_30_days_ago(self, unix_time):
+        import time
+
+        current_time = time.time()
+        seconds_in_30_days = 30 * 24 * 60 * 60
+        return (current_time - float(unix_time)) < seconds_in_30_days
+
     def check_if_zip_is_password_protected(self, zip_path):
         import zipfile
 

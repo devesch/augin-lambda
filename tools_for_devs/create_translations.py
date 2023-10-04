@@ -212,6 +212,14 @@ for placeholder in filtered_placeholders:
         #         translations[placeholder]["pt"] = translator.translate(text=placeholder, src="en", dest="pt").text
 
 
+for key, translation in translations.items():
+    if "augin" in translation["pt"]:
+        translation["pt"] = translation["pt"].replace("augin", "Augin")
+    if "augin" in translation["es"]:
+        translation["es"] = translation["es"].replace("augin", "Augin")
+    if "augin" in translation["en"]:
+        translation["en"] = translation["en"].replace("augin", "Augin")
+
 with open("utils/translations.json", "w", encoding="utf-8") as json_file:
     json.dump(translations, json_file, sort_keys=True, ensure_ascii=False, indent=4)
 
