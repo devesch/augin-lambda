@@ -3033,3 +3033,12 @@ export async function uploadUserThumb(input) {
         user_thumb_img.src = new_source_for_image;
     }
 }
+
+
+
+export async function addRandomDeviceToUser() {
+    let update_user_response = await apiCaller("update_user", {
+        "command": "add_random_device"
+    });
+    location.reload();
+}
