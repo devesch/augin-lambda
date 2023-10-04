@@ -1,5 +1,5 @@
 <div class="panel-user-data-header">
-    <p>{{Você está cadastrado como pessoa jurídica}}</p>
+    <h2>{{Você está cadastrado como pessoa jurídica}}</h2>
     <a {{html_onclick_change_to_physical_form}} href="{{domain_name_url_val}}/panel_user_data/?user_client_type=physical">{{Alterar para pessoa física}}</a>
 </div>
 <form action="{{domain_name_url_val}}/panel_user_data/?user_client_type=company" method="POST" id="form">
@@ -9,7 +9,7 @@
             <label for="user_email" class="floating-label">{{Seu Email}}</label>
         </div>
         <div class="input-default floating-input">
-            <input type="text" name="user_phone" id="user_phone" id="user-phone" value="{{user_phone_val}}" class="floating" oninput="js.index.maskToPhone(this)" placeholder="{{Seu telefone}}" maxlength="15">
+            <input type="text" name="user_phone" id="user_phone" id="user-phone" value="{{user_phone_val}}" class="floating" oninput="js.index.maskToPhone(this)" placeholder="" maxlength="15">
             <label for="user_phone" class="floating-label">{{Seu telefone}}</label>
         </div>
         <div class="input-default focus floating-input">
