@@ -7,7 +7,7 @@
     </td>
     <td style="{{expires_in_visibility_val}}">{{Expira em}} {{exp_month_val}}/{{exp_year_val}}</td>
     <td class="relative" colspan="1">
-        <button class="button--explore-more-options button--icon" aria-controls="payment_method_options_menu_{{index_val}}" aria-expanded="false" {{button_onclick_val}} {{button_disabled_val}}>
+        <!-- <button class="button--explore-more-options button--icon" aria-controls="payment_method_options_menu_{{index_val}}" aria-expanded="false" {{button_onclick_val}} {{button_disabled_val}}>
             <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
         </button>
         <menu id="payment_method_options_menu_{{index_val}}" class="menu--explore-more-options none">
@@ -21,6 +21,19 @@
                     <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Apagar}}</span>
                 </button>
             </li>
-        </menu>
+        </menu> -->
+
+
+        <section class="tooltip-container">
+            <button class="button--explore-more-options button--icon" aria-controls="tooltip_payment_method_{{index_val}}" {{button_disabled_val}}>
+                <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
+            </button>
+            <div class="tooltip-content--click tooltip--payment-method" id="tooltip_payment_method_{{index_val}}" role="tooltip">
+                {{Pagamento padrão não pode ser apagado}}
+            </div>
+        </section>
+
+
+
     </td>
 </tr>

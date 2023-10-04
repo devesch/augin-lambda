@@ -40,6 +40,16 @@
     width: min(90vw, 41rem);
 }
 
+.tooltip--payment-method {
+    left: 0;
+    top: 100%;
+    right: unset;
+    bottom: unset;
+    font-size: 0.75rem;
+    line-height: 2;
+    transform: translate(-100%, -100%);
+}
+
 @media only screen and (max-width: breakpoints.$xx-large) {
     .tooltip--left {
         transform: unset;

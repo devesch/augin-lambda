@@ -3509,6 +3509,11 @@
         "es": "Mensualidad",
         "pt": "Pagamento mensal"
     },
+    "Pagamento padrão não pode ser apagado": {
+        "en": "Default payment cannot be deleted",
+        "es": "El pago por defecto no se puede eliminar",
+        "pt": "Pagamento padrão não pode ser apagado"
+    },
     "Pagamentos": {
         "en": "Payments",
         "es": "Pagos",
