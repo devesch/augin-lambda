@@ -8,7 +8,7 @@ from objects.VerifyEmail import check_if_verify_email_expired
 class UserVerifyEmail(UserPage):
     name = "Confirmação de Email"
     public = True
-    bypass = True
+    bypass = False
     admin = False
 
     def render_get(self):
@@ -29,6 +29,10 @@ class UserVerifyEmail(UserPage):
             self.post["user_email"] = self.path["user_email"]
             self.generate_and_send_email_verification_code()
             return self.render_get_with_error("Um novo código foi enviado para o seu email")
+
+        if self.path.get("user_change_email"):
+            self.user.user_email = self.path["user_email"]
+            Dynamo().update_entity(self.user.__dict__)
         else:
             self.post["verify_email_code"] = self.generate_verification_code()
             if not self.post.get("verify_email_code"):

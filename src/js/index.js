@@ -1034,14 +1034,14 @@ export function detectClickOutsideElement() {
 }
 
 
-export function togglePasswordVisibility(button) {
+export async function togglePasswordVisibility(button) {
     let image = button.querySelector("img");
     let input = document.getElementById(button.getAttribute("aria-controls"));
     if (image.src.includes("visibility_off")) {
         image.src = image.src.replace("visibility_off", "visibility");
         input.setAttribute("type", "text");
 
-        let translate_response = apiCaller("translate", {
+        let translate_response = await apiCaller("translate", {
             key: "Ocultar senha"
         })
 
@@ -1051,7 +1051,7 @@ export function togglePasswordVisibility(button) {
         image.src = image.src.replace("visibility", "visibility_off");
         input.setAttribute("type", "password");
 
-        let translate_response = apiCaller("translate", {
+        let translate_response = await apiCaller("translate", {
             key: "Exibir senha"
         })
 

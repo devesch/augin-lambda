@@ -154,6 +154,11 @@
         "es": "Aceptar todo",
         "pt": "Aceitar Tudo"
     },
+    "Acessar a minha conta": {
+        "en": "Access my account",
+        "es": "Acceder a mi cuenta",
+        "pt": "Acessar a minha conta"
+    },
     "Acessar minha conta": {
         "en": "Access my account",
         "es": "Acceder a mi cuenta",
@@ -298,6 +303,11 @@
         "en": "Changes to this privacy policy",
         "es": "Cambios a esta Política de privacidad",
         "pt": "Alterações a esta política de privacidade"
+    },
+    "Altere sua senha": {
+        "en": "Change your password",
+        "es": "Cambia tu contraseña",
+        "pt": "Altere sua senha"
     },
     "American Samoa": {
         "en": "American Samoa",
@@ -448,6 +458,16 @@
         "en": "Currently you have",
         "es": "Actualmente tienes",
         "pt": "Atualmente você tem"
+    },
+    "Augin - Solicitação de troca de email código ": {
+        "en": "AUGIN - Email exchange request code",
+        "es": "Augin - Código de solicitud de intercambio de correo electrónico",
+        "pt": "Augin - Solicitação de troca de email código "
+    },
+    "Augin - Sua senha foi alterada": {
+        "en": "Augin - Your password has changed",
+        "es": "Augin: su contraseña ha cambiado",
+        "pt": "Augin - Sua senha foi alterada"
     },
     "Australia": {
         "en": "Australia",
@@ -974,6 +994,11 @@
         "es": "Copiar",
         "pt": "Copiar"
     },
+    "Copie e cole o código informado para confirmar a troca do seu email na sua conta Augin": {
+        "en": "Copy and paste the informed code to confirm the exchange of your email in your augin account",
+        "es": "Copie y pegue el código informado para confirmar el intercambio de su correo electrónico en su cuenta de Augin",
+        "pt": "Copie e cole o código informado para confirmar a troca do seu email na sua conta Augin"
+    },
     "Costa Rica": {
         "en": "Costa Rica",
         "es": "Costa Rica",
@@ -1293,6 +1318,11 @@
         "en": "Enter your phone",
         "es": "Ingrese su teléfono",
         "pt": "Digite seu telefone"
+    },
+    "Digite sua atual senha e a nova senha desejada para": {
+        "en": "Enter your current password and the new desired password to",
+        "es": "Ingrese su contraseña actual y la nueva contraseña deseada para",
+        "pt": "Digite sua atual senha e a nova senha desejada para"
     },
     "Digite sua nova senha para": {
         "en": "Enter your new password to",
@@ -2244,6 +2274,11 @@
         "es": "Inserte el (cero) para deshabilitar",
         "pt": "Insira o (zero) para desabilitar"
     },
+    "Insira o código nesta": {
+        "en": "Enter the code in this",
+        "es": "Ingrese el código en este",
+        "pt": "Insira o código nesta"
+    },
     "Insira seu email de usuário Augin": {
         "en": "Enter your Augin user email",
         "es": "Ingrese su correo electrónico de usuario de Augin",
@@ -2353,6 +2388,11 @@
         "en": "There is already a project with this file called:",
         "es": "Ya hay un proyecto con este archivo llamado:",
         "pt": "Já existe um projeto com este arquivo chamado: "
+    },
+    "Já existe um usuário com este email cadastrado.": {
+        "en": "There is already a user with this registered email.",
+        "es": "Ya hay un usuario con este correo electrónico registrado.",
+        "pt": "Já existe um usuário com este email cadastrado."
     },
     "Já existe uma conta com este email cadastrado.": {
         "en": "There is already an account with this registered email.",
@@ -3464,10 +3504,25 @@
         "es": "Pendencias",
         "pt": "Pendências"
     },
+    "Perfil atualizado com sucesso": {
+        "en": "Successful updated profile",
+        "es": "Perfil actualizado exitoso",
+        "pt": "Perfil atualizado com sucesso"
+    },
     "Perfil atualizado com sucesso.": {
         "en": "Profile updated successfully.",
         "es": "Perfil actualizado con éxito.",
         "pt": "Perfil atualizado com sucesso."
+    },
+    "Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o novo email solicitado": {
+        "en": "Updated profile but to change your email you need to confirm the email we send to the new email",
+        "es": "Perfil actualizado, pero para cambiar su correo electrónico, debe confirmar el correo electrónico que enviamos al nuevo correo electrónico",
+        "pt": "Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o novo email solicitado"
+    },
+    "Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o seu novo email solicitado": {
+        "en": "Updated profile but to change your email you need to confirm the email we send to your new email",
+        "es": "Perfil actualizado, pero para cambiar su correo electrónico, debe confirmar el correo electrónico que enviamos a su nuevo correo electrónico",
+        "pt": "Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o seu novo email solicitado"
     },
     "Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra": {
         "en": "Updated profile but it is necessary to fill all fields to process with the purchase",
@@ -3568,6 +3623,11 @@
         "en": "Please enter a 6 digit check code",
         "es": "Ingrese un código de verificación de 6 dígitos",
         "pt": "Por favor informe um código de verificação de 6 dígitos"
+    },
+    "Por favor informe um email.": {
+        "en": "Please enter an email.",
+        "es": "Ingrese un correo electrónico.",
+        "pt": "Por favor informe um email."
     },
     "Por favor informe um nome.": {
         "en": "Please enter a name.",
@@ -4179,6 +4239,11 @@
         "es": "Solicitaremos su consentimiento antes de que se coloquen cookies no esenciales en su dispositivo.",
         "pt": "Solicitaremos seu consentimento antes que quaisquer cookies não essenciais sejam colocados em seu dispositivo"
     },
+    "Solicitação de troca de email": {
+        "en": "Email Exchange Request",
+        "es": "Solicitud de intercambio de correo electrónico",
+        "pt": "Solicitação de troca de email"
+    },
     "Solomon Islands": {
         "en": "Solomon Islands",
         "es": "Islas Salomón",
@@ -4258,6 +4323,11 @@
         "en": "Your account cannot create federated projects",
         "es": "Su cuenta no puede crear proyectos federados",
         "pt": "Sua conta não pode criar projetos federados"
+    },
+    "Sua senha acabou de ser alterada": {
+        "en": "Your password has just been changed",
+        "es": "Su contraseña acaba de ser cambiada",
+        "pt": "Sua senha acabou de ser alterada"
     },
     "Sua senha acabou de ser alterada!": {
         "en": "Your password has just been changed!",
@@ -5193,6 +5263,11 @@
         "en": "your plan is",
         "es": "tu plan es",
         "pt": "seu plano é o"
+    },
+    "sua senha acabou de ser alterada": {
+        "en": "your password has just been changed",
+        "es": "su contraseña acaba de ser cambiada",
+        "pt": "sua senha acabou de ser alterada"
     },
     "this folder doesnt belong to user": {
         "en": "this folder doesnt Belong to user",

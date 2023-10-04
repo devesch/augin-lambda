@@ -21,6 +21,8 @@ class UserRegister(UserPage):
             return Http().redirect("user_login")
         if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
             return Http().redirect("user_login")
+        if self.load_user(self.path["user_email"]):
+            return Http().redirect("user_login")
 
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
@@ -60,6 +62,8 @@ class UserRegister(UserPage):
             return Http().redirect("user_login")
         if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
             return Http().redirect("user_login")
+        if self.load_user(self.path["user_email"]):
+            return Http().redirect("user_login")
 
         if not self.post.get("user_name"):
             return self.render_get_with_error("Por favor informe um nome.")
@@ -79,14 +83,14 @@ class UserRegister(UserPage):
         if not self.post.get("user_aggre_with_cookies_policy"):
             return self.render_get_with_error("Por favor marque que está de acordo com nossa política de cookies.")
 
-        user = User(self.path["user_email"])
+        user = User(Dynamo().get_next_user_id())
+        user.user_email = self.path["user_email"]
         user.user_name = self.post["user_name"].title().strip()
         user.user_first_three_letters_name = user.user_name[:3]
         user.user_address_data["user_country"] = self.post["user_country"].upper()
         if self.post["user_country"].upper() != "BR":
             user.user_client_type = "international"
         user.user_status = "created"
-        user.user_id = Dynamo().get_next_user_id()
         user.user_ip = self.event.get_user_ip()
 
         user_dicts_folder = user.create_new_folder("", is_user_root_folder=True)

@@ -6,6 +6,7 @@ from utils.utils.Validation import Validation
 from utils.utils.JsonData import JsonData
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
+from utils.AWS.Ses import Ses
 
 
 class PanelUserData(PanelPage, UserPage):
@@ -28,7 +29,7 @@ class PanelUserData(PanelPage, UserPage):
 
         if self.render_props:
             html.esc("my_plan_main_class_val", "my-plan__main")
-            html.esc("user_thumb_val", self.user.user_thumb)
+            html.esc("user_thumb_url_val", self.user.generate_user_thumb_url())
             html.esc("html_paneluserdata_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserdata_div"))
             html.esc("html_paneluserdata_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserdata_div"))
             html.esc("html_paneluserbox_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserbox_div"))
@@ -65,10 +66,9 @@ class PanelUserData(PanelPage, UserPage):
         if self.path["user_client_type"] == "physical":
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
-            if not self.post.get("user_phone"):
-                return self.render_get_with_error("Por favor informe um número de telefone.")
-            if not Validation().check_if_br_phone(self.post["user_phone"]):
-                return self.render_get_with_error("Por favor informe um número de telefone válido.")
+            if self.post.get("user_phone"):
+                if not Validation().check_if_br_phone(self.post["user_phone"]):
+                    return self.render_get_with_error("Por favor informe um número de telefone válido.")
             if self.post.get("user_cpf"):
                 if not Validation().check_if_cpf(self.post["user_cpf"]):
                     return self.render_get_with_error("Por favor informe um número CPF válido.")
@@ -88,7 +88,6 @@ class PanelUserData(PanelPage, UserPage):
                 self.post["user_street"] = api_cep_response["street"]
 
         if self.path["user_client_type"] == "company":
-            # TODO: como vai ficar a tradução aqui nessas mensagens hardcoded?
             if not self.post.get("user_cnpj"):
                 return self.render_get_with_error("Por favor informe um CNPJ.")
             if not Validation().check_if_cnpj(self.post["user_cnpj"]):
@@ -96,10 +95,9 @@ class PanelUserData(PanelPage, UserPage):
 
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
-            if not self.post.get("user_phone"):
-                return self.render_get_with_error("Por favor informe um número de telefone.")
-            if not Validation().check_if_br_phone(self.post["user_phone"]):
-                return self.render_get_with_error("Por favor informe um número de telefone válido.")
+            if self.post.get("user_phone"):
+                if not Validation().check_if_br_phone(self.post["user_phone"]):
+                    return self.render_get_with_error("Por favor informe um número de telefone válido.")
 
             api_cnpj_response = Http().get_request_cnpj_address_data(self.post["user_cnpj"])
             if not api_cnpj_response:
@@ -119,15 +117,14 @@ class PanelUserData(PanelPage, UserPage):
             if not self.post.get("user_name"):
                 return self.render_get_with_error("Por favor informe um nome.")
 
-            if not self.post.get("user_phone"):
-                return self.render_get_with_error("Por favor informe um número de telefone.")
-            if not Validation().check_if_phone(self.post["user_phone"], self.post["user_country"]):
-                return self.render_get_with_error("Por favor informe um número de telefone válido.")
+            if self.post.get("user_phone"):
+                if not Validation().check_if_phone(self.post["user_phone"], self.post["user_country"]):
+                    return self.render_get_with_error("Por favor informe um número de telefone válido.")
 
         self.user.user_email = self.post["user_email"]
         self.user.user_name = self.post["user_name"]
         self.user.user_first_three_letters_name = self.user.user_name[:3]
-        self.user.user_phone = self.post["user_phone"]
+        self.user.user_phone = self.post.get("user_phone", "")
         self.user.user_cpf = self.post.get("user_cpf", "")
         self.user.user_cnpj = self.post.get("user_cnpj", "")
         self.user.user_client_type = self.path["user_client_type"]
@@ -156,8 +153,10 @@ class PanelUserData(PanelPage, UserPage):
                 return self.render_get_with_error("Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra")
 
         if user_changed_email:
-            self.user.update_auth_token()
-        return {"html": self.render_get_with_error("Perfil atualizado com sucesso."), "command": "login", "user_auth_token": self.user.user_auth_token}
+            self.generate_and_send_email_verification_code(email="email_modified")
+            return self.render_get_with_error("Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o seu novo email solicitado")
+
+        return self.render_get_with_error("Perfil atualizado com sucesso")
 
     def show_html_physical_form(self):
         html = ReadWrite().read_html("panel_user_data/_codes/html_physical_form")

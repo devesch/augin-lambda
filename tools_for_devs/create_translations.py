@@ -18,6 +18,8 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Augin - Solicitação de troca de email código ",
+    "Augin - Sua senha foi alterada",
     "Faça um upgrade para aumentar esse limite.",
     "Reprocessar",
     "Reprocessando...",

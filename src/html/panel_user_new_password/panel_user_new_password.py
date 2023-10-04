@@ -38,7 +38,7 @@ class PanelUserNewPassword(PanelPage):
         Dynamo().put_entity(self.user.__dict__)
         user_password_modified_email = self.generate_user_password_modified_email(self.user.user_name)
         self.user.clear_all_auth_tokens()
-        Ses().send_email(self.user.user_email, body_html=user_password_modified_email, body_text=user_password_modified_email, subject_data="Augin - Sua senha foi alterada")
+        Ses().send_email(self.user.user_email, body_html=user_password_modified_email, body_text=user_password_modified_email, subject_data=self.translate("Augin - Sua senha foi alterada"))
         return {"html": Http().redirect("home"), "command": "logout", "user_auth_token": None}
 
     def generate_user_password_modified_email(self, user_name):

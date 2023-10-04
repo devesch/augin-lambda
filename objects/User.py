@@ -15,11 +15,11 @@ from utils.Config import lambda_constants
 
 
 class User:
-    def __init__(self, user_email="") -> None:
-        self.pk = "user#" + user_email
-        self.sk = "user#" + user_email
-        self.user_email = user_email
-        self.user_id = str(time.time())
+    def __init__(self, user_id="") -> None:
+        self.pk = "user#" + user_id
+        self.sk = "user#" + user_id
+        self.user_email = ""
+        self.user_id = user_id
 
         self.user_name = ""
         self.user_thumb = ""
@@ -66,15 +66,15 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def update_user_attribute(self, attribute, new_value):
+        setattr(self, attribute, new_value)
+        Dynamo().update_entity(self.__dict__, attribute, new_value)
+
     def generate_user_thumb_url(self):
         if self.user_thumb:
             return lambda_constants["processed_bucket_cdn"] + "/" + self.user_thumb
         else:
-            return lambda_constants["cdn_bucket"] + "/assets/icons/person.svg"
-
-    def update_user_thumb(self, new_thumb_key):
-        self.user_thumb = new_thumb_key
-        Dynamo().update_entity(self.__dict__, "user_thumb", self.user_thumb)
+            return lambda_constants["cdn"] + "/assets/icons/person.svg"
 
     def remove_user_cart_coupon_code(self):
         self.user_cart_coupon_code = ""
@@ -127,14 +127,6 @@ class User:
 
         return str(new_plan_price), str(coupon_discount_value)
 
-    def add_coupon_to_user(self, coupon_code):
-        self.user_cart_coupon_code = coupon_code
-        Dynamo().update_entity(self.__dict__, "user_cart_coupon_code", self.user_cart_coupon_code)
-
-    def update_user_pagination_count(self, user_pagination_count):
-        self.user_pagination_count = user_pagination_count
-        Dynamo().update_entity(self.__dict__, "user_pagination_count", self.user_pagination_count)
-
     def active_trial_plan(self, trial_plan):
         user_subscription_id = "trial-" + Generate().generate_short_id()
         user_subscription = UserSubscription(user_subscription_id, self.user_id).__dict__
@@ -167,18 +159,12 @@ class User:
             user_subscription["subscription_valid_until"] = str(time.time())
         Dynamo().put_entity(user_subscription)
         if valid_until_now:
-            self.user_subscription_valid_until = user_subscription["subscription_valid_until"]
-            Dynamo().update_entity(self.__dict__, "user_subscription_valid_until", self.user_subscription_valid_until)
-        self.user_subscription_status = stripe_subscription["status"]
-        Dynamo().update_entity(self.__dict__, "user_subscription_status", self.user_subscription_status)
+            self.update_user_attribute("user_subscription_valid_until", user_subscription["subscription_valid_until"])
+        self.update_user_attribute("user_subscription_status", stripe_subscription["status"])
 
     def incrase_user_total_orders_count(self):
-        self.user_total_orders_count = str(int(self.user_total_orders_count) + 1)
-        Dynamo().update_entity(self.__dict__, "user_total_orders_count", self.user_total_orders_count)
-
-    def incrase_user_total_orders_count(self):
-        self.user_total_orders_count = str(int(self.user_total_orders_count) + 1)
-        Dynamo().update_entity(self.__dict__, "user_total_orders_count", self.user_total_orders_count)
+        new_user_total_orders_count = str(int(self.user_total_orders_count) + 1)
+        self.update_user_attribute("user_total_orders_count", new_user_total_orders_count)
 
     def get_user_actual_plan(self):
         if self.check_if_subscription_is_valid():
@@ -214,7 +200,7 @@ class User:
         Dynamo().put_entity(self.__dict__)
 
     def clear_all_auth_tokens(self):
-        all_users_auth_tokens = Dynamo().query_users_auth_token(self.user_email)
+        all_users_auth_tokens = Dynamo().query_users_auth_token(self.user_id)
         if all_users_auth_tokens:
             for auth_token in all_users_auth_tokens:
                 Dynamo().delete_entity(auth_token)
@@ -349,8 +335,7 @@ class User:
 
     def update_last_login_at(self):
         if int(float(self.user_last_login_at)) + 3000 < int(time()):
-            self.user_last_login_at = str(time())
-            Dynamo().update_entity(self.__dict__, "user_last_login_at", self.user_last_login_at)
+            self.update_user_attribute("user_last_login_at", str(time()))
 
     def check_if_is_payment_ready(self):
         self.user_payment_ready = True
@@ -396,8 +381,8 @@ class User:
             return True
 
     def recreate_stripe_user(self):
-        self.user_stripe_customer_id = StripeController().create_customer(self)
-        Dynamo().update_entity(self.__dict__, "user_stripe_customer_id", self.user_stripe_customer_id)
+        new_user_stripe_customer_id = StripeController().create_customer(self)
+        self.update_user_attribute("user_stripe_customer_id", new_user_stripe_customer_id)
 
     def update_cart_currency(self):
         if self.user_address_data["user_country"] == "BR":
@@ -406,9 +391,9 @@ class User:
             self.user_cart_currency = "usd"
 
     def load_information(self):
-        if not self.user_email:
+        if not self.user_id:
             return
-        user_data = Dynamo().get_user(self.user_email)
+        user_data = Dynamo().get_user(self.user_id)
         if user_data:
             for attribute in user_data:
                 setattr(self, attribute, user_data[attribute])
@@ -420,19 +405,19 @@ class User:
         if user_auth_token:
             auth_token_item = Dynamo().get_auth_token(user_auth_token)
             if auth_token_item:
-                self.user_email = auth_token_item["auth_user_email"]
+                self.user_id = auth_token_item["auth_user_id"]
         self.load_information()
         self.user_auth_token = user_auth_token
 
     def update_auth_token(self):
         self.user_last_login_at = str(time.time())
         self.user_auth_token = str(uuid4())
-        auth_token = UserAuthToken(self.user_auth_token, self.user_email)
+        auth_token = UserAuthToken(self.user_auth_token, self.user_id)
         Dynamo().put_entity(self.__dict__)
         Dynamo().put_entity(auth_token.__dict__)
 
     def check_if_password_is_corrected(self, user_password):
-        password_item = Dynamo().get_entity_from_crypto({"pk": "user#" + self.user_email, "sk": "pass#" + self.user_email})
+        password_item = Dynamo().get_entity_from_crypto({"pk": "user#" + self.user_id, "sk": "pass#" + self.user_id})
         if password_item:
             if "Item" in password_item:
                 if "user_password" in password_item["Item"]:
@@ -441,7 +426,7 @@ class User:
         return False
 
     def update_password(self, user_password, user_salt):
-        password_item = UserPassword(self.user_email, EncodeDecode().encode_to_project_password(user_password, user_salt), user_salt)
+        password_item = UserPassword(self.user_id, EncodeDecode().encode_to_project_password(user_password, user_salt), user_salt)
         Dynamo().put_entity_into_crypto(password_item.__dict__)
 
 
