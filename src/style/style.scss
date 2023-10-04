@@ -664,7 +664,7 @@ input[list]::-ms-clear {
 
 .my-plan__profile {
     margin-inline: -2rem;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     word-break: break-word;
     background-color: colors.color("color-neutral-800");
     height: 100%;
@@ -715,9 +715,15 @@ input[list]::-ms-clear {
 .my-plan__profile__container {
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
+    line-height: 1.25;
     gap: 0.5rem;
     margin-bottom: 1rem;
+
+    p {
+        font-size: 0.8rem;
+    }
+
 }
 
 .my-plan__profile__container__image {
