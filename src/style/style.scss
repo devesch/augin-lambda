@@ -2377,3 +2377,111 @@ input[list]::-ms-clear {
     margin-bottom: 2rem;
 }
 /* panel user data - end */
+
+/* Checkout Stripe Subscription - Start */
+.checkout-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.box{
+    border: 2px solid colors.color("color-neutral-700");
+    border-radius: .5rem;
+    padding: 1.6rem 3rem 1.5rem 3rem;
+    background: colors.color("color-white");
+}
+
+.summary-container .box{
+    box-shadow: 0 0 0 0.5px rgb(50 50 93 / 10%), 0 2px 5px 0 rgb(50 50 93 / 10%), 0 1px 1.5px 0 rgb(0 0 0 / 7%);
+    text-align: left;
+    padding: 0;
+    border: none;
+    border-radius: .5rem;
+    background: colors.color("color-white");
+}
+
+.user-summary-row,
+.order-summary-row,
+.status-summary-row {
+    word-break: break-word;
+    display: flex;
+    flex-direction: row;
+    background-color: colors.color("color-neutral-200");
+    border-radius: 0.5rem;
+}
+
+.order-summary-price-container {
+    max-width: 13rem;
+}
+
+.user-summary-description-container,
+.order-summary-description-container,
+.status-summary-description-container {
+    flex-grow: 1;
+    background-color: colors.color("color-white");
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+.user-summary-image-container,
+.order-summary-image-container,
+.status-summary-image-container {
+    height: 100%;
+    margin: auto .5rem;
+}
+
+.summary-container {
+    /* box-shadow: 0 0 0 0.5px rgb(50 50 93 / 10%), 0 2px 5px 0 rgb(50 50 93 / 10%), 0 1px 1.5px 0 rgb(0 0 0 / 7%);
+    border-radius: 0.5rem; */
+    background: colors.color("color-white");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 325px;
+    flex: 1;
+    gap: 1rem;
+    font-weight: 500;
+    width: 100%;
+}
+
+.status-summary-mobile {
+    display: none;
+}
+
+.summary-container hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-color: colors.color("color-neutral-400");
+    border-top-style: none;
+}
+
+.summary-container strong {
+    font-weight: bold;
+}
+
+.summary-container h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+// .summary-container a {
+//     color: var(--color-sec);
+//     text-decoration: underline;
+//     transition: color .3s ease;
+// }
+
+.summary-container .link-container {
+    margin-top: 1rem;
+    text-align: right;
+}
+/* Checkout Stripe Subscription - End */

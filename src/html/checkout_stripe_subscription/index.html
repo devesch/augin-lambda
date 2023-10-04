@@ -9,16 +9,13 @@
     }
 
     body {
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        font-size: 16px;
-        -webkit-font-smoothing: antialiased;
         justify-content: center;
         align-content: center;
         height: 100vh;
         width: 100vw;
     }
 
-    form {
+    .stripe form {
         min-width: 500px;
         align-self: flex-start;
         box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
@@ -48,7 +45,7 @@
         margin-bottom: 24px;
     }
 
-    .button-container {
+    .stripe .button-container {
         display: flex;
         flex-direction: column;
         -ms-flex-direction: column;
@@ -57,8 +54,8 @@
     }
 
     /* Buttons and links */
-    button {
-        background: var(--color-sec);
+    /* button {
+        background: var(--color-neutral-700);
         font-family: Arial, sans-serif;
         color: #ffffff;
         border-radius: 4px;
@@ -71,25 +68,25 @@
         transition: all 0.2s ease;
         box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
         width: 100%;
-    }
+    } */
 
-    button:hover {
+    /* button:hover {
         filter: contrast(155%);
     }
 
     button:disabled {
         opacity: 0.5;
         cursor: default;
-    }
+    } */
 
     /* spinner/processing state, errors */
-    .spinner,
-    .spinner:before,
-    .spinner:after {
+    .stripe .spinner,
+    .stripe .spinner:before,
+    .stripe .spinner:after {
         border-radius: 50%;
     }
 
-    .spinner {
+    .stripe .spinner {
         color: #ffffff;
         font-size: 22px;
         text-indent: -99999px;
@@ -103,13 +100,13 @@
         transform: translateZ(0);
     }
 
-    .spinner:before,
-    .spinner:after {
+    .stripe .spinner:before,
+    .stripe .spinner:after {
         position: absolute;
         content: "";
     }
 
-    .spinner:before {
+    .stripe .spinner:before {
         width: 10.4px;
         height: 20.4px;
         background: #5469d4;
@@ -122,7 +119,7 @@
         animation: loading 2s infinite ease 1.5s;
     }
 
-    .spinner:after {
+    .stripe .spinner:after {
         width: 10.4px;
         height: 10.2px;
         background: #5469d4;
@@ -135,7 +132,7 @@
         animation: loading 2s infinite ease;
     }
 
-    .whatsapp-link {
+    .stripe .whatsapp-link {
         color: var(--color-sec);
         transition: color .3s ease;
     }
@@ -171,7 +168,7 @@
         }
     }
 </style>
-<main class="my-plan__main">
+<main class="my-plan__main checkout-container">
     <div class="stripe">
         <form id="payment-form">
             <div id="box_payment_loader">
@@ -222,13 +219,19 @@
                             <p>{{Total}}</p>
                             <p>
                                 <small>{{user_cart_currency_symbol}}</small>
-                                <!-- <strong>{{plan_price_}}{{product_price_points_or_comma_val}}{{product_price_cents_val}}</strong> -->
                                 <strong>{{plan_price_val}}</strong>
                                 /<span class="lowercase">{{plan_recurrency_phrase_val}}</span>
                             </p>
                             <p><strong>{{plan_discounted_price_val}}</strong></p>
                             <p><strong>{{discount_value_val}}</strong></p>
                         </div>
+                    </div>
+                    <div>
+                        <input hidden name="plan_id" id="plan_id_input" value="{{plan_id_val}}">
+                        <input hidden name="plan_recurrency" id="plan_recurrency_input" value="{{plan_recurrency_val}}">
+                        <input name="coupon_code" id="coupon_code_input" value="{{user_cart_coupon_code_val}}">
+                        <button onclick="js.index.addCouponToUser()" name="add_coupon" id="add_coupon_button">{{Adicionar}}</button>
+                        <label>{{Coupon}}</label>
                     </div>
                     <div class="link-container">
                         <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan">{{Alterar plano}}</a>
@@ -246,18 +249,12 @@
                 <div class="status-summary-description-container">
                     <h3>{{Status do pedido}}</h3>
                     <p><span>{{Aguardando a confirmação do pagamento}}.</span></p>
-                    <!-- <p><span class="{{boleto_visibility_val}}">{{payment_made_in_the_ticket_takes_about_so_many_time_until_they_are_confirmed}}</span></p> -->
+                    
                 </div>
             </div>
         </div>
     </div>
 </main>
-
-<input hidden name="plan_id" id="plan_id_input" value="{{plan_id_val}}">
-<input hidden name="plan_recurrency" id="plan_recurrency_input" value="{{plan_recurrency_val}}">
-<input name="coupon_code" id="coupon_code_input" value="{{user_cart_coupon_code_val}}">
-<button onclick="js.index.addCouponToUser()" name="add_coupon" id="add_coupon_button">{{Adicionar}}</button>
-<label>{{Coupon}}</label>
 <span id="coupon_error_msg_span"></span>
 
 <script>
