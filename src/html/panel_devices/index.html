@@ -40,21 +40,19 @@
 <div id="disconnect-device-modal" class="modal disconnect-device-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
-            <h1 class="modal-header-title">{{Escolher nova versão}}</h1>
+            <h1 class="modal-header-title">{{Desconectando dispositivo}}</h1>
         </div>
         <div class="modal-content">
-            <section class="devices__confirmation-modal">
-                <p>{{Ao prosseguir, este dispositivo não estará mais vinculado a sua conta.}}</p>
-                <p><strong>{{Você utilizou}} 0 {{de}} 4 {{desvinculações este mês.}}</strong></p>
-                <p>{{Tem certeza que deseja continuar?}}</p>
-                <span class="error" id="disconnect_device_error_span">
-                </span>
-                <div class="devices__confirmation-modal__button-container">
-                    <input hidden id="disconnect_device_id_input">
-                    <button onclick="js.index.closeModal('.modal.disconnect-device-modal')" class="black ghost">{{Cancelar}}</button>
-                    <button onclick="js.index.saveDisconnectDevice()" class="black">{{Desvincular}}</button>
-                </div>
-            </section>
+            <p>{{Ao prosseguir, este dispositivo não estará mais vinculado a sua conta.}}</p>
+            <p><strong>{{Você utilizou}} 0 {{de}} 4 {{desvinculações este mês.}}</strong></p>
+            <p>{{Tem certeza que deseja continuar?}}</p>
+            <span class="error" id="disconnect_device_error_span">
+            </span>
+            <div class="devices__confirmation-modal__button-container">
+                <input hidden id="disconnect_device_id_input">
+                <button onclick="js.index.closeModal('.modal.disconnect-device-modal')" class="black ghost">{{Cancelar}}</button>
+                <button onclick="js.index.saveDisconnectDevice()" class="black">{{Desvincular}}</button>
+            </div>
         </div>
     </div>
 </div>
