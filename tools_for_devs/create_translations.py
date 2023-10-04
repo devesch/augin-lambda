@@ -18,6 +18,15 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Não foi possível encontrar esta pasta",
+    "Não foi possível encontrar este cupom",
+    "Não foi possível encontrar esta ordem",
+    "Não foi possível decoficar o email",
+    "Não foi possível encontrar esse código de validação",
+    "Não foi possível encontrar este projeto",
+    "Não foi possível encontrar este elemento",
+    "Augin - Solicitação de troca de email",
+    "Augin - Seu código de verficação chegou",
     "Augin - Seu código de verficação é ",
     "Augin - Solicitação de troca de email código ",
     "Augin - Sua senha foi alterada",

@@ -49,14 +49,15 @@ class UserPage(BasePage):
         html = ReadWrite().read_html("user_verify_email/_codes/html_verify_email")
         html.esc("verify_email_code_val", verify_email_code)
         html.esc("user_encoded_email_val", EncodeDecode().encode_to_b64(user_email))
-        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Seu código de verficação é ") + verify_email_code)
+        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Seu código de verficação chegou"))
         return
 
     def send_email_modified_email(self, user_email, verify_email_code):
         html = ReadWrite().read_html("user_verify_email/_codes/html_email_modified_email")
         html.esc("verify_email_code_val", verify_email_code)
         html.esc("user_encoded_email_val", EncodeDecode().encode_to_b64(user_email))
-        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Solicitação de troca de email código ") + verify_email_code)
+        html.esc("original_user_encoded_email_val", EncodeDecode().encode_to_b64(self.user.user_email))
+        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Solicitação de troca de email"))
         return
 
     def generate_verification_code(self):

@@ -31,6 +31,7 @@ class UserVerifyEmail(UserPage):
             return self.render_get_with_error("Um novo código foi enviado para o seu email")
 
         if self.path.get("user_change_email"):
+            self.user = self.load_user(self.path["user_email"])
             self.user.update_user_attribute("user_email", self.path["user_email"])
             return Http().redirect("panel_your_plan")
         else:

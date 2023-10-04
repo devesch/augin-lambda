@@ -32,7 +32,7 @@ class UpdateUser(BasePage):
             return {"error": "A imagem excede o tamanho máximo de 2mb"}
         new_image_key = "user_thumbs/" + self.user.user_id + "/" + self.post["thumb_key"]
         S3().copy_file_from_one_bucket_to_another(lambda_constants["upload_bucket"], self.post["thumb_key"], lambda_constants["processed_bucket"], new_image_key)
-        self.user.update_user_attribute(self, "user_thumb", new_image_key)
+        self.user.update_user_attribute("user_thumb", new_image_key)
         return {"success": "Imagem atualizada com sucesso", "user_thumb": new_image_key}
 
     def add_coupon_to_user(self):

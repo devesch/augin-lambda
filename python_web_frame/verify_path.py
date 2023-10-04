@@ -30,10 +30,15 @@ def get_path_data(path, user):
         if not path["plan"]:
             return {"error": "error"}
 
+    if path.get("original_user_encoded_email_val"):
+        path["original_user_email"] = EncodeDecode().decode_from_b64(path["original_user_encoded_email_val"])
+        if not path["original_user_email"]:
+            return {"error": "Não foi possível decoficar o email"}
+
     if path.get("user_encoded_email"):
         path["user_email"] = EncodeDecode().decode_from_b64(path["user_encoded_email"])
         if not path["user_email"]:
-            return {"error": "Não foi possível decodifir o email"}
+            return {"error": "Não foi possível decoficar o email"}
 
     if path.get("verify_email_code"):
         path["verify_email"] = Dynamo().get_verify_email(path["user_email"], path["verify_email_code"])
