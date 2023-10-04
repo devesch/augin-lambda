@@ -84,6 +84,10 @@ class BasePage:
         html.esc("user_client_type_val", self.user.user_client_type)
         html.esc("user_url_val", self.event.get_url())
         html.esc("user_thumb_val", self.user.generate_user_thumb_url())
+
+        if self.user.user_credential == "admin":
+            html.esc("html_backoffice_button", self.show_html_backoffice_button())
+
         if not self.user.user_plan_id:
             trial_plans = Dynamo().query_trial_plans()
             if trial_plans:
@@ -107,6 +111,10 @@ class BasePage:
 
         html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openCookiesContainer()")
         html.esc("user_url_val", self.event.get_url())
+        return str(html)
+
+    def show_html_backoffice_button(self):
+        html = ReadWrite().read_html("main/_codes/html_backoffice_button_in_menu")
         return str(html)
 
     def show_html_upgrade_button(self, user_plan):
