@@ -3057,6 +3057,23 @@ export async function addRandomDeviceToUser() {
 
 export async function openModalDisconnectDevice(device_id) {
     let disconnect_device_id_input = document.getElementById("disconnect_device_id_input");
+    let disconnect_device_error_span = document.getElementById("disconnect_device_error_span");
     disconnect_device_id_input.value = device_id;
+    disconnect_device_error_span.innerHTML = "";
     openModal('.modal.disconnect-device-modal');
+}
+
+export async function saveDisconnectDevice() {
+    let disconnect_device_id_input = document.getElementById("disconnect_device_id_input");
+    let disconnect_device_error_span = document.getElementById("disconnect_device_error_span");
+    let update_user_response = await apiCaller("update_user", {
+        "command": "disconnect_device",
+        "device_id": disconnect_device_id_input.value
+    });
+
+    if ("error" in update_user_response) {
+        disconnect_device_error_span.innerHTML = update_user_response["error"]
+    } else {
+        closeModal('.modal.disconnect-device-modal');
+    }
 }
