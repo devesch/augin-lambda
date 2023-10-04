@@ -946,6 +946,8 @@ input[list]::-ms-clear {
     transition: color 0.25s linear;
     color: colors.color("color-primary-900");
     font-weight: bold;
+    background: none;
+    border: none;
 }
 
 .main-container__item__link:hover {

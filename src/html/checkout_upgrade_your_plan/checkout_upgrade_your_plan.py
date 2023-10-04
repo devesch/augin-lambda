@@ -116,6 +116,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
         html.esc("recurrency_val", recurrency)
         if change == "downgrade":
             html.esc("upgrade_or_downgrade_val", self.translate("Downgrade de plano"))
+            html.esc("ghost_class_val", "ghost")
         else:
             html.esc("upgrade_or_downgrade_val", self.translate("Upgrade de plano"))
         return str(html)
