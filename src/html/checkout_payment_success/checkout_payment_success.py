@@ -11,7 +11,6 @@ class CheckoutPaymentSuccess(CheckoutPage):
             return Http().redirect("panel_your_plan")
 
         html = super().parse_html()
-
         html.esc("order_short_id_val", generate_order_short_id(self.path["order_id"]))
         html.esc("order_id_val", self.path["order_id"])
         return str(html)

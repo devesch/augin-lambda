@@ -16,7 +16,11 @@
         <tr align="center" bgcolor="#FCFCFC">
             <td>&nbsp;</td>
             <td>
-                <img src="{{cdn_val}}/assets/images/logo-augin.svg" alt="{{Logo Augin}}">
+                <picture>
+                    <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
+                    <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
+                    <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43">
+                </picture>
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -28,7 +32,7 @@
                         <td>&nbsp;</td>
                         <td>
                             <font face="Arial" style="font-size: 16px;" color="#444">
-                                {{Novo pagamento realizado pelo cliente}} {{order_user_email_val}} <br>
+                                {{Novo pagamento realizado pelo cliente}} {{user_email_val}} - {{user_name_val}} <br>
                                 {{Total de}} {{order_currency_val}} {{order_total_price_val}} <br>
                                 <a href="{{domain_name_url_val}}/panel_order/?order_id={{order_id_val}}">{{Link para a compra}}</a> <br>
                                 <a href="{{domain_name_url_val}}/backoffice_orders">{{Link para o Backoffice}}</a> <br>
