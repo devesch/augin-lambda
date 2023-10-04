@@ -952,10 +952,14 @@ input[list]::-ms-clear {
 
 .main-container__item__link:hover {
     color: colors.color("color-primary-700");
+    background: none;
+    border: none;
 }
 
 .main-container__item__link:active {
     color: colors.color("color-primary-500");
+    background: none;
+    border: none;
 }
 
 .my-plan__payment-method-button-container {
@@ -1852,7 +1856,7 @@ input[list]::-ms-clear {
 }
 
 .explore__title-container__title {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     font-weight: bold;
     font-family: "Manrope";
     font-weight: normal;
