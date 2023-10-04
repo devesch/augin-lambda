@@ -20,21 +20,21 @@ class Date:
 
         seconds = delta.total_seconds()
         if seconds < 60:
-            return Code().translate("1 segundo atrás") if seconds <= 1 else str(seconds) + " " + Code().translate("segundos atrás")
+            return Code().translate("1 segundo atrás") if seconds <= 1 else str(int(seconds)) + " " + Code().translate("segundos atrás")
         minutes = seconds // 60
         if minutes < 60:
-            return Code().translate("1 minuto atrás") if minutes == 1 else str(minutes) + " " + Code().translate("minutos atrás")
+            return Code().translate("1 minuto atrás") if minutes == 1 else str(int(minutes)) + " " + Code().translate("minutos atrás")
         hours = minutes // 60
         if hours < 24:
-            return Code().translate("1 hora atrás") if hours == 1 else str(hours) + " " + Code().translate("horas atrás")
+            return Code().translate("1 hora atrás") if hours == 1 else str(int(hours)) + " " + Code().translate("horas atrás")
         days = hours // 24
         if days < 30:
-            return Code().translate("1 dia atrás") if days == 1 else str(days) + " " + Code().translate("dias atrás")
+            return Code().translate("1 dia atrás") if days == 1 else str(int(days)) + " " + Code().translate("dias atrás")
         months = days // 30
         if months < 12:
-            return Code().translate("1 mês atrás") if months == 1 else str(months) + " " + Code().translate("meses atrás")
+            return Code().translate("1 mês atrás") if months == 1 else str(int(months)) + " " + Code().translate("meses atrás")
         years = months // 12
-        return Code().translate("1 ano atrás") if years == 1 else str(years) + " " + Code().translate("anos atrás")
+        return Code().translate("1 ano atrás") if years == 1 else str(int(years)) + " " + Code().translate("anos atrás")
 
     def format_to_str_time(self, unix_time):
         dt_object = datetime.fromtimestamp(float(unix_time))

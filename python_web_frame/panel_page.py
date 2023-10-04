@@ -16,10 +16,17 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
-    def list_html_user_devices_thumbs(self, user_devices):
+    def list_html_user_available_devices_thumbs(self, connected_devides, plan_maxium_devices_available):
         full_html = []
-        if user_devices:
-            for device in user_devices:
+        for x in range(int(plan_maxium_devices_available) - len(connected_devides)):
+            html = ReadWrite().read_html("panel_devices/_codes/html_user_available_devices_thumbs")
+            full_html.append(str(html))
+        return "".join(full_html)
+
+    def list_html_user_devices_thumbs(self, connected_devides):
+        full_html = []
+        if connected_devides:
+            for device in connected_devides:
                 html = ReadWrite().read_html("panel_devices/_codes/html_user_devices_thumbs")
                 html.esc("device_icon_val", generate_device_icon(device))
                 html.esc("device_name_val", device["device_name"])
