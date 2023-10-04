@@ -31,8 +31,8 @@ class UserVerifyEmail(UserPage):
             return self.render_get_with_error("Um novo código foi enviado para o seu email")
 
         if self.path.get("user_change_email"):
-            self.user.user_email = self.path["user_email"]
-            Dynamo().update_entity(self.user.__dict__)
+            self.user.update_user_attribute("user_email", self.path["user_email"])
+            return Http().redirect("panel_your_plan")
         else:
             self.post["verify_email_code"] = self.generate_verification_code()
             if not self.post.get("verify_email_code"):
