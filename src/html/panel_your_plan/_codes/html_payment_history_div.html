@@ -2,9 +2,11 @@
     <h3>
         {{Histórico de pagamento}}
     </h3>
-    <table id="payment_history_rows">
-        {{html_payment_history_rows}}
-    </table>
+    <div class="tbody-container">
+        <table id="payment_history_rows">
+            {{html_payment_history_rows}}
+        </table>
+    </div>
     <nav class="my-plan__history-pagination">
         <input hidden id="payment_history_pages_count_input" value="{{payment_history_pages_count_val}}">
         <input hidden id="payment_history_current_page_input" value="1">

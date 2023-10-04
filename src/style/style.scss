@@ -906,6 +906,7 @@ input[list]::-ms-clear {
         border-spacing: .5rem;
         border-collapse: separate;
         width: 100%;
+        white-space: nowrap;
     }
 
     h3 {
@@ -923,6 +924,10 @@ input[list]::-ms-clear {
 
     img {
         vertical-align: sub;
+    }
+
+    .tbody-container {
+        overflow: auto;
     }
 
 }
