@@ -108,9 +108,9 @@ class BasePage:
 
         ### REMOVE THIS PARTE AND USE THE CODE BELOW
         if self.user:
-            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.route.replace("_", "-") + "','" + self.user.user_id + "','" + self.user.user_name.replace(" ", "-") + "','" + self.user.user_plan_id + "')")
+            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.user.user_id + "','" + self.user.user_plan_id + "')")
         else:
-            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.route.replace("_", "-") + "','notInformed','notInformed','notInformed','notInformed'")
+            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('notInformed','notInformed'")
 
         ### REMOVE THIS PARTE AND USE THE CODE BELOW
         ### TODO WHEN TIAGO LIBERATE COOKIE POLICY USE THE COMMENTED CODE BELOW

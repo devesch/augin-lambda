@@ -3087,11 +3087,9 @@ export async function checkAllOptionalCookies(checkbox) {
     }
 }
 
-export async function openTawkApi(page, userId, userName, userPlanId) {
+export async function openTawkApi(userId, userPlanId) {
     window.Tawk_API.setAttributes({
-        'page': page,
         'userId': userId,
-        'userName': userName,
         'userPlanId': userPlanId
     }, function (error) {
         if (error != undefined)
