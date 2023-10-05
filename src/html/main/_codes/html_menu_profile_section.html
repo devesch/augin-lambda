@@ -1,0 +1,41 @@
+<section class="my-plan__profile">
+    <div class="my-plan__profile__container">
+        <div class="my-plan__profile__container__image">
+            <picture>
+                <img id="panel_menu_user_thumb_img" src="{{user_thumb_val}}" alt="" width="28" height="28">
+            </picture>
+        </div>
+        <div>
+            <strong>{{user_name_val}}</strong>
+            <p class="my-plan__profile__container__email">{{user_email_val}}</p>
+        </div>
+    </div>
+    <menu class="my-plan__profile-menu">
+        <li>
+            <form class="label-select-container" action="{{domain_name_url_val}}/home" method="POST">
+                <label class="button" for="select_translation">
+                    <img src="{{cdn_val}}/assets/icons/translate.svg" alt="Trocar idioma" width="24" height="24">
+                </label>
+                <input hidden name="user_url" value="{{user_url_val}}">
+                <select name="select_translation" id="select_translation" class="hidden-select" onchange="this.form.submit()">
+                    <option value="" selected disabled>{{Idioma}}</option>
+                    <option value="pt">Português</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </form>
+        </li>
+        <li>
+            <a href="{{domain_name_url_val}}/panel_user_data/?user_client_type={{user_client_type_val}}">
+                <button>
+                    <img src="{{cdn_val}}/assets/icons/settings_account_box.svg" alt="Configurações" width="24" height="24">
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="{{domain_name_url_val}}/user_exit" class="button">
+                <img src="{{cdn_val}}/assets/icons/logout.svg" alt="Sair da conta" width="24" height="24">
+            </a>
+        </li>
+    </menu>
+</section>
