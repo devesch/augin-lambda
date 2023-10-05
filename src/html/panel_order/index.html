@@ -4,15 +4,19 @@
     <div class="page-user page-mobile" id="panelOrder">
         {{html_admin_using_another_account_advisory}}
         <div class="my-plan__title-container">
-            <h1 class="my-plan__title">{{Informaçōes do pedido}}</h1>
-            <h2 class="my-plan__title">#{{order_short_id_val}}</h2>
+            <h1 class="my-plan__title">{{Informaçōes do pedido}} #{{order_short_id_val}}</h1>
         </div>
 
         <div class="explore__title-container">
             <div class="">
-                <div class="box-info-magipix">
-                    <img src="{{cdn_val}}/assets/images/logo-augin.svg" alt="{{Logo Augin}}">
-                    <div class="box-info-magipix__address">
+                <div class="order-info">
+                    <picture>
+                        <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
+                        <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
+                        <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43">
+                    </picture>
+
+                    <div class="order-info__address">
                         <p>Av. Mariland 403, Sala 802 - Porto Alegre, RS</p>
                         <p>CNPJ 31.758.054/0001-44</p>
                     </div>
