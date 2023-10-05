@@ -1,6 +1,8 @@
 from python_web_frame.controllers.billing_controller import BillingController
+from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.base_page import BasePage
 from utils.utils.Validation import Validation
+from utils.AWS.Dynamo import Dynamo
 from utils.Config import lambda_constants
 from datetime import datetime
 
@@ -14,11 +16,17 @@ class LambdaPeriodicActions(BasePage):
                 return {"error": "lambda_periodic_actions_key incorreta"}
 
         BillingController().check_and_issued_not_issued_bill_of_sales()
-
+        self.check_for_models_with_error_still_processing()
         if datetime.today().day == 1:
             BillingController().generate_and_send_orders_nfses()
             # self.fix_total_count()
         return {"success": "all periodic actions completed"}
+
+    def check_for_models_with_error_still_processing():
+        models_processing, last_evaluated_key = Dynamo().query_paginated_all_models_by_state("in_processing", limit=10000000)
+        for model in models_processing:
+            if ModelController().check_if_model_in_processing_is_with_error(model["created_at"]):
+                ModelController().mark_model_as_error(model, "Processamento interminável")
 
     # def fix_total_count(self):
     #     all_users = self.dynamo.query_entity("user")

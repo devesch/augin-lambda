@@ -17,8 +17,8 @@ class BackofficeModelsHtml(BackofficePage):
                     return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
             models = [model]
             return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
-        else:
 
+        else:
             if self.post.get("search_model_state") != "all" and self.post.get("search_user"):
                 searched_user = self.load_user(self.post["search_user"])
                 query = "query_user_models_from_state"
