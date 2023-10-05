@@ -14,6 +14,8 @@ class Home(BasePage):
 
     def render_post(self):
         if self.post.get("select_translation"):
+            if not self.post.get("user_url"):
+                self.post["user_url"] = ""
             if self.post["select_translation"] not in ("pt", "es", "en"):
                 self.post["select_translation"] = "en"
             return {"html": Http().redirect(self.post["user_url"].replace("/", "/?")), "command": "change_lang", "user_lang": self.post["select_translation"]}

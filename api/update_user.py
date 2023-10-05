@@ -8,6 +8,7 @@ from utils.Config import lambda_constants
 from objects.UserFolder import check_if_folder_movement_is_valid
 from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices, generate_disconnected_devices_in_last_30d
 from objects.UserPaymentMethod import UserPaymentMethod
+import time
 
 
 class UpdateUser(BasePage):
@@ -73,8 +74,9 @@ class UpdateUser(BasePage):
         return {"success": "Imagem atualizada com sucesso", "user_thumb": new_image_key}
 
     def add_coupon_to_user(self):
-        import time
 
+        if not self.post.get("coupon_code"):
+            return {"error": "Nenhum código de cupom informado"}
         coupon = Dynamo().get_coupon(self.post["coupon_code"])
         if not coupon:
             self.user.remove_user_cart_coupon_code()
