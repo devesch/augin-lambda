@@ -161,7 +161,9 @@ footer {
     position: fixed;
     bottom: 1rem;
     z-index: 1;
-    width: 100%;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 summary,
