@@ -554,6 +554,7 @@ input[list]::-ms-clear {
 .my-plan__main {
     padding: 2rem 1rem;
     width: 100%;
+    margin-bottom: 4rem;
     @media only screen and (min-width: breakpoints.$large) {
         margin-left: 350px;
     }
