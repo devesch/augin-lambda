@@ -114,20 +114,22 @@ class Http:
 
     def get_request_cnpj_address_data(self, user_cnpj):
         cnpj_address_data = {}
-        api_cnpj_response = self.request("GET", "https://checkout.augin.app/cnpj_data/" + user_cnpj, headers={"Content-Type": "application/json; charset=utf-8"})
-        if "name" in api_cnpj_response:
+        api_cnpj_response = self.request("POST", "https://web.augin.app/api/panel_get_cnpj_data", headers={"Content-Type": "application/json; charset=utf-8"}, data={"cnpj": user_cnpj})
+        if "error" in api_cnpj_response:
+            return api_cnpj_response["error"]
+        if "name" in api_cnpj_response["success"]:
             cnpj_address_data = {
-                "name": api_cnpj_response["name"],
-                "zip_code": api_cnpj_response["address"]["postalCode"].replace("-", ""),
-                "state": api_cnpj_response["address"]["state"],
-                "city": api_cnpj_response["address"]["city"]["name"],
-                "city_code": api_cnpj_response["address"]["city"]["code"],
-                "neighborhood": api_cnpj_response["address"]["district"],
-                "street": api_cnpj_response["address"]["street"],
-                "street_number": api_cnpj_response["address"]["number"],
+                "name": api_cnpj_response["success"]["name"],
+                "zip_code": api_cnpj_response["success"]["address"]["postalCode"].replace("-", ""),
+                "state": api_cnpj_response["success"]["address"]["state"],
+                "city": api_cnpj_response["success"]["address"]["city"]["name"],
+                "city_code": api_cnpj_response["success"]["address"]["city"]["code"],
+                "neighborhood": api_cnpj_response["success"]["address"]["district"],
+                "street": api_cnpj_response["success"]["address"]["street"],
+                "street_number": api_cnpj_response["success"]["address"]["number"],
             }
-        if api_cnpj_response.get("complement"):
-            cnpj_address_data["complement"] = api_cnpj_response["address"]["additionalInformation"]
+        if api_cnpj_response["success"].get("complement"):
+            cnpj_address_data["complement"] = api_cnpj_response["success"]["address"]["additionalInformation"]
         return cnpj_address_data
 
     def slugify(self, text):
