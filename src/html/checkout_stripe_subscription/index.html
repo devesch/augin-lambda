@@ -197,9 +197,7 @@
         <div class="user-summary box">
             <div class="user-summary-row">
                 <div class="user-summary-image-container">
-                    <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path>
-                    </svg>
+                    <img src="{{cdn_val}}/assets/icons/checkout-profile.svg" width="25" height="25" alt=""/>
                 </div>
                 <div class="user-summary-description-container">
                     <h3 class="mb-0">{{user_name_val}}</h3>
@@ -210,9 +208,7 @@
         <div class="order-summary box">
             <div class="order-summary-row">
                 <div class="order-summary-image-container">
-                    <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path>
-                    </svg>
+                    <img src="{{cdn_val}}/assets/icons/checkout-cart.svg" width="25" height="25" alt=""/>
                 </div>
                 <div class="order-summary-description-container">
                     <h3>{{Resumo do pedido}}</h3>
@@ -236,6 +232,7 @@
                         <input type="text" name="coupon_code" id="coupon_code_input" value="{{user_cart_coupon_code_val}}" placeholder="">
                         <label for="coupon_code_input">{{Coupon}}</label>
                     </div>
+                    <span id="coupon_error_msg_span"></span>
                     <button onclick="js.index.addCouponToUser()" name="add_coupon" id="add_coupon_button">{{Adicionar}}</button>
                     <div class="link-container">
                         <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan">{{Alterar plano}}</a>
@@ -246,9 +243,7 @@
         <div class="status-summary box status-summary-desktop" style="">
             <div class="status-summary-row">
                 <div class="status-summary-image-container">
-                    <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path d="M512 64C547.3 64 576 92.65 576 128V384C576 419.3 547.3 448 512 448H64C28.65 448 0 419.3 0 384V128C0 92.65 28.65 64 64 64H512zM272 192C263.2 192 256 199.2 256 208C256 216.8 263.2 224 272 224H496C504.8 224 512 216.8 512 208C512 199.2 504.8 192 496 192H272zM272 320H496C504.8 320 512 312.8 512 304C512 295.2 504.8 288 496 288H272C263.2 288 256 295.2 256 304C256 312.8 263.2 320 272 320zM164.1 160C164.1 148.9 155.1 139.9 143.1 139.9C132.9 139.9 123.9 148.9 123.9 160V166C118.3 167.2 112.1 168.9 108 171.1C93.06 177.9 80.07 190.5 76.91 208.8C75.14 219 76.08 228.9 80.32 237.8C84.47 246.6 91 252.8 97.63 257.3C109.2 265.2 124.5 269.8 136.2 273.3L138.4 273.9C152.4 278.2 161.8 281.3 167.7 285.6C170.2 287.4 171.1 288.8 171.4 289.7C171.8 290.5 172.4 292.3 171.7 296.3C171.1 299.8 169.2 302.8 163.7 305.1C157.6 307.7 147.7 309 134.9 307C128.9 306 118.2 302.4 108.7 299.2C106.5 298.4 104.3 297.7 102.3 297C91.84 293.5 80.51 299.2 77.02 309.7C73.53 320.2 79.2 331.5 89.68 334.1C90.89 335.4 92.39 335.9 94.11 336.5C101.1 339.2 114.4 343.4 123.9 345.6V352C123.9 363.1 132.9 372.1 143.1 372.1C155.1 372.1 164.1 363.1 164.1 352V346.5C169.4 345.5 174.6 343.1 179.4 341.9C195.2 335.2 207.8 322.2 211.1 303.2C212.9 292.8 212.1 282.8 208.1 273.7C204.2 264.7 197.9 258.1 191.2 253.3C179.1 244.4 162.9 239.6 150.8 235.9L149.1 235.7C135.8 231.4 126.2 228.4 120.1 224.2C117.5 222.4 116.7 221.2 116.5 220.7C116.3 220.3 115.7 219.1 116.3 215.7C116.7 213.7 118.2 210.4 124.5 207.6C130.1 204.7 140.9 203.1 153.1 204.1C157.5 205.7 171 208.3 174.9 209.3C185.5 212.2 196.5 205.8 199.3 195.1C202.2 184.5 195.8 173.5 185.1 170.7C180.7 169.5 170.7 167.5 164.1 166.3L164.1 160z"></path>
-                    </svg>
+                    <img src="{{cdn_val}}/assets/icons/checkout-card.svg" width="25" height="25" alt=""/>
                 </div>
                 <div class="status-summary-description-container">
                     <h3>{{Status do pedido}}</h3>
@@ -259,7 +254,6 @@
         </div>
     </div>
 </main>
-<span id="coupon_error_msg_span"></span>
 
 <script>
     window.onload = async function () {
