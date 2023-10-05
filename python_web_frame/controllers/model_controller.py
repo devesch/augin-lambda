@@ -24,7 +24,7 @@ class ModelController:
         return cls._instance
 
     def mark_model_as_error(self, model, error_msg):
-        model = self.change_model_state("in_processing", "error")
+        model = self.change_model_state(model, "in_processing", "error")
         model["model_error_msg"] = error_msg
         Dynamo().put_entity(model)
         return model
