@@ -87,7 +87,7 @@ class User:
         if self.user_thumb:
             return lambda_constants["processed_bucket_cdn"] + "/" + self.user_thumb
         else:
-            return lambda_constants["cdn"] + "/assets/icons/person.svg"
+            return lambda_constants["cdn"] + "/assets/icons/person_square.svg"
 
     def remove_user_cart_coupon_code(self):
         self.user_cart_coupon_code = ""
