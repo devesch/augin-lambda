@@ -8,74 +8,75 @@
         </div>
 
         <div class="explore__title-container">
-            <div class="">
-                <div class="order-info">
-                    <picture>
-                        <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
-                        <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
-                        <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43">
-                    </picture>
+            <div class="order-info">
+                <picture>
+                    <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
+                    <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
+                    <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43">
+                </picture>
 
-                    <div class="order-info__address">
-                        <p>Av. Mariland 403, Sala 802 - Porto Alegre, RS</p>
-                        <p>CNPJ 31.758.054/0001-44</p>
-                    </div>
-                </div>
-                <div class="">
-                    <p>{{Código Completo:}}</p>
-                    <span>{{order_id_val}}</span>
-                </div>
-                <div class="">
-                    <p>{{Método de pagamento:}}</p>
-                    <span>{{order_payment_method}}</span>
-                </div>
-                <div class="">
-                    <p>{{Data e Hora:}}</p>
-                    <span>{{order_datetime_val}}</span>
-                </div>
-                <div class="">
-                    <p>{{Status:}}</p>
-                    <span>{{order_status_val}}</span>
+                <div class="order-info__address">
+                    <p>Av. Mariland 403, Sala 802 - Porto Alegre, RS</p>
+                    <p>CNPJ 31.758.054/0001-44</p>
                 </div>
             </div>
-            <div class="">
-                <p>{{Tipo de compra}}</p>
-                <div class="">
-                    <span>{{order_type_val}}</span>
-                </div>
-            </div>
-            <div class="">
-                <p>{{Itens da Compra}}</p>
-                <div class="table">
-                    <table>
-                        <thead>
-                            <th>{{Produto}}</th>
-                            <th>{{Total}}</th>
-                            <th class="buy-again"></th>
-                        </thead>
-                        <tbody>
-                            {{html_table_rows}}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="box-total-order">
-                    {{html_order_coupon}}
-                    <div class="total-order total">
-                        <p>{{Total}}:</p>
-                        <span>{{order_currency_val}} {{order_total_price_val}}</span>
+            <div class="order-body">
+                <div class="order-column">
+                    <div class="">
+                        <p>{{Código Completo:}}</p>
+                        <span>{{order_id_val}}</span>
+                    </div>
+                    <div class="">
+                        <p>{{Método de pagamento:}}</p>
+                        <span>{{order_payment_method}}</span>
+                    </div>
+                    <div class="">
+                        <p>{{Data e Hora:}}</p>
+                        <span>{{order_datetime_val}}</span>
+                    </div>
+                    <div class="">
+                        <p>{{Status:}}</p>
+                        <span>{{order_status_val}}</span>
                     </div>
                 </div>
-            </div>
-
-            <div class="">
-                <div class="box-invoce-download" style="{{nfse_visibilty_val}}">
-                    <p>{{Nota Fiscal}}:</p>
-                    <div class="invoce-download">
-                        {{html_download_xml_invoice_button}}
-                        {{html_download_pdf_invoice_button}}
+                <div class="order-column">
+                    <p>{{Tipo de compra}}</p>
+                    <div class="">
+                        <span>{{order_type_val}}</span>
                     </div>
                 </div>
-                {{html_print_payment_button}}
+                <div class="order-column">
+                    <p>{{Itens da Compra}}</p>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <th>{{Produto}}</th>
+                                <th>{{Total}}</th>
+                                <th class="buy-again"></th>
+                            </thead>
+                            <tbody>
+                                {{html_table_rows}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-total-order">
+                        {{html_order_coupon}}
+                        <div class="total-order total">
+                            <p>{{Total}}:</p>
+                            <span>{{order_currency_val}} {{order_total_price_val}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-column">
+                    <div class="box-invoce-download" style="{{nfse_visibilty_val}}">
+                        <p>{{Nota Fiscal}}:</p>
+                        <div class="invoce-download">
+                            {{html_download_xml_invoice_button}}
+                            {{html_download_pdf_invoice_button}}
+                        </div>
+                    </div>
+                    {{html_print_payment_button}}
+                </div>
             </div>
         </div>
     </div>

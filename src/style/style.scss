@@ -2850,6 +2850,26 @@ input[list]::-ms-clear {
 /* Backoffice Order Nfse Pdf - End */
 
 /* Panel Order - Start */
+.order__title-container {
+    margin-top: 1rem;
+    background-color: colors.color("color-neutral-50");
+    border-radius: 1rem;
+}
+
+.order-info {
+    background-color: colors.color("color-neutral-900");
+    color: colors.color("color-white");
+    padding: 2rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.order-body {
+    padding: 2rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
 @media print {
     .buy-again {
         visibility: hidden;
