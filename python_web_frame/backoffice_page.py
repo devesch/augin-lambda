@@ -106,7 +106,7 @@ class BackofficePage(BasePage):
                 html.esc("model_valid_until_val", Date().format_unixtime_to_br_date(model["model_valid_until"]))
                 html.esc("model_error_msg_val", model["model_error_msg"])
                 html.esc("created_at_val", Date().format_unixtime_to_br_date(model["created_at"]))
-                if model["model_state"] != "completed" or model["model_category"] == "federated":
+                if (model["model_state"] != "completed" and model["model_state"] != "error") or model["model_category"] == "federated":
                     html.esc("reprocess_button_visitility_val", "display:none;")
                 full_html.append(str(html))
         return "".join(full_html)
