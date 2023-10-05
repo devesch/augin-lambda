@@ -2848,3 +2848,19 @@ input[list]::-ms-clear {
 }
 
 /* Backoffice Order Nfse Pdf - End */
+
+/* Panel Order - Start */
+@media print {
+    .buy-again {
+        visibility: hidden;
+    }
+
+    .buy-again {
+        display: none;
+    }
+
+    .order-info{
+        display: block !important;
+    }
+}
+/* Panel Order - End */
