@@ -197,7 +197,7 @@
         <div class="user-summary box">
             <div class="user-summary-row">
                 <div class="user-summary-image-container">
-                    <img src="{{cdn_val}}/assets/icons/checkout-profile.svg" width="25" height="25" alt=""/>
+                    <img src="{{cdn_val}}/assets/icons/checkout-profile.svg" width="25" height="25" alt="" />
                 </div>
                 <div class="user-summary-description-container">
                     <h3 class="mb-0">{{user_name_val}}</h3>
@@ -208,7 +208,7 @@
         <div class="order-summary box">
             <div class="order-summary-row">
                 <div class="order-summary-image-container">
-                    <img src="{{cdn_val}}/assets/icons/checkout-cart.svg" width="25" height="25" alt=""/>
+                    <img src="{{cdn_val}}/assets/icons/checkout-cart.svg" width="25" height="25" alt="" />
                 </div>
                 <div class="order-summary-description-container">
                     <h3>{{Resumo do pedido}}</h3>
@@ -218,12 +218,12 @@
                         <div class="order-summary-total-container">
                             <p>{{Total}}</p>
                             <p>
-                                <small>{{user_cart_currency_symbol}}</small>
+                                <small>{{user_cart_currency_symbol}} </small>
                                 <strong>{{plan_price_val}}</strong>
                                 /<span class="lowercase">{{plan_recurrency_phrase_val}}</span>
                             </p>
-                            <p class="order-summary__discount-container"><strong>- {{discount_value_val}}</strong></p>
-                            <p><strong>{{plan_discounted_price_val}}</strong></p>
+                            <p style="{{coupon_discount_visibility_val}}" class="order-summary__discount-container"><strong>- </strong> <small>{{user_cart_currency_symbol}} </small> <strong></strong>{{discount_value_val}}</strong></p>
+                            <p style="{{coupon_discount_visibility_val}}"><small>{{user_cart_currency_symbol}} </small> <strong>{{plan_discounted_price_val}}</strong></p>
                         </div>
                     </div>
                     <div class="floating-input">
@@ -233,7 +233,8 @@
                         <label for="coupon_code_input">{{Coupon}}</label>
                     </div>
                     <span id="coupon_error_msg_span"></span>
-                    <button onclick="js.index.addCouponToUser()" name="add_coupon" id="add_coupon_button">{{Adicionar}}</button>
+                    {{html_add_or_remove_coupon_button}}
+
                     <div class="link-container">
                         <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan">{{Alterar plano}}</a>
                     </div>
@@ -243,12 +244,12 @@
         <div class="status-summary box status-summary-desktop" style="">
             <div class="status-summary-row">
                 <div class="status-summary-image-container">
-                    <img src="{{cdn_val}}/assets/icons/checkout-card.svg" width="25" height="25" alt=""/>
+                    <img src="{{cdn_val}}/assets/icons/checkout-card.svg" width="25" height="25" alt="" />
                 </div>
                 <div class="status-summary-description-container">
                     <h3>{{Status do pedido}}</h3>
                     <p><span>{{Aguardando a confirmação do pagamento}}.</span></p>
-                    
+
                 </div>
             </div>
         </div>

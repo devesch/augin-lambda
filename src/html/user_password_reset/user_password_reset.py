@@ -7,7 +7,7 @@ from utils.utils.Generate import Generate
 
 
 class UserPasswordReset(UserPage):
-    name = "TQS Cloud - Resetar Senha"
+    name = "Resetar Senha"
     public = True
     bypass = True
     admin = False

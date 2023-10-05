@@ -3,7 +3,7 @@ from utils.utils.Http import Http
 
 
 class UserExit(BasePage):
-    name = "TQS Cloud - Sair"
+    name = "Sair"
     public = True
     bypass = False
     admin = False

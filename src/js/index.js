@@ -2668,6 +2668,15 @@ export async function showCouponDiscountFields() {
     }
 }
 
+
+
+export async function removeCouponFromUser() {
+    let update_user_response = await apiCaller('update_user', {
+        "command": "remove_coupon_from_user"
+    });
+
+    location.reload()
+}
 export async function addCouponToUser() {
     let coupon_code_input = document.getElementById("coupon_code_input");
     let plan_id_input = document.getElementById("plan_id_input");
@@ -3078,11 +3087,10 @@ export async function checkAllOptionalCookies(checkbox) {
     }
 }
 
-export async function openTawkApi(page, userId, userEmail, userName, userPlanId) {
+export async function openTawkApi(page, userId, userName, userPlanId) {
     window.Tawk_API.setAttributes({
         'page': page,
         'userId': userId,
-        'userEmail': userEmail,
         'userName': userName,
         'userPlanId': userPlanId
     }, function (error) {

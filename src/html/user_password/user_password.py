@@ -4,7 +4,7 @@ from utils.utils.Http import Http
 
 
 class UserPassword(BasePage):
-    name = "TQS Cloud - Senha"
+    name = "Senha"
     public = True
     bypass = True
     admin = False

@@ -2,7 +2,7 @@
 
 
 class Error(BasePage):
-    name = "TQS Cloud - Estamos com dificuldades"
+    name = "Estamos com dificuldades"
     public = True
     bypass = False
 

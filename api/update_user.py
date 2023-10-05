@@ -73,8 +73,11 @@ class UpdateUser(BasePage):
         self.user.update_attribute("user_thumb", new_image_key)
         return {"success": "Imagem atualizada com sucesso", "user_thumb": new_image_key}
 
-    def add_coupon_to_user(self):
+    def remove_coupon_from_user(self):
+        self.user.remove_user_cart_coupon_code()
+        return {"success": "Cupom removido do usuário"}
 
+    def add_coupon_to_user(self):
         if not self.post.get("coupon_code"):
             return {"error": "Nenhum código de cupom informado"}
         coupon = Dynamo().get_coupon(self.post["coupon_code"])

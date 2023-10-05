@@ -2894,6 +2894,11 @@
         "es": "No se encuentra cupón con este código",
         "pt": "Nenhum cupom encontrado com este código"
     },
+    "Nenhum código de cupom informado": {
+        "en": "No informed coupon code",
+        "es": "Sin código de cupón informado",
+        "pt": "Nenhum código de cupom informado"
+    },
     "Nenhum código postal fornecido": {
         "en": "No postal code provided",
         "es": "No se proporciona código postal",
