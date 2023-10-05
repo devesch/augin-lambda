@@ -3,13 +3,13 @@
 <main class="my-plan__main">
     <div class="page-user page-mobile" id="panelOrder">
         {{html_admin_using_another_account_advisory}}
-        <div class="box-title">
-            <p>{{Informaçōes do pedido}}</p>
-            <span>#{{order_short_id_val}}</span>
+        <div class="my-plan__title-container">
+            <h1 class="my-plan__title">{{Informaçōes do pedido}}</h1>
+            <h2 class="my-plan__title">#{{order_short_id_val}}</h2>
         </div>
 
-        <div class="page-user__box-user-order box-content max-width">
-            <div class="page-user__box-user-order__section-one">
+        <div class="explore__title-container">
+            <div class="">
                 <div class="box-info-magipix">
                     <img src="{{cdn_val}}/assets/images/logo-augin.svg" alt="{{Logo Augin}}">
                     <div class="box-info-magipix__address">
@@ -17,30 +17,30 @@
                         <p>CNPJ 31.758.054/0001-44</p>
                     </div>
                 </div>
-                <div class="page-user__box-user-order__section-one__item">
+                <div class="">
                     <p>{{Código Completo:}}</p>
                     <span>{{order_id_val}}</span>
                 </div>
-                <div class="page-user__box-user-order__section-one__item">
+                <div class="">
                     <p>{{Método de pagamento:}}</p>
                     <span>{{order_payment_method}}</span>
                 </div>
-                <div class="page-user__box-user-order__section-one__item">
+                <div class="">
                     <p>{{Data e Hora:}}</p>
                     <span>{{order_datetime_val}}</span>
                 </div>
-                <div class="page-user__box-user-order__section-one__item">
+                <div class="">
                     <p>{{Status:}}</p>
                     <span>{{order_status_val}}</span>
                 </div>
             </div>
-            <div class="page-user__box-user-order__section-two">
+            <div class="">
                 <p>{{Tipo de compra}}</p>
-                <div class="page-user__box-user-order__section-two__item">
+                <div class="">
                     <span>{{order_type_val}}</span>
                 </div>
             </div>
-            <div class="page-user__box-user-order__section-three">
+            <div class="">
                 <p>{{Itens da Compra}}</p>
                 <div class="table">
                     <table>
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="page-user__box-user-order__section-four">
+            <div class="">
                 <div class="box-invoce-download" style="{{nfse_visibilty_val}}">
                     <p>{{Nota Fiscal}}:</p>
                     <div class="invoce-download">
