@@ -2854,6 +2854,11 @@
         "es": "No se encuentran archivos con el enlace proporcionado",
         "pt": "Nenhum arquivo encontrado com o link fornecido"
     },
+    "Nenhum cnpj informado no post": {
+        "en": "No CNPJ informed in the post",
+        "es": "No CNPJ informado en la publicación",
+        "pt": "Nenhum cnpj informado no post"
+    },
     "Nenhum command no post": {
         "en": "No Command in the post",
         "es": "No hay comando en la publicación",
