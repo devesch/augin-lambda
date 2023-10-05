@@ -22,8 +22,18 @@ select {
 }
 
 select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
     cursor: pointer;
+    background: url($cdn_val + "assets/icons/select_arrow.svg") no-repeat 100% 50%;
+    font-size: 1rem;
+    line-height: 1rem;
 }
+
+select::-ms-expand {
+    display: none;
+ }
 
 .input + label,
 input[type="text"] + label,
