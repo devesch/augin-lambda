@@ -2852,6 +2852,7 @@ input[list]::-ms-clear {
 /* Panel Order - Start */
 #panelOrder {
     max-width: 900px;
+    margin: auto;
 }
 
 .order__title-container {
@@ -2885,7 +2886,27 @@ input[list]::-ms-clear {
 }
 
 .order-column + .order-column {
+    text-align: center;
     padding-top: 1rem;
+}
+
+.order-column .table {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding-right: .5rem;
+    }
+
+    td {
+        font-weight: bold;
+    }
+
 }
 
 .order-column__row {
@@ -2895,6 +2916,17 @@ input[list]::-ms-clear {
     align-items: center;
     justify-content: left;
     gap: 0.5rem;
+}
+
+.total-order {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: .5rem;
+    background-color: colors.color("color-primary-50");
+    padding: 1rem 2rem;
+    width: fit-content;
+    margin: 1rem auto 0;
 }
 
 @media print {
