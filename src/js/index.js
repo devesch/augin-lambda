@@ -3080,7 +3080,6 @@ export async function checkAllOptionalCookies(checkbox) {
 
 export async function openTawkApi(page, userId, userEmail, userName, userPlanId) {
     window.Tawk_API.setAttributes({
-        'page': page,
         'userId': userId,
         'userEmail': userEmail,
         'userName': userName,
