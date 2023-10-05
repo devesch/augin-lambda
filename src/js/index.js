@@ -1383,33 +1383,33 @@ export async function updateModelPassword() {
 }
 
 
-export async function togglePasswordText(button, input_id) {
-    var input = document.getElementById(input_id);
-    var icon_img = button.querySelector("img");
+// export async function togglePasswordText(button, input_id) {
+//     var input = document.getElementById(input_id);
+//     var icon_img = button.querySelector("img");
 
-    const PASSWORD_SHOW_ICON = "visibility.svg";
-    const PASSWORD_HIDE_ICON = "visibility_off.svg";
-    let PASSWORD_SHOW_LABEL = "Mostrar senha.";
-    let PASSWORD_HIDE_LABEL = "Ocultar senha.";
-    if (input.type == "password") {
-        input.type = "text";
-        let translate_response = await apiCaller("translate", {
-            "key": PASSWORD_HIDE_LABEL
-        });
-        PASSWORD_HIDE_LABEL = translate_response["success"];
-        button.setAttribute("aria-label", PASSWORD_HIDE_LABEL);
-        icon_img.src = icon_img.src.replace(PASSWORD_SHOW_ICON, PASSWORD_HIDE_ICON);
-        return;
-    }
-    input.type = "password";
-    icon_img.src = icon_img.src.replace(PASSWORD_HIDE_ICON, PASSWORD_SHOW_ICON);
-    let translate_response = await apiCaller("translate", {
-        "key": PASSWORD_SHOW_LABEL
-    });
-    PASSWORD_SHOW_LABEL = translate_response["success"];
-    button.setAttribute("aria-label", PASSWORD_SHOW_LABEL);
-    return;
-}
+//     const PASSWORD_SHOW_ICON = "visibility.svg";
+//     const PASSWORD_HIDE_ICON = "visibility_off.svg";
+//     let PASSWORD_SHOW_LABEL = "Mostrar senha.";
+//     let PASSWORD_HIDE_LABEL = "Ocultar senha.";
+//     if (input.type == "password") {
+//         input.type = "text";
+//         let translate_response = await apiCaller("translate", {
+//             "key": PASSWORD_HIDE_LABEL
+//         });
+//         PASSWORD_HIDE_LABEL = translate_response["success"];
+//         button.setAttribute("aria-label", PASSWORD_HIDE_LABEL);
+//         icon_img.src = icon_img.src.replace(PASSWORD_SHOW_ICON, PASSWORD_HIDE_ICON);
+//         return;
+//     }
+//     input.type = "password";
+//     icon_img.src = icon_img.src.replace(PASSWORD_HIDE_ICON, PASSWORD_SHOW_ICON);
+//     let translate_response = await apiCaller("translate", {
+//         "key": PASSWORD_SHOW_LABEL
+//     });
+//     PASSWORD_SHOW_LABEL = translate_response["success"];
+//     button.setAttribute("aria-label", PASSWORD_SHOW_LABEL);
+//     return;
+// }
 
 
 export async function sortProjectsBy(sort_attribute) {

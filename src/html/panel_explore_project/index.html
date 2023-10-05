@@ -221,13 +221,14 @@
 
                 </div>
                 <div id="folder_password_div" class="project-password-container">
-                    <div class="input-default input-password input-default--share-modal">
-                        <input placeholder="Definir Senha" type="password" name="folder_password" value="" id="folder_password_input" autocapitalize="off" autocorrect="off">
-                        <button type="button" class="toggle-password-button button--icon" onclick="js.index.togglePasswordText(this, 'folder_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
-                            <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="{{Ícone de olho}}" width="24" height="24">
+                    <div class="create-account__input-container floating-input">
+                        <input type="password" name="folder_password" value="" id="folder_password_input" placeholder="" autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                        <label for="folder_password_input">{{Senha atual}}</label>
+                        <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="folder_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                            <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
                         </button>
                     </div>
-                    <p>{{Opcional: Preencha para proteger seu link}}</p>
+                    <p class="input-hint">{{Opcional: Preencha para proteger seu link}}</p>
                 </div>
             </div>
             <span class="error" id="folder_password_error_span">
@@ -295,13 +296,14 @@
 
                 </div>
                 <div id="project_password_div" class="project-password-container">
-                    <div class="input-default input-password input-default--share-modal">
-                        <input placeholder="Definir Senha" type="password" name="project_password" value="" id="project_password_input" autocapitalize="off" autocorrect="off">
-                        <button type="button" class="toggle-password-button button--icon" onclick="js.index.togglePasswordText(this, 'project_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
-                            <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="{{Ícone de olho}}" width="24" height="24">
+                    <div class="create-account__input-container floating-input">
+                        <input type="password" name="project_password" value="" id="project_password_input" placeholder="" autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                        <label for="project_password_input">{{Senha atual}}</label>
+                        <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="project_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                            <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
                         </button>
                     </div>
-                    <p>{{Opcional: Preencha para proteger seu link}}</p>
+                    <p class="input-hint">{{Opcional: Preencha para proteger seu link}}</p>
                 </div>
             </div>
             <span class="error" id="project_password_error_span">
