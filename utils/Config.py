@@ -7,10 +7,9 @@ if not os.environ.get("AWS_EXECUTION_ENV") is None:
     sufix_name = os.environ["sufix_name"]
     region = os.environ["region"]
     kms_key_id = os.environ["kms_key_id"]
-    s3_put_user_key_id = os.environ["s3_put_user_key_id"]
-    s3_put_user_secret_access_key = os.environ["s3_put_user_secret_access_key"]
+    s3_put_user_key_id = os.environ.get("s3_put_user_key_id")
+    s3_put_user_secret_access_key = os.environ.get("s3_put_user_secret_access_key")
     tmp_path = "/tmp/"
-    ifc_converter = "LinuxIfcConvert"
 
 else:
     with open(".vscode/enviroment_variables.json", "r", encoding="utf-8") as read_file:
@@ -20,11 +19,9 @@ else:
         sufix_name = env_var["sufix_name"]
         region = env_var["region"]
         kms_key_id = env_var["kms_key_id"]
-        s3_put_user_key_id = env_var["s3_put_user_key_id"]
-        s3_put_user_secret_access_key = env_var["s3_put_user_secret_access_key"]
+        s3_put_user_key_id = env_var.get("s3_put_user_key_id")
+        s3_put_user_secret_access_key = env_var.get("s3_put_user_secret_access_key")
         tmp_path = "tmp/"
-        ifc_converter = "IfcConvert.exe"
-
 
 base_url = f"https://{prefix_name}{domain_name}{sufix_name}"
 cdn_bucket = "cdn." + domain_name + sufix_name
@@ -42,7 +39,6 @@ lambda_constants = {
     "company_name": "Augin",
     "cnpj": "31758054000144",
     "municipal_inscription": "61154822",
-    "ifc_converter": ifc_converter,
     "s3_put_user_key_id": s3_put_user_key_id,
     "s3_put_user_secret_access_key": s3_put_user_secret_access_key,
     "email_sender": "eugenio@devesch.com.br",

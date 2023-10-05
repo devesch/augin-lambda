@@ -25,7 +25,7 @@ def lambda_handler(event, context):
     try:
         return main_lambda_handler(event, context)
     except Exception as e:
-        Ses().send_error_email(event, "lambda_process_xml_to_dynamo", e)
+        Ses().send_error_email(event, "AUGIN lambda_process_xml_to_dynamo", e)
 
 
 def main_lambda_handler(event, context):

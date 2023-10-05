@@ -1,12 +1,14 @@
+from utils.Config import Config, lambda_constants
+from utils.utils.ReadWrite import ReadWrite
+from utils.AWS.Dynamo import Dynamo
+from utils.AWS.Sqs import Sqs
+from utils.AWS.Ses import Ses
+from utils.AWS.S3 import S3
 import json
 import time
 import os
-from utils.AWS.S3 import S3
-from utils.AWS.Sqs import Sqs
-from utils.AWS.Ses import Ses
-from utils.AWS.Dynamo import Dynamo
-from utils.utils.ReadWrite import ReadWrite
-from utils.Config import Config, lambda_constants
+
+### CAREFUL FUNCTION ALSO USED ON INTEGRATEBIM ###
 
 
 def lambda_handler(event, context):

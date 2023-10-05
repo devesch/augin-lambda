@@ -693,7 +693,6 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
         if (has_fbx.value === "True") {
             create_federated_project_with_processed_files_checkbox.checked = false;
             if (checkbox) {
-                console.log("TODO SHOW TOOLTIP ERROR MSG");
                 clearTimeout(tooltip_timer);
                 federated_tooltip_div.classList.add("block");
                 tooltip_timer = setTimeout(function () {
@@ -706,7 +705,6 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
     if (uploadedFilesNames.length === 0) {
         create_federated_project_with_processed_files_checkbox.checked = false;
         if (checkbox) {
-            console.log("TODO SHOW TOOLTIP ERROR MSG");
             clearTimeout(tooltip_timer);
             federated_tooltip_div.classList.add("block");
             tooltip_timer = setTimeout(function () {
@@ -721,7 +719,6 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
             if (has_more_than_one_file_input.value != "true") {
                 create_federated_project_with_processed_files_checkbox.checked = false;
                 if (checkbox) {
-                    console.log("TODO SHOW TOOLTIP ERROR MSG");
                     clearTimeout(tooltip_timer);
                     federated_tooltip_div.classList.add("block");
                     tooltip_timer = setTimeout(function () {

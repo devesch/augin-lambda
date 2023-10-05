@@ -222,23 +222,24 @@ class UpdateUser(BasePage):
         return {"success": "user favorites updated"}
 
     def add_shared(self):
-        ### TODO BEFORE PROD: NOT LET USER ADD HIS OWN FOLDERS AND FILES TO SHARED
         if not self.post.get("shared_link"):
             return {"error": "Informe um link para adicionar o arquivo à sua conta"}
         if "model_code" in self.post["shared_link"]:
             model = Dynamo().get_model_by_code(self.post["shared_link"].split("model_code=")[1])
+            if not model["model_user_id"] == self.user.user_id:
+                return {"error": "Este projeto pertence a este usuário"}
             if not model:
                 return {"error": "Nenhum projeto encontrado com o link fornecido"}
             if not model["model_is_accessible"]:
                 return {"error": "Este projeto não se encontra acessível através de compartilhamento"}
-            user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
-            if model["model_id"] in user_shared_dicts:
-                return {"error": "Este modelo já se encontra nos seus compartilhados"}
             if model["model_is_password_protected"] and not self.post.get("shared_password"):
                 return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
             if model["model_is_password_protected"] and (model["model_password"] != self.post.get("shared_password")):
                 return {"error": "A senha informada está incorreta"}
-            self.user.add_model_to_user_dicts(model, shared=True)
+
+            user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
+            if model["model_id"] not in user_shared_dicts["files"]:
+                self.user.add_model_to_user_dicts(model, shared=True)
             return {"success": "Modelo adicionado aos compartilhados"}
         else:
             folder_id = self.post["shared_link"]
@@ -249,6 +250,8 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhuma pasta encontrada com o link fornecido"}
             if not folder["folder_is_accessible"]:
                 return {"error": "Esta pasta não se encontra acessível através de compartilhamento"}
+            if not folder["folder_user_id"] == self.user.user_id:
+                return {"error": "Esta pasta já pertence a este usuário"}
             if folder["folder_is_password_protected"] and not self.post.get("shared_password"):
                 return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
             if folder["folder_is_password_protected"] and (folder["folder_password"] != self.post.get("shared_password")):

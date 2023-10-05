@@ -9,7 +9,7 @@ def lambda_handler(event, context):
     try:
         return main_lambda_handler(event, context)
     except Exception as error:
-        Ses().send_error_email(event, "lambda_move_deleted_model_files", error, region="us-east-1")
+        Ses().send_error_email(event, "AUGIN lambda_move_deleted_model_files", error, region="us-east-1")
 
 
 def main_lambda_handler(event, context):
