@@ -2457,6 +2457,15 @@ input[list]::-ms-clear {
     margin: auto .5rem;
 }
 
+.order-summary__discount-container {
+    flex-grow: 1;
+    display: block;
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid colors.color("color-neutral-400");
+    padding-bottom: 0.5rem;
+}
+
 .summary-container {
     /* box-shadow: 0 0 0 0.5px rgb(50 50 93 / 10%), 0 2px 5px 0 rgb(50 50 93 / 10%), 0 1px 1.5px 0 rgb(0 0 0 / 7%);
     border-radius: 0.5rem; */
