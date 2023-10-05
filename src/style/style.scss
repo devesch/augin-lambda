@@ -1814,7 +1814,7 @@ input[list]::-ms-clear {
     flex-direction: row;
     flex-wrap: wrap;
     // align-items: center;
-    align-items: end;
+    align-items: stretch;
     justify-content: right;
     flex-grow: 1;
     gap: $gap;

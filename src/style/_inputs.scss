@@ -19,6 +19,7 @@ select {
     padding: 1rem 2rem;
     width: 100%;
     font-size: 1rem;
+    line-height: 1rem;
 }
 
 select {
@@ -26,7 +27,9 @@ select {
     -moz-appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
-    background: url($cdn_val + "assets/icons/select_arrow.svg") no-repeat 100% 50%;
+    background-image: url("https://cdn.augin.app/assets/icons/select_arrow.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1rem) 50%;
     font-size: 1rem;
     line-height: 1rem;
 }
