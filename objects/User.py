@@ -475,3 +475,15 @@ def sort_user_folders(user, user_folders, sort_attribute="folder_name", sort_rev
     sorted_folders.extend(favorited_folders)
     sorted_folders.extend(normal_folders)
     return sorted_folders
+
+
+def load_user(user_id):
+    if "@" in user_id:
+        user_id = Dynamo().get_user_id_with_email(user_id)
+    if not user_id:
+        return None
+    user = User(user_id)
+    user.load_information()
+    if user.user_status == "not_created":
+        user = None
+    return user

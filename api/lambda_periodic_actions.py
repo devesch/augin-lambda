@@ -1,4 +1,5 @@
 from python_web_frame.base_page import BasePage
+from python_web_frame.controllers.billing_controller import BillingController
 from utils.Config import lambda_constants
 from utils.utils.Validation import Validation
 import os
@@ -6,36 +7,19 @@ import os
 
 class LambdaPeriodicActions(BasePage):
     def run(self):
-        raise Exception("TODO")
         if not Validation().check_if_local_env():
             if not self.post.get("lambda_key"):
                 return {"error": "no lambda_key in post"}
             if self.post["lambda_key"] != lambda_constants["lambda_periodic_actions_key"]:
                 return {"error": "incorrect key in post"}
 
-        self.check_and_issued_not_issued_bill_of_sales()
+        BillingController().check_and_issued_not_issued_bill_of_sales()
         self.check_and_delete_not_created_projects()
         if int(self.utils.get_current_day()) == 1:
             self.generate_and_send_orders_nfses()
             self.fix_total_count()
         self.check_and_send_emails_to_pending_projects()
         return {"success": "all periodic actions completed"}
-
-    def check_and_issued_not_issued_bill_of_sales(self):
-        from python_web_frame.controllers.billing_controller import BillingController
-
-        pending_nfse_orders = self.dynamo.query_pending_nfse_orders()
-        if pending_nfse_orders:
-            for pending_nfse in pending_nfse_orders:
-                order = self.dynamo.get_order(pending_nfse["pending_nfse_order_user_email"], pending_nfse["pending_nfse_order_id"])
-                refunded_user = self.load_user(pending_nfse["pending_nfse_order_user_email"])
-                if order and refunded_user:
-                    if order["order_status"] == "paid" and order["order_nfse_status"] == "not_issued":
-                        BillingController().generate_bill_of_sale(refunded_user, order)
-                    order = self.dynamo.get_order(pending_nfse["pending_nfse_order_user_email"], pending_nfse["pending_nfse_order_id"])
-                    if order["order_nfse_status"] == "issued":
-                        self.dynamo.delete_entity(pending_nfse)
-        return
 
     def check_and_delete_old_files_in_download_bucket(self):
         files_in_upload_bucket = self.utils.list_files_from_s3_folder(lambda_constants["upload_bucket"])

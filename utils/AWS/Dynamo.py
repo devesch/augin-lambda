@@ -112,7 +112,10 @@ class Dynamo:
             query.append({"pk": "user#" + user_id, "sk": "order#" + str(index)})
         return self.execute_batch_get_item(query)
 
-    ### PAYMENT METHODS ###
+    def query_pending_nfse_orders(self):
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "pending_nfse"}}})
+        return self.execute_batch_get_item(query)
+
     def query_user_payment_methods(self, user_id):
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "payment_method#"}}})
 

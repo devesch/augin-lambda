@@ -20,6 +20,7 @@ from suds.client import Client
 from suds.transport.http import HttpTransport
 import urllib.request, http.client
 from objects.PendingNfse import PendingNfse
+from objects.User import load_user
 
 
 class HTTPSClientAuthHandler(urllib.request.HTTPSHandler):
@@ -56,6 +57,20 @@ cabecalho = "<cabecalho xmlns=" + chr(34) + "http://www.abrasf.org.br/nfse.xsd" 
 class BillingController:
     def __init__(self) -> None:
         pass
+
+    def check_and_issued_not_issued_bill_of_sales(self):
+        pending_nfse_orders = Dynamo().query_pending_nfse_orders()
+        if pending_nfse_orders:
+            for pending_nfse in pending_nfse_orders:
+                order = Dynamo().get_order(pending_nfse["pending_nfse_order_id"])
+                order_user = load_user(pending_nfse["pending_nfse_order_user_id"])
+                if order and order_user:
+                    if order["order_status"] == "paid" and order["order_nfse_status"] == "not_issued":
+                        BillingController().generate_bill_of_sale(order_user, order)
+                    order = Dynamo().get_order(pending_nfse["pending_nfse_order_id"])
+                    if order["order_nfse_status"] == "issued":
+                        Dynamo().delete_entity(pending_nfse)
+        return
 
     def get_bill_of_sale_xml(self, order):
         get_nfe_with_data = self.generate_get_nfe_with_data(order)
