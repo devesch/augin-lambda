@@ -2503,3 +2503,348 @@ input[list]::-ms-clear {
     text-align: right;
 }
 /* Checkout Stripe Subscription - End */
+
+/* Backoffice Order Nfse Pdf - End */
+.nfse-canceled {
+  background-color: rgba(189, 0, 0, 0.6);
+}
+
+
+.page-backoffice-order-nfse-pdf {
+  border: 1px solid #afd1d8;
+  margin: 0 auto;
+  color: #2e6785;
+  font-size: 0.875rem;
+}
+
+.page-backoffice-order-nfse-pdf.max-width {
+  max-width: 800px;
+}
+
+.page-backoffice-order-nfse-pdf .title-nfse {
+  background-color: #DDDFE5;
+  padding: 0.2rem 0;
+  text-align: center;
+}
+
+.page-backoffice-order-nfse-pdf .title-nfse p {
+  font-size: 1rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue {
+  width: 100%;
+  border-bottom: 1px solid #afd1d8;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .number-nfse {
+  color: #c32a17;
+  font-size: 1.3rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .issue-date-nfse p:first-child {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .issue-date-nfse p span {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .skills-nfse p,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .verification-code p {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .issue-date-nfse,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .number-nfse,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-issue .skills-nfse {
+  border-right: 1px solid #afd1d8;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse {
+  margin: 0.5rem 0;
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse .info-municipal-registration {
+  width: 33.33%;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse .infos-business {
+  width: 46%;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse .infos-business .name-business,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse .infos-business .cpf-cnpj-business {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse .infos-business p:not(.name-business, .cpf-cnpj-business) {
+  font-size: 0.75rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse .img-city-hall {
+  text-align: center;
+  width: 20%;
+  vertical-align: middle;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-infos-business-nfse .info-municipal-registration .code-municipal-registration {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service {
+  padding: 1rem 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service .title-taker-service {
+  font-weight: 600;
+  border-bottom: 1px solid #afd1d8;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service .box-address-registration {
+  width: 100%;
+  border-bottom: 1px solid #afd1d8;
+  margin-bottom: 1rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service .box-address-registration .address-service .address-cpf,
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service .box-address-registration .address-service .address-street {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service .box-address-registration .address-service p:not(.address-cpf, .address-street) {
+  font-size: 0.75rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service .box-address-registration .info-municipal-registration {
+  vertical-align: middle;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .infos-service .box-address-registration .info-municipal-registration .code-municipal-registration {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-services-discrimination {
+  padding: 0 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-services-discrimination .title-services-discrimination {
+  font-weight: 600;
+  border-bottom: 1px solid #afd1d8;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-services-discrimination .box-description {
+  height: 300px;
+  border-bottom: 1px solid #000;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipal-tax-code,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-subitem-list-of-services {
+  padding: 0.5rem;
+  border-bottom: 1px solid #000;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipal-tax-code .title-municipal-tax-code,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipal-tax-code .title-subitem-list-of-services,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-subitem-list-of-services .title-municipal-tax-code,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-subitem-list-of-services .title-subitem-list-of-services {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipality-code-and-nature-of-operation {
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipality-code-and-nature-of-operation .box-municipality-code .title-municipality-code,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipality-code-and-nature-of-operation .box-municipality-code .title-nature-of-operation,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipality-code-and-nature-of-operation .box-nature-of-operation .title-municipality-code,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipality-code-and-nature-of-operation .box-nature-of-operation .title-nature-of-operation {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-municipality-code-and-nature-of-operation .box-municipality-code {
+  padding: 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service {
+  width: 50%;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service table {
+  width: 100%;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .title-value-service,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-calculation-basis {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .title-value-service,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-discounts,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-deductions,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-unconditioned-discount,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-federal-withholdings,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-ISS-withheld-at-source,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-calculation-basis,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-aliquot,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-empty {
+  border-bottom: 1px solid #afd1d8;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .title-value-service td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-discounts td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-deductions td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-unconditioned-discount td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-federal-withholdings td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-ISS-withheld-at-source td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-calculation-basis td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-aliquot td,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-empty td {
+  width: 70%;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .title-value-service td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-discounts td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-deductions td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-unconditioned-discount td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-federal-withholdings td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-ISS-withheld-at-source td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-calculation-basis td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-aliquot td:last-child,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-empty td:last-child {
+  width: 25%;
+  text-align: end;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service:first-child {
+  padding-right: 1rem;
+  padding-left: 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service:last-child {
+  padding-right: 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-net-value,
+.page-backoffice-order-nfse-pdf .header-infos-business .box-values-services .box-value-service .box-inss-value {
+  font-weight: 600;
+  color: #c32a19;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-city-hall-address {
+  width: 100%;
+  font-size: 0.75rem;
+  margin: 0.5rem 0;
+  border-top: 1px solid #afd1d8;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-city-hall-address a {
+  color: #2e6785;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-city-hall-address td:first-child {
+  width: 20%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-city-hall-address td {
+  padding-top: 0.5rem;
+}
+
+.page-backoffice-order-nfse-pdf .header-infos-business .box-city-hall-address .city-hall-address .title {
+  font-weight: 600;
+}
+
+.page-backoffice-order-nfse-international-pdf {
+  margin: 2rem auto;
+}
+
+.page-backoffice-order-nfse-international-pdf.max-width {
+  max-width: 800px;
+}
+
+.page-backoffice-order-nfse-international-pdf table {
+  width: 100%;
+}
+
+.page-backoffice-order-nfse-international-pdf .address {
+  border-bottom: 1px solid #365ab0;
+}
+
+.page-backoffice-order-nfse-international-pdf .address td:last-child {
+  vertical-align: middle;
+  text-align: end;
+}
+
+.page-backoffice-order-nfse-international-pdf .address td:first-child h1 {
+  color: #365ab0;
+  font-size: 1.5rem;
+}
+
+.page-backoffice-order-nfse-international-pdf .address td:first-child p {
+  padding-bottom: 1rem;
+}
+
+.page-backoffice-order-nfse-international-pdf .head-date td,
+.page-backoffice-order-nfse-international-pdf .head-instructions td {
+  color: #365ab0;
+  padding-top: 0.5rem;
+}
+
+.page-backoffice-order-nfse-international-pdf .instructions td {
+  height: 100px;
+}
+
+.page-backoffice-order-nfse-international-pdf .date-items {
+  border-bottom: 1px solid #365ab0;
+}
+
+.page-backoffice-order-nfse-international-pdf .date-items td:nth-child(2),
+.page-backoffice-order-nfse-international-pdf .date-items td:nth-child(3) {
+  padding-bottom: 0.5rem;
+}
+
+.page-backoffice-order-nfse-international-pdf .head-products {
+  background: #365ab0;
+  color: #fff;
+  font-weight: bold;
+  width: 100%;
+  padding: 1rem;
+}
+
+.page-backoffice-order-nfse-international-pdf .items p {
+  padding-left: 1rem;
+  border-bottom: 1px solid #000;
+}
+
+.page-backoffice-order-nfse-international-pdf .thank-you {
+  text-align: end;
+  margin-top: 1rem;
+  color: #365ab0;
+  font-size: 1.3rem;
+}
+
+.page-backoffice-order-nfse-international-pdf .totals {
+  text-align: end;
+  margin-top: 2rem;
+}
+
+.page-backoffice-order-nfse-international-pdf .totals .total p {
+  font-weight: bold;
+}
+
+.page-backoffice-order-nfse-international-pdf .totals span {
+  font-weight: normal;
+}
+
+/* Backoffice Order Nfse Pdf - End */
