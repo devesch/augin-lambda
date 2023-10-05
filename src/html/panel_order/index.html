@@ -22,27 +22,27 @@
             </div>
             <div class="order-body">
                 <div class="order-column">
-                    <div class="">
+                    <div class="order-column__row">
                         <p>{{Código Completo:}}</p>
-                        <span>{{order_id_val}}</span>
+                        <strong>{{order_id_val}}</strong>
                     </div>
-                    <div class="">
+                    <div class="order-column__row">
                         <p>{{Método de pagamento:}}</p>
-                        <span>{{order_payment_method}}</span>
+                        <strong>{{order_payment_method}}</strong>
                     </div>
-                    <div class="">
+                    <div class="order-column__row">
                         <p>{{Data e Hora:}}</p>
-                        <span>{{order_datetime_val}}</span>
+                        <strong>{{order_datetime_val}}</strong>
                     </div>
-                    <div class="">
+                    <div class="order-column__row">
                         <p>{{Status:}}</p>
-                        <span>{{order_status_val}}</span>
+                        <strong>{{order_status_val}}</strong>
                     </div>
                 </div>
                 <div class="order-column">
                     <p>{{Tipo de compra}}</p>
                     <div class="">
-                        <span>{{order_type_val}}</span>
+                        <strong>{{order_type_val}}</strong>
                     </div>
                 </div>
                 <div class="order-column">
@@ -63,7 +63,7 @@
                         {{html_order_coupon}}
                         <div class="total-order total">
                             <p>{{Total}}:</p>
-                            <span>{{order_currency_val}} {{order_total_price_val}}</span>
+                            <strong>{{order_currency_val}} {{order_total_price_val}}</strong>
                         </div>
                     </div>
                 </div>

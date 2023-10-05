@@ -2850,10 +2850,19 @@ input[list]::-ms-clear {
 /* Backoffice Order Nfse Pdf - End */
 
 /* Panel Order - Start */
+#panelOrder {
+    max-width: 900px;
+}
+
 .order__title-container {
     margin-top: 1rem;
     background-color: colors.color("color-neutral-50");
     border-radius: 1rem;
+
+    strong {
+        font-weight: bold;
+    }
+
 }
 
 .order-info {
@@ -2868,6 +2877,24 @@ input[list]::-ms-clear {
     padding: 2rem;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
+}
+
+.order-column {
+    border-bottom: 1px solid colors.color("color-neutral-400");
+    padding-bottom: 1rem;
+}
+
+.order-column + .order-column {
+    padding-top: 1rem;
+}
+
+.order-column__row {
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 0.5rem;
 }
 
 @media print {
