@@ -70,20 +70,14 @@ class BasePage:
     def render_backoffice_menu(self, common_changes={}):
         html = ReadWrite().read_html("main/menu_backoffice", common_changes)
         html.esc(self.route + "_active_val", "active")
-        html.esc("user_name_val", self.user.user_name)
-        html.esc("user_email_val", self.user.user_email)
-        html.esc("user_client_type_val", self.user.user_client_type)
         html.esc("user_url_val", self.event.get_url())
+
         return str(html)
 
     def render_menu_panel(self, common_changes={}):
         html = ReadWrite().read_html("main/menu_panel", common_changes)
         html.esc(self.route + "_active_val", "active")
-        html.esc("user_name_val", self.user.user_name)
-        html.esc("user_email_val", self.user.user_email)
-        html.esc("user_client_type_val", self.user.user_client_type)
         html.esc("user_url_val", self.event.get_url())
-        html.esc("user_thumb_val", self.user.generate_user_thumb_url())
 
         if self.user.user_credential == "admin":
             html.esc("html_backoffice_button", self.show_html_backoffice_button())
@@ -93,6 +87,8 @@ class BasePage:
             if trial_plans:
                 if trial_plans[-1]["plan_id"] not in self.user.user_used_trials:
                     html.esc("html_trial_plan_promo_thumb", self.show_html_trial_plan_promo_thumb(trial_plans[-1]))
+
+        html.esc("html_menu_profile_section", self.show_html_menu_profile_section())
         return str(html)
 
     def render_menu_panel_no_icons(self, common_changes={}):
@@ -199,4 +195,12 @@ class BasePage:
     def show_html_dropdown_select_user_pagination(self, user_pagination_count):
         html = ReadWrite().read_html("main/_codes/html_dropdown_select_user_pagination")
         html.esc(user_pagination_count + "_presel_val", "selected='selected'")
+        return str(html)
+
+    def show_html_menu_profile_section(self):
+        html = ReadWrite().read_html("main/_codes/html_menu_profile_section")
+        html.esc("user_name_val", self.user.user_name)
+        html.esc("user_email_val", self.user.user_email)
+        html.esc("user_client_type_val", self.user.user_client_type)
+        html.esc("user_thumb_val", self.user.generate_user_thumb_url())
         return str(html)
