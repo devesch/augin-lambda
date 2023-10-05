@@ -1189,6 +1189,12 @@ input[list]::-ms-clear {
     animation: spin 1s linear infinite;
 }
 
+.modal-loader-spinner {
+    .loader-spinner {
+        margin: 1rem auto;
+    }
+}
+
 
 .upload-file-input {
     width: 0.1px;
