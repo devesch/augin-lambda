@@ -36,6 +36,7 @@ lambda_constants = {
     "branch_key": "key_live_kbPDVR9iW4fdsvi1MNpMRlnetqjvZogI",
     "ip_data_api_key": "6aa0e0c8249d4135172b977b137ee37adf36a0975f9e6367dbaa912a",
     "legalentity_api_key": "DchNkBsyXbdxG1uCh49IJrhw0bAf0rJguQ1udQQ1qAswkC4zodUYQvxJ4XBYS35s4Tz",
+    "lambda_periodic_actions_key": "f30af33e-532d-45a2-8333-29cc408f1903",
     # "cnpj": "298218940001­62",
     # "municipal_inscription": "62586920",
     "company_name": "Augin",

@@ -1,77 +1,24 @@
-from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.billing_controller import BillingController
-from utils.Config import lambda_constants
+from python_web_frame.base_page import BasePage
 from utils.utils.Validation import Validation
+from utils.Config import lambda_constants
 from datetime import datetime
-import os
 
 
 class LambdaPeriodicActions(BasePage):
     def run(self):
         if not Validation().check_if_local_env():
-            if not self.post.get("lambda_key"):
-                return {"error": "no lambda_key in post"}
-            if self.post["lambda_key"] != lambda_constants["lambda_periodic_actions_key"]:
-                return {"error": "incorrect key in post"}
+            if not self.post.get("lambda_periodic_actions_key"):
+                return {"error": "Nenhum lambda_periodic_actions_key encontrada no post"}
+            if self.post["lambda_periodic_actions_key"] != lambda_constants["lambda_periodic_actions_key"]:
+                return {"error": "lambda_periodic_actions_key incorreta"}
 
         BillingController().check_and_issued_not_issued_bill_of_sales()
+
         if datetime.today().day == 1:
-            self.generate_and_send_orders_nfses()
+            BillingController().generate_and_send_orders_nfses()
             # self.fix_total_count()
         return {"success": "all periodic actions completed"}
-
-    def generate_and_send_orders_nfses(self):
-        from time import time
-        import shutil
-        from email.mime.multipart import MIMEMultipart
-        from email.mime.text import MIMEText
-        from email.mime.application import MIMEApplication
-
-        last_month_date = self.utils.get_last_month_date()
-        last_month = str(last_month_date.month)
-        if int(last_month) < 10:
-            last_month = "0" + last_month
-        last_mont_year = str(last_month_date.year)
-        nfses_from_last_month = self.utils.list_files_from_s3_folder(lambda_constants["img_bucket"], "nfse/" + last_mont_year + "/" + last_month + "/")
-        if not nfses_from_last_month:
-            return
-        if not os.path.exists(lambda_constants["tmp_path"] + "/nfses_to_be_zipped"):
-            os.makedirs(lambda_constants["tmp_path"] + "/nfses_to_be_zipped")
-
-        for nfse in nfses_from_last_month:
-            self.utils.download_file_from_s3(lambda_constants["img_bucket"], nfse["Key"], lambda_constants["tmp_path"] + "/nfses_to_be_zipped/" + nfse["Key"].split("/")[-1])
-        shutil.make_archive(lambda_constants["tmp_path"] + "/Magipix NFSES " + last_month + "-" + last_mont_year, "zip", lambda_constants["tmp_path"] + "/nfses_to_be_zipped")
-
-        SENDER = "eugenio@devesch.com.br"
-        RECEIVER = "eugenio@devesch.com.br"
-        RECEIVER2 = "leo@devesch.com.br"
-        CHARSET = "utf-8"
-        msg = MIMEMultipart("mixed")
-        msg["Subject"] = "ZIP das NFSES geradas em " + last_month + "/" + last_mont_year
-        msg["From"] = SENDER
-        msg["To"] = RECEIVER
-        msg_body = MIMEMultipart("alternative")
-        BODY_TEXT = "ZIP das NFSES geradas em " + last_month + "/" + last_mont_year
-        BODY_HTML = "<h1> Zip em anexo </h1>"
-        textpart = MIMEText(BODY_TEXT.encode(CHARSET), "plain", CHARSET)
-        htmlpart = MIMEText(BODY_HTML.encode(CHARSET), "html", CHARSET)
-        msg_body.attach(textpart)
-        msg_body.attach(htmlpart)
-        ATTACHMENT1 = lambda_constants["tmp_path"] + "/Magipix NFSES " + last_month + "-" + last_mont_year + ".zip"
-        att1 = MIMEApplication(open(ATTACHMENT1, "rb").read())
-        att1.add_header("Content-Disposition", "attachment", filename=os.path.basename(ATTACHMENT1))
-        msg.attach(msg_body)
-        msg.attach(att1)
-        get_ses_client().send_raw_email(
-            Source=SENDER,
-            Destinations=[RECEIVER, RECEIVER2],
-            RawMessage={
-                "Data": msg.as_string(),
-            },
-            ConfigurationSetName="configset",
-        )
-        shutil.rmtree(lambda_constants["tmp_path"] + "/nfses_to_be_zipped")
-        os.remove(lambda_constants["tmp_path"] + "/Magipix NFSES " + last_month + "-" + last_mont_year + ".zip")
 
     # def fix_total_count(self):
     #     all_users = self.dynamo.query_entity("user")

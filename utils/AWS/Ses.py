@@ -15,14 +15,14 @@ class Ses:
             cls._instance = super(Ses, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
-    def send_email_with_attachment(self, email_destination, email_subject, email_text, attachment_file_name, email_attachment_bucket, email_attachment_file, region=lambda_constants["region"]):
+    def send_email_with_attachment(self, email_destination, email_subject, email_text, attachment_file_name, email_attachment_bucket, email_attachment_key, region=lambda_constants["region"]):
         import os
         from email.mime.multipart import MIMEMultipart
         from email.mime.text import MIMEText
         from email.mime.application import MIMEApplication
 
         attachment_path = f"{lambda_constants['tmp_path']}{attachment_file_name}"
-        S3().download_file(email_attachment_bucket, email_attachment_file, attachment_path)
+        S3().download_file(email_attachment_bucket, email_attachment_key, attachment_path)
 
         ToAddresses = []
         if type(email_destination) == list:
@@ -33,7 +33,7 @@ class Ses:
         msg = MIMEMultipart("mixed")
         msg["Subject"] = email_subject
         msg["From"] = lambda_constants["email_sender"]
-        msg["To"] = ToAddresses
+        msg["To"] = ", ".join(ToAddresses)
         msg_body = MIMEMultipart("alternative")
         textpart = MIMEText(email_text.encode("utf-8"), "plain", "utf-8")
         htmlpart = MIMEText(email_text.encode("utf-8"), "html", "utf-8")

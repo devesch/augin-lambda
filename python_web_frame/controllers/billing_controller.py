@@ -1,24 +1,24 @@
 import tempfile
 import signxml
 import xml.etree.ElementTree as ET
-from datetime import datetime
-from time import time
-from utils.Config import lambda_constants
-from utils.AWS.Lambda import Lambda
-from utils.AWS.Dynamo import Dynamo
-from utils.AWS.Ses import Ses
-from utils.utils.ReadWrite import ReadWrite
-from utils.utils.EncodeDecode import EncodeDecode
-from utils.utils.StrFormat import StrFormat
-from utils.utils.Date import Date
-from utils.AWS.S3 import S3
+import urllib.request, http.client
 from OpenSSL import crypto
 from lxml import etree
 from unicodedata import normalize
 from signxml import XMLSigner
 from suds.client import Client
 from suds.transport.http import HttpTransport
-import urllib.request, http.client
+from datetime import datetime
+from time import time
+from utils.Config import lambda_constants
+from utils.AWS.Lambda import Lambda
+from utils.AWS.Dynamo import Dynamo
+from utils.AWS.Ses import Ses
+from utils.AWS.S3 import S3
+from utils.utils.ReadWrite import ReadWrite
+from utils.utils.Generate import Generate
+from utils.utils.StrFormat import StrFormat
+from utils.utils.Date import Date
 from objects.PendingNfse import PendingNfse
 from objects.User import load_user
 
@@ -57,6 +57,33 @@ cabecalho = "<cabecalho xmlns=" + chr(34) + "http://www.abrasf.org.br/nfse.xsd" 
 class BillingController:
     def __init__(self) -> None:
         pass
+
+    def generate_and_send_orders_nfses(self):
+        import shutil
+        import os
+        from datetime import datetime, timedelta
+
+        ReadWrite().delete_files_inside_a_folder(lambda_constants["tmp_path"])
+
+        first_day_this_month = datetime.today().replace(day=1)
+        last_day_last_month = first_day_this_month - timedelta(days=1)
+        last_month = last_day_last_month.strftime("%m")
+        last_month_year = last_day_last_month.strftime("%Y")
+
+        nfses_from_last_month = S3().list_files_from_folder(lambda_constants["processed_bucket"], "nfse/" + last_month_year + "/" + last_month + "/")
+        if not nfses_from_last_month:
+            return
+        if not os.path.exists(lambda_constants["tmp_path"] + "nfses_to_be_zipped"):
+            os.makedirs(lambda_constants["tmp_path"] + "nfses_to_be_zipped")
+        for nfse in nfses_from_last_month:
+            S3().download_file(lambda_constants["processed_bucket"], nfse["Key"], lambda_constants["tmp_path"] + "nfses_to_be_zipped/" + nfse["Key"].split("/")[-1])
+        shutil.make_archive(lambda_constants["tmp_path"] + "Augin NFSES " + last_month + "-" + last_month_year, "zip", lambda_constants["tmp_path"] + "nfses_to_be_zipped")
+        nfses_key = "nfses_report_" + last_month + "_" + last_month_year + "_" + Generate().generate_short_id() + ".zip"
+        S3().upload_file(lambda_constants["upload_bucket"], nfses_key, lambda_constants["tmp_path"] + "Augin NFSES " + last_month + "-" + last_month_year + ".zip")
+
+        ### TODO ADD LEOS EMAIL TO NFSES
+        Ses().send_email_with_attachment("eugenio@devesch.com.br", "Augin NFSES " + last_month + "-" + last_month_year, "<p>Augin NFSES " + last_month + "-" + last_month_year + "</p>", "Augin NFSES " + last_month + "-" + last_month_year + ".zip", lambda_constants["upload_bucket"], nfses_key, region=lambda_constants["region"])
+        ReadWrite().delete_files_inside_a_folder(lambda_constants["tmp_path"])
 
     def check_and_issued_not_issued_bill_of_sales(self):
         pending_nfse_orders = Dynamo().query_pending_nfse_orders()
