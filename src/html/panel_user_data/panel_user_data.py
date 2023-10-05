@@ -34,7 +34,8 @@ class PanelUserData(PanelPage, UserPage):
             html.esc("html_paneluserdata_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserdata_div"))
             html.esc("html_paneluserbox_div", ReadWrite().read_html("panel_user_data/_codes/html_paneluserbox_div"))
             html.esc("html_change_password_link", ReadWrite().read_html("panel_user_data/_codes/html_change_password_link"))
-            html.esc("html_modify_cookies_configuration", ReadWrite().read_html("panel_user_data/_codes/html_modify_cookies_configuration"))
+            ### TODO WHEN TIAGO LIBERATE COOKIE POLICY UNCOMMENT LINE BELOW
+            # html.esc("html_modify_cookies_configuration", ReadWrite().read_html("panel_user_data/_codes/html_modify_cookies_configuration"))
             html.esc("html_close_div", ReadWrite().read_html("panel_user_data/_codes/html_close_div"))
 
         if self.path["user_client_type"] == "physical":

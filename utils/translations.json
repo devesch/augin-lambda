@@ -459,6 +459,11 @@
         "es": "Firma no encontrada",
         "pt": "Assinatura não encontrada"
     },
+    "Atendimento online": {
+        "en": "Online service",
+        "es": "Servicio en línea",
+        "pt": "Atendimento online"
+    },
     "Ativa": {
         "en": "Active",
         "es": "Activo",
@@ -1669,6 +1674,11 @@
         "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
         "pt": "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação."
     },
+    "Esta pasta já pertence a este usuário": {
+        "en": "This folder already belongs to this user",
+        "es": "Esta carpeta ya pertenece a este usuario",
+        "pt": "Esta pasta já pertence a este usuário"
+    },
     "Esta pasta já se encontra nos seus compartilhados": {
         "en": "This folder is already in its shared",
         "es": "Esta carpeta ya está en su compartir",
@@ -1813,6 +1823,11 @@
         "en": "This project is not accessible through sharing",
         "es": "Este proyecto no es accesible a través del intercambio",
         "pt": "Este projeto não se encontra acessível através de compartilhamento"
+    },
+    "Este projeto pertence a este usuário": {
+        "en": "This project belongs to this user",
+        "es": "Este proyecto pertenece a este usuario",
+        "pt": "Este projeto pertence a este usuário"
     },
     "Este usuário já atingiu o limite máximo de desativações no último mês": {
         "en": "This user has already reached the maximum deactivation limit in the last month",

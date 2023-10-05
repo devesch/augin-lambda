@@ -398,6 +398,8 @@ class PanelPage(BasePage):
         html.esc("html_payment_history_rows", self.list_html_payment_history_rows(user_orders))
         html.esc("payment_history_pages_count_val", pages_amount)
         html.esc("html_payment_history_pages_buttons", self.list_html_payment_history_pages_buttons(pages_amount))
+        if int(pages_amount) == 1:
+            html.esc("payment_history_pagination_visibility_val", "display:none;")
         return str(html)
 
     def list_html_payment_history_pages_buttons(self, pages_amount):

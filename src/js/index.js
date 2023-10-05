@@ -3077,3 +3077,17 @@ export async function checkAllOptionalCookies(checkbox) {
         mouseflow_optional_cookie_consent.checked = false;
     }
 }
+
+export async function openTawkApi(page, userId, userEmail, userName, userPlanId) {
+    window.Tawk_API.setAttributes({
+        'page': page,
+        'userId': userId,
+        'userEmail': userEmail,
+        'userName': userName,
+        'userPlanId': userPlanId
+    }, function (error) {
+        if (error != undefined)
+            console.log("tawk:" + error);
+    });
+    Tawk_API.toggle()
+}

@@ -57,15 +57,15 @@ response = lambda_client.update_function_code(FunctionName="generate_folder_zip"
 print(str(response))
 
 
-# print("Running UPDATE lambda_EC2-Launcher")
-# root_dirs = []
-# dest_folder = upload_project_folder + "/lambda_EC2-Launcher_tmpass/"
-# make_dirs_and_copy(upload_project_folder, dest_folder)
-# shutil.copy(root_folder + "lambda_EC2-Launcher.py", dest_folder + "lambda_function.py")
-# shutil.make_archive(upload_project_folder + "/archive", "zip", dest_folder)
-# f = open(upload_project_folder + "/archive.zip", "rb")
-# response = lambda_client.update_function_code(FunctionName="EC2-Launcher", ZipFile=f.read())
-# print(str(response))
+print("Running UPDATE lambda_EC2-Launcher")
+root_dirs = []
+dest_folder = upload_project_folder + "/lambda_EC2-Launcher_tmpass/"
+make_dirs_and_copy(upload_project_folder, dest_folder)
+shutil.copy(root_folder + "lambda_EC2-Launcher.py", dest_folder + "lambda_function.py")
+shutil.make_archive(upload_project_folder + "/archive", "zip", dest_folder)
+f = open(upload_project_folder + "/archive.zip", "rb")
+response = lambda_client.update_function_code(FunctionName="EC2-Launcher", ZipFile=f.read())
+print(str(response))
 
 
 print("Running UPDATE lambda_process_xml_to_dynamo")

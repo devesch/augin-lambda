@@ -57,14 +57,20 @@ class BasePage:
         html.esc("font_type_val", font_format)
         html.esc("page_title_val", self.name)
 
-        if self.cookie_policy is None:
-            html.esc("open_modal_cookie_policy_val", "active")
-        else:
-            if not "backoffice" in self.route and self.cookie_policy.get("tawk") == "accepted":
-                html.esc("html_tawk_code", self.render_html_tawk_code(common_changes))
-            if self.cookie_policy.get("mouseflow") == "accepted":
-                if not "backoffice" in self.route and not "home" in self.route and not "history" in self.route:
-                    html.esc("html_mouse_flow_code", self.render_html_mouse_flow_code(common_changes))
+        ### REMOVE THIS PARTE AND USE THE CODE BELOW
+        html.esc("html_tawk_code_val", self.render_html_tawk_code(common_changes))
+        html.esc("html_mouse_flow_code_val", self.render_html_mouse_flow_code(common_changes))
+
+        ### REMOVE THIS PARTE AND USE THE CODE BELOW
+        ### TODO WHEN TIAGO LIBERATE COOKIE POLICY USE THE COMMENTED CODE BELOW
+        # if self.cookie_policy is None:
+        #     html.esc("open_modal_cookie_policy_val", "active")
+        # else:
+        #     if not "backoffice" in self.route and self.cookie_policy.get("tawk") == "accepted":
+        #         html.esc("html_tawk_code_val", self.render_html_tawk_code(common_changes))
+        #     if self.cookie_policy.get("mouseflow") == "accepted":
+        #         if not "backoffice" in self.route and not "home" in self.route and not "history" in self.route:
+        #             html.esc("html_mouse_flow_code_val", self.render_html_mouse_flow_code(common_changes))
         return str(html)
 
     def render_backoffice_menu(self, common_changes={}):
@@ -99,20 +105,29 @@ class BasePage:
 
     def render_footer(self, common_changes={}):
         html = ReadWrite().read_html("main/footer", common_changes)
-        if self.cookie_policy:
-            if self.cookie_policy.get("tawk") == "accepted":
-                html.esc("open_tawk_or_open_cookies_modal_val", "Tawk_API.toggle()")
-        else:
-            html.esc("open_modal_cookie_policy_val", "active")
 
-        html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openCookiesContainer()")
-        html.esc("user_url_val", self.event.get_url())
-        if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted":
-            html.esc("tawk_checked_val", 'checked="checked"')
-        if self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
-            html.esc("mouseflow_checked_val", 'checked="checked"')
-        if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted" and self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
-            html.esc("all_cookies_checked_val", 'checked="checked"')
+        ### REMOVE THIS PARTE AND USE THE CODE BELOW
+        if self.user:
+            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.route + "','" + self.user.user_id + "','" + self.user.user_email + "','" + self.user.user_name + "','" + self.user.user_plan_id + "')")
+        else:
+            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.route + "','Não informado','Não informado','Não informado','Não informado'")
+
+        ### REMOVE THIS PARTE AND USE THE CODE BELOW
+        ### TODO WHEN TIAGO LIBERATE COOKIE POLICY USE THE COMMENTED CODE BELOW
+        # if self.cookie_policy:
+        #     if self.cookie_policy.get("tawk") == "accepted":
+        #         html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi()")
+        # else:
+        #     html.esc("open_modal_cookie_policy_val", "active")
+
+        # html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openCookiesContainer()")
+        # html.esc("user_url_val", self.event.get_url())
+        # if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted":
+        #     html.esc("tawk_checked_val", 'checked="checked"')
+        # if self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
+        #     html.esc("mouseflow_checked_val", 'checked="checked"')
+        # if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted" and self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
+        #     html.esc("all_cookies_checked_val", 'checked="checked"')
         return str(html)
 
     def show_html_backoffice_button(self):
@@ -175,11 +190,14 @@ class BasePage:
 
     def render_html_tawk_code(self, common_changes={}):
         html = ReadWrite().read_html("main/_codes/html_tawk_code", common_changes)
-        tawk_api_code = "5c61ca4c7cf662208c950f53/default" if self.lang == "pt" else "5dae0f3fdf22d91339a04c3c/default"
+        tawk_api_code = lambda_constants["pt_tawk_api_code"] if self.lang == "pt" else lambda_constants["international_tawk_api_code"]
         html.esc("tawk_api_val", tawk_api_code)
+        html.esc("tawk_user_page_val", self.route)
         if self.user:
+            html.esc("tawk_user_id_val", self.user.user_id)
             html.esc("tawk_user_name_val", self.user.user_name)
             html.esc("tawk_user_email_val", self.user.user_email)
+            html.esc("tawk_user_plan_id_val", self.user.user_plan_id)
         return str(html)
 
     def render_html_mouse_flow_code(self, common_changes={}):
