@@ -71,7 +71,7 @@ class BasePage:
         html = ReadWrite().read_html("main/menu_backoffice", common_changes)
         html.esc(self.route + "_active_val", "active")
         html.esc("user_url_val", self.event.get_url())
-
+        html.esc("html_menu_profile_section", self.show_html_menu_profile_section())
         return str(html)
 
     def render_menu_panel(self, common_changes={}):
