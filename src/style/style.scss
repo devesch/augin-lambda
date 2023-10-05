@@ -2395,6 +2395,16 @@ input[list]::-ms-clear {
     justify-content: center;
     align-items: flex-start;
     margin-bottom: 1rem;
+    max-width: 1300px;
+}
+
+.order-summary-total-container {
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: space-between;
+    gap: 0.25rem;
+    flex-wrap: wrap;
 }
 
 .box{

@@ -15,6 +15,10 @@
         width: 100vw;
     }
 
+    .stripe {
+        flex-grow: 1;
+    }
+
     .stripe form {
         min-width: 500px;
         align-self: flex-start;
@@ -215,7 +219,7 @@
                     <p><strong>{{plan_name_val}}</strong></p>
                     <div class="order-summary-price-container">
                         <hr />
-                        <div class="flex-justify-space-between">
+                        <div class="order-summary-total-container">
                             <p>{{Total}}</p>
                             <p>
                                 <small>{{user_cart_currency_symbol}}</small>
