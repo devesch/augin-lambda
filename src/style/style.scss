@@ -1173,7 +1173,13 @@ input[list]::-ms-clear {
     border-radius: 100%;
 }
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .loader-spinner {
+    position: relative;
     border: 10px solid colors.color("color-neutral-200");
     border-top: 10px solid colors.color("color-primary-700");
     border-radius: 50%;
@@ -1183,10 +1189,6 @@ input[list]::-ms-clear {
     animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
 
 .upload-file-input {
     width: 0.1px;
