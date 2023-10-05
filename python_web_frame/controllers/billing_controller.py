@@ -285,6 +285,7 @@ class BillingController:
         xml = xml.replace("{{order_id_val}}", str(int(float(order["created_at"]))))
         xml = xml.replace("{{order_created_at_val}}", Date().format_unixtime_to_billingtime(order["created_at"]))
         xml = xml.replace("{{order_total_price_val}}", StrFormat().format_to_billing_money(order["order_total_price"]))
+        xml = xml.replace("{{order_iss_price_val}}", StrFormat().format_to_billing_money(str(int(order["order_total_price"]) * 0.02)))
         xml = xml.replace("{{order_commentary_val}}", order["order_descrimination"])
         xml = xml.replace("{{company_cnpj_val}}", lambda_constants["cnpj"])
         xml = xml.replace("{{company_inscription_val}}", lambda_constants["municipal_inscription"])

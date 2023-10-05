@@ -52,8 +52,8 @@ def generate_order_descrimination(product_name, product_brl_price):
     order_descrimination.append(f"1x {product_name}: R${total_price}")
 
     order_descrimination_str = " | ".join(order_descrimination)
-    tribute_value = StrFormat().format_to_brl_money(int(int(product_brl_price) * 0.1797))
-    order_descrimination_str += f"\n CONFORME LEI 12.741/2012 o valor aproximado dos tributos é R$ {tribute_value} (17,97%), FONTE: IBPT/empresometro.com.br (21.1.F)"
+    tribute_value = StrFormat().format_to_brl_money(int(int(product_brl_price) * 0.1545))
+    order_descrimination_str += f"\n CONFORME LEI 12.741/2012 o valor aproximado dos tributos é R$ {tribute_value} (15,45%), FONTE: IBPT/empresometro.com.br (21.1.F)"
 
     return order_descrimination_str
 

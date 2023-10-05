@@ -16,8 +16,10 @@
                 <ValorServicos>{{order_total_price_val}}</ValorServicos>
                 <IssRetido>2</IssRetido>
                 <DescontoCondicionado>0.00</DescontoCondicionado>
+                <Aliquota>5</Aliquota>
+                <ValorIss>{{order_iss_price_val}}</ValorIss>
             </Valores>
-            <ItemListaServico>1.03</ItemListaServico>
+            <ItemListaServico>1.05</ItemListaServico>
             <CodigoTributacaoMunicipio>10300700</CodigoTributacaoMunicipio>
             <Discriminacao>{{order_commentary_val}}</Discriminacao>
             <CodigoMunicipio>4314902</CodigoMunicipio>
