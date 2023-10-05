@@ -233,10 +233,10 @@
                     <div class="floating-input">
                         <input hidden name="plan_id" id="plan_id_input" value="{{plan_id_val}}">
                         <input hidden name="plan_recurrency" id="plan_recurrency_input" value="{{plan_recurrency_val}}">
-                        <input type="text" name="coupon_code" id="coupon_code_input" value="{{user_cart_coupon_code_val}}">
+                        <input type="text" name="coupon_code" id="coupon_code_input" value="{{user_cart_coupon_code_val}}" placeholder="">
                         <label for="coupon_code_input">{{Coupon}}</label>
-                        <button onclick="js.index.addCouponToUser()" name="add_coupon" id="add_coupon_button">{{Adicionar}}</button>
                     </div>
+                    <button onclick="js.index.addCouponToUser()" name="add_coupon" id="add_coupon_button">{{Adicionar}}</button>
                     <div class="link-container">
                         <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan">{{Alterar plano}}</a>
                     </div>
