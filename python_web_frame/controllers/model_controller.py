@@ -23,6 +23,12 @@ class ModelController:
             cls._instance = super(ModelController, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def mark_model_as_error(self, model, error_msg):
+        model = self.change_model_state("in_processing", "error")
+        model["model_error_msg"] = error_msg
+        Dynamo().put_entity(model)
+        return model
+
     def clear_model_data_for_reprocess(self, model):
         current_model_filename_zip = model["model_filename_zip"].replace(".zip", "")
         new_model_filename = Generate().generate_short_id()

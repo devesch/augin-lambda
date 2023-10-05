@@ -21,6 +21,7 @@ class BackofficeModels(BackofficePage):
             if models:
                 for model in models:
                     model["model_visualization_count"] = "0"
+                    model["model_error_msg"] = ""
                     Dynamo().put_entity(model)
 
         html = super().parse_html()

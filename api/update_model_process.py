@@ -10,6 +10,10 @@ from utils.Config import lambda_constants
 class UpdateModelProcess(BasePage):
     def run(self):
         model = Dynamo().get_model(self.post["model_id"])
+        if self.post.get("error"):
+            ModelController().mark_model_as_error(model, self.post["error"])
+            return
+
         if self.post["output_format"] == "model_aug_percent":
             if not model["model_aug_completed"]:
                 model["model_aug_percent"] = self.post["progress_percent"]
