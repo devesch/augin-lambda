@@ -3082,7 +3082,6 @@ export async function openTawkApi(page, userId, userEmail, userName, userPlanId)
     window.Tawk_API.setAttributes({
         'userId': userId,
         'userEmail': userEmail,
-        'userName': userName,
         'userPlanId': userPlanId
     }, function (error) {
         if (error != undefined)
