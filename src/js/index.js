@@ -2990,6 +2990,7 @@ export async function checkIfShareFolderIsAvailable() {
 
 
 export async function uploadUserThumb(input) {
+    openModal('.modal.modal-loader-spinner')
     var user_thumb_img = document.getElementById("user_thumb_img");
     var update_user_thumb_error_msg_span = document.getElementById("update_user_thumb_error_msg_span");
     var panel_menu_user_thumb_img = document.getElementById("panel_menu_user_thumb_img");
@@ -3032,6 +3033,7 @@ export async function uploadUserThumb(input) {
         panel_menu_user_thumb_img.src = new_source_for_image;
         user_thumb_img.src = new_source_for_image;
     }
+    closeModal('.modal.modal-loader-spinner')
 }
 
 
