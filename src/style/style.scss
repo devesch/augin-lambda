@@ -154,6 +154,16 @@ body {
     height: 100%;
 }
 
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    bottom: 1rem;
+    z-index: 1;
+    width: 100%;
+}
+
 summary,
 details {
     padding: 0;
