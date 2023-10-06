@@ -57,6 +57,7 @@ lambda_constants = {
     "stepfunction_arn": "arn:aws:states:us-east-1:847154778207:stateMachine:IFC-processor-state-machine",
     "lambda_generate_folder_zip": "generate_folder_zip",
     "lambda_move_deleted_model_files": "move_deleted_model_files",
+    "lambda_check_model_uploaded_file": "check_model_uploaded_file",
     "maxium_ifc_project_filesize": "1073741824",
     "prefix_name": prefix_name,
     "sufix_name": sufix_name,

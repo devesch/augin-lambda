@@ -24,6 +24,17 @@ def make_dirs_and_copy(upload_project_folder, dest_folder):
         copy_tree(root_folder + dirs, dest_folder + dirs, preserve_mode=1, preserve_times=1, update=0, verbose=1, dry_run=0)
 
 
+print("Running UPDATE lambda_check_model_uploaded_file")
+root_dirs = ["utils", "python_web_frame"]
+dest_folder = upload_project_folder + "/lambda_check_model_uploaded_file_tmp/"
+make_dirs_and_copy(upload_project_folder, dest_folder)
+shutil.copy(root_folder + "lambda_check_model_uploaded_file.py", dest_folder + "lambda_function.py")
+shutil.make_archive(upload_project_folder + "/archive", "zip", dest_folder)
+f = open(upload_project_folder + "/archive.zip", "rb")
+response = lambda_client.update_function_code(FunctionName="check_model_uploaded_file", ZipFile=f.read())
+print(str(response))
+
+
 print("Running UPDATE lambda_periodic_actions")
 root_dirs = ["utils"]
 dest_folder = upload_project_folder + "/lambda_periodic_actions_tmp/"

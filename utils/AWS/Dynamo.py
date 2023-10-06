@@ -34,6 +34,11 @@ class Dynamo:
     def get_payment_method(self, user_id, payment_method_id):
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "user#" + user_id}, "sk": {"S": "payment_method#" + payment_method_id}}})
 
+    ### UPLOADED FILE ###
+
+    def get_uploaded_file(self, uploaded_file_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "uploaded_file#" + uploaded_file_id}, "sk": {"S": "uploaded_file#" + uploaded_file_id}}})
+
     ### ORDER ###
 
     def get_order(self, order_id):

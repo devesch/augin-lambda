@@ -22,10 +22,10 @@ class LambdaPeriodicActions(BasePage):
             # self.fix_total_count()
         return {"success": "all periodic actions completed"}
 
-    def check_for_models_with_error_still_processing():
+    def check_for_models_with_error_still_processing(self):
         models_processing, last_evaluated_key = Dynamo().query_paginated_all_models_by_state("in_processing", limit=10000000)
         for model in models_processing:
-            if ModelController().check_if_model_in_processing_is_with_error(model["created_at"]):
+            if ModelController().check_if_model_in_processing_is_with_error(model["model_processing_started_at"]):
                 ModelController().mark_model_as_error(model, "Processamento interminável")
 
     # def fix_total_count(self):

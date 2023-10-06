@@ -621,37 +621,47 @@ export async function checkUploadModelFile(post_data) {
         "original_name": post_data["original_name"]
     });
 
+    while (true) {
+        let panel_create_project_check_file_html_response = await apiCaller("panel_create_project_check_file_html", {
+            "uploaded_file_id": panel_create_project_check_file_response["success"],
+        });
+
+        if (!("keep_waiting" in panel_create_project_check_file_html_response)) {
+            break;
+        }
+    }
+
     let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
     let model_id = document.getElementById("model_id_" + post_data["element_index"]);
     let has_more_than_one_file = document.getElementById("has_more_than_one_file_" + post_data["element_index"]);
     let progress_element = document.getElementById("progress_" + post_data["element_index"]);
 
-    if ("error" in panel_create_project_check_file_response) {
+    if ("error" in panel_create_project_check_file_html_response) {
         progress_element.classList.add("failed");
         let message = document.getElementById("message_" + post_data["element_index"]);
-        message.innerHTML = panel_create_project_check_file_response["error"];
+        message.innerHTML = panel_create_project_check_file_html_response["error"];
         delete_button.style = "";
         let has_error = document.getElementById("has_error_" + post_data["element_index"]);
         has_error.value = "True";
         checkIfCreateProjectSubmitButtonIsAvailable(false);
     } else {
         progress_element.classList.add("success");
-        model_id.value = panel_create_project_check_file_response["success"]["models_ids"];
-        has_more_than_one_file.value = panel_create_project_check_file_response["success"]["has_more_than_one_file"];
+        model_id.value = panel_create_project_check_file_html_response["success"]["models_ids"];
+        has_more_than_one_file.value = panel_create_project_check_file_html_response["success"]["has_more_than_one_file"];
 
         let has_fbx = document.getElementById("has_fbx_" + post_data["element_index"]);
-        if (panel_create_project_check_file_response["success"]["has_fbx"]) {
+        if (panel_create_project_check_file_html_response["success"]["has_fbx"]) {
             has_fbx.value = "True";
         } else {
             has_fbx.value = "False";
         }
 
         let message = document.getElementById("message_" + post_data["element_index"]);
-        message.innerHTML = panel_create_project_check_file_response["success"]["message"] + " " + panel_create_project_check_file_response["success"]["model_already_exists_name"];
+        message.innerHTML = panel_create_project_check_file_html_response["success"]["message"] + " " + panel_create_project_check_file_html_response["success"]["model_already_exists_name"];
         let has_error = document.getElementById("has_error_" + post_data["element_index"]);
         has_error.value = "False";
         let file_formats_div = document.getElementById("file_formats_div_" + post_data["element_index"]);
-        file_formats_div.innerHTML = panel_create_project_check_file_response["success"]["file_formats_html"]
+        file_formats_div.innerHTML = panel_create_project_check_file_html_response["success"]["file_formats_html"]
 
         checkIfCreateProjectSubmitButtonIsAvailable();
         checkIfCreateProjectIsFederated(false);
