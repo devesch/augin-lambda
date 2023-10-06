@@ -53,16 +53,13 @@ export async function showSelectedPaymentPage(index) {
 
 export async function processStripeSubscriptionPayment(stripe_token, payment_type, plan_id, plan_recurrency) {
     const stripe = Stripe(stripe_token);
-    console.log("const stripe ", stripe);
     let continue_button = document.getElementById("submit");
     let box_payment_loader = document.getElementById("box_payment_loader");
     let elements = '';
     let emailAddress = '';
     let orderId = '';
     initialize()
-    console.log("running initialize");
     checkStatus(orderId);
-    console.log("running checkStatus");
     document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
 
     async function initialize() {
@@ -73,8 +70,6 @@ export async function processStripeSubscriptionPayment(stripe_token, payment_typ
         });
         const clientSecret = checkout_stripe_generate_payload["success"]["client_secret"]
         orderId = checkout_stripe_generate_payload["success"]["order_id"]
-        console.log("clientSecret ", clientSecret)
-        console.log("orderId ", orderId)
         const appearance = {
             theme: 'stripe',
         };
@@ -215,9 +210,7 @@ export async function checkout_check_if_order_is_paid(order_id) {
 
 export async function userRegisterGenerateCountryInput() {
     let user_country_select = document.getElementById("user_country");
-    console.log("user_country_select ", user_country_select);
     let user_phone_div = document.getElementById("user_phone_div");
-    console.log("user_phone_div ", user_phone_div);
     let user_country_phone_response = await apiCaller("user_register_country_phone", {
         "selected_country": user_country_select.value
     })
@@ -225,9 +218,7 @@ export async function userRegisterGenerateCountryInput() {
 }
 
 export async function panelUserDataChangeCountryForm(user_client_type) {
-    console.log("Running panelUserDataChangeCountryForm");
     let user_country_select = document.getElementById("user_country");
-    console.log("user_country_select ", user_country_select);
     let panel_user_data_change_country_response = await apiCaller("panel_user_data_change_country", {
         "selected_country": user_country_select.value,
         "user_client_type": user_client_type
@@ -251,8 +242,6 @@ export async function panelUserDataChangeCountryForm(user_client_type) {
 }
 
 export async function postCheckoutPanelUserDataForm(userClientType) {
-    console.log("Running postCheckoutPanelUserDataForm");
-    console.log("userClientType ", userClientType)
     let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
 
     let user_email = document.getElementById("user_email").value
@@ -689,7 +678,6 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
     let tooltip_timer = "";
 
     for (let has_fbx of has_fbxs) {
-        console.log("has_fbx.value", has_fbx.value);
         if (has_fbx.value === "True") {
             create_federated_project_with_processed_files_checkbox.checked = false;
             if (checkbox) {
@@ -715,7 +703,6 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
 
     if (uploading_element_message.length === 1) {
         for (let has_more_than_one_file_input of uploading_element_has_more_than_one_file) {
-            console.log("has_more_than_one_file_input.value", has_more_than_one_file_input.value);
             if (has_more_than_one_file_input.value != "true") {
                 create_federated_project_with_processed_files_checkbox.checked = false;
                 if (checkbox) {
@@ -744,7 +731,6 @@ export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable 
     let create_project_error_span = document.getElementById('create_project_error_span');
 
     for (let has_error of has_errors) {
-        console.log(has_error)
         if (has_error.value === "True") {
             submit_form_button.setAttribute("disabled", "disabled");
 
@@ -774,7 +760,6 @@ export async function deleteUploadingElement(index) {
     if (uploadedFilesNames.includes(model_filename_input.value)) {
         let filename_index_in_list = uploadedFilesNames.indexOf(model_filename_input.value);
         uploadedFilesNames.splice(filename_index_in_list, 1);
-        console.log("uploadedFilesNames", uploadedFilesNames);
     }
     let uploading_element = document.getElementById("uploading_element_" + index);
     uploading_element.remove();
@@ -970,7 +955,6 @@ export function verifySendEmailCode(inputs_array) {
     let form = document.querySelector('.page__box-email-verify__form');
     let submit_valid = true
     for (const index in inputs_array) {
-        console.log(inputs_array[index]);
         if (inputs_array[index].value == "") {
             submit_valid = false;
         }
