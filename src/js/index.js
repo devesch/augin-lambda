@@ -622,6 +622,8 @@ export async function checkUploadModelFile(post_data) {
     });
 
     while (true) {
+        await sleep(5000);
+
         var panel_create_project_check_file_html_response = await apiCaller("panel_create_project_check_file_html", {
             "uploaded_file_id": panel_create_project_check_file_response["success"],
         });
@@ -629,8 +631,6 @@ export async function checkUploadModelFile(post_data) {
         if (!("keep_waiting" in panel_create_project_check_file_html_response)) {
             break;
         };
-
-        await sleep(5000);
     }
 
     let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
