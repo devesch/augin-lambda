@@ -1084,6 +1084,11 @@
         "es": "Crea Cupom",
         "pt": "Criar Cupom"
     },
+    "Criar Plano": {
+        "en": "Plan",
+        "es": "Plan",
+        "pt": "Criar Plano"
+    },
     "Criar conta": {
         "en": "Create an account",
         "es": "Crea una cuenta",
@@ -1098,6 +1103,11 @@
         "en": "Create folder",
         "es": "Crear carpeta",
         "pt": "Criar pasta"
+    },
+    "Criar plano": {
+        "en": "Plan",
+        "es": "Plan",
+        "pt": "Criar plano"
     },
     "Criar produto": {
         "en": "Create Product",
