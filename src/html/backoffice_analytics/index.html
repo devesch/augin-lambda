@@ -35,8 +35,8 @@
 
         // Sample data
         var dates = JSON.parse(new_user_registered_dates_str.replace(/'/g, "\""));
-        var dailyAmounts = JSON.parse(new_user_registered_daily_amounts_str);
-        var totalAmounts = JSON.parse(new_user_registered_total_amounts_str);
+        var dailyAmounts = JSON.parse(new_user_registered_daily_amounts);
+        var totalAmounts = JSON.parse(new_user_registered_total_amounts);
 
         var myChart = new Chart(ctx, {
             type: 'line',
