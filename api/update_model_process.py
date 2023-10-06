@@ -49,6 +49,7 @@ class UpdateModelProcess(BasePage):
             Dynamo().update_entity(model, "model_xml_memory_usage", model["model_xml_memory_usage"])
             Dynamo().update_entity(model, "model_xml_completed", model["model_xml_completed"])
             Dynamo().update_entity(model, "model_xml_to_dynamo_start", model["model_xml_to_dynamo_start"])
+            raise Exception("TODO GEN BIN FILES")
             ModelController().generate_bin_files(model, self.post["output_bucket"], self.post["output_key"])
             ProjectController().add_project_to_process_xml_to_dynamo(self.post["model_id"], self.post["output_bucket"], self.post["output_key"], self.event.requestContext["domainName"])
 
@@ -89,8 +90,12 @@ class UpdateModelProcess(BasePage):
                 model["model_filesize_xml"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_xml"]))
                 model["model_filesize_aug"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_aug"]))
                 model["model_filesize_sd_aug"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_sd_aug"]))
-                model["model_filesize_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_bin"]))
-                model["model_filesize_mini_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_mini_bin"]))
+                try:
+                    model["model_filesize_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_bin"]))
+                    model["model_filesize_mini_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_mini_bin"]))
+                except:
+                    model["model_filesize_bin"] = "0"
+                    model["model_filesize_mini_bin"] = "0"
 
                 model = ModelController().calculate_model_memory_usage_in_gbs(model)
                 model = ModelController().calculate_model_total_time(model)

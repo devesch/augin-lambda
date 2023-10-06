@@ -31,7 +31,6 @@ def lambda_handler(event, context):
 def main_lambda_handler(event, context):
     print(json.dumps(event))
 
-    raise Exception("CHECK CODE")
     if not Validation().check_if_local_env():
         record = json.loads(event["Records"][0]["body"])
         model_id = record["model_id"]
@@ -46,14 +45,6 @@ def main_lambda_handler(event, context):
         zip_filename = model_id + ".zip"
         output_project_domain_name = record["output_project_domain_name"]
         reprocess = record.get("reprocess")
-
-        # record = {}
-        # record["output_bucket"] = lambda_constants["processed_bucket"]
-        # record["output_key"] = "dev-tqs/e0f97079-7555-49f7-b6f8-29bac10bb35d/49446d381044-xml.zip"
-        # model_id = "e0f97079-7555-49f7-b6f8-29bac10bb35d"
-        # project_id = model_id
-        # zip_filename = model_id + ".zip"
-        # output_project_domain_name = "dev-tqs.integratebim.com"
 
     ReadWrite().delete_files_inside_a_folder(lambda_constants["tmp_path"])
     S3().download_file(record["output_bucket"], record["output_key"], lambda_constants["tmp_path"] + zip_filename)
@@ -129,8 +120,8 @@ def main_lambda_handler(event, context):
                 property_types_set.add(property.tag)
                 property_items.append(Property(project_id, property.get("id"), property.get("Name", "Not Informed"), property.tag, property_class, property_data).__dict__)
 
-    if not Validation().check_if_local_env():
-        insert_items(property_items, project_id)
+    # if not Validation().check_if_local_env():
+    insert_items(property_items, project_id)
     ifc_sites = ifc_project.findall("IfcSite")
 
     if not ifc_sites:
@@ -540,7 +531,7 @@ def main_lambda_handler(event, context):
 
     total_time = time.time() - start_time
     data = {"model_id": model_id, "output_format": "xml_to_dynamo"}
-    Http().request(method="POST", url="https://" + output_project_domain_name + "/api/update_model_process", headers={}, data=data, json_res=True)
+    response = Http().request(method="POST", url="https://" + output_project_domain_name + "/api/update_model_process", headers={}, data=data, json_res=True)
     print("Finished")
     # email_message =  " PROJECT ID " + model_id + " TOTAL TIME " + str(total_time), "PROJECT ID " + model_id
     # Ses().send_email_simple("eugenio@devesch.com.br", email_message, "us-east-1")
