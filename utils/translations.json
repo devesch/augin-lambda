@@ -2044,6 +2044,11 @@
         "es": "Filtrar",
         "pt": "Filtrar"
     },
+    "Filtrar data": {
+        "en": "Filter date",
+        "es": "Fecha de filtro",
+        "pt": "Filtrar data"
+    },
     "Filtrar estado": {
         "en": "Filter state",
         "es": "Estado de filtro",
