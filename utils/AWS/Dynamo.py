@@ -29,6 +29,10 @@ class Dynamo:
         dynamodb_client = client("dynamodb", region_name=lambda_constants["region"])
         table = resource("dynamodb", region_name=lambda_constants["region"], config=my_config).Table(lambda_constants["table_project"])
 
+    ### ANALYTICS ###
+    def query_analytics(self, analytics_entity, unix_delta):
+        return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And #bef91 >= :bef91", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "analytics_" + analytics_entity + "#"}, ":bef91": {"S": unix_delta}}})
+
     ### PAYMENT METHOD ###
 
     def get_payment_method(self, user_id, payment_method_id):

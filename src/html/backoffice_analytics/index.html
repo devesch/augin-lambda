@@ -15,7 +15,11 @@
         </select>
     </section>
 
-    <canvas id="myChart" width="600" height="300"></canvas>
+    <canvas id="new_user_registered_chart" width="600" height="300"></canvas>
+    <input hidden id="new_user_registered_dates_input" value="{{new_user_registered_dates_val}}">
+    <input hidden id="new_user_registered_daily_amounts_input" value="{{new_user_registered_daily_amounts_val}}">
+    <input hidden id="new_user_registered_total_amounts_input" value="{{new_user_registered_total_amounts_val}}">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 
@@ -23,12 +27,16 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx = document.getElementById('new_user_registered_chart').getContext('2d');
+
+        var new_user_registered_dates = document.getElementById('new_user_registered_dates_input').value();
+        var new_user_registered_daily_amounts = document.getElementById('new_user_registered_daily_amounts_input').value();
+        var new_user_registered_total_amounts = document.getElementById('new_user_registered_total_amounts_input').value();
 
         // Sample data
-        var dates = ["2023-01-01", "2023-01-02", "2023-01-03", "2023-01-04", "2023-01-05"];
-        var dailyAmounts = [5, 8, 3, 11, 4];
-        var totalAmounts = [5, 13, 16, 27, 31];
+        var dates = new_user_registered_dates;
+        var dailyAmounts = new_user_registered_daily_amounts;
+        var totalAmounts = new_user_registered_total_amounts;
 
         var myChart = new Chart(ctx, {
             type: 'line',
