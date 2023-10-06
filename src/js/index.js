@@ -3097,3 +3097,6 @@ export async function openTawkApi(userId, userPlanId) {
     });
     Tawk_API.toggle()
 }
+export async function clearInputValue(input) {
+    input.value = "";
+}
