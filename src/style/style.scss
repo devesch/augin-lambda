@@ -1500,6 +1500,9 @@ input[list]::-ms-clear {
 .devices__title-container {
     margin-top: 1rem;
     text-align: center;
+    strong {
+        font-weight: bold;
+    }
 }
 
 .devices__limit-container {
