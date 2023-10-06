@@ -2,22 +2,55 @@
 {{menu_backoffice}}
 <main class="my-plan__main">
     <div>
-        <div>
-            <p>{{Usuário}}</p>
-        </div>
-        <div>
-            <h1>{{Informações do usuário}}</h1>
-            <p>ID: <span>{{user_id_val}}</span></p>
-            <p>Email: <span>{{user_email_val}}</span></p>
-            <p>{{Nome}}: <span>{{user_name_val}}</span></p>
-            <p>{{Telefone}}: <span>{{user_phone_val}}</span></p>
-            <p>CPF/CNPJ <span>{{user_cpf_or_cnpj_val}}</span></p>
-            <p>{{Tipo}}: <span>{{user_client_type_val}}</span></p>
-            <p>{{Status da assinatura}}: <span>{{user_subscription_status_val}}</span></p>
-            <p>{{Plano}}: <span>{{user_plan_id_val}}</span></p>
-            <p>{{Último Login}}: <span>{{user_last_login_at_val}}</span></p>
-            <p>{{Moeda}}: <span>{{user_cart_currency_val}}</span></p>
-            <p>{{País}}: <span>{{user_country_val}}</span></p>
+        <h1 class="my-plan__title">{{Usuário}}</h1>
+        <div class="my-plan__main-container__item">
+            <h2>{{Informações do usuário}}</h2>
+            <article class="my-plan__table">
+                <section>
+                    <div>ID:</div>
+                    <div><strong>{{user_id_val}}</strong></div>
+                </section>
+                <section>
+                    <div>Email:</div>
+                    <div><strong>{{user_email_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Nome}}:</div>
+                    <div><strong>{{user_name_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Telefone}}:</div>
+                    <div><strong>{{user_phone_val}}</strong></div>
+                </section>
+                <section>
+                    <div>CPF/CNPJ:</div>
+                    <div><strong>{{user_cpf_or_cnpj_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Tipo}}:</div>
+                    <div><strong>{{user_client_type_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Status da assinatura}}:</div>
+                    <div><strong>{{user_subscription_status_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Plano}}:</div>
+                    <div><strong>{{user_plan_id_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Último Login}}:</div>
+                    <div><strong>{{user_last_login_at_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Moeda}}:</div>
+                    <div><strong>{{user_cart_currency_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{País}}:</div>
+                    <div><strong>{{user_country_val}}</strong></div>
+                </section>
+            </article>
         </div>
     </div>
 </main>
