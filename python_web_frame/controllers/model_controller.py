@@ -76,6 +76,7 @@ class ModelController:
         model["model_processing_total_time"] = "0.0"
         model["model_processing_percentage"] = "0"
         model["model_error_msg"] = ""
+        model["model_processing_started_at"] = str(time.time())
         model = self.change_model_state(model, model["model_state"], "in_processing")
         Dynamo().put_entity(model)
         return model
@@ -597,7 +598,7 @@ class ModelController:
         # Dynamo().put_entity(ec2_instances)
         if model["model_format"] == "ifc" and federated_model:
             model["model_used_in_federated_ids"].append(federated_model["model_id"])
-        model["model_processing_started_at"] = str(time())
+        model["model_processing_started_at"] = str(time.time())
         model["model_processing"] = True
         Dynamo().put_entity(model)
         data = {"model_id": model["model_id"], "output_format": "process_started"}

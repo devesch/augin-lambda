@@ -3374,6 +3374,11 @@
         "es": "El modelo no está en el estado completo",
         "pt": "O modelo não se encontra no estado completo"
     },
+    "O modelo não se encontra no estado completo ou erro para ser reprocessado": {
+        "en": "The model is not in the full state or error to be reprocessed",
+        "es": "El modelo no está en el estado o error completo a ser reprocesado",
+        "pt": "O modelo não se encontra no estado completo ou erro para ser reprocessado"
+    },
     "O nome da pasta não pode conter barras '/'.": {
         "en": "The name of the folder cannot contain bars '/'.",
         "es": "El nombre de la carpeta no puede contener barras '/'.",
