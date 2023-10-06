@@ -6,29 +6,29 @@
     </div>
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" class="backoffice__form">
         <div class="floating-input">
-            <input type="text" name="plan_name_pt" value="{{plan_name_pt_val}}" id="plan_name_pt_input" placeholder="" required autofocus maxlength="500">
+            <input type="text" name="plan_name_pt" value="{{plan_name_pt_val}}" id="plan_name_pt_input" placeholder=" " required autofocus maxlength="500">
             <label for="plan_name_pt_input">{{Nome PT}}</label>
         </div>
         <div class="floating-input">
-            <input type="text" name="plan_name_en" value="{{plan_name_en_val}}" id="plan_name_en_input" placeholder="" required maxlength="500">
+            <input type="text" name="plan_name_en" value="{{plan_name_en_val}}" id="plan_name_en_input" placeholder=" " required maxlength="500">
             <label for="plan_name_en_input">{{Nome EN}}</label>
         </div>
         <div class="floating-input">
-            <input type="text" name="plan_name_es" value="{{plan_name_es_val}}" id="plan_name_es_input" placeholder="" required maxlength="500">
+            <input type="text" name="plan_name_es" value="{{plan_name_es_val}}" id="plan_name_es_input" placeholder=" " required maxlength="500">
             <label for="plan_name_es_input">{{Nome ES}}</label>
         </div>
 
 
         <div class="floating-input">
-            <input type="text" name="plan_description_pt" value="{{plan_description_pt_val}}" id="plan_description_pt_input" placeholder="" required maxlength="500">
+            <input type="text" name="plan_description_pt" value="{{plan_description_pt_val}}" id="plan_description_pt_input" placeholder=" " required maxlength="500">
             <label for="plan_description_pt_input">{{Descrição PT}}</label>
         </div>
         <!-- <div class="floating-input">
-            <input type="text" name="plan_description_en" value="{{plan_description_en_val}}" id="plan_description_en_input" placeholder="" required maxlength="500">
+            <input type="text" name="plan_description_en" value="{{plan_description_en_val}}" id="plan_description_en_input" placeholder=" " required maxlength="500">
             <label for="plan_description_en_input">{{Descrição EN}}</label>
         </div>
         <div class="floating-input">
-            <input type="text" name="plan_description_es" value="{{plan_description_es_val}}" id="plan_description_es_input" placeholder="" required maxlength="500">
+            <input type="text" name="plan_description_es" value="{{plan_description_es_val}}" id="plan_description_es_input" placeholder=" " required maxlength="500">
             <label for="plan_description_es_input">{{Descrição ES}}</label>
         </div> -->
 
@@ -55,20 +55,20 @@
 
         <div id="annually_div" style="{{annually_div_visibility_val}}">
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl" value="{{plan_price_annually_brl_val}}" id="plan_price_annually_brl_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl" value="{{plan_price_annually_brl_val}}" id="plan_price_annually_brl_input" placeholder=" " maxlength="500">
                 <label for="plan_price_annually_brl_input">{{Preço BRL}}</label>
             </div>
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl_actual" value="{{plan_price_annually_brl_actual_val}}" id="plan_price_annually_brl_actual_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl_actual" value="{{plan_price_annually_brl_actual_val}}" id="plan_price_annually_brl_actual_input" placeholder=" " maxlength="500">
                 <label for="plan_price_annually_brl_actual_input">{{Preço atual BRL}}</label>
             </div>
 
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd" value="{{plan_price_annually_usd_val}}" id="plan_price_annually_usd_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd" value="{{plan_price_annually_usd_val}}" id="plan_price_annually_usd_input" placeholder=" " maxlength="500">
                 <label for="plan_price_annually_usd_input">{{Preço USD}}</label>
             </div>
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd_actual" value="{{plan_price_annually_usd_actual_val}}" id="plan_price_annually_usd_actual_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd_actual" value="{{plan_price_annually_usd_actual_val}}" id="plan_price_annually_usd_actual_input" placeholder=" " maxlength="500">
                 <label for="plan_price_annually_usd_actual_input">{{Preço atual USD}}</label>
             </div>
 
@@ -95,20 +95,20 @@
 
         <div id="monthly_div" style="{{monthly_div_visibility_val}}">
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl" value="{{plan_price_monthly_brl_val}}" id="plan_price_monthly_brl_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl" value="{{plan_price_monthly_brl_val}}" id="plan_price_monthly_brl_input" placeholder=" " maxlength="500">
                 <label for="plan_price_monthly_brl_input">{{Preço BRL}}</label>
             </div>
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl_actual" value="{{plan_price_monthly_brl_actual_val}}" id="plan_price_monthly_brl_actual_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl_actual" value="{{plan_price_monthly_brl_actual_val}}" id="plan_price_monthly_brl_actual_input" placeholder=" " maxlength="500">
                 <label for="plan_price_monthly_brl_actual_input">{{Preço atual BRL}}</label>
             </div>
 
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd" value="{{plan_price_monthly_usd_val}}" id="plan_price_monthly_usd_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd" value="{{plan_price_monthly_usd_val}}" id="plan_price_monthly_usd_input" placeholder=" " maxlength="500">
                 <label for="plan_price_monthly_usd_input">{{Preço USD}}</label>
             </div>
             <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd_actual" value="{{plan_price_monthly_usd_actual_val}}" id="plan_price_monthly_usd_actual_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd_actual" value="{{plan_price_monthly_usd_actual_val}}" id="plan_price_monthly_usd_actual_input" placeholder=" " maxlength="500">
                 <label for="plan_price_monthly_usd_actual_input">{{Preço atual USD}}</label>
             </div>
 
@@ -123,17 +123,17 @@
         </div>
 
         <div class="floating-input">
-            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_cloud_space_in_mbs" value="{{plan_cloud_space_in_mbs_val}}" id="plan_cloud_space_in_mbs_input" placeholder="" required maxlength="500">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_cloud_space_in_mbs" value="{{plan_cloud_space_in_mbs_val}}" id="plan_cloud_space_in_mbs_input" placeholder=" " required maxlength="500">
             <label for="plan_cloud_space_in_mbs_input">{{Espaço em nuvem (MBs)}}</label>
         </div>
 
         <div class="floating-input">
-            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_model_size_in_mbs" value="{{plan_maxium_model_size_in_mbs_val}}" id="plan_maxium_model_size_in_mbs_input" placeholder="" required maxlength="500">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_model_size_in_mbs" value="{{plan_maxium_model_size_in_mbs_val}}" id="plan_maxium_model_size_in_mbs_input" placeholder=" " required maxlength="500">
             <label for="plan_maxium_model_size_in_mbs_input">{{Tamanho máximo por projeto (MBs)}}</label>
         </div>
 
         <div class="floating-input">
-            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_federated_size_in_mbs" value="{{plan_maxium_federated_size_in_mbs_val}}" id="plan_maxium_federated_size_in_mbs_input" placeholder="" required maxlength="500">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_federated_size_in_mbs" value="{{plan_maxium_federated_size_in_mbs_val}}" id="plan_maxium_federated_size_in_mbs_input" placeholder=" " required maxlength="500">
             <label for="plan_maxium_federated_size_in_mbs_input">{{Tamanho máximo por federado (MBs)}}</label>
         </div>
         <p class="input-hint">{{Insira o (zero) para desabilitar}}</p>
@@ -145,22 +145,22 @@
         </div>
 
         <div class="floating-input">
-            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_available" value="{{plan_maxium_devices_available_val}}" id="plan_maxium_devices_available_input" placeholder="" required maxlength="500">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_available" value="{{plan_maxium_devices_available_val}}" id="plan_maxium_devices_available_input" placeholder=" " required maxlength="500">
             <label for="plan_maxium_devices_available_input">{{Dispositivos ativos (Max)}}</label>
         </div>
 
         <div class="floating-input">
-            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_changes_in_30d" value="{{plan_maxium_devices_changes_in_30d_val}}" id="plan_maxium_devices_changes_in_30d_input" placeholder="" required maxlength="500">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_changes_in_30d" value="{{plan_maxium_devices_changes_in_30d_val}}" id="plan_maxium_devices_changes_in_30d_input" placeholder=" " required maxlength="500">
             <label for="plan_maxium_devices_changes_in_30d_input">{{Troca de dispositivos ativos (Max/Mês)}}</label>
         </div>
 
         <div class="floating-input">
-            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_app_can_be_offline_in_days" value="{{plan_app_can_be_offline_in_days_val}}" id="plan_app_can_be_offline_in_days_input" placeholder="" required maxlength="500">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_app_can_be_offline_in_days" value="{{plan_app_can_be_offline_in_days_val}}" id="plan_app_can_be_offline_in_days_input" placeholder=" " required maxlength="500">
             <label for="plan_app_can_be_offline_in_days_input">{{Duração do APP offline em dias}}</label>
         </div>
 
         <div class="floating-input">
-            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_team_play_participants" value="{{plan_team_play_participants_val}}" id="plan_team_play_participants_input" placeholder="" required maxlength="500">
+            <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_team_play_participants" value="{{plan_team_play_participants_val}}" id="plan_team_play_participants_input" placeholder=" " required maxlength="500">
             <label for="plan_team_play_participants_input">{{Quantidade de pessoas no team play}}</label>
         </div>
 
@@ -197,7 +197,7 @@
 
         <div id="trial_div" style="{{trial_div_visibility_val}}">
             <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_trial_duration_in_days" value="{{plan_trial_duration_in_days_val}}" id="plan_trial_duration_in_days_input" placeholder="" maxlength="500">
+                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_trial_duration_in_days" value="{{plan_trial_duration_in_days_val}}" id="plan_trial_duration_in_days_input" placeholder=" " maxlength="500">
                 <label for="plan_trial_duration_in_days_input">{{Duração do trial em dias}}</label>
             </div>
         </div>

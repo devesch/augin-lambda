@@ -7,17 +7,17 @@
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" class="create-account__form-container">
         <h2>{{Estamos quase lá! Preencha as informações abaixo e vamos criar sua conta.}}</h2>
         <div class="create-account__input-container floating-input">
-            <input readonly type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder="" required maxlength="500">
+            <input readonly type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder=" " required maxlength="500">
             <label for="email-account_input">{{Email}}</label>
         </div>
         <p class="error none">{{Email inválido}}</p>
         <div class="create-account__input-container floating-input">
-            <input type="text" name="user_name" value="{{user_name_val}}" id="name-account_input" placeholder="" required autofocus maxlength="500">
+            <input type="text" name="user_name" value="{{user_name_val}}" id="name-account_input" placeholder=" " required autofocus maxlength="500">
             <label for="name-account_input">{{Nome completo}}</label>
         </div>
         <p class="error none">{{Deve conter apenas letras}}</p>
         <div class="create-account__input-container floating-input">
-            <input type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" placeholder="" required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+            <input type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
             <label for="user_password_input">{{Senha}}</label>
             <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
                 <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">

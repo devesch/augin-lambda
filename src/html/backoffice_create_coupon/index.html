@@ -3,15 +3,15 @@
 <main class="my-plan__main">
     <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
         <div class="floating-input">
-            <input type="text" name="coupon_name" value="{{coupon_name_val}}" id="coupon_name_input" placeholder="" required autofocus maxlength="500">
+            <input type="text" name="coupon_name" value="{{coupon_name_val}}" id="coupon_name_input" placeholder=" " required autofocus maxlength="500">
             <label for="coupon_name_input">{{Nome}}</label>
         </div>
         <div class="floating-input">
-            <input type="text" name="coupon_description" value="{{coupon_description_val}}" id="coupon_description_input" placeholder="" required maxlength="500">
+            <input type="text" name="coupon_description" value="{{coupon_description_val}}" id="coupon_description_input" placeholder=" " required maxlength="500">
             <label for="coupon_description_input">{{Descrição}}</label>
         </div>
         <div class="floating-input">
-            <input type="text" name="coupon_code" value="{{coupon_code_val}}" id="coupon_code_input" placeholder="" required maxlength="500">
+            <input type="text" name="coupon_code" value="{{coupon_code_val}}" id="coupon_code_input" placeholder=" " required maxlength="500">
             <label for="coupon_code_input">{{Código}}</label>
         </div>
 
@@ -28,11 +28,11 @@
 
         <div id="coupon_available_for_limited_time_div" style="{{coupon_available_for_limited_time_div_visibility_val}}">
             <div class="floating-input">
-                <input type="date" name="coupon_start_date" value="{{coupon_start_date_val}}" id="coupon_start_date_input" placeholder="" maxlength="500">
+                <input type="date" name="coupon_start_date" value="{{coupon_start_date_val}}" id="coupon_start_date_input" placeholder=" " maxlength="500">
                 <label for="coupon_start_date_input">{{Inicia em}}</label>
             </div>
             <div class="floating-input">
-                <input type="date" name="coupon_end_date" value="{{coupon_end_date_val}}" id="coupon_end_date_input" placeholder="" maxlength="500">
+                <input type="date" name="coupon_end_date" value="{{coupon_end_date_val}}" id="coupon_end_date_input" placeholder=" " maxlength="500">
                 <label for="coupon_end_date_input">{{Termina em}}</label>
             </div>
         </div>
@@ -50,7 +50,7 @@
 
         <div id="coupon_has_limited_uses_count_div" style="{{coupon_has_limited_uses_count_div_visibility_val}}">
             <div class="floating-input">
-                <input type="text" oninput="js.index.formatToNumbers(this)" name="coupon_maxium_uses_count" value="{{coupon_maxium_uses_count_val}}" id="coupon_maxium_uses_count_input" placeholder="" maxlength="10">
+                <input type="text" oninput="js.index.formatToNumbers(this)" name="coupon_maxium_uses_count" value="{{coupon_maxium_uses_count_val}}" id="coupon_maxium_uses_count_input" placeholder=" " maxlength="10">
                 <label for="coupon_maxium_uses_count_input">{{Quantidade total de utilizações}}</label>
             </div>
         </div>
@@ -65,23 +65,23 @@
 
         <div id="total_discount_div">
             <div class="floating-input">
-                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_brl_discount" value="{{coupon_brl_discount_val}}" id="coupon_brl_discount_input" placeholder="" maxlength="500">
+                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_brl_discount" value="{{coupon_brl_discount_val}}" id="coupon_brl_discount_input" placeholder=" " maxlength="500">
                 <label for="coupon_brl_discount_input">{{Desconto em R$}}</label>
             </div>
             <div class="floating-input">
-                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_usd_discount" value="{{coupon_usd_discount_val}}" id="coupon_usd_discount_input" placeholder="" maxlength="500">
+                <input type="text" oninput="js.index.formatToMoney(this)" name="coupon_usd_discount" value="{{coupon_usd_discount_val}}" id="coupon_usd_discount_input" placeholder=" " maxlength="500">
                 <label for="coupon_usd_discount_input">{{Desconto em U$}}</label>
             </div>
         </div>
         <div id="percentage_discount_div">
             <div class="floating-input">
-                <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_percentage_discount" value="{{coupon_percentage_discount_val}}" id="coupon_percentage_discount_input" placeholder="" maxlength="500">
+                <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_percentage_discount" value="{{coupon_percentage_discount_val}}" id="coupon_percentage_discount_input" placeholder=" " maxlength="500">
                 <label for="coupon_percentage_discount_input">{{Desconto %}}</label>
             </div>
         </div>
 
         <div class="floating-input">
-            <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_recurrence_months" value="{{coupon_recurrence_months_val}}" id="coupon_recurrence_months_input" placeholder="" required maxlength="10">
+            <input type="text" oninput="js.index.formatToPercentage(this)" name="coupon_recurrence_months" value="{{coupon_recurrence_months_val}}" id="coupon_recurrence_months_input" placeholder=" " required maxlength="10">
             <label for="coupon_recurrence_months_input">{{Será aplicado em quantas parcelas (meses)}}</label>
         </div>
         <p class="input-hint">{{Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade}}</p>
