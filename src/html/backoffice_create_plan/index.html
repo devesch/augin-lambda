@@ -151,40 +151,42 @@
             <div class="backoffice__form__subtitle">
                 <h2>{{Regras}}</h2>
             </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_cloud_space_in_mbs" value="{{plan_cloud_space_in_mbs_val}}" id="plan_cloud_space_in_mbs_input" placeholder=" " required maxlength="500">
-                <label for="plan_cloud_space_in_mbs_input">{{Espaço em nuvem (MBs)}}</label>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_model_size_in_mbs" value="{{plan_maxium_model_size_in_mbs_val}}" id="plan_maxium_model_size_in_mbs_input" placeholder=" " required maxlength="500">
-                <label for="plan_maxium_model_size_in_mbs_input">{{Tamanho máximo por projeto (MBs)}}</label>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_federated_size_in_mbs" value="{{plan_maxium_federated_size_in_mbs_val}}" id="plan_maxium_federated_size_in_mbs_input" placeholder=" " required maxlength="500">
-                <label for="plan_maxium_federated_size_in_mbs_input">{{Tamanho máximo por federado (MBs)}}</label>
-            </div>
-            <p class="input-hint">{{Insira o (zero) para desabilitar}}</p>
-            <div class="floating-input">
-                <select name="plan_reference_tracker" id="plan_reference_tracker_select" value="{{plan_reference_tracker_val}}" required autocomplete="off">
-                    {{html_plan_reference_tracker_options}}
-                </select>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_available" value="{{plan_maxium_devices_available_val}}" id="plan_maxium_devices_available_input" placeholder=" " required maxlength="500">
-                <label for="plan_maxium_devices_available_input">{{Dispositivos ativos (Max)}}</label>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_changes_in_30d" value="{{plan_maxium_devices_changes_in_30d_val}}" id="plan_maxium_devices_changes_in_30d_input" placeholder=" " required maxlength="500">
-                <label for="plan_maxium_devices_changes_in_30d_input">{{Troca de dispositivos ativos (Max/Mês)}}</label>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_app_can_be_offline_in_days" value="{{plan_app_can_be_offline_in_days_val}}" id="plan_app_can_be_offline_in_days_input" placeholder=" " required maxlength="500">
-                <label for="plan_app_can_be_offline_in_days_input">{{Duração do APP offline em dias}}</label>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_team_play_participants" value="{{plan_team_play_participants_val}}" id="plan_team_play_participants_input" placeholder=" " required maxlength="500">
-                <label for="plan_team_play_participants_input">{{Quantidade de pessoas no team play}}</label>
-            </div>
+            <section class="backoffice__rules-container">
+                <div class="floating-input">
+                    <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_cloud_space_in_mbs" value="{{plan_cloud_space_in_mbs_val}}" id="plan_cloud_space_in_mbs_input" placeholder=" " required maxlength="500">
+                    <label for="plan_cloud_space_in_mbs_input">{{Espaço em nuvem (MBs)}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_model_size_in_mbs" value="{{plan_maxium_model_size_in_mbs_val}}" id="plan_maxium_model_size_in_mbs_input" placeholder=" " required maxlength="500">
+                    <label for="plan_maxium_model_size_in_mbs_input">{{Tamanho máximo por projeto (MBs)}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_federated_size_in_mbs" value="{{plan_maxium_federated_size_in_mbs_val}}" id="plan_maxium_federated_size_in_mbs_input" placeholder=" " required maxlength="500">
+                    <label for="plan_maxium_federated_size_in_mbs_input">{{Tamanho máximo por federado (MBs)}}</label>
+                </div>
+                <p class="input-hint">{{Insira o (zero) para desabilitar}}</p>
+                <div class="floating-input">
+                    <select name="plan_reference_tracker" id="plan_reference_tracker_select" value="{{plan_reference_tracker_val}}" required autocomplete="off">
+                        {{html_plan_reference_tracker_options}}
+                    </select>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_available" value="{{plan_maxium_devices_available_val}}" id="plan_maxium_devices_available_input" placeholder=" " required maxlength="500">
+                    <label for="plan_maxium_devices_available_input">{{Dispositivos ativos (Max)}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_devices_changes_in_30d" value="{{plan_maxium_devices_changes_in_30d_val}}" id="plan_maxium_devices_changes_in_30d_input" placeholder=" " required maxlength="500">
+                    <label for="plan_maxium_devices_changes_in_30d_input">{{Troca de dispositivos ativos (Max/Mês)}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_app_can_be_offline_in_days" value="{{plan_app_can_be_offline_in_days_val}}" id="plan_app_can_be_offline_in_days_input" placeholder=" " required maxlength="500">
+                    <label for="plan_app_can_be_offline_in_days_input">{{Duração do APP offline em dias}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_team_play_participants" value="{{plan_team_play_participants_val}}" id="plan_team_play_participants_input" placeholder=" " required maxlength="500">
+                    <label for="plan_team_play_participants_input">{{Quantidade de pessoas no team play}}</label>
+                </div>
+            </section>
         </section>
         <section>
             <div class="switch-container">

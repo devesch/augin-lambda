@@ -4124,6 +4124,11 @@
         "es": "Rastreadores de referencia",
         "pt": "Reference Trackers"
     },
+    "Regras": {
+        "en": "Rules",
+        "es": "Normas",
+        "pt": "Regras"
+    },
     "Remover": {
         "en": "Remove",
         "es": "Eliminar",

@@ -3081,4 +3081,20 @@ input[list]::-ms-clear {
     gap: 0.25rem;
     align-items: center;
 }
+
+.backoffice__rules-container {
+    display: grid;
+    gap: 1rem;
+    row-gap: 2rem;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: 780px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1500px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}
 /* Backoffice - End */
