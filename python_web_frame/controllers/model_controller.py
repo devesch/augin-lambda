@@ -467,27 +467,27 @@ class ModelController:
                 file_format = "ifc"
 
                 if "ifc" not in response["success"]["file_formats"]:
-                    response["success"]["file_formats"]["ifc"] = 1
+                    response["success"]["file_formats"]["ifc"] = "1"
                 else:
-                    response["success"]["file_formats"]["ifc"] += 1
+                    response["success"]["file_formats"]["ifc"] = str(int(response["success"]["file_formats"]["ifc"]) + 1)
 
             elif self.is_fbx_file(ifc_location):
                 file_format = "fbx"
                 response["success"]["has_fbx"] = True
 
                 if "fbx" not in response["success"]["file_formats"]:
-                    response["success"]["file_formats"]["fbx"] = 1
+                    response["success"]["file_formats"]["fbx"] = "1"
                 else:
-                    response["success"]["file_formats"]["fbx"] += 1
+                    response["success"]["file_formats"]["fbx"] = str(int(response["success"]["file_formats"]["fbx"]) + 1)
 
             elif self.is_glb_file(ifc_location):
                 file_format = "glb"
                 response["success"]["has_fbx"] = True
 
                 if "glb" not in response["success"]["file_formats"]:
-                    response["success"]["file_formats"]["glb"] = 1
+                    response["success"]["file_formats"]["glb"] = "1"
                 else:
-                    response["success"]["file_formats"]["glb"] += 1
+                    response["success"]["file_formats"]["glb"] = str(int(response["success"]["file_formats"]["glb"]) + 1)
 
             if not "." + file_format in ifc_location:
                 new_ifc_location = ifc_location + "." + file_format

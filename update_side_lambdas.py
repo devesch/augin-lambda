@@ -25,7 +25,7 @@ def make_dirs_and_copy(upload_project_folder, dest_folder):
 
 
 print("Running UPDATE lambda_check_model_uploaded_file")
-root_dirs = ["utils", "python_web_frame"]
+root_dirs = ["utils", "python_web_frame", "objects"]
 dest_folder = upload_project_folder + "/lambda_check_model_uploaded_file_tmp/"
 make_dirs_and_copy(upload_project_folder, dest_folder)
 shutil.copy(root_folder + "lambda_check_model_uploaded_file.py", dest_folder + "lambda_function.py")

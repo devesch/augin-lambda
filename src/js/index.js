@@ -622,7 +622,7 @@ export async function checkUploadModelFile(post_data) {
     });
 
     while (true) {
-        let panel_create_project_check_file_html_response = await apiCaller("panel_create_project_check_file_html", {
+        var panel_create_project_check_file_html_response = await apiCaller("panel_create_project_check_file_html", {
             "uploaded_file_id": panel_create_project_check_file_response["success"],
         });
 
