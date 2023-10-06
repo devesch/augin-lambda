@@ -17,7 +17,7 @@ class BackofficeAnalytics(BackofficePage):
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
 
-        days_ago = "120"
+        days_ago = "30"
         days_ago_unix_delta = str(time.time() - (int(days_ago) * 86400))
 
         analytics_new_user_registereds = Dynamo().query_analytics("new_user_registered", days_ago_unix_delta)
