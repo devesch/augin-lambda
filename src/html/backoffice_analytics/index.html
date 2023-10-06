@@ -4,7 +4,7 @@
 <main class="my-plan__main">
     <h1 class="my-plan__title">Analytics</h1>
     <section class="panel-explore-filters-container">
-        <select name="analytics_date_filter_select" id="analytics_date_filter_select" onclick="js.index.updateBackofficeAnalytics()" autocomplete="off">
+        <select name="analytics_date_filter_select" id="analytics_date_filter_select" onchange="js.index.updateBackofficeAnalytics()" autocomplete="off">
             <option value="7" {{7_checked_val}}>7 dias</option>
             <option value="30" {{30_checked_val}}>30 dias</option>
             <option value="60" {{60_checked_val}}>60 dias</option>
