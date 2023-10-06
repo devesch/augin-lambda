@@ -25,7 +25,7 @@ class BackofficeAnalytics(BackofficePage):
 
         new_user_registered_dates, new_user_registered_daily_amounts, new_user_registered_total_amounts = self.generate_analytics_new_user_registereds_data(analytics_new_user_registereds, days_ago)
 
-        html.esc(days_ago + "_checked_val", 'checked="checked"')
+        html.esc(days_ago + "_checked_val", 'selected="selected"')
         html.esc("new_user_registered_dates_val", new_user_registered_dates)
         html.esc("new_user_registered_daily_amounts_val", new_user_registered_daily_amounts)
         html.esc("new_user_registered_total_amounts_val", new_user_registered_total_amounts)
