@@ -2979,4 +2979,37 @@ input[list]::-ms-clear {
     overflow: auto;
     max-width: calc(100vw - (350px + 2rem));
 }
+
+.backoffice__subtitle {
+    font-family: "Manrope";
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: colors.color("color-black");
+    margin-bottom: 1rem;
+    border-bottom: 1px solid colors.color("color-neutral-400");
+    padding-bottom: 1rem;
+}
+
+.backoffice__table {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+
+    @media only screen and (min-width: 520px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media only screen and (min-width: 780px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media only screen and (min-width: 1400px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @media only screen and (min-width: 1800px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+}
 /* Backoffice - End */
