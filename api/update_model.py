@@ -68,6 +68,8 @@ class UpdateModel(BasePage):
         return {"success": "create_federated completed"}
 
     def delete_model(self, model):
+        if not model:
+            return {"success": "model does not exist"}
         ModelController().delete_model(model, self.user)
         return {"success": "model deleted"}
 

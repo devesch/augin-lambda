@@ -57,6 +57,6 @@ def main_lambda_handler(event, context):
 
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:
-    with open("_testnow_side_lambda.json", "r") as read_file:
+    with open("_testnow_lambda_web_data_process_json.json", "r") as read_file:
         event = json.load(read_file)
         html = main_lambda_handler(event, None)

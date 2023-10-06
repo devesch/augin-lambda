@@ -21,7 +21,7 @@ class UpdateBackoffice(BackofficePage):
         model = Dynamo().get_model(self.post["model_id"])
         if not model:
             return {"error": "Nenhum modelo encontrado com os dados informados"}
-        if model["model_state"] not in ["completed", "error"]:
+        if model["model_state"] not in ["completed", "error", "in_processing"]:
             return {"error": "O modelo não se encontra no estado completo ou erro para ser reprocessado"}
         if model["model_category"] == "federated":
             return {"error": "Não é possível reprocessar um modelo federado"}
