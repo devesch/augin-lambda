@@ -5,13 +5,12 @@
     <h1 class="my-plan__title">Analytics</h1>
     <section class="panel-explore-filters-container">
         <select name="analytics_date_filter_select" id="analytics_date_filter_select" onclick="js.index.updateBackofficeAnalytics()" autocomplete="off">
-            <option value="7" selected disabled>{{Filtrar data}}</option>
-            <option value="7">7 dias</option>
-            <option value="30">30 dias</option>
-            <option value="60">60 dias</option>
-            <option value="90">90 dias</option>
-            <option value="180">180 dias</option>
-            <option value="360">360 dias</option>
+            <option value="7" {{7_checked_val}}>7 dias</option>
+            <option value="30" {{30_checked_val}}>30 dias</option>
+            <option value="60" {{60_checked_val}}>60 dias</option>
+            <option value="90" {{90_checked_val}}>90 dias</option>
+            <option value="180" {{180_checked_val}}>180 dias</option>
+            <option value="360" {{360_checked_val}}>360 dias</option>
         </select>
     </section>
 

@@ -3093,3 +3093,8 @@ export async function openTawkApi(userId, userPlanId) {
     });
     Tawk_API.toggle()
 }
+
+export async function updateBackofficeAnalytics() {
+    var analytics_date_filter_select = document.getElementById("analytics_date_filter_select");
+    location.href = ProjectData.props.domainNameUrlVal + "/backoffice_analytics/?analytics_date_filter=" + analytics_date_filter_select.value;
+}
