@@ -292,6 +292,8 @@ class ModelController:
 
             Dynamo().update_entity(model, "model_upload_path_bin", bin_model_key)
             Dynamo().update_entity(model, "model_upload_path_mini_bin", mini_bin_model_key)
+            Dynamo().update_entity(model, "model_filesize_bin", str(os.path.getsize(bin_zip_location)))
+            Dynamo().update_entity(model, "model_filesize_mini_bin", str(os.path.getsize(mini_bin_zip_location)))
 
     def sort_models(self, user, models, sort_attribute="model_name", sort_reverse=False):
         sort_reverse = sort_reverse == "True"

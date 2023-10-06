@@ -18,28 +18,28 @@ class UpdateModelProcess(BasePage):
             if not model["model_aug_completed"]:
                 model["model_aug_percent"] = self.post["progress_percent"]
                 Dynamo().update_entity(model, "model_aug_percent", model["model_aug_percent"])
-        if self.post["output_format"] == "model_aug_sd_percent":
+        elif self.post["output_format"] == "model_aug_sd_percent":
             if not model["model_aug_sd_completed"]:
                 model["model_aug_sd_percent"] = self.post["progress_percent"]
                 Dynamo().update_entity(model, "model_aug_sd_percent", model["model_aug_sd_percent"])
 
-        if self.post["output_format"] == "model_xml_started":
+        elif self.post["output_format"] == "model_xml_started":
             model["model_xml_started"] = str(time.time())
             Dynamo().update_entity(model, "model_xml_started", model["model_xml_started"])
-        if self.post["output_format"] == "model_aug_started":
+        elif self.post["output_format"] == "model_aug_started":
             model["model_aug_started"] = str(time.time())
             Dynamo().update_entity(model, "model_aug_started", model["model_aug_started"])
-        if self.post["output_format"] == "model_aug_sd_started":
+        elif self.post["output_format"] == "model_aug_sd_started":
             model["model_aug_sd_started"] = str(time.time())
             Dynamo().update_entity(model, "model_aug_sd_started", model["model_aug_sd_started"])
 
-        if self.post["output_format"] == "xml_to_dynamo":
+        elif self.post["output_format"] == "xml_to_dynamo":
             model["model_xml_to_dynamo_completed"] = str(time.time())
             model["model_valid_until"] = int(time.time()) + 10400000
             Dynamo().update_entity(model, "model_xml_to_dynamo_completed", model["model_xml_to_dynamo_completed"])
             Dynamo().update_entity(model, "model_valid_until", model["model_valid_until"], type="N")
 
-        if self.post["output_format"] == "xml":
+        elif self.post["output_format"] == "xml":
             model["model_xml_completed"] = str(time.time())
             model["model_xml_memory_usage"] = str(self.post["max_memory_usage"])
             model["model_xml_to_dynamo_start"] = str(time.time())
@@ -49,11 +49,10 @@ class UpdateModelProcess(BasePage):
             Dynamo().update_entity(model, "model_xml_memory_usage", model["model_xml_memory_usage"])
             Dynamo().update_entity(model, "model_xml_completed", model["model_xml_completed"])
             Dynamo().update_entity(model, "model_xml_to_dynamo_start", model["model_xml_to_dynamo_start"])
-            raise Exception("TODO GEN BIN FILES")
-            ModelController().generate_bin_files(model, self.post["output_bucket"], self.post["output_key"])
             ProjectController().add_project_to_process_xml_to_dynamo(self.post["model_id"], self.post["output_bucket"], self.post["output_key"], self.event.requestContext["domainName"])
+            ModelController().generate_bin_files(model, self.post["output_bucket"], self.post["output_key"])
 
-        if self.post["output_format"] == "aug":
+        elif self.post["output_format"] == "aug":
             model["model_aug_completed"] = str(time.time())
             model["model_aug_memory_usage"] = str(self.post["max_memory_usage"])
             if self.post.get("ec2_machine"):
@@ -61,7 +60,8 @@ class UpdateModelProcess(BasePage):
                 Dynamo().update_entity(model, "model_aug_ec2_machine", model["model_aug_ec2_machine"])
             Dynamo().update_entity(model, "model_aug_memory_usage", model["model_aug_memory_usage"])
             Dynamo().update_entity(model, "model_aug_completed", model["model_aug_completed"])
-        if self.post["output_format"] == "aug_sd":
+
+        elif self.post["output_format"] == "aug_sd":
             model["model_aug_sd_completed"] = str(time.time())
             model["model_aug_sd_memory_usage"] = str(self.post["max_memory_usage"])
             if self.post.get("ec2_machine"):
@@ -70,7 +70,7 @@ class UpdateModelProcess(BasePage):
             Dynamo().update_entity(model, "model_aug_sd_memory_usage", model["model_aug_sd_memory_usage"])
             Dynamo().update_entity(model, "model_aug_sd_completed", model["model_aug_sd_completed"])
 
-        if self.post["output_format"] == "glb":
+        elif self.post["output_format"] == "glb":
             model["model_xml_started"] = str(time.time())
             model["model_aug_started"] = str(time.time())
             model["model_aug_sd_started"] = str(time.time())
@@ -90,12 +90,6 @@ class UpdateModelProcess(BasePage):
                 model["model_filesize_xml"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_xml"]))
                 model["model_filesize_aug"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_aug"]))
                 model["model_filesize_sd_aug"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_sd_aug"]))
-                try:
-                    model["model_filesize_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_bin"]))
-                    model["model_filesize_mini_bin"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_mini_bin"]))
-                except:
-                    model["model_filesize_bin"] = "0"
-                    model["model_filesize_mini_bin"] = "0"
 
                 model = ModelController().calculate_model_memory_usage_in_gbs(model)
                 model = ModelController().calculate_model_total_time(model)
