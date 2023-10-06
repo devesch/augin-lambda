@@ -76,7 +76,7 @@ class ModelController:
         model["model_processing_total_time"] = "0.0"
         model["model_processing_percentage"] = "0"
         model["model_error_msg"] = ""
-        model = self.change_model_state(model, "completed", "in_processing")
+        model = self.change_model_state(model, model["model_state"], "in_processing")
         Dynamo().put_entity(model)
         return model
 
