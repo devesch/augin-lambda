@@ -17,7 +17,7 @@ class BackofficeAnalytics(BackofficePage):
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
 
-        days_ago = "30"
+        days_ago = self.path.get("analytics_date_filter", "7")
         days_ago_unix_delta = str(time.time() - (int(days_ago) * 86400))
 
         analytics_new_user_registereds = Dynamo().query_analytics("new_user_registered", days_ago_unix_delta)
@@ -25,6 +25,7 @@ class BackofficeAnalytics(BackofficePage):
 
         new_user_registered_dates, new_user_registered_daily_amounts, new_user_registered_total_amounts = self.generate_analytics_new_user_registereds_data(analytics_new_user_registereds, days_ago)
 
+        html.esc(days_ago + "_checked_val", 'selected="selected"')
         html.esc("new_user_registered_dates_val", new_user_registered_dates)
         html.esc("new_user_registered_daily_amounts_val", new_user_registered_daily_amounts)
         html.esc("new_user_registered_total_amounts_val", new_user_registered_total_amounts)
