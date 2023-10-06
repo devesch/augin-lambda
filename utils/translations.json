@@ -2209,6 +2209,11 @@
         "es": "Gas",
         "pt": "Gás"
     },
+    "Habilitado": {
+        "en": "Able",
+        "es": "Capaz",
+        "pt": "Habilitado"
+    },
     "Habilitar este cookie melhora sua experiência de comunicação.": {
         "en": "Enabling this cookie improves your communication experience.",
         "es": "Habilitar esta cookie mejora su experiencia de comunicación.",

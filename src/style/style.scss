@@ -3028,6 +3028,44 @@ input[list]::-ms-clear {
     align-items: center;
     flex-wrap: wrap;
     padding-bottom: .5rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid colors.color("color-neutral-400");
+    font-size: 1.5rem;
+    font-weight: normal;
+    font-family: "Manrope";
+
+    .switch-container {
+        margin-bottom: 0;
+    }
+
+}
+
+.backoffice__form__price-container {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: 520px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1500px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+}
+
+.backoffice__form__section-title {
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-family: "Manrope";
+    margin-bottom: 1rem;
+}
+
+.backoffice__form__payment-method-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: center;
+    justify-content: left;
 }
 /* Backoffice - End */
