@@ -7,7 +7,7 @@
             {{html_dropdown_select_user_pagination}}
         </div>
         <section class="panel-explore-filters-container">
-            <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()">
+            <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()" autocomplete="off">
                 <option value="all" selected disabled>{{Filtrar}}</option>
                 <option value="all">{{Todas}}</option>
                 <option value="pending">{{Incompleto}}</option>

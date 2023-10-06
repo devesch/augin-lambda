@@ -56,7 +56,7 @@
         </div>
 
         <div class="floating-input">
-            <select onchange="js.index.showCouponDiscountFields(this)" name="coupon_discount_type" id="coupon_discount_type_select" value="{{coupon_discount_type_val}}" required>
+            <select onchange="js.index.showCouponDiscountFields(this)" name="coupon_discount_type" id="coupon_discount_type_select" value="{{coupon_discount_type_val}}" required autocomplete="off">
                 <option value="percentage" {{percentage_pre_sel_val}}>{{Desconto percentual}}</option>
                 <option value="total" {{total_pre_sel_val}}>{{Desconto desconto total}}</option>
             </select>

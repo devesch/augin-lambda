@@ -9,7 +9,7 @@
             <label for="user_name" class="floating-label">{{Seu nome}}</label>
         </div>
         <div class="input-default floating-input">
-            <select onchange="js.index.panelUserDataChangeCountryForm('international')" name="user_country" class="floating" id="user_country" value="{{user_country_val}}" required>
+            <select onchange="js.index.panelUserDataChangeCountryForm('international')" name="user_country" class="floating" id="user_country" value="{{user_country_val}}" required autocomplete="off">
                 {{html_user_country_options}}
             </select>
             <label for="user_country" class="floating-label">{{País}}</label>

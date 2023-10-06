@@ -6,7 +6,7 @@
         <div>
             <section class="panel-explore-filters-container">
                 {{html_dropdown_select_user_pagination}}
-                <select onchange="js.index.updateBackofficeUsers()" name="search_users_by_subscription_select" id="search_users_by_subscription_select" required>
+                <select onchange="js.index.updateBackofficeUsers()" name="search_users_by_subscription_select" id="search_users_by_subscription_select" required autocomplete="off">
                     <option value="all" selected disabled>{{Filtrar}}</option>
                     <option value="all">{{Todos}}</option>
                     <option value="none">{{Sem assinatura}}</option>
