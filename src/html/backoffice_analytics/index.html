@@ -1,4 +1,4 @@
-﻿{{header}}
+{{header}}
 {{menu_backoffice}}
 
 <main class="my-plan__main">
@@ -14,10 +14,16 @@
         </select>
     </section>
 
-    <canvas id="new_user_registered_chart" width="600" height="300"></canvas>
-    <input hidden id="new_user_registered_dates_input" value="{{new_user_registered_dates_val}}">
+    <canvas id="daily_chart" width="600" height="300"></canvas>
+    <canvas id="cumulative_chart" width="600" height="300"></canvas>
+
+    <input hidden id="dates_input" value="{{dates_val}}">
+
     <input hidden id="new_user_registered_daily_amounts_input" value="{{new_user_registered_daily_amounts_val}}">
     <input hidden id="new_user_registered_total_amounts_input" value="{{new_user_registered_total_amounts_val}}">
+
+    <input hidden id="app_opening_daily_amounts_input" value="{{app_opening_daily_amounts_val}}">
+    <input hidden id="app_opening_total_amounts_input" value="{{app_opening_total_amounts_val}}">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -26,29 +32,37 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var ctx = document.getElementById('new_user_registered_chart').getContext('2d');
+        var daily_chart_element = document.getElementById('daily_chart').getContext('2d');
+        var cumulative_chart_element = document.getElementById('cumulative_chart').getContext('2d');
 
-        var new_user_registered_dates = document.getElementById('new_user_registered_dates_input').value;
+        var dates = document.getElementById('dates_input').value;
+
         var new_user_registered_daily_amounts = document.getElementById('new_user_registered_daily_amounts_input').value;
         var new_user_registered_total_amounts = document.getElementById('new_user_registered_total_amounts_input').value;
 
-        // Sample data
-        var dates = JSON.parse(new_user_registered_dates.replace(/'/g, "\""));
-        var dailyAmounts = JSON.parse(new_user_registered_daily_amounts);
-        var totalAmounts = JSON.parse(new_user_registered_total_amounts);
+        var app_opening_daily_amounts = document.getElementById('app_opening_daily_amounts_input').value;
+        var app_opening_total_amounts = document.getElementById('app_opening_total_amounts_input').value;
 
-        var myChart = new Chart(ctx, {
+        var dates = JSON.parse(dates.replace(/'/g, "\""));
+
+        var new_user_registered_daily_amounts = JSON.parse(new_user_registered_daily_amounts);
+        var new_user_registered_total_amounts = JSON.parse(new_user_registered_total_amounts);
+
+        var app_opening_daily_amounts = JSON.parse(app_opening_daily_amounts);
+        var app_opening_total_amounts = JSON.parse(app_opening_total_amounts);
+
+        var daily_chart = new Chart(daily_chart_element, {
             type: 'line',
             data: {
                 labels: dates,
                 datasets: [{
-                    label: 'Cumulative Total Amount',
-                    data: totalAmounts,
+                    label: 'New Users',
+                    data: new_user_registered_daily_amounts,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     fill: false
                 }, {
-                    label: 'Daily Amount',
-                    data: dailyAmounts,
+                    label: 'App Openings',
+                    data: app_opening_daily_amounts,
                     borderColor: 'rgba(255, 99, 132, 1)',
                     fill: false
                 }]
@@ -76,6 +90,46 @@
                 }
             }
         });
+    });
+
+    var cumulative_chart = new Chart(cumulative_chart_element, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'New Users',
+                data: app_opening_total_amounts,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                fill: false
+            }, {
+                label: 'App Openings',
+                data: app_opening_total_amounts,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        parser: 'dd/MM/yy',
+                        tooltipFormat: 'dd/MM/yy'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Amount'
+                    }
+                }
+            }
+        }
     });
 </script>
 {{footer}}
