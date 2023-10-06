@@ -90,46 +90,47 @@
                 }
             }
         });
-    });
 
-    var cumulative_chart = new Chart(cumulative_chart_element, {
-        type: 'line',
-        data: {
-            labels: dates,
-            datasets: [{
-                label: 'New Users',
-                data: app_opening_total_amounts,
-                borderColor: 'rgba(54, 162, 235, 1)',
-                fill: false
-            }, {
-                label: 'App Openings',
-                data: app_opening_total_amounts,
-                borderColor: 'rgba(255, 99, 132, 1)',
-                fill: false
-            }]
-        },
-        options: {
-            scales: {
-                x: {
-                    type: 'time',
-                    time: {
-                        parser: 'dd/MM/yy',
-                        tooltipFormat: 'dd/MM/yy'
+
+        var cumulative_chart = new Chart(cumulative_chart_element, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'New Users',
+                    data: app_opening_total_amounts,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    fill: false
+                }, {
+                    label: 'App Openings',
+                    data: app_opening_total_amounts,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            parser: 'dd/MM/yy',
+                            tooltipFormat: 'dd/MM/yy'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
                     },
-                    title: {
-                        display: true,
-                        text: 'Date'
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Amount'
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount'
+                        }
                     }
                 }
             }
-        }
+        });
     });
 </script>
 {{footer}}
