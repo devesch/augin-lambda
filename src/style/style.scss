@@ -3019,4 +3019,15 @@ input[list]::-ms-clear {
     border-radius: 1rem;
     margin-top: 1rem;
 }
+
+.backoffice__form__subtitle {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid colors.color("color-neutral-400");
+}
 /* Backoffice - End */

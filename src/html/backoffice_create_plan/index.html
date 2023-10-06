@@ -43,84 +43,83 @@
             <label for="plan_available_for_purchase_input">{{Disponível para compra}}</label>
         </div>
 
-        <div class="switch-container">
-            <div class="input-container">
-                <input onchange="js.index.toogleDiv(this, 'annually_div')" type="checkbox" name="plan_available_annually" id="plan_available_annually_input" {{plan_available_annually_checked_val}}>
-                <label class="switch" for="plan_available_annually_input">
-                    <div class="slider"></div>
-                </label>
+        <section>
+            <div class="backoffice__form__subtitle">
+                <h2>{{Disponível anual}}</h2>
+                <div class="switch-container">
+                    <div class="input-container">
+                        <input onchange="js.index.toogleDiv(this, 'annually_div')" type="checkbox" name="plan_available_annually" id="plan_available_annually_input" {{plan_available_annually_checked_val}}>
+                        <label class="switch" for="plan_available_annually_input">
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <label for="plan_available_annually_input">{{Habilitado}}</label>
+                </div>
             </div>
-            <label for="plan_available_annually_input">{{Disponível anual}}</label>
-        </div>
-
-        <div id="annually_div" style="{{annually_div_visibility_val}}">
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl" value="{{plan_price_annually_brl_val}}" id="plan_price_annually_brl_input" placeholder=" " maxlength="500">
-                <label for="plan_price_annually_brl_input">{{Preço BRL}}</label>
+            <div id="annually_div" style="{{annually_div_visibility_val}}">
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl" value="{{plan_price_annually_brl_val}}" id="plan_price_annually_brl_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_annually_brl_input">{{Preço BRL}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl_actual" value="{{plan_price_annually_brl_actual_val}}" id="plan_price_annually_brl_actual_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_annually_brl_actual_input">{{Preço atual BRL}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd" value="{{plan_price_annually_usd_val}}" id="plan_price_annually_usd_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_annually_usd_input">{{Preço USD}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd_actual" value="{{plan_price_annually_usd_actual_val}}" id="plan_price_annually_usd_actual_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_annually_usd_actual_input">{{Preço atual USD}}</label>
+                </div>
+                <input type="checkbox" name="plan_annually_card_payment_method" id="plan_annually_card_payment_method_input" {{plan_annually_card_payment_method_checked_val}}>
+                <label for="plan_annually_card_payment_method_input">{{Cartão}}</label>
+                <input type="checkbox" name="plan_annually_boleto_payment_method" id="plan_annually_boleto_payment_method_input" {{plan_annually_boleto_payment_method_checked_val}}>
+                <label for="plan_annually_boleto_payment_method_input">{{Boleto}}</label>
+                <input type="checkbox" name="plan_annually_pix_payment_method" id="plan_annually_pix_payment_method_input" {{plan_annually_pix_payment_method_checked_val}}>
+                <label for="plan_annually_pix_payment_method_input">{{PIX}}</label>
             </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl_actual" value="{{plan_price_annually_brl_actual_val}}" id="plan_price_annually_brl_actual_input" placeholder=" " maxlength="500">
-                <label for="plan_price_annually_brl_actual_input">{{Preço atual BRL}}</label>
+        </section>
+
+        <section>
+            <div class="backoffice__form__subtitle">
+                <h2>{{Disponível mensal}}</h2>
+                <div class="switch-container">
+                    <div class="input-container">
+                        <input onchange="js.index.toogleDiv(this, 'monthly_div')" type="checkbox" name="plan_available_monthly" id="plan_available_monthly_input" {{plan_available_monthly_checked_val}}>
+                        <label class="switch" for="plan_available_monthly_input">
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <label for="plan_available_monthly_input">{{Habilitado}}</label>
+                </div>
             </div>
-
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd" value="{{plan_price_annually_usd_val}}" id="plan_price_annually_usd_input" placeholder=" " maxlength="500">
-                <label for="plan_price_annually_usd_input">{{Preço USD}}</label>
+            <div id="monthly_div" style="{{monthly_div_visibility_val}}">
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl" value="{{plan_price_monthly_brl_val}}" id="plan_price_monthly_brl_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_monthly_brl_input">{{Preço BRL}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl_actual" value="{{plan_price_monthly_brl_actual_val}}" id="plan_price_monthly_brl_actual_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_monthly_brl_actual_input">{{Preço atual BRL}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd" value="{{plan_price_monthly_usd_val}}" id="plan_price_monthly_usd_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_monthly_usd_input">{{Preço USD}}</label>
+                </div>
+                <div class="floating-input">
+                    <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd_actual" value="{{plan_price_monthly_usd_actual_val}}" id="plan_price_monthly_usd_actual_input" placeholder=" " maxlength="500">
+                    <label for="plan_price_monthly_usd_actual_input">{{Preço atual USD}}</label>
+                </div>
+                <input type="checkbox" name="plan_monthly_card_payment_method" id="plan_monthly_card_payment_method_input" {{plan_monthly_card_payment_method_checked_val}}>
+                <label for="plan_monthly_card_payment_method_input">{{Cartão}}</label>
+                <input type="checkbox" name="plan_monthly_boleto_payment_method" id="plan_monthly_boleto_payment_method_input" {{plan_monthly_boleto_payment_method_checked_val}}>
+                <label for="plan_monthly_boleto_payment_method_input">{{Boleto}}</label>
+                <input type="checkbox" name="plan_monthly_pix_payment_method" id="plan_monthly_pix_payment_method_input" {{plan_monthly_pix_payment_method_checked_val}}>
+                <label for="plan_monthly_pix_payment_method_input">{{PIX}}</label>
             </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_usd_actual" value="{{plan_price_annually_usd_actual_val}}" id="plan_price_annually_usd_actual_input" placeholder=" " maxlength="500">
-                <label for="plan_price_annually_usd_actual_input">{{Preço atual USD}}</label>
-            </div>
-
-
-            <input type="checkbox" name="plan_annually_card_payment_method" id="plan_annually_card_payment_method_input" {{plan_annually_card_payment_method_checked_val}}>
-            <label for="plan_annually_card_payment_method_input">{{Cartão}}</label>
-
-            <input type="checkbox" name="plan_annually_boleto_payment_method" id="plan_annually_boleto_payment_method_input" {{plan_annually_boleto_payment_method_checked_val}}>
-            <label for="plan_annually_boleto_payment_method_input">{{Boleto}}</label>
-
-            <input type="checkbox" name="plan_annually_pix_payment_method" id="plan_annually_pix_payment_method_input" {{plan_annually_pix_payment_method_checked_val}}>
-            <label for="plan_annually_pix_payment_method_input">{{PIX}}</label>
-        </div>
-
-        <div class="switch-container">
-            <div class="input-container">
-                <input onchange="js.index.toogleDiv(this, 'monthly_div')" type="checkbox" name="plan_available_monthly" id="plan_available_monthly_input" {{plan_available_monthly_checked_val}}>
-                <label class="switch" for="plan_available_monthly_input">
-                    <div class="slider"></div>
-                </label>
-            </div>
-            <label for="plan_available_monthly_input">{{Disponível mensal}}</label>
-        </div>
-
-        <div id="monthly_div" style="{{monthly_div_visibility_val}}">
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl" value="{{plan_price_monthly_brl_val}}" id="plan_price_monthly_brl_input" placeholder=" " maxlength="500">
-                <label for="plan_price_monthly_brl_input">{{Preço BRL}}</label>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl_actual" value="{{plan_price_monthly_brl_actual_val}}" id="plan_price_monthly_brl_actual_input" placeholder=" " maxlength="500">
-                <label for="plan_price_monthly_brl_actual_input">{{Preço atual BRL}}</label>
-            </div>
-
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd" value="{{plan_price_monthly_usd_val}}" id="plan_price_monthly_usd_input" placeholder=" " maxlength="500">
-                <label for="plan_price_monthly_usd_input">{{Preço USD}}</label>
-            </div>
-            <div class="floating-input">
-                <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_usd_actual" value="{{plan_price_monthly_usd_actual_val}}" id="plan_price_monthly_usd_actual_input" placeholder=" " maxlength="500">
-                <label for="plan_price_monthly_usd_actual_input">{{Preço atual USD}}</label>
-            </div>
-
-            <input type="checkbox" name="plan_monthly_card_payment_method" id="plan_monthly_card_payment_method_input" {{plan_monthly_card_payment_method_checked_val}}>
-            <label for="plan_monthly_card_payment_method_input">{{Cartão}}</label>
-
-            <input type="checkbox" name="plan_monthly_boleto_payment_method" id="plan_monthly_boleto_payment_method_input" {{plan_monthly_boleto_payment_method_checked_val}}>
-            <label for="plan_monthly_boleto_payment_method_input">{{Boleto}}</label>
-
-            <input type="checkbox" name="plan_monthly_pix_payment_method" id="plan_monthly_pix_payment_method_input" {{plan_monthly_pix_payment_method_checked_val}}>
-            <label for="plan_monthly_pix_payment_method_input">{{PIX}}</label>
-        </div>
+        </section>
 
         <div class="floating-input">
             <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_cloud_space_in_mbs" value="{{plan_cloud_space_in_mbs_val}}" id="plan_cloud_space_in_mbs_input" placeholder=" " required maxlength="500">
