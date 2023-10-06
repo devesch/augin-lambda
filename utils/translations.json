@@ -144,6 +144,11 @@
         "es": "El pedido no se paga para hacer un reembolso.",
         "pt": "A ordem não se encontra paga para realizar reembolso."
     },
+    "A plataforma Augin coloca seus projetos em um ambiente imersivo de colaboração": {
+        "en": "The Augin platform places its projects in an immersive collaboration environment",
+        "es": "La plataforma Augin coloca sus proyectos en un entorno de colaboración inmersivo",
+        "pt": "A plataforma Augin coloca seus projetos em um ambiente imersivo de colaboração"
+    },
     "A quantidade máxima de dispositivos deve ser um número": {
         "en": "The maximum amount of devices should be a number",
         "es": "La cantidad máxima de dispositivos debe ser un número",
@@ -4423,6 +4428,11 @@
         "en": "Somalia",
         "es": "Somalia",
         "pt": "Somália"
+    },
+    "Somos uma solução que busca otimizar a sua comunicação, com clientes e colaboradores, no dia-a-dia": {
+        "en": "We are a solution that seeks to optimize your communication, with customers and employees, in everyday life",
+        "es": "Somos una solución que busca optimizar su comunicación, con clientes y empleados, en la vida cotidiana.",
+        "pt": "Somos uma solução que busca otimizar a sua comunicação, com clientes e colaboradores, no dia-a-dia"
     },
     "South Africa": {
         "en": "South Africa",
