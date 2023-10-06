@@ -33,7 +33,7 @@
         </div> -->
 
 
-        <div class="switch-container">
+        <div class="switch-container mt-1">
             <div class="input-container">
                 <input type="checkbox" name="plan_available_for_purchase" id="plan_available_for_purchase_input" {{plan_available_for_purchase_checked_val}}>
                 <label class="switch" for="plan_available_for_purchase_input">
@@ -127,12 +127,23 @@
                         <label for="plan_price_monthly_usd_actual_input">{{Preço atual USD}}</label>
                     </div>
                 </section>
-                <input type="checkbox" name="plan_monthly_card_payment_method" id="plan_monthly_card_payment_method_input" {{plan_monthly_card_payment_method_checked_val}}>
-                <label for="plan_monthly_card_payment_method_input">{{Cartão}}</label>
-                <input type="checkbox" name="plan_monthly_boleto_payment_method" id="plan_monthly_boleto_payment_method_input" {{plan_monthly_boleto_payment_method_checked_val}}>
-                <label for="plan_monthly_boleto_payment_method_input">{{Boleto}}</label>
-                <input type="checkbox" name="plan_monthly_pix_payment_method" id="plan_monthly_pix_payment_method_input" {{plan_monthly_pix_payment_method_checked_val}}>
-                <label for="plan_monthly_pix_payment_method_input">{{PIX}}</label>
+                <section class="backoffice__form__payment-container">
+                    <h3 class="backoffice__form__section-title">{{Forma de pagamento}}</h3>
+                    <div class="backoffice__form__payment-method-container">
+                        <div class="backoffice__form__payment-row">
+                            <input type="checkbox" name="plan_monthly_card_payment_method" id="plan_monthly_card_payment_method_input" {{plan_monthly_card_payment_method_checked_val}}>
+                            <label for="plan_monthly_card_payment_method_input">{{Cartão}}</label>
+                        </div>
+                        <div class="backoffice__form__payment-row">
+                            <input type="checkbox" name="plan_monthly_boleto_payment_method" id="plan_monthly_boleto_payment_method_input" {{plan_monthly_boleto_payment_method_checked_val}}>
+                            <label for="plan_monthly_boleto_payment_method_input">{{Boleto}}</label>
+                        </div>
+                        <div class="backoffice__form__payment-row">
+                            <input type="checkbox" name="plan_monthly_pix_payment_method" id="plan_monthly_pix_payment_method_input" {{plan_monthly_pix_payment_method_checked_val}}>
+                            <label for="plan_monthly_pix_payment_method_input">{{PIX}}</label>
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
 
