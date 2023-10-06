@@ -34,9 +34,9 @@
         var new_user_registered_total_amounts = document.getElementById('new_user_registered_total_amounts_input').value;
 
         // Sample data
-        var dates = new_user_registered_dates.split(',');
-        var dailyAmounts = new_user_registered_daily_amounts.split(',').map(Number);
-        var totalAmounts = new_user_registered_total_amounts.split(',').map(Number);
+        var dates = JSON.parse(new_user_registered_dates_str.replace(/'/g, "\""));
+        var dailyAmounts = JSON.parse(new_user_registered_daily_amounts_str);
+        var totalAmounts = JSON.parse(new_user_registered_total_amounts_str);
 
         var myChart = new Chart(ctx, {
             type: 'line',
