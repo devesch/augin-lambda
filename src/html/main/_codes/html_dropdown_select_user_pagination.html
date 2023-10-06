@@ -1,6 +1,6 @@
 <div>
-    <label for="user_pagination_count_select">{{Itens por página}}:</label>
     <select onchange="js.index.updateUserPaginationCount(this)" name="user_pagination_count_select" id="user_pagination_count_select">
+        <option selected disabled value="">{{Itens por página}}</option>
         <option {{1_presel_val}} value="1">1</option>
         <option {{50_presel_val}} value="50">50</option>
         <option {{100_presel_val}} value="100">100</option>
