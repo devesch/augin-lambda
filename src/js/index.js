@@ -628,7 +628,9 @@ export async function checkUploadModelFile(post_data) {
 
         if (!("keep_waiting" in panel_create_project_check_file_html_response)) {
             break;
-        }
+        };
+
+        await sleep(5000);
     }
 
     let delete_button = document.getElementById("delete_button_" + post_data["element_index"]);
