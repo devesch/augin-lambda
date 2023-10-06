@@ -3043,6 +3043,7 @@ input[list]::-ms-clear {
 .backoffice__form__price-container {
     display: grid;
     grid-template-columns: 1fr;
+    gap: 1rem;
 
     @media screen and (min-width: 520px) {
         grid-template-columns: 1fr 1fr;
@@ -3058,7 +3059,7 @@ input[list]::-ms-clear {
     font-size: 1.2rem;
     font-weight: normal;
     font-family: "Manrope";
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
 .backoffice__form__payment-method-container {
@@ -3067,5 +3068,17 @@ input[list]::-ms-clear {
     gap: 3rem;
     align-items: center;
     justify-content: left;
+}
+
+.backoffice__form__payment-container {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.backoffice__form__payment-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    align-items: center;
 }
 /* Backoffice - End */
