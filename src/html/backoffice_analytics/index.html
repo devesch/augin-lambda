@@ -27,8 +27,8 @@
 
         // Sample data
         var dates = ["2023-01-01", "2023-01-02", "2023-01-03", "2023-01-04", "2023-01-05"];
-        var dailyAmounts = [5, 8, -3, 10, -2];
-        var totalAmounts = dailyAmounts.map((val, i, arr) => arr.slice(0, i + 1).reduce((a, b) => a + b));
+        var dailyAmounts = [5, 8, 3, 11, 4];
+        var totalAmounts = [5, 13, 16, 27, 31];
 
         var myChart = new Chart(ctx, {
             type: 'line',
