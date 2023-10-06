@@ -1,4 +1,5 @@
 import os
+import time
 from objects.Model import Model
 from utils.Config import lambda_constants
 from utils.AWS.S3 import S3
@@ -74,6 +75,7 @@ class ModelController:
         model["model_aug_sd_total_time"] = "0.0"
         model["model_processing_total_time"] = "0.0"
         model["model_processing_percentage"] = "0"
+        model["model_error_msg"] = ""
         model = self.change_model_state(model, "completed", "in_processing")
         Dynamo().put_entity(model)
         return model
@@ -273,7 +275,6 @@ class ModelController:
 
         import xml_binary
         import importlib
-        import time
 
         importlib.reload(xml_binary)
 
@@ -596,7 +597,8 @@ class ModelController:
         # Dynamo().put_entity(ec2_instances)
         if model["model_format"] == "ifc" and federated_model:
             model["model_used_in_federated_ids"].append(federated_model["model_id"])
-        model["model_processing_started"] = True
+        model["model_processing_started_at"] = str(time())
+        model["model_processing"] = True
         Dynamo().put_entity(model)
         data = {"model_id": model["model_id"], "output_format": "process_started"}
         Http().request("POST", "https://" + lambda_constants["prefix_name"] + lambda_constants["domain_name"] + lambda_constants["sufix_name"] + "/api/update_model_process", headers={}, data=data)
@@ -619,7 +621,7 @@ class ModelController:
     def calculate_model_process_percentage(self, model):
         total_percentage = 0
 
-        if model.get("model_processing_started"):
+        if model.get("model_processing"):
             total_percentage += 2
         if model.get("model_xml_started"):
             total_percentage += 2
@@ -752,9 +754,5 @@ class ModelController:
 
         return files_with_extension
 
-    def check_if_model_in_processing_is_with_error(self, model_created_at):
-        import time
-
-        if (int(time.time()) - int(float(model_created_at))) > 28800:
-            return True
-        return False
+    def check_if_model_in_processing_is_with_error(self, model_processing_started_at):
+        return (int(time.time()) - int(float(model_processing_started_at))) > 28800

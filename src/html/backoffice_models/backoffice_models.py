@@ -20,8 +20,12 @@ class BackofficeModels(BackofficePage):
             Dynamo().put_entity(backoffice_data)
             if models:
                 for model in models:
-                    model["model_visualization_count"] = "0"
-                    model["model_error_msg"] = ""
+                    if not "model_visualization_count" in model:
+                        model["model_visualization_count"] = "0"
+                    if not "model_error_msg" in model:
+                        model["model_error_msg"] = ""
+                    if not "model_processing_started_at" in model:
+                        model["model_processing_started_at"] = model["created_at"]
                     Dynamo().put_entity(model)
 
         html = super().parse_html()

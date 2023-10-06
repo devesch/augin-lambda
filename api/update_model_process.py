@@ -98,6 +98,7 @@ class UpdateModelProcess(BasePage):
             elif model["model_format"] == "fbx":
                 model["model_filesize_glb"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_glb"]))
 
+            model["model_processing"] = False
             model = ModelController().change_model_state(model, model["model_state"], "completed")
             Dynamo().put_entity(model)
 

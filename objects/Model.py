@@ -77,6 +77,7 @@ class Model:
         self.model_processing_percentage = "0"
         self.model_state = model_state
         self.model_error_msg = ""
+        self.model_processing_started_at = ""
         self.model_valid_until = int(time.time()) + 10400000  ### 120 dias
         self.created_at = str(time.time())
         self.entity = "model"

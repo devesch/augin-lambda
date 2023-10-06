@@ -98,9 +98,9 @@ class PanelPage(BasePage):
         if models_in_processing:
             models_in_processing = Sort().sort_dict_list(models_in_processing, "created_at", reverse=True, integer=True)
             for model in models_in_processing:
-                if ModelController().check_if_model_in_processing_is_with_error(model["created_at"]) or model["model_state"] == "error":
+                if ModelController().check_if_model_in_processing_is_with_error(model["model_processing_started_at"]) or model["model_state"] == "error":
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_models_in_processing_with_error")
-                    if ModelController().check_if_model_in_processing_is_with_error(model["created_at"]) or model["model_state"] != "error":
+                    if ModelController().check_if_model_in_processing_is_with_error(model["model_processing_started_at"]) or model["model_state"] != "error":
                         ModelController().mark_model_as_error(model, "Processamento interminável")
                 else:
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_models_in_processing")
