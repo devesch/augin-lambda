@@ -163,8 +163,8 @@
                 <div class="floating-input">
                     <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_maxium_federated_size_in_mbs" value="{{plan_maxium_federated_size_in_mbs_val}}" id="plan_maxium_federated_size_in_mbs_input" placeholder=" " required maxlength="500">
                     <label for="plan_maxium_federated_size_in_mbs_input">{{Tamanho máximo por federado (MBs)}}</label>
+                    <p class="input-hint">{{Insira o (zero) para desabilitar}}</p>
                 </div>
-                <p class="input-hint">{{Insira o (zero) para desabilitar}}</p>
                 <div class="floating-input">
                     <select name="plan_reference_tracker" id="plan_reference_tracker_select" value="{{plan_reference_tracker_val}}" required autocomplete="off">
                         {{html_plan_reference_tracker_options}}
@@ -188,7 +188,7 @@
                 </div>
             </section>
         </section>
-        <section>
+        <section class="backoffice__other-rules-container">
             <div class="switch-container">
                 <div class="input-container">
                     <input type="checkbox" name="plan_download_files" id="plan_download_files_input" {{plan_download_files_checked_val}}>
