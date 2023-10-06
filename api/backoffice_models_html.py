@@ -1,6 +1,7 @@
 from python_web_frame.backoffice_page import BackofficePage
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Validation import Validation
+from utils.utils.Sort import Sort
 import json
 
 
@@ -14,8 +15,19 @@ class BackofficeModelsHtml(BackofficePage):
             if not model:
                 model = Dynamo().get_model_by_code(self.post["search_user"])
                 if not model:
-                    return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
-            models = [model]
+                    searched_user = self.load_user(self.post["search_user"])
+                    if not searched_user:
+                        return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
+
+                    models = Dynamo().query_user_models_from_state(searched_user, "not_created")
+                    models.extend(Dynamo().query_user_models_from_state(searched_user, "in_processing"))
+                    models.extend(Dynamo().query_user_models_from_state(searched_user, "completed"))
+                    models.extend(Dynamo().query_user_models_from_state(searched_user, "error"))
+                    models.extend(Dynamo().query_user_models_from_state(searched_user, "deleted"))
+                    if models:
+                        models = Sort().sort_dict_list(models, "created_at", reverse=False, integer=True)
+            if type(models) != list:
+                models = [model]
             return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": len(models)}
 
         else:
