@@ -116,4 +116,4 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
     #     new_order.order_user_cart_cupom = user.user_cart_cupom
     #     new_order.order_descrimination = self.utils.generate_order_descrimination(new_order.order_user_updated_cart_information, user.user_cart_total_brl_price)
     #     self.dynamo.put_entity(new_order.__dict__)
-    #     self.increase_backoffice_data_total_count("order")
+    #     increase_backoffice_data_total_count("order")

@@ -31,6 +31,8 @@ class LambdaPeriodicActions(BasePage):
                 ModelController().mark_model_as_error(model, "Processamento interminável")
 
     def fix_total_count(self):
+
+        ## TODO FIX
         all_users = Dynamo().query_entity("user")
         # for user in all_users:
         #     pending_projects, last_evaluated_key = self.dynamo.query_paginated_projects_from_user(user["user_email"], "pending", limit=100000)

@@ -172,26 +172,6 @@ class BasePage:
         else:
             html.esc("error_msg_visibility_val", "display:none;")
 
-    def increase_backoffice_data_total_count(self, entity):
-        backoffice_data = self.get_backoffice_data()
-        entity_keys = {"order": "backoffice_data_total_order_count", "user": "backoffice_data_total_user_count", "model": "backoffice_data_total_model_count"}
-        if entity in entity_keys:
-            key = entity_keys[entity]
-            if key not in backoffice_data:
-                backoffice_data[key] = "0"
-            backoffice_data[key] = str(int(backoffice_data[key]) + 1)
-            Dynamo().update_entity(backoffice_data, key, backoffice_data[key])
-
-    def get_backoffice_data(self):
-        backoffice_data = Dynamo().get_backoffice_data()
-        if not backoffice_data:
-            from objects.BackofficeData import BackofficeData
-
-            backoffice_data = BackofficeData()
-            backoffice_data = backoffice_data.__dict__
-            Dynamo().put_entity(backoffice_data)
-        return backoffice_data
-
     def render_html_tawk_code(self, common_changes={}):
         html = ReadWrite().read_html("main/_codes/html_tawk_code", common_changes)
         tawk_api_code = lambda_constants["pt_tawk_api_code"] if self.lang == "pt" else lambda_constants["international_tawk_api_code"]

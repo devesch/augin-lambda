@@ -2,6 +2,7 @@
 from python_web_frame.controllers.model_controller import ModelController
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Validation import Validation
+from objects.BackofficeData import get_backoffice_data
 import json
 
 
@@ -12,7 +13,7 @@ class BackofficeModels(BackofficePage):
     admin = True
 
     def render_get(self):
-        backoffice_data = self.get_backoffice_data()
+        backoffice_data = get_backoffice_data()
 
         if Validation().check_if_local_env():
             models, last_evaluated_key = Dynamo().query_paginated_all_models(limit=int(10000000))

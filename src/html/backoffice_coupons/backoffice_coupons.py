@@ -1,4 +1,5 @@
 ﻿from python_web_frame.backoffice_page import BackofficePage
+from objects.BackofficeData import get_backoffice_data
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Validation import Validation
 import json
@@ -11,7 +12,7 @@ class BackofficeCoupons(BackofficePage):
     admin = True
 
     def render_get(self):
-        backoffice_data = self.get_backoffice_data()
+        backoffice_data = get_backoffice_data()
 
         if Validation().check_if_local_env():
             coupons, last_evaluated_key = Dynamo().query_paginated_all_coupons(limit=int(10000000))
