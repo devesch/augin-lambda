@@ -34,6 +34,8 @@
     <input hidden id="user_registered_in_last_30_days_and_published_daily_amounts_input" value="{{user_registered_in_last_30_days_and_published_daily_amounts_val}}">
     <input hidden id="user_registered_in_last_30_days_and_published_total_amounts_input" value="{{user_registered_in_last_30_days_and_published_total_amounts_val}}">
 
+    <input hidden id="new_project_published_daily_amounts_input" value="{{new_project_published_daily_amounts_val}}">
+    <input hidden id="new_project_published_total_amounts_input" value="{{new_project_published_total_amounts_val}}">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -66,6 +68,10 @@
         var user_registered_in_last_30_days_and_published_daily_amounts = document.getElementById('user_registered_in_last_30_days_and_published_daily_amounts_input').value;
         var user_registered_in_last_30_days_and_published_total_amounts = document.getElementById('user_registered_in_last_30_days_and_published_total_amounts_input').value;
 
+        var new_project_published_daily_amounts = document.getElementById('new_project_published_daily_amounts_input').value;
+        var new_project_published_total_amounts = document.getElementById('new_project_published_total_amounts_input').value;
+
+
         var dates = JSON.parse(dates.replace(/'/g, "\""));
 
         var new_user_registered_daily_amounts = JSON.parse(new_user_registered_daily_amounts);
@@ -83,12 +89,16 @@
         var user_registered_in_last_30_days_and_published_daily_amounts = JSON.parse(user_registered_in_last_30_days_and_published_daily_amounts);
         var user_registered_in_last_30_days_and_published_total_amounts = JSON.parse(user_registered_in_last_30_days_and_published_total_amounts);
 
+        var new_project_published_daily_amounts = JSON.parse(new_project_published_daily_amounts);
+        var new_project_published_total_amounts = JSON.parse(new_project_published_total_amounts);
+
+
         var daily_chart = new Chart(daily_chart_element, {
             type: 'line',
             data: {
                 labels: dates,
                 datasets: [{
-                    label: 'New Users',
+                    label: 'New User',
                     data: new_user_registered_daily_amounts,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     fill: false,
@@ -127,6 +137,14 @@
                     tension: chart_tension,
                     pointRadius: point_radius,
                     pointHoverRadius: point_hove_radius
+                }, {
+                    label: 'New Project',
+                    data: new_project_published_daily_amounts,
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    fill: false,
+                    tension: chart_tension,
+                    pointRadius: point_radius,
+                    pointHoverRadius: point_hove_radius
                 }]
             },
             options: {
@@ -159,7 +177,7 @@
             data: {
                 labels: dates,
                 datasets: [{
-                        label: 'New Users',
+                        label: 'New User',
                         data: new_user_registered_total_amounts,
                         borderColor: 'rgba(54, 162, 235, 1)',
                         fill: false,
@@ -196,6 +214,14 @@
                         label: 'User Registered In Last 30d and Published',
                         data: user_registered_in_last_30_days_and_published_total_amounts,
                         borderColor: 'rgba(255, 223, 0, 1)',
+                        fill: false,
+                        tension: chart_tension,
+                        pointRadius: point_radius,
+                        pointHoverRadius: point_hove_radius
+                    }, {
+                        label: 'New Project',
+                        data: new_project_published_daily_amounts,
+                        borderColor: 'rgba(255, 159, 64, 1)',
                         fill: false,
                         tension: chart_tension,
                         pointRadius: point_radius,
