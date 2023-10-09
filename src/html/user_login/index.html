@@ -6,7 +6,18 @@
     </div>
     <div class="login__title-container">
         <h2>{{Bem vindo ao Augin, para prosseguir precisamos seus dados de login.}}</h2>
-        <form id="user_login_form" action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+
+        <script>
+            /* Verifies if Hcaptcha is selected */
+            function validateHcaptchaForm() {
+                console.log(hcaptcha.getResponse());
+                if (hcaptcha.getResponse() != "") return true;
+
+                return false;
+            }
+        </script>
+
+        <form id="user_login_form" action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" onsubmit="validateHcaptchaForm()">
             <div class="login__input-container">
                 <div class="floating-input">
                     <input type="email" name="user_email" value="{{user_email_val}}" id="login_input" placeholder=" " required autofocus maxlength="500">
