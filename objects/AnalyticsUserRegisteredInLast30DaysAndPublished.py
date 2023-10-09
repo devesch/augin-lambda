@@ -9,5 +9,5 @@ class AnalyticsUserRegisteredInLast30DaysAndPublished:
 
 
 def check_and_save_user_registered_in_last_30d_and_published_analytics(user_created_at):
-    if float(user_created_at + 2592000) > time.time():
+    if (float(user_created_at) + 2592000) > time.time():
         Dynamo().put_entity(AnalyticsUserRegisteredInLast30DaysAndPublished().__dict__)
