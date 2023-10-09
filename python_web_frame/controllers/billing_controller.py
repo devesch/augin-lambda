@@ -49,7 +49,6 @@ class HttpAuthenticated(HttpTransport):
 
 certificado_path = "xmls/AUGIN_SOFTWARES_LTDA_34804848000195_1669811592939092000.pfx"
 certificado_password = "639764418"
-
 # certificado_path = "xmls/magipix_key.pfx"
 # certificado_password = "p12345"
 

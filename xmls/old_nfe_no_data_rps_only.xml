@@ -2,13 +2,12 @@
     <InfRps Id="{{order_id_val}}">
         <IdentificacaoRps>
             <Numero>{{order_id_val}}</Numero>
-            <Serie>1</Serie>
+            <Serie>IO</Serie>
             <Tipo>1</Tipo>
         </IdentificacaoRps>
         <DataEmissao>{{order_created_at_val}}</DataEmissao>
         <NaturezaOperacao>1</NaturezaOperacao>
-        <RegimeEspecialTributacao>6</RegimeEspecialTributacao>
-        <OptanteSimplesNacional>1</OptanteSimplesNacional>
+        <OptanteSimplesNacional>2</OptanteSimplesNacional>
         <IncentivadorCultural>2</IncentivadorCultural>
         <Status>1</Status>
         <Servico>
@@ -20,7 +19,7 @@
                 <DescontoCondicionado>0.00</DescontoCondicionado>
             </Valores>
             <ItemListaServico>1.05</ItemListaServico>
-            <CodigoTributacaoMunicipio>10300700</CodigoTributacaoMunicipio>
+            <CodigoTributacaoMunicipio>10500200</CodigoTributacaoMunicipio>
             <Discriminacao>{{order_commentary_val}}</Discriminacao>
             <CodigoMunicipio>4314902</CodigoMunicipio>
         </Servico>
