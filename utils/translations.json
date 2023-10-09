@@ -744,6 +744,11 @@
         "es": "Darse de baja",
         "pt": "Cancelar assinatura"
     },
+    "Captacha inválido": {
+        "en": "Invalid captcha",
+        "es": "Captcha inválido",
+        "pt": "Captacha inválido"
+    },
     "Carregando mais dados. Aguarde": {
         "en": "Loading more data.Wait",
         "es": "Cargando más datos.Esperar",
@@ -3879,6 +3884,11 @@
         "es": "No cierre esta ventana hasta su conclusión",
         "pt": "Por favor não feche essa janela até a sua conclusão"
     },
+    "Por favor preencha o captcha": {
+        "en": "Please fill in the captcha",
+        "es": "Por favor complete la captcha",
+        "pt": "Por favor preencha o captcha"
+    },
     "Por favor selecione o seu país.": {
         "en": "Please select your country.",
         "es": "Por favor seleccione su país.",
@@ -3908,6 +3918,11 @@
         "en": "Need help?Send a message to our",
         "es": "¿Necesita ayuda?Enviar un mensaje a nuestro",
         "pt": "Precisa de ajuda? Mande uma mensagem para nosso"
+    },
+    "Preencha o captcha": {
+        "en": "Fill the captcha",
+        "es": "Llenar el captcha",
+        "pt": "Preencha o captcha"
     },
     "Preferências de idioma": {
         "en": "Language Preferences",

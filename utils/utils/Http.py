@@ -44,6 +44,12 @@ class Http:
             cls._instance = super(Http, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def verify_hcaptcha(self, captacha, request_ip):
+        import requests
+
+        response = requests.post("https://hcaptcha.com/siteverify", data={"secret": lambda_constants["hcaptcha_secret"], "response": captacha, "remoteip": request_ip}, headers={"Content-Type": "application/x-www-form-urlencoded"})
+        return json.loads(response.text)
+
     def call_branch(self, method, url, data={}):
         import requests
 

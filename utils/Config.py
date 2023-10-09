@@ -29,6 +29,7 @@ cdn_base_url = "https://" + cdn_bucket
 
 ### TODO CHANGE CNPJ TO AUGIN
 lambda_constants = {
+    "hcaptcha_secret": "ES_1de692eba3a6418da02963406bee95f5",
     "brand_api_endpoint": "https://api.branch.io/v1/",
     "branch_key": "key_live_kbPDVR9iW4fdsvi1MNpMRlnetqjvZogI",
     "ip_data_api_key": "6aa0e0c8249d4135172b977b137ee37adf36a0975f9e6367dbaa912a",
