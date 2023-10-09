@@ -94,10 +94,8 @@ class BackofficeOrderNfsePdf(BackofficePage):
         html.esc("nfse_descrimination_val", nfse_json["Discriminacao"].replace("\n ", "<br><br>"))
         html.esc("nfse_service_list_val", nfse_json["ItemListaServico"])
         html.esc("nfse_service_value_val", nfse_json["ValorServicos"])
-        # html.esc("nfse_aliq_val", int(float(nfse_json["Aliquota"]) * 100))
-        html.esc("nfse_aliq_val", "0")
-        # html.esc("nfse_iss_val", nfse_json["ValorIss"])
-        html.esc("nfse_iss_val", "0,00")
+        html.esc("nfse_aliq_val", int(float(nfse_json["Aliquota"]) * 100))
+        html.esc("nfse_iss_val", StrFormat().format_to_money(nfse_json["ValorIss"], "brl"))
         if nfse_json.get("CodigoCancelamento"):
             html.esc("html_canceled_nfse", self.show_html_canceled_nfse())
         return str(html)

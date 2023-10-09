@@ -13,9 +13,9 @@
         <Servico>
             <Valores>
                 <ValorServicos>{{order_total_price_val}}</ValorServicos>
-                <IssRetido>1</IssRetido>
+                <IssRetido>2</IssRetido>
                 <ValorIss>{{order_iss_price_val}}</ValorIss>
-                <Aliquota>2</Aliquota>
+                <Aliquota>0.02</Aliquota>
                 <DescontoCondicionado>0.00</DescontoCondicionado>
             </Valores>
             <ItemListaServico>1.05</ItemListaServico>
