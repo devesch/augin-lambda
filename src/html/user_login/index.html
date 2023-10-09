@@ -19,27 +19,7 @@
             </span>
             <div class="login__button-container">
                 <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Criar uma conta}}</a>
-                <script type="text/javascript">
-                    function validate(event) {
-                        event.preventDefault();
-
-                        if (!document.getElementById('login_input').value) {
-                            console.log('You must add your email to the required field.');
-                        } else {
-                            hcaptcha.execute();
-                        }
-                    }
-
-                    function onLoad() {
-                        var element = document.getElementById('submit');
-
-                        element.onclick = validate;
-                    }
-                </script>
-                <!-- hCaptcha - Start -->
-                <div id="hcaptcha" class="h-captcha" data-sitekey="9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64" data-size="invisible" data-callback="onSubmit"></div>
-                <!-- hCaptcha - End -->
-                <button id="submit" type="submit">{{Prosseguir}}</button>
+                <button id="submit" type="submit" class="h-captcha" data-sitekey="9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64" data-size="invisible">{{Prosseguir}}</button>
                 <script src="https://js.hcaptcha.com/1/api.js?onload=onLoad" async defer></script>
             </div>
         </form>
