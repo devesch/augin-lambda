@@ -47,7 +47,7 @@ class HttpAuthenticated(HttpTransport):
         return [HTTPSClientAuthHandler(self.key, self.cert)]
 
 
-certificado_path = "xmls/AUGIN_SOFTWARES_LTDA_1669811592939092000.pfx"
+certificado_path = "xmls/AUGIN_SOFTWARES_LTDA_34804848000195_1669811592939092000.pfx"
 certificado_password = "639764418"
 url = "https://nfse-hom.procempa.com.br/bhiss-ws/nfse?wsdl"  ### TEST URL
 # url = "https://nfe.portoalegre.rs.gov.br/bhiss-ws/nfse?wsdl"  ### PROD URL
