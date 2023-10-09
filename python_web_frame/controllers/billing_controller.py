@@ -49,6 +49,10 @@ class HttpAuthenticated(HttpTransport):
 
 certificado_path = "xmls/AUGIN_SOFTWARES_LTDA_34804848000195_1669811592939092000.pfx"
 certificado_password = "639764418"
+
+# certificado_path = "xmls/magipix_key.pfx"
+# certificado_password = "p12345"
+
 url = "https://nfse-hom.procempa.com.br/bhiss-ws/nfse?wsdl"  ### TEST URL
 # url = "https://nfe.portoalegre.rs.gov.br/bhiss-ws/nfse?wsdl"  ### PROD URL
 cabecalho = "<cabecalho xmlns=" + chr(34) + "http://www.abrasf.org.br/nfse.xsd" + chr(34) + " versao=" + chr(34) + "1.00" + chr(34) + "><versaoDados >1.00</versaoDados ></cabecalho>"
