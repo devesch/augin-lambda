@@ -47,8 +47,8 @@ class HttpAuthenticated(HttpTransport):
         return [HTTPSClientAuthHandler(self.key, self.cert)]
 
 
-certificado_path = "xmls/certificado_A1_magipix_exportado.p12"
-certificado_password = "XR#U8B^zopseZY6!v&H9!ie3!pxFWhE6KZbV!3Rz$hkm93WJkxNDNX2@xzY%" + "3Px"
+certificado_path = "xmls/AUGIN_SOFTWARES_LTDA_1669811592939092000.pfx"
+certificado_password = "639764418"
 url = "https://nfse-hom.procempa.com.br/bhiss-ws/nfse?wsdl"  ### TEST URL
 # url = "https://nfe.portoalegre.rs.gov.br/bhiss-ws/nfse?wsdl"  ### PROD URL
 cabecalho = "<cabecalho xmlns=" + chr(34) + "http://www.abrasf.org.br/nfse.xsd" + chr(34) + " versao=" + chr(34) + "1.00" + chr(34) + "><versaoDados >1.00</versaoDados ></cabecalho>"
