@@ -73,10 +73,14 @@ class StrFormat:
         return "{}{}-{}".format(postal_code[:2], postal_code[2:5], postal_code[5:])
 
     def format_to_phone(self, mobile_phone_number):
-        return "({}) {}-{}".format(mobile_phone_number[:2], mobile_phone_number[2:7], mobile_phone_number[7:])
+        if mobile_phone_number:
+            return "({}) {}-{}".format(mobile_phone_number[:2], mobile_phone_number[2:7], mobile_phone_number[7:])
+        return ""
 
     def format_to_international_phone(self, alpha_2_country, mobile_phone_number):
-        return "(" + self.get_country_phone_code()[alpha_2_country] + ") " + mobile_phone_number
+        if mobile_phone_number:
+            return "(" + self.get_country_phone_code()[alpha_2_country] + ") " + mobile_phone_number
+        return ""
 
     def format_to_cpf(self, cpf):
         if cpf:

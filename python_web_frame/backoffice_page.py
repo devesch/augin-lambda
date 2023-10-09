@@ -119,7 +119,10 @@ class BackofficePage(BasePage):
                 html.esc("user_id_val", user["user_id"])
                 html.esc("user_email_val", user["user_email"])
                 html.esc("user_name_val", user["user_name"])
-                html.esc("user_phone_val", user["user_phone"])
+                if user["user_address_data"]["user_country"] == "BR":
+                    html.esc("user_phone_val", StrFormat().format_to_phone(user["user_phone"]))
+                else:
+                    html.esc("user_phone_val", StrFormat().format_to_international_phone(user["user_address_data"]["user_country"], user["user_phone"]))
                 if user["user_client_type"] == "physical":
                     html.esc("user_cpf_or_cnpj_val", StrFormat().format_to_cpf(user["user_cpf"]))
                 if user["user_client_type"] == "company":
