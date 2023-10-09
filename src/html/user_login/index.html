@@ -6,7 +6,7 @@
     </div>
     <div class="login__title-container">
         <h2>{{Bem vindo ao Augin, para prosseguir precisamos seus dados de login.}}</h2>
-        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <form id="user_login_form" action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
             <div class="login__input-container">
                 <div class="floating-input">
                     <input type="email" name="user_email" value="{{user_email_val}}" id="login_input" placeholder=" " required autofocus maxlength="500">
@@ -17,13 +17,30 @@
             <span class="error" style="{{error_msg_visibility_val}}">
                 {{error_msg_val}}
             </span>
-            <!-- hCaptcha - Start -->
-            <div class="h-captcha" data-sitekey="9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64" data-size="invisible"></div>
-            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-            <!-- hCaptcha - End -->
             <div class="login__button-container">
                 <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Criar uma conta}}</a>
-                <button type="submit" class="h-captcha" data-sitekey="9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64">{{Prosseguir}}</button>
+                <script type="text/javascript">
+                    function validate(event) {
+                        event.preventDefault();
+
+                        if (!document.getElementById('login_input').value) {
+                            console.log('You must add your email to the required field.');
+                        } else {
+                            hcaptcha.execute();
+                        }
+                    }
+
+                    function onLoad() {
+                        var element = document.getElementById('submit');
+
+                        element.onclick = validate;
+                    }
+                </script>
+                <!-- hCaptcha - Start -->
+                <div id="hcaptcha" class="h-captcha" data-sitekey="9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64" data-size="invisible" data-callback="onSubmit"></div>
+                <!-- hCaptcha - End -->
+                <button id="submit" type="submit">{{Prosseguir}}</button>
+                <script src="https://js.hcaptcha.com/1/api.js?onload=onLoad" async defer></script>
             </div>
         </form>
     </div>
