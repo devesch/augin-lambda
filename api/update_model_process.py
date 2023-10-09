@@ -100,15 +100,16 @@ class UpdateModelProcess(BasePage):
                 model["model_filesize_glb"] = str(S3().get_filesize(lambda_constants["processed_bucket"], model["model_upload_path_glb"]))
 
             model["model_processing"] = False
+
             model = ModelController().change_model_state(model, model["model_state"], "completed")
             Dynamo().put_entity(model)
 
             user = self.load_user(model["model_user_id"])
             user.add_model_to_user_dicts(model)
 
-            raise Exception("TODO")
-            check_and_save_user_registered_in_last_30d_and_published_analytics()
-            Dynamo().put_entity(AnalyticsNewProjectPublished().__dict__)
+            if (float(model["model_processing_started_at"]) + 3600) > float(model["created_at"]):
+                check_and_save_user_registered_in_last_30d_and_published_analytics(self.user.created_at)
+                Dynamo().put_entity(AnalyticsNewProjectPublished().__dict__)
 
             if model["model_used_in_federated_ids"]:
                 federated_model = ModelController().publish_federated_model(model["model_used_in_federated_ids"][0])
