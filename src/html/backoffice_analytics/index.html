@@ -25,6 +25,13 @@
     <input hidden id="app_opening_daily_amounts_input" value="{{app_opening_daily_amounts_val}}">
     <input hidden id="app_opening_total_amounts_input" value="{{app_opening_total_amounts_val}}">
 
+    <input hidden id="software_opening_daily_amounts_input" value="{{software_opening_daily_amounts_val}}">
+    <input hidden id="software_opening_total_amounts_input" value="{{software_opening_total_amounts_val}}">
+
+    <input hidden id="my_augin_opening_daily_amounts_input" value="{{my_augin_opening_daily_amounts_val}}">
+    <input hidden id="my_augin_opening_total_amounts_input" value="{{my_augin_opening_total_amounts_val}}">
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 
@@ -43,6 +50,12 @@
         var app_opening_daily_amounts = document.getElementById('app_opening_daily_amounts_input').value;
         var app_opening_total_amounts = document.getElementById('app_opening_total_amounts_input').value;
 
+        var software_opening_daily_amounts = document.getElementById('software_opening_daily_amounts_input').value;
+        var software_opening_total_amounts = document.getElementById('software_opening_total_amounts_input').value;
+
+        var my_augin_opening_daily_amounts = document.getElementById('my_augin_opening_daily_amounts_input').value;
+        var my_augin_opening_total_amounts = document.getElementById('my_augin_opening_total_amounts_input').value;
+
         var dates = JSON.parse(dates.replace(/'/g, "\""));
 
         var new_user_registered_daily_amounts = JSON.parse(new_user_registered_daily_amounts);
@@ -51,21 +64,44 @@
         var app_opening_daily_amounts = JSON.parse(app_opening_daily_amounts);
         var app_opening_total_amounts = JSON.parse(app_opening_total_amounts);
 
+        var software_opening_daily_amounts = JSON.parse(software_opening_daily_amounts);
+        var software_opening_total_amounts = JSON.parse(software_opening_total_amounts);
+
+        var my_augin_opening_daily_amounts = JSON.parse(my_augin_opening_daily_amounts);
+        var my_augin_opening_total_amounts = JSON.parse(my_augin_opening_total_amounts);
+
         var daily_chart = new Chart(daily_chart_element, {
             type: 'line',
             data: {
                 labels: dates,
                 datasets: [{
-                    label: 'New Users',
-                    data: new_user_registered_daily_amounts,
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    fill: false
-                }, {
-                    label: 'App Openings',
-                    data: app_opening_daily_amounts,
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    fill: false
-                }]
+                        label: 'New Users',
+                        data: new_user_registered_daily_amounts,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        fill: false,
+                        tension: 0.4
+                    }, {
+                        label: 'App Openings',
+                        data: app_opening_daily_amounts,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Software Openings',
+                        data: software_opening_daily_amounts,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'My Augin Openings',
+                        data: software_opening_daily_amounts,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
             },
             options: {
                 scales: {
@@ -97,16 +133,26 @@
             data: {
                 labels: dates,
                 datasets: [{
-                    label: 'New Users',
-                    data: new_user_registered_total_amounts,
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    fill: false
-                }, {
-                    label: 'App Openings',
-                    data: app_opening_total_amounts,
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    fill: false
-                }]
+                        label: 'New Users',
+                        data: new_user_registered_total_amounts,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        fill: false,
+                        tension: 0.4
+                    }, {
+                        label: 'App Openings',
+                        data: app_opening_total_amounts,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Software Openings',
+                        data: software_opening_total_amounts,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
             },
             options: {
                 scales: {
@@ -131,6 +177,7 @@
                 }
             }
         });
+
     });
 </script>
 {{footer}}
