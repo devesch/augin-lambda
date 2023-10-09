@@ -1,6 +1,7 @@
 from python_web_frame.checkout_page import CheckoutPage
 from python_web_frame.controllers.stripe_controller import StripeController
 from objects.Order import Order, generate_order_descrimination
+from objects.BackofficeData import increase_backoffice_data_total_count
 from utils.AWS.Dynamo import Dynamo
 
 
@@ -91,7 +92,7 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
         new_order.order_user_cart_coupon_code = user.user_cart_coupon_code
         new_order.order_descrimination = generate_order_descrimination(plan["plan_name_pt"], new_order.order_brl_price)
         Dynamo().put_entity(new_order.__dict__)
-        self.increase_backoffice_data_total_count("order")
+        increase_backoffice_data_total_count("order")
 
     # def create_order_with_stripe_payment_intent(self, user, payment_intent):
     #     new_order = Order(user.user_email, "stripe-" + payment_intent.stripe_id)

@@ -1,4 +1,5 @@
 ﻿from python_web_frame.backoffice_page import BackofficePage
+from objects.BackofficeData import increase_backoffice_data_total_count
 from objects.Coupon import Coupon
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Date import Date
@@ -122,7 +123,7 @@ class BackofficeCreateCoupon(BackofficePage):
             return self.render_get_with_error("A duração da recorrência deve ser valor entre 1 e 99")
 
         if not self.path.get("coupon"):
-            self.increase_backoffice_data_total_count("coupon")
+            increase_backoffice_data_total_count("coupon")
             coupon = Coupon(self.post["coupon_code"]).__dict__
         else:
             coupon = self.path["coupon"]

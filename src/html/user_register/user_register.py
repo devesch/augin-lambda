@@ -7,6 +7,7 @@ from utils.utils.Validation import Validation
 from utils.utils.Generate import Generate
 from utils.utils.JsonData import JsonData
 from objects.VerifyEmail import check_if_verify_email_expired
+from objects.BackofficeData import increase_backoffice_data_total_count
 
 
 class UserRegister(UserPage):
@@ -100,7 +101,7 @@ class UserRegister(UserPage):
         user.user_shared_dicts_folder_id = user_shared_dicts_folder["folder_id"]
 
         user.update_cart_currency()
-        self.increase_backoffice_data_total_count("user")
+        increase_backoffice_data_total_count("user")
 
         Dynamo().put_entity(user.__dict__)
         user.update_password(self.post["user_password"], Generate().generate_salt(9))

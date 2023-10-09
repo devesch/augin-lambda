@@ -1,6 +1,7 @@
 import os
 import time
 from objects.Model import Model
+from objects.BackofficeData import increase_backoffice_data_total_count
 from utils.Config import lambda_constants
 from utils.AWS.S3 import S3
 from utils.AWS.Sqs import Sqs
@@ -383,6 +384,7 @@ class ModelController:
                 new_model["model_filesize_bracket"] = self.generate_model_filesize_bracket(federated_filesize)
                 user.add_model_to_user_dicts(new_model)
         Dynamo().put_entity(new_model)
+        increase_backoffice_data_total_count("model")
         return new_model
 
     def check_if_file_uploaded_is_valid(self, uploaded_file, original_name, user):

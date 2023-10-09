@@ -3,6 +3,7 @@ from python_web_frame.controllers.billing_controller import BillingController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.utils.Validation import Validation
 from objects.Order import Order
+from objects.BackofficeData import increase_backoffice_data_total_count
 from objects.UserPaymentMethod import UserPaymentMethod
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Ses import Ses
@@ -145,7 +146,7 @@ class CheckoutStripeWebHook(BasePage):
         new_order.order_user_cart_cupom = user_first_order_from_subscription["order_user_cart_cupom"]
         new_order.order_descrimination = self.utils.generate_order_descrimination(user_first_order_from_subscription["order_user_updated_cart_information"], user_first_order_from_subscription["order_brl_price"])
         self.dynamo.put_entity(new_order.__dict__)
-        self.increase_backoffice_data_total_count("order")
+        increase_backoffice_data_total_count("order")
 
     def send_payment_success_email(self, order):
         html = ReadWrite().read_html("checkout_payment_success/_codes/html_payment_success_email")
