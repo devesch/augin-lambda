@@ -45,7 +45,7 @@ def main_lambda_handler(event, context):
                     future.result()
                 except Exception as exc:
                     print(f"Putting item {item} generated an exception: {exc}")
-        S3().delete_file(record["Body"]["bucket"], record["Body"]["key"])
+        # S3().delete_file(record["Body"]["bucket"], record["Body"]["key"])
         Sqs().delete_message(lambda_constants["sqs_queue_url_json5000"], record["receiptHandle"])
         ReadWrite().delete_files_inside_a_folder(lambda_constants["tmp_path"])
         if current_index == end_index:
