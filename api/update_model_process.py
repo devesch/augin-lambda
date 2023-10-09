@@ -2,6 +2,8 @@ import time
 from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.project_controller import ProjectController
+from objects.AnalyticsNewProjectPublished import AnalyticsNewProjectPublished
+from objects.AnalyticsUserRegisteredInLast30DaysAndPublished import check_and_save_user_registered_in_last_30d_and_published_analytics
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.S3 import S3
 from utils.Config import lambda_constants
@@ -103,6 +105,10 @@ class UpdateModelProcess(BasePage):
 
             user = self.load_user(model["model_user_id"])
             user.add_model_to_user_dicts(model)
+
+            raise Exception("TODO")
+            check_and_save_user_registered_in_last_30d_and_published_analytics()
+            Dynamo().put_entity(AnalyticsNewProjectPublished().__dict__)
 
             if model["model_used_in_federated_ids"]:
                 federated_model = ModelController().publish_federated_model(model["model_used_in_federated_ids"][0])

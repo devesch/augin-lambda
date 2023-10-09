@@ -74,7 +74,7 @@ class BackofficeAnalytics(BackofficePage):
             sample_data["sk"] = str(time.time() - random.randint(1, 31536000))
             Dynamo().put_entity(sample_data)
 
-        for x in range(50):
+        for x in range(10):
             sample_data = AnalyticsNewProjectPublished().__dict__
             sample_data["sk"] = str(time.time() - random.randint(1, 31536000))
             Dynamo().put_entity(sample_data)
