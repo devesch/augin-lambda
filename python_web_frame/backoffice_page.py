@@ -121,9 +121,9 @@ class BackofficePage(BasePage):
                 html.esc("user_name_val", user["user_name"])
                 html.esc("user_phone_val", user["user_phone"])
                 if user["user_client_type"] == "physical":
-                    html.esc("user_cpf_or_cnpj_val", user["user_cpf"])
+                    html.esc("user_cpf_or_cnpj_val", StrFormat().format_to_cpf(user["user_cpf"]))
                 if user["user_client_type"] == "company":
-                    html.esc("user_cpf_or_cnpj_val", user["user_cnpj"])
+                    html.esc("user_cpf_or_cnpj_val", StrFormat().format_to_cpf(user["user_cnpj"]))
                 html.esc("user_client_type_val", user["user_client_type"])
                 html.esc("user_subscription_status_val", user["user_subscription_status"])
                 html.esc("user_plan_id_val", user["user_plan_id"])
