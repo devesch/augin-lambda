@@ -31,6 +31,9 @@
     <input hidden id="my_augin_opening_daily_amounts_input" value="{{my_augin_opening_daily_amounts_val}}">
     <input hidden id="my_augin_opening_total_amounts_input" value="{{my_augin_opening_total_amounts_val}}">
 
+    <input hidden id="user_registered_in_last_30_days_and_published_daily_amounts_input" value="{{user_registered_in_last_30_days_and_published_daily_amounts_val}}">
+    <input hidden id="user_registered_in_last_30_days_and_published_total_amounts_input" value="{{user_registered_in_last_30_days_and_published_total_amounts_val}}">
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -39,9 +42,13 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        var chart_tension = 0.2;
+        var point_radius = 1;
+        var point_hove_radius = 3;
+
+
         var daily_chart_element = document.getElementById('daily_chart').getContext('2d');
         var cumulative_chart_element = document.getElementById('cumulative_chart').getContext('2d');
-
         var dates = document.getElementById('dates_input').value;
 
         var new_user_registered_daily_amounts = document.getElementById('new_user_registered_daily_amounts_input').value;
@@ -55,6 +62,9 @@
 
         var my_augin_opening_daily_amounts = document.getElementById('my_augin_opening_daily_amounts_input').value;
         var my_augin_opening_total_amounts = document.getElementById('my_augin_opening_total_amounts_input').value;
+
+        var user_registered_in_last_30_days_and_published_daily_amounts = document.getElementById('user_registered_in_last_30_days_and_published_daily_amounts_input').value;
+        var user_registered_in_last_30_days_and_published_total_amounts = document.getElementById('user_registered_in_last_30_days_and_published_total_amounts_input').value;
 
         var dates = JSON.parse(dates.replace(/'/g, "\""));
 
@@ -70,38 +80,54 @@
         var my_augin_opening_daily_amounts = JSON.parse(my_augin_opening_daily_amounts);
         var my_augin_opening_total_amounts = JSON.parse(my_augin_opening_total_amounts);
 
+        var user_registered_in_last_30_days_and_published_daily_amounts = JSON.parse(user_registered_in_last_30_days_and_published_daily_amounts);
+        var user_registered_in_last_30_days_and_published_total_amounts = JSON.parse(user_registered_in_last_30_days_and_published_total_amounts);
+
         var daily_chart = new Chart(daily_chart_element, {
             type: 'line',
             data: {
                 labels: dates,
                 datasets: [{
-                        label: 'New Users',
-                        data: new_user_registered_daily_amounts,
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        fill: false,
-                        tension: 0.4
-                    }, {
-                        label: 'App Openings',
-                        data: app_opening_daily_amounts,
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        fill: false,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Software Openings',
-                        data: software_opening_daily_amounts,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        fill: false,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'My Augin Openings',
-                        data: software_opening_daily_amounts,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        fill: false,
-                        tension: 0.4
-                    }
-                ]
+                    label: 'New Users',
+                    data: new_user_registered_daily_amounts,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    fill: false,
+                    tension: chart_tension,
+                    pointRadius: point_radius,
+                    pointHoverRadius: point_hove_radius
+                }, {
+                    label: 'App Openings',
+                    data: app_opening_daily_amounts,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill: false,
+                    tension: chart_tension,
+                    pointRadius: point_radius,
+                    pointHoverRadius: point_hove_radius
+                }, {
+                    label: 'Software Openings',
+                    data: software_opening_daily_amounts,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false,
+                    tension: chart_tension,
+                    pointRadius: point_radius,
+                    pointHoverRadius: point_hove_radius
+                }, {
+                    label: 'My Augin Openings',
+                    data: my_augin_opening_daily_amounts,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    fill: false,
+                    tension: chart_tension,
+                    pointRadius: point_radius,
+                    pointHoverRadius: point_hove_radius
+                }, {
+                    label: 'User Registered In Last 30d and Published',
+                    data: user_registered_in_last_30_days_and_published_daily_amounts,
+                    borderColor: 'rgba(255, 223, 0, 1)',
+                    fill: false,
+                    tension: chart_tension,
+                    pointRadius: point_radius,
+                    pointHoverRadius: point_hove_radius
+                }]
             },
             options: {
                 scales: {
@@ -137,20 +163,43 @@
                         data: new_user_registered_total_amounts,
                         borderColor: 'rgba(54, 162, 235, 1)',
                         fill: false,
-                        tension: 0.4
+                        tension: chart_tension,
+                        pointRadius: point_radius,
+                        pointHoverRadius: point_hove_radius
                     }, {
                         label: 'App Openings',
                         data: app_opening_total_amounts,
                         borderColor: 'rgba(255, 99, 132, 1)',
                         fill: false,
-                        tension: 0.4
+                        tension: chart_tension,
+                        pointRadius: point_radius,
+                        pointHoverRadius: point_hove_radius
                     },
                     {
                         label: 'Software Openings',
                         data: software_opening_total_amounts,
                         borderColor: 'rgba(75, 192, 192, 1)',
                         fill: false,
-                        tension: 0.4
+                        tension: chart_tension,
+                        pointRadius: point_radius,
+                        pointHoverRadius: point_hove_radius
+                    },
+                    {
+                        label: 'My Augin Openings',
+                        data: my_augin_opening_total_amounts,
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        fill: false,
+                        tension: chart_tension,
+                        pointRadius: point_radius,
+                        pointHoverRadius: point_hove_radius
+                    }, {
+                        label: 'User Registered In Last 30d and Published',
+                        data: user_registered_in_last_30_days_and_published_total_amounts,
+                        borderColor: 'rgba(255, 223, 0, 1)',
+                        fill: false,
+                        tension: chart_tension,
+                        pointRadius: point_radius,
+                        pointHoverRadius: point_hove_radius
                     }
                 ]
             },
@@ -177,7 +226,6 @@
                 }
             }
         });
-
     });
 </script>
 {{footer}}

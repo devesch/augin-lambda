@@ -1,5 +1,6 @@
 from python_web_frame.user_page import UserPage
 from objects.User import User
+from objects.AnalyticsNewUserRegistered import AnalyticsNewUserRegistered
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.Validation import Validation
@@ -104,6 +105,8 @@ class UserRegister(UserPage):
         Dynamo().put_entity(user.__dict__)
         user.update_password(self.post["user_password"], Generate().generate_salt(9))
         user.update_auth_token()
+
+        Dynamo().put_entity(AnalyticsNewUserRegistered().__dict__)
 
         all_users_verify_email = Dynamo().query_users_verify_email(self.path["user_email"])
         for user_verify_email in all_users_verify_email:
