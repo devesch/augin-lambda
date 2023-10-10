@@ -415,7 +415,7 @@ input[type="checkbox"] + label {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
 
     img {
         vertical-align: middle;
@@ -442,8 +442,8 @@ input[type="checkbox"] + label {
 .input-country-code {
     flex-grow: 0 !important;
     width: 4.5rem !important;
-    padding: 1rem 0.25rem;
-    text-align: center;
+    text-align: center !important;
+    padding: 1rem 0.25rem !important;
 }
 
 .panel-user-data-container {
