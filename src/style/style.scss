@@ -2447,6 +2447,16 @@ input[list]::-ms-clear {
 /* panel user data - end */
 
 /* Checkout Stripe Subscription - Start */
+.stripe .whatsapp-link-container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.stripe .whatsapp-link {
+    color: colors.color("color-primary-900");
+    transition: color .3s ease;
+}
+
 .checkout-container {
     display: flex;
     flex-direction: row;

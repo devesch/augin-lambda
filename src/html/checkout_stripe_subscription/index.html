@@ -139,11 +139,6 @@
         animation: loading 2s infinite ease;
     }
 
-    .stripe .whatsapp-link {
-        color: var(--color-sec);
-        transition: color .3s ease;
-    }
-
     @-webkit-keyframes loading {
         0% {
             -webkit-transform: rotate(0deg);
@@ -190,7 +185,7 @@
                 <span id="button-text">{{Pague Agora}}</span>
             </button>
             <div id="payment-message" class="hidden"></div>
-            <div class="mt-2">
+            <div class="whatsapp-link-container">
                 {{Precisa de ajuda? Mande uma mensagem para nosso}} <a class='whatsapp-link' href='https://wa.me/5551999859355' target='_blank'>Whatsapp</a>.
             </div>
         </form>
