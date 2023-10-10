@@ -85,6 +85,33 @@ class BasePage:
         html.esc(self.route + "_active_val", "active")
         html.esc("user_url_val", self.event.get_url())
 
+        ### REMOVE THIS PARTE AND USE THE CODE BELOW
+        if self.user:
+            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.user.user_id + "','" + self.user.user_plan_id + "')")
+        else:
+            html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('notInformed','notInformed')")
+
+        ### REMOVE THIS PARTE AND USE THE CODE BELOW
+        ### TODO WHEN TIAGO LIBERATE COOKIE POLICY USE THE COMMENTED CODE BELOW
+        # if self.cookie_policy:
+        #     if self.cookie_policy.get("tawk") == "accepted":
+        # if self.user:
+        #     html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.route.replace("_", "-") + "','" + self.user.user_id + "','" + self.user.user_name.replace(" ", "-") + "','" + self.user.user_plan_id + "')")
+        # else:
+        #     html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openTawkApi('" + self.route.replace("_", "-") + "','notInformed','notInformed','notInformed','notInformed'")
+
+        # else:
+        #     html.esc("open_modal_cookie_policy_val", "active")
+
+        # html.esc("open_tawk_or_open_cookies_modal_val", "js.index.openCookiesContainer()")
+        # html.esc("user_url_val", self.event.get_url())
+        # if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted":
+        #     html.esc("tawk_checked_val", 'checked="checked"')
+        # if self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
+        #     html.esc("mouseflow_checked_val", 'checked="checked"')
+        # if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted" and self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
+        #     html.esc("all_cookies_checked_val", 'checked="checked"')
+
         if self.user.user_credential == "admin":
             html.esc("html_backoffice_button", self.show_html_backoffice_button())
 
@@ -99,12 +126,6 @@ class BasePage:
 
     def render_menu_panel_no_icons(self, common_changes={}):
         html = ReadWrite().read_html("main/menu_panel_no_icons", common_changes)
-        html.esc(self.route + "_active_val", "active")
-        html.esc("user_url_val", self.event.get_url())
-        return str(html)
-
-    def render_footer(self, common_changes={}):
-        html = ReadWrite().read_html("main/footer", common_changes)
 
         ### REMOVE THIS PARTE AND USE THE CODE BELOW
         if self.user:
@@ -132,6 +153,14 @@ class BasePage:
         #     html.esc("mouseflow_checked_val", 'checked="checked"')
         # if self.cookie_policy and self.cookie_policy.get("tawk") and self.cookie_policy["tawk"] == "accepted" and self.cookie_policy and self.cookie_policy.get("mouseflow") and self.cookie_policy["mouseflow"] == "accepted":
         #     html.esc("all_cookies_checked_val", 'checked="checked"')
+
+        html.esc(self.route + "_active_val", "active")
+        html.esc("user_url_val", self.event.get_url())
+        return str(html)
+
+    def render_footer(self, common_changes={}):
+        html = ReadWrite().read_html("main/footer", common_changes)
+
         return str(html)
 
     def show_html_backoffice_button(self):
