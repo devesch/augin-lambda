@@ -23,7 +23,7 @@ class UserRegister(UserPage):
         if not self.path.get("verify_email"):
             return Http().redirect("user_login")
         if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
-            return Http().redirect("user_login/?error_msg=" + EncodeDecode().encode_to_url("Seu código de verificação expirou, confirme seu email novamente"))
+            return Http().redirect("user_login/?error_msg=" + EncodeDecode().encode_to_url("Seu código de verificação expirou, confirme seu email novamente."))
         if self.load_user(self.path["user_email"]):
             return Http().redirect("user_login")
 
@@ -64,7 +64,7 @@ class UserRegister(UserPage):
         if not self.path.get("verify_email"):
             return Http().redirect("user_login")
         if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
-            return Http().redirect("user_login/?error_msg=" + EncodeDecode().encode_to_url("Seu código de verificação expirou, confirme seu email novamente"))
+            return Http().redirect("user_login/?error_msg=" + EncodeDecode().encode_to_url("Seu código de verificação expirou, confirme seu email novamente."))
         if self.load_user(self.path["user_email"]):
             return Http().redirect("user_login")
 
