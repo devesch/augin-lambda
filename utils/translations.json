@@ -4434,6 +4434,11 @@
         "es": "Su nuevo correo electrónico será",
         "pt": "Seu novo email será"
     },
+    "Seu novo email será altera de ": {
+        "en": "Your new email will change from",
+        "es": "Su nuevo correo electrónico cambiará de",
+        "pt": "Seu novo email será altera de "
+    },
     "Seu plano": {
         "en": "Your plan",
         "es": "Tu plan",
@@ -5508,6 +5513,11 @@
         "en": "or",
         "es": "o",
         "pt": "ou"
+    },
+    "para": {
+        "en": "for",
+        "es": "para",
+        "pt": "para"
     },
     "para aumentar esse limite": {
         "en": "to increase this limit",
