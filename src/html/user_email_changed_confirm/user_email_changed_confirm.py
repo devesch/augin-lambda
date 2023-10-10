@@ -1,7 +1,5 @@
 ﻿from python_web_frame.user_page import UserPage
-from utils.utils.Http import Http
-from utils.utils.Validation import Validation
-from utils.utils.EncodeDecode import EncodeDecode
+from objects.User import User
 
 
 class UserEmailChangedConfirm(UserPage):
@@ -11,8 +9,13 @@ class UserEmailChangedConfirm(UserPage):
     admin = False
 
     def render_get(self):
+        user = User()
+        user_auth_token = self.event.get_user_auth_token()
+        user.load_information_with_auth_token(user_auth_token)
+        user.update_attribute("user_email", self.path["new_user_email"])
+
         html = super().parse_html()
         return str(html)
 
     def render_post(self):
-        return self.render_get("")
+        return self.render_get()

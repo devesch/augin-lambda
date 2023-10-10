@@ -30,9 +30,9 @@ def get_path_data(path, user):
         if not path["plan"]:
             return {"error": "error"}
 
-    if path.get("original_user_encoded_email_val"):
-        path["original_user_email"] = EncodeDecode().decode_from_b64(path["original_user_encoded_email_val"])
-        if not path["original_user_email"]:
+    if path.get("new_user_email_encoded"):
+        path["new_user_email"] = EncodeDecode().decode_from_b64(path["new_user_email_encoded"])
+        if not path["new_user_email"]:
             return {"error": "Não foi possível decoficar o email"}
 
     if path.get("user_encoded_email"):
