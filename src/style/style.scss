@@ -573,6 +573,28 @@ input[list]::-ms-clear {
     font-size: fonts.$font-paragraph-3-size;
     gap: 0;
 
+    button {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        color: colors.color("color-white");
+        transition: color 0.25s linear, text-decoration 0.25s linear;
+        background-color: unset;
+        border: none;
+        padding: 0;
+    }
+
+    button:hover {
+        color: colors.color("color-primary-700");
+        text-decoration: underline;
+    }
+
+    button:active {
+        color: colors.color("color-primary-50");
+        text-decoration: underline;
+    }
+
     a {
         display: flex;
         flex-direction: row;
