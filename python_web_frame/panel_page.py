@@ -462,6 +462,7 @@ class PanelPage(BasePage):
                 html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
             if payment_method["payment_method_type"] == "boleto":
                 html.esc("brand_val", self.translate("boleto").title())
+                html.esc("colspan_val", "colspan='2'")
                 html.esc("expires_in_visibility_val", "display:none;")
             full_html.append(str(html))
         return "".join(full_html)
