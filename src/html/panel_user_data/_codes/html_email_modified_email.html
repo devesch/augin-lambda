@@ -57,11 +57,17 @@
                                                         {{Clique no link a seguir para confirmar a troca do seu email na sua conta Augin}}:<br><br>
                                                     </p>
                                                     <p>
-                                                        {{Seu novo email será altera de }} {{user_email_val}} {{para}} {{new_user_email_val}}
-                                                        <a href="{{domain_name_url_val}}/user_email_changed_confirm/?user_auth_token={{user_auth_token_val}}&new_user_email_encoded={{new_user_email_encoded_val}}" style="color: #ef9025">
-                                                            {{Confirmar}}
-                                                        </a>
+                                                        {{Seu novo email será alterado de }} {{user_email_val}} {{para}} {{new_user_email_val}}
                                                     </p>
+                                                </div>
+                                                <div style="text-align: center;">
+                                                    <a href="{{domain_name_url_val}}/user_email_changed_confirm/?user_auth_token={{user_auth_token_val}}&new_user_email_encoded={{new_user_email_encoded_val}}">
+                                                        <button style="border-radius: 0.25rem;padding: 0.5rem 1rem;font-size: 1rem;color: #F8FAFF;background-color: #F28B24;border: 2px solid #F29D49;border-radius: 5px;font-weight: bold; cursor: pointer;">
+                                                            <font face="Arial" color="#F8FAFF">
+                                                                {{Confirmar}}
+                                                            </font>
+                                                        </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                             <!--[if mso]></td></tr></table><![endif]-->
