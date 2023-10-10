@@ -18,7 +18,7 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
-    "Seu código de verificação expirou, confirme seu email novamente",
+    "Seu código de verificação expirou, confirme seu email novamente.",
     "Downgrade de plano",
     "1 segundo atrás",
     "1 minuto atrás",

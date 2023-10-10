@@ -15,6 +15,6 @@ def check_if_verify_email_expired(created_at):
     import time
 
     delta_time = int(time.time()) - int(float(created_at))
-    if delta_time > 10:
+    if delta_time > 900:
         return True
     return False
