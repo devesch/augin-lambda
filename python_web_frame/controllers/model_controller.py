@@ -351,7 +351,7 @@ class ModelController:
             user.remove_model_from_user_dicts(model)
 
         Lambda().invoke(lambda_constants["lambda_move_deleted_model_files"], "Event", {"model_upload_path": model["model_upload_path"], "model_state": model["model_state"]})
-        user.decrease_used_cloud_space_in_mbs(model["model_filesize"])
+        user.decrease_used_cloud_space_in_mbs(self.convert_model_filesize_to_mb(model["model_filesize"]))
         model = self.change_model_state(model, model["model_state"], "deleted")
         Dynamo().put_entity(model)
 
