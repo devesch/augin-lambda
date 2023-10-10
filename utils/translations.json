@@ -3394,6 +3394,11 @@
         "es": "No es posible cambiar el método de pago de una firma de prueba",
         "pt": "Não é possível trocar o método de pagamento de uma assinatura trial"
     },
+    "Não é possível trocar o método de pagamento em uma assinatura mensal para um método diferente de cartão": {
+        "en": "It is not possible to exchange the payment method in a monthly subscription to a different method of card",
+        "es": "No es posible cambiar el método de pago en una suscripción mensual a un método de tarjeta diferente",
+        "pt": "Não é possível trocar o método de pagamento em uma assinatura mensal para um método diferente de cartão"
+    },
     "Número": {
         "en": "Number",
         "es": "Número",
