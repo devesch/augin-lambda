@@ -438,7 +438,10 @@ input[type="checkbox"] + label {
 
 /* Backoffice Forms - Start */
 .input-country-code {
-    width: fit-content !important;
+    flex-grow: 0;
+    width: 4.5rem !important;
+    padding: 1rem 0.25rem;
+    text-align: center;
 }
 
 .panel-user-data-container {
