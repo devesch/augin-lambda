@@ -299,6 +299,11 @@
         "es": "Algunos archivos dentro de .zip excede el tamaño máximo de 1 GB.",
         "pt": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."
     },
+    "Algum arquivo dentro do .zip excede o tamanho máximo disponível em sua cloud.": {
+        "en": "Some file within .zip exceeds the maximum size available on your cloud.",
+        "es": "Algunos archivos dentro de .zip excede el tamaño máximo disponible en su nube.",
+        "pt": "Algum arquivo dentro do .zip excede o tamanho máximo disponível em sua cloud."
+    },
     "Algum arquivo dentro do .zip não está dentro dos nossos formatos suportados: suportados de IFC são: IFC2x3 e IFC4.": {
         "en": "Some file within .zip is not within our supported formats: supported IFC are: IFC2x3 and IFC4.",
         "es": "Algunos archivos dentro de .zip no están dentro de nuestros formatos compatibles: IFC compatible son: IFC2X3 e IFC4.",
@@ -3323,6 +3328,11 @@
         "en": "Do not respond to this message.This email was sent by an automatic system that does not process answers.",
         "es": "No responda a este mensaje.Este correo electrónico fue enviado por un sistema automático que no procesa respuestas.",
         "pt": "Não responda a esta mensagem. Este e-mail foi enviado por um sistema automático que não processa respostas."
+    },
+    "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud.": {
+        "en": "It is not possible to add this project as it would exceed the maximum size available to your cloud.",
+        "es": "No es posible agregar este proyecto, ya que excedería el tamaño máximo disponible para su nube.",
+        "pt": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."
     },
     "Não é possível excluir o método de pagamento padrão da sua assinatura": {
         "en": "It is not possible to delete the default payment method from your subscription",
