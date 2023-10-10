@@ -423,11 +423,13 @@ input[type="checkbox"] + label {
 
     input {
         flex-grow: 1;
+        padding: 1rem 0.5rem;
+        text-align: center;
     }
 
     .floating-input {
         width: unset !important;
-        flex-grow: 9999 !important;
+        flex-grow: 1 !important;
     }
 
 }
@@ -438,7 +440,7 @@ input[type="checkbox"] + label {
 
 /* Backoffice Forms - Start */
 .input-country-code {
-    flex-grow: 0;
+    flex-grow: 0 !important;
     width: 4.5rem !important;
     padding: 1rem 0.25rem;
     text-align: center;
