@@ -854,6 +854,11 @@
         "es": "Ciudad",
         "pt": "Cidade"
     },
+    "Clique no link a seguir para confirmar a troca do seu email na sua conta Augin": {
+        "en": "Click on the following link to confirm your email exchange on your Augin account",
+        "es": "Haga clic en el siguiente enlace para confirmar su intercambio de correo electrónico en su cuenta de Augin",
+        "pt": "Clique no link a seguir para confirmar a troca do seu email na sua conta Augin"
+    },
     "Cobrado anualmente": {
         "en": "Charged annually",
         "es": "Cargado anualmente",
@@ -4424,6 +4429,11 @@
         "es": "Su nombre",
         "pt": "Seu nome"
     },
+    "Seu novo email será": {
+        "en": "Your new email will be",
+        "es": "Su nuevo correo electrónico será",
+        "pt": "Seu novo email será"
+    },
     "Seu plano": {
         "en": "Your plan",
         "es": "Tu plan",
@@ -5298,6 +5308,11 @@
         "en": "as a tool for payments and purchases",
         "es": "como herramienta para pagos y compras",
         "pt": "como ferramenta para pagamentos e compras"
+    },
+    "confirmar": {
+        "en": "confirm",
+        "es": "confirmar",
+        "pt": "confirmar"
     },
     "de": {
         "en": "in",

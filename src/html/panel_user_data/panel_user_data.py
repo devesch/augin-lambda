@@ -1,8 +1,9 @@
-﻿from python_web_frame.panel_page import PanelPage
+from python_web_frame.panel_page import PanelPage
 from python_web_frame.user_page import UserPage
 from utils.utils.Http import Http
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Validation import Validation
+from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.JsonData import JsonData
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
@@ -122,7 +123,6 @@ class PanelUserData(PanelPage, UserPage):
                 if not Validation().check_if_phone(self.post["user_phone"], self.post["user_country"]):
                     return self.render_get_with_error("Por favor informe um número de telefone válido.")
 
-        self.user.user_email = self.post["user_email"]
         self.user.user_name = self.post["user_name"]
         self.user.user_first_three_letters_name = self.user.user_name[:3]
         self.user.user_phone = self.post.get("user_phone", "")
@@ -154,10 +154,19 @@ class PanelUserData(PanelPage, UserPage):
                 return self.render_get_with_error("Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra")
 
         if user_changed_email:
-            self.generate_and_send_email_verification_code(email="email_modified")
+            self.send_email_modified_email(self.user_email, self.user.user_auth_token, self.post["user_email"])
             return self.render_get_with_error("Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o seu novo email solicitado")
 
         return self.render_get_with_error("Perfil atualizado com sucesso")
+
+    def send_email_modified_email(self, user_email, user_auth_token, new_user_email):
+        html = ReadWrite().read_html("panel_user_data/_codes/html_email_modified_email")
+        html.esc("user_auth_token_val", user_auth_token)
+        html.esc("user_email_val", user_email)
+        html.esc("new_user_email_val", new_user_email)
+        html.esc("new_user_email_encoded_val", EncodeDecode().encode_to_b64(new_user_email))
+        Ses().send_email(new_user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Solicitação de troca de email"))
+        return
 
     def show_html_physical_form(self):
         html = ReadWrite().read_html("panel_user_data/_codes/html_physical_form")
