@@ -1182,6 +1182,7 @@ input[list]::-ms-clear {
     margin: auto;
     width: fit-content;
     z-index: 1;
+    position: absolute;
 }
 
 .panel-user-data__file-label {
@@ -1194,10 +1195,16 @@ input[list]::-ms-clear {
 
 .panel-user-data__file-label:hover {
     border-style: solid;
-    filter: brightness(0.75);
-
+    
     .panel-user-data__hover-image {
        opacity: 1;
+    }
+
+    .panel-user-data__hover-image::before {
+        content: "";
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.25);
+        border-radius: 100%;
     }
 
 }
