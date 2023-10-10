@@ -1177,6 +1177,14 @@ input[list]::-ms-clear {
     font-size: 1.4rem;
 }
 
+.panel-user-data__hover-image {
+    opacity: 0;
+    margin: auto;
+    width: fit-content;
+    z-index: 1;
+    position: absolute;
+}
+
 .panel-user-data__file-label {
     width: fit-content;
     margin: 1rem auto;
@@ -1187,7 +1195,18 @@ input[list]::-ms-clear {
 
 .panel-user-data__file-label:hover {
     border-style: solid;
-    filter: brightness(0.75);
+    
+    .panel-user-data__hover-image {
+       opacity: 1;
+    }
+
+    .panel-user-data__hover-image::before {
+        content: "";
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.25);
+        border-radius: 100%;
+    }
+
 }
 
 .panel-user-data__file-image {
