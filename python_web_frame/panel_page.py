@@ -305,7 +305,7 @@ class PanelPage(BasePage):
                 html.esc("model_created_at_val", Date().format_to_str_time(model["created_at"]))
                 html.esc("model_filesize_val", ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
 
-                if ModelController().check_if_model_is_too_big(model["model_filesize"]):
+                if self.user and user_plan and (ModelController().convert_model_filesize_to_mb(model["model_filesize"]) > user_plan["plan_maxium_model_size_in_mbs"]):
                     html.esc("html_need_to_upgrade_your_plan", self.show_html_need_to_upgrade_your_plan(index))
 
                 html.esc("model_category_val", model["model_category"])

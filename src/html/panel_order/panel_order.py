@@ -37,6 +37,8 @@ class PanelOrder(PanelPage):
         html.esc("html_table_rows", self.list_html_table_rows(self.path["order"], order_plan))
         if self.path["order"]["order_user_cart_coupon_code"]:
             html.esc("html_order_coupon", self.show_html_order_coupon())
+        if self.path["order"]["order_status"] != "paid":
+            html.esc("nfse_visibilty_val", "display:none;")
         if self.path["order"]["order_status"] == "paid":
             html.esc("html_print_payment_button", self.show_html_print_payment_button())
             if self.path["order"]["order_nfse_xml_link"]:
@@ -46,8 +48,8 @@ class PanelOrder(PanelPage):
                 html.esc("html_download_pdf_invoice_button", self.show_html_download_pdf_invoice_button(self.path["order"]["order_nfse_pdf_link"]))
             if not self.path["order"]["order_nfse_xml_link"] and not self.path["order"]["order_nfse_pdf_link"]:
                 html.esc("nfse_visibilty_val", "display:none;")
-        if self.path["order"]["order_status"] != "paid":
-            html.esc("nfse_visibilty_val", "display:none;")
+        if self.path["order"]["order_payment_stripe_boleto_url"]:
+            html.esc("html_download_boleto_button", self.show_html_download_boleto_button(self.path["order"]["order_payment_stripe_boleto_url"]))
         return str(html)
 
     def render_post(self):
@@ -55,6 +57,11 @@ class PanelOrder(PanelPage):
 
     def show_html_print_payment_button(self):
         html = ReadWrite().read_html("panel_order/_codes/html_print_payment_button")
+        return str(html)
+
+    def show_html_download_boleto_button(self, order_payment_stripe_boleto_url):
+        html = ReadWrite().read_html("panel_order/_codes/html_download_boleto_button")
+        html.esc("order_payment_stripe_boleto_url_val", order_payment_stripe_boleto_url)
         return str(html)
 
     def show_html_download_xml_invoice_button(self, order_nfse_xml_link):

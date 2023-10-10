@@ -1289,6 +1289,11 @@
         "es": "Dispositivo de desconexión",
         "pt": "Desconectando dispositivo"
     },
+    "Desconectar dispositivos": {
+        "en": "Disconnect devices",
+        "es": "Desconexión dispositivos",
+        "pt": "Desconectar dispositivos"
+    },
     "Desconto %": {
         "en": "Discount %",
         "es": "Descuento %",
@@ -2304,6 +2309,11 @@
         "es": "Éxito ícono",
         "pt": "Icone sucesso"
     },
+    "Id do Plano": {
+        "en": "Plan ID",
+        "es": "ID de plan",
+        "pt": "Id do Plano"
+    },
     "Idioma": {
         "en": "Language",
         "es": "Idioma",
@@ -3154,6 +3164,11 @@
         "es": "nombre federado",
         "pt": "Nome do federado"
     },
+    "Nome do plano": {
+        "en": "Plan name",
+        "es": "Nombre del plan",
+        "pt": "Nome do plano"
+    },
     "Nome do projeto federado": {
         "en": "Federated project name",
         "es": "Nombre del proyecto federado",
@@ -3770,8 +3785,8 @@
         "pt": "Pix"
     },
     "Plano": {
-        "en": "Flat",
-        "es": "Departamento",
+        "en": "Plan",
+        "es": "Plane",
         "pt": "Plano"
     },
     "Planos": {
@@ -4788,6 +4803,11 @@
         "en": "All",
         "es": "Todo",
         "pt": "Todos"
+    },
+    "Todos os dispositivos que estavam conectados foram desconetados com sucesso": {
+        "en": "All devices that were connected were successfully disconnected",
+        "es": "Todos los dispositivos que estaban conectados se desconectaron con éxito",
+        "pt": "Todos os dispositivos que estavam conectados foram desconetados com sucesso"
     },
     "Togo": {
         "en": "Togo",

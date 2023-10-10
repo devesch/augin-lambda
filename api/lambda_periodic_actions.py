@@ -18,6 +18,7 @@ class LambdaPeriodicActions(BasePage):
 
         BillingController().check_and_issued_not_issued_bill_of_sales()
         self.check_for_models_with_error_still_processing()
+        # TODO CHANGE FIX TOTAL COUNT TO MONTH
         self.fix_total_count()
         if datetime.today().day == 1:
             BillingController().generate_and_send_orders_nfses()
@@ -48,13 +49,13 @@ class LambdaPeriodicActions(BasePage):
         #     self.dynamo.update_entity(project, "project_total_project_balance_count", str(len(project_balances)))
 
         all_orders = Dynamo().query_entity("order")
-        all_cupons = Dynamo().query_entity("cupom")
+        all_coupons = Dynamo().query_entity("coupons")
         all_products = Dynamo().query_entity("product")
 
         backoffice_data = get_backoffice_data()
         backoffice_data["backoffice_data_total_user_count"] = str(len(all_users))
         backoffice_data["backoffice_data_total_order_count"] = str(len(all_orders))
         backoffice_data["backoffice_data_total_model_count"] = str(len(all_models))
-        backoffice_data["backoffice_data_total_coupon_count"] = str(len(all_cupons))
+        backoffice_data["backoffice_data_total_coupon_count"] = str(len(all_coupons))
         backoffice_data["backoffice_data_total_product_count"] = str(len(all_products))
-        self.dynamo.put_entity(backoffice_data)
+        Dynamo().put_entity(backoffice_data)

@@ -326,9 +326,6 @@ class ModelController:
         sorted_models.extend(normal_models)
         return sorted_models
 
-    def check_if_model_is_too_big(self, model_filesize):
-        return int(model_filesize) > 1073741824  ### 1gb
-
     def convert_model_filesize_to_mb(self, model_filesize):
         return str(round(int(model_filesize) / 1024 / 1024, 1))
 

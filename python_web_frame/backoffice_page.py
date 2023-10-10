@@ -112,6 +112,7 @@ class BackofficePage(BasePage):
         return "".join(full_html)
 
     def list_html_backoffice_users_table_rows(self, users):
+        plan_id_plan = {}
         full_html = []
         if users:
             for user in users:
@@ -129,7 +130,11 @@ class BackofficePage(BasePage):
                     html.esc("user_cpf_or_cnpj_val", StrFormat().format_to_cpf(user["user_cnpj"]))
                 html.esc("user_client_type_val", user["user_client_type"])
                 html.esc("user_subscription_status_val", user["user_subscription_status"])
+
                 html.esc("user_plan_id_val", user["user_plan_id"])
+                if user["user_plan_id"] and (user["user_plan_id"] not in plan_id_plan):
+                    plan_id_plan[user["user_plan_id"]] = Dynamo().get_plan(user["user_plan_id"])
+                    html.esc("user_plan_name_val", plan_id_plan[user["user_plan_id"]]["plan_name_pt"])
                 html.esc("user_last_login_at_val", Date().format_unixtime_to_br_date(user["user_last_login_at"]))
                 html.esc("user_cart_currency_val", StrFormat().format_currency_to_symbol(user["user_cart_currency"]))
                 html.esc("user_country_val", user["user_address_data"]["user_country"])

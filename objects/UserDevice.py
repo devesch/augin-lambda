@@ -35,9 +35,9 @@ def generate_device_icon(device):
     return "unknown_device"
 
 
-def disconnect_device(device):
+def disconnect_device(device, disconnection_at=str(time.time())):
     device["device_status"] = "disconnected"
-    device["device_disconnected_at"] = str(time.time())
+    device["device_disconnected_at"] = disconnection_at
     Dynamo().put_entity(device)
     return device
 

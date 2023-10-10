@@ -35,8 +35,12 @@
                     <div><strong>{{user_subscription_status_val}}</strong></div>
                 </section>
                 <section>
-                    <div>{{Plano}}:</div>
+                    <div>{{Id do Plano}}:</div>
                     <div><strong>{{user_plan_id_val}}</strong></div>
+                </section>
+                <section>
+                    <div>{{Plano}}:</div>
+                    <div><strong>{{user_plan_name_val}}</strong></div>
                 </section>
                 <section>
                     <div>{{Último Login}}:</div>
@@ -52,6 +56,15 @@
                 </section>
             </article>
         </div>
+    </div>
+    <span class="error" style="{{error_msg_visibility_val}}">
+        {{error_msg_val}}
+    </span>
+    <div>
+        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+            <input hidden name="command" value="disconnect_devices">
+            <button type="submit">{{Desconectar dispositivos}}</button>
+        </form>
     </div>
 </main>
 {{footer}}
