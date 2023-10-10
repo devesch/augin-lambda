@@ -1189,12 +1189,17 @@ input[list]::-ms-clear {
     width: fit-content;
     margin: 1rem auto;
     border-radius: 100%;
-    transition: border-style 0.5s ease, filter 0.5s ease;
+    transition: border-style 0.5s ease, background-color 0.5s ease;
     padding: 0;
 }
 
 .panel-user-data__file-label:hover {
     border-style: solid;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    .panel-user-data__file-image {
+        z-index: -1;
+    }
     
     .panel-user-data__hover-image {
        opacity: 1;
