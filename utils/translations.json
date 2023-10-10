@@ -219,6 +219,11 @@
         "es": "Para agregar",
         "pt": "Adicionar"
     },
+    "Adicionar foto de perfil": {
+        "en": "Add profile photo",
+        "es": "Añadir foto de perfil",
+        "pt": "Adicionar foto de perfil"
+    },
     "Adicionar método de pagamento": {
         "en": "Add payment method",
         "es": "Añadir método de pago",
@@ -4761,8 +4766,8 @@
     },
     "Togo": {
         "en": "Togo",
-        "es": "Ir",
-        "pt": "Ir"
+        "es": "Togo",
+        "pt": "Togo"
     },
     "Tokelau": {
         "en": "Tokelau",

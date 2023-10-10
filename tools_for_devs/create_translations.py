@@ -18,6 +18,7 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Seu código de verificação expirou, confirme seu email novamente",
     "Downgrade de plano",
     "1 segundo atrás",
     "1 minuto atrás",
@@ -191,19 +192,19 @@ for file in os.listdir(api_source_path):
 
 translator = Translator()
 
-translated_keys = []
+# translated_keys = []
 
-for key, val in country_data.items():
-    if val["name"] not in translated_keys and val["name"] not in ["Argentina"]:
-        print("Getting translation for " + val["name"])
-        translations[val["name"]] = {"pt": "", "es": "", "en": val["name"]}
-        try:
-            translations[val["name"]]["pt"] = translator.translate(text=val["name"], src="en", dest="pt").text
-            translations[val["name"]]["es"] = translator.translate(text=val["name"], src="en", dest="es").text
-        except:
-            translations[val["name"]]["pt"] = val["name"]
-            translations[val["name"]]["es"] = val["name"]
-        translated_keys.append(val["name"])
+# for key, val in country_data.items():
+#     if val["name"] not in translated_keys and val["name"] not in ["Argentina"]:
+#         print("Getting translation for " + val["name"])
+#         translations[val["name"]] = {"pt": "", "es": "", "en": val["name"]}
+#         try:
+#             translations[val["name"]]["pt"] = translator.translate(text=val["name"], src="en", dest="pt").text
+#             translations[val["name"]]["es"] = translator.translate(text=val["name"], src="en", dest="es").text
+#         except:
+#             translations[val["name"]]["pt"] = val["name"]
+#             translations[val["name"]]["es"] = val["name"]
+#         translated_keys.append(val["name"])
 
 for placeholder in filtered_placeholders:
     if not "_val" in placeholder and not "html_" in placeholder and not "js." in placeholder and not "_" in placeholder and not "<" in placeholder and not "header" in placeholder and not "menu" in placeholder and not "footer" in placeholder:
