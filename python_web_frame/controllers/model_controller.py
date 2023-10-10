@@ -351,7 +351,7 @@ class ModelController:
             user.remove_model_from_user_dicts(model)
 
         Lambda().invoke(lambda_constants["lambda_move_deleted_model_files"], "Event", {"model_upload_path": model["model_upload_path"], "model_state": model["model_state"]})
-        user.decrease_used_cloud_space_in_mbs(model["model_filesize"])
+        user.decrease_used_cloud_space_in_mbs(self.convert_model_filesize_to_mb(model["model_filesize"]))
         model = self.change_model_state(model, model["model_state"], "deleted")
         Dynamo().put_entity(model)
 
@@ -426,6 +426,17 @@ class ModelController:
 
         user_plan = user.get_user_actual_plan()
         files_hashes = []
+
+        sum_of_all_uploaded_filesize_in_mbs = 0
+        for index, ifc_location in enumerate(ifcs_locations):
+            sum_of_all_uploaded_filesize_in_mbs += float(self.convert_model_filesize_to_mb(os.path.getsize(ifc_location)))
+
+        if sum_of_all_uploaded_filesize_in_mbs > float(user_plan["plan_cloud_space_in_mbs"]):
+            if len(ifcs_locations) == 1:
+                return {"error": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."}
+            else:
+                return {"error": "Não é possível adicionar este arquivo aos seus projetos pois a some dos arquivos dentro dele excede o tamanho máximo disponível em sua cloud."}
+
         for index, ifc_location in enumerate(ifcs_locations):
 
             file_hash = ReadWrite().get_file_hash(ifc_location)
@@ -444,11 +455,11 @@ class ModelController:
             #         return {"error": "O projeto excede o tamanho máximo da suportado pela sua conta."}
             #     else:
             #         return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta."}
-            if (os.path.getsize(ifc_location) / (10**6)) + float(user.user_used_cloud_space_in_mbs):
-                if index == 0:
-                    return {"error": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."}
-                else:
-                    return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo disponível em sua cloud."}
+            # if float(float(self.convert_model_filesize_to_mb(os.path.getsize(ifc_location))) + float(user.user_used_cloud_space_in_mbs)) > float(user_plan["plan_cloud_space_in_mbs"]):
+            #     if index == 0:
+            #         return {"error": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."}
+            #     else:
+            #         return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo disponível em sua cloud."}
 
             if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location) and not self.is_glb_file(ifc_location):
                 return {"error": "Algum arquivo dentro do .zip é inválido."}

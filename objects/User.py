@@ -68,10 +68,10 @@ class User:
         new_user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(new_value_for_decrease_in_mbs))
         if float(new_user_used_cloud_space_in_mbs) < 0:
             new_user_used_cloud_space_in_mbs = "0.0"
-        self.update_attribute(self.user_used_cloud_space_in_mbs, str(float(self.user_used_cloud_space_in_mbs) - float(new_value_for_decrease_in_mbs)))
+        self.update_attribute("user_used_cloud_space_in_mbs", str(new_user_used_cloud_space_in_mbs))
 
     def increase_used_cloud_space_in_mbs(self, new_value_for_increase_in_mbs):
-        self.update_attribute(self.user_used_cloud_space_in_mbs, str(float(self.user_used_cloud_space_in_mbs) + float(new_value_for_increase_in_mbs)))
+        self.update_attribute("user_used_cloud_space_in_mbs", str(float(self.user_used_cloud_space_in_mbs) + float(new_value_for_increase_in_mbs)))
 
     def connect_device(self, new_device_data):
         user_device = Dynamo().get_user_device(self.user_id, new_device_data["device_id"])
