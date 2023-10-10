@@ -3329,6 +3329,11 @@
         "es": "No responda a este mensaje.Este correo electrónico fue enviado por un sistema automático que no procesa respuestas.",
         "pt": "Não responda a esta mensagem. Este e-mail foi enviado por um sistema automático que não processa respostas."
     },
+    "Não é possível adicionar este arquivo aos seus projetos pois a some dos arquivos dentro dele excede o tamanho máximo disponível em sua cloud.": {
+        "en": "You cannot add this file to your projects as the files within it exceeds the maximum size available on your cloud.",
+        "es": "No puede agregar este archivo a sus proyectos ya que los archivos dentro de él exceden el tamaño máximo disponible en su nube.",
+        "pt": "Não é possível adicionar este arquivo aos seus projetos pois a some dos arquivos dentro dele excede o tamanho máximo disponível em sua cloud."
+    },
     "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud.": {
         "en": "It is not possible to add this project as it would exceed the maximum size available to your cloud.",
         "es": "No es posible agregar este proyecto, ya que excedería el tamaño máximo disponible para su nube.",

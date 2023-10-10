@@ -24,6 +24,7 @@ class BackofficeUsers(BackofficePage):
 
             for user in users:
                 user = load_user(user["user_id"])
+                user.user_used_cloud_space_in_mbs = "0.0"
                 all_user_models = []
                 all_user_models.extend(Dynamo().query_user_models_from_state(user, "not_created", limit=100000))
                 all_user_models.extend(Dynamo().query_user_models_from_state(user, "in_processing", limit=100000))
@@ -31,7 +32,8 @@ class BackofficeUsers(BackofficePage):
 
                 models_total_size = 0
                 for model in all_user_models:
-                    models_total_size += float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
+                    if not model["model_is_federated"]:
+                        models_total_size += float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
                 user.increase_used_cloud_space_in_mbs(models_total_size)
 
         html = super().parse_html()
