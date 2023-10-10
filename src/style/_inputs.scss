@@ -431,6 +431,11 @@ input[type="checkbox"] + label {
         flex-grow: 1 !important;
     }
 
+    @media only screen and (max-width: 400px) {
+        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+    }
+
 }
 
 .input-search-icon.close-icon {
@@ -443,6 +448,11 @@ input[type="checkbox"] + label {
     width: 4.5rem !important;
     text-align: center !important;
     padding: 1rem 0.25rem !important;
+
+    @media only screen and (max-width: 400px) {
+        flex-grow: 1 !important;
+    }
+
 }
 
 .panel-user-data-container {
