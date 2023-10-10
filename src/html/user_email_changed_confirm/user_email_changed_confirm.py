@@ -13,6 +13,7 @@ class UserEmailChangedConfirm(UserPage):
         user_auth_token = self.event.get_user_auth_token()
         user.load_information_with_auth_token(user_auth_token)
         user.update_attribute("user_email", self.path["new_user_email"])
+        self.user.update_auth_token()
 
         html = super().parse_html()
         return str(html)
