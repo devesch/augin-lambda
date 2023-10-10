@@ -38,13 +38,10 @@ class User:
         self.user_cart_currency = ""
         self.user_cart_coupon_code = ""
 
-        # self.user_dicts = {"folders": [], "files": []}
-        # self.user_shared_dicts = {"folders": [], "files": []}
-
         self.user_dicts_folder_id = ""
         self.user_shared_dicts_folder_id = ""
 
-        self.user_models_size_in_mbs = "0.0"
+        self.user_used_cloud_space_in_mbs = "0.0"
         self.user_favorited_models = []
         self.user_favorited_folders = []
         self.user_plan_id = ""
@@ -66,6 +63,15 @@ class User:
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def decrease_used_cloud_space_in_mbs(self, new_value_for_decrease_in_mbs):
+        new_user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(new_value_for_decrease_in_mbs))
+        if float(new_user_used_cloud_space_in_mbs) < 0:
+            new_user_used_cloud_space_in_mbs = "0.0"
+        self.update_attribute(self.user_used_cloud_space_in_mbs, str(float(self.user_used_cloud_space_in_mbs) - float(new_value_for_decrease_in_mbs)))
+
+    def increase_used_cloud_space_in_mbs(self, new_value_for_increase_in_mbs):
+        self.update_attribute(self.user_used_cloud_space_in_mbs, str(float(self.user_used_cloud_space_in_mbs) + float(new_value_for_increase_in_mbs)))
 
     def connect_device(self, new_device_data):
         user_device = Dynamo().get_user_device(self.user_id, new_device_data["device_id"])
@@ -332,18 +338,13 @@ class User:
         else:
             user_folder = Dynamo().get_folder(self.user_dicts_folder_id)
 
-        if model["model_id"] not in user_folder["files"]:
-            user_folder["files"].append(model["model_id"])
-            if not model["model_is_federated"]:
-                self.user_models_size_in_mbs = str(float(self.user_models_size_in_mbs) + float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
-
         Dynamo().put_entity(user_folder)
 
     def remove_model_from_user_dicts(self, model, shared=False):
         model_folder = Dynamo().get_folder(model["model_folder_id"])
         remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
         if not model["model_is_federated"] and not shared:
-            self.user_models_size_in_mbs = str(float(self.user_models_size_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
+            self.user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
         Dynamo().put_entity(self.__dict__)
 
     def update_last_login_at(self):

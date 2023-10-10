@@ -349,7 +349,9 @@ class ModelController:
                         Dynamo().put_entity(required_model)
         if model["model_state"] == "completed":
             user.remove_model_from_user_dicts(model)
+
         Lambda().invoke(lambda_constants["lambda_move_deleted_model_files"], "Event", {"model_upload_path": model["model_upload_path"], "model_state": model["model_state"]})
+        user.decrease_used_cloud_space_in_mbs(model["model_filesize"])
         model = self.change_model_state(model, model["model_state"], "deleted")
         Dynamo().put_entity(model)
 
@@ -437,11 +439,16 @@ class ModelController:
                     return {"error": "O projeto excede o tamanho máximo de 1Gb."}
                 else:
                     return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo de 1Gb."}
-            if (os.path.getsize(ifc_location) / (10**6)) > int(user_plan["plan_maxium_model_size_in_mbs"]):
+            # if (os.path.getsize(ifc_location) / (10**6)) > int(user_plan["plan_maxium_model_size_in_mbs"]):
+            #     if index == 0:
+            #         return {"error": "O projeto excede o tamanho máximo da suportado pela sua conta."}
+            #     else:
+            #         return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta."}
+            if (os.path.getsize(ifc_location) / (10**6)) + float(user.user_used_cloud_space_in_mbs):
                 if index == 0:
-                    return {"error": "O projeto excede o tamanho máximo da suportado pela sua conta."}
+                    return {"error": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."}
                 else:
-                    return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta."}
+                    return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo disponível em sua cloud."}
 
             if not self.is_ifc_file(ifc_location) and not self.is_fbx_file(ifc_location) and not self.is_glb_file(ifc_location):
                 return {"error": "Algum arquivo dentro do .zip é inválido."}
@@ -551,7 +558,7 @@ class ModelController:
             model["model_branch_url"] = branch_response["url"]
             model["model_branch_url_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png")
             Generate().generate_qr_code(model["model_branch_url"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png"))
-
+            user.increase_used_cloud_space_in_mbs(self.convert_model_filesize_to_mb(model["model_filesize"]))
             response["success"]["models_ids"].append(model["model_id"])
             Dynamo().put_entity(model)
         return response
