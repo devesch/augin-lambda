@@ -99,7 +99,7 @@ class CheckoutStripeWebHook(BasePage):
         order = Dynamo().get_order(self.post["data"]["object"]["id"])
         Dynamo().update_entity(order, "order_payment_method", "boleto")
         Dynamo().update_entity(order, "order_payment_stripe_boleto_url", self.post["data"]["object"]["next_action"]["boleto_display_details"]["pdf"])
-        Dynamo().update_entity(order, "order_status", "waiting_boleto")
+        Dynamo().update_entity(order, "order_status", "waiting_payment")
         return {"success": "Evento payment_intent_requires_action tratado."}
 
     def customer_subscription_updated(self):

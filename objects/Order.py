@@ -83,18 +83,7 @@ def translate_order_type(order_type):
 
 
 def translate_order_status(order_status):
-    translations = {
-        "pending": "Incompleto",
-        "paid": "Pago",
-        "not_authorized": "Não autorizado",
-        "card_declined": "Cartão negado",
-        "expired_card": "Cartão expirado",
-        "blocked_card": "Cartão bloqueado",
-        "canceled_card": "Cartão cancelado",
-        "problems_with_card": "Problemas no cartão",
-        "time_out": "Excedeu o limite de tentativas",
-        "refunded": "Reembolsado",
-    }
+    translations = {"pending": "Incompleto", "paid": "Pago", "not_authorized": "Não autorizado", "card_declined": "Cartão negado", "expired_card": "Cartão expirado", "blocked_card": "Cartão bloqueado", "canceled_card": "Cartão cancelado", "problems_with_card": "Problemas no cartão", "time_out": "Excedeu o limite de tentativas", "refunded": "Reembolsado", "waiting_payment": "Aguardando pagamento"}
 
     translated_status = translations.get(order_status)
     if translated_status:

@@ -254,6 +254,11 @@
         "es": "Esperando la confirmación del pago",
         "pt": "Aguardando a confirmação do pagamento"
     },
+    "Aguardando pagamento": {
+        "en": "Awaiting payment",
+        "es": "En espera de pago",
+        "pt": "Aguardando pagamento"
+    },
     "Aguarde enquanto processamos o seu pagamento": {
         "en": "Wait while we process your payment",
         "es": "Espera mientras procesamos tu pago",

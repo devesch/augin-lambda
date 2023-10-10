@@ -18,6 +18,7 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Aguardando pagamento",
     "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud.",
     "Algum arquivo dentro do .zip excede o tamanho máximo disponível em sua cloud.",
     "Não é possível adicionar este arquivo aos seus projetos pois a some dos arquivos dentro dele excede o tamanho máximo disponível em sua cloud.",
