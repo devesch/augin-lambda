@@ -1198,7 +1198,8 @@ input[list]::-ms-clear {
     background-color: rgba(0, 0, 0, 0.25);
 
     .panel-user-data__file-image {
-        z-index: -1;
+        z-index: 0;
+        filter: brightness(0.5);
     }
     
     .panel-user-data__hover-image {
@@ -1219,6 +1220,9 @@ input[list]::-ms-clear {
     height: 6rem;
     object-fit: cover;
     border-radius: 100%;
+
+    transition: filter 0.5s ease;
+
 }
 
 @keyframes spin {
