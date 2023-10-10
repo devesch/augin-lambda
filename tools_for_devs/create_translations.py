@@ -191,161 +191,19 @@ for file in os.listdir(api_source_path):
 
 translator = Translator()
 
-# translated_keys = [
-#     "Aruba",
-#     "Afghanistan",
-#     "Angola",
-#     "Anguilla",
-#     "Åland Islands",
-#     "Albania",
-#     "Andorra",
-#     "United Arab Emirates",
-#     "Argentina",
-#     "Armenia",
-#     "American Samoa",
-#     "Antarctica",
-#     "French Southern Territories",
-#     "Antigua and Barbuda",
-#     "Australia",
-#     "Austria",
-#     "Azerbaijan",
-#     "Burundi",
-#     "Belgium",
-#     "Benin",
-#     "Bonaire, Sint Eustatius and Saba",
-#     "Burkina Faso",
-#     "Bangladesh",
-#     "Bulgaria",
-#     "Bahrain",
-#     "Bahamas",
-#     "Bosnia and Herzegovina",
-#     "Saint Barthélemy",
-#     "Belarus",
-#     "Belize",
-#     "Bermuda",
-#     "Bolivia, Plurinational State of",
-#     "Brazil",
-#     "Barbados",
-#     "Brunei Darussalam",
-#     "Bhutan",
-#     "Bouvet Island",
-#     "Botswana",
-#     "Central African Republic",
-#     "Canada",
-#     "Cocos (Keeling) Islands",
-#     "Switzerland",
-#     "Chile",
-#     "China",
-#     "Côte d'Ivoire",
-#     "Cameroon",
-#     "Congo, The Democratic Republic of the",
-#     "Congo",
-#     "Cook Islands",
-#     "Colombia",
-#     "Comoros",
-#     "Cabo Verde",
-#     "Costa Rica",
-#     "Cuba",
-#     "Curaçao",
-#     "Christmas Island",
-#     "Cayman Islands",
-#     "Cyprus",
-#     "Czechia",
-#     "Germany",
-#     "Djibouti",
-#     "Dominica",
-#     "Denmark",
-#     "Dominican Republic",
-#     "Algeria",
-#     "Ecuador",
-#     "Egypt",
-#     "Eritrea",
-#     "Western Sahara",
-#     "Spain",
-#     "Estonia",
-#     "Ethiopia",
-#     "Finland",
-#     "Fiji",
-#     "Falkland Islands (Malvinas)",
-#     "France",
-#     "Faroe Islands",
-#     "Micronesia, Federated States of",
-#     "Gabon",
-#     "United Kingdom",
-#     "Georgia",
-#     "Guernsey",
-#     "Ghana",
-#     "Gibraltar",
-#     "Guinea",
-#     "Guadeloupe",
-#     "Gambia",
-#     "Guinea-Bissau",
-#     "Equatorial Guinea",
-#     "Greece",
-#     "Grenada",
-#     "Greenland",
-#     "Guatemala",
-#     "French Guiana",
-#     "Guam",
-#     "Guyana",
-#     "Hong Kong",
-#     "Heard Island and McDonald Islands",
-#     "Honduras",
-#     "Croatia",
-#     "Haiti",
-#     "Hungary",
-#     "Indonesia",
-#     "Isle of Man",
-#     "India",
-#     "British Indian Ocean Territory",
-#     "Ireland",
-#     "Iran, Islamic Republic of",
-#     "Iraq",
-#     "Iceland",
-#     "Israel",
-#     "Italy",
-#     "Jamaica",
-#     "Jersey",
-#     "Jordan",
-#     "Japan",
-#     "Kazakhstan",
-#     "Kenya",
-#     "Kyrgyzstan",
-#     "Cambodia",
-#     "Kiribati",
-#     "Saint Kitts and Nevis",
-#     "Korea, Republic of",
-#     "Kuwait",
-#     "Lao People's Democratic Republic",
-#     "Lebanon",
-#     "Liberia",
-#     "Libya",
-#     "Saint Lucia",
-#     "Liechtenstein",
-#     "Sri Lanka",
-#     "Lesotho",
-#     "Lithuania",
-#     "Luxembourg",
-#     "Latvia",
-#     "Macao",
-#     "Saint Martin (French part)",
-#     "Morocco",
-#     "Monaco",
-#     "Moldova, Republic of",
-#     "Madagascar",
-#     "Maldives",
-#     "Mexico",
-#     "Marshall Islands",
-#     "North Macedonia",
-# ]
+translated_keys = []
 
-# for key, val in country_data.items():
-#     if val["name"] not in translated_keys:
-#         print("Getting translation for " + val["name"])
-#         translations[val["name"]] = {"pt": "", "es": "", "en": val["name"]}
-#         translations[val["name"]]["pt"] = translator.translate(text=placeholder, src="en", dest="pt").text
-#         translations[val["name"]]["es"] = translator.translate(text=placeholder, src="en", dest="es").text
-#         translated_keys.append(val["name"])
+for key, val in country_data.items():
+    if val["name"] not in translated_keys and val["name"] not in ["Argentina"]:
+        print("Getting translation for " + val["name"])
+        translations[val["name"]] = {"pt": "", "es": "", "en": val["name"]}
+        try:
+            translations[val["name"]]["pt"] = translator.translate(text=val["name"], src="en", dest="pt").text
+            translations[val["name"]]["es"] = translator.translate(text=val["name"], src="en", dest="es").text
+        except:
+            translations[val["name"]]["pt"] = val["name"]
+            translations[val["name"]]["es"] = val["name"]
+        translated_keys.append(val["name"])
 
 for placeholder in filtered_placeholders:
     if not "_val" in placeholder and not "html_" in placeholder and not "js." in placeholder and not "_" in placeholder and not "<" in placeholder and not "header" in placeholder and not "menu" in placeholder and not "footer" in placeholder:
@@ -363,6 +221,12 @@ for placeholder in filtered_placeholders:
             translations[placeholder]["pt"] = translations[placeholder]["pt"][0].lower() + translations[placeholder]["pt"][1:]
             translations[placeholder]["es"] = translations[placeholder]["es"][0].lower() + translations[placeholder]["es"][1:]
             translations[placeholder]["en"] = translations[placeholder]["en"][0].lower() + translations[placeholder]["en"][1:]
+
+        if placeholder == placeholder.capitalize():
+            translations[placeholder]["pt"] = translations[placeholder]["pt"].capitalize()
+            translations[placeholder]["es"] = translations[placeholder]["es"].capitalize()
+            translations[placeholder]["en"] = translations[placeholder]["en"].capitalize()
+
 
 for key, translation in translations.items():
     translation["pt"] = translation["pt"].replace("augin", "Augin").replace("AUGIN", "Augin")

@@ -16,12 +16,12 @@
     },
     "1 ano atrás": {
         "en": "1 year ago",
-        "es": "hace 1 año",
+        "es": "Hace 1 año",
         "pt": "1 ano atrás"
     },
     "1 dia atrás": {
         "en": "1 day ago",
-        "es": "hace 1 día",
+        "es": "Hace 1 día",
         "pt": "1 dia atrás"
     },
     "1 hora atrás": {
@@ -31,12 +31,12 @@
     },
     "1 minuto atrás": {
         "en": "1 minute ago",
-        "es": "hace 1 minuto",
+        "es": "Hace 1 minuto",
         "pt": "1 minuto atrás"
     },
     "1 mês atrás": {
         "en": "1 month ago",
-        "es": "hace 1 mes",
+        "es": "Hace 1 mes",
         "pt": "1 mês atrás"
     },
     "1 segundo atrás": {
@@ -90,8 +90,8 @@
         "pt": "A duração do plano trial em dias deve ser um número"
     },
     "A imagem excede o tamanho máximo de 2mb": {
-        "en": "The image exceeds the maximum size of 2MB",
-        "es": "La imagen excede el tamaño máximo de 2 MB",
+        "en": "The image exceeds the maximum size of 2mb",
+        "es": "La imagen excede el tamaño máximo de 2 mb",
         "pt": "A imagem excede o tamanho máximo de 2mb"
     },
     "A maioria dos navegadores permite que você controle os cookies por meio de suas preferências de configuração": {
@@ -101,7 +101,7 @@
     },
     "A o upload da imagem não ocorreu com sucesso": {
         "en": "A the upload of the image did not occur successfully",
-        "es": "A La carga de la imagen no ocurrió con éxito",
+        "es": "A la carga de la imagen no ocurrió con éxito",
         "pt": "A o upload da imagem não ocorreu com sucesso"
     },
     "A ordem já excedeu o tempo máximo de pedido de reembolso": {
@@ -241,7 +241,7 @@
     },
     "Afghanistan": {
         "en": "Afghanistan",
-        "es": "Afeganistão",
+        "es": "Afganistán",
         "pt": "Afeganistão"
     },
     "Aguardando a confirmação do pagamento": {
@@ -280,9 +280,9 @@
         "pt": "Albânia"
     },
     "Algeria": {
-        "en": "Library",
-        "es": "Biblioteca",
-        "pt": "Algeria"
+        "en": "Algeria",
+        "es": "Argelia",
+        "pt": "Argélia"
     },
     "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta.": {
         "en": "Some files within .zip exceeds the maximum size of the supported by your account.",
@@ -315,7 +315,7 @@
         "pt": "Alterar email"
     },
     "Alterar para pessoa física": {
-        "en": "Change to Individuals",
+        "en": "Change to individuals",
         "es": "Cambiar a las personas",
         "pt": "Alterar para pessoa física"
     },
@@ -330,13 +330,13 @@
         "pt": "Alterar plano"
     },
     "Alterar senha": {
-        "en": "Change Password",
+        "en": "Change password",
         "es": "Cambiar contraseña",
         "pt": "Alterar senha"
     },
     "Alterações a esta política de privacidade": {
         "en": "Changes to this privacy policy",
-        "es": "Cambios a esta Política de privacidad",
+        "es": "Cambios a esta política de privacidad",
         "pt": "Alterações a esta política de privacidade"
     },
     "Altere sua senha": {
@@ -365,9 +365,9 @@
         "pt": "Anguilla"
     },
     "Antarctica": {
-        "en": "Antarctic",
-        "es": "Antártico",
-        "pt": "Antarctica"
+        "en": "Antarctica",
+        "es": "Antártida",
+        "pt": "Antártica"
     },
     "Antigo": {
         "en": "Old",
@@ -610,9 +610,9 @@
         "pt": "Benin"
     },
     "Bermuda": {
-        "en": "Shorts",
-        "es": "Bermudas",
-        "pt": "Bermuda"
+        "en": "Bermuda",
+        "es": "Islas bermudas",
+        "pt": "Bermudas"
     },
     "Bhutan": {
         "en": "Bhutan",
@@ -695,14 +695,14 @@
         "pt": "Buscar usuários"
     },
     "Cabo Verde": {
-        "en": "Cape Green",
+        "en": "Cabo Verde",
         "es": "Cabo Verde",
         "pt": "Cabo Verde"
     },
     "Cambodia": {
-        "en": "Carabody",
-        "es": "Carabía",
-        "pt": "Cambodia"
+        "en": "Cambodia",
+        "es": "Camboya",
+        "pt": "Camboja"
     },
     "Cameroon": {
         "en": "Cameroon",
@@ -725,7 +725,7 @@
         "pt": "Cancelados"
     },
     "Cancelando assinatura": {
-        "en": "CANCELING SIGNATURE",
+        "en": "Canceling signature",
         "es": "Firma de cancelación",
         "pt": "Cancelando assinatura"
     },
@@ -805,14 +805,14 @@
         "pt": "República da África Central"
     },
     "Central de ajuda": {
-        "en": "Help Center",
+        "en": "Help center",
         "es": "Centro de ayuda",
         "pt": "Central de ajuda"
     },
     "Chad": {
         "en": "Chad",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Chad",
+        "pt": "Chade"
     },
     "Chegou o seu código de verificação, copie e cole para finalizar o seu cadastro": {
         "en": "Your verification code has arrived, copy and paste to finish your registration",
@@ -870,9 +870,9 @@
         "pt": "Colômbia"
     },
     "Comoros": {
-        "en": "Dwelling",
-        "es": "Vivienda",
-        "pt": "Comoros"
+        "en": "Comoros",
+        "es": "Comoras",
+        "pt": "Comores"
     },
     "Compartilhados": {
         "en": "Shared",
@@ -930,7 +930,7 @@
         "pt": "Confirmar"
     },
     "Confirmar atualização de arquivo": {
-        "en": "Confirm File Update",
+        "en": "Confirm file update",
         "es": "Confirmar la actualización del archivo",
         "pt": "Confirmar atualização de arquivo"
     },
@@ -940,7 +940,7 @@
         "pt": "Confirmar exclusão de arquivo"
     },
     "Confirmar exclusão de pasta": {
-        "en": "Confirm Folder Exclusion",
+        "en": "Confirm folder exclusion",
         "es": "Confirmar la exclusión de la carpeta",
         "pt": "Confirmar exclusão de pasta"
     },
@@ -1046,7 +1046,7 @@
     },
     "Copiado!": {
         "en": "Copied!",
-        "es": "¡Copiado!",
+        "es": "¡copiado!",
         "pt": "Copiado!"
     },
     "Copiar": {
@@ -1110,7 +1110,7 @@
         "pt": "Criar plano"
     },
     "Criar produto": {
-        "en": "Create Product",
+        "en": "Create product",
         "es": "Crear productos",
         "pt": "Criar produto"
     },
@@ -1285,7 +1285,7 @@
         "pt": "Desconto %"
     },
     "Desconto desconto total": {
-        "en": "Total Discount",
+        "en": "Total discount",
         "es": "Descuento total",
         "pt": "Desconto desconto total"
     },
@@ -1465,8 +1465,8 @@
         "pt": "Djibuti"
     },
     "Dominica": {
-        "en": "Dominated",
-        "es": "Dominado",
+        "en": "Dominica",
+        "es": "Dominio",
         "pt": "Dominica"
     },
     "Dominican Republic": {
@@ -1495,9 +1495,9 @@
         "pt": "Economize com pagamento anual"
     },
     "Ecuador": {
-        "en": "Ecurator",
-        "es": "Ecurador",
-        "pt": "Ecuador"
+        "en": "Ecuador",
+        "es": "Ecuador",
+        "pt": "Equador"
     },
     "Editando projeto federado": {
         "en": "Editing federated project",
@@ -1521,8 +1521,8 @@
     },
     "El Salvador": {
         "en": "El Salvador",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "El Salvador",
+        "pt": "El Salvador"
     },
     "Ele nos ajuda a analisar o comportamento dos usuários e a melhorar o desempenho e a experiência do usuário em nosso site.": {
         "en": "It helps us analyze user behavior and improve user performance and experience on our site.",
@@ -1591,7 +1591,7 @@
     },
     "Endereço": {
         "en": "Address",
-        "es": "DIRECCIÓN",
+        "es": "Dirección",
         "pt": "Endereço"
     },
     "Endereço 2": {
@@ -1620,9 +1620,9 @@
         "pt": "Guiné Equatorial"
     },
     "Eritrea": {
-        "en": "Erytrea",
-        "es": "Erytrea",
-        "pt": "Eritrea"
+        "en": "Eritrea",
+        "es": "Eritrea",
+        "pt": "Eritreia"
     },
     "Erro": {
         "en": "Error",
@@ -1666,7 +1666,7 @@
     },
     "Escolher novo projeto para federado": {
         "en": "Choose new project for federated",
-        "es": "Elija un nuevo proyecto para Federated",
+        "es": "Elija un nuevo proyecto para federated",
         "pt": "Escolher novo projeto para federado"
     },
     "Espaço em nuvem (MBs)": {
@@ -1901,8 +1901,8 @@
     },
     "Eswatini": {
         "en": "Eswatini",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Eswatini",
+        "pt": "Eswatini"
     },
     "Ethiopia": {
         "en": "Ethiopia",
@@ -1915,7 +1915,7 @@
         "pt": "Eu li e concordo com o contrato de"
     },
     "Evento não verificado pelo stripe.": {
-        "en": "Event not verified by the Stripe.",
+        "en": "Event not verified by the stripe.",
         "es": "Evento no verificado por la franja.",
         "pt": "Evento não verificado pelo stripe."
     },
@@ -1925,7 +1925,7 @@
         "pt": "Excedeu o limite de tentativas"
     },
     "Excluindo método de pagamento": {
-        "en": "Deleting Payment Method",
+        "en": "Deleting payment method",
         "es": "Eliminar el método de pago",
         "pt": "Excluindo método de pagamento"
     },
@@ -1970,9 +1970,9 @@
         "pt": "Falhou"
     },
     "Falkland Islands (Malvinas)": {
-        "en": "FALKLAND ISLANDS (Falklands)",
+        "en": "Falkland Islands (Malvinas)",
         "es": "Islas Malvinas (Malvinas)",
-        "pt": "Falkland Islands (Malvinas)"
+        "pt": "Ilhas Falkland (Malvinas)"
     },
     "Faroe Islands": {
         "en": "Faroe Islands",
@@ -2081,18 +2081,18 @@
     },
     "France": {
         "en": "France",
-        "es": "Francia",
-        "pt": "França"
+        "es": "France",
+        "pt": "France"
     },
     "French Guiana": {
-        "en": "French Guyana",
-        "es": "Guyana francesa",
-        "pt": "French Guiana"
+        "en": "French Guiana",
+        "es": "Guayana Francesa",
+        "pt": "Guiana Francesa"
     },
     "French Polynesia": {
         "en": "French Polynesia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Polinesia francés",
+        "pt": "Polinésia Francesa"
     },
     "French Southern Territories": {
         "en": "French Southern Territories",
@@ -2170,14 +2170,14 @@
         "pt": "Groenlândia"
     },
     "Grenada": {
-        "en": "Grenad",
-        "es": "Granado",
-        "pt": "Grenada"
+        "en": "Grenada",
+        "es": "Granada",
+        "pt": "Granada"
     },
     "Guadeloupe": {
-        "en": "Gadeloupe",
-        "es": "Gadeloupo",
-        "pt": "Guadeloupe"
+        "en": "Guadeloupe",
+        "es": "Guadeloupo",
+        "pt": "Guadalupe"
     },
     "Guam": {
         "en": "Guam",
@@ -2200,9 +2200,9 @@
         "pt": "Guiné"
     },
     "Guinea-Bissau": {
-        "en": "Guinea-bissau",
+        "en": "Guinea-Bissau",
         "es": "Guinea-Bissau",
-        "pt": "Guinea-Bissau"
+        "pt": "Guiné-bissau"
     },
     "Guyana": {
         "en": "Guyana",
@@ -2251,8 +2251,8 @@
     },
     "Holy See (Vatican City State)": {
         "en": "Holy See (Vatican City State)",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Santa Sede (Estado de la Ciudad del Vaticano)",
+        "pt": "Santa See (Estado da cidade do Vaticano)"
     },
     "Honduras": {
         "en": "Honduras",
@@ -2355,12 +2355,12 @@
         "pt": "Indonesia"
     },
     "Informações do usuário": {
-        "en": "User Information",
+        "en": "User information",
         "es": "Informacion del usuario",
         "pt": "Informações do usuário"
     },
     "Informaçōes do pedido": {
-        "en": "Order Information",
+        "en": "Order information",
         "es": "Información del pedido",
         "pt": "Informaçōes do pedido"
     },
@@ -2460,9 +2460,9 @@
         "pt": "Irlanda"
     },
     "Isle of Man": {
-        "en": "Isle of man",
+        "en": "Isle of Man",
         "es": "Isla del hombre",
-        "pt": "Isle of Man"
+        "pt": "Ilha de Homem"
     },
     "Israel": {
         "en": "Israel",
@@ -2501,8 +2501,8 @@
     },
     "Japan": {
         "en": "Japan",
-        "es": "Japão",
-        "pt": "Japão"
+        "es": "Japan",
+        "pt": "Japan"
     },
     "Jersey": {
         "en": "Jersey",
@@ -2551,8 +2551,8 @@
     },
     "Korea, Democratic People's Republic of": {
         "en": "Korea, Democratic People's Republic of",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "República de Corea, Popular Democrática de",
+        "pt": "Coréia, República Popular Democrática da"
     },
     "Korea, Republic of": {
         "en": "Korea, Republic of",
@@ -2596,8 +2596,8 @@
     },
     "Libya": {
         "en": "Libya",
-        "es": "Libia",
-        "pt": "Libia"
+        "es": "Libya",
+        "pt": "Libya"
     },
     "Liechtenstein": {
         "en": "Liechtenstein",
@@ -2625,7 +2625,7 @@
         "pt": "Link ativo"
     },
     "Link do projeto ou pasta": {
-        "en": "Project Link or Folder",
+        "en": "Project link or folder",
         "es": "Enlace o carpeta del proyecto",
         "pt": "Link do projeto ou pasta"
     },
@@ -2651,8 +2651,8 @@
     },
     "Lithuania": {
         "en": "Lithuania",
-        "es": "Lituania",
-        "pt": "Lituânia"
+        "es": "Lithuania",
+        "pt": "Lithuania"
     },
     "Logar": {
         "en": "Log into",
@@ -2669,11 +2669,6 @@
         "es": "Logotipo Augin",
         "pt": "Logo Augin"
     },
-    "Logo Magipix": {
-        "en": "Logo Magipix",
-        "es": "Logo magipix",
-        "pt": "Logo Magipix"
-    },
     "Luxembourg": {
         "en": "Luxembourg",
         "es": "Luxemburgo",
@@ -2687,32 +2682,32 @@
     "Madagascar": {
         "en": "Madagascar",
         "es": "Madagascar",
-        "pt": "Madagáscar"
+        "pt": "Madagascar"
     },
     "Malawi": {
         "en": "Malawi",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Malawi",
+        "pt": "Malawi"
     },
     "Malaysia": {
         "en": "Malaysia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Malaysia",
+        "pt": "Malaysia"
     },
     "Maldives": {
-        "en": "Mulling",
-        "es": "Mullido",
+        "en": "Maldives",
+        "es": "Maldives",
         "pt": "Maldives"
     },
     "Mali": {
         "en": "Mali",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Malí",
+        "pt": "Mali"
     },
     "Malta": {
         "en": "Malta",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Malta",
+        "pt": "Malta"
     },
     "Marshall Islands": {
         "en": "Marshall Islands",
@@ -2721,23 +2716,23 @@
     },
     "Martinique": {
         "en": "Martinique",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Martinica",
+        "pt": "Martinica"
     },
     "Mauritania": {
         "en": "Mauritania",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Mauritania",
+        "pt": "Mauritânia"
     },
     "Mauritius": {
         "en": "Mauritius",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Mauritius",
+        "pt": "Mauritius"
     },
     "Mayotte": {
         "en": "Mayotte",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Mayotte",
+        "pt": "Mayotte"
     },
     "Meus Projetos": {
         "en": "My projects",
@@ -2755,9 +2750,9 @@
         "pt": "México"
     },
     "Micronesia, Federated States of": {
-        "en": "Microesia, Federated States of",
-        "es": "Microesia, estados federados de",
-        "pt": "Micronesia, Federated States of"
+        "en": "Micronesia, Federated States of",
+        "es": "Micronesia, estados federados de",
+        "pt": "Micronésia, estados federados de"
     },
     "Modelos": {
         "en": "Models",
@@ -2770,7 +2765,7 @@
         "pt": "Models"
     },
     "Modificar configurações de cookies": {
-        "en": "Modify Cookies Settings",
+        "en": "Modify cookies settings",
         "es": "Modificar la configuración de las cookies",
         "pt": "Modificar configurações de cookies"
     },
@@ -2780,9 +2775,9 @@
         "pt": "Moeda"
     },
     "Moldova, Republic of": {
-        "en": "MOLDOVA, Republic of",
+        "en": "Moldova, Republic of",
         "es": "Moldavia, República de",
-        "pt": "Moldova, Republic of"
+        "pt": "Moldávia, República de"
     },
     "Monaco": {
         "en": "Monaco",
@@ -2791,23 +2786,23 @@
     },
     "Mongolia": {
         "en": "Mongolia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Mongolia",
+        "pt": "Mongólia"
     },
     "Montenegro": {
         "en": "Montenegro",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Montenegro",
+        "pt": "Montenegro"
     },
     "Montserrat": {
         "en": "Montserrat",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Montserrat",
+        "pt": "Montserrat"
     },
     "Morocco": {
         "en": "Morocco",
-        "es": "Marruecos",
-        "pt": "Marrocos"
+        "es": "Morocco",
+        "pt": "Morocco"
     },
     "Mostrando Todos": {
         "en": "Showing all",
@@ -2831,8 +2826,8 @@
     },
     "Mozambique": {
         "en": "Mozambique",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Mozambique",
+        "pt": "Mozambique"
     },
     "Mude sua senha": {
         "en": "Change your password",
@@ -2841,8 +2836,8 @@
     },
     "Myanmar": {
         "en": "Myanmar",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Myanmar",
+        "pt": "Mianmar"
     },
     "Método": {
         "en": "Method",
@@ -2866,13 +2861,13 @@
     },
     "Namibia": {
         "en": "Namibia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Namibia",
+        "pt": "Namíbia"
     },
     "Nauru": {
         "en": "Nauru",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Nauru",
+        "pt": "Nauru"
     },
     "Necessário upgrade de plano": {
         "en": "Plan upgrade needed",
@@ -2900,12 +2895,12 @@
         "pt": "Nenhum arquivo encontrado com o link fornecido"
     },
     "Nenhum cnpj informado no post": {
-        "en": "No CNPJ informed in the post",
-        "es": "No CNPJ informado en la publicación",
+        "en": "No cnpj informed in the post",
+        "es": "No cnpj informado en la publicación",
         "pt": "Nenhum cnpj informado no post"
     },
     "Nenhum command no post": {
-        "en": "No Command in the post",
+        "en": "No command in the post",
         "es": "No hay comando en la publicación",
         "pt": "Nenhum command no post"
     },
@@ -2985,7 +2980,7 @@
         "pt": "Nenhum tipo de compra enviado."
     },
     "Nenhum usuário encontrado": {
-        "en": "No User Found",
+        "en": "No user found",
         "es": "Usuario no encontrado",
         "pt": "Nenhum usuário encontrado"
     },
@@ -3056,43 +3051,43 @@
     },
     "Nepal": {
         "en": "Nepal",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Nepal",
+        "pt": "Nepal"
     },
     "Netherlands": {
         "en": "Netherlands",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Países bajos",
+        "pt": "Holanda"
     },
     "New Caledonia": {
         "en": "New Caledonia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Nueva Caledonia",
+        "pt": "Nova Caledônia"
     },
     "New Zealand": {
         "en": "New Zealand",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "New Zealand",
+        "pt": "New Zealand"
     },
     "Nicaragua": {
         "en": "Nicaragua",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Nicaragua",
+        "pt": "Nicarágua"
     },
     "Niger": {
         "en": "Niger",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Niger",
+        "pt": "Niger"
     },
     "Nigeria": {
         "en": "Nigeria",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Nigeria",
+        "pt": "Nigéria"
     },
     "Niue": {
         "en": "Niue",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Niue",
+        "pt": "Niue"
     },
     "No entanto, se você limitar a capacidade dos sites de definir cookies, poderá piorar sua experiência geral do usuário, pois não será mais personalizado para você": {
         "en": "However, if you limit the capacity of the websites to define cookies, you can make your general user experience worse, as it will no longer be personalized for you",
@@ -3125,7 +3120,7 @@
         "pt": "Nome atual do arquivo"
     },
     "Nome atual do projeto": {
-        "en": "Current Project Name",
+        "en": "Current project name",
         "es": "Nombre del proyecto actual",
         "pt": "Nome atual do projeto"
     },
@@ -3150,14 +3145,14 @@
         "pt": "Nome do federado"
     },
     "Nome do projeto federado": {
-        "en": "Federated Project Name",
+        "en": "Federated project name",
         "es": "Nombre del proyecto federado",
         "pt": "Nome do projeto federado"
     },
     "Norfolk Island": {
         "en": "Norfolk Island",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Isla Norfolk",
+        "pt": "Ilha de Norfolk"
     },
     "North Macedonia": {
         "en": "North Macedonia",
@@ -3166,13 +3161,13 @@
     },
     "Northern Mariana Islands": {
         "en": "Northern Mariana Islands",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Islas Marianas del Norte",
+        "pt": "Ilhas do norte da Mariana"
     },
     "Norway": {
         "en": "Norway",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Noruega",
+        "pt": "Noruega"
     },
     "Nossa equipe está trabalhando para resolver a situação o mais rápido possível.": {
         "en": "Our team is working to resolve the situation as soon as possible.",
@@ -3205,7 +3200,7 @@
         "pt": "Nova Senha"
     },
     "Nova senha": {
-        "en": "New Password",
+        "en": "New password",
         "es": "Nueva contraseña",
         "pt": "Nova senha"
     },
@@ -3471,7 +3466,7 @@
     },
     "O que são cookies": {
         "en": "What are cookies",
-        "es": "¿Qué son las galletas?",
+        "es": "¿qué son las galletas?",
         "pt": "O que são cookies"
     },
     "O tamanho de federado máximo deve ser um número": {
@@ -3506,8 +3501,8 @@
     },
     "Oman": {
         "en": "Oman",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Omán",
+        "pt": "Omã"
     },
     "Opcional: Preencha para proteger seu link": {
         "en": "Optional: Fill in to protect your link",
@@ -3601,28 +3596,28 @@
     },
     "Pakistan": {
         "en": "Pakistan",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Pakistán",
+        "pt": "Paquistão"
     },
     "Palau": {
         "en": "Palau",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Palau",
+        "pt": "Palau"
     },
     "Palestine, State of": {
         "en": "Palestine, State of",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Palestina, estado de",
+        "pt": "Palestina, estado de"
     },
     "Panama": {
         "en": "Panama",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Panamá",
+        "pt": "Panamá"
     },
     "Papua New Guinea": {
         "en": "Papua New Guinea",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Papúa Nueva Guinea",
+        "pt": "Papua Nova Guiné"
     },
     "Para criar federados é necessário ter mais de um arquivo e todos eles serem do tipo IFC": {
         "en": "To create federates you need to have more than one file and all of them are IFC type",
@@ -3631,8 +3626,8 @@
     },
     "Paraguay": {
         "en": "Paraguay",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Paraguay",
+        "pt": "Paraguai"
     },
     "Pasta": {
         "en": "Folder",
@@ -3655,7 +3650,7 @@
         "pt": "Pasta de destino não pertence a este usuário."
     },
     "Pasta de origem não encontrada": {
-        "en": "Origin Folder Not Found",
+        "en": "Origin folder not found",
         "es": "Carpeta de origen no encontrada",
         "pt": "Pasta de origem não encontrada"
     },
@@ -3721,8 +3716,8 @@
     },
     "Peru": {
         "en": "Peru",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Perú",
+        "pt": "Peru"
     },
     "Período de cobrança": {
         "en": "Billing period",
@@ -3736,8 +3731,8 @@
     },
     "Philippines": {
         "en": "Philippines",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Philippines",
+        "pt": "Philippines"
     },
     "Phone": {
         "en": "Phone",
@@ -3746,8 +3741,8 @@
     },
     "Pitcairn": {
         "en": "Pitcairn",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Pitcairn",
+        "pt": "Pitcairn"
     },
     "Pix": {
         "en": "Pix",
@@ -3771,8 +3766,8 @@
     },
     "Poland": {
         "en": "Poland",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Polonia",
+        "pt": "Polônia"
     },
     "Política de Cookies": {
         "en": "Cookies policy",
@@ -3790,7 +3785,7 @@
         "pt": "Política de cookies"
     },
     "Política de privacidade": {
-        "en": "Privacy Policy",
+        "en": "Privacy policy",
         "es": "Política de privacidad",
         "pt": "Política de privacidade"
     },
@@ -3866,7 +3861,7 @@
     },
     "Por favor marque que está de acordo com nossa política de privacidade.": {
         "en": "Please mark that it is in accordance with our privacy policy.",
-        "es": "Marque que esté de acuerdo con nuestra Política de privacidad.",
+        "es": "Marque que esté de acuerdo con nuestra política de privacidad.",
         "pt": "Por favor marque que está de acordo com nossa política de privacidade."
     },
     "Por favor marque que está de acordo com os termos.": {
@@ -3901,13 +3896,13 @@
     },
     "Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade": {
         "en": "How long the user will have a discount on their monthly/annuity",
-        "es": "¿Cuánto tiempo el usuario tendrá un descuento en su mensual?",
+        "es": "¿cuánto tiempo el usuario tendrá un descuento en su mensual?",
         "pt": "Por quanto tempo o usuário terá desconto em sua mensalidade/anuidade"
     },
     "Portugal": {
         "en": "Portugal",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Portugal",
+        "pt": "Portugal"
     },
     "Precisa de ajuda? Mande uma mensagem para nosso": {
         "en": "Need help?Send a message to our",
@@ -3920,7 +3915,7 @@
         "pt": "Preencha o captcha"
     },
     "Preferências de idioma": {
-        "en": "Language Preferences",
+        "en": "Language preferences",
         "es": "Preferencias del idioma",
         "pt": "Preferências de idioma"
     },
@@ -3960,7 +3955,7 @@
         "pt": "Problema temporário"
     },
     "Problemas no cartão": {
-        "en": "Card Problems",
+        "en": "Card problems",
         "es": "Problemas de tarjetas",
         "pt": "Problemas no cartão"
     },
@@ -3990,7 +3985,7 @@
         "pt": "Projetos"
     },
     "Projetos federado": {
-        "en": "Federated Projects",
+        "en": "Federated projects",
         "es": "Proyectos federados",
         "pt": "Projetos federado"
     },
@@ -4026,8 +4021,8 @@
     },
     "Puerto Rico": {
         "en": "Puerto Rico",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Puerto Rico",
+        "pt": "Porto Rico"
     },
     "Página inicial": {
         "en": "Home page",
@@ -4041,8 +4036,8 @@
     },
     "Qatar": {
         "en": "Qatar",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Katar",
+        "pt": "Catar"
     },
     "Qtd": {
         "en": "QTD",
@@ -4060,7 +4055,7 @@
         "pt": "Quantidade de dispositivos"
     },
     "Quantidade de pessoas no team play": {
-        "en": "Number of people in Team Play",
+        "en": "Number of people in team play",
         "es": "Número de personas en el juego del equipo",
         "pt": "Quantidade de pessoas no team play"
     },
@@ -4165,14 +4160,14 @@
         "pt": "Reprocessar"
     },
     "Resumo do pedido": {
-        "en": "Order Summary",
+        "en": "Order summary",
         "es": "Resumen de pedido",
         "pt": "Resumo do pedido"
     },
     "Romania": {
         "en": "Romania",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Rumania",
+        "pt": "Romênia"
     },
     "Rua": {
         "en": "Road",
@@ -4181,18 +4176,18 @@
     },
     "Russian Federation": {
         "en": "Russian Federation",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Federación Rusa",
+        "pt": "Federação Russa"
     },
     "Rwanda": {
         "en": "Rwanda",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Ruanda",
+        "pt": "Ruanda"
     },
     "Réunion": {
         "en": "Réunion",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Reunión",
+        "pt": "Reunião"
     },
     "Saint Barthélemy": {
         "en": "Saint Barthélemy",
@@ -4201,8 +4196,8 @@
     },
     "Saint Helena, Ascension and Tristan da Cunha": {
         "en": "Saint Helena, Ascension and Tristan da Cunha",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Santa Helena, Ascensión y Tristan da Cunha",
+        "pt": "Saint Helena, Ascensão e Tristan da Cunha"
     },
     "Saint Kitts and Nevis": {
         "en": "Saint Kitts and Nevis",
@@ -4215,19 +4210,19 @@
         "pt": "Santa Lúcia"
     },
     "Saint Martin (French part)": {
-        "en": "Saint Martin (French Part)",
+        "en": "Saint Martin (French part)",
         "es": "San Martín (parte francesa)",
-        "pt": "Saint Martin (French part)"
+        "pt": "Saint Martin (parte francesa)"
     },
     "Saint Pierre and Miquelon": {
         "en": "Saint Pierre and Miquelon",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Saint Pierre y Miquelon",
+        "pt": "São Pierre e Miquelon"
     },
     "Saint Vincent and the Grenadines": {
         "en": "Saint Vincent and the Grenadines",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "San Vicente y las Granadinas",
+        "pt": "São Vicente e Granadinas"
     },
     "Sair": {
         "en": "To go out",
@@ -4241,23 +4236,23 @@
     },
     "Samoa": {
         "en": "Samoa",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Samoa",
+        "pt": "Samoa"
     },
     "San Marino": {
         "en": "San Marino",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "San Marino",
+        "pt": "San Marino"
     },
     "Sao Tome and Principe": {
         "en": "Sao Tome and Principe",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Santo Tomé y Príncipe",
+        "pt": "São Tomé e Príncipe"
     },
     "Saudi Arabia": {
         "en": "Saudi Arabia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Arabia Saudita",
+        "pt": "Arábia Saudita"
     },
     "Se fizermos alterações significativas, informaremos você, mas verifique regularmente esta Política para garantir que você esteja ciente da versão mais atualizada": {
         "en": "If we make significant changes, we will inform you, but check this policy regularly to ensure that you are aware of the most up -to -date version",
@@ -4291,8 +4286,8 @@
     },
     "Senegal": {
         "en": "Senegal",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Senegal",
+        "pt": "Senegal"
     },
     "Senha": {
         "en": "Password",
@@ -4321,8 +4316,8 @@
     },
     "Serbia": {
         "en": "Serbia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Serbia",
+        "pt": "Serbia"
     },
     "Serviço": {
         "en": "Service",
@@ -4365,7 +4360,7 @@
         "pt": "Seu Email"
     },
     "Seu código de verficação de email": {
-        "en": "Your Email Verification Code",
+        "en": "Your email verification code",
         "es": "Su código de verificación por correo electrónico",
         "pt": "Seu código de verficação de email"
     },
@@ -4411,8 +4406,8 @@
     },
     "Seychelles": {
         "en": "Seychelles",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Seychelles",
+        "pt": "Seychelles"
     },
     "Short Cód": {
         "en": "Short Code",
@@ -4421,8 +4416,8 @@
     },
     "Sierra Leone": {
         "en": "Sierra Leone",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Sierra Leona",
+        "pt": "Serra Leoa"
     },
     "Sim": {
         "en": "Yes",
@@ -4431,23 +4426,23 @@
     },
     "Singapore": {
         "en": "Singapore",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Singapur",
+        "pt": "Cingapura"
     },
     "Sint Maarten (Dutch part)": {
         "en": "Sint Maarten (Dutch part)",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Sint Maarten (parte holandesa)",
+        "pt": "Sint Maarten (parte holandesa)"
     },
     "Slovakia": {
         "en": "Slovakia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Eslovaquia",
+        "pt": "Eslováquia"
     },
     "Slovenia": {
         "en": "Slovenia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Eslovenia",
+        "pt": "Eslovênia"
     },
     "Solicitaremos seu consentimento antes que quaisquer cookies não essenciais sejam colocados em seu dispositivo": {
         "en": "We will request your consent before any non -essential cookies are placed on your device",
@@ -4455,19 +4450,19 @@
         "pt": "Solicitaremos seu consentimento antes que quaisquer cookies não essenciais sejam colocados em seu dispositivo"
     },
     "Solicitação de troca de email": {
-        "en": "Email Exchange Request",
+        "en": "Email exchange request",
         "es": "Solicitud de intercambio de correo electrónico",
         "pt": "Solicitação de troca de email"
     },
     "Solomon Islands": {
         "en": "Solomon Islands",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Islas Salomón",
+        "pt": "Ilhas Salomão"
     },
     "Somalia": {
         "en": "Somalia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Somalia",
+        "pt": "Somália"
     },
     "Somos uma solução que busca otimizar a sua comunicação, com clientes e colaboradores, no dia-a-dia": {
         "en": "We are a solution that seeks to optimize your communication, with customers and employees, in everyday life",
@@ -4476,18 +4471,18 @@
     },
     "South Africa": {
         "en": "South Africa",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Sudáfrica",
+        "pt": "África do Sul"
     },
     "South Georgia and the South Sandwich Islands": {
         "en": "South Georgia and the South Sandwich Islands",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "South Georgia and the South Sandwich Islands",
+        "pt": "South Georgia and the South Sandwich Islands"
     },
     "South Sudan": {
         "en": "South Sudan",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Sudán del Sur",
+        "pt": "Sudão do Sul"
     },
     "Spain": {
         "en": "Spain",
@@ -4576,8 +4571,8 @@
     },
     "Sudan": {
         "en": "Sudan",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Sudán",
+        "pt": "Sudão"
     },
     "Suporte": {
         "en": "Support",
@@ -4586,18 +4581,18 @@
     },
     "Suriname": {
         "en": "Suriname",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Surinam",
+        "pt": "Suriname"
     },
     "Svalbard and Jan Mayen": {
         "en": "Svalbard and Jan Mayen",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Svalbard y Jan Mayen",
+        "pt": "Svalbard e Jan Mayen"
     },
     "Sweden": {
         "en": "Sweden",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Suecia",
+        "pt": "Suécia"
     },
     "Switzerland": {
         "en": "Switzerland",
@@ -4606,8 +4601,8 @@
     },
     "Syrian Arab Republic": {
         "en": "Syrian Arab Republic",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "República Árabe Siria",
+        "pt": "República Árabe da Síria"
     },
     "São amplamente utilizados para fazer com que os sites funcionem, ou funcionem com mais eficiência, bem como para fornecer informações aos proprietários do site": {
         "en": "They are widely used to make sites work, or work more efficiently, as well as to provide information to the site owners",
@@ -4631,13 +4626,13 @@
     },
     "Taiwan, Province of China": {
         "en": "Taiwan, Province of China",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Taiwan, provincia de China",
+        "pt": "Taiwan, província da China"
     },
     "Tajikistan": {
         "en": "Tajikistan",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Tayikistán",
+        "pt": "Tajiquistão"
     },
     "Tamanho": {
         "en": "Size",
@@ -4676,8 +4671,8 @@
     },
     "Tanzania, United Republic of": {
         "en": "Tanzania, United Republic of",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Tanzania, República Unida de",
+        "pt": "Tanzânia, República Unida de"
     },
     "TeamPlay para até ": {
         "en": "Teamplay for even",
@@ -4711,7 +4706,7 @@
     },
     "Termos e condiçōes": {
         "en": "Terms and conditions",
-        "es": "Términos y Condiciones",
+        "es": "Términos y condiciones",
         "pt": "Termos e condiçōes"
     },
     "Testar trial": {
@@ -4736,13 +4731,13 @@
     },
     "Thailand": {
         "en": "Thailand",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Tailandia",
+        "pt": "Tailândia"
     },
     "Timor-Leste": {
         "en": "Timor-Leste",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Timor-Leste",
+        "pt": "Timor-Leste"
     },
     "Tipo": {
         "en": "Type",
@@ -4766,18 +4761,18 @@
     },
     "Togo": {
         "en": "Togo",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Ir",
+        "pt": "Ir"
     },
     "Tokelau": {
         "en": "Tokelau",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Tokelau",
+        "pt": "Tokelau"
     },
     "Tonga": {
         "en": "Tonga",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Tonga",
+        "pt": "Tonga"
     },
     "Tornar padrão": {
         "en": "Default",
@@ -4806,8 +4801,8 @@
     },
     "Trinidad and Tobago": {
         "en": "Trinidad and Tobago",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Trinidad y Tobago",
+        "pt": "Trinidad e Tobago"
     },
     "Troca de dispositivos ativos (Max/Mês)": {
         "en": "Change of active devices (MAX/MONTH)",
@@ -4816,38 +4811,38 @@
     },
     "Tunisia": {
         "en": "Tunisia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Túnez",
+        "pt": "Tunísia"
     },
     "Turkey": {
         "en": "Turkey",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Turkey",
+        "pt": "Turkey"
     },
     "Turkmenistan": {
         "en": "Turkmenistan",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Turkmenistán",
+        "pt": "Turquemenistão"
     },
     "Turks and Caicos Islands": {
         "en": "Turks and Caicos Islands",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Islas Turcas y Caicos",
+        "pt": "Ilhas Turcas e Caicos"
     },
     "Tuvalu": {
         "en": "Tuvalu",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Tuvalu",
+        "pt": "Tuvalu"
     },
     "Uganda": {
         "en": "Uganda",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Uganda",
+        "pt": "Uganda"
     },
     "Ukraine": {
         "en": "Ukraine",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Ucrania",
+        "pt": "Ucrânia"
     },
     "Um dos modelos não pertence a este usuário": {
         "en": "One of the models does not belong to this user",
@@ -4906,13 +4901,13 @@
     },
     "United States": {
         "en": "United States",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Estados Unidos",
+        "pt": "Estados Unidos"
     },
     "United States Minor Outlying Islands": {
         "en": "United States Minor Outlying Islands",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Islas menores de los Estados Unidos.",
+        "pt": "Ilhas Menores Estados Unidos"
     },
     "Upgrade de plano": {
         "en": "Plan upgrade",
@@ -4931,8 +4926,8 @@
     },
     "Uruguay": {
         "en": "Uruguay",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Uruguay",
+        "pt": "Uruguai"
     },
     "Usamos o Mouseflow para entender como os usuários interagem com nosso site, ajudando-nos a melhorar a funcionalidade de nosso site e sua experiência de usuário": {
         "en": "We use mouseflow to understand how users interact with our site, helping us improve the functionality of our site and their user experience",
@@ -4996,8 +4991,8 @@
     },
     "Uzbekistan": {
         "en": "Uzbekistan",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Uzbekistán",
+        "pt": "Uzbequistão"
     },
     "Validar Email": {
         "en": "Validate Email",
@@ -5016,8 +5011,8 @@
     },
     "Vanuatu": {
         "en": "Vanuatu",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Vanuatu",
+        "pt": "Vanuatu"
     },
     "Veja como os usamos": {
         "en": "See how we use them",
@@ -5041,8 +5036,8 @@
     },
     "Venezuela, Bolivarian Republic of": {
         "en": "Venezuela, Bolivarian Republic of",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Venezuela, República Bolíva de",
+        "pt": "Venezuela, República Bolivariana de"
     },
     "Ver Mais": {
         "en": "View more",
@@ -5056,18 +5051,18 @@
     },
     "Viet Nam": {
         "en": "Viet Nam",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Vietnam",
+        "pt": "Vietnã"
     },
     "Virgin Islands, British": {
         "en": "Virgin Islands, British",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Islas Vírgenes, Británica",
+        "pt": "Ilhas Virgens, britânico"
     },
     "Virgin Islands, U.S.": {
         "en": "Virgin Islands, U.S.",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Islas Vírgenes, EE. UU.",
+        "pt": "Ilhas Virgens, EUA"
     },
     "Visto por último": {
         "en": "Last seen",
@@ -5186,8 +5181,8 @@
     },
     "Wallis and Futuna": {
         "en": "Wallis and Futuna",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Wallis y Futuna",
+        "pt": "Wallis e Futuna"
     },
     "Western Sahara": {
         "en": "Western Sahara",
@@ -5196,18 +5191,18 @@
     },
     "Yemen": {
         "en": "Yemen",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Yemen",
+        "pt": "Yemen"
     },
     "Zambia": {
         "en": "Zambia",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Zambia",
+        "pt": "Zâmbia"
     },
     "Zimbabwe": {
         "en": "Zimbabwe",
-        "es": "Carpeta_is_accessible_val",
-        "pt": "FASTER_IS_ACCESSIBLE_VAL"
+        "es": "Zimbabue",
+        "pt": "Zimbábue"
     },
     "ano": {
         "en": "year",
