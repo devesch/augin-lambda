@@ -154,7 +154,7 @@ class PanelUserData(PanelPage, UserPage):
                 return self.render_get_with_error("Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra")
 
         if user_changed_email:
-            self.send_email_modified_email(self.user_email, self.user.user_auth_token, self.post["user_email"])
+            self.send_email_modified_email(self.user.user_email, self.user.user_auth_token, self.post["user_email"])
             return self.render_get_with_error("Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o seu novo email solicitado")
 
         return self.render_get_with_error("Perfil atualizado com sucesso")
