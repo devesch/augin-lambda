@@ -1,6 +1,5 @@
 from python_web_frame.backoffice_page import BackofficePage
 from objects.BackofficeData import get_backoffice_data
-from objects.User import load_user
 from utils.utils.Validation import Validation
 from utils.AWS.Dynamo import Dynamo
 import json
@@ -16,6 +15,9 @@ class BackofficeUsers(BackofficePage):
         backoffice_data = get_backoffice_data()
 
         if Validation().check_if_local_env():
+            from objects.User import load_user
+            from python_web_frame.controllers.model_controller import ModelController
+
             users, last_evaluated_key = Dynamo().query_paginated_all_last_login_users(limit=int(10000000))
             backoffice_data["backoffice_data_total_user_count"] = str(len(users))
             Dynamo().put_entity(backoffice_data)
@@ -29,7 +31,7 @@ class BackofficeUsers(BackofficePage):
 
                 models_total_size = 0
                 for model in all_user_models:
-                    models_total_size += float(model["model_filesize"])
+                    models_total_size += float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
                 user.increase_used_cloud_space_in_mbs(models_total_size)
 
         html = super().parse_html()

@@ -444,7 +444,7 @@ class ModelController:
             #         return {"error": "O projeto excede o tamanho máximo da suportado pela sua conta."}
             #     else:
             #         return {"error": "Algum arquivo dentro do .zip excede o tamanho máximo da suportado pela sua conta."}
-            if (os.path.getsize(ifc_location) / (10**6)) + float(user.user_used_cloud_space_in_mbs):
+            if float(float(self.convert_model_filesize_to_mb(os.path.getsize(ifc_location))) + float(user.user_used_cloud_space_in_mbs)) > float(user_plan["plan_cloud_space_in_mbs"]):
                 if index == 0:
                     return {"error": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."}
                 else:

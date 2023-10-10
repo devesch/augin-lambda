@@ -22,6 +22,9 @@ class UpdateUser(BasePage):
 
         return getattr(self, self.post["command"])()
 
+    def get_user_used_cloud_space_in_mbs(self):
+        return {"success": self.user.user_used_cloud_space_in_mbs}
+
     def disconnect_device(self):
         if not self.post.get("device_id"):
             return {"error": "Nenhum device_id informado no formulário"}

@@ -663,7 +663,14 @@ export async function checkUploadModelFile(post_data) {
         let has_error = document.getElementById("has_error_" + post_data["element_index"]);
         has_error.value = "False";
         let file_formats_div = document.getElementById("file_formats_div_" + post_data["element_index"]);
-        file_formats_div.innerHTML = panel_create_project_check_file_html_response["success"]["file_formats_html"]
+        file_formats_div.innerHTML = panel_create_project_check_file_html_response["success"]["file_formats_html"];
+
+        var update_user_response = await apiCaller("update_user", {
+            "command": "get_user_used_cloud_space_in_mbs",
+        });
+
+        let user_used_cloud_space_in_mbs_span = document.getElementById("user_used_cloud_space_in_mbs_span");
+        user_used_cloud_space_in_mbs_span.innerHTML = update_user_response["success"];
 
         checkIfCreateProjectSubmitButtonIsAvailable();
         checkIfCreateProjectIsFederated(false);
