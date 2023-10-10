@@ -3764,6 +3764,11 @@
         "es": "Perfil actualizado, pero para cambiar su correo electrónico, debe confirmar el correo electrónico que enviamos a su nuevo correo electrónico",
         "pt": "Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o seu novo email solicitado"
     },
+    "Perfil atualizado porém para alterar o seu email é necessário seguir as instruções que acabamos de enviar para o seu email atual": {
+        "en": "Updated profile but to change your email you need to follow the instructions we have just sent to your current email",
+        "es": "Perfil actualizado, pero para cambiar su correo electrónico, debe seguir las instrucciones que acabamos de enviar a su correo electrónico actual",
+        "pt": "Perfil atualizado porém para alterar o seu email é necessário seguir as instruções que acabamos de enviar para o seu email atual"
+    },
     "Perfil atualizado porém é necessário preencher todos os campos para processeguir com a compra": {
         "en": "Updated profile but it is necessary to fill all fields to process with the purchase",
         "es": "Perfil actualizado, pero es necesario llenar todos los campos para procesar con la compra",
@@ -4893,6 +4898,16 @@
         "en": "Change of active devices (MAX/MONTH)",
         "es": "Cambio de dispositivos activos (máx/mes)",
         "pt": "Troca de dispositivos ativos (Max/Mês)"
+    },
+    "Troca de email realizada com sucesso": {
+        "en": "Email exchange performed successfully",
+        "es": "Intercambio de correo electrónico realizado con éxito",
+        "pt": "Troca de email realizada com sucesso"
+    },
+    "Troca e email realizada com sucesso": {
+        "en": "Successful exchange and email",
+        "es": "Intercambio exitoso y correo electrónico",
+        "pt": "Troca e email realizada com sucesso"
     },
     "Tunisia": {
         "en": "Tunisia",

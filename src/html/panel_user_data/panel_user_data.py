@@ -156,7 +156,7 @@ class PanelUserData(PanelPage, UserPage):
         if user_changed_email:
             self.user.update_auth_token()
             self.send_email_modified_email(self.user.user_email, self.user.user_auth_token, self.post["user_email"])
-            return self.render_get_with_error("Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o seu novo email solicitado")
+            return self.render_get_with_error("Perfil atualizado porém para alterar o seu email é necessário seguir as instruções que acabamos de enviar para o seu email atual")
 
         return self.render_get_with_error("Perfil atualizado com sucesso")
 

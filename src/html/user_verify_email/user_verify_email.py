@@ -34,10 +34,6 @@ class UserVerifyEmail(UserPage):
             self.generate_and_send_email_verification_code()
             return self.render_get_with_error("Um novo código foi enviado para o seu email")
 
-        if self.path.get("user_change_email"):
-            self.user = self.load_user(self.path["user_email"])
-            self.user.update_attribute("user_email", self.path["user_email"])
-            return Http().redirect("panel_your_plan")
         else:
             self.post["verify_email_code"] = self.generate_verification_code()
             if not self.post.get("verify_email_code"):
@@ -47,4 +43,8 @@ class UserVerifyEmail(UserPage):
                 return self.render_get_with_error("Código de verificação inválido.")
             if check_if_verify_email_expired(verify_email["created_at"]):
                 return self.render_get_with_error("Código de verificação expirado.")
+
+            if self.path.get("change_email"):
+                return Http().redirect("user_email_changed_confirm/?user_auth_token=" + self.user.user_auth_token + "&new_user_email_encoded=" + EncodeDecode().encode_to_b64(self.path["user_email"]))
+
             return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.path["user_email"]) + "&verify_email_code=" + self.post["verify_email_code"])
