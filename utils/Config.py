@@ -51,7 +51,7 @@ lambda_constants = {
     # "municipal_inscription": "61154822",
     "s3_put_user_key_id": s3_put_user_key_id,
     "s3_put_user_secret_access_key": s3_put_user_secret_access_key,
-    "email_sender": "eugenio@devesch.com.br",
+    "email_sender": "augin@augin.app",
     "cloudfront_img_resizer": "",
     "sqs_queue_url_json5000": "https://sqs.us-east-1.amazonaws.com/847154778207/web-data-5000-json",
     "sqs_queue_url_process_xml_to_dynamo": "https://sqs.us-east-1.amazonaws.com/847154778207/process_xml_to_dynamo",
