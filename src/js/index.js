@@ -784,10 +784,15 @@ export async function deleteUploadingElement(index) {
     checkIfCreateProjectSubmitButtonIsAvailable();
     checkIfCreateProjectIsFederated(false)
 
-    let update_model_response = await apiCaller("update_model", {
-        "command": "delete_model",
-        "model_id": model_id_input.value
-    });
+    let model_ids = model_id_input.value.split(',');
+
+    for (let model_id of model_ids) {
+        // Call the api for each id
+        let update_model_response = await apiCaller("update_model", {
+            "command": "delete_model",
+            "model_id": model_id.trim()
+        });
+    }
 
     updateUserUsedCloudSpaceInMbs();
 }
