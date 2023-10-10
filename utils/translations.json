@@ -829,6 +829,11 @@
         "es": "Chad",
         "pt": "Chad"
     },
+    "Chegou o seu código de verificação, copie e cole para confirmar a troca do seu email": {
+        "en": "Your verification code has arrived, copy and paste to confirm the exchange of your email",
+        "es": "Su código de verificación ha llegado, copia y pegue para confirmar el intercambio de su correo electrónico",
+        "pt": "Chegou o seu código de verificação, copie e cole para confirmar a troca do seu email"
+    },
     "Chegou o seu código de verificação, copie e cole para finalizar o seu cadastro": {
         "en": "Your verification code has arrived, copy and paste to finish your registration",
         "es": "Su código de verificación ha llegado, copia y pegue para finalizar su registro",
@@ -4438,6 +4443,11 @@
         "en": "Your new email will change from",
         "es": "Su nuevo correo electrónico cambiará de",
         "pt": "Seu novo email será altera de "
+    },
+    "Seu novo email será alterado de ": {
+        "en": "Your new email will change from",
+        "es": "Su nuevo correo electrónico cambiará de",
+        "pt": "Seu novo email será alterado de "
     },
     "Seu plano": {
         "en": "Your plan",

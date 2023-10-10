@@ -22,6 +22,10 @@ class UserVerifyEmail(UserPage):
                 html.esc(param + "_val", self.post[param])
         else:
             html.esc("focus_input_id_val", "verify_email_code_1")
+
+        if self.path.get("change_email"):
+            self.post["user_email"] = self.path["user_email"]
+            self.generate_and_send_email_verification_code()
         return str(html)
 
     def render_post(self):
