@@ -4374,6 +4374,11 @@
         "es": "Su código de verificación expiró, confirme su correo electrónico nuevamente",
         "pt": "Seu código de verificação expirou, confirme seu email novamente"
     },
+    "Seu código de verificação expirou, confirme seu email novamente.": {
+        "en": "Your verification code expired, confirm your email again.",
+        "es": "Su código de verificación expiró, confirme su correo electrónico nuevamente.",
+        "pt": "Seu código de verificação expirou, confirme seu email novamente."
+    },
     "Seu nome": {
         "en": "Your name",
         "es": "Su nombre",
