@@ -8,8 +8,9 @@
     </div>
     <div class="panel-user-data__main-container">
         <div class="upload-file-container">
-            <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input">
+            <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input" aria-label="{{Adicionar foto de perfil}}">
                 <img id="user_thumb_img" class="panel-user-data__file-image" src="{{user_thumb_url_val}}" width="24" height="24" alt="">
+                <img src="{{cdn_val}}/assets/icons/add-photo.svg" class="panel-user-data__hover-image" width="40" height="40" alt="">
             </label>
             <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
             <span id="update_user_thumb_error_msg_span"></span>
