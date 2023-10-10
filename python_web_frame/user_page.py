@@ -28,11 +28,14 @@ class UserPage(BasePage):
             full_html.append(str(html))
         return "".join(full_html)
 
-    def generate_and_send_email_verification_code(self):
+    def generate_and_send_email_verification_code(self, email_changed=False):
         verify_email_code = self.generate_random_verify_code()
         verify_email = VerifyEmail(user_email=self.post["user_email"], verify_email_code=verify_email_code)
         Dynamo().put_entity(verify_email.__dict__)
-        self.send_verify_email(self.post["user_email"], verify_email_code)
+        if not email_changed:
+            self.send_verify_email(self.post["user_email"], verify_email_code)
+        else:
+            self.send_verify_email_email_changed(self.post["user_email"], verify_email_code)
 
     def generate_random_verify_code(self):
         import random
@@ -41,6 +44,13 @@ class UserPage(BasePage):
         for x in range(6):
             code += str(random.randint(1, 9))
         return code
+
+    def send_verify_email_email_changed(self, user_email, verify_email_code):
+        html = ReadWrite().read_html("user_verify_email/_codes/html_verify_email_changed")
+        html.esc("verify_email_code_val", verify_email_code)
+        html.esc("user_encoded_email_val", EncodeDecode().encode_to_b64(user_email))
+        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Seu código de verficação chegou"))
+        return
 
     def send_verify_email(self, user_email, verify_email_code):
         html = ReadWrite().read_html("user_verify_email/_codes/html_verify_email")
