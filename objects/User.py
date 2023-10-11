@@ -59,13 +59,15 @@ class User:
 
     def delete_account(self):
         user_dicts_folder = Dynamo().get_folder(self.user_dicts_folder_id)
-        self.delete_folder(user_dicts_folder)
+        if user_dicts_folder:
+            self.delete_folder(user_dicts_folder)
+
         not_deleted_models = []
-        not_deleted_models.extend(Dynamo().query_user_models_from_state("not_created"))
-        not_deleted_models.extend(Dynamo().query_user_models_from_state("in_processing"))
-        not_deleted_models.extend(Dynamo().query_user_models_from_state("completed"))
+        not_deleted_models.extend(Dynamo().query_user_models_from_state(self, "not_created"))
+        not_deleted_models.extend(Dynamo().query_user_models_from_state(self, "in_processing"))
+        not_deleted_models.extend(Dynamo().query_user_models_from_state(self, "completed"))
         if not_deleted_models:
-            for model in not not_deleted_models:
+            for model in not_deleted_models:
                 ModelController().delete_model(model, self)
 
         deleted_short_id = "deleted_" + Generate().generate_short_id()
@@ -348,13 +350,11 @@ class User:
                 if model:
                     ModelController().delete_model(model, self)
 
-        if folder["folder_id"] in self.user_dicts["folders"]:
-            self.user_dicts["folders"].remove(folder["folder_id"])
-            Dynamo().put_entity(self.__dict__)
-        else:
-            root_folder = Dynamo().get_folder(folder["folder_root_id"])
+        root_folder = Dynamo().get_folder(folder["folder_root_id"])
+        if root_folder:
             root_folder["folders"].remove(folder["folder_id"])
             Dynamo().put_entity(root_folder)
+
         Dynamo().delete_entity(folder)
 
     def add_model_to_user_dicts(self, model, shared=False):
@@ -363,14 +363,16 @@ class User:
         else:
             user_folder = Dynamo().get_folder(self.user_dicts_folder_id)
 
+        user_folder["files"].append(model["model_id"])
         Dynamo().put_entity(user_folder)
 
     def remove_model_from_user_dicts(self, model, shared=False):
         model_folder = Dynamo().get_folder(model["model_folder_id"])
-        remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
-        if not model["model_is_federated"] and not shared:
-            self.user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
-        Dynamo().put_entity(self.__dict__)
+        if model_folder:
+            remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])
+            if not model["model_is_federated"] and not shared:
+                self.user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
+            Dynamo().put_entity(self.__dict__)
 
     def update_last_login_at(self):
         if int(float(self.user_last_login_at)) + 3000 < int(time()):
