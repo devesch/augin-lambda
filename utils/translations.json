@@ -1864,6 +1864,11 @@
         "es": "Este modelo se está utilizando como base de un proyecto federado.",
         "pt": "Este modelo está sendo usado como base em um projeto federado"
     },
+    "Este modelo já pertence a este usuário": {
+        "en": "This model already belongs to this user",
+        "es": "Este modelo ya pertenece a este usuario",
+        "pt": "Este modelo já pertence a este usuário"
+    },
     "Este modelo já se encontra nos seus compartilhados": {
         "en": "This model is already in its shared",
         "es": "Este modelo ya está en su compartido",
