@@ -1,14 +1,14 @@
-from python_web_frame.user_page import UserPage
-from objects.User import User
 from objects.AnalyticsNewUserRegistered import AnalyticsNewUserRegistered
-from utils.AWS.Dynamo import Dynamo
-from utils.utils.Http import Http
+from objects.BackofficeData import increase_backoffice_data_total_count
+from objects.VerifyEmail import check_if_verify_email_expired
 from utils.utils.EncodeDecode import EncodeDecode
+from python_web_frame.user_page import UserPage
 from utils.utils.Validation import Validation
 from utils.utils.Generate import Generate
 from utils.utils.JsonData import JsonData
-from objects.VerifyEmail import check_if_verify_email_expired
-from objects.BackofficeData import increase_backoffice_data_total_count
+from objects.User import User, load_user
+from utils.AWS.Dynamo import Dynamo
+from utils.utils.Http import Http
 
 
 class UserRegister(UserPage):
@@ -24,7 +24,7 @@ class UserRegister(UserPage):
             return Http().redirect("user_login")
         if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
             return Http().redirect("user_login/?error_msg=" + EncodeDecode().encode_to_url("Seu código de verificação expirou, confirme seu email novamente."))
-        if self.load_user(self.path["user_email"]):
+        if load_user(self.path["user_email"]):
             return Http().redirect("user_login")
 
         html = super().parse_html()
@@ -65,7 +65,7 @@ class UserRegister(UserPage):
             return Http().redirect("user_login")
         if check_if_verify_email_expired(self.path["verify_email"]["created_at"]):
             return Http().redirect("user_login/?error_msg=" + EncodeDecode().encode_to_url("Seu código de verificação expirou, confirme seu email novamente."))
-        if self.load_user(self.path["user_email"]):
+        if load_user(self.path["user_email"]):
             return Http().redirect("user_login")
 
         if not self.post.get("user_name"):
