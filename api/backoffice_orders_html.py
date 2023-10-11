@@ -1,5 +1,6 @@
 from python_web_frame.backoffice_page import BackofficePage
 from utils.AWS.Dynamo import Dynamo
+from objects.User import load_user
 from utils.utils.Validation import Validation
 import json
 
@@ -10,7 +11,7 @@ class BackofficeOrdersHtml(BackofficePage):
         query_filter = "all"
         if self.post.get("search_user"):
             query = "query_user_orders"
-            order_user = self.load_user(self.post["search_user"])
+            order_user = load_user(self.post["search_user"])
             if not order_user:
                 return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
             orders = Dynamo().query_user_orders(order_user.user_id)

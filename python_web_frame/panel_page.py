@@ -7,7 +7,7 @@ from utils.AWS.Dynamo import Dynamo
 from utils.utils.StrFormat import StrFormat
 from python_web_frame.controllers.model_controller import ModelController
 from objects.Order import translate_order_status
-from objects.User import sort_user_folders
+from objects.User import sort_user_folders, load_user
 from objects.UserFolder import generate_folder_data, increase_folder_visualization_count
 from objects.UserDevice import generate_device_icon
 
@@ -165,7 +165,7 @@ class PanelPage(BasePage):
 
                 for folder in user_folder["folders"]:
                     if folder["folder_user_id"] not in user_ids_name_dict:
-                        owner_user = self.load_user(folder["folder_user_id"])
+                        owner_user = load_user(folder["folder_user_id"])
                         user_ids_name_dict[folder["folder_user_id"]] = owner_user.user_name
                     folder["owners_name"] = user_ids_name_dict[folder["folder_user_id"]]
 
@@ -227,7 +227,7 @@ class PanelPage(BasePage):
         if models:
             for model in models:
                 if model["model_user_id"] not in user_ids_name_dict:
-                    owner_user = self.load_user(model["model_user_id"])
+                    owner_user = load_user(model["model_user_id"])
                     user_ids_name_dict[model["model_user_id"]] = owner_user.user_name
                 model["owners_name"] = user_ids_name_dict[model["model_user_id"]]
 

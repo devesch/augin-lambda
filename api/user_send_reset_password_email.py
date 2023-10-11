@@ -2,13 +2,14 @@ from python_web_frame.user_page import UserPage
 from utils.AWS.Ses import Ses
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.EncodeDecode import EncodeDecode
+from objects.User import load_user
 
 
 class UserSendResetPasswordEmail(UserPage):
     def run(self):
         if not self.post.get("user_email"):
             return {"error": "Nenhum email enviado no formulário."}
-        self.user = self.load_user(self.post["user_email"])
+        self.user = load_user(self.post["user_email"])
         if not self.user:
             return {"error": "Usuário inexistente."}
         self.user.update_auth_token()

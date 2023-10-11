@@ -178,17 +178,6 @@ class BasePage:
         self.error_msg = error_msg
         return self.render_get()
 
-    def load_user(self, user_id):
-        if "@" in user_id:
-            user_id = Dynamo().get_user_id_with_email(user_id)
-        if not user_id:
-            return None
-        user = User(user_id)
-        user.load_information()
-        if user.user_status == "not_created":
-            user = None
-        return user
-
     def check_error_msg(self, html, error_msg=""):
         if error_msg:
             if error_msg in Code().get_translations():

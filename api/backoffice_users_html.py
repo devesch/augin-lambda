@@ -1,6 +1,6 @@
 from python_web_frame.backoffice_page import BackofficePage
 from utils.AWS.Dynamo import Dynamo
-from utils.utils.Validation import Validation
+from objects.User import load_user
 import json
 
 
@@ -9,7 +9,7 @@ class BackofficeUsersHtml(BackofficePage):
         last_evaluated_key = {}
         query_filter = "all"
         if self.post.get("search_user"):
-            user = self.load_user(self.post["search_user"])
+            user = load_user(self.post["search_user"])
             if user:
                 users = [user.__dict__]
                 return {"success": self.list_html_backoffice_users_table_rows(users), "last_evaluated_key": json.dumps(last_evaluated_key), "query": "query_paginated_all_last_login_users", "query_filter": query_filter, "showing_total_count": len(users)}

@@ -1,4 +1,5 @@
 from python_web_frame.backoffice_page import BackofficePage
+from objects.User import load_user
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Validation import Validation
 from utils.utils.Sort import Sort
@@ -15,7 +16,7 @@ class BackofficeModelsHtml(BackofficePage):
             if not model:
                 model = Dynamo().get_model_by_code(self.post["search_user"])
                 if not model:
-                    searched_user = self.load_user(self.post["search_user"])
+                    searched_user = load_user(self.post["search_user"])
                     if not searched_user:
                         return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}
 
@@ -32,7 +33,7 @@ class BackofficeModelsHtml(BackofficePage):
 
         else:
             if self.post.get("search_model_state") != "all" and self.post.get("search_user"):
-                searched_user = self.load_user(self.post["search_user"])
+                searched_user = load_user(self.post["search_user"])
                 query = "query_user_models_from_state"
                 if not searched_user:
                     return {"success": "", "last_evaluated_key": json.dumps(last_evaluated_key), "query": query, "query_filter": query_filter, "showing_total_count": "0"}

@@ -9,7 +9,8 @@ from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Ses import Ses
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
-from utils.utils.EncodeDecode import EncodeDecode
+from objects.User import load_user
+
 import time
 
 
@@ -24,7 +25,7 @@ class CheckoutStripeWebHook(BasePage):
 
     def payment_intent_succeeded(self):
         stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
-        self.user = self.load_user(stripe_customer["email"])
+        self.user = load_user(stripe_customer["email"])
         order = Dynamo().get_order(self.post["data"]["object"]["id"])
         user_stripe_subscription = None
         if not order and self.post["data"]["object"]["description"] == "Subscription update":
@@ -63,7 +64,7 @@ class CheckoutStripeWebHook(BasePage):
 
     def charge_succeeded(self):
         stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
-        self.user = self.load_user(stripe_customer["email"])
+        self.user = load_user(stripe_customer["email"])
         order = Dynamo().get_order(self.post["data"]["object"]["payment_intent"])
         if not order:
             for x in range(15):
@@ -105,7 +106,7 @@ class CheckoutStripeWebHook(BasePage):
     def customer_subscription_updated(self):
         user_stripe_subscription = StripeController().get_subscription(self.post["data"]["object"]["id"])
         stripe_customer = StripeController().get_stripe_customer(user_stripe_subscription["customer"])
-        self.user = self.load_user(stripe_customer["email"])
+        self.user = load_user(stripe_customer["email"])
         invoice = StripeController().get_invoice(user_stripe_subscription["latest_invoice"])
         order = Dynamo().get_order(invoice["payment_intent"])
         self.user.update_subscription(order, user_stripe_subscription)

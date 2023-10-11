@@ -3,6 +3,7 @@ from python_web_frame.controllers.billing_controller import BillingController
 from python_web_frame.controllers.stripe_controller import StripeController
 from python_web_frame.controllers.model_controller import ModelController
 from objects.Order import check_if_order_is_in_refund_time
+from objects.User import load_user
 from utils.AWS.Dynamo import Dynamo
 
 
@@ -25,7 +26,7 @@ class UpdateBackoffice(BackofficePage):
             return {"error": "O modelo não se encontra no estado completo ou erro para ser reprocessado"}
         if model["model_category"] == "federated":
             return {"error": "Não é possível reprocessar um modelo federado"}
-        model_user = self.load_user(model["model_user_id"])
+        model_user = load_user(model["model_user_id"])
         if not model_user:
             return {"error": "Nenhum usuário encontrado como dono deste modelo"}
 
@@ -44,7 +45,7 @@ class UpdateBackoffice(BackofficePage):
             return {"error": "Só é possível reembolsar ordens do tipo cartão de crédito"}
         if not check_if_order_is_in_refund_time(order["created_at"]):
             return {"error": "A ordem já excedeu o tempo máximo de pedido de reembolso"}
-        refunded_user = self.load_user(order["order_user_id"])
+        refunded_user = load_user(order["order_user_id"])
         if not refunded_user:
             return {"error": "Nenhum usuário encontrado como dono da ordem"}
 
@@ -81,7 +82,7 @@ class UpdateBackoffice(BackofficePage):
             return {"error": "A ordem não se encontra em um estado de not_issued"}
         if order["order_status"] != "paid":
             return {"error": "A ordem não se encontra paga para emitir a NFSE"}
-        refunded_user = self.load_user(order["order_user_id"])
+        refunded_user = load_user(order["order_user_id"])
         if not refunded_user:
             return {"error": "Nenhum usuário encontrado como dono da ordem"}
         BillingController().generate_bill_of_sale(refunded_user, order)

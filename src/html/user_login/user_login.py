@@ -1,7 +1,8 @@
 ﻿from python_web_frame.user_page import UserPage
-from utils.utils.Http import Http
-from utils.utils.Validation import Validation
 from utils.utils.EncodeDecode import EncodeDecode
+from utils.utils.Validation import Validation
+from utils.utils.Http import Http
+from objects.User import load_user
 
 
 class UserLogin(UserPage):
@@ -23,7 +24,7 @@ class UserLogin(UserPage):
         if not Validation().check_if_email(self.post["user_email"]):
             return self.render_get_with_error("Email inválido.")
 
-        user = self.load_user(self.post["user_email"])
+        user = load_user(self.post["user_email"])
         if user:
             return Http().redirect("user_password/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.post["user_email"]))
         else:

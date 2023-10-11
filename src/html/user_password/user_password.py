@@ -1,6 +1,6 @@
 ﻿from python_web_frame.base_page import BasePage
-from objects.User import User
 from utils.utils.Http import Http
+from objects.User import load_user
 
 
 class UserPassword(BasePage):
@@ -12,7 +12,7 @@ class UserPassword(BasePage):
     def render_get(self):
         if not self.path.get("user_email"):
             return Http().redirect("user_login")
-        user = self.load_user(self.path["user_email"])
+        user = load_user(self.path["user_email"])
         if not user:
             return Http().redirect("user_login")
 
@@ -26,7 +26,7 @@ class UserPassword(BasePage):
     def render_post(self):
         if not self.path.get("user_email"):
             return Http().redirect("user_login")
-        user = self.load_user(self.path["user_email"])
+        user = load_user(self.path["user_email"])
         if not user:
             return Http().redirect("user_login")
 

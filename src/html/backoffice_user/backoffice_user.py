@@ -1,4 +1,5 @@
-from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices, generate_disconnected_devices_in_last_30d
+from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices
+from objects.User import load_user
 from python_web_frame.backoffice_page import BackofficePage
 from utils.utils.StrFormat import StrFormat
 from utils.utils.Date import Date
@@ -15,7 +16,7 @@ class BackofficeUser(BackofficePage):
     def render_get(self):
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
-        user = self.load_user(self.path["user_id"])
+        user = load_user(self.path["user_id"])
         user = user.__dict__
 
         html.esc("user_id_val", user["user_id"])
@@ -43,8 +44,8 @@ class BackofficeUser(BackofficePage):
     def render_post(self):
         if self.post.get("command"):
             if self.post["command"] == "disconnect_devices":
-                user = self.load_user(self.path["user_id"])
-                user_devices = Dynamo().query_all_user_devices(self.user.user_id)
+                user = load_user(self.path["user_id"])
+                user_devices = Dynamo().query_all_user_devices(user.user_id)
                 connected_devices, disconnected_devices = generate_connected_and_disconnected_devices(user_devices)
                 for connected_device in connected_devices:
                     disconnect_device(connected_device, disconnection_at=str(time.time() - 2800000))

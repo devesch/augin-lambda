@@ -7,6 +7,7 @@ from objects.AnalyticsUserRegisteredInLast30DaysAndPublished import check_and_sa
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.S3 import S3
 from utils.Config import lambda_constants
+from objects.User import load_user
 
 
 class UpdateModelProcess(BasePage):
@@ -104,7 +105,7 @@ class UpdateModelProcess(BasePage):
             model = ModelController().change_model_state(model, model["model_state"], "completed")
             Dynamo().put_entity(model)
 
-            user = self.load_user(model["model_user_id"])
+            user = load_user(model["model_user_id"])
             user.add_model_to_user_dicts(model)
 
             if (float(model["model_processing_started_at"]) + 3600) > float(model["created_at"]):

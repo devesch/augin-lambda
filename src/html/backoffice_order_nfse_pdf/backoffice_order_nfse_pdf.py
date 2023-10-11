@@ -6,6 +6,7 @@ from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Date import Date
 from utils.utils.Http import Http
 from utils.utils.StrFormat import StrFormat
+from objects.User import load_user
 
 
 class BackofficeOrderNfsePdf(BackofficePage):
@@ -16,7 +17,7 @@ class BackofficeOrderNfsePdf(BackofficePage):
 
     def render_get(self):
         html = super().parse_html()
-        nfse_user = self.load_user(self.path["order"]["order_user_id"])
+        nfse_user = load_user(self.path["order"]["order_user_id"])
         if self.path["order"]["order_currency"] == "brl":
             html.esc("html_brl_or_international_nfse_pdf", self.show_html_brl_nfse_pdf(nfse_user))
         elif self.path["order"]["order_currency"] == "usd":

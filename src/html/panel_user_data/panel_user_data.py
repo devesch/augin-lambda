@@ -8,6 +8,7 @@ from utils.utils.JsonData import JsonData
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Ses import Ses
+from objects.User import load_user
 
 
 class PanelUserData(PanelPage, UserPage):
@@ -66,7 +67,7 @@ class PanelUserData(PanelPage, UserPage):
             return self.render_get_with_error("Por favor informe um email.")
         user_changed_email = False
         if self.post["user_email"] != self.user.user_email:
-            check_user = self.load_user(self.post["user_email"])
+            check_user = load_user(self.post["user_email"])
             if check_user:
                 return self.render_get_with_error("Já existe um usuário com este email cadastrado.")
             user_changed_email = True
