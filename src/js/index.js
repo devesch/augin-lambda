@@ -329,12 +329,12 @@ export async function showUserPhysicalAddressData() {
     await maskToZipCode(user_zip_code)
 
     if (user_zip_code.value.length == 9) {
-        openModal('.modal.modal-loader-spinner')
+        openModal(".modal.modal-loader-spinner");
         let api_response = await apiCaller("panel_get_address_data_with_zip", {
             'user_zip_code': user_zip_code.value.replace(".", "").replace("-", "")
         });
-        console.log("api_response " + api_response)
-        closeModal('.modal.modal-loader-spinner')
+        console.log("api_response " + api_response);
+        closeModal(".modal.modal-loader-spinner");
         if ("success" in api_response) {
             user_state.value = api_response.success.state
             user_city.value = api_response.success.city
@@ -3121,9 +3121,13 @@ export async function openModalDeleteUserAccount() {
 
 export async function saveDeleteUserAccount() {
     var delete_account_error_span = document.getElementById("delete_account_error_span");
+
+    openModal(".modal.modal-loader-spinner");
+    await sleep(3000);
     let update_user_response = await apiCaller("update_user", {
         "command": "delete_account"
     })
+    closeModal(".modal.modal-loader-spinner");
 
     if ("error" in update_user_response) {
         delete_account_error_span.innerHTML = update_user_response["error"];

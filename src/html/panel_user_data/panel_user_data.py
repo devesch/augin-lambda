@@ -40,6 +40,7 @@ class PanelUserData(PanelPage, UserPage):
             html.esc("html_close_div", ReadWrite().read_html("panel_user_data/_codes/html_close_div"))
             html.esc("html_delete_account_button", ReadWrite().read_html("panel_user_data/_codes/html_delete_account_button"))
             html.esc("html_delete_account_modal", ReadWrite().read_html("panel_user_data/_codes/html_delete_account_modal"))
+            html.esc("html_loader_modal", ReadWrite().read_html("panel_user_data/_codes/html_loader_modal"))
 
         else:
             html.esc("panel_user_data_modal_visibility_val", "none")

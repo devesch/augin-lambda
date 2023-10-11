@@ -259,6 +259,11 @@
         "es": "En espera de pago",
         "pt": "Aguardando pagamento"
     },
+    "Aguarde enquanto deletamos todos os seus dados": {
+        "en": "Wait while we delete all your data",
+        "es": "Espera mientras eliminemos todos tus datos",
+        "pt": "Aguarde enquanto deletamos todos os seus dados"
+    },
     "Aguarde enquanto processamos o seu pagamento": {
         "en": "Wait while we process your payment",
         "es": "Espera mientras procesamos tu pago",
