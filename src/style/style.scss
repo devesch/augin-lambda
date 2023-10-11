@@ -506,6 +506,10 @@ input[list]::-ms-clear {
         top: 0;
     }
 
+    @media print {
+        display: none;
+    }
+
 }
 
 .header--my-plan.open {
@@ -520,6 +524,10 @@ input[list]::-ms-clear {
     padding: 0.25rem;
 
     @media only screen and (min-width: breakpoints.$large) {
+        display: none;
+    }
+
+    @media print {
         display: none;
     }
 
@@ -3174,3 +3182,20 @@ input[list]::-ms-clear {
     justify-content: center;
 }
 /* Backoffice - End */
+
+/* Print - Start */
+.print-show {
+    display: none;
+}
+
+@media print {
+    .print-hide {
+        display: none;       
+    }
+
+    .print-show {
+        display: block;
+        margin: auto;
+    }
+}
+/* Print - End */
