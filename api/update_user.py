@@ -248,10 +248,14 @@ class UpdateUser(BasePage):
             if model["model_is_password_protected"] and (model["model_password"] != self.post.get("shared_password")):
                 return {"error": "A senha informada está incorreta"}
 
-            user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
-            if model["model_id"] not in user_shared_dicts["files"]:
-                self.user.add_model_to_user_dicts(model, shared=True)
+            if self.user:
+                if not folder["model_user_id"] == self.user.user_id:
+                    return {"error": "Este modelo já pertence a este usuário"}
+                user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
+                if model["model_id"] not in user_shared_dicts["files"]:
+                    self.user.add_model_to_user_dicts(model, shared=True)
             return {"success": "Modelo adicionado aos compartilhados"}
+
         else:
             folder_id = self.post["shared_link"]
             if "folder_id=" in self.post["shared_link"]:
@@ -261,14 +265,15 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhuma pasta encontrada com o link fornecido"}
             if not folder["folder_is_accessible"]:
                 return {"error": "Esta pasta não se encontra acessível através de compartilhamento"}
-            if not folder["folder_user_id"] == self.user.user_id:
-                return {"error": "Esta pasta já pertence a este usuário"}
+
             if folder["folder_is_password_protected"] and not self.post.get("shared_password"):
                 return {"error": "É necessário informar uma senha para acessar este arquivo", "command": "open_password_modal"}
             if folder["folder_is_password_protected"] and (folder["folder_password"] != self.post.get("shared_password")):
                 return {"error": "A senha informada está incorreta"}
 
             if self.user:
+                if not folder["folder_user_id"] == self.user.user_id:
+                    return {"error": "Esta pasta já pertence a este usuário"}
                 user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
                 if folder["folder_id"] not in user_shared_dicts["folders"]:
                     self.user.add_folder_to_user_shared_dicts(user_shared_dicts, folder)
