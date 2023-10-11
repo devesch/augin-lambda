@@ -62,14 +62,15 @@
             <h1 class="modal-header-title">{{Esta pasta se encontra protegida por senha}}</h1>
         </div>
         <div class="modal-content">
-            <div>
-                <div class="floating-input">
-                    <input type="password" name="shared_asset_password" value="" id="shared_asset_password_input" placeholder=" " required autofocus minlength="1" maxlength="500">
-                    <label for="shared_asset_password_input">{{Digite a senha do arquivo}}</label>
-                    <button type="button" class="toggle-password-button button--icon" onclick="js.index.togglePasswordText(this, 'shared_asset_password_input')" aria-label="Mostrar senha." aria-controls="toggle-password-image">
-                        <img id="toggle-password-image" src="{{cdn_val}}/assets/icons/visibility.svg" alt="{{Ícone de olho}}" width="24" height="24">
+            <div class="project-password-container">
+                <div class="create-account__input-container floating-input">
+                    <input type="password" name="shared_asset_password" value="" id="shared_asset_password_input" placeholder=" " autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                    <label for="shared_asset_password_input">{{Senha}}</label>
+                    <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="shared_asset_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                        <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
                     </button>
                 </div>
+                <p class="input-hint">{{Digite a senha do arquivo para acessá-lo}}</p>
             </div>
             <span class="error" id="shared_asset_password_error_span">
             </span>
