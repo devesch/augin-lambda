@@ -1640,6 +1640,7 @@ input[list]::-ms-clear {
     top: 0.5rem;
     width: max-content;
     z-index: 1;
+    text-align: left;
 
     a {
         text-decoration: none;
@@ -3129,6 +3130,10 @@ input[list]::-ms-clear {
     gap: 3rem;
     align-items: center;
     justify-content: left;
+}
+
+.payment-method__last-td {
+    text-align: right;
 }
 
 .backoffice__form__payment-container {
