@@ -2980,12 +2980,14 @@ input[list]::-ms-clear {
     padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    padding-top: 1rem;
     gap: 0.5rem;
 }
 
-.order-column + .order-column {
-    text-align: center;
-    padding-top: 1rem;
+.order-column:first-of-type {
+    text-align: left;
+    padding-top: 0;
 }
 
 .order-column .table {
