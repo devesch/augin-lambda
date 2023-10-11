@@ -1374,6 +1374,11 @@
         "es": "Ingrese la contraseña del archivo",
         "pt": "Digite a senha do arquivo"
     },
+    "Digite a senha do arquivo para acessá-lo": {
+        "en": "Enter the file password to access it",
+        "es": "Ingrese la contraseña del archivo para acceder a ella",
+        "pt": "Digite a senha do arquivo para acessá-lo"
+    },
     "Digite a sua cidade": {
         "en": "Enter your city",
         "es": "Entra en tu ciudad",
