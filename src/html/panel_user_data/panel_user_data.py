@@ -38,6 +38,8 @@ class PanelUserData(PanelPage, UserPage):
             ### TODO WHEN TIAGO LIBERATE COOKIE POLICY UNCOMMENT LINE BELOW
             # html.esc("html_modify_cookies_configuration", ReadWrite().read_html("panel_user_data/_codes/html_modify_cookies_configuration"))
             html.esc("html_close_div", ReadWrite().read_html("panel_user_data/_codes/html_close_div"))
+        else:
+            html.esc("panel_user_data_modal_visibility_val", "none")
 
         if self.path["user_client_type"] == "physical":
             html.esc("html_physical_or_company_form", self.show_html_physical_form())

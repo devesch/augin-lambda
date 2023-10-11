@@ -7,9 +7,9 @@
         <h1 class="my-plan__title">{{Atualize seus dados}}</h1>
     </div>
     <div class="panel-user-data__main-container">
-        <div class="upload-file-container">
+        <div class="upload-file-container {{panel_user_data_modal_visibility_val}}">
             <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input" aria-label="{{Adicionar foto de perfil}}">
-                <img id="user_thumb_img" class="panel-user-data__file-image {{panel_user_data_image_visibility_val}}" src="{{user_thumb_url_val}}" width="24" height="24" alt="">
+                <img id="user_thumb_img" class="panel-user-data__file-image" src="{{user_thumb_url_val}}" width="24" height="24" alt="">
                 <img src="{{cdn_val}}/assets/icons/add-photo.svg" class="panel-user-data__hover-image" width="40" height="40" alt="">
             </label>
             <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
@@ -21,7 +21,7 @@
         {{html_close_div}}
         {{html_close_div}}
     </div>
-    <div class="panel-user-data__sub-container {{panel_user_data_sub_container_visibility_val}}">
+    <div class="panel-user-data__sub-container {{panel_user_data_modal_visibility_val}}">
         {{html_change_password_link}}
         {{html_modify_cookies_configuration}}
     </div>
