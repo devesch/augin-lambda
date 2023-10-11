@@ -3399,6 +3399,16 @@
         "es": "No es posible agregar este proyecto, ya que excedería el tamaño máximo disponible para su nube.",
         "pt": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."
     },
+    "Não é possível excluir a conta enquanto tiver um plano vínculado a sua conta": {
+        "en": "It is not possible to delete the account while you have a plan tied to your account",
+        "es": "No es posible eliminar la cuenta mientras tiene un plan vinculado a su cuenta.",
+        "pt": "Não é possível excluir a conta enquanto tiver um plano vínculado a sua conta"
+    },
+    "Não é possível excluir a conta enquanto tiver uma assinatura que ainda se encontra dentro da data de validade": {
+        "en": "It is not possible to delete the account while having a signature that is still within the date of validity",
+        "es": "No es posible eliminar la cuenta mientras tiene una firma que aún está dentro de la fecha de validez",
+        "pt": "Não é possível excluir a conta enquanto tiver uma assinatura que ainda se encontra dentro da data de validade"
+    },
     "Não é possível excluir o método de pagamento padrão da sua assinatura": {
         "en": "It is not possible to delete the default payment method from your subscription",
         "es": "No es posible eliminar el método de pago predeterminado de su suscripción",
@@ -4873,6 +4883,11 @@
         "en": "All",
         "es": "Todo",
         "pt": "Todos"
+    },
+    "Todos os dados da sua conta foram excluídos": {
+        "en": "All data on your account was deleted",
+        "es": "Se eliminaron todos los datos de su cuenta",
+        "pt": "Todos os dados da sua conta foram excluídos"
     },
     "Todos os dispositivos que estavam conectados foram desconetados com sucesso": {
         "en": "All devices that were connected were successfully disconnected",

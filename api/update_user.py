@@ -1,6 +1,7 @@
 from python_web_frame.base_page import BasePage
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.stripe_controller import StripeController
+from utils.utils.EncodeDecode import EncodeDecode
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
 from utils.AWS.S3 import S3
@@ -21,6 +22,15 @@ class UpdateUser(BasePage):
                 return {"error": "Nenhum usuário encontrado"}
 
         return getattr(self, self.post["command"])()
+
+    def delete_account(self):
+        if self.user.user_subscription_valid_until and self.user.user_subscription_status and self.user.user_subscription_status != "canceled" and float(self.user.user_subscription_valid_until) > float(time.time()):
+            return {"error": "Não é possível excluir a conta enquanto tiver uma assinatura que ainda se encontra dentro da data de validade"}
+        if self.user.user_plan_id:
+            return {"error": "Não é possível excluir a conta enquanto tiver um plano vínculado a sua conta"}
+
+        self.user.delete_account()
+        return {"success": "Usuário excluído", "redirect_link": lambda_constants["domain_name_url"] + "/user_login/?error_msg=" + EncodeDecode().encode_to_url("Todos os dados da sua conta foram excluídos")}
 
     def get_user_used_cloud_space_in_mbs(self):
         return {"success": self.user.user_used_cloud_space_in_mbs}
