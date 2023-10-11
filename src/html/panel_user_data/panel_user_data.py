@@ -255,6 +255,8 @@ class PanelUserData(PanelPage, UserPage):
         if not self.render_props:
             html.esc("html_onclick_change_to_company_form", str(ReadWrite().read_html("panel_user_data/_codes/html_onclick_change_to_company_form")))
             html.esc("html_onsubmit_physical_form", str(ReadWrite().read_html("panel_user_data/_codes/html_onsubmit_physical_form")))
+        else:
+            html.esc("panel_user_data_close_modal_visibility_val", "none")
 
         return str(html)
 
@@ -334,6 +336,8 @@ class PanelUserData(PanelPage, UserPage):
         if not self.render_props:
             html.esc("html_onclick_change_to_physical_form", str(ReadWrite().read_html("panel_user_data/_codes/html_onclick_change_to_physical_form")))
             html.esc("html_onsubmit_company_form", str(ReadWrite().read_html("panel_user_data/_codes/html_onsubmit_company_form")))
+        else:
+            html.esc("panel_user_data_close_modal_visibility_val", "none")
 
         return str(html)
 
@@ -421,5 +425,7 @@ class PanelUserData(PanelPage, UserPage):
 
         if not self.render_props:
             html.esc("html_onsubmit_international_form", str(ReadWrite().read_html("panel_user_data/_codes/html_onsubmit_international_form")))
+        else:
+            html.esc("panel_user_data_close_modal_visibility_val", "none")
 
         return str(html)
