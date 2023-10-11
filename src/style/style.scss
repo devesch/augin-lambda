@@ -2432,6 +2432,12 @@ input[list]::-ms-clear {
 
 }
 
+.modal .panel-user-data__main-container {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
 .panel-user-data__sub-container {
     text-align: center;
     display: flex;

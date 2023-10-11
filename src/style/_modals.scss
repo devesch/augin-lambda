@@ -87,7 +87,8 @@
     flex-direction: row;
 }
 
-.modal-header-title {
+.modal-header-title,
+.modal-content h1.my-plan__title {
     font-weight: normal;
     font-size: 1.5rem;
     color: colors.color("color-black");
