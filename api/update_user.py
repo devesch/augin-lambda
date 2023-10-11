@@ -24,10 +24,14 @@ class UpdateUser(BasePage):
         return getattr(self, self.post["command"])()
 
     def delete_account(self):
-        if self.user.user_subscription_valid_until and self.user.user_subscription_status and self.user.user_subscription_status != "canceled" and float(self.user.user_subscription_valid_until) > float(time.time()):
-            return {"error": "Não é possível excluir a conta enquanto tiver uma assinatura que ainda se encontra dentro da data de validade"}
-        if self.user.user_plan_id:
-            return {"error": "Não é possível excluir a conta enquanto tiver um plano vínculado a sua conta"}
+        # if self.user.user_subscription_valid_until and self.user.user_subscription_status and self.user.user_subscription_status != "canceled" and float(self.user.user_subscription_valid_until) > float(time.time()):
+        #     return {"error": "Não é possível excluir a conta enquanto tiver uma assinatura que ainda se encontra dentro da data de validade"}
+        # if self.user.user_plan_id:
+        #     return {"error": "Não é possível excluir a conta enquanto tiver um plano vínculado a sua conta"}
+
+        if self.user.user_stripe_customer_id:
+            StripeController().delete_customer(self.user.user_stripe_customer_id)
+            self.user.update_attribute("user_stripe_customer_id", "")
 
         self.user.delete_account()
         return {"success": "Usuário excluído", "redirect_link": lambda_constants["domain_name_url"] + "/user_login/?error_msg=" + EncodeDecode().encode_to_url("Todos os dados da sua conta foram excluídos")}

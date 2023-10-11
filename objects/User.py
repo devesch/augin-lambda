@@ -25,7 +25,6 @@ class User:
         self.user_name = ""
         self.user_thumb = ""
         self.user_first_three_letters_name = ""
-        self.user_password = ""
         self.user_status = "not_created"
         self.user_phone = ""
         self.user_cpf = ""
@@ -54,15 +53,41 @@ class User:
         self.user_total_orders_count = "0"
         self.user_pagination_count = "20"
 
-        # self.user_completed_models_total_count = "0"
-        # self.user_model_datalist_builder = []
-        # self.user_model_datalist_work = []
-        # self.user_model_datalist_city_region = []
-        # self.user_model_datalist_category = []
-
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def delete_account(self):
+        user_dicts_folder = Dynamo().get_folder(self.user_dicts_folder_id)
+        self.delete_folder(user_dicts_folder)
+        not_deleted_models = []
+        not_deleted_models.extend(Dynamo().query_user_models_from_state("not_created"))
+        not_deleted_models.extend(Dynamo().query_user_models_from_state("in_processing"))
+        not_deleted_models.extend(Dynamo().query_user_models_from_state("completed"))
+        if not_deleted_models:
+            for model in not not_deleted_models:
+                ModelController().delete_model(model, self)
+
+        deleted_short_id = "deleted_" + Generate().generate_short_id()
+        self.user_email = deleted_short_id + "@" + deleted_short_id + ".com"
+        self.user_name = deleted_short_id
+        self.user_thumb = ""
+        self.user_first_three_letters_name = "999"
+        self.user_status = "deleted"
+        self.user_phone = ""
+        self.user_cpf = ""
+        self.user_cnpj = ""
+        self.user_address_data = {"user_country": "BR", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
+        self.user_client_type = "physical"  # physical / company / international
+        self.user_aggre_with_communication = False
+        self.user_credential = ""
+        self.user_ip = ""
+        self.user_dicts_folder_id = ""
+        self.user_shared_dicts_folder_id = ""
+        self.user_subscription_status = "none"
+        self.user_payment_ready = False
+        Dynamo().put_entity(self.__dict__)
+        self.clear_all_auth_tokens()
 
     def decrease_used_cloud_space_in_mbs(self, new_value_for_decrease_in_mbs):
         new_user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(new_value_for_decrease_in_mbs))

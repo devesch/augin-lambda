@@ -62,6 +62,9 @@ class StripeController:
         }
         self.stripe.Customer.modify(user_stripe_customer_id, email=email, name=name, phone=phone, address=address)
 
+    def delete_customer(self, user_stripe_customer_id):
+        return self.stripe.Customer.delete(user_stripe_customer_id)
+
     def create_product(self, product, type="plan"):
         active = True
         if type == "plan":
