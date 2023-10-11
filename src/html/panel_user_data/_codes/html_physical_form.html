@@ -5,7 +5,7 @@
 <form action="{{domain_name_url_val}}/panel_user_data/?user_client_type=physical" method="POST" id="form">
     <div class="panel-user-data-container">
         <div class="input-default focus floating-input">
-            <input type="email" name="user_email" id="user_email" value="{{user_email_val}}" class="floating" minlength="3" maxlength="255" required placeholder=" ">
+            <input type="email" name="user_email" id="user_email" value="{{user_email_val}}" class="floating" minlength="3" maxlength="255" required placeholder=" " {{panel_user_data_email_readonly_val}}>
             <label for="user_email" class="floating-label">{{Seu Email}}</label>
         </div>
         <div class="input-default floating-input">
