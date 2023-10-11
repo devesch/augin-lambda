@@ -3122,12 +3122,12 @@ export async function openModalDeleteUserAccount() {
 export async function saveDeleteUserAccount() {
     var delete_account_error_span = document.getElementById("delete_account_error_span");
 
-    openModal(".modal.modal-loader-spinner");
+    openModal(".modal.modal-loader-spinner.account");
     await sleep(3000);
     let update_user_response = await apiCaller("update_user", {
         "command": "delete_account"
     })
-    closeModal(".modal.modal-loader-spinner");
+    closeModal(".modal.modal-loader-spinner.account");
 
     if ("error" in update_user_response) {
         delete_account_error_span.innerHTML = update_user_response["error"];
