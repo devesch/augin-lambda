@@ -47,8 +47,8 @@ class UserVerifyEmail(UserPage):
                 return self.render_get_with_error("Código de verificação expirado.")
 
             if self.path.get("change_email"):
-                user = User()
-                user.load_information_with_auth_token(self.path["user_auth_token"])
+                self.user = User()
+                self.user.load_information_with_auth_token(self.path["user_auth_token"])
                 return Http().redirect("user_email_changed_confirm/?user_auth_token=" + self.user.user_auth_token + "&new_user_email_encoded=" + EncodeDecode().encode_to_b64(self.path["user_email"]))
 
             return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.path["user_email"]) + "&verify_email_code=" + self.post["verify_email_code"])
