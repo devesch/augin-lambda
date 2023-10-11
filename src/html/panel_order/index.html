@@ -9,7 +9,13 @@
 
         <div class="order__title-container">
             <div class="order-info">
-                <picture>
+                <picture class="print-hide">
+                    <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
+                    <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
+                    <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43">
+                </picture>
+
+                <picture class="print-show">
                     <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
                     <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
                     <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43">
@@ -68,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="order-column" style="{{nfse_visibilty_val}}">
+                <div class="order-column print-hide" style="{{nfse_visibilty_val}}">
                     <div class="box-invoce-download">
                         <p>{{Nota Fiscal}}:</p>
                         <div class="invoce-download">
