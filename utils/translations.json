@@ -964,6 +964,11 @@
         "es": "Confirmar la eliminación de archivo",
         "pt": "Confirmar exclusão de arquivo"
     },
+    "Confirmar exclusão de conta": {
+        "en": "Confirm account exclusion",
+        "es": "Confirmar la exclusión de la cuenta",
+        "pt": "Confirmar exclusão de conta"
+    },
     "Confirmar exclusão de pasta": {
         "en": "Confirm folder exclusion",
         "es": "Confirmar la exclusión de la carpeta",
@@ -1293,6 +1298,11 @@
         "en": "Delete",
         "es": "Borrar",
         "pt": "Deletar"
+    },
+    "Deletar a minha conta": {
+        "en": "Delete my account",
+        "es": "Borrar mi cuenta",
+        "pt": "Deletar a minha conta"
     },
     "Denmark": {
         "en": "Denmark",
@@ -1729,6 +1739,11 @@
         "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
         "pt": "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação."
     },
+    "Esta ação irá excluir todos os dados da sua conta e não pode ser revertida": {
+        "en": "This action will delete all data from your account and cannot be reversed",
+        "es": "Esta acción eliminará todos los datos de su cuenta y no se puede revertir",
+        "pt": "Esta ação irá excluir todos os dados da sua conta e não pode ser revertida"
+    },
     "Esta pasta já pertence a este usuário": {
         "en": "This folder already belongs to this user",
         "es": "Esta carpeta ya pertenece a este usuario",
@@ -1973,6 +1988,11 @@
         "en": "Delete template",
         "es": "Eliminar plantilla",
         "pt": "Excluir modelo"
+    },
+    "Excluir todos os dados": {
+        "en": "Delete all data",
+        "es": "Eliminar todos los datos",
+        "pt": "Excluir todos os dados"
     },
     "Executive": {
         "en": "Executive",

@@ -40,6 +40,7 @@ class BackofficePage(BasePage):
                 html.esc("model_branch_id_val", model["model_branch_id"])
                 html.esc("model_branch_url_val", model["model_branch_url"])
                 html.esc("model_branch_url_qrcode_val", model["model_branch_url_qrcode"])
+                html.esc("model_branch_url_qrcode_filename_val", model["model_branch_url_qrcode"].split("/")[-1])
                 html.esc("model_name_val", model["model_name"])
                 html.esc("model_code_val", model["model_code"])
                 html.esc("model_filehash_val", model["model_filehash"])
@@ -49,13 +50,29 @@ class BackofficePage(BasePage):
                 html.esc("model_is_federated_val", model["model_is_federated"])
                 html.esc("model_used_in_federated_ids_val", model["model_used_in_federated_ids"])
                 html.esc("model_federated_required_ids_val", model["model_federated_required_ids"])
-                html.esc("model_upload_path_zip_val", model["model_upload_path_zip"])
-                html.esc("model_upload_path_xml_val", model["model_upload_path_xml"])
-                html.esc("model_upload_path_aug_val", model["model_upload_path_aug"])
-                html.esc("model_upload_path_sd_aug_val", model["model_upload_path_sd_aug"])
-                html.esc("model_upload_path_bin_val", model["model_upload_path_bin"])
-                html.esc("model_upload_path_mini_bin_val", model["model_upload_path_mini_bin"])
-                html.esc("model_upload_path_glb_val", model["model_upload_path_glb"])
+
+                if model["model_upload_path_zip"]:
+                    html.esc("model_upload_path_zip_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"])
+                    html.esc("model_upload_path_zip_filename_val", model["model_upload_path_zip"].split("/")[-1])
+                if model["model_upload_path_xml"]:
+                    html.esc("model_upload_path_xml_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_xml"])
+                    html.esc("model_upload_path_xml_filename_val", model["model_upload_path_xml"].split("/")[-1])
+                if model["model_upload_path_aug"]:
+                    html.esc("model_upload_path_aug_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_aug"])
+                    html.esc("model_upload_path_aug_filename_val", model["model_upload_path_aug"].split("/")[-1])
+                if model["model_upload_path_sd_aug"]:
+                    html.esc("model_upload_path_sd_aug_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_sd_aug"])
+                    html.esc("model_upload_path_sd_aug_filename_val", model["model_upload_path_sd_aug"].split("/")[-1])
+                if model["model_upload_path_bin"]:
+                    html.esc("model_upload_path_bin_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_bin"])
+                    html.esc("model_upload_path_bin_filename_val", model["model_upload_path_bin"].split("/")[-1])
+                if model["model_upload_path_mini_bin"]:
+                    html.esc("model_upload_path_mini_bin_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_mini_bin"])
+                    html.esc("model_upload_path_mini_bin_filename_val", model["model_upload_path_mini_bin"].split("/")[-1])
+                if model["model_upload_path_glb"]:
+                    html.esc("model_upload_path_glb_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_glb"])
+                    html.esc("model_upload_path_glb_filename_val", model["model_upload_path_glb"].split("/")[-1])
+
                 html.esc("model_filesize_val", model["model_filesize"])
                 html.esc("model_filesize_bracket_val", model["model_filesize_bracket"])
                 html.esc("model_filesize_zip_val", model["model_filesize_zip"])

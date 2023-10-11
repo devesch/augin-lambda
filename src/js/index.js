@@ -3111,3 +3111,23 @@ export async function updateBackofficeAnalytics() {
     var analytics_date_filter_select = document.getElementById("analytics_date_filter_select");
     location.href = ProjectData.props.domainNameUrlVal + "/backoffice_analytics/?analytics_date_filter=" + analytics_date_filter_select.value;
 }
+
+
+export async function openModalDeleteUserAccount() {
+    var delete_account_error_span = document.getElementById("delete_account_error_span");
+    delete_account_error_span.innerHTML = "";
+    openModal('.modal.delete-account-modal');
+}
+
+export async function saveDeleteUserAccount() {
+    var delete_account_error_span = document.getElementById("delete_account_error_span");
+    let update_user_response = await apiCaller("update_user", {
+        "command": "delete_account"
+    })
+
+    if ("error" in update_user_response) {
+        delete_account_error_span.innerHTML = update_user_response["error"];
+    } else {
+        location.href = update_user_response["redirect_link"];
+    }
+}

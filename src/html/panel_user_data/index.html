@@ -16,14 +16,16 @@
             <span id="update_user_thumb_error_msg_span"></span>
         </div>
         {{html_physical_or_company_form}}
-        
+
         {{html_close_div}}
         {{html_close_div}}
         {{html_close_div}}
-    </div>
-    <div class="panel-user-data__sub-container {{panel_user_data_modal_visibility_val}}">
-        {{html_change_password_link}}
-        {{html_modify_cookies_configuration}}
+
+        <div class="panel-user-data__sub-container {{panel_user_data_modal_visibility_val}}">
+            {{html_change_password_link}}
+            {{html_delete_account_button}}
+            {{html_modify_cookies_configuration}}
+        </div>
     </div>
     <div class="modal modal-loader-spinner" aria-hidden="true">
         <div class="content-modal max-width">
@@ -31,4 +33,6 @@
         </div>
     </div>
 </main>
+{{html_delete_account_modal}}
+
 {{footer}}

@@ -1,0 +1,16 @@
+<div id="delete-account-modal" class="modal delete-account-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Confirmar exclusão de conta}}</h1>
+        </div>
+        <div class="modal-content">
+            <p>{{Esta ação irá excluir todos os dados da sua conta e não pode ser revertida}}</p>
+            <span class="error" id="delete_account_error_span">
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.delete-account-modal')">{{Voltar}}</button>
+                <button onclick="js.index.saveDeleteUserAccount()" class="ghost">{{Excluir todos os dados}}</button>
+            </div>
+        </div>
+    </div>
+</div>
