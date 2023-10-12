@@ -112,15 +112,6 @@ class Dynamo:
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "order_status-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "order_status"}, "ExpressionAttributeValues": {":bef90": {"S": order_status}}}, limit, last_evaluated_key, key_schema)
         return self.execute_batch_get_item(query), last_evaluated_key
 
-    def query_paginated_user_orders(self, user_id, user_total_orders_count, page_index):
-        query = []
-        page_size = int(lambda_constants["user_orders_page_size"])
-        start_index = int(user_total_orders_count) - ((int(page_index) - 1) * page_size)
-        end_index = max(start_index - page_size, 0)
-        for index in range(start_index, end_index, -1):
-            query.append({"pk": "user#" + user_id, "sk": "order#" + str(index)})
-        return self.execute_batch_get_item(query)
-
     def query_pending_nfse_orders(self):
         query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "pending_nfse"}}})
         return self.execute_batch_get_item(query)

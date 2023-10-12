@@ -51,7 +51,6 @@ class User:
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
-        self.user_total_orders_count = "0"
         self.user_pagination_count = "20"
 
         self.user_last_login_at = str(time.time())
@@ -208,10 +207,6 @@ class User:
         if valid_until_now:
             self.update_attribute("user_subscription_valid_until", user_subscription["subscription_valid_until"])
         self.update_attribute("user_subscription_status", stripe_subscription["status"])
-
-    def incrase_user_total_orders_count(self):
-        new_user_total_orders_count = str(int(self.user_total_orders_count) + 1)
-        self.update_attribute("user_total_orders_count", new_user_total_orders_count)
 
     def get_user_actual_plan(self):
         if self.check_if_subscription_is_valid():
@@ -497,14 +492,14 @@ def sort_user_folders(user, user_folders, sort_attribute="folder_name", sort_rev
 
 
 def load_user(user_id):
+    if not user_id:
+        return None
     if Validation().check_if_is_uuid4(user_id):
         auth_token_item = Dynamo().get_auth_token(user_id)
         if auth_token_item:
             user_id = auth_token_item["auth_user_id"]
     elif "@" in user_id:
         user_id = Dynamo().get_user_id_with_email(user_id)
-    elif not user_id:
-        return None
     user = User(user_id)
     user.load_information()
     if user.user_status in ("not_created", "deleted"):

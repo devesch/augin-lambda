@@ -92,7 +92,7 @@ lambda_constants = {
         "others": {"category_id": "others", "category_name": "Others"},
     },
     "plan_reference_trackers": {"indisponível": "unavailable", "único": "unique", "múltiplo": "multiple"},
-    "user_orders_page_size": "12",
+    "user_orders_page_size": "4",
     "free_plan_id": "ee15916d5acc",
 }
 

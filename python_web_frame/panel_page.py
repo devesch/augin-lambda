@@ -10,6 +10,7 @@ from objects.Order import translate_order_status
 from objects.User import sort_user_folders, load_user
 from objects.UserFolder import generate_folder_data, increase_folder_visualization_count
 from objects.UserDevice import generate_device_icon
+import math
 
 
 class PanelPage(BasePage):
@@ -393,9 +394,7 @@ class PanelPage(BasePage):
         return "".join(full_html)
 
     def show_html_payment_history_div(self, user_orders):
-        import math
-
-        pages_amount = math.ceil(int(self.user.user_total_orders_count) / int(lambda_constants["user_orders_page_size"]))
+        pages_amount = math.ceil(len(user_orders) / int(lambda_constants["user_orders_page_size"]))
         html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_div")
         html.esc("html_payment_history_rows", self.list_html_payment_history_rows(user_orders))
         html.esc("payment_history_pages_count_val", pages_amount)
@@ -419,6 +418,11 @@ class PanelPage(BasePage):
         full_html = []
         for index, order in enumerate(user_orders):
             html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_history_rows")
+            page_index = math.ceil((index + 1) / int(lambda_constants["user_orders_page_size"]))
+            html.esc("page_index_val", page_index)
+            if page_index > 1:
+                html.esc("row_visility_val", "display:none;")
+
             html.esc("order_created_at_val", Date().format_to_str_time(order["created_at"]))
             html.esc("order_currency_symbol_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
             html.esc("order_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))

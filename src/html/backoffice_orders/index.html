@@ -10,15 +10,10 @@
             <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()" autocomplete="off">
                 <option value="all" selected disabled>{{Filtrar}}</option>
                 <option value="all">{{Todas}}</option>
-                <option value="pending">{{Incompleto}}</option>
                 <option value="paid">{{Pago}}</option>
-                <option value="not_authorized">{{Não autorizado}}</option>
-                <option value="expired_card">{{Cartão expirado}}</option>
-                <option value="blocked_card">{{Cartão bloqueado}}</option>
-                <option value="canceled_card">{{Cartão cancelado}}</option>
-                <option value="problems_with_card">{{Problemas no cartão}}</option>
-                <option value="time_out">{{Excedeu o limite de tentativas}}</option>
+                <option value="pending">{{Incompleto}}</option>
                 <option value="refunded">{{Reembolsado}}</option>
+                <option value="error">{{Erro}}</option>
             </select>
             <div class="floating-input">
                 <input oninput="js.index.updateBackofficeOrders(), js.index.changeSearchIcon(this)" type="search" name="search_orders_by_user_input" id="search_orders_by_user_input" class="input-search" results="10" autosave="search_orders_by_user_input" placeholder=" ">

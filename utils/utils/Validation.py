@@ -13,6 +13,8 @@ class Validation:
         return cls._instance
 
     def check_if_is_uuid4(self, uuid4):
+        if not uuid4:
+            return False
         regex = re.compile(r"^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\Z", re.I)
         match = regex.match(uuid4)
         if not match:

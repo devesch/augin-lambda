@@ -1,6 +1,7 @@
 from python_web_frame.panel_page import PanelPage
 from python_web_frame.controllers.stripe_controller import stripe_token
 from objects.Plan import translate_reference_tracker
+from objects.Order import remove_pendings_from_orders
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.utils.Date import Date
@@ -59,7 +60,8 @@ class PanelYourPlan(PanelPage):
                 else:
                     html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
 
-        user_orders = Dynamo().query_paginated_user_orders(self.user.user_id, self.user.user_total_orders_count, "1")
+        user_orders = Dynamo().query_user_orders(self.user.user_id)
+        user_orders = remove_pendings_from_orders(user_orders)
         if user_orders:
             html.esc("html_payment_history_div", self.show_html_payment_history_div(user_orders))
         user_payment_methods = Dynamo().query_user_payment_methods(self.user.user_id)

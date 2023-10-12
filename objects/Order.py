@@ -4,9 +4,9 @@ from utils.Code import Code
 
 
 class Order:
-    def __init__(self, user_id, order_index, order_id) -> None:
+    def __init__(self, user_id, order_id) -> None:
         self.pk = "user#" + user_id
-        self.sk = "order#" + order_index
+        self.sk = "order#" + str(time())
         self.order_user_id = user_id
         self.order_id = order_id
         self.order_plan_id = ""
@@ -83,7 +83,7 @@ def translate_order_type(order_type):
 
 
 def translate_order_status(order_status):
-    translations = {"pending": "Incompleto", "paid": "Pago", "not_authorized": "Não autorizado", "card_declined": "Cartão negado", "expired_card": "Cartão expirado", "blocked_card": "Cartão bloqueado", "canceled_card": "Cartão cancelado", "problems_with_card": "Problemas no cartão", "time_out": "Excedeu o limite de tentativas", "refunded": "Reembolsado", "waiting_payment": "Aguardando pagamento"}
+    translations = {"pending": "Incompleto", "paid": "Pago", "not_authorized": "Não autorizado", "card_declined": "Cartão negado", "expired_card": "Cartão expirado", "blocked_card": "Cartão bloqueado", "canceled_card": "Cartão cancelado", "problems_with_card": "Problemas no cartão", "time_out": "Excedeu o limite de tentativas", "refunded": "Reembolsado", "waiting_payment": "Aguardando pagamento", "error": "Erro"}
 
     translated_status = translations.get(order_status)
     if translated_status:
@@ -105,3 +105,16 @@ def translate_order_nfse_status(order_nfse_status):
         return Code().translate("Emitida")
     elif order_nfse_status == "canceled":
         return Code().translate("Cancelada")
+
+
+def remove_pendings_from_orders(orders):
+    filtered_orders = []
+    first_incompleted = False
+    if orders:
+        for order in orders:
+            if order["order_status"] != "pending":
+                filtered_orders.append(order)
+            elif not first_incompleted:
+                filtered_orders.append(order)
+                first_incompleted = True
+    return filtered_orders

@@ -94,6 +94,7 @@ class CheckoutStripeWebHook(BasePage):
         order = Dynamo().get_order(self.post["data"]["object"]["id"])
         Dynamo().update_entity(order, "order_last_error_code", self.post["data"]["object"]["last_payment_error"]["code"])
         Dynamo().update_entity(order, "order_last_error_message", self.post["data"]["object"]["last_payment_error"]["message"])
+        Dynamo().update_entity(order, "order_status", "error")
         return {"success": "Evento payment_intent_payment_failed tratado."}
 
     def payment_intent_requires_action(self):

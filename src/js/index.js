@@ -20,17 +20,19 @@ export async function showSelectedPaymentPage(index) {
 
 
     let current_button = document.getElementById("payment_history_page_button_" + index);
-    let payment_history_rows = document.getElementById("payment_history_rows");
     let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
     let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
+    let payment_history_rows = document.querySelectorAll('[class^="payment_history_row_page_"]');
+
     payment_history_current_page_input.value = index;
 
-    let pagination_queries_response = await apiCaller("pagination_queries", {
-        "query": "query_paginated_user_orders",
-        "page": index
-    })
-
-    payment_history_rows.innerHTML = pagination_queries_response["success"];
+    for (let payment_history_row of payment_history_rows) {
+        if (payment_history_row.classList.contains("payment_history_row_page_" + index)) {
+            payment_history_row.style.display = "";
+        } else {
+            payment_history_row.style.display = "none";
+        }
+    }
 
     for (let payment_history_page_button of payment_history_page_buttons) {
         payment_history_page_button.classList.remove("selected-page")
