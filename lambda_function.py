@@ -2,7 +2,7 @@ import json
 import os
 import importlib
 from utils.Event import Event
-from objects.User import User
+from objects.User import load_user
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Ses import Ses
 from utils.Code import Code
@@ -42,13 +42,9 @@ def set_instance_attributes(class_instance, event, page, cookie_policy, path, po
 
 
 def initialize_user(event):
-    user = User()
-    user_auth_token = event.get_user_auth_token()
-    user.load_information_with_auth_token(user_auth_token)
-    if user.user_status in ("not_created", "pending_password"):
-        user = None
-        if user:
-            user.update_last_login_at()
+    user = load_user(event.get_user_auth_token())
+    if user:
+        user.update_last_login_at()
     return user
 
 

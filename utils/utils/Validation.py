@@ -1,5 +1,7 @@
 import os
 import json
+import re
+import uuid
 
 
 class Validation:
@@ -9,6 +11,17 @@ class Validation:
         if cls._instance is None:
             cls._instance = super(Validation, cls).__new__(cls, *args, **kwargs)
         return cls._instance
+
+    def check_if_is_uuid4(self, uuid4):
+        regex = re.compile(r"^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\Z", re.I)
+        match = regex.match(uuid4)
+        if not match:
+            return False
+        try:
+            uuid_obj = uuid.UUID(uuid4, version=4)
+        except ValueError:
+            return False
+        return str(uuid_obj) == uuid4
 
     def check_if_less_than_30_days_ago(self, unix_time):
         import time

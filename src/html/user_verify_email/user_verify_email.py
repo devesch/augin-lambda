@@ -1,5 +1,5 @@
 from python_web_frame.user_page import UserPage
-from objects.User import User
+from objects.User import load_user
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.EncodeDecode import EncodeDecode
@@ -47,8 +47,7 @@ class UserVerifyEmail(UserPage):
                 return self.render_get_with_error("Código de verificação expirado.")
 
             if self.path.get("change_email"):
-                self.user = User()
-                self.user.load_information_with_auth_token(self.path["user_auth_token"])
+                self.user = load_user(self.path["user_auth_token"])
                 return Http().redirect("user_email_changed_confirm/?user_auth_token=" + self.user.user_auth_token + "&new_user_email_encoded=" + EncodeDecode().encode_to_b64(self.path["user_email"]))
 
             return Http().redirect("user_register/?user_encoded_email=" + EncodeDecode().encode_to_b64(self.path["user_email"]) + "&verify_email_code=" + self.post["verify_email_code"])

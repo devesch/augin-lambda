@@ -109,5 +109,5 @@ class Code:
         translations = json.load(open("utils/translations.json", "r", encoding="utf-8"))
         return translations
 
-    def translate(self, key):
-        return self.get_translations().get(key)[lambda_constants["current_language"]]
+    def translate(self, key, lang=lambda_constants["current_language"]):
+        return self.get_translations().get(key)[lang]

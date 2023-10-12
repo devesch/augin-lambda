@@ -1,4 +1,3 @@
-from objects.User import User
 from utils.Code import Code
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.Generate import Generate
@@ -25,8 +24,10 @@ class BasePage:
     update_user_cookie = False
     project_cookies = None
 
-    def translate(self, translate_key):
-        return Code().get_translations()[translate_key][self.lang]
+    def translate(self, translate_key, lang=None):
+        if not lang:
+            lang = self.lang
+        return Code().get_translations()[translate_key][lang]
 
     def parse_html(self, common_changes={}):
         common_changes["page_title"] = StrFormat().format_snakecase_to_title(self.route)

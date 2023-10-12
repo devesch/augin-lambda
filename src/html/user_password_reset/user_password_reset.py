@@ -1,5 +1,5 @@
 from python_web_frame.user_page import UserPage
-from objects.User import User
+from objects.User import load_user
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.Validation import Validation
@@ -15,9 +15,8 @@ class UserPasswordReset(UserPage):
     def render_get(self):
         if not self.path.get("user_auth_token"):
             return Http().redirect("user_login")
-        user = User("")
-        user.load_information_with_auth_token(self.path["user_auth_token"])
-        if user.user_status != "created":
+        user = load_user(self.path["user_auth_token"])
+        if not user:
             return Http().redirect("user_login")
 
         html = super().parse_html()
@@ -30,9 +29,8 @@ class UserPasswordReset(UserPage):
     def render_post(self):
         if not self.path.get("user_auth_token"):
             return Http().redirect("user_login")
-        user = User("")
-        user.load_information_with_auth_token(self.path["user_auth_token"])
-        if user.user_status != "created":
+        user = load_user(self.path["user_auth_token"])
+        if not user:
             return Http().redirect("user_login")
 
         if not self.post.get("user_password"):

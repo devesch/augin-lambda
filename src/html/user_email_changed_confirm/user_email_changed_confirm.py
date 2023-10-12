@@ -1,5 +1,5 @@
 ﻿from python_web_frame.user_page import UserPage
-from objects.User import User
+from objects.User import load_user
 
 
 class UserEmailChangedConfirm(UserPage):
@@ -9,8 +9,7 @@ class UserEmailChangedConfirm(UserPage):
     admin = False
 
     def render_get(self):
-        user = User()
-        user.load_information_with_auth_token(self.path["user_auth_token"])
+        user = load_user(self.path["user_auth_token"])
         user.update_attribute("user_email", self.path["new_user_email"])
         html = super().parse_html()
         return str(html)

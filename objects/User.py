@@ -1,8 +1,7 @@
-import time
-from uuid import uuid4
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.Generate import Generate
+from utils.utils.Validation import Validation
 from utils.utils.Date import Date
 from objects.UserPassword import UserPassword
 from objects.UserAuthToken import UserAuthToken
@@ -13,6 +12,8 @@ from utils.utils.Sort import Sort
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.Config import lambda_constants
+import uuid
+import time
 
 
 class User:
@@ -375,8 +376,8 @@ class User:
             Dynamo().put_entity(self.__dict__)
 
     def update_last_login_at(self):
-        if int(float(self.user_last_login_at)) + 3000 < int(time()):
-            self.update_attribute("user_last_login_at", str(time()))
+        if int(float(self.user_last_login_at)) + 3000 < float(time.time()):
+            self.update_attribute("user_last_login_at", str(time.time()))
 
     def check_if_is_payment_ready(self):
         self.user_payment_ready = True
@@ -440,19 +441,9 @@ class User:
                 setattr(self, attribute, user_data[attribute])
         self.update_cart_currency()
 
-    def load_information_with_auth_token(self, user_auth_token):
-        if not user_auth_token:
-            return
-        if user_auth_token:
-            auth_token_item = Dynamo().get_auth_token(user_auth_token)
-            if auth_token_item:
-                self.user_id = auth_token_item["auth_user_id"]
-        self.load_information()
-        self.user_auth_token = user_auth_token
-
     def update_auth_token(self):
         self.user_last_login_at = str(time.time())
-        self.user_auth_token = str(uuid4())
+        self.user_auth_token = str(uuid.uuid4())
         auth_token = UserAuthToken(self.user_auth_token, self.user_id)
         Dynamo().put_entity(self.__dict__)
         Dynamo().put_entity(auth_token.__dict__)
@@ -506,12 +497,16 @@ def sort_user_folders(user, user_folders, sort_attribute="folder_name", sort_rev
 
 
 def load_user(user_id):
-    if "@" in user_id:
+    if Validation().check_if_is_uuid4(user_id):
+        auth_token_item = Dynamo().get_auth_token(user_id)
+        if auth_token_item:
+            user_id = auth_token_item["auth_user_id"]
+    elif "@" in user_id:
         user_id = Dynamo().get_user_id_with_email(user_id)
-    if not user_id:
+    elif not user_id:
         return None
     user = User(user_id)
     user.load_information()
-    if user.user_status == "not_created":
+    if user.user_status in ("not_created", "deleted"):
         user = None
     return user
