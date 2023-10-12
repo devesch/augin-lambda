@@ -5,12 +5,10 @@
         <h1 class="my-plan__title">{{Erro 500}}</h1>
     </div>
     <div class="error__title-container">
-        <img src="{{cdn_val}}/assets/icons/error.svg" class="error-icon" width="129" height="129" alt=""/>
-        <h2>{{Problema temporário}}</h2>
+        <img src="{{cdn_val}}/assets/icons/error.svg" class="error-icon" width="129" height="129" alt="" />
+        <h2>{{error_title_val}}</h2>
         <div>
-            <p>{{Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível.}}</p>
-            <p>{{Nossa equipe está trabalhando para resolver a situação o mais rápido possível.}}</p>
-            <p>{{Por favor, tente novamente mais tarde.}}</p>
+            {{html_error_message}}
         </div>
         <div class="error__button-container">
             <a href="{{domain_name_url_val}}" class="button">{{Página inicial}}</a>

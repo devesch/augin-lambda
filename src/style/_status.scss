@@ -22,6 +22,11 @@
     color: colors.color("color-status-red-700");
 }
 
+.status--waiting {
+    background-color: colors.color("color-status-warning-50");
+    color: colors.color("color-status-warning-700");
+}
+
 .status--void,
 .status--canceled,
 .status--incomplete,

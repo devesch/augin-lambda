@@ -4,6 +4,7 @@ from objects.Plan import translate_reference_tracker, generate_plans_hierarchy
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
+import time
 
 
 class CheckoutUpgradeYourPlan(CheckoutPage):
@@ -70,7 +71,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                         html.esc("plan_recurrency_val", self.translate("ano"))
                         html.esc("plan_recurrency_phrase_val", self.translate("Cobrado anualmente"))
 
-                    if user_subscription and (user_subscription.get("subscription_plan_id") == plan["plan_id"]) and (user_subscription.get("subscription_recurrency") == recurrency) and self.user.user_subscription_status == "active":
+                    if user_subscription and (user_subscription.get("subscription_plan_id") == plan["plan_id"]) and (user_subscription.get("subscription_recurrency") == recurrency) and float(user_subscription["subscription_valid_until"]) > time.time():
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_your_plan_button())
                     elif user_subscription and (user_subscription.get("subscription_plan_id") + "-" + user_subscription.get("subscription_recurrency") in plans_hierarchy) and (int(plans_hierarchy[user_subscription.get("subscription_plan_id") + "-" + user_subscription.get("subscription_recurrency")]) > int(plans_hierarchy[plan["plan_id"] + "-" + recurrency])):
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency, "downgrade"))

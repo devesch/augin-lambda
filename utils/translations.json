@@ -3339,6 +3339,11 @@
         "es": "No fue posible decorar el correo electrónico",
         "pt": "Não foi possível decoficar o email"
     },
+    "Não foi possível encontrar arquivo": {
+        "en": "It was not possible to find file",
+        "es": "No fue posible encontrar archivo",
+        "pt": "Não foi possível encontrar arquivo"
+    },
     "Não foi possível encontrar dados com o CNPJ informado": {
         "en": "It was not possible to find data with the CNPJ informed",
         "es": "No fue posible encontrar datos con el CNPJ informado",

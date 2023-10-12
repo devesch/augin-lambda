@@ -426,6 +426,8 @@ class PanelPage(BasePage):
 
             if order["order_status"] == "paid":
                 html.esc("order_status_class_val", "paid")
+            elif order["order_status"] == "waiting_payment":
+                html.esc("order_status_class_val", "waiting")
             else:
                 html.esc("order_status_class_val", "failed")
 
@@ -457,12 +459,13 @@ class PanelPage(BasePage):
             if payment_method["payment_method_type"] == "card":
                 html.esc("brand_val", payment_method["payment_method_card"]["brand"])
                 html.esc("title_brand_val", payment_method["payment_method_card"]["brand"].title())
-                html.esc("last4_val", payment_method["payment_method_card"]["last4"])
+                html.esc("last4_val", "***" + payment_method["payment_method_card"]["last4"])
                 html.esc("exp_month_val", payment_method["payment_method_card"]["exp_month"])
                 html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
             if payment_method["payment_method_type"] == "boleto":
                 html.esc("make_default_payement_method_visibility_val", "display:none;")
-                html.esc("brand_val", self.translate("boleto").title())
+                html.esc("brand_val", "boleto")
+                html.esc("title_brand_val", self.translate("Boleto").title())
                 html.esc("colspan_val", "colspan='2'")
                 html.esc("expires_in_visibility_val", "display:none;")
             full_html.append(str(html))
