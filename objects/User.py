@@ -51,7 +51,7 @@ class User:
         self.user_used_trials = []
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
-        self.user_pagination_count = "20"
+        self.user_pagination_count = "50"
 
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
