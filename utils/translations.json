@@ -3729,6 +3729,21 @@
         "es": "Para crear federados, debe tener más de un archivo y todos ellos son de tipo IFC",
         "pt": "Para criar federados é necessário ter mais de um arquivo e todos eles serem do tipo IFC"
     },
+    "Para poder baixar um projeto é necessário o upgrade do seu plano": {
+        "en": "In order to download a project it is necessary to upgrade of your plan",
+        "es": "Para descargar un proyecto, es necesario actualizar su plan.",
+        "pt": "Para poder baixar um projeto é necessário o upgrade do seu plano"
+    },
+    "Para poder compartilhar um projeto é necessário o upgrade do seu plano": {
+        "en": "To be able to share a project it is necessary to upgrade of your plan",
+        "es": "Para poder compartir un proyecto, es necesario actualizar su plan",
+        "pt": "Para poder compartilhar um projeto é necessário o upgrade do seu plano"
+    },
+    "Para poder criar um arquivo federado é necessário o upgrade do seu plano": {
+        "en": "In order to create a federated file, it is necessary to upgrade of your plan",
+        "es": "Para crear un archivo federado, es necesario actualizar su plan",
+        "pt": "Para poder criar um arquivo federado é necessário o upgrade do seu plano"
+    },
     "Paraguay": {
         "en": "Paraguay",
         "es": "Paraguay",
