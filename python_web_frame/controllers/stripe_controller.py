@@ -145,7 +145,7 @@ class StripeController:
             payment_behavior="default_incomplete",
             expand=["latest_invoice.payment_intent"],
             payment_settings={"payment_method_types": payment_method_types, "save_default_payment_method": "on_subscription"},
-            metadata={"user_id": user.user_id, "plan_id": plan["plan_id"], "plan_recurrency": plan_recurrency, "coupon_code": user.user_cart_coupon_code, "plan": json.dumps(plan)},
+            metadata={"user_id": user.user_id, "plan_id": plan["plan_id"], "plan_recurrency": plan_recurrency, "coupon_code": user.user_cart_coupon_code, "plan_prices": json.dumps({"plan_price_annually_brl": plan["plan_price_annually_brl"], "plan_price_annually_usd": plan["plan_price_annually_usd"], "plan_price_monthly_brl": plan["plan_price_monthly_brl"], "plan_price_monthly_usd": plan["plan_price_monthly_usd"]})},
         )
 
     def get_payment_intent(self, payment_intent_id):
