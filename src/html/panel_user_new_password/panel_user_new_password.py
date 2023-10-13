@@ -36,12 +36,11 @@ class PanelUserNewPassword(PanelPage):
         self.user.update_password(self.post["user_password"], Generate().generate_salt(9))
         self.user.user_ip = self.event.get_user_ip()
         Dynamo().put_entity(self.user.__dict__)
-        user_password_modified_email = self.generate_user_password_modified_email(self.user.user_name)
+        self.send_user_password_modified_email(self.user.user_name)
         self.user.clear_all_auth_tokens()
-        Ses().send_email(self.user.user_email, body_html=user_password_modified_email, body_text=user_password_modified_email, subject_data=self.translate("Augin - Sua senha foi alterada"))
         return {"html": Http().redirect("home"), "command": "logout", "user_auth_token": None}
 
-    def generate_user_password_modified_email(self, user_name):
-        html = ReadWrite().read_html("panel_user_new_password/_codes/html_password_modified_email")
-        html.esc("user_name_val", user_name)
-        return str(html)
+    def generate_user_password_modified_email(self):
+        html = ReadWrite().read_html("main/emails/html_password_modified_email")
+        html.esc("user_name_val", self.user.user_name)
+        Ses().send_email(self.user.user_email, body_html=html, body_text=html, subject_data=self.translate("Augin - Sua senha foi alterada"))

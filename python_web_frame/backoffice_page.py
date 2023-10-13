@@ -217,7 +217,7 @@ class BackofficePage(BasePage):
         return "".join(full_html)
 
     def send_refund_order_email(self, user_email, order_id):
-        html = ReadWrite().read_html("backoffice_orders/_codes/html_email_order_refund")
+        html = ReadWrite().read_html("main/emails/html_email_order_refund")
         html.esc("order_id_val", order_id)
         Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data="Augin - " + self.translate("Sua compra está sendo reembolsada"))
 

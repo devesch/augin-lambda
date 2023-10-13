@@ -153,7 +153,7 @@ class CheckoutStripeWebHook(BasePage):
         increase_backoffice_data_total_count("order")
 
     def send_payment_success_email(self, order):
-        html = ReadWrite().read_html("checkout_payment_success/_codes/html_payment_success_email")
+        html = ReadWrite().read_html("main/emails/html_payment_success_email")
         html.esc("user_email_val", self.user.user_email)
         html.esc("user_name_val", self.user.user_name)
         html.esc("order_currency_val", StrFormat().format_currency_to_symbol(order["order_currency"]))

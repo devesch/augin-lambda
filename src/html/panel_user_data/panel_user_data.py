@@ -167,7 +167,7 @@ class PanelUserData(PanelPage, UserPage):
         return self.render_get_with_error("Perfil atualizado com sucesso")
 
     def send_email_modified_email(self, user_email, user_auth_token, new_user_email):
-        html = ReadWrite().read_html("panel_user_data/_codes/html_email_modified_email")
+        html = ReadWrite().read_html("main/emails/html_email_modified_email")
         html.esc("user_auth_token_val", user_auth_token)
         html.esc("user_email_val", user_email)
         html.esc("new_user_email_val", new_user_email)
