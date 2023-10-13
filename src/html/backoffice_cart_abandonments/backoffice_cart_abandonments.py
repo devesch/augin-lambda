@@ -6,7 +6,7 @@ import json
 
 
 class BackofficeCartAbandonments(BackofficePage):
-    name = "Backoffice - Abandono de carrinho"
+    name = "Backoffice - Abandonos de carrinho"
     public = False
     bypass = False
     admin = True
