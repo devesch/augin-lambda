@@ -1,0 +1,62 @@
+﻿{{header}}
+{{menu_backoffice}}
+
+<main class="my-plan__main">
+    <h1 class="my-plan__title">{{Cupons}}</h1>
+    <a class="button" href="{{domain_name_url_val}}/backoffice_create_coupon">{{Criar Cupom}}</a>
+    <div>
+        <div>
+            {{html_dropdown_select_user_pagination}}
+        </div>
+        <section class="panel-explore-filters-container">
+            <div class="floating-input">
+                <input oninput="js.index.updateBackofficeCoupons(), js.index.changeSearchIcon(this)" type="search" name="search_coupons_by_name_or_code_input" id="search_coupons_by_name_or_code_input" class="input-search" results="10" autosave="search_coupons_by_name_or_code_input" placeholder=" ">
+                <label for="search_coupons_by_name_or_code_input">
+                    {{Pesquisar}}
+                </label>
+                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
+                <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_coupons_by_name_or_code_input')">
+            </div>
+        </section>
+        <div>
+            <table class="explore__table">
+                <thead>
+                    <th>name</th>
+                    <th>code</th>
+                    <th>description</th>
+                    <th>available_for_limited_time</th>
+                    <th>start_date</th>
+                    <th>end_date</th>
+                    <th>has_limited_uses_count</th>
+                    <th>actual_uses_count</th>
+                    <th>maxium_uses_count</th>
+                    <th>discount_type</th>
+                    <th>brl_discount</th>
+                    <th>usd_discount</th>
+                    <th>percentage_discount</th>
+                    <th>recurrence_months</th>
+                    <th>available_monthly</th>
+                    <th>available_annually</th>
+                    <th>available_in_brl</th>
+                    <th>available_in_usd</th>
+                    <th>plans_ids</th>
+                    <th>created_at</th>
+                    <th></th>
+                </thead>
+                <tbody id="pagination_component">
+                    {{html_backoffice_coupons_table_rows}}
+                </tbody>
+            </table>
+        </div>
+        {{html_pagination}}
+    </div>
+</main>
+
+<script>
+    window.onload = async function () {
+        js.index.updatePaginationProgressBar();
+        js.index.loadMoreOnScroll();
+    };
+</script>
+<input id="last_evaluated_key" value='{{last_evaluated_key_val}}' hidden>
+{{footer}}

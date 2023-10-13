@@ -9,12 +9,12 @@ class Error(BasePage):
 
     def render_get(self):
         html = super().parse_html()
-        if not "error" in self.path:
-            html.esc("error_title_val", self.translate("Problema temporário"))
-            html.esc("html_error_message", str(ReadWrite().read_html("error/_codes/html_default_error_message")))
-        else:
+        if self.path and self.path.get("error"):
             html.esc("error_title_val", self.translate("Não foi possível encontrar arquivo"))
             html.esc("html_error_message", self.show_html_error_message(self.path["error"]))
+        else:
+            html.esc("error_title_val", self.translate("Problema temporário"))
+            html.esc("html_error_message", str(ReadWrite().read_html("error/_codes/html_default_error_message")))
         self.check_error_msg(html, self.error_msg)
         return str(html)
 

@@ -113,6 +113,7 @@ if os.environ.get("AWS_EXECUTION_ENV") is None:
     with open("_testnow.json", "r") as read_file:
         event = json.load(read_file)
         html = main_lambda_handler(event, None)
+        # html = lambda_handler(event, None)
     os.system("npm run dev")
     import codecs
 

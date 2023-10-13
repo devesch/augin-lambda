@@ -4,7 +4,7 @@ from boto3 import client, resource
 from botocore.config import Config
 from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
 import os
-
+import time
 
 my_config = Config(retries={"max_attempts": 50, "mode": "adaptive"})
 
@@ -99,6 +99,10 @@ class Dynamo:
         return self.execute_batch_get_item(query), last_evaluated_key
 
     ### ORDER ###
+    def query_all_pending_orders_from_last_24h(self):
+        query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "order_status-created_at-index", "KeyConditionExpression": "#bef90 = :bef90 And #bef91 >= :bef91", "ExpressionAttributeNames": {"#bef90": "order_status", "#bef91": "created_at"}, "ExpressionAttributeValues": {":bef90": {"S": "pending"}, ":bef91": {"S": str(time.time() - 90000)}}})
+        return self.execute_batch_get_item(query)
+
     def query_user_orders(self, user_id):
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "order#"}}})
 
