@@ -183,8 +183,13 @@ class PanelPage(BasePage):
                             html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows_folders")
                             if user_plan and user_plan.get("plan_share_files"):
                                 html.esc("html_share_folder_button", self.show_html_share_folder_button(folder))
+                            else:
+                                html.esc("html_share_folder_button", str(ReadWrite().read_html("panel_explore_project/_codes/html_share_folder_button_blocked")))
+
                             if user_plan and user_plan.get("plan_download_files") and (folder["folders"] or folder["files"]):
                                 html.esc("html_download_folder_button", self.show_html_download_folder_button(folder))
+                            else:
+                                html.esc("html_download_folder_button", str(ReadWrite().read_html("panel_explore_project/_codes/html_download_folder_button_blocked")))
 
                     elif model_html == "update":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_update_model_user_folder_rows_folders")
@@ -255,8 +260,13 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
                         if user_plan and user_plan.get("plan_share_files"):
                             html.esc("html_share_project_button", self.show_html_share_project_button(model))
+                        else:
+                            html.esc("html_share_project_button", str(ReadWrite().read_html("panel_explore_project/_codes/html_share_project_button_blocked")))
+
                         if user_plan and user_plan.get("plan_download_files"):
                             html.esc("html_download_project_button", self.show_html_download_project_button(model))
+                        else:
+                            html.esc("html_download_project_button", str(ReadWrite().read_html("panel_explore_project/_codes/html_download_project_button_blocked")))
 
                 elif model_html == "update":
                     if model["model_is_federated"] or (model_to_be_updated["model_format"] == "ifc" and model["model_format"] != "ifc") or (model_to_be_updated["model_format"] in ["fbx", "glb"] and model["model_format"] == "ifc") or (model_to_be_updated["model_id"] == model["model_id"]):
@@ -277,8 +287,6 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_model_user_folder_rows")
                     if model_html == "add_project_to_federated":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_add_project_to_federated_model_user_folder_rows")
-                        # if federated_model and model["model_id"] in federated_model["model_federated_required_ids"]:
-                        #     html.esc("checked_val", "checked='checked'")
 
                 if shared and folder_id:
                     html.esc("remove_model_visibility_val", "display:none;")
@@ -306,11 +314,10 @@ class PanelPage(BasePage):
                 html.esc("model_created_at_val", Date().format_to_str_time(model["created_at"]))
                 html.esc("model_filesize_val", ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
 
-                if self.user and user_plan and (ModelController().convert_model_filesize_to_mb(model["model_filesize"]) > user_plan["plan_maxium_model_size_in_mbs"]):
+                if self.user and user_plan and (float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])) > float(user_plan["plan_maxium_model_size_in_mbs"])):
                     html.esc("html_need_to_upgrade_your_plan", self.show_html_need_to_upgrade_your_plan(index))
 
                 html.esc("model_category_val", model["model_category"])
-                # html.esc("model_upload_path_zip_val", S3().generate_presigned_url(lambda_constants["processed_bucket"], model["model_upload_path_zip"]))
                 html.esc("model_upload_path_zip_val", ModelController().generate_model_download_link(model))
 
                 if self.user and model["model_id"] in self.user.user_favorited_models:

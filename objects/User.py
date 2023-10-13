@@ -498,8 +498,12 @@ def load_user(user_id):
         auth_token_item = Dynamo().get_auth_token(user_id)
         if auth_token_item:
             user_id = auth_token_item["auth_user_id"]
+        else:
+            user_id = None
     elif "@" in user_id:
         user_id = Dynamo().get_user_id_with_email(user_id)
+    if not user_id:
+        return None
     user = User(user_id)
     user.load_information()
     if user.user_status in ("not_created", "deleted"):
