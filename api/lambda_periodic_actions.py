@@ -1,7 +1,7 @@
 from python_web_frame.controllers.billing_controller import BillingController
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.base_page import BasePage
-from objects.BackofficeData import get_backoffice_data
+from objects.BackofficeData import get_backoffice_data, increase_backoffice_data_total_count
 from objects.User import load_user
 from objects.CartAbandonment import CartAbandonment
 from utils.utils.Validation import Validation
@@ -22,11 +22,9 @@ class LambdaPeriodicActions(BasePage):
         self.check_for_cart_abandonments()
         BillingController().check_and_issued_not_issued_bill_of_sales()
         self.check_for_models_with_error_still_processing()
-        # TODO CHANGE FIX TOTAL COUNT TO MONTH
-        self.fix_total_count()
         if datetime.today().day == 1:
             BillingController().generate_and_send_orders_nfses()
-            # self.fix_total_count()
+            self.fix_total_count()
         return {"success": "all periodic actions completed"}
 
     def check_for_cart_abandonments(self):
@@ -41,6 +39,7 @@ class LambdaPeriodicActions(BasePage):
                         if (order_user.user_subscription_status == "none") or (order_user.user_subscription_status == "canceled"):
                             cart_abandonment = CartAbandonment(order_user.user_id, pending_order["order_id"]).__dict__
                             Dynamo().put_entity(cart_abandonment)
+                            increase_backoffice_data_total_count("cart_abandonment")
 
     def check_for_models_with_error_still_processing(self):
         models_processing, last_evaluated_key = Dynamo().query_paginated_all_models_by_state("in_processing", limit=10000000)
@@ -67,6 +66,7 @@ class LambdaPeriodicActions(BasePage):
         all_orders = Dynamo().query_entity("order")
         all_coupons = Dynamo().query_entity("coupons")
         all_products = Dynamo().query_entity("product")
+        cart_abandonments = Dynamo().query_entity("cart_abandonment")
 
         backoffice_data = get_backoffice_data()
         backoffice_data["backoffice_data_total_user_count"] = str(len(all_users))
@@ -74,4 +74,6 @@ class LambdaPeriodicActions(BasePage):
         backoffice_data["backoffice_data_total_model_count"] = str(len(all_models))
         backoffice_data["backoffice_data_total_coupon_count"] = str(len(all_coupons))
         backoffice_data["backoffice_data_total_product_count"] = str(len(all_products))
+        backoffice_data["backoffice_data_total_cart_abandonment_count"] = str(len(cart_abandonments))
+
         Dynamo().put_entity(backoffice_data)

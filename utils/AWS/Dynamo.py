@@ -98,7 +98,15 @@ class Dynamo:
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "coupon"}}}, limit, last_evaluated_key, key_schema)
         return self.execute_batch_get_item(query), last_evaluated_key
 
+    ### CART ABANDONMENT ###
+
+    def query_paginated_all_cart_abandonment(self, last_evaluated_key=None, limit=10):
+        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "cart_abandonment"}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
+
     ### ORDER ###
+
     def query_all_pending_orders_from_last_24h(self):
         query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "order_status-created_at-index", "KeyConditionExpression": "#bef90 = :bef90 And #bef91 >= :bef91", "ExpressionAttributeNames": {"#bef90": "order_status", "#bef91": "created_at"}, "ExpressionAttributeValues": {":bef90": {"S": "pending"}, ":bef91": {"S": str(time.time() - 90000)}}})
         return self.execute_batch_get_item(query)
