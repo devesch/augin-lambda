@@ -18,6 +18,8 @@ class PanelExploreProject(PanelPage):
         html.esc("html_filter_and_search_section", self.show_html_filter_and_search_section())
         if user_plan["plan_maxium_federated_size_in_mbs"] != "0":
             html.esc("html_create_federated_button", self.show_html_create_federated_button())
+        else:
+            html.esc("html_create_federated_button", ReadWrite().read_html("panel_explore_project/_codes/html_create_federated_button_blocked"))
 
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
         models_in_processing = Dynamo().query_user_models_from_state(self.user, "in_processing")
