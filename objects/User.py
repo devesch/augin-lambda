@@ -31,6 +31,7 @@ class User:
         self.user_cpf = ""
         self.user_cnpj = ""
         self.user_address_data = {"user_country": "BR", "user_zip_code": "", "user_state": "", "user_city": "", "user_city_code": "", "user_street": "", "user_neighborhood": "", "user_street_number": "", "user_complement": ""}
+        self.user_address_data_last_update = str(time.time())
         self.user_client_type = "physical"  # physical / company / international
         self.user_aggre_with_communication = False
         self.user_credential = ""
@@ -387,6 +388,7 @@ class User:
 
     def check_if_is_payment_ready(self):
         self.user_payment_ready = True
+        self.user_address_data_last_update = str(time.time())
 
         if not self.user_name:
             self.user_payment_ready = False
@@ -421,7 +423,6 @@ class User:
 
         if not self.user_payment_ready:
             return False
-
         if not self.user_stripe_customer_id:
             self.user_stripe_customer_id = StripeController().create_customer(self)
         else:

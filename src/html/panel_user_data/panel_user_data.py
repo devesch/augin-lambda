@@ -147,11 +147,7 @@ class PanelUserData(PanelPage, UserPage):
         self.user.user_address_data["user_street"] = self.post.get("user_street", "").lower()
         self.user.user_address_data["user_street_number"] = self.post.get("user_street_number", "").lower()
         self.user.user_address_data["user_complement"] = self.post.get("user_complement", "").lower()
-
-        if self.post.get("user_aggre_with_communication"):
-            self.user.user_aggre_with_communication = True
-        else:
-            self.user.user_aggre_with_communication = False
+        self.user.user_aggre_with_communication = bool(self.post.get("user_aggre_with_communication"))
 
         self.user.update_cart_currency()
         self.user.check_if_is_payment_ready()
