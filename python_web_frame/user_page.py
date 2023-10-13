@@ -13,6 +13,9 @@ class UserPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def show_html_captcha_verification(self):
+        return str(ReadWrite().read_html("user_verify_email/_codes/html_verify_email_changed"))
+
     def list_html_user_country_options(self, user_country):
         full_html = []
         language_countries = JsonData().get_country_data()
@@ -50,7 +53,6 @@ class UserPage(BasePage):
         html.esc("verify_email_code_val", verify_email_code)
         html.esc("user_encoded_email_val", EncodeDecode().encode_to_b64(user_email))
         Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Seu código de verficação chegou"))
-        return
 
     def send_verify_email(self, user_email, verify_email_code):
         html = ReadWrite().read_html("user_verify_email/_codes/html_verify_email")

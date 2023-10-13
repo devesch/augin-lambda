@@ -1,6 +1,5 @@
 ﻿{{header}}
 {{menu_panel_no_icons}}
-<script src="https://hcaptcha.com/1/api.js" async defer></script>
 
 
 <main class="my-plan__main">
@@ -20,9 +19,7 @@
             <span class="error" style="{{error_msg_visibility_val}}">
                 {{error_msg_val}}
             </span>
-            <div class="login__captcha-container">
-                <div class="h-captcha" data-sitekey="9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64"></div>
-            </div>
+            {{html_captcha_verification}}
             <div class="login__button-container">
                 <a href="{{domain_name_url_val}}/user_login" class="button ghost">{{Voltar}}</a>
                 <button type="submit">{{Validar Email}}</button>

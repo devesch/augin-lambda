@@ -19,13 +19,6 @@ class UserEmailRegister(UserPage):
         return str(html)
 
     def render_post(self):
-        if not self.post.get("h-captcha-response"):
-            return self.render_get_with_error("Por favor preencha o captcha")
-
-        captacha_response = Http().verify_hcaptcha(self.post["h-captcha-response"], self.event.get_user_ip())
-        if not captacha_response["success"]:
-            return self.render_get_with_error("Captacha inválido")
-
         if not self.post.get("user_email"):
             return self.render_get_with_error("Informe um email.")
         if not Validation().check_if_email(self.post["user_email"]):
