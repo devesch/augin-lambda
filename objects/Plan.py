@@ -111,3 +111,48 @@ def generate_plans_hierarchy(plans):
             plans_hierarchy[plan["plan_id"] + "-annually"] = int(plan["plan_price_annually_brl"])
             plans_hierarchy[plan["plan_id"] + "-monthly"] = int(plan["plan_price_monthly_brl"]) * 8
     return plans_hierarchy
+
+
+def generate_plan_price_with_coupon_discount(plan, coupon_code, plan_recurrency, currency):
+    coupom = Dynamo().get_coupon(coupon_code)
+    new_plan_price = None
+    coupon_discount_value = None
+
+    if not coupom:
+        return None, None
+
+    if coupom["coupon_discount_type"] == "total":
+        if plan_recurrency == "annually":
+            if currency == "brl":
+                new_plan_price = int(plan["plan_price_annually_brl"]) - int(coupom["coupon_brl_discount"])
+                coupon_discount_value = int(coupom["coupon_brl_discount"])
+            if currency == "usd":
+                new_plan_price = int(plan["plan_price_annually_usd"]) - int(coupom["coupon_usd_discount"])
+                coupon_discount_value = int(coupom["coupon_usd_discount"])
+
+        if plan_recurrency == "monthly":
+            if currency == "brl":
+                new_plan_price = int(plan["plan_price_monthly_brl"]) - int(coupom["coupon_brl_discount"])
+                coupon_discount_value = int(coupom["coupon_brl_discount"])
+            if currency == "usd":
+                new_plan_price = int(plan["plan_price_monthly_usd"]) - int(coupom["coupon_usd_discount"])
+                coupon_discount_value = int(coupom["coupon_usd_discount"])
+
+    elif coupom["coupon_discount_type"] == "percentage":
+        if plan_recurrency == "annually":
+            if currency == "brl":
+                coupon_discount_value = int(int(plan["plan_price_annually_brl"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
+                new_plan_price = int(int(plan["plan_price_annually_brl"]) - coupon_discount_value)
+            if currency == "usd":
+                coupon_discount_value = int(int(plan["plan_price_annually_usd"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
+                new_plan_price = int(int(plan["plan_price_annually_usd"]) - coupon_discount_value)
+
+        if plan_recurrency == "monthly":
+            if currency == "brl":
+                coupon_discount_value = int(int(plan["plan_price_monthly_brl"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
+                new_plan_price = int(int(plan["plan_price_monthly_brl"]) - coupon_discount_value)
+            if currency == "usd":
+                coupon_discount_value = int(int(plan["plan_price_monthly_usd"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
+                new_plan_price = int(int(plan["plan_price_monthly_usd"]) - coupon_discount_value)
+
+    return str(new_plan_price), str(coupon_discount_value)

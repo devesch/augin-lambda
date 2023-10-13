@@ -1,5 +1,6 @@
-from python_web_frame.checkout_page import CheckoutPage
 from python_web_frame.controllers.stripe_controller import stripe_token
+from objects.Plan import generate_plan_price_with_coupon_discount
+from python_web_frame.checkout_page import CheckoutPage
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.StrFormat import StrFormat
@@ -39,7 +40,7 @@ class CheckoutStripeSubscription(CheckoutPage):
         discount_value = None
         if self.user.user_cart_coupon_code:
             html.esc("html_add_or_remove_coupon_button", self.show_html_remove_coupon_button())
-            plan_discounted_price, discount_value = self.user.generate_plan_price_with_coupon_discount(self.path["plan"], self.path["plan_recurrency"], self.user.user_cart_currency)
+            plan_discounted_price, discount_value = generate_plan_price_with_coupon_discount(self.path["plan"], self.user.user_cart_coupon_code, self.path["plan_recurrency"], self.user.user_cart_currency)
         else:
             html.esc("html_add_or_remove_coupon_button", self.show_html_add_coupon_button())
 

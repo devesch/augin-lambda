@@ -1,6 +1,10 @@
-from time import time
+from python_web_frame.controllers.stripe_controller import StripeController
+from objects.BackofficeData import increase_backoffice_data_total_count
+from objects.Plan import generate_plan_price_with_coupon_discount
 from utils.utils.StrFormat import StrFormat
+from utils.AWS.Dynamo import Dynamo
 from utils.Code import Code
+from time import time
 
 
 class Order:
@@ -118,3 +122,113 @@ def remove_pendings_from_orders(orders):
                 filtered_orders.append(order)
                 first_incompleted = True
     return filtered_orders
+
+
+def create_order_with_stripe_request_subscription(user, plan, plan_recurrency, stripe_request_payload):
+    new_order = Order(user.user_id, stripe_request_payload["latest_invoice"]["payment_intent"].stripe_id)
+    new_order.order_status = StripeController().convert_stripe_status_code_to_status(stripe_request_payload["status"])
+    new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(stripe_request_payload["plan"]["interval"])
+
+    if user.user_cart_coupon_code:
+        if plan_recurrency == "annually":
+            new_order.order_sub_total_brl_price = plan["plan_price_annually_brl"]
+            new_order.order_sub_total_usd_price = plan["plan_price_annually_usd"]
+
+            order_brl_price, order_brl_discount = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, "annually", "brl")
+            order_usd_price, order_usd_discount = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, "annually", "usd")
+            new_order.order_brl_discount = order_brl_discount
+            new_order.order_usd_discount = order_usd_discount
+            new_order.order_brl_price = order_brl_price
+            new_order.order_usd_price = order_usd_price
+
+        if plan_recurrency == "monthly":
+            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl_actual"]
+            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd_actual"]
+
+            order_brl_price, order_brl_discount = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, "monthly", "brl")
+            order_usd_price, order_usd_discount = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, "monthly", "usd")
+            new_order.order_brl_discount = order_brl_discount
+            new_order.order_usd_discount = order_usd_discount
+            new_order.order_brl_price = order_brl_price
+            new_order.order_usd_price = order_usd_price
+
+    else:
+        if plan_recurrency == "annually":
+            new_order.order_sub_total_brl_price = plan["plan_price_annually_brl_actual"]
+            new_order.order_sub_total_usd_price = plan["plan_price_annually_usd_actual"]
+            new_order.order_brl_price = plan["plan_price_annually_brl_actual"]
+            new_order.order_usd_price = plan["plan_price_annually_usd_actual"]
+
+        if plan_recurrency == "monthly":
+            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl_actual"]
+            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd_actual"]
+            new_order.order_brl_price = plan["plan_price_monthly_brl_actual"]
+            new_order.order_usd_price = plan["plan_price_monthly_usd_actual"]
+
+    new_order.order_total_price = stripe_request_payload["plan"]["amount_decimal"]
+    new_order.order_currency = stripe_request_payload["plan"]["currency"]
+    new_order.order_installment_quantity = "0001"
+    new_order.order_payment_service = "stripe"
+    new_order.order_payment_service_id = stripe_request_payload["latest_invoice"]["payment_intent"].stripe_id
+    new_order.order_payment_stripe_subscription_id = stripe_request_payload.stripe_id
+    new_order.order_plan_id = plan["plan_id"]
+    new_order.order_plan_recurrency = plan_recurrency
+    new_order.order_user_cart_coupon_code = user.user_cart_coupon_code
+    new_order.order_descrimination = generate_order_descrimination(plan["plan_name_pt"], new_order.order_brl_price)
+    Dynamo().put_entity(new_order.__dict__)
+    increase_backoffice_data_total_count("order")
+
+
+def create_order_with_stripe_subscription_updated(user, plan, plan_recurrency, stripe_subscription, payment_intent, invoice):
+    new_order = Order(user.user_id, payment_intent["id"])
+    new_order.order_status = StripeController().convert_stripe_status_code_to_status(payment_intent["status"])
+    new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"])
+
+    if stripe_subscription["metadata"].get("coupon_code"):
+        if plan_recurrency == "annually":
+            new_order.order_sub_total_brl_price = plan["plan_price_annually_brl"]
+            new_order.order_sub_total_usd_price = plan["plan_price_annually_usd"]
+
+            order_brl_price, order_brl_discount = generate_plan_price_with_coupon_discount(plan, stripe_subscription["metadata"]["coupon_code"], "annually", "brl")
+            order_usd_price, order_usd_discount = generate_plan_price_with_coupon_discount(plan, stripe_subscription["metadata"]["coupon_code"], "annually", "usd")
+            new_order.order_brl_discount = order_brl_discount
+            new_order.order_usd_discount = order_usd_discount
+            new_order.order_brl_price = order_brl_price
+            new_order.order_usd_price = order_usd_price
+
+        if plan_recurrency == "monthly":
+            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl_actual"]
+            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd_actual"]
+
+            order_brl_price, order_brl_discount = generate_plan_price_with_coupon_discount(plan, "monthly", "brl")
+            order_usd_price, order_usd_discount = generate_plan_price_with_coupon_discount(plan, "monthly", "usd")
+            new_order.order_brl_discount = order_brl_discount
+            new_order.order_usd_discount = order_usd_discount
+            new_order.order_brl_price = order_brl_price
+            new_order.order_usd_price = order_usd_price
+
+    else:
+        if plan_recurrency == "annually":
+            new_order.order_sub_total_brl_price = plan["plan_price_annually_brl_actual"]
+            new_order.order_sub_total_usd_price = plan["plan_price_annually_usd_actual"]
+            new_order.order_brl_price = plan["plan_price_annually_brl_actual"]
+            new_order.order_usd_price = plan["plan_price_annually_usd_actual"]
+
+        if plan_recurrency == "monthly":
+            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl_actual"]
+            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd_actual"]
+            new_order.order_brl_price = plan["plan_price_monthly_brl_actual"]
+            new_order.order_usd_price = plan["plan_price_monthly_usd_actual"]
+
+    new_order.order_total_price = str(payment_intent["amount"])
+    new_order.order_currency = payment_intent["currency"]
+    new_order.order_installment_quantity = invoice["number"][9:]
+    new_order.order_payment_service = "stripe"
+    new_order.order_payment_service_id = payment_intent["id"]
+    new_order.order_payment_stripe_subscription_id = stripe_subscription.stripe_id
+    new_order.order_plan_id = plan["plan_id"]
+    new_order.order_plan_recurrency = plan_recurrency
+    new_order.order_user_cart_coupon_code = stripe_subscription["metadata"].get("coupon_code", "")
+    new_order.order_descrimination = generate_order_descrimination(plan["plan_name_pt"], new_order.order_brl_price)
+    Dynamo().put_entity(new_order.__dict__)
+    increase_backoffice_data_total_count("order")

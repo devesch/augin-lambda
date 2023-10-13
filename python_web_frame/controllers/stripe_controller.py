@@ -1,4 +1,4 @@
-from utils.AWS.Dynamo import Dynamo
+from objects.Plan import generate_plan_price_with_coupon_discount
 
 
 stripe_token = "pk_test_51KUDNpA9OIVeHB9yQ6ngZSyKDmLUpgaq8iO10XRUy8bfLHzar7vgQ7AdXN6BFSUbTEe8O7DP3hDJ1DxFigcAbGzV00ZtwONkpc"
@@ -131,7 +131,7 @@ class StripeController:
                 payment_method_types.append("card")
 
         if user.user_cart_coupon_code:
-            new_subscription_price, coupon_discount_value = user.generate_plan_price_with_coupon_discount(plan, plan_recurrency, user.user_cart_currency)
+            new_subscription_price, coupon_discount_value = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, plan_recurrency, user.user_cart_currency)
             if new_subscription_price:
                 price_id = self.create_price(plan["plan_id"], user.user_cart_currency, new_subscription_price, self.convert_recurrence_stripe_plan_interval(plan_recurrency))
 
@@ -145,10 +145,10 @@ class StripeController:
             payment_behavior="default_incomplete",
             expand=["latest_invoice.payment_intent"],
             payment_settings={"payment_method_types": payment_method_types, "save_default_payment_method": "on_subscription"},
-            metadata={"user_id": user.user_id, "plan_id": plan["plan_id"], "plan_recurrency": plan_recurrency},
+            metadata={"user_id": user.user_id, "plan_id": plan["plan_id"], "plan_recurrency": plan_recurrency, "coupon_code": user.user_cart_coupon_code, "plan": plan},
         )
 
-    def get_stripe_payment_intent(self, payment_intent_id):
+    def get_payment_intent(self, payment_intent_id):
         return self.stripe.PaymentIntent.retrieve(payment_intent_id)
 
     def get_invoice(self, invoice_id):

@@ -130,50 +130,6 @@ class User:
     def check_if_already_used_coupom(self, coupon):
         return bool(Dynamo().get_used_coupon(coupon["coupon_code"], self.user_id))
 
-    def generate_plan_price_with_coupon_discount(self, plan, plan_recurrency, currency):
-        coupom = Dynamo().get_coupon(self.user_cart_coupon_code)
-        new_plan_price = None
-        coupon_discount_value = None
-
-        if not coupom:
-            return None, None
-
-        if coupom["coupon_discount_type"] == "total":
-            if plan_recurrency == "annually":
-                if currency == "brl":
-                    new_plan_price = int(plan["plan_price_annually_brl"]) - int(coupom["coupon_brl_discount"])
-                    coupon_discount_value = int(coupom["coupon_brl_discount"])
-                if currency == "usd":
-                    new_plan_price = int(plan["plan_price_annually_usd"]) - int(coupom["coupon_usd_discount"])
-                    coupon_discount_value = int(coupom["coupon_usd_discount"])
-
-            if plan_recurrency == "monthly":
-                if currency == "brl":
-                    new_plan_price = int(plan["plan_price_monthly_brl"]) - int(coupom["coupon_brl_discount"])
-                    coupon_discount_value = int(coupom["coupon_brl_discount"])
-                if currency == "usd":
-                    new_plan_price = int(plan["plan_price_monthly_usd"]) - int(coupom["coupon_usd_discount"])
-                    coupon_discount_value = int(coupom["coupon_usd_discount"])
-
-        elif coupom["coupon_discount_type"] == "percentage":
-            if plan_recurrency == "annually":
-                if currency == "brl":
-                    coupon_discount_value = int(int(plan["plan_price_annually_brl"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
-                    new_plan_price = int(int(plan["plan_price_annually_brl"]) - coupon_discount_value)
-                if currency == "usd":
-                    coupon_discount_value = int(int(plan["plan_price_annually_usd"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
-                    new_plan_price = int(int(plan["plan_price_annually_usd"]) - coupon_discount_value)
-
-            if plan_recurrency == "monthly":
-                if currency == "brl":
-                    coupon_discount_value = int(int(plan["plan_price_monthly_brl"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
-                    new_plan_price = int(int(plan["plan_price_monthly_brl"]) - coupon_discount_value)
-                if currency == "usd":
-                    coupon_discount_value = int(int(plan["plan_price_monthly_usd"]) * float(int(coupom["coupon_percentage_discount"]) / 100))
-                    new_plan_price = int(int(plan["plan_price_monthly_usd"]) - coupon_discount_value)
-
-        return str(new_plan_price), str(coupon_discount_value)
-
     def active_trial_plan(self, trial_plan):
         user_subscription_id = "trial-" + Generate().generate_short_id()
         user_subscription = UserSubscription(user_subscription_id, self.user_id).__dict__
@@ -205,7 +161,7 @@ class User:
         user_subscription["subscription_status"] = stripe_subscription["status"]
         user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])
         if valid_until_now:
-            user_subscription["subscription_valid_until"] = str(time.time())
+            user_subscription["subscription_valid_until"] = str(time.time() + 90000)
         Dynamo().put_entity(user_subscription)
         if valid_until_now:
             self.update_attribute("user_subscription_valid_until", user_subscription["subscription_valid_until"])
