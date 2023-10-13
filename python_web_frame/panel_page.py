@@ -261,7 +261,7 @@ class PanelPage(BasePage):
                         if user_plan and user_plan.get("plan_share_files"):
                             html.esc("html_share_project_button", self.show_html_share_project_button(model))
                         else:
-                            html.esc("html_share_project_button", str(ReadWrite().read_html("panel_explore_project/_codes/html_share_project_button_blocked")))
+                            html.esc("html_share_project_button", self.show_html_share_project_button_blocked(index))
 
                         if user_plan and user_plan.get("plan_download_files"):
                             html.esc("html_download_project_button", self.show_html_download_project_button(model))
@@ -337,6 +337,11 @@ class PanelPage(BasePage):
 
                 full_html.append(str(html))
         return "".join(full_html)
+
+    def show_html_share_project_button_blocked(self, index):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_share_project_button_blocked")
+        html.esc("index_val", index)
+        return str(html)
 
     def show_html_download_folder_button(self, folder):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_download_folder_button")

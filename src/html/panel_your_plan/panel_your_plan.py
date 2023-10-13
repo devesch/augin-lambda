@@ -17,9 +17,9 @@ class PanelYourPlan(PanelPage):
 
     def render_get(self):
         user_subscription = None
+        user_plan = self.user.get_user_actual_plan()
         if self.user.user_subscription_id:
             user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
-        user_plan = self.user.get_user_actual_plan()
 
         html = super().parse_html()
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
