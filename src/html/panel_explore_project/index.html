@@ -358,6 +358,23 @@
     </div>
 </div>
 
+<div id="modal-disclaimer" class="modal modal-disclaimer" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Upgrade necessário}}</h1>
+        </div>
+        <div class="modal-content">
+            <div id="disclaimer_modal_div">
+                <p>{{É necessário realizar um upgrade de plano para ter acesso a esta feature}}.</p>
+            </div>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal-disclaimer')" class="ghost">{{Fechar}}</button>
+                <a href="{{domain_name_url_val}}/checkout_upgrade_your_plan" class="button">{{Upgrade}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="update-confirm-modal" class="modal update-confirm-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">

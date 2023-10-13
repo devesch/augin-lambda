@@ -1,10 +1,5 @@
 <li>
-    <section class="tooltip-container">
-        <button class="opacity-25" disabled>
-            <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
-        </button>
-        <div class="tooltip-content--click tooltip--project-create-project tooltip--left" id="tooltip_download_project" role="tooltip">
-            {{Para poder baixar uma pasta é necessário o upgrade do seu plano}}.
-        </div>
-    </section>
+    <button onclick="js.index.openModal('.modal-disclaimer')" class="opacity-25">
+        <img src="{{cdn_val}}/assets/icons/download.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Baixar}}</span>
+    </button>
 </li>

@@ -5104,10 +5104,20 @@
         "es": "United States Minor Outlying Islands",
         "pt": "United States Minor Outlying Islands"
     },
+    "Upgrade": {
+        "en": "Upgrade",
+        "es": "Mejora",
+        "pt": "Upgrade"
+    },
     "Upgrade de plano": {
         "en": "Plan upgrade",
         "es": "Plan de actualización",
         "pt": "Upgrade de plano"
+    },
+    "Upgrade necessário": {
+        "en": "Necessary upgrade",
+        "es": "Actualización necesaria",
+        "pt": "Upgrade necessário"
     },
     "Upload realizado com sucesso": {
         "en": "Upload done successfully",
@@ -5863,6 +5873,11 @@
         "en": "It is necessary that the image is of the type JPG/JPEG/PNG",
         "es": "Es necesario que la imagen sea del tipo jpg/jpeg/png",
         "pt": "É necessário que a imagem seja do tipo JPG/JPEG/PNG"
+    },
+    "É necessário realizar um upgrade de plano para ter acesso a esta feature": {
+        "en": "It is necessary to perform a plan upgrade to access this feature",
+        "es": "Es necesario realizar una actualización de plan para acceder a esta función",
+        "pt": "É necessário realizar um upgrade de plano para ter acesso a esta feature"
     },
     "É necessário selecionar algum projeto para compor o federado": {
         "en": "It is necessary to select some project to compose the federate",

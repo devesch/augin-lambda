@@ -3139,12 +3139,10 @@ export async function saveDeleteUserAccount() {
     }
 }
 
-export async function toggleTooltip(tooltip_id) {
-    let tooltipTimeout = "";
-    clearTimeout(tooltipTimeout);
+export async function toggleTooltip(event, tooltip_id) {
+    event.preventDefault();
     let tooltip = document.getElementById(tooltip_id);
     tooltip.classList.add("tooltip--open");
-    tooltipTimeout = setTimeout(() => {
-        tooltip.classList.remove("tooltip--open");
-    }, 5000);
+    await sleep(5000);
+    tooltip.classList.remove("tooltip--open")
 }
