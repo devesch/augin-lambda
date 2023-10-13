@@ -1,5 +1,6 @@
-from python_web_frame.checkout_page import CheckoutPage
 from python_web_frame.controllers.stripe_controller import StripeController
+from objects.Order import create_order_with_stripe_request_subscription
+from python_web_frame.checkout_page import CheckoutPage
 from utils.AWS.Dynamo import Dynamo
 
 
@@ -17,7 +18,7 @@ class CheckoutStripeGeneratePayload(CheckoutPage):
             except:
                 self.user.recreate_stripe_user()
                 stripe_request_payload = StripeController().create_subscription(self.user, plan, self.post["plan_recurrency"])
-            self.create_order_with_stripe_request_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
+            create_order_with_stripe_request_subscription(self.user, plan, self.post["plan_recurrency"], stripe_request_payload)
 
         # if self.post["payment_recurrence"] == "unique":
         #     if self.user.user_address_data["user_country"] == "BR":

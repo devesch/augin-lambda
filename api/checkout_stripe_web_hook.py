@@ -10,6 +10,7 @@ from utils.AWS.Dynamo import Dynamo
 from objects.User import load_user
 from utils.AWS.Ses import Ses
 import time
+import json
 
 
 class CheckoutStripeWebHook(BasePage):
@@ -28,10 +29,10 @@ class CheckoutStripeWebHook(BasePage):
         stripe_subscription = None
         if not order and self.post["data"]["object"]["description"] == "Subscription update":
             invoice = StripeController().get_invoice(self.post["data"]["object"]["invoice"])
-            stripe_subscription = StripeController().get_subscription("sub_1O0qwtA9OIVeHB9yghsJJIIU")
-            plan = Dynamo().get_plan(stripe_subscription["metadata"]["plan_id"])
+            stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
+            ### TODO CHANGE SUB
             # stripe_subscription = StripeController().get_subscription(invoice['subscription'])
-            create_order_with_stripe_subscription_updated(self.user, plan, StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"]), stripe_subscription, self.post["data"]["object"], invoice)
+            create_order_with_stripe_subscription_updated(self.user, json.loads(stripe_subscription["metadata"]["plan_prices"]), StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"]), stripe_subscription, self.post["data"]["object"], invoice)
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
 
         Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
