@@ -53,6 +53,6 @@ class UserPassword(UserPage):
         return {"html": Http().redirect("panel_your_plan"), "command": "login", "user_auth_token": user.user_auth_token}
 
     def check_if_captcha_should_be_rendered(self):
-        if "incorreta" in self.error_msg.lower() or "captcha" in self.error_msg.lower():
+        if self.error_msg and ("incorreta" in self.error_msg.lower() or "captcha" in self.error_msg.lower()):
             return True
         return False
