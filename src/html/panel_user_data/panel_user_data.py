@@ -55,6 +55,7 @@ class PanelUserData(PanelPage, UserPage):
         elif self.path["user_client_type"] == "international":
             html.esc("html_physical_or_company_form", self.show_html_international_form())
 
+        html.esc("html_modal_loader_spinner", self.show_html_modal_loader_spinner())
         return str(html)
 
     def render_post(self):

@@ -2908,6 +2908,7 @@ export async function checkIfCouponIsStillValid() {
 }
 
 export async function callBackofficeApi(order_id, command) {
+    openModal(".modal.modal-loader-spinner");
     let backoffice_orders_error_span = document.getElementById("backoffice_orders_error_span");
     backoffice_orders_error_span.innerHTML = ""
 
@@ -2923,6 +2924,7 @@ export async function callBackofficeApi(order_id, command) {
     }
     backoffice_orders_error_span.style.display = "";
     updateBackofficeOrders()
+    closeModal(".modal.modal-loader-spinner");
 }
 
 
