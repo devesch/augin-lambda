@@ -18,6 +18,8 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "É necessário atualizar os seus dados para processeguir na compra",
+    "É necessário confirmar os seus dados para processeguir na compra",
     "Em cancelamento",
     "Não foi possível encontrar arquivo",
     "Todos os dados da sua conta foram excluídos",

@@ -177,7 +177,7 @@ export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = fal
     })
 
     if ("error" in update_user_response) {
-        showCheckoutPanelUserDataForm(update_user_response["user_client_type"]);
+        showCheckoutPanelUserDataForm(update_user_response["user_client_type"], update_user_response["error"]);
     } else {
         if (user_selected_plan_is_trial_input.value == "true") {
             window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
@@ -187,18 +187,17 @@ export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = fal
     }
 }
 
-export async function showCheckoutPanelUserDataForm(userClientType) {
+export async function showCheckoutPanelUserDataForm(userClientType, error_msg = "") {
     let user_country = "";
     if (document.getElementById("user_country")) {
         user_country = document.getElementById("user_country").value;
     }
     let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
-    let panel_user_data_page_response = await request(ProjectData.props.domainNameUrlVal + "/panel_user_data/?error_msg=É necessário atualizar os seus dados para processeguir na compra&render_props=False&user_client_type=" + userClientType + "&selected_country=" + user_country, "GET", {
+    let panel_user_data_page_response = await request(ProjectData.props.domainNameUrlVal + "/panel_user_data/?error_msg=" + error_msg + "&render_props=False&user_client_type=" + userClientType + "&selected_country=" + user_country, "GET", {
         "Content-Type": "text/html; charset=utf-8",
     }, {}, false);
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
     openModal('#panel_user_data_modal');
-    // await floatingLabel("#panel_user_data_form_div form"); TODO FIX LABELS POSITIONS IF SOME FIELD ALREADY HAS INFO
 }
 
 export async function checkout_check_if_order_is_paid(order_id) {

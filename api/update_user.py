@@ -197,10 +197,10 @@ class UpdateUser(BasePage):
         if not plan:
             return {"error": "Nenhum plano encontrado com este plan_id", "user_client_type": self.user.user_client_type}
         if not self.user.check_if_is_payment_ready():
-            return {"error": "É necessário que o usuário atualize os seus dados", "user_client_type": self.user.user_client_type}
+            return {"error": "É necessário atualizar os seus dados para processeguir na compra", "user_client_type": self.user.user_client_type}
         ### TODO CHANGE TO 1 hour
         if float(self.user.user_address_data_last_update) < float(time.time() - 15):
-            return {"error": "É necessário que o usuário confirme os seus dados", "user_client_type": self.user.user_client_type}
+            return {"error": "É necessário confirmar os seus dados para processeguir na compra", "user_client_type": self.user.user_client_type}
         else:
             return {"success": "O usuário pode trocar o seu plano atual"}
 
