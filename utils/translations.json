@@ -5779,6 +5779,11 @@
         "es": "Debe actualizar sus datos para procesar la compra",
         "pt": "É necessário atualizar os seus dados para processeguir na compra"
     },
+    "É necessário confirmar os seus dados para processeguir na compra": {
+        "en": "It is necessary to confirm your data to process the purchase",
+        "es": "Es necesario confirmar sus datos para procesar la compra",
+        "pt": "É necessário confirmar os seus dados para processeguir na compra"
+    },
     "É necessário escolher um arquivo diferente do original para a substitução": {
         "en": "It is necessary to choose a different file from the original for the replacement",
         "es": "Es necesario elegir un archivo diferente del original para el reemplazo",
