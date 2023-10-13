@@ -388,7 +388,6 @@ class User:
 
     def check_if_is_payment_ready(self):
         self.user_payment_ready = True
-        self.user_address_data_last_update = str(time.time())
 
         if not self.user_name:
             self.user_payment_ready = False

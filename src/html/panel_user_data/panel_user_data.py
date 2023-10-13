@@ -9,6 +9,7 @@ from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Ses import Ses
 from objects.User import load_user
+import time
 
 
 class PanelUserData(PanelPage, UserPage):
@@ -151,6 +152,7 @@ class PanelUserData(PanelPage, UserPage):
 
         self.user.update_cart_currency()
         self.user.check_if_is_payment_ready()
+        self.user.update_attribute("user_address_data_last_update", str(time.time()))
         Dynamo().put_entity(self.user.__dict__)
 
         if not self.render_props:
