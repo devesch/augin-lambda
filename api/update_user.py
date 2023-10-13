@@ -199,7 +199,7 @@ class UpdateUser(BasePage):
         if not self.user.check_if_is_payment_ready():
             return {"error": "É necessário que o usuário atualize os seus dados", "user_client_type": self.user.user_client_type}
         ### TODO CHANGE TO 1 hour
-        if float(self.user.user_address_data_last_update) < float(time.time() - 120):
+        if float(self.user.user_address_data_last_update) < float(time.time() - 15):
             return {"error": "É necessário que o usuário confirme os seus dados", "user_client_type": self.user.user_client_type}
         else:
             return {"success": "O usuário pode trocar o seu plano atual"}
