@@ -197,7 +197,9 @@ class User:
 
     def cancel_current_subscription(self, valid_until_now=False):
         user_subscription = Dynamo().get_subscription(self.user_subscription_id)
-        StripeController().cancel_subscription(self.user_subscription_id)
+        stripe_subscription = StripeController().get_subscription(self.user_subscription_id)
+        if stripe_subscription != "canceled":
+            StripeController().cancel_subscription(self.user_subscription_id)
         stripe_subscription = StripeController().get_subscription(self.user_subscription_id)
         user_subscription["subscription_status"] = stripe_subscription["status"]
         user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])

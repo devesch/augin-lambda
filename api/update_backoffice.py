@@ -60,7 +60,7 @@ class UpdateBackoffice(BackofficePage):
         if order["order_type"] == "unique":
             raise Exception("TODO")
         else:
-            if refunded_user.user_subscription_id and refunded_user.user_subscription_status and order["order_payment_stripe_subscription_id"] == refunded_user.user_subscription_id and refunded_user.user_subscription_status not in ("none", "canceled"):
+            if refunded_user.user_subscription_id and refunded_user.user_subscription_status:
                 refunded_user.cancel_current_subscription(valid_until_now=True)
         self.send_refund_order_email(refunded_user.user_email, order["order_id"])
         return {"success": "Pagamento Stripe reembolsado com sucesso"}
