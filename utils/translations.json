@@ -184,6 +184,11 @@
         "es": "La solicitud de reembolso fue enviada al departamento responsable del proceso de recolección",
         "pt": "A solicitação de reembolso foi encaminhada para o departamento responsável pelo processo de cobrança"
     },
+    "Abandono de carrinho": {
+        "en": "Carton",
+        "es": "Caja de cartón",
+        "pt": "Abandono de carrinho"
+    },
     "Aceitar Tudo": {
         "en": "Accept everything",
         "es": "Aceptar todo",
@@ -3734,10 +3739,20 @@
         "es": "Para descargar un proyecto, es necesario actualizar su plan.",
         "pt": "Para poder baixar um projeto é necessário o upgrade do seu plano"
     },
+    "Para poder baixar uma pasta é necessário o upgrade do seu plano": {
+        "en": "To be able to download a folder requires the upgrade of your plan",
+        "es": "Para poder descargar una carpeta requiere la actualización de su plan",
+        "pt": "Para poder baixar uma pasta é necessário o upgrade do seu plano"
+    },
     "Para poder compartilhar um projeto é necessário o upgrade do seu plano": {
         "en": "To be able to share a project it is necessary to upgrade of your plan",
         "es": "Para poder compartir un proyecto, es necesario actualizar su plan",
         "pt": "Para poder compartilhar um projeto é necessário o upgrade do seu plano"
+    },
+    "Para poder compartilhar uma pasta é necessário o upgrade do seu plano": {
+        "en": "In order to share a folder, it is necessary to upgrade of your plan",
+        "es": "Para compartir una carpeta, es necesario actualizar su plan",
+        "pt": "Para poder compartilhar uma pasta é necessário o upgrade do seu plano"
     },
     "Para poder criar um arquivo federado é necessário o upgrade do seu plano": {
         "en": "In order to create a federated file, it is necessary to upgrade of your plan",
