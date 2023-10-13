@@ -1,5 +1,5 @@
 from objects.Plan import generate_plan_price_with_coupon_discount
-
+import json
 
 stripe_token = "pk_test_51KUDNpA9OIVeHB9yQ6ngZSyKDmLUpgaq8iO10XRUy8bfLHzar7vgQ7AdXN6BFSUbTEe8O7DP3hDJ1DxFigcAbGzV00ZtwONkpc"
 stripe_secret_key = "sk_test_51KUDNpA9OIVeHB9yBr8fiH7gVUhfggy4zFkJib2maUawYM4tSkRQ64swJwwx4pXFZ4U3O93qPEGRZzWW1agdeBd500ev6Lx5W5"
@@ -145,7 +145,7 @@ class StripeController:
             payment_behavior="default_incomplete",
             expand=["latest_invoice.payment_intent"],
             payment_settings={"payment_method_types": payment_method_types, "save_default_payment_method": "on_subscription"},
-            metadata={"user_id": user.user_id, "plan_id": plan["plan_id"], "plan_recurrency": plan_recurrency, "coupon_code": user.user_cart_coupon_code, "plan": plan},
+            metadata={"user_id": user.user_id, "plan_id": plan["plan_id"], "plan_recurrency": plan_recurrency, "coupon_code": user.user_cart_coupon_code, "plan": json.dumps(plan)},
         )
 
     def get_payment_intent(self, payment_intent_id):
