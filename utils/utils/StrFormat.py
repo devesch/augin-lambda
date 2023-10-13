@@ -13,7 +13,7 @@ class StrFormat:
         if status == "active":
             return "Ativa"
         if status == "canceled":
-            return "Cancelada"
+            return "Em cancelamento"
         if status == "incomplete":
             return "Incompleta"
         if status == "incomplete_expired":

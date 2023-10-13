@@ -1614,6 +1614,11 @@
         "es": "Eléctrico",
         "pt": "Elétrica"
     },
+    "Em cancelamento": {
+        "en": "Canceled",
+        "es": "Cancelado",
+        "pt": "Em cancelamento"
+    },
     "Em processamento": {
         "en": "Processing",
         "es": "Procesando",

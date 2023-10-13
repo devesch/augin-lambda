@@ -28,6 +28,8 @@ class BackofficeOrders(BackofficePage):
         html.esc("showing_total_count_val", len(orders))
 
         html.esc("html_backoffice_orders_table_rows", self.list_html_backoffice_orders_table_rows(orders))
+
+        html.esc("html_modal_loader_spinner", self.show_html_modal_loader_spinner())
         return str(html)
 
     def render_post(self):

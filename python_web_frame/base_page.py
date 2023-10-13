@@ -166,8 +166,10 @@ class BasePage:
         return str(html)
 
     def show_html_backoffice_button(self):
-        html = ReadWrite().read_html("main/_codes/html_backoffice_button_in_menu")
-        return str(html)
+        return str(ReadWrite().read_html("main/_codes/html_backoffice_button_in_menu"))
+
+    def html_modal_loader_spinner(self):
+        return str(ReadWrite().read_html("main/_codes/html_modal_loader_spinner"))
 
     def show_html_upgrade_button(self, user_plan):
         html = ""

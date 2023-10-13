@@ -16,7 +16,8 @@ class CheckoutPaymentSuccess(CheckoutPage):
 
         if self.path["order"]["order_payment_method"] == "boleto":
             html.esc("order_is_boleto_val", "true")
-
+        else:
+            html.esc("order_is_boleto_val", "false")
         return str(html)
 
     def render_post(self):

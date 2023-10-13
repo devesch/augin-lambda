@@ -217,7 +217,16 @@ class User:
     def check_if_subscription_is_valid(self):
         if not self.user_subscription_valid_until:
             return False
-        return float(self.user_subscription_valid_until) > float(time.time())
+        is_valid = float(self.user_subscription_valid_until) > float(time.time())
+        if not is_valid and self.user_subscription_id:
+            self.clear_not_valid_subscription()
+        return is_valid
+
+    def clear_not_valid_subscription(self):
+        self.user_subscription_id = ""
+        self.user_subscription_status = "none"
+        self.user_subscription_valid_until = ""
+        Dynamo().put_entity(self.__dict__)
 
     def update_subscription(self, order, user_stripe_subscription):
         user_subscription = Dynamo().get_subscription(user_stripe_subscription.stripe_id)
@@ -370,7 +379,7 @@ class User:
                 self.user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
             Dynamo().put_entity(self.__dict__)
 
-    def update_last_login_at(self, user_ip):
+    def update_last_login_at(self):
         if int(float(self.user_last_login_at)) + 3000 < float(time.time()):
             self.update_attribute("user_last_login_at", str(time.time()))
 
