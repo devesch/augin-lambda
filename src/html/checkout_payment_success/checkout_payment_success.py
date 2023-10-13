@@ -4,7 +4,7 @@ from objects.Order import generate_order_short_id
 
 
 class CheckoutPaymentSuccess(CheckoutPage):
-    name = "Checkout - Pagamento Realizado com Sucesso"
+    name = "Checkout - Pagamento realizado com sucesso"
 
     def render_get(self):
         if not self.path.get("order_id"):

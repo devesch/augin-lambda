@@ -299,8 +299,8 @@ def run():
 
     update_lambda_thread = run_threaded(lambda: upload_lambda())
 
-    # if assets_change:
-    if assets_change and not "eugen" in root_folder:
+    if assets_change:
+        # if assets_change and not "eugen" in root_folder:
         process_delete_web_view = subprocess.Popen("aws s3 rm s3://" + lambda_constants["cdn_bucket"] + "/assets/web_view --recursive", shell=True)
         process_delete_fonts = subprocess.Popen("aws s3 rm s3://" + lambda_constants["cdn_bucket"] + "/assets/fonts --recursive", shell=True)
         process_delete_icons = subprocess.Popen("aws s3 rm s3://" + lambda_constants["cdn_bucket"] + "/assets/icons --recursive", shell=True)
