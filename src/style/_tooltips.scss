@@ -13,7 +13,8 @@
 }
 
 .tooltip-content--hover,
-.tooltip-content--click {
+.tooltip-content--click,
+.tooltip--menu-explore {
     display: none;
     position: absolute;
     top: 100%;
