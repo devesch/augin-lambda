@@ -1,9 +1,9 @@
 <li>
     <section class="tooltip-container">
-        <button class="opacity-25" disabled>
+        <button class="opacity-25" onclick="js.index.toggleTooltip('tooltip_menu_explore_{{index_val}}')">
             <img src="{{cdn_val}}/assets/icons/share.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Compartilhar}}</span>
         </button>
-        <div class="tooltip-content--click tooltip--project-create-project tooltip--left" id="tooltip_create_project" role="tooltip">
+        <div id="tooltip_menu_share_project_{{index_val}}" class="tooltip--menu-explore tooltip--right" role="tooltip">
             {{Para poder compartilhar um projeto é necessário o upgrade do seu plano}}.
         </div>
     </section>

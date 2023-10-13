@@ -50,6 +50,19 @@
     transform: translate(-100%, -100%);
 }
 
+.tooltip--menu-explore {
+    right: 100%;
+    left: unset;
+    transform: translate(1rem, 50%);
+    text-align: center;
+    bottom: 50%;
+    top: unset;
+}
+
+.tooltip--open {
+    display: block;
+}
+
 @media only screen and (max-width: breakpoints.$xx-large) {
     .tooltip--left {
         transform: unset;

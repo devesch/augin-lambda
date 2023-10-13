@@ -3136,3 +3136,13 @@ export async function saveDeleteUserAccount() {
         location.href = update_user_response["redirect_link"];
     }
 }
+
+export async function toggleTooltip(tooltip_id) {
+    let tooltipTimeout = "";
+    clearTimeout(tooltipTimeout);
+    let tooltip = document.getElementById(tooltip_id);
+    tooltip.classList.add("tooltip--open");
+    tooltipTimeout = setTimeout(() => {
+        tooltip.classList.remove("tooltip--open");
+    }, 5000);
+}
