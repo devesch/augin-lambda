@@ -29,9 +29,6 @@ class UserRegister(UserPage):
 
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)
-
-        html = super().parse_html()
-        self.check_error_msg(html, self.error_msg)
         html.esc("user_email_val", self.path["user_email"])
         if self.post.get("user_name"):
             html.esc("user_name_val", self.post["user_name"])

@@ -14,7 +14,7 @@ class UserPage(BasePage):
         super().__init__()
 
     def show_html_captcha_verification(self):
-        return str(ReadWrite().read_html("user_verify_email/_codes/html_verify_email_changed"))
+        return str(ReadWrite().read_html("main/_codes/html_captcha_verification"))
 
     def list_html_user_country_options(self, user_country):
         full_html = []

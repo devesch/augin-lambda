@@ -83,7 +83,7 @@ class User:
         self.user_client_type = "physical"  # physical / company / international
         self.user_aggre_with_communication = False
         self.user_credential = ""
-        self.user_ip = ""
+        self.user_ip = str(time.time())
         self.user_dicts_folder_id = ""
         self.user_shared_dicts_folder_id = ""
         self.user_subscription_status = "none"
@@ -370,7 +370,7 @@ class User:
                 self.user_used_cloud_space_in_mbs = str(float(self.user_used_cloud_space_in_mbs) - float(ModelController().convert_model_filesize_to_mb(model["model_filesize"])))
             Dynamo().put_entity(self.__dict__)
 
-    def update_last_login_at(self):
+    def update_last_login_at(self, user_ip):
         if int(float(self.user_last_login_at)) + 3000 < float(time.time()):
             self.update_attribute("user_last_login_at", str(time.time()))
 
