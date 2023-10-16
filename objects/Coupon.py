@@ -33,3 +33,15 @@ class Coupon:
 def increase_coupon_actual_uses_count(coupon):
     coupon["coupon_actual_uses_count"] = str(int(coupon["coupon_actual_uses_count"]) + 1)
     Dynamo().update_entity(coupon, "coupon_actual_uses_count", coupon["coupon_actual_uses_count"])
+
+
+def generate_coupon_cycle_applications(coupon, plan_recurrence):
+    import math
+
+    cycle_applications = "1"
+    if plan_recurrence == "monthly":
+        cycle_applications = str(math.ceil(int(coupon["coupon_recurrence_months"] / 1)))
+    if plan_recurrence == "annually":
+        cycle_applications = str(math.ceil(int(coupon["coupon_recurrence_months"]) / 12))
+
+    return cycle_applications

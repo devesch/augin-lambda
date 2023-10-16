@@ -8,6 +8,7 @@ from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 from objects.User import load_user
+from objects.Coupon import generate_coupon_cycle_applications
 from utils.AWS.Ses import Ses
 import time
 import json
@@ -40,8 +41,8 @@ class CheckoutStripeWebHook(BasePage):
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
 
         Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
-        if self.post["data"]["object"]["status"] == "succeeded":
 
+        if self.post["data"]["object"]["status"] == "succeeded":
             if order["order_type"] == "unique":
                 raise Exception("TODO SINGLE PURCHASE")
             else:
@@ -52,14 +53,23 @@ class CheckoutStripeWebHook(BasePage):
                     self.user.cancel_current_subscription()
                 self.user.update_subscription(order, stripe_subscription)
 
-            if order["order_user_cart_coupon_code"] and self.post["data"]["object"]["description"] != "Subscription update":
-                self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_id)
-                self.user.remove_user_cart_coupon_code()
-            if order["order_currency"] == "brl":
-                BillingController().generate_bill_of_sale(self.user, order)
-            elif order["order_currency"] == "usd":
-                BillingController().generate_international_pdf_bill_of_sale(order)
-            self.send_payment_success_email(order)
+            if order["order_nfse_status"] != "issued":
+                if order["order_currency"] == "brl":
+                    BillingController().generate_bill_of_sale(self.user, order)
+                elif order["order_currency"] == "usd":
+                    BillingController().generate_international_pdf_bill_of_sale(order)
+
+            if order["order_user_cart_coupon_code"]:
+                coupon = Dynamo().get_coupon(order["order_user_cart_coupon_code"])
+                coupon_cycle_applications = generate_coupon_cycle_applications(coupon, user_subscription["subscription_recurrency"])
+                if int(order["order_installment_quantity"]) >= int(coupon_cycle_applications):
+                    StripeController().remove_coupon_from_subscription(stripe_subscription)
+
+                if self.post["data"]["object"]["description"] != "Subscription update":
+                    self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_id)
+                    self.user.remove_user_cart_coupon_code()
+
+                self.send_payment_success_email(order)
 
         raise Exception("TODO PAYMENT SUCCESS")
         return {"success": "Evento payment_intent_succeeded tratado."}

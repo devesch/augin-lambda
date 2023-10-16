@@ -213,3 +213,11 @@ class StripeController:
 
     def refunded_order(self, stripe_charge_id):
         return self.stripe.Refund.create(charge=stripe_charge_id)
+
+    def remove_coupon_from_subscription(self, stripe_subscription):
+        new_metadata = {"user_id": stripe_subscription["metadata"]["user_id"], "plan_recurrency": stripe_subscription["metadata"]["plan_recurrency"], "coupon_code": "", "plan": stripe_subscription["metadata"]["plan"]}
+
+        return self.stripe.Subscription.modify(
+            stripe_subscription["id"],
+            metadata=new_metadata,
+        )
