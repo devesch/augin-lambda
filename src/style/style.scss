@@ -1897,6 +1897,7 @@ input[list]::-ms-clear {
             grid-auto-columns: 1fr;
             width: 100%;
             border-bottom: 1px solid colors.color("color-neutral-400");
+            padding-bottom: 1.5rem;
         }
 
         tr:nth-child(even) {
@@ -1916,7 +1917,6 @@ input[list]::-ms-clear {
 
         td:first-child {
             padding-left: .5rem;
-            padding-bottom: 1.5rem;
         }
 
         td:nth-last-child(1) {
