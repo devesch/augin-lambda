@@ -1773,6 +1773,11 @@ input[list]::-ms-clear {
     img {
         vertical-align: middle;
     }
+
+    @media only screen and (max-width: 520px) {
+        padding: 1rem 0;
+    }
+
 }
 
 .modal-explore__table {
@@ -1870,10 +1875,10 @@ input[list]::-ms-clear {
 
 }
 
-.custom-explore__table {
-    // overflow-x: auto;
-    // white-space: nowrap;
-}
+// .custom-explore__table {
+//     overflow-x: auto;
+//     white-space: nowrap;
+// }
 
 .panel-explore-filters-container {
     $gap: 1rem;
