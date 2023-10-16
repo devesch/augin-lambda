@@ -1909,7 +1909,7 @@ input[list]::-ms-clear {
         }
 
         td::before {
-            content: attr(data-title) ": ";
+            content: attr(data-title);
             font-weight: bold;
             float: left;
         }
