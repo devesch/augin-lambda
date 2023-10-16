@@ -1182,6 +1182,11 @@ input[list]::-ms-clear {
     border-radius: 1rem;
     padding: 2rem;
     font-size: 1.4rem;
+
+    @media only screen and (max-width: 520px) {
+        font-size: 1rem;
+    }
+
 }
 
 .panel-user-data__hover-image {
