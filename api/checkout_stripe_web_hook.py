@@ -12,6 +12,9 @@ from utils.AWS.Ses import Ses
 import time
 import json
 
+### TODO REMOVE BEFORE PROD
+working_on_sub_id = "sub_1O1qboA9OIVeHB9y5q6tEYvd"
+
 
 class CheckoutStripeWebHook(BasePage):
     def run(self):
@@ -29,8 +32,9 @@ class CheckoutStripeWebHook(BasePage):
         stripe_subscription = None
         if not order and self.post["data"]["object"]["description"] == "Subscription update":
             invoice = StripeController().get_invoice(self.post["data"]["object"]["invoice"])
-            stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
+            stripe_subscription = StripeController().get_subscription(working_on_sub_id)
             ### TODO CHANGE SUB
+            # stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
             # stripe_subscription = StripeController().get_subscription(invoice['subscription'])
             create_order_with_stripe_subscription_updated(self.user, json.loads(stripe_subscription["metadata"]["plan"]), StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"]), stripe_subscription, self.post["data"]["object"], invoice)
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
@@ -57,6 +61,7 @@ class CheckoutStripeWebHook(BasePage):
                 BillingController().generate_international_pdf_bill_of_sale(order)
             self.send_payment_success_email(order)
 
+        raise Exception("TODO PAYMENT SUCCESS")
         return {"success": "Evento payment_intent_succeeded tratado."}
 
     def charge_succeeded(self):
@@ -102,7 +107,8 @@ class CheckoutStripeWebHook(BasePage):
         return {"success": "Evento payment_intent_requires_action tratado."}
 
     def customer_subscription_updated(self):
-        user_stripe_subscription = StripeController().get_subscription(self.post["data"]["object"]["id"])
+        user_stripe_subscription = StripeController().get_subscription(working_on_sub_id)
+        # user_stripe_subscription = StripeController().get_subscription(self.post["data"]["object"]["id"])
         stripe_customer = StripeController().get_stripe_customer(user_stripe_subscription["customer"])
         self.user = load_user(stripe_customer["email"])
         invoice = StripeController().get_invoice(user_stripe_subscription["latest_invoice"])

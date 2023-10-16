@@ -180,7 +180,6 @@ def create_order_with_stripe_request_subscription(user, plan, plan_recurrency, s
 
 
 def create_order_with_stripe_subscription_updated(user, plan, plan_recurrency, stripe_subscription, payment_intent, invoice):
-
     new_order = Order(user.user_id, payment_intent["id"])
     new_order.order_status = StripeController().convert_stripe_status_code_to_status(payment_intent["status"])
     new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"])

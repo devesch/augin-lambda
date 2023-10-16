@@ -31,7 +31,6 @@ def increase_backoffice_data_total_count(entity):
 def get_backoffice_data():
     backoffice_data = Dynamo().get_backoffice_data()
     if not backoffice_data:
-        backoffice_data = BackofficeData()
-        backoffice_data = backoffice_data.__dict__
+        backoffice_data = BackofficeData().__dict__
         Dynamo().put_entity(backoffice_data)
     return backoffice_data
