@@ -1183,9 +1183,20 @@ input[list]::-ms-clear {
     padding: 2rem;
     font-size: 1.4rem !important;
 
+    p {
+        font-size: 1.4rem !important;
+    }
+
     @media only screen and (max-width: 520px) {
         font-size: 1rem !important;
+
+        p {
+            font-size: 1rem !important;
+        }
+
     }
+
+    
 
 }
 
