@@ -1,4 +1,5 @@
 from objects.Plan import generate_plan_price_with_coupon_discount
+from utils.utils.Validation import Validation
 import json
 
 stripe_token = "pk_test_51KUDNpA9OIVeHB9yQ6ngZSyKDmLUpgaq8iO10XRUy8bfLHzar7vgQ7AdXN6BFSUbTEe8O7DP3hDJ1DxFigcAbGzV00ZtwONkpc"
@@ -107,7 +108,8 @@ class StripeController:
     def create_subscription(self, user, plan, plan_recurrency):
         payment_method_types = []
 
-        price_id, payment_method_types = self.generate_price_id_and_payment_method_types(user, plan, plan_recurrency)
+        price_id = self.generate_price_id(user, plan, plan_recurrency)
+        payment_method_types = self.generate_payment_method_types(user, plan, plan_recurrency)
 
         if user.user_cart_coupon_code:
             new_subscription_price, coupon_discount_value = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, plan_recurrency, user.user_cart_currency)
@@ -124,29 +126,7 @@ class StripeController:
             payment_behavior="default_incomplete",
             expand=["latest_invoice.payment_intent"],
             payment_settings={"payment_method_types": payment_method_types, "save_default_payment_method": "on_subscription"},
-            metadata={
-                "user_id": user.user_id,
-                "plan_recurrency": plan_recurrency,
-                "coupon_code": user.user_cart_coupon_code,
-                "plan": json.dumps(
-                    {
-                        "plan_id": plan["plan_id"],
-                        "plan_name_pt": plan["plan_name_pt"],
-                        "plan_price_annually_brl": plan["plan_price_annually_brl"],
-                        "plan_price_annually_usd": plan["plan_price_annually_usd"],
-                        "plan_price_monthly_brl": plan["plan_price_monthly_brl"],
-                        "plan_price_monthly_usd": plan["plan_price_monthly_usd"],
-                        "plan_price_annually_brl_actual": plan["plan_price_annually_brl_actual"],
-                        "plan_price_annually_usd_actual": plan["plan_price_annually_usd_actual"],
-                        "plan_price_monthly_brl_actual": plan["plan_price_monthly_brl_actual"],
-                        "plan_price_monthly_usd_actual": plan["plan_price_monthly_usd_actual"],
-                        "plan_price_annually_brl_actual_stripe_id": plan["plan_price_annually_brl_actual_stripe_id"],
-                        "plan_price_annually_usd_actual_stripe_id": plan["plan_price_annually_usd_actual_stripe_id"],
-                        "plan_price_monthly_brl_actual_stripe_id": plan["plan_price_monthly_brl_actual_stripe_id"],
-                        "plan_price_monthly_usd_actual_stripe_id": plan["plan_price_monthly_usd_actual_stripe_id"],
-                    }
-                ),
-            },
+            metadata={"user_id": user.user_id, "plan_recurrency": plan_recurrency, "coupon_code": user.user_cart_coupon_code, "plan_id": plan["plan_id"], "plan": self.compress_plan_data(plan)},
         )
 
     def get_payment_intent(self, payment_intent_id):
@@ -156,7 +136,11 @@ class StripeController:
         return self.stripe.Invoice.retrieve(invoice_id)
 
     def get_subscription(self, subscription_id):
-        return self.stripe.Subscription.retrieve(subscription_id)
+        stripe_subscription = self.stripe.Subscription.retrieve(subscription_id)
+        if stripe_subscription["metadata"].get("plan"):
+            if Validation().check_if_is_b64_encoded(stripe_subscription["metadata"]["plan"]):
+                stripe_subscription["metadata"]["plan"] = self.decompress_plan_data(stripe_subscription["metadata"]["plan"])
+        return stripe_subscription
 
     def cancel_subscription(self, subscription_id):
         return self.stripe.Subscription.delete(subscription_id)
@@ -197,39 +181,90 @@ class StripeController:
     def refunded_order(self, stripe_charge_id):
         return self.stripe.Refund.create(charge=stripe_charge_id)
 
-    def remove_coupon_from_subscription(self, stripe_subscription):
-        new_metadata = {"user_id": stripe_subscription["metadata"]["user_id"], "plan_recurrency": stripe_subscription["metadata"]["plan_recurrency"], "coupon_code": "", "plan": stripe_subscription["metadata"]["plan"]}
+    def remove_coupon_from_subscription(self, user, stripe_subscription):
+        price_id = self.generate_price_id(user, stripe_subscription["metadata"]["plan"], stripe_subscription["metadata"]["plan_recurrency"])
+        new_metadata = {"user_id": stripe_subscription["metadata"]["user_id"], "plan_recurrency": stripe_subscription["metadata"]["plan_recurrency"], "coupon_code": "", "plan_id": stripe_subscription["metadata"]["plan"]["plan_id"], "plan": self.compress_plan_data(stripe_subscription["metadata"]["plan"])}
 
         return self.stripe.Subscription.modify(
             stripe_subscription["id"],
+            cancel_at_period_end=False,
+            proration_behavior="none",
+            items=[
+                {
+                    "id": stripe_subscription["items"]["data"][0].id,
+                    "price": price_id,
+                }
+            ],
             metadata=new_metadata,
         )
 
-    def generate_price_id_and_payment_method_types(user, plan, plan_recurrency):
+    def generate_price_id(self, user, plan, plan_recurrency):
+        if plan_recurrency == "annually":
+            if user.user_cart_currency == "brl":
+                price_id = plan["plan_price_annually_brl_actual_stripe_id"]
+            if user.user_cart_currency == "usd":
+                price_id = plan["plan_price_annually_usd_actual_stripe_id"]
+
+        if plan_recurrency == "monthly":
+            if user.user_cart_currency == "brl":
+                price_id = plan["plan_price_monthly_brl_actual_stripe_id"]
+            if user.user_cart_currency == "usd":
+                price_id = plan["plan_price_monthly_usd_actual_stripe_id"]
+
+        return price_id
+
+    def generate_payment_method_types(self, user, plan, plan_recurrency):
         payment_method_types = []
 
         if plan_recurrency == "annually":
             if user.user_cart_currency == "brl":
-                price_id = plan["plan_price_annually_brl_actual_stripe_id"]
                 if plan["plan_annually_boleto_payment_method"]:
                     payment_method_types.append("boleto")
                 # if plan["plan_annually_pix_payment_method"]:
                 #     payment_method_types.append("pix")
-            if user.user_cart_currency == "usd":
-                price_id = plan["plan_price_annually_usd_actual_stripe_id"]
             if plan["plan_annually_card_payment_method"]:
                 payment_method_types.append("card")
 
         if plan_recurrency == "monthly":
             if user.user_cart_currency == "brl":
-                price_id = plan["plan_price_monthly_brl_actual_stripe_id"]
                 if plan["plan_monthly_boleto_payment_method"]:
                     payment_method_types.append("boleto")
                 # if plan["plan_monthly_pix_payment_method"]:
                 #     payment_method_types.append("pix")
-            if user.user_cart_currency == "usd":
-                price_id = plan["plan_price_monthly_usd_actual_stripe_id"]
             if plan["plan_monthly_card_payment_method"]:
                 payment_method_types.append("card")
 
-        return price_id, payment_method_types
+        return payment_method_types
+
+    def compress_plan_data(self, plan):
+        import zlib
+        import base64
+
+        string_plan_data = json.dumps(
+            {
+                "plan_id": plan["plan_id"],
+                "plan_name_pt": plan["plan_name_pt"],
+                "plan_price_annually_brl": plan["plan_price_annually_brl"],
+                "plan_price_annually_usd": plan["plan_price_annually_usd"],
+                "plan_price_monthly_brl": plan["plan_price_monthly_brl"],
+                "plan_price_monthly_usd": plan["plan_price_monthly_usd"],
+                "plan_price_annually_brl_actual": plan["plan_price_annually_brl_actual"],
+                "plan_price_annually_usd_actual": plan["plan_price_annually_usd_actual"],
+                "plan_price_monthly_brl_actual": plan["plan_price_monthly_brl_actual"],
+                "plan_price_monthly_usd_actual": plan["plan_price_monthly_usd_actual"],
+                "plan_price_annually_brl_actual_stripe_id": plan["plan_price_annually_brl_actual_stripe_id"],
+                "plan_price_annually_usd_actual_stripe_id": plan["plan_price_annually_usd_actual_stripe_id"],
+                "plan_price_monthly_brl_actual_stripe_id": plan["plan_price_monthly_brl_actual_stripe_id"],
+                "plan_price_monthly_usd_actual_stripe_id": plan["plan_price_monthly_usd_actual_stripe_id"],
+            }
+        )
+
+        return base64.b64encode(zlib.compress(string_plan_data.encode("utf-8"))).decode("utf-8")
+
+    def decompress_plan_data(self, compressed_plan_data):
+        import zlib
+        import base64
+
+        decompressed_data = base64.b64decode(compressed_plan_data)
+        original_string_data = zlib.decompress(decompressed_data)
+        return json.loads(original_string_data.decode("utf-8"))

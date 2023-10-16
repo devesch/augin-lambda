@@ -20,6 +20,9 @@ class PanelYourPlan(PanelPage):
         user_plan = self.user.get_user_actual_plan()
         if self.user.user_subscription_id:
             user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+            from python_web_frame.controllers.stripe_controller import StripeController
+
+            stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
 
         html = super().parse_html()
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))

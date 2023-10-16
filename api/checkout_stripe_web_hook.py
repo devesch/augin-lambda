@@ -14,7 +14,7 @@ import time
 import json
 
 ### TODO REMOVE BEFORE PROD
-working_on_sub_id = "sub_1O1qboA9OIVeHB9y5q6tEYvd"
+working_on_sub_id = "sub_1O1ssOA9OIVeHB9yM47mh3uw"
 
 
 class CheckoutStripeWebHook(BasePage):
@@ -37,7 +37,7 @@ class CheckoutStripeWebHook(BasePage):
             ### TODO CHANGE SUB
             # stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
             # stripe_subscription = StripeController().get_subscription(invoice['subscription'])
-            create_order_with_stripe_subscription_updated(self.user, json.loads(stripe_subscription["metadata"]["plan"]), StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"]), stripe_subscription, self.post["data"]["object"], invoice)
+            create_order_with_stripe_subscription_updated(self.user, stripe_subscription["metadata"]["plan"], stripe_subscription["metadata"]["plan_recurrency"], stripe_subscription, self.post["data"]["object"], invoice)
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
 
         Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
@@ -63,7 +63,7 @@ class CheckoutStripeWebHook(BasePage):
                 coupon = Dynamo().get_coupon(order["order_user_cart_coupon_code"])
                 coupon_cycle_applications = generate_coupon_cycle_applications(coupon, user_subscription["subscription_recurrency"])
                 if int(order["order_installment_quantity"]) >= int(coupon_cycle_applications):
-                    StripeController().remove_coupon_from_subscription(stripe_subscription)
+                    StripeController().remove_coupon_from_subscription(self.user, stripe_subscription)
 
                 if self.post["data"]["object"]["description"] != "Subscription update":
                     self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_id)

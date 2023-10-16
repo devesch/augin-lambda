@@ -12,6 +12,24 @@ class Validation:
             cls._instance = super(Validation, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def check_if_is_b64_encoded(self, string):
+        import base64
+        import re
+
+        if not isinstance(string, str):
+            raise ValueError("Input should be a string")
+
+        if len(string) % 4 != 0:
+            return False
+
+        if re.match("^[A-Za-z0-9+/]+[=]{0,2}$", string):
+            try:
+                base64.b64decode(string, validate=True)
+                return True
+            except:
+                return False
+        return False
+
     def check_if_is_uuid4(self, uuid4):
         if not uuid4:
             return False
