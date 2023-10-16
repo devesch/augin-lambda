@@ -1182,6 +1182,11 @@ input[list]::-ms-clear {
     border-radius: 1rem;
     padding: 2rem;
     font-size: 1.4rem;
+
+    @media only screen and (max-width: 520px) {
+        font-size: 1rem;
+    }
+
 }
 
 .panel-user-data__hover-image {
@@ -2524,10 +2529,6 @@ input[list]::-ms-clear {
     border-radius: 0.5rem;
 }
 
-.order-summary-price-container {
-    max-width: 13rem;
-}
-
 .user-summary-description-container,
 .order-summary-description-container,
 .status-summary-description-container {
@@ -2601,6 +2602,10 @@ input[list]::-ms-clear {
 .summary-container .link-container {
     margin-top: 1rem;
     text-align: right;
+}
+
+#add_coupon_button {
+    margin-top: -.45rem;
 }
 /* Checkout Stripe Subscription - End */
 
