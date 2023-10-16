@@ -106,29 +106,8 @@ class StripeController:
 
     def create_subscription(self, user, plan, plan_recurrency):
         payment_method_types = []
-        if plan_recurrency == "annually":
-            if user.user_cart_currency == "brl":
-                price_id = plan["plan_price_annually_brl_actual_stripe_id"]
-                if plan["plan_annually_boleto_payment_method"]:
-                    payment_method_types.append("boleto")
-                # if plan["plan_annually_pix_payment_method"]:
-                #     payment_method_types.append("pix")
-            if user.user_cart_currency == "usd":
-                price_id = plan["plan_price_annually_usd_actual_stripe_id"]
-            if plan["plan_annually_card_payment_method"]:
-                payment_method_types.append("card")
 
-        if plan_recurrency == "monthly":
-            if user.user_cart_currency == "brl":
-                price_id = plan["plan_price_monthly_brl_actual_stripe_id"]
-                if plan["plan_monthly_boleto_payment_method"]:
-                    payment_method_types.append("boleto")
-                # if plan["plan_monthly_pix_payment_method"]:
-                #     payment_method_types.append("pix")
-            if user.user_cart_currency == "usd":
-                price_id = plan["plan_price_monthly_usd_actual_stripe_id"]
-            if plan["plan_monthly_card_payment_method"]:
-                payment_method_types.append("card")
+        price_id, payment_method_types = self.generate_price_id_and_payment_method_types(user, plan, plan_recurrency)
 
         if user.user_cart_coupon_code:
             new_subscription_price, coupon_discount_value = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, plan_recurrency, user.user_cart_currency)
@@ -161,6 +140,10 @@ class StripeController:
                         "plan_price_annually_usd_actual": plan["plan_price_annually_usd_actual"],
                         "plan_price_monthly_brl_actual": plan["plan_price_monthly_brl_actual"],
                         "plan_price_monthly_usd_actual": plan["plan_price_monthly_usd_actual"],
+                        "plan_price_annually_brl_actual_stripe_id": plan["plan_price_annually_brl_actual_stripe_id"],
+                        "plan_price_annually_usd_actual_stripe_id": plan["plan_price_annually_usd_actual_stripe_id"],
+                        "plan_price_monthly_brl_actual_stripe_id": plan["plan_price_monthly_brl_actual_stripe_id"],
+                        "plan_price_monthly_usd_actual_stripe_id": plan["plan_price_monthly_usd_actual_stripe_id"],
                     }
                 ),
             },
@@ -221,3 +204,32 @@ class StripeController:
             stripe_subscription["id"],
             metadata=new_metadata,
         )
+
+    def generate_price_id_and_payment_method_types(user, plan, plan_recurrency):
+        payment_method_types = []
+
+        if plan_recurrency == "annually":
+            if user.user_cart_currency == "brl":
+                price_id = plan["plan_price_annually_brl_actual_stripe_id"]
+                if plan["plan_annually_boleto_payment_method"]:
+                    payment_method_types.append("boleto")
+                # if plan["plan_annually_pix_payment_method"]:
+                #     payment_method_types.append("pix")
+            if user.user_cart_currency == "usd":
+                price_id = plan["plan_price_annually_usd_actual_stripe_id"]
+            if plan["plan_annually_card_payment_method"]:
+                payment_method_types.append("card")
+
+        if plan_recurrency == "monthly":
+            if user.user_cart_currency == "brl":
+                price_id = plan["plan_price_monthly_brl_actual_stripe_id"]
+                if plan["plan_monthly_boleto_payment_method"]:
+                    payment_method_types.append("boleto")
+                # if plan["plan_monthly_pix_payment_method"]:
+                #     payment_method_types.append("pix")
+            if user.user_cart_currency == "usd":
+                price_id = plan["plan_price_monthly_usd_actual_stripe_id"]
+            if plan["plan_monthly_card_payment_method"]:
+                payment_method_types.append("card")
+
+        return price_id, payment_method_types
