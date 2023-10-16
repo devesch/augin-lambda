@@ -142,8 +142,8 @@ def create_order_with_stripe_request_subscription(user, plan, plan_recurrency, s
             new_order.order_usd_price = order_usd_price
 
         if plan_recurrency == "monthly":
-            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl_actual"]
-            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd_actual"]
+            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl"]
+            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd"]
 
             order_brl_price, order_brl_discount = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, "monthly", "brl")
             order_usd_price, order_usd_discount = generate_plan_price_with_coupon_discount(plan, user.user_cart_coupon_code, "monthly", "usd")
@@ -180,6 +180,7 @@ def create_order_with_stripe_request_subscription(user, plan, plan_recurrency, s
 
 
 def create_order_with_stripe_subscription_updated(user, plan, plan_recurrency, stripe_subscription, payment_intent, invoice):
+
     new_order = Order(user.user_id, payment_intent["id"])
     new_order.order_status = StripeController().convert_stripe_status_code_to_status(payment_intent["status"])
     new_order.order_type = StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"])
@@ -197,8 +198,8 @@ def create_order_with_stripe_subscription_updated(user, plan, plan_recurrency, s
             new_order.order_usd_price = order_usd_price
 
         if plan_recurrency == "monthly":
-            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl_actual"]
-            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd_actual"]
+            new_order.order_sub_total_brl_price = plan["plan_price_monthly_brl"]
+            new_order.order_sub_total_usd_price = plan["plan_price_monthly_usd"]
 
             order_brl_price, order_brl_discount = generate_plan_price_with_coupon_discount(plan, "monthly", "brl")
             order_usd_price, order_usd_discount = generate_plan_price_with_coupon_discount(plan, "monthly", "usd")

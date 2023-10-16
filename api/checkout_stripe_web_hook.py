@@ -32,7 +32,7 @@ class CheckoutStripeWebHook(BasePage):
             stripe_subscription = StripeController().get_subscription(self.user.user_subscription_id)
             ### TODO CHANGE SUB
             # stripe_subscription = StripeController().get_subscription(invoice['subscription'])
-            create_order_with_stripe_subscription_updated(self.user, json.loads(stripe_subscription["metadata"]["plan_prices"]), StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"]), stripe_subscription, self.post["data"]["object"], invoice)
+            create_order_with_stripe_subscription_updated(self.user, json.loads(stripe_subscription["metadata"]["plan"]), StripeController().convert_stripe_plan_interval_to_recurrence(stripe_subscription["plan"]["interval"]), stripe_subscription, self.post["data"]["object"], invoice)
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
 
         Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
