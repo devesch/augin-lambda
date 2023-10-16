@@ -14,7 +14,7 @@ import time
 import json
 
 ### TODO REMOVE BEFORE PROD
-working_on_sub_id = "sub_1O1ssOA9OIVeHB9yM47mh3uw"
+working_on_sub_id = "sub_1O1tpMA9OIVeHB9ymACRQukE"
 
 
 class CheckoutStripeWebHook(BasePage):
@@ -117,13 +117,13 @@ class CheckoutStripeWebHook(BasePage):
         return {"success": "Evento payment_intent_requires_action tratado."}
 
     def customer_subscription_updated(self):
-        user_stripe_subscription = StripeController().get_subscription(working_on_sub_id)
+        ### TODO UNCOMENT THIS WHEN NOT USING CLOCK
         # user_stripe_subscription = StripeController().get_subscription(self.post["data"]["object"]["id"])
-        stripe_customer = StripeController().get_stripe_customer(user_stripe_subscription["customer"])
-        self.user = load_user(stripe_customer["email"])
-        invoice = StripeController().get_invoice(user_stripe_subscription["latest_invoice"])
-        order = Dynamo().get_order(invoice["payment_intent"])
-        self.user.update_subscription(order, user_stripe_subscription)
+        # stripe_customer = StripeController().get_stripe_customer(user_stripe_subscription["customer"])
+        # self.user = load_user(stripe_customer["email"])
+        # invoice = StripeController().get_invoice(user_stripe_subscription["latest_invoice"])
+        # order = Dynamo().get_order(invoice["payment_intent"])
+        # self.user.update_subscription(order, user_stripe_subscription)
         return {"success": "Evento customer_subscription_updated tratado."}
 
     ######################################################################################################
