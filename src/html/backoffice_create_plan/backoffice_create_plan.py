@@ -317,8 +317,6 @@ class BackofficeCreatePlan(BackofficePage):
                 trial_plan["pk"] = "plan#" + plan["plan_id"] + "-trial"
                 trial_plan["sk"] = "plan#" + plan["plan_id"] + "-trial"
                 trial_plan["plan_id"] = plan["plan_id"] + "-trial"
-                Dynamo().put_entity(trial_plan)
-                trial_plan = Dynamo().get_plan(plan["plan_id"] + "-trial")
 
             trial_plan["plan_name_pt"] = plan["plan_name_pt"] + " Trial"
             trial_plan["plan_name_en"] = plan["plan_name_en"] + " Trial"
