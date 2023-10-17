@@ -22,6 +22,10 @@ class PaginationQueries(BackofficePage, PanelPage):
         models, last_evaluated_key = Dynamo().query_paginated_all_models(last_evaluated_key, limit=int(self.user.user_pagination_count))
         return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": last_evaluated_key, "new_itens_count": str(len(models))}
 
+    def query_paginated_all_models_by_filesize_bracket(self, last_evaluated_key):
+        models, last_evaluated_key = Dynamo().query_paginated_all_models_by_filesize_bracket(self.post["query_filter"], last_evaluated_key, limit=int(self.user.user_pagination_count))
+        return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": last_evaluated_key, "new_itens_count": str(len(models))}
+
     def query_paginated_all_models_by_state(self, last_evaluated_key):
         models, last_evaluated_key = Dynamo().query_paginated_all_models_by_state(self.post["query_filter"], last_evaluated_key, limit=int(self.user.user_pagination_count))
         return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": last_evaluated_key, "new_itens_count": str(len(models))}
