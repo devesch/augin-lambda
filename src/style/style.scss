@@ -3129,7 +3129,9 @@ input[list]::-ms-clear {
 /* Backoffice - Start */
 .backoffice-table-wrapper {
     overflow: auto;
-    max-width: calc(100vw - (350px + 2rem));
+    @media only screen and (min-width: 981px) {
+        max-width: calc(100vw - (350px + 2rem));
+    }
 }
 
 .backoffice__subtitle {
