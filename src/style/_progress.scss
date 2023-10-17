@@ -51,20 +51,20 @@ progress::after {
 progress::-webkit-progress-bar {
     background: colors.color("color-primary-50");
     border-radius: 0;
-    height: 1rem;
+    height: 100%;
 }
 
 progress::-webkit-progress-value {
     border-radius: 0;
     background: colors.color("color-primary-700");
-    height: 1rem;
+    height: 100%;
     // transition: width 0.4s ease-in;
 }
 
 progress::-moz-progress-bar {
     background: colors.color("color-primary-700");
     border-radius: 0;
-    height: 1rem;
+    height: 100%;
     background-image: linear-gradient( -45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent );
     z-index: 1;
     background-size: 25px 25px;
@@ -108,16 +108,7 @@ progress.failed::-moz-progress-bar {
     background: colors.color("color-error-300");
 }
 /**/
-
-.progress-neutral {
-    color: colors.color("color-neutral-300");
-    accent-color: colors.color("color-neutral-300");
-}
-
-.progress-neutral::-webkit-progress-value {
-    background: colors.color("color-neutral-300");
-}
-
-.progress-neutral::-moz-progress-bar {
-    background: colors.color("color-neutral-300");
+.progress--panel-create-project {
+    max-width: 700px;
+    width: 100%;
 }
