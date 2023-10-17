@@ -20,8 +20,8 @@ class PanelCreateProject(PanelPage):
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
         html.esc("plan_maxium_model_size_in_mbs_val", user_plan["plan_maxium_model_size_in_mbs"])
 
-        html.esc("user_used_cloud_space_in_mbs_val", self.user.user_used_cloud_space_in_mbs)
-        html.esc("plan_cloud_space_in_mbs_val", user_plan["plan_cloud_space_in_mbs"])
+        html.esc("user_used_cloud_space_in_mbs_val", str(round(float(self.user.user_used_cloud_space_in_mbs), 1)))
+        html.esc("plan_cloud_space_in_mbs_val", str(float(user_plan["plan_cloud_space_in_mbs"])))
 
         if user_plan["plan_id"] == lambda_constants["free_plan_id"]:
             html.esc("html_make_an_upgrade_link", self.show_html_make_an_upgrade_link())
