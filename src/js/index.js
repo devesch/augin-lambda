@@ -12,7 +12,6 @@ import {
 
 
 
-
 export async function showSelectedPaymentPage(index) {
     let decrease_history_page_button = document.getElementById("decrease_history_page_button");
     let increase_history_page_button = document.getElementById("increase_history_page_button");
@@ -2433,7 +2432,6 @@ export async function loadMoreOnScroll(query) {
     };
 
     window.onkeydown = async function (event) {
-        console.log("event ", event);
         if (event.keyCode == 34) {
             let current_scroll_position = this.scrollY;
             let last_scroll_position_input = document.getElementById("last_scroll_position");
@@ -2880,15 +2878,14 @@ export async function changeSearchIcon(input) {
     }
 }
 
+
 export async function clearSearchInput(clearIcon, inputId) {
     const input = document.getElementById(inputId);
     input.value = "";
-    clearIcon.classList.add("none");
-    // document.querySelector(".search-icon").remove("none");
-    changeSearchIcon(input);
-    showUserDicts();
-}
 
+    clearIcon.classList.add("none");
+    changeSearchIcon(input);
+}
 
 
 export async function checkIfCouponIsStillValid() {

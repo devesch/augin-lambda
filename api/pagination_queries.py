@@ -9,7 +9,7 @@ class PaginationQueries(BackofficePage, PanelPage):
         if not self.post.get("query"):
             return {"error": "no command in post"}
 
-        if self.post["query"] in ["get_model", "query_user_models_from_state"]:
+        if self.post["query"] in ["get_model", "query_user_models_from_state", "query_user_orders"]:
             return {"error": "Esta query não é possível de ser paginada"}
 
         if self.post.get("last_evaluated_key") and self.post.get("last_evaluated_key") == "undefined":

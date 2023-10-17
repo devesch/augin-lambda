@@ -9,12 +9,12 @@
             <section class="panel-explore-filters-container">
                 {{html_dropdown_select_user_pagination}}
                 <div class="floating-input">
-                    <input oninput="js.index.updateBackofficeCoupons(), js.index.changeSearchIcon(this)" type="search" name="search_coupons_by_name_or_code_input" id="search_coupons_by_name_or_code_input" class="input-search" results="10" autosave="search_coupons_by_name_or_code_input" placeholder=" ">
+                    <input oninput="js.index.updateBackofficeCoupons(), js.index.changeSearchIcon(this)" type="search" name="search_coupons_by_name_or_code_input" id="search_coupons_by_name_or_code_input" class="input-search" results="10" autosave="search_coupons_by_name_or_code_input" placeholder=" " autocomplete="off">
                     <label for="search_coupons_by_name_or_code_input">
                         {{Pesquisar}}
                     </label>
                     <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
-                    <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'backoffice_search_users_by_email_or_id_input')">
+                    <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_coupons_by_name_or_code_input'), js.index.updateBackofficeCoupons()" autocomplete="off">
                 </div>
             </section>
             <div class="backoffice-table-wrapper">
