@@ -630,7 +630,7 @@
         "pt": "Bairro"
     },
     "Baixar": {
-        "en": "To go down",
+        "en": "Download",
         "es": "Bajar",
         "pt": "Baixar"
     },
@@ -970,8 +970,8 @@
         "pt": "Compartilhados comigo"
     },
     "Compartilhar": {
-        "en": "To share",
-        "es": "Para compartir",
+        "en": "Share",
+        "es": "Compartir",
         "pt": "Compartilhar"
     },
     "Compartilhe por QR Code ou link": {
