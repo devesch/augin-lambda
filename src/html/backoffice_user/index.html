@@ -66,5 +66,11 @@
             <button type="submit">{{Desconectar dispositivos}}</button>
         </form>
     </div>
+    <div>
+        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+            <input hidden name="command" value="reset_user_used_trials">
+            <button type="submit">{{Resetar trials}}</button>
+        </form>
+    </div>
 </main>
 {{footer}}

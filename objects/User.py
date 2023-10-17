@@ -58,6 +58,10 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
+    def reset_user_used_trials(self):
+        self.user_used_trials = []
+        Dynamo().put_entity(self.__dict__)
+
     def delete_account(self):
         user_dicts_folder = Dynamo().get_folder(self.user_dicts_folder_id)
         if user_dicts_folder:

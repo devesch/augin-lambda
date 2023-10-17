@@ -49,6 +49,10 @@ class BackofficeUser(BackofficePage):
                 connected_devices, disconnected_devices = generate_connected_and_disconnected_devices(user_devices)
                 for connected_device in connected_devices:
                     disconnect_device(connected_device, disconnection_at=str(time.time() - 2800000))
-            return self.render_get_with_error("Todos os dispositivos que estavam conectados foram desconetados com sucesso")
+                return self.render_get_with_error("Todos os dispositivos que estavam conectados foram desconetados com sucesso")
 
+            if self.post["command"] == "reset_user_used_trials":
+                user = load_user(self.path["user_id"])
+                user.reset_user_used_trials()
+                return self.render_get_with_error("Planos trials já utilizados resetados")
         return self.render_get()
