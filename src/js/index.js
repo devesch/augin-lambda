@@ -683,7 +683,14 @@ export async function updateUserUsedCloudSpaceInMbs() {
     });
 
     let user_used_cloud_space_in_mbs_span = document.getElementById("user_used_cloud_space_in_mbs_span");
+    let user_used_cloud_space_in_mbs_progress = document.getElementById("user_used_cloud_space_in_mbs_progress");
+
     user_used_cloud_space_in_mbs_span.innerHTML = update_user_response["success"];
+    user_used_cloud_space_in_mbs_progress.value = update_user_response["success"];
+
+    user_used_cloud_space_in_mbs_progress.classList.remove("success", "failed");
+    user_used_cloud_space_in_mbs_progress.classList.add(update_user_response["class"]);
+
 }
 
 export function checkIfCreateProjectIsFederated(checkbox = true) {

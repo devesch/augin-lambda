@@ -1,4 +1,4 @@
-from python_web_frame.base_page import BasePage
+from python_web_frame.panel_page import PanelPage
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.utils.EncodeDecode import EncodeDecode
@@ -12,7 +12,7 @@ from objects.UserPaymentMethod import UserPaymentMethod
 import time
 
 
-class UpdateUser(BasePage):
+class UpdateUser(PanelPage):
     def run(self):
         if not self.post.get("command"):
             return {"error": "Nenhum command no post"}
@@ -37,7 +37,8 @@ class UpdateUser(BasePage):
         return {"success": "Usuário excluído", "redirect_link": lambda_constants["domain_name_url"] + "/user_login/?error_msg=" + EncodeDecode().encode_to_url("Todos os dados da sua conta foram excluídos")}
 
     def get_user_used_cloud_space_in_mbs(self):
-        return {"success": self.user.user_used_cloud_space_in_mbs}
+        user_plan = self.user.get_user_actual_plan()
+        return {"success": self.user.user_used_cloud_space_in_mbs, "class": self.generate_progress_class(self.user.user_used_cloud_space_in_mbs, user_plan["plan_cloud_space_in_mbs"])}
 
     def disconnect_device(self):
         if not self.post.get("device_id"):

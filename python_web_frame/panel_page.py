@@ -17,6 +17,15 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def generate_progress_class(self, user_used_cloud_space_in_mbs, plan_cloud_space_in_mbs):
+        ratio = float(user_used_cloud_space_in_mbs) / float(plan_cloud_space_in_mbs)
+        if float(ratio) < 0.75:
+            return "success"
+        if float(ratio) < 1:
+            return "warning"
+        else:
+            return "failed"
+
     def list_html_user_available_devices_thumbs(self, connected_devides, plan_maxium_devices_available):
         full_html = []
         for x in range(int(plan_maxium_devices_available) - len(connected_devides)):

@@ -5724,6 +5724,11 @@
         "es": "dispositivos.Actualice para aumentar este límite.",
         "pt": "dispositivos. Faça um upgrade para aumentar esse limite."
     },
+    "do armazenamento disponível na cloud": {
+        "en": "of the storage available at Cloud",
+        "es": "del almacenamiento disponible en la nube",
+        "pt": "do armazenamento disponível na cloud"
+    },
     "do seu plano": {
         "en": "of your plan",
         "es": "de tu plan",

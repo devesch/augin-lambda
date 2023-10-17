@@ -22,6 +22,8 @@ class PanelCreateProject(PanelPage):
 
         html.esc("user_used_cloud_space_in_mbs_val", str(round(float(self.user.user_used_cloud_space_in_mbs), 1)))
         html.esc("plan_cloud_space_in_mbs_val", str(float(user_plan["plan_cloud_space_in_mbs"])))
+        html.esc("progress_class_val", self.generate_progress_class(self.user.user_used_cloud_space_in_mbs, user_plan["plan_cloud_space_in_mbs"]))
+        html.esc("progress_user_used_cloud_space_in_mbs_val", self.generate_progress_used_space(self.user.user_used_cloud_space_in_mbs, user_plan["plan_cloud_space_in_mbs"]))
 
         if user_plan["plan_id"] == lambda_constants["free_plan_id"]:
             html.esc("html_make_an_upgrade_link", self.show_html_make_an_upgrade_link())
@@ -71,3 +73,10 @@ class PanelCreateProject(PanelPage):
                         for id in ids:
                             models_ids.append(id)
         return models_ids
+
+    def generate_progress_used_space(self, user_used_cloud_space_in_mbs, plan_cloud_space_in_mbs):
+        ratio = float(user_used_cloud_space_in_mbs) / float(plan_cloud_space_in_mbs)
+        if float(ratio) > 1:
+            return plan_cloud_space_in_mbs
+        else:
+            return user_used_cloud_space_in_mbs
