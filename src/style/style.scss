@@ -2525,7 +2525,17 @@ input[list]::-ms-clear {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
+}
+
+.panel-user-data__sub-container {
+    .link--primary {
+        width: fit-content;
+        margin: 0 auto;
+        background: none;
+        border: unset;
+        color: colors.color("color-error-500");
+    }
 }
 
 .panel-user-data-header {
