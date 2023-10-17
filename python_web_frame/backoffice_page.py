@@ -13,6 +13,16 @@ class BackofficePage(BasePage):
         super().__init__()
         self.admin = True
 
+    def list_html_backoffice_recurrence_failures_table_rows(self, recurrence_failures):
+        full_html = []
+        if recurrence_failures:
+            for recurrence_failure in recurrence_failures:
+                html = ReadWrite().read_html("backoffice_recurrence_failures/_codes/html_backoffice_recurrence_failures_table_rows")
+                html.esc("recurrence_failure_user_id_val", recurrence_failure["recurrence_failure_user_id"])
+                html.esc("recurrence_failure_order_id_val", recurrence_failure["recurrence_failure_order_id"])
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def list_html_backoffice_cart_abandonments_table_rows(self, cart_abandonments):
         full_html = []
         if cart_abandonments:

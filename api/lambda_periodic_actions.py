@@ -67,6 +67,7 @@ class LambdaPeriodicActions(BasePage):
         all_coupons = Dynamo().query_entity("coupons")
         all_products = Dynamo().query_entity("product")
         cart_abandonments = Dynamo().query_entity("cart_abandonment")
+        payment_failures = Dynamo().query_entity("payment_failure")
 
         backoffice_data = get_backoffice_data()
         backoffice_data["backoffice_data_total_user_count"] = str(len(all_users))
@@ -75,5 +76,6 @@ class LambdaPeriodicActions(BasePage):
         backoffice_data["backoffice_data_total_coupon_count"] = str(len(all_coupons))
         backoffice_data["backoffice_data_total_product_count"] = str(len(all_products))
         backoffice_data["backoffice_data_total_cart_abandonment_count"] = str(len(cart_abandonments))
+        backoffice_data["backoffice_data_total_payment_failure_count"] = str(len(payment_failures))
 
         Dynamo().put_entity(backoffice_data)

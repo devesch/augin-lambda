@@ -1,14 +1,16 @@
 from python_web_frame.controllers.billing_controller import BillingController
 from python_web_frame.controllers.stripe_controller import StripeController
 from objects.Order import create_order_with_stripe_subscription_updated
+from objects.BackofficeData import increase_backoffice_data_total_count
+from objects.Coupon import generate_coupon_cycle_applications
 from objects.UserPaymentMethod import UserPaymentMethod
+from objects.RecurrenceFailure import RecurrenceFailure
 from python_web_frame.base_page import BasePage
 from utils.utils.Validation import Validation
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 from objects.User import load_user
-from objects.Coupon import generate_coupon_cycle_applications
 from utils.AWS.Ses import Ses
 import time
 import json
@@ -104,21 +106,28 @@ class CheckoutStripeWebHook(BasePage):
 
     def payment_intent_payment_failed(self):
         order = Dynamo().get_order(self.post["data"]["object"]["id"])
+        failure_in_recurrence = False
         if not order:
+            failure_in_recurrence = True
+            stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
+            self.user = load_user(stripe_customer["email"])
             invoice = StripeController().get_invoice(self.post["data"]["object"]["invoice"])
             stripe_subscription = StripeController().get_subscription(invoice["subscription"])
             create_order_with_stripe_subscription_updated(self.user, stripe_subscription["metadata"]["plan"], stripe_subscription["metadata"]["plan_recurrency"], stripe_subscription, self.post["data"]["object"], invoice)
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
-            # user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
-            # if user_subscription:
-            #     self.user.update_subscription(order, stripe_subscription)
+            if self.user.user_subscription_id and (invoice["subscription"] == self.user.user_subscription_id):
+                self.user.update_subscription(order, stripe_subscription)
 
         Dynamo().update_entity(order, "order_last_error_code", self.post["data"]["object"]["last_payment_error"]["code"])
         Dynamo().update_entity(order, "order_last_error_message", self.post["data"]["object"]["last_payment_error"]["message"])
         Dynamo().update_entity(order, "order_status", "error")
 
-        raise Exception("TODO PAYMENT FAILED")
+        if failure_in_recurrence:
+            recurrence_failure = RecurrenceFailure(self.user.user_id, order["order_id"]).__dict__
+            Dynamo().put_entity(recurrence_failure)
+            increase_backoffice_data_total_count("recurrence_failure")
 
+        # raise Exception("TODO PAYMENT FAILED")
         return {"success": "Evento payment_intent_payment_failed tratado."}
 
     def payment_intent_requires_action(self):
