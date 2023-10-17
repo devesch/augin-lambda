@@ -2,25 +2,27 @@
 {{menu_backoffice}}
 
 <main class="my-plan__main">
-    <h1 class="my-plan__title">{{Abandonos de carrinho}}</h1>
     <div>
+        <h1 class="my-plan__title">{{Abandonos de carrinho}}</h1>
         <div>
-            {{html_dropdown_select_user_pagination}}
+            <section class="panel-explore-filters-container">
+                {{html_dropdown_select_user_pagination}}
+            </section>
+            <div class="backoffice-table-wrapper">
+                <table class="explore__table">
+                    <thead>
+                        <thead>
+                            <th>user_id</th>
+                            <th>order_id</th>
+                            <th></th>
+                        </thead>
+                    <tbody id="pagination_component">
+                        {{html_backoffice_cart_abandonments_table_rows}}
+                    </tbody>
+                </table>
+            </div>
+            {{html_pagination}}
         </div>
-        <div>
-            <table class="explore__table">
-                <thead>
-                    <th>user_id</th>
-                    <th>order_id</th>
-                    <th></th>
-                </thead>
-                <tbody id="pagination_component">
-                    {{html_backoffice_cart_abandonments_table_rows}}
-                </tbody>
-            </table>
-        </div>
-        {{html_pagination}}
-    </div>
 </main>
 
 <script>
