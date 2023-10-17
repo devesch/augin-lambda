@@ -1,0 +1,34 @@
+﻿{{header}}
+{{menu_backoffice}}
+
+<main class="my-plan__main">
+    <div>
+        <h1 class="my-plan__title">{{Logs}}</h1>
+        <div>
+            <section class="panel-explore-filters-container">
+                {{html_dropdown_select_user_pagination}}
+            </section>
+            <div class="backoffice-table-wrapper">
+                <table class="explore__table">
+                    <thead>
+                        <thead>
+                            <th>user_id</th>
+                            <th></th>
+                        </thead>
+                    <tbody id="pagination_component">
+                        {{html_backoffice_logs_table_rows}}
+                    </tbody>
+                </table>
+            </div>
+            {{html_pagination}}
+        </div>
+</main>
+
+<script>
+    window.onload = async function () {
+        js.index.updatePaginationProgressBar();
+        js.index.loadMoreOnScroll();
+    };
+</script>
+<input id="last_evaluated_key" value='{{last_evaluated_key_val}}' hidden>
+{{footer}}
