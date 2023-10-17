@@ -2230,7 +2230,7 @@
         "pt": "Filtrar estado"
     },
     "Filtrar tamanho": {
-        "en": "Shut up",
+        "en": "Filter size",
         "es": "Callarse la boca",
         "pt": "Filtrar tamanho"
     },
@@ -2853,6 +2853,11 @@
         "en": "Logo Augin",
         "es": "Logotipo Augin",
         "pt": "Logo Augin"
+    },
+    "Logs": {
+        "en": "Logs",
+        "es": "Registro",
+        "pt": "Logs"
     },
     "Luxembourg": {
         "en": "Luxembourg",

@@ -3,7 +3,7 @@
 
 <main class="my-plan__main">
     <div>
-        <h1 class="my-plan__title">{{Falhas de recorrência}}</h1>
+        <h1 class="my-plan__title">{{Logs}}</h1>
         <div>
             <section class="panel-explore-filters-container">
                 {{html_dropdown_select_user_pagination}}
@@ -13,11 +13,10 @@
                     <thead>
                         <thead>
                             <th>user_id</th>
-                            <th>order_id</th>
                             <th></th>
                         </thead>
                     <tbody id="pagination_component">
-                        {{html_backoffice_recurrence_failures_table_rows}}
+                        {{html_backoffice_logs_table_rows}}
                     </tbody>
                 </table>
             </div>
