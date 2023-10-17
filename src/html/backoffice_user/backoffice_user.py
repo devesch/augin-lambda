@@ -53,6 +53,6 @@ class BackofficeUser(BackofficePage):
 
             if self.post["command"] == "reset_user_used_trials":
                 user = load_user(self.path["user_id"])
-                user.reset_user_used_trials()
+                user.reset_used_trials()
                 return self.render_get_with_error("Planos trials já utilizados resetados")
         return self.render_get()

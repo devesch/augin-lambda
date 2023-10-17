@@ -61,6 +61,7 @@ class User:
     def reset_used_trials(self):
         self.user_used_trials = []
         if self.user_subscription_id and "trial" in self.user_subscription_id:
+            self.user_plan_id = ""
             self.user_subscription_id = ""
             self.user_subscription_status = "none"
             self.user_subscription_valid_until = ""
