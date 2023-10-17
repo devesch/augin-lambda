@@ -322,6 +322,8 @@ class BackofficePage(BasePage):
                 html.esc("plan_price_monthly_brl_val", StrFormat().format_to_money(plan["plan_price_monthly_brl"], "brl"))
                 html.esc("plan_price_monthly_usd_val", StrFormat().format_to_money(plan["plan_price_monthly_usd"], "usd"))
                 html.esc("plan_monthly_card_payment_method_val", plan["plan_monthly_card_payment_method"])
+                html.esc("plan_monthly_boleto_payment_method_val", plan["plan_monthly_boleto_payment_method"])
+                html.esc("plan_monthly_pix_payment_method_val", plan["plan_monthly_pix_payment_method"])
                 html.esc("plan_cloud_space_in_mbs_val", plan["plan_cloud_space_in_mbs"])
                 html.esc("plan_maxium_model_size_in_mbs_val", plan["plan_maxium_model_size_in_mbs"])
                 html.esc("plan_maxium_federated_size_in_mbs_val", plan["plan_maxium_federated_size_in_mbs"])

@@ -2423,9 +2423,7 @@ export async function loadMoreOnScroll(query) {
 
         if (do_not_call_api == false) {
             do_not_call_api = true;
-            console.log("do no call api");
             await js.index.sleep(300);
-            console.log("you may call api");
             do_not_call_api = false;
         }
     };
