@@ -4029,6 +4029,11 @@
         "es": "Planes",
         "pt": "Planos"
     },
+    "Planos trials já utilizados resetados": {
+        "en": "Already used trial plans reset",
+        "es": "Los planes de prueba ya utilizados se restablecen",
+        "pt": "Planos trials já utilizados resetados"
+    },
     "Podemos atualizar esta Política de tempos em tempos": {
         "en": "We can update this policy from time to time",
         "es": "Podemos actualizar esta política de vez en cuando",
@@ -4468,6 +4473,11 @@
         "en": "Reprocess",
         "es": "Reprocesar",
         "pt": "Reprocessar"
+    },
+    "Resetar trials": {
+        "en": "Reset trials",
+        "es": "Restablecer pruebas",
+        "pt": "Resetar trials"
     },
     "Resumo do pedido": {
         "en": "Order summary",
