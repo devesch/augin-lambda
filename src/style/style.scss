@@ -1922,6 +1922,13 @@ input[list]::-ms-clear {
         td:nth-last-child(1) {
             order: -1;
         }
+
+        .tooltip-content--hover {
+            left: unset;
+            right: 0;
+            transform: unset;
+        }
+
     }
 }
 
