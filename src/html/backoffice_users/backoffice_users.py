@@ -22,19 +22,19 @@ class BackofficeUsers(BackofficePage):
             backoffice_data["backoffice_data_total_user_count"] = str(len(users))
             Dynamo().put_entity(backoffice_data)
 
-            for user in users:
-                user = load_user(user["user_id"])
-                user.user_used_cloud_space_in_mbs = "0.0"
-                all_user_models = []
-                all_user_models.extend(Dynamo().query_user_models_from_state(user, "not_created", limit=100000))
-                all_user_models.extend(Dynamo().query_user_models_from_state(user, "in_processing", limit=100000))
-                all_user_models.extend(Dynamo().query_user_models_from_state(user, "completed", limit=100000))
+            # for user in users:
+            #     user = load_user(user["user_id"])
+            #     user.user_used_cloud_space_in_mbs = "0.0"
+            #     all_user_models = []
+            #     all_user_models.extend(Dynamo().query_user_models_from_state(user, "not_created", limit=100000))
+            #     all_user_models.extend(Dynamo().query_user_models_from_state(user, "in_processing", limit=100000))
+            #     all_user_models.extend(Dynamo().query_user_models_from_state(user, "completed", limit=100000))
 
-                models_total_size = 0
-                for model in all_user_models:
-                    if not model["model_is_federated"]:
-                        models_total_size += float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
-                user.increase_used_cloud_space_in_mbs(models_total_size)
+            #     models_total_size = 0
+            #     for model in all_user_models:
+            #         if not model["model_is_federated"]:
+            #             models_total_size += float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
+            #     user.increase_used_cloud_space_in_mbs(models_total_size)
 
         html = super().parse_html()
         self.check_error_msg(html, self.error_msg)

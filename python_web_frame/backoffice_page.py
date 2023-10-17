@@ -153,6 +153,8 @@ class BackofficePage(BasePage):
         full_html = []
         if users:
             for user in users:
+                if self.post.get("search_users_subscription") and self.post.get("search_users_subscription") != user["user_subscription_status"] and self.post.get("search_users_subscription") != "all":
+                    continue
                 html = ReadWrite().read_html("backoffice_users/_codes/html_backoffice_users_table_rows")
                 html.esc("user_id_val", user["user_id"])
                 html.esc("user_email_val", user["user_email"])
