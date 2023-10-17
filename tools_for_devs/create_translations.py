@@ -237,6 +237,11 @@ for placeholder in filtered_placeholders:
             translations[placeholder]["es"] = translations[placeholder]["es"].capitalize()
             translations[placeholder]["en"] = translations[placeholder]["en"].capitalize()
 
+        if (translations[placeholder]["es"] == translations[placeholder]["es"].upper()) and (placeholder != placeholder.upper()):
+            translations[placeholder]["es"] = translations[placeholder]["es"].capitalize()
+        if (translations[placeholder]["en"] == translations[placeholder]["en"].upper()) and (placeholder != placeholder.upper()):
+            translations[placeholder]["en"] = translations[placeholder]["en"].capitalize()
+
 
 for key, translation in translations.items():
     translation["pt"] = translation["pt"].replace("augin", "Augin").replace("AUGIN", "Augin")
