@@ -2,124 +2,124 @@
 {{menu_backoffice}}
 
 <main class="my-plan__main">
-    <h1 class="my-plan__title">{{Models}}</h1>
     <div>
+        <h1 class="my-plan__title">{{Modelos}}</h1>
         <div>
-            {{html_dropdown_select_user_pagination}}
-        </div>
-        <section class="panel-explore-filters-container">
-            <select name="model_filesize_bracket" id="search_models_by_filesize_bracket_select" onclick="js.index.updateBackofficeModels()" autocomplete="off">
-                <option value="all" selected disabled>{{Filtrar tamanho}}</option>
-                <option value="all">{{Todos}}</option>
-                <option value="0mb-50mb">0mb-50mb</option>
-                <option value="50mb-250mb">50mb-250mb</option>
-                <option value="250mb-500mb">250mb-500mb</option>
-                <option value="500mb-1000mb">500mb-1000mb</option>
-                <option value="1000mb-2000mb">1000mb-2000mb</option>
-                <option value="2000mb+">2000mb+</option>
-            </select>
-            <select name="model_state" id="search_models_by_state_select" onclick="js.index.updateBackofficeModels()" autocomplete="off">
-                <option value="all" selected disabled>{{Filtrar estado}}</option>
-                <option value="all">{{Todos}}</option>
-                <option value="not_created">{{Não criado}}</option>
-                <option value="in_processing">{{Em processamento}}</option>
-                <option value="completed">{{Completo}}</option>
-                <option value="error">{{Erro}}</option>
-                <option value="deleted">{{Deletado}}</option>
-            </select>
-            <div class="floating-input">
-                <input oninput="js.index.updateBackofficeModels(), js.index.changeSearchIcon(this)" type="search" name="search_models_by_user_input" id="search_models_by_user_input" class="input-search" results="10" autosave="search_models_by_user_input" placeholder=" " autocomplete="off">
-                <label for="search_models_by_user_input">
-                    {{Pesquisar}}
-                </label>
-                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
-                <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_models_by_user_input')">
+            <section class="panel-explore-filters-container">
+                {{html_dropdown_select_user_pagination}}
+                <select name="model_filesize_bracket" id="search_models_by_filesize_bracket_select" onclick="js.index.updateBackofficeModels()" autocomplete="off">
+                    <option value="all" selected disabled>{{Filtrar tamanho}}</option>
+                    <option value="all">{{Todos}}</option>
+                    <option value="0mb-50mb">0mb-50mb</option>
+                    <option value="50mb-250mb">50mb-250mb</option>
+                    <option value="250mb-500mb">250mb-500mb</option>
+                    <option value="500mb-1000mb">500mb-1000mb</option>
+                    <option value="1000mb-2000mb">1000mb-2000mb</option>
+                    <option value="2000mb+">2000mb+</option>
+                </select>
+                <select name="model_state" id="search_models_by_state_select" onclick="js.index.updateBackofficeModels()" autocomplete="off">
+                    <option value="all" selected disabled>{{Filtrar estado}}</option>
+                    <option value="all">{{Todos}}</option>
+                    <option value="not_created">{{Não criado}}</option>
+                    <option value="in_processing">{{Em processamento}}</option>
+                    <option value="completed">{{Completo}}</option>
+                    <option value="error">{{Erro}}</option>
+                    <option value="deleted">{{Deletado}}</option>
+                </select>
+                <div class="floating-input">
+                    <input oninput="js.index.updateBackofficeModels(), js.index.changeSearchIcon(this)" type="search" name="search_models_by_user_input" id="search_models_by_user_input" class="input-search" results="10" autosave="search_models_by_user_input" placeholder=" " autocomplete="off">
+                    <label for="search_models_by_user_input">
+                        {{Pesquisar}}
+                    </label>
+                    <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
+                    <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_models_by_user_input')">
+                </div>
+            </section>
+            <div class="backoffice-table-wrapper">
+                <table class="explore__table">
+                    <thead>
+                        <thead>
+                            <th>id</th>
+                            <th>user_id</th>
+                            <th>project_id</th>
+                            <th>state</th>
+                            <th>folder_id</th>
+                            <th>branch_id</th>
+                            <th>branch_url</th>
+                            <th>branch_url_qrcode</th>
+                            <th>name</th>
+                            <th>code</th>
+                            <th>filehash</th>
+                            <th>filename</th>
+                            <th>filename_zip</th>
+                            <th>format</th>
+                            <th>is_federated</th>
+                            <th>used_in_federated_ids</th>
+                            <th>federated_required_ids</th>
+                            <th>upload_path_zip</th>
+                            <th>upload_path_xml</th>
+                            <th>upload_path_aug</th>
+                            <th>upload_path_sd_aug</th>
+                            <th>upload_path_bin</th>
+                            <th>upload_path_mini_bin</th>
+                            <th>upload_path_glb</th>
+                            <th>filesize</th>
+                            <th>filesize_bracket</th>
+                            <th>filesize_zip</th>
+                            <th>filesize_xml</th>
+                            <th>filesize_aug</th>
+                            <th>filesize_sd_aug</th>
+                            <th>filesize_bin</th>
+                            <th>filesize_mini_bin</th>
+                            <th>filesize_glb</th>
+                            <th>upload_path</th>
+                            <th>category</th>
+                            <th>password</th>
+                            <th>is_accessible</th>
+                            <th>is_password_protected</th>
+                            <th>sw_version</th>
+                            <th>plugin_version</th>
+                            <th>thumb_filename</th>
+                            <th>zip_key</th>
+                            <th>visualization_count</th>
+                            <th>share_link</th>
+                            <th>share_link_qrcode</th>
+                            <th>xml_ec2_machine</th>
+                            <th>aug_ec2_machine</th>
+                            <th>aug_sd_ec2_machine</th>
+                            <th>memory_usage_in_gbs</th>
+                            <th>was_processed_where</th>
+                            <th>xml_started</th>
+                            <th>xml_memory_usage</th>
+                            <th>xml_completed</th>
+                            <th>xml_total_time</th>
+                            <th>xml_to_dynamo_start</th>
+                            <th>xml_to_dynamo_completed</th>
+                            <th>xml_to_dynamo_total_time</th>
+                            <th>aug_started</th>
+                            <th>aug_percent</th>
+                            <th>aug_memory_usage</th>
+                            <th>aug_completed</th>
+                            <th>aug_total_time</th>
+                            <th>aug_sd_started</th>
+                            <th>aug_sd_percent</th>
+                            <th>aug_sd_memory_usage</th>
+                            <th>aug_sd_completed</th>
+                            <th>aug_sd_total_time</th>
+                            <th>processing_total_time</th>
+                            <th>processing_percentage</th>
+                            <th>valid_until</th>
+                            <th>error_msg</th>
+                            <th>created_at</th>
+                            <th></th>
+                        </thead>
+                    <tbody id="pagination_component">
+                        {{html_backoffice_models_table_rows}}
+                    </tbody>
+                </table>
             </div>
-        </section>
-        <div>
-            <table class="explore__table">
-                <thead>
-                    <th>id</th>
-                    <th>user_id</th>
-                    <th>project_id</th>
-                    <th>state</th>
-                    <th>folder_id</th>
-                    <th>branch_id</th>
-                    <th>branch_url</th>
-                    <th>branch_url_qrcode</th>
-                    <th>name</th>
-                    <th>code</th>
-                    <th>filehash</th>
-                    <th>filename</th>
-                    <th>filename_zip</th>
-                    <th>format</th>
-                    <th>is_federated</th>
-                    <th>used_in_federated_ids</th>
-                    <th>federated_required_ids</th>
-                    <th>upload_path_zip</th>
-                    <th>upload_path_xml</th>
-                    <th>upload_path_aug</th>
-                    <th>upload_path_sd_aug</th>
-                    <th>upload_path_bin</th>
-                    <th>upload_path_mini_bin</th>
-                    <th>upload_path_glb</th>
-                    <th>filesize</th>
-                    <th>filesize_bracket</th>
-                    <th>filesize_zip</th>
-                    <th>filesize_xml</th>
-                    <th>filesize_aug</th>
-                    <th>filesize_sd_aug</th>
-                    <th>filesize_bin</th>
-                    <th>filesize_mini_bin</th>
-                    <th>filesize_glb</th>
-                    <th>upload_path</th>
-                    <th>category</th>
-                    <th>password</th>
-                    <th>is_accessible</th>
-                    <th>is_password_protected</th>
-                    <th>sw_version</th>
-                    <th>plugin_version</th>
-                    <th>thumb_filename</th>
-                    <th>zip_key</th>
-                    <th>visualization_count</th>
-                    <th>share_link</th>
-                    <th>share_link_qrcode</th>
-                    <th>xml_ec2_machine</th>
-                    <th>aug_ec2_machine</th>
-                    <th>aug_sd_ec2_machine</th>
-                    <th>memory_usage_in_gbs</th>
-                    <th>was_processed_where</th>
-                    <th>xml_started</th>
-                    <th>xml_memory_usage</th>
-                    <th>xml_completed</th>
-                    <th>xml_total_time</th>
-                    <th>xml_to_dynamo_start</th>
-                    <th>xml_to_dynamo_completed</th>
-                    <th>xml_to_dynamo_total_time</th>
-                    <th>aug_started</th>
-                    <th>aug_percent</th>
-                    <th>aug_memory_usage</th>
-                    <th>aug_completed</th>
-                    <th>aug_total_time</th>
-                    <th>aug_sd_started</th>
-                    <th>aug_sd_percent</th>
-                    <th>aug_sd_memory_usage</th>
-                    <th>aug_sd_completed</th>
-                    <th>aug_sd_total_time</th>
-                    <th>processing_total_time</th>
-                    <th>processing_percentage</th>
-                    <th>valid_until</th>
-                    <th>error_msg</th>
-                    <th>created_at</th>
-                    <th></th>
-                </thead>
-                <tbody id="pagination_component">
-                    {{html_backoffice_models_table_rows}}
-                </tbody>
-            </table>
+            {{html_pagination}}
         </div>
-        {{html_pagination}}
-    </div>
 </main>
 
 <script>
