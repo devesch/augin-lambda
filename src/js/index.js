@@ -219,11 +219,15 @@ export async function userRegisterGenerateCountryInput() {
 }
 
 export async function panelUserDataChangeCountryForm(user_client_type) {
+    let country_flag_img = document.getElementById("country_flag_img");
     let user_country_select = document.getElementById("user_country");
+
+    country_flag_img.src = ProjectData.props.cdnVal + "/assets/images/flags/" + user_country_select.value.toLowerCase() + ".jpg";
     let panel_user_data_change_country_response = await apiCaller("panel_user_data_change_country", {
         "selected_country": user_country_select.value,
         "user_client_type": user_client_type
     });
+
     if ("success" in panel_user_data_change_country_response) {
         if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/panel_user_data")) {
             window.location.href = panel_user_data_change_country_response["success"];

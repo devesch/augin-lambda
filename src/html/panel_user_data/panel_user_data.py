@@ -193,6 +193,7 @@ class PanelUserData(PanelPage, UserPage):
             ip_data = Http().get_request_ip_data(self.event.get_user_ip())
             user_country_alpha_2 = ip_data["country_code"].upper()
 
+        html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
         html.esc("html_user_country_options", self.list_html_user_country_options(user_country_alpha_2))
         html.esc("html_user_phone_input", self.generate_html_user_phone_input(user_country_alpha_2, self.user.user_phone))
 
@@ -367,6 +368,7 @@ class PanelUserData(PanelPage, UserPage):
             ip_data = ReadWrite().get_request_ip_data(self.event.get_user_ip())
             user_country_alpha_2 = ip_data["country_code"].upper()
 
+        html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
         html.esc("html_user_country_options", self.list_html_user_country_options(user_country_alpha_2))
         html.esc("html_user_phone_input", self.generate_html_user_phone_input(user_country_alpha_2, self.user.user_phone))
 

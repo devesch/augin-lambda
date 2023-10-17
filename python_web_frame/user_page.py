@@ -72,7 +72,6 @@ class UserPage(BasePage):
 
     def generate_html_user_phone_input(self, user_country_alpha_2, user_phone=""):
         html = ReadWrite().read_html("user_register/_codes/html_user_phone_input")
-        html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
         html.esc("user_country_code_val", JsonData().get_country_phone_code()[user_country_alpha_2])
         if user_country_alpha_2.upper() == "BR":
             html.esc("html_oninput_maskToPhone", str(ReadWrite().read_html("user_register/_codes/html_oninput_mask_to_phone")))

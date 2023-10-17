@@ -50,4 +50,5 @@ class BackofficeUser(BackofficePage):
                 for connected_device in connected_devices:
                     disconnect_device(connected_device, disconnection_at=str(time.time() - 2800000))
             return self.render_get_with_error("Todos os dispositivos que estavam conectados foram desconetados com sucesso")
+
         return self.render_get()
