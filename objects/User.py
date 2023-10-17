@@ -58,8 +58,12 @@ class User:
         self.created_at = str(time.time())
         self.entity = "user"
 
-    def reset_user_used_trials(self):
+    def reset_used_trials(self):
         self.user_used_trials = []
+        if self.user_subscription_id and "trial" in self.user_subscription_id:
+            self.user_subscription_id = ""
+            self.user_subscription_status = "none"
+            self.user_subscription_valid_until = ""
         Dynamo().put_entity(self.__dict__)
 
     def delete_account(self):
