@@ -194,6 +194,31 @@
         "es": "Caja de cartón",
         "pt": "Abandonos de carrinho"
     },
+    "Aceita boleto anualmente": {
+        "en": "Accepts billet annually",
+        "es": "Acepta billet anualmente",
+        "pt": "Aceita boleto anualmente"
+    },
+    "Aceita boleto mensalmente": {
+        "en": "Accepts billing monthly",
+        "es": "Acepta la facturación mensual",
+        "pt": "Aceita boleto mensalmente"
+    },
+    "Aceita cartão anualmente": {
+        "en": "Accepts card annually",
+        "es": "Acepta la tarjeta anualmente",
+        "pt": "Aceita cartão anualmente"
+    },
+    "Aceita cartão mensalmente": {
+        "en": "Accepts card monthly",
+        "es": "Acepta la tarjeta mensualmente",
+        "pt": "Aceita cartão mensalmente"
+    },
+    "Aceita pix anualmente": {
+        "en": "Accepts pix annually",
+        "es": "Acepta las pix anualmente",
+        "pt": "Aceita pix anualmente"
+    },
     "Aceitar Tudo": {
         "en": "Accept everything",
         "es": "Aceptar todo",
@@ -1130,8 +1155,8 @@
         "pt": "Criar Cupom"
     },
     "Criar Plano": {
-        "en": "Plan",
-        "es": "Plan",
+        "en": "Create Plan",
+        "es": "Crea Plan",
         "pt": "Criar Plano"
     },
     "Criar conta": {
@@ -1544,6 +1569,11 @@
         "es": "Duración de la aplicación fuera de línea en días",
         "pt": "Duração do APP offline em dias"
     },
+    "Duração do trial": {
+        "en": "Trial duration",
+        "es": "Duración de la prueba",
+        "pt": "Duração do trial"
+    },
     "Duração do trial em dias": {
         "en": "Trial duration in days",
         "es": "Duración de prueba en días",
@@ -1743,6 +1773,11 @@
         "en": "Cloud Space (MBS)",
         "es": "Espacio en la nube (MBS)",
         "pt": "Espaço em nuvem (Mbs)"
+    },
+    "Espaço na cloud em Mbs": {
+        "en": "CLOUD SPACE IN MBS",
+        "es": "Espacio en la nube en MBS",
+        "pt": "Espaço na cloud em Mbs"
     },
     "Esqueci minha senha": {
         "en": "I forgot my password",
@@ -2359,6 +2394,11 @@
         "es": "Hidrosanitario",
         "pt": "Hidrosanitário"
     },
+    "ID do Plano": {
+        "en": "Plan ID",
+        "es": "ID de plan",
+        "pt": "ID do Plano"
+    },
     "ID do plano": {
         "en": "Plan ID",
         "es": "ID de plan",
@@ -2933,6 +2973,16 @@
         "en": "Myanmar",
         "es": "Myanmar",
         "pt": "Mianmar"
+    },
+    "Máximo de disponsitivos": {
+        "en": "Maximum",
+        "es": "Máximo",
+        "pt": "Máximo de disponsitivos"
+    },
+    "Máximo troca disponsitivos em 30d": {
+        "en": "Maximum exchange rates in 30d",
+        "es": "Tasas de cambio máximas en 30d",
+        "pt": "Máximo troca disponsitivos em 30d"
     },
     "Método": {
         "en": "Method",
@@ -4064,6 +4114,11 @@
         "es": "Portugal",
         "pt": "Portugal"
     },
+    "Possui trial": {
+        "en": "Has trial",
+        "es": "Tiene juicio",
+        "pt": "Possui trial"
+    },
     "Precisa de ajuda? Mande uma mensagem para nosso": {
         "en": "Need help?Send a message to our",
         "es": "¿Necesita ayuda?Enviar un mensaje a nuestro",
@@ -4099,6 +4154,16 @@
         "es": "Precio de USD",
         "pt": "Preço USD"
     },
+    "Preço anual BRL": {
+        "en": "Annual price BRL",
+        "es": "Precio anual BRL",
+        "pt": "Preço anual BRL"
+    },
+    "Preço anual USD": {
+        "en": "Annual price USD",
+        "es": "Precio anual USD",
+        "pt": "Preço anual USD"
+    },
     "Preço atual BRL": {
         "en": "Current price BRL",
         "es": "Precio actual BRL",
@@ -4108,6 +4173,16 @@
         "en": "Current USD price",
         "es": "Precio actual de USD",
         "pt": "Preço atual USD"
+    },
+    "Preço mensal BRL": {
+        "en": "Monthly price BRL",
+        "es": "Precio mensual BRL",
+        "pt": "Preço mensal BRL"
+    },
+    "Preço mensal USD": {
+        "en": "USD monthly price",
+        "es": "Precio mensual de USD",
+        "pt": "Preço mensal USD"
     },
     "Problema temporário": {
         "en": "Temporary problem",
@@ -4829,6 +4904,16 @@
         "es": "Tamaño del proyecto",
         "pt": "Tamanho de projeto"
     },
+    "Tamanho máximo do federado em Mbs": {
+        "en": "Maximum federated size in MBS",
+        "es": "Tamaño máximo federado en MBS",
+        "pt": "Tamanho máximo do federado em Mbs"
+    },
+    "Tamanho máximo do modelo em Mbs": {
+        "en": "Maximum Model Size in MBS",
+        "es": "Tamaño máximo del modelo en MBS",
+        "pt": "Tamanho máximo do modelo em Mbs"
+    },
     "Tamanho máximo por federado (MBs)": {
         "en": "Maximum size per federate (MBS)",
         "es": "Tamaño máximo por federación (MBS)",
@@ -4873,6 +4958,11 @@
         "en": "Are you sure you want to continue?",
         "es": "Estás seguro de que quieres continuar?",
         "pt": "Tem certeza que deseja continuar?"
+    },
+    "Tempo offline do APP": {
+        "en": "Offline Time App",
+        "es": "Aplicación de tiempo fuera de línea",
+        "pt": "Tempo offline do APP"
     },
     "Tentativa de emitir nota fiscal concluída.": {
         "en": "Attempted to issue an invoice completed.",
@@ -5958,6 +6048,11 @@
         "en": "It is necessary to inform a description in PT",
         "es": "Es necesario informar una descripción en PT",
         "pt": "É necessárion informar uma descrição em PT"
+    },
+    "É trial": {
+        "en": "It's trial",
+        "es": "Es prueba",
+        "pt": "É trial"
     },
     "Ícone de olho": {
         "en": "Eye icon",
