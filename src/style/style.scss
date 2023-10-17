@@ -2538,6 +2538,12 @@ input[list]::-ms-clear {
     }
 }
 
+.country-flag-container {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
 .panel-user-data-header {
     text-align: center;
     margin-bottom: 2rem;

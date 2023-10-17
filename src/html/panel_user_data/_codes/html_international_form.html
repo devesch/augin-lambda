@@ -8,11 +8,14 @@
             <input name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.maskToLetter(this)" maxlength="50" minlength="1" required placeholder=" ">
             <label for="user_name" class="floating-label">{{Seu nome}}</label>
         </div>
-        <div class="input-default floating-input">
+        <div class="input-default floating-input country-flag-select">
+            <picture>
+                <img src="{{cdn_val}}/assets/images/flags/{{user_country_alpha_2_lower_val}}.jpg" width="20" height="15" alt="{{user_country_code_val}} {{flag}}">
+            </picture>
             <select onchange="js.index.panelUserDataChangeCountryForm('international')" name="user_country" class="floating" id="user_country" value="{{user_country_val}}" required autocomplete="off">
                 {{html_user_country_options}}
             </select>
-            <label for="user_country" class="floating-label">{{País}}</label>
+            <!-- <label for="user_country" class="floating-label">{{País}}</label> -->
         </div>
         <div class="input-default-icon focus floating-input" id="user_phone_div">
             {{html_user_phone_input}}
