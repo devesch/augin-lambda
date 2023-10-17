@@ -71,7 +71,7 @@ class CheckoutStripeWebHook(BasePage):
 
                 self.send_payment_success_email(order)
 
-        raise Exception("TODO PAYMENT SUCCESS")
+        # raise Exception("TODO PAYMENT SUCCESS")
         return {"success": "Evento payment_intent_succeeded tratado."}
 
     def charge_succeeded(self):
@@ -104,9 +104,21 @@ class CheckoutStripeWebHook(BasePage):
 
     def payment_intent_payment_failed(self):
         order = Dynamo().get_order(self.post["data"]["object"]["id"])
+        if not order:
+            invoice = StripeController().get_invoice(self.post["data"]["object"]["invoice"])
+            stripe_subscription = StripeController().get_subscription(invoice["subscription"])
+            create_order_with_stripe_subscription_updated(self.user, stripe_subscription["metadata"]["plan"], stripe_subscription["metadata"]["plan_recurrency"], stripe_subscription, self.post["data"]["object"], invoice)
+            order = Dynamo().get_order(self.post["data"]["object"]["id"])
+            # user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
+            # if user_subscription:
+            #     self.user.update_subscription(order, stripe_subscription)
+
         Dynamo().update_entity(order, "order_last_error_code", self.post["data"]["object"]["last_payment_error"]["code"])
         Dynamo().update_entity(order, "order_last_error_message", self.post["data"]["object"]["last_payment_error"]["message"])
         Dynamo().update_entity(order, "order_status", "error")
+
+        raise Exception("TODO PAYMENT FAILED")
+
         return {"success": "Evento payment_intent_payment_failed tratado."}
 
     def payment_intent_requires_action(self):
