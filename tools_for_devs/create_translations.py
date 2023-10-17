@@ -244,9 +244,9 @@ for placeholder in filtered_placeholders:
 
 
 for key, translation in translations.items():
-    translation["pt"] = translation["pt"].replace("augin", "Augin").replace("AUGIN", "Augin")
-    translation["es"] = translation["es"].replace("augin", "Augin").replace("AUGIN", "Augin")
-    translation["en"] = translation["en"].replace("augin", "Augin").replace("AUGIN", "Augin")
+    translation["pt"] = translation["pt"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
+    translation["es"] = translation["es"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
+    translation["en"] = translation["en"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
 
 with open("utils/translations.json", "w", encoding="utf-8") as json_file:
     json.dump(translations, json_file, sort_keys=True, ensure_ascii=False, indent=4)

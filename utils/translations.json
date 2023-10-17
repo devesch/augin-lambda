@@ -1765,19 +1765,19 @@
         "pt": "Escolher novo projeto para federado"
     },
     "Espaço em nuvem (MBs)": {
-        "en": "Cloud Space (MBS)",
-        "es": "Espacio en la nube (MBS)",
+        "en": "Cloud Space (MBs)",
+        "es": "Espacio en la nube (MBs)",
         "pt": "Espaço em nuvem (MBs)"
     },
     "Espaço em nuvem (Mbs)": {
-        "en": "Cloud Space (MBS)",
-        "es": "Espacio en la nube (MBS)",
-        "pt": "Espaço em nuvem (Mbs)"
+        "en": "Cloud Space (MBs)",
+        "es": "Espacio en la nube (MBs)",
+        "pt": "Espaço em nuvem (MBs)"
     },
     "Espaço na cloud em Mbs": {
-        "en": "Cloud space in Mbs",
-        "es": "Espacio en la nube en MBS",
-        "pt": "Espaço na cloud em Mbs"
+        "en": "Cloud space in MBs",
+        "es": "Espacio en la nube en MBs",
+        "pt": "Espaço na cloud em MBs"
     },
     "Esqueci minha senha": {
         "en": "I forgot my password",
@@ -4905,34 +4905,34 @@
         "pt": "Tamanho de projeto"
     },
     "Tamanho máximo do federado em Mbs": {
-        "en": "Maximum federated size in MBS",
-        "es": "Tamaño máximo federado en MBS",
-        "pt": "Tamanho máximo do federado em Mbs"
+        "en": "Maximum federated size in MBs",
+        "es": "Tamaño máximo federado en MBs",
+        "pt": "Tamanho máximo do federado em MBs"
     },
     "Tamanho máximo do modelo em Mbs": {
-        "en": "Maximum Model Size in MBS",
-        "es": "Tamaño máximo del modelo en MBS",
-        "pt": "Tamanho máximo do modelo em Mbs"
+        "en": "Maximum Model Size in MBs",
+        "es": "Tamaño máximo del modelo en MBs",
+        "pt": "Tamanho máximo do modelo em MBs"
     },
     "Tamanho máximo por federado (MBs)": {
-        "en": "Maximum size per federate (MBS)",
-        "es": "Tamaño máximo por federación (MBS)",
+        "en": "Maximum size per federate (MBs)",
+        "es": "Tamaño máximo por federación (MBs)",
         "pt": "Tamanho máximo por federado (MBs)"
     },
     "Tamanho máximo por federado (Mbs)": {
-        "en": "Maximum size per federate (MBS)",
-        "es": "Tamaño máximo por federación (MBS)",
-        "pt": "Tamanho máximo por federado (Mbs)"
+        "en": "Maximum size per federate (MBs)",
+        "es": "Tamaño máximo por federación (MBs)",
+        "pt": "Tamanho máximo por federado (MBs)"
     },
     "Tamanho máximo por projeto (MBs)": {
-        "en": "Maximum size per design (MBS)",
-        "es": "Tamaño máximo por diseño (MBS)",
+        "en": "Maximum size per design (MBs)",
+        "es": "Tamaño máximo por diseño (MBs)",
         "pt": "Tamanho máximo por projeto (MBs)"
     },
     "Tamanho máximo por projeto (Mbs)": {
-        "en": "Maximum size per design (MBS)",
-        "es": "Tamaño máximo por diseño (MBS)",
-        "pt": "Tamanho máximo por projeto (Mbs)"
+        "en": "Maximum size per design (MBs)",
+        "es": "Tamaño máximo por diseño (MBs)",
+        "pt": "Tamanho máximo por projeto (MBs)"
     },
     "Também pode impedir que você salve configurações personalizadas, como informações de login": {
         "en": "Can also prevent you from saving custom settings, such as login information",
