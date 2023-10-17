@@ -1,57 +1,57 @@
 ﻿{{header}}
 {{menu_backoffice}}
 <main class="my-plan__main">
-    <h1 class="my-plan__title">{{Pagamentos}}</h1>
     <div>
+        <h1 class="my-plan__title">{{Pagamentos}}</h1>
         <div>
-            {{html_dropdown_select_user_pagination}}
-        </div>
-        <section class="panel-explore-filters-container">
-            <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()" autocomplete="off">
-                <option value="all" selected disabled>{{Filtrar}}</option>
-                <option value="all">{{Todas}}</option>
-                <option value="paid">{{Pago}}</option>
-                <option value="pending">{{Incompleto}}</option>
-                <option value="refunded">{{Reembolsado}}</option>
-                <option value="error">{{Erro}}</option>
-            </select>
-            <div class="floating-input">
-                <input oninput="js.index.updateBackofficeOrders(), js.index.changeSearchIcon(this)" type="search" name="search_orders_by_user_input" id="search_orders_by_user_input" class="input-search" results="10" autosave="search_orders_by_user_input" placeholder=" ">
-                <label for="search_orders_by_user_input">
-                    {{Pesquisar}}
-                </label>
-                <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
-                <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_orders_by_user_input')">
+            <section class="panel-explore-filters-container">
+                {{html_dropdown_select_user_pagination}}
+                <select name="order_status" id="search_orders_by_status_select" onchange="js.index.updateBackofficeOrders()" autocomplete="off">
+                    <option value="all" selected disabled>{{Filtrar}}</option>
+                    <option value="all">{{Todas}}</option>
+                    <option value="paid">{{Pago}}</option>
+                    <option value="pending">{{Incompleto}}</option>
+                    <option value="refunded">{{Reembolsado}}</option>
+                    <option value="error">{{Erro}}</option>
+                </select>
+                <div class="floating-input">
+                    <input oninput="js.index.updateBackofficeOrders(), js.index.changeSearchIcon(this)" type="search" name="search_orders_by_user_input" id="search_orders_by_user_input" class="input-search" results="10" autosave="search_orders_by_user_input" placeholder=" ">
+                    <label for="search_orders_by_user_input">
+                        {{Pesquisar}}
+                    </label>
+                    <img src="{{cdn_val}}/assets/icons/search.svg" width="24" height="24" alt="" class="input-search-icon search-icon">
+                    <img src="{{cdn_val}}/assets/icons/close.svg" width="24" height="24" alt="" class="input-search-icon close-icon none" onclick="js.index.clearSearchInput(this, 'search_orders_by_user_input')">
+                </div>
+            </section>
+            <div class="backoffice-table-wrapper">
+                <table class="explore__table">
+                    <thead>
+                        <thead>
+                            <th>{{Usuário}}</th>
+                            <th>{{Short Cód}}</th>
+                            <th>{{Último erro}}</th>
+                            <th>{{Método}}</th>
+                            <th>{{Datetime}}</th>
+                            <th>{{Tipo}}</th>
+                            <th>{{Cupom}}</th>
+                            <th>{{Plano}}</th>
+                            <th>{{Currency}}</th>
+                            <th>{{Valor}}</th>
+                            <th>{{Status}}</th>
+                            <th>Nota Fiscal</th>
+                            <th></th>
+                        </thead>
+                    <tbody id="pagination_component">
+                        {{html_backoffice_orders_table_rows}}
+                    </tbody>
+                </table>
             </div>
-        </section>
-        <div>
-            <table class="explore__table">
-                <thead>
-                    <th>{{Usuário}}</th>
-                    <th>{{Short Cód}}</th>
-                    <th>{{Último erro}}</th>
-                    <th>{{Método}}</th>
-                    <th>{{Datetime}}</th>
-                    <th>{{Tipo}}</th>
-                    <th>{{Cupom}}</th>
-                    <th>{{Plano}}</th>
-                    <th>{{Currency}}</th>
-                    <th>{{Valor}}</th>
-                    <th>{{Status}}</th>
-                    <th>Nota Fiscal</th>
-                    <th></th>
-                </thead>
-                <tbody id="pagination_component">
-                    {{html_backoffice_orders_table_rows}}
-                </tbody>
-            </table>
+            <span class="error" style="display:none;" id="backoffice_orders_error_span">
+                {{error_msg_val}}
+            </span>
+            {{html_pagination}}
         </div>
-        <span class="error" style="display:none;" id="backoffice_orders_error_span">
-            {{error_msg_val}}
-        </span>
-        {{html_pagination}}
-    </div>
-    {{html_modal_loader_spinner}}
+        {{html_modal_loader_spinner}}
 </main>
 
 
