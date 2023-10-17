@@ -93,9 +93,9 @@ class StrFormat:
         return ""
 
     def format_to_money(self, money, currency, big=False):
-        if currency == "brl":
+        if currency.lower() == "brl":
             return self.format_to_brl_money(money, big)
-        elif currency == "usd":
+        elif currency.lower() == "usd":
             return self.format_to_usd_money(money, big)
 
     def format_to_billing_money(self, money):
