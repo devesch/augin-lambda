@@ -2044,6 +2044,11 @@
         "es": "Explorar",
         "pt": "Explorar"
     },
+    "Falhas de recorrência": {
+        "en": "Recurrence failures",
+        "es": "Fallas de recurrencia",
+        "pt": "Falhas de recorrência"
+    },
     "Falhou": {
         "en": "Failed",
         "es": "Fallido",
