@@ -20,10 +20,10 @@
         <div class="input-default-icon focus floating-input" id="user_phone_div">
             {{html_user_phone_input}}
         </div>
-        <div class="input-default floating-input">
+        <!-- <div class="input-default floating-input">
             <input hidden type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" maxlength="18" placeholder=" ">
             <input hidden type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14">
-        </div>
+        </div> -->
         <div class="input-default floating-input">
             <input type="text" name="user_zip_code" id="user_zip_code" value="{{user_zip_code_val}}" class="floating" oninput="js.index.maskToNumber(this)" maxlength="18" placeholder=" ">
             <label for="user_zip_code" class="floating-label">{{Código ZIP}}</label>
