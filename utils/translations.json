@@ -194,6 +194,21 @@
         "es": "Caja de cartón",
         "pt": "Abandonos de carrinho"
     },
+    "Aberturas do APP": {
+        "en": "App openings",
+        "es": "Aberturas de aplicaciones",
+        "pt": "Aberturas do APP"
+    },
+    "Aberturas do MyAugin": {
+        "en": "MyAugin openings",
+        "es": "Aperturas de MyAugin",
+        "pt": "Aberturas do MyAugin"
+    },
+    "Aberturas do software": {
+        "en": "Software openings",
+        "es": "Aperturas de software",
+        "pt": "Aberturas do software"
+    },
     "Aceita boleto anualmente": {
         "en": "Accepts billet annually",
         "es": "Acepta billet anualmente",
@@ -540,7 +555,7 @@
         "pt": "Ativos"
     },
     "Atualizar": {
-        "en": "To update",
+        "en": "Update",
         "es": "Actualizar",
         "pt": "Atualizar"
     },
@@ -3010,7 +3025,7 @@
         "pt": "Mostrar senha."
     },
     "Mover": {
-        "en": "To move",
+        "en": "Move",
         "es": "Para mover",
         "pt": "Mover"
     },
@@ -3433,6 +3448,16 @@
         "en": "New payment made by the customer",
         "es": "Nuevo pago realizado por el cliente",
         "pt": "Novo pagamento realizado pelo cliente"
+    },
+    "Novos projetos": {
+        "en": "New projects",
+        "es": "Proyectos nuevos",
+        "pt": "Novos projetos"
+    },
+    "Novos usários": {
+        "en": "New users",
+        "es": "Usuarios nuevos",
+        "pt": "Novos usários"
     },
     "Não": {
         "en": "No",
@@ -5358,6 +5383,11 @@
         "en": "Users",
         "es": "Usuarios",
         "pt": "Usuários"
+    },
+    "Usuários registrados nos últimos 30d que publicaram": {
+        "en": "Registered users in the last 30d who published",
+        "es": "Usuarios registrados en los últimos 30d que publicó",
+        "pt": "Usuários registrados nos últimos 30d que publicaram"
     },
     "Utilizamos cookies para gerenciar sua sessão de login e garantir o acesso seguro à sua conta. Esses cookies são essenciais para a autenticação do usuário e funcionalidades relacionadas à conta": {
         "en": "We use cookies to manage your login session and ensure safe access to your account.These cookies are essential for user authentication and account features",

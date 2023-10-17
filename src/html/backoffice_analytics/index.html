@@ -5,12 +5,12 @@
     <h1 class="my-plan__title">Analytics</h1>
     <section class="panel-explore-filters-container">
         <select name="analytics_date_filter_select" id="analytics_date_filter_select" onchange="js.index.updateBackofficeAnalytics()" autocomplete="off">
-            <option value="7" {{7_checked_val}}>7 dias</option>
-            <option value="30" {{30_checked_val}}>30 dias</option>
-            <option value="60" {{60_checked_val}}>60 dias</option>
-            <option value="90" {{90_checked_val}}>90 dias</option>
-            <option value="180" {{180_checked_val}}>180 dias</option>
-            <option value="360" {{360_checked_val}}>360 dias</option>
+            <option value="7" {{7_checked_val}}>7 {{dias}}</option>
+            <option value="30" {{30_checked_val}}>30 {{dias}}</option>
+            <option value="60" {{60_checked_val}}>60 {{dias}}</option>
+            <option value="90" {{90_checked_val}}>90 {{dias}}</option>
+            <option value="180" {{180_checked_val}}>180 {{dias}}</option>
+            <option value="360" {{360_checked_val}}>360 {{dias}}</option>
         </select>
     </section>
 
@@ -98,7 +98,7 @@
             data: {
                 labels: dates,
                 datasets: [{
-                    label: 'New User',
+                    label: '{{Novos usários}}',
                     data: new_user_registered_daily_amounts,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     fill: false,
@@ -106,7 +106,7 @@
                     pointRadius: point_radius,
                     pointHoverRadius: point_hove_radius
                 }, {
-                    label: 'App Openings',
+                    label: '{{Aberturas do APP}}',
                     data: app_opening_daily_amounts,
                     borderColor: 'rgba(255, 99, 132, 1)',
                     fill: false,
@@ -114,7 +114,7 @@
                     pointRadius: point_radius,
                     pointHoverRadius: point_hove_radius
                 }, {
-                    label: 'Software Openings',
+                    label: '{{Aberturas do software}}',
                     data: software_opening_daily_amounts,
                     borderColor: 'rgba(75, 192, 192, 1)',
                     fill: false,
@@ -122,7 +122,7 @@
                     pointRadius: point_radius,
                     pointHoverRadius: point_hove_radius
                 }, {
-                    label: 'My Augin Openings',
+                    label: '{{Aberturas do MyAugin}}',
                     data: my_augin_opening_daily_amounts,
                     borderColor: 'rgba(153, 102, 255, 1)',
                     fill: false,
@@ -130,7 +130,7 @@
                     pointRadius: point_radius,
                     pointHoverRadius: point_hove_radius
                 }, {
-                    label: 'User Registered In Last 30d and Published',
+                    label: '{{Usuários registrados nos últimos 30d que publicaram}}',
                     data: user_registered_in_last_30_days_and_published_daily_amounts,
                     borderColor: 'rgba(255, 223, 0, 1)',
                     fill: false,
@@ -138,7 +138,7 @@
                     pointRadius: point_radius,
                     pointHoverRadius: point_hove_radius
                 }, {
-                    label: 'New Project',
+                    label: '{{Novos projetos}}',
                     data: new_project_published_daily_amounts,
                     borderColor: 'rgba(255, 159, 64, 1)',
                     fill: false,
@@ -177,7 +177,7 @@
             data: {
                 labels: dates,
                 datasets: [{
-                        label: 'New User',
+                        label: '{{Novos usários}}',
                         data: new_user_registered_total_amounts,
                         borderColor: 'rgba(54, 162, 235, 1)',
                         fill: false,
@@ -185,7 +185,7 @@
                         pointRadius: point_radius,
                         pointHoverRadius: point_hove_radius
                     }, {
-                        label: 'App Openings',
+                        label: '{{Aberturas do APP}}',
                         data: app_opening_total_amounts,
                         borderColor: 'rgba(255, 99, 132, 1)',
                         fill: false,
@@ -194,7 +194,7 @@
                         pointHoverRadius: point_hove_radius
                     },
                     {
-                        label: 'Software Openings',
+                        label: '{{Aberturas do software}}',
                         data: software_opening_total_amounts,
                         borderColor: 'rgba(75, 192, 192, 1)',
                         fill: false,
@@ -203,7 +203,7 @@
                         pointHoverRadius: point_hove_radius
                     },
                     {
-                        label: 'My Augin Openings',
+                        label: '{{Aberturas do MyAugin}}',
                         data: my_augin_opening_total_amounts,
                         borderColor: 'rgba(153, 102, 255, 1)',
                         fill: false,
@@ -211,7 +211,7 @@
                         pointRadius: point_radius,
                         pointHoverRadius: point_hove_radius
                     }, {
-                        label: 'User Registered In Last 30d and Published',
+                        label: '{{Usuários registrados nos últimos 30d que publicaram}}',
                         data: user_registered_in_last_30_days_and_published_total_amounts,
                         borderColor: 'rgba(255, 223, 0, 1)',
                         fill: false,
@@ -219,7 +219,7 @@
                         pointRadius: point_radius,
                         pointHoverRadius: point_hove_radius
                     }, {
-                        label: 'New Project',
+                        label: '{{Novos projetos}}',
                         data: new_project_published_total_amounts,
                         borderColor: 'rgba(255, 159, 64, 1)',
                         fill: false,
