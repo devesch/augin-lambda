@@ -522,6 +522,7 @@ input[list]::-ms-clear {
     right: 1rem;
     border-radius: 100%;
     padding: 0.25rem;
+    z-index: 1;
 
     @media only screen and (min-width: breakpoints.$large) {
         display: none;
