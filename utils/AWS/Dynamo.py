@@ -6,6 +6,9 @@ from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
 import os
 import time
 
+# import brotli
+import json
+
 my_config = Config(retries={"max_attempts": 50, "mode": "adaptive"})
 
 dynamodb_client = client("dynamodb", region_name=lambda_constants["region"])
@@ -362,7 +365,7 @@ class Dynamo:
     # def compress_python_obj(self, python_obj):
     #     compressed_python_obj = {}
     #     for param, value in python_obj.items():
-    #         if "_" in param and param not in ignore_brotli_params:
+    #         if "_" in param:
     #             if not "data" in compressed_python_obj:
     #                 compressed_python_obj["data"] = {}
     #             compressed_python_obj["data"][param] = value
@@ -380,13 +383,14 @@ class Dynamo:
     #     decompressed_data = json.loads(decompressed_data.decode())
 
     #     for param, value in python_obj.items():
-    #         if not "_" in param or param in ignore_brotli_params:
+    #         if not "_" in param:
     #             decompressed_python_obj[param] = value
     #     for param, value in decompressed_data.items():
     #         decompressed_python_obj[param] = value
 
     #     del decompressed_python_obj["data"]
     #     return decompressed_python_obj
+
     def get_last_from_entity(self, entity):
         last_from_entity, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": entity}}}, 1, None, None)
         if last_from_entity:
@@ -402,8 +406,11 @@ class Dynamo:
                     python_obj[attribute] = int(python_obj[attribute])
                 except:
                     python_obj[attribute] = float(python_obj[attribute])
+        # if "data" in python_obj:
+        #     python_obj = self.decompress_python_obj(python_obj)
         if os.environ.get("AWS_EXECUTION_ENV") is None:
             python_obj = dict(sorted(python_obj.items()))
+
         return python_obj
 
     def python_obj_to_dynamo_obj(self, python_obj: dict) -> dict:
@@ -453,7 +460,11 @@ class Dynamo:
     def put_entity(self, entity_dict, table=None):
         if not table:
             table = lambda_constants["table_project"]
-        self.execute_put_item({"TableName": table, "Item": self.python_obj_to_dynamo_obj(entity_dict)})
+        # if table == "web-data":
+        #     entity_dict = self.compress_python_obj(entity_dict)
+        #     return self.execute_put_item({"TableName": table, "Item": self.python_obj_to_dynamo_obj(entity_dict)})
+
+        return self.execute_put_item({"TableName": table, "Item": self.python_obj_to_dynamo_obj(entity_dict)})
 
     def update_entity(self, entity_dict, attribute, value, type="S"):
         if type == "N":
