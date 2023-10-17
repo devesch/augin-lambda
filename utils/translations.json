@@ -454,6 +454,11 @@
         "es": "Apagar",
         "pt": "Apagar"
     },
+    "Aplicado durante quantos meses de recorrência": {
+        "en": "Applied for how many months of recurrence",
+        "es": "Solicitó cuántos meses de recurrencia",
+        "pt": "Aplicado durante quantos meses de recorrência"
+    },
     "Ar condicionado": {
         "en": "Air conditioning",
         "es": "Aire condicionado",
@@ -1164,6 +1169,11 @@
         "es": "Crea una cuenta",
         "pt": "Criar conta"
     },
+    "Criar cupom": {
+        "en": "Create cupom",
+        "es": "Crea cupom",
+        "pt": "Criar cupom"
+    },
     "Criar federado": {
         "en": "Federate",
         "es": "Federativo",
@@ -1299,10 +1309,25 @@
         "es": "DISPONIBLE",
         "pt": "DISPONÍVEL"
     },
+    "Data de criação": {
+        "en": "Creation date",
+        "es": "Fecha de creación",
+        "pt": "Data de criação"
+    },
+    "Data de início": {
+        "en": "Start date",
+        "es": "Fecha de inicio",
+        "pt": "Data de início"
+    },
     "Data de renovação": {
         "en": "Renewal date",
         "es": "Fecha de renovación",
         "pt": "Data de renovação"
+    },
+    "Data de término": {
+        "en": "End date",
+        "es": "Fecha de finalización",
+        "pt": "Data de término"
     },
     "Data e Hora:": {
         "en": "Date and time:",
@@ -1369,6 +1394,16 @@
         "es": "Descuento total",
         "pt": "Desconto desconto total"
     },
+    "Desconto em %": {
+        "en": "Discount on %",
+        "es": "Descuento en %",
+        "pt": "Desconto em %"
+    },
+    "Desconto em BRL": {
+        "en": "BRL Discount",
+        "es": "Descuento de BRL",
+        "pt": "Desconto em BRL"
+    },
     "Desconto em R$": {
         "en": "Discount in R$",
         "es": "Descuento en R$",
@@ -1378,6 +1413,11 @@
         "en": "Discount in U$",
         "es": "Descuento en U$",
         "pt": "Desconto em U$"
+    },
+    "Desconto em USD": {
+        "en": "Usd discount",
+        "es": "Descuento de USD",
+        "pt": "Desconto em USD"
     },
     "Desconto percentual": {
         "en": "Percentage discount",
@@ -1499,6 +1539,16 @@
         "es": "Disponible anualmente",
         "pt": "Disponível anualmente"
     },
+    "Disponível em BRL": {
+        "en": "Available in BRL",
+        "es": "Disponible en BRL",
+        "pt": "Disponível em BRL"
+    },
+    "Disponível em USD": {
+        "en": "Available in USD",
+        "es": "Disponible en USD",
+        "pt": "Disponível em USD"
+    },
     "Disponível em compras internacionais": {
         "en": "Available in international purchases",
         "es": "Disponible en compras internacionales",
@@ -1523,6 +1573,11 @@
         "en": "Available monthly",
         "es": "Disponible mensualmente",
         "pt": "Disponível mensalmente"
+    },
+    "Disponível nos seguintes ids de plano": {
+        "en": "Available in the following plan ids",
+        "es": "Disponible en las siguientes identificaciones de plan",
+        "pt": "Disponível nos seguintes ids de plano"
     },
     "Disponível para compra": {
         "en": "Available for purchase",
@@ -4114,6 +4169,11 @@
         "es": "Portugal",
         "pt": "Portugal"
     },
+    "Possui limite de usos": {
+        "en": "Has uses limit",
+        "es": "Tiene usos límite",
+        "pt": "Possui limite de usos"
+    },
     "Possui trial": {
         "en": "Has trial",
         "es": "Tiene juicio",
@@ -4294,10 +4354,20 @@
         "es": "Número de personas en el juego del equipo",
         "pt": "Quantidade de pessoas no team play"
     },
+    "Quantidade de usos atual": {
+        "en": "Current amount of uses",
+        "es": "Cantidad actual de usos",
+        "pt": "Quantidade de usos atual"
+    },
     "Quantidade de usos disponíveis": {
         "en": "Amount of available uses",
         "es": "Cantidad de usos disponibles",
         "pt": "Quantidade de usos disponíveis"
+    },
+    "Quantidade de usos máxima": {
+        "en": "Maximum number",
+        "es": "Número máximo",
+        "pt": "Quantidade de usos máxima"
     },
     "Quantidade de utilizações": {
         "en": "Number of uses",
@@ -5023,6 +5093,11 @@
         "en": "Purchase type",
         "es": "Tipo de compra",
         "pt": "Tipo de compra"
+    },
+    "Tipo de desconto": {
+        "en": "Discount type",
+        "es": "Tipo de descuento",
+        "pt": "Tipo de desconto"
     },
     "Todas": {
         "en": "All",
