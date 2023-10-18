@@ -113,8 +113,8 @@ progress.failed::-moz-progress-bar {
     width: 100%;
 }
 
-.progress--panel-create-project.success::-webkit-progress-value,
-.progress--panel-create-project.failed::-webkit-progress-value {
+.progress--panel-create-project.success::-moz-progress-bar,
+.progress--panel-create-project.failed::-moz-progress-bar {
     background: colors.color("color-success-700");
     border-radius: 0;
     height: 100%;
@@ -132,6 +132,6 @@ progress.failed::-moz-progress-bar {
     // transition: width 0.4s ease-in;
 }
 
-.progress--panel-create-project.failed::-webkit-progress-value {
+.progress--panel-create-project.failed::-moz-progress-bar {
     background: colors.color("color-error-700");
 }
