@@ -152,7 +152,8 @@ class UpdateUser(PanelPage):
         if not payment_method:
             return {"error": "Nenhum método de pagamento encontrado com os dados informados"}
         user_subscription = Dynamo().get_subscription(self.user.user_subscription_id)
-
+        if not user_subscription:
+            return {"error": "Você não possui uma assinatura para trocar o método de pagamento"}
         if payment_method["payment_method_type"] != "card" and user_subscription["subscription_recurrency"] == "monthly":
             return {"error": "Não é possível trocar o método de pagamento em uma assinatura mensal para um método diferente de cartão"}
         if user_subscription["subscription_is_trial"]:

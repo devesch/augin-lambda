@@ -428,7 +428,7 @@ class ModelController:
         for index, ifc_location in enumerate(ifcs_locations):
             sum_of_all_uploaded_filesize_in_mbs += float(self.convert_model_filesize_to_mb(os.path.getsize(ifc_location)))
 
-        if sum_of_all_uploaded_filesize_in_mbs > float(user_plan["plan_cloud_space_in_mbs"]):
+        if (sum_of_all_uploaded_filesize_in_mbs + float(user.user_used_cloud_space_in_mbs)) > float(user_plan["plan_cloud_space_in_mbs"]):
             if len(ifcs_locations) == 1:
                 return {"error": "Não é possível adicionar este projeto pois ele excederia o tamanho máximo disponível em sua cloud."}
             else:

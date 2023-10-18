@@ -475,6 +475,8 @@ class PanelPage(BasePage):
             html = ReadWrite().read_html("panel_your_plan/_codes/html_payment_methods_rows")
             html.esc("payment_method_id_val", payment_method["payment_method_id"])
             html.esc("index_val", (index + 1))
+            if not user_subscription or user_subscription["subscription_status"] != "active":
+                html.esc("make_default_payement_method_visibility_val", "display:none;")
             if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
                 html.esc("make_default_payement_method_visibility_val", "display:none;")
                 html.esc("html_active_method_icon", self.show_html_active_method_icon())

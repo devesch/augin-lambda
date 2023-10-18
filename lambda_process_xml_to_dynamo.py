@@ -20,6 +20,8 @@ from objects.NanoElement import NanoElement
 from objects.Property import Property
 from objects.Layer import Layer
 
+guids = {}
+
 
 def lambda_handler(event, context):
     try:
@@ -31,7 +33,6 @@ def lambda_handler(event, context):
 def main_lambda_handler(event, context):
     print(json.dumps(event))
 
-    raise Exception("TODO")
     if not Validation().check_if_local_env():
         record = json.loads(event["Records"][0]["body"])
         model_id = record["model_id"]
@@ -202,7 +203,7 @@ def main_lambda_handler(event, context):
                                         if "IfcWindow" in element.tag:
                                             ifc_windows.append(element)
                                             continue
-                                        element_id = element.get("id")
+                                        element_id = generate_fix_guid(element.get("id"))
                                         element_data = get_data_from_attrib(element)
                                         element_properties = []
                                         sub_element_index = -1
@@ -224,7 +225,7 @@ def main_lambda_handler(event, context):
                                                         continue
                                                     sub_element_index += 1
                                                     element_has_sub_elements = True
-                                                    sub_element_id = sub_element.get("id")
+                                                    sub_element_id = generate_fix_guid(sub_element.get("id"))
                                                     sub_element_data = get_data_from_attrib(sub_element)
                                                     sub_element_properties = []
                                                     sub_sub_element_index = -1
@@ -246,7 +247,7 @@ def main_lambda_handler(event, context):
                                                                     continue
                                                                 sub_sub_element_index += 1
                                                                 sub_element_has_sub_sub_elements = True
-                                                                sub_sub_element_id = sub_sub_element.get("id")
+                                                                sub_sub_element_id = generate_fix_guid(sub_sub_element.get("id"))
                                                                 sub_sub_element_data = get_data_from_attrib(sub_sub_element)
                                                                 sub_sub_element_properties = []
                                                                 nano_element_index = -1
@@ -268,7 +269,7 @@ def main_lambda_handler(event, context):
                                                                                 continue
                                                                             nano_element_index += 1
                                                                             sub_sub_element_has_nano_elements = True
-                                                                            nano_element_id = nano_element.get("id")
+                                                                            nano_element_id = generate_fix_guid(nano_element.get("id"))
                                                                             nano_element_data = get_data_from_attrib(nano_element)
                                                                             nano_element_properties = []
                                                                             nano_property_list = list(nano_element)
@@ -299,7 +300,7 @@ def main_lambda_handler(event, context):
                                 category_items.append(Category(project_id, site_id, building_id, storey_id, category_tag).__dict__)
                                 for element in ifc_doors:
                                     if element.get("id"):
-                                        element_id = element.get("id")
+                                        element_id = generate_fix_guid(element.get("id"))
                                         element_data = get_data_from_attrib(element)
                                         element_properties = []
                                         sub_element_index = -1
@@ -315,7 +316,7 @@ def main_lambda_handler(event, context):
                                                     sub_element = property
                                                     sub_element_index += 1
                                                     element_has_sub_elements = True
-                                                    sub_element_id = sub_element.get("id")
+                                                    sub_element_id = generate_fix_guid(sub_element.get("id"))
                                                     sub_element_data = get_data_from_attrib(sub_element)
                                                     sub_element_properties = []
                                                     sub_sub_element_index = -1
@@ -331,7 +332,7 @@ def main_lambda_handler(event, context):
                                                                 sub_sub_element = sub_property
                                                                 sub_sub_element_index += 1
                                                                 sub_element_has_sub_sub_elements = True
-                                                                sub_sub_element_id = sub_sub_element.get("id")
+                                                                sub_sub_element_id = generate_fix_guid(sub_sub_element.get("id"))
                                                                 sub_sub_element_data = get_data_from_attrib(sub_sub_element)
                                                                 sub_sub_element_properties = []
                                                                 nano_element_index = -1
@@ -347,7 +348,7 @@ def main_lambda_handler(event, context):
                                                                             nano_element = sub_sub_property
                                                                             nano_element_index += 1
                                                                             sub_sub_element_has_nano_elements = True
-                                                                            nano_element_id = nano_element.get("id")
+                                                                            nano_element_id = generate_fix_guid(nano_element.get("id"))
                                                                             nano_element_data = get_data_from_attrib(nano_element)
                                                                             nano_element_properties = []
                                                                             nano_property_list = list(nano_element)
@@ -378,7 +379,7 @@ def main_lambda_handler(event, context):
                                 category_items.append(Category(project_id, site_id, building_id, storey_id, category_tag).__dict__)
                                 for element in ifc_windows:
                                     if element.get("id"):
-                                        element_id = element.get("id")
+                                        element_id = generate_fix_guid(element.get("id"))
                                         element_data = get_data_from_attrib(element)
                                         element_properties = []
                                         sub_element_index = -1
@@ -394,7 +395,7 @@ def main_lambda_handler(event, context):
                                                     sub_element = property
                                                     sub_element_index += 1
                                                     element_has_sub_elements = True
-                                                    sub_element_id = sub_element.get("id")
+                                                    sub_element_id = generate_fix_guid(sub_element.get("id"))
                                                     sub_element_data = get_data_from_attrib(sub_element)
                                                     sub_element_properties = []
                                                     sub_sub_element_index = -1
@@ -410,7 +411,7 @@ def main_lambda_handler(event, context):
                                                                 sub_sub_element = sub_property
                                                                 sub_sub_element_index += 1
                                                                 sub_element_has_sub_sub_elements = True
-                                                                sub_sub_element_id = sub_sub_element.get("id")
+                                                                sub_sub_element_id = generate_fix_guid(sub_sub_element.get("id"))
                                                                 sub_sub_element_data = get_data_from_attrib(sub_sub_element)
                                                                 sub_sub_element_properties = []
                                                                 nano_element_index = -1
@@ -426,7 +427,7 @@ def main_lambda_handler(event, context):
                                                                             nano_element = sub_sub_property
                                                                             nano_element_index += 1
                                                                             sub_sub_element_has_nano_elements = True
-                                                                            nano_element_id = nano_element.get("id")
+                                                                            nano_element_id = generate_fix_guid(nano_element.get("id"))
                                                                             nano_element_data = get_data_from_attrib(nano_element)
                                                                             nano_element_properties = []
                                                                             nano_property_list = list(nano_element)
@@ -613,6 +614,23 @@ def find_xml_file(root_directory):
         for file in files:
             if file.lower().endswith(".xml"):
                 return os.path.join(root, file).replace("\\", "/")
+
+
+def generate_fix_guid(new_guid):
+    global guids
+
+    if new_guid not in guids:
+        guids[new_guid] = new_guid
+        return new_guid
+    else:
+        index = 0
+        while True:
+            if new_guid + "-" + str(index) not in guids:
+                guids[new_guid + "-" + str(index)] = new_guid
+                break
+            index += 1
+        return new_guid + "-" + str(index)
+
 
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:
