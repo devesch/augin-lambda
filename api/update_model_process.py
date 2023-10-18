@@ -15,7 +15,7 @@ class UpdateModelProcess(BasePage):
         model = Dynamo().get_model(self.post["model_id"])
         if self.post.get("error"):
             ModelController().mark_model_as_error(model, self.post["error"])
-            return
+            return {"success": "Model changed state to error"}
 
         if self.post["output_format"] == "model_aug_percent":
             if not model["model_aug_completed"]:
@@ -117,4 +117,4 @@ class UpdateModelProcess(BasePage):
                 if federated_model:
                     user.add_model_to_user_dicts(federated_model)
 
-        return {"success": "Model " + self.post["model_id"] + " updated successfully to percentage " + model["model_processing_percentage"]}
+        return {"success": "Model updated successfully to percentage"}
