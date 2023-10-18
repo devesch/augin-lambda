@@ -3976,13 +3976,8 @@
     },
     "Perfil atualizado com sucesso": {
         "en": "Profile updated successfully",
-        "es": "Perfil actualizado exitoso",
+        "es": "Perfil actualizado con éxito",
         "pt": "Perfil atualizado com sucesso"
-    },
-    "Perfil atualizado com sucesso.": {
-        "en": "Profile updated successfully.",
-        "es": "Perfil actualizado con éxito.",
-        "pt": "Perfil atualizado com sucesso."
     },
     "Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o novo email solicitado": {
         "en": "Updated profile but to change your email you need to confirm the email we send to the new email",
