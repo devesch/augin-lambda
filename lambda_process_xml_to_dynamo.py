@@ -31,6 +31,7 @@ def lambda_handler(event, context):
 def main_lambda_handler(event, context):
     print(json.dumps(event))
 
+    raise Exception("TODO")
     if not Validation().check_if_local_env():
         record = json.loads(event["Records"][0]["body"])
         model_id = record["model_id"]

@@ -38,7 +38,7 @@ class UpdateUser(PanelPage):
 
     def get_user_used_cloud_space_in_mbs(self):
         user_plan = self.user.get_user_actual_plan()
-        return {"success": self.user.user_used_cloud_space_in_mbs, "class": self.generate_progress_class(self.user.user_used_cloud_space_in_mbs, user_plan["plan_cloud_space_in_mbs"])}
+        return {"success": str(round(float(self.user.user_used_cloud_space_in_mbs), 1)), "class": self.generate_progress_class(self.user.user_used_cloud_space_in_mbs, user_plan["plan_cloud_space_in_mbs"])}
 
     def disconnect_device(self):
         if not self.post.get("device_id"):
