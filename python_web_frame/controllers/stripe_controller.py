@@ -55,7 +55,7 @@ class StripeController:
             "state": user.user_address_data["user_state"],
             "country": user.user_address_data["user_country"],
         }
-        self.stripe.Customer.modify(email=user.user_email, name=user.user_name, phone=user.user_phone, address=address, preferred_locales=generate_preferred_locales(user.user_lang))
+        self.stripe.Customer.modify(id=user_stripe_customer_id, email=user.user_email, name=user.user_name, phone=user.user_phone, address=address, preferred_locales=generate_preferred_locales(user.user_lang))
 
     def delete_customer(self, user_stripe_customer_id):
         return self.stripe.Customer.delete(user_stripe_customer_id)

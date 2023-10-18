@@ -5559,6 +5559,11 @@
         "es": "No tiene las credenciales para acceder a esta página",
         "pt": "Você não possui as credenciais para acessar esta página"
     },
+    "Você não possui uma assinatura para trocar o método de pagamento": {
+        "en": "You do not have a signature to change the payment method",
+        "es": "No tiene una firma para cambiar el método de pago",
+        "pt": "Você não possui uma assinatura para trocar o método de pagamento"
+    },
     "Você pode conectar um novo dispositivo quando quiser": {
         "en": "You can connect a new device when you want",
         "es": "Puede conectar un nuevo dispositivo cuando lo desee",
