@@ -69,6 +69,7 @@ class PanelYourPlan(PanelPage):
             html.esc("html_payment_methods_div", self.show_html_payment_methods_div(user_payment_methods, user_subscription))
 
         html.esc("stripe_token_val", stripe_token)
+        html.esc("lang_val", self.lang)
         return str(html)
 
     def render_post(self):

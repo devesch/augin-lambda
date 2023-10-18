@@ -75,24 +75,11 @@ export async function processStripeSubscriptionPayment(stripe_token, payment_typ
             theme: 'stripe',
         };
 
-        let languageInputValue = "";
-        const languageInput = document.getElementById("lang_val");
-        if (languageInput) {
-            languageInputValue = languageInput.value;
-        }
-
-        if (languageInputValue.length > 0) {
-            elements = stripe.elements({
-                appearance,
-                clientSecret,
-                locale: languageInputValue
-            });
-        } else {
-            elements = stripe.elements({
-                appearance,
-                clientSecret
-            });
-        }
+        elements = stripe.elements({
+            appearance,
+            clientSecret,
+            locale: document.getElementById("lang_input").value
+        })
 
         const linkAuthenticationElement = elements.create("linkAuthentication");
         linkAuthenticationElement.mount("#link-authentication-element");
@@ -2385,7 +2372,13 @@ export async function openModalAddPaymentMethod() {
     stripe_token_input = document.getElementById("stripe_token_input");
 
     const stripe = Stripe(stripe_token_input.value);
-    const elements = stripe.elements();
+    const appearance = {
+        theme: 'stripe',
+    };
+    const elements = stripe.elements({
+        appearance,
+        locale: document.getElementById("lang_input").value
+    })
     const card = elements.create('card');
     card.mount('#card-element');
     card.addEventListener('change', function (event) {

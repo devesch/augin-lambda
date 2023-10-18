@@ -35,6 +35,7 @@ class CheckoutStripeSubscription(CheckoutPage):
         html.esc("user_name_val", self.user.user_name)
         html.esc("user_email_val", self.user.user_email)
         html.esc("plan_name_val", self.path["plan"]["plan_name_" + self.lang])
+        html.esc("lang_val", self.lang)
 
         plan_discounted_price = None
         discount_value = None
