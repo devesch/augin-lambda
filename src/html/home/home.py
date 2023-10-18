@@ -18,6 +18,8 @@ class Home(BasePage):
                 self.post["user_url"] = ""
             if self.post["select_translation"] not in ("pt", "es", "en"):
                 self.post["select_translation"] = "en"
+            if self.user:
+                self.user.update_attribute("user_lang", self.post["select_translation"])
             return {"html": Http().redirect(self.post["user_url"].replace("/", "/?")), "command": "change_lang", "user_lang": self.post["select_translation"]}
         if self.post.get("change_cookie_policy"):
             cookie_policy = {"tawk": "accepted", "mouseflow": "accepted"}

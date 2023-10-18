@@ -32,9 +32,6 @@ class StripeController:
         return self.stripe.Subscription.modify(subscription_id, default_payment_method=payment_method_id)
 
     def create_customer(self, user):
-        name = user.user_name
-        phone = user.user_phone
-        email = user.user_email
         address = {
             "city": user.user_address_data["user_street"],
             "line1": user.user_address_data["user_street"],
@@ -43,16 +40,13 @@ class StripeController:
             "state": user.user_address_data["user_state"],
             "country": user.user_address_data["user_country"],
         }
-        customer = self.stripe.Customer.create(email=email, name=name, phone=phone, address=address)
+        customer = self.stripe.Customer.create(email=user.user_email, name=user.user_name, phone=user.user_phone, address=address, preferred_locales=generate_preferred_locales(user.user_lang))
         return customer.stripe_id
 
     def get_stripe_customer(self, user_stripe_customer_id):
         return self.stripe.Customer.retrieve(user_stripe_customer_id)
 
     def update_customer(self, user_stripe_customer_id, user):
-        name = user.user_name
-        phone = user.user_phone
-        email = user.user_email
         address = {
             "city": user.user_address_data["user_street"],
             "line1": user.user_address_data["user_street"],
@@ -61,7 +55,7 @@ class StripeController:
             "state": user.user_address_data["user_state"],
             "country": user.user_address_data["user_country"],
         }
-        self.stripe.Customer.modify(user_stripe_customer_id, email=email, name=name, phone=phone, address=address)
+        self.stripe.Customer.modify(email=user.user_email, name=user.user_name, phone=user.user_phone, address=address, preferred_locales=generate_preferred_locales(user.user_lang))
 
     def delete_customer(self, user_stripe_customer_id):
         return self.stripe.Customer.delete(user_stripe_customer_id)
@@ -268,3 +262,12 @@ class StripeController:
         decompressed_data = base64.b64decode(compressed_plan_data)
         original_string_data = zlib.decompress(decompressed_data)
         return json.loads(original_string_data.decode("utf-8"))
+
+
+def generate_preferred_locales(user_lang):
+    if user_lang == "pt":
+        return ["pt-BR"]
+    elif user_lang == "es":
+        return ["es-ES"]
+    else:
+        return ["en-US"]

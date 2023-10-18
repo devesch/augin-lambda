@@ -53,6 +53,7 @@ class User:
         self.user_stripe_customer_id = ""
         self.user_payment_ready = False
         self.user_pagination_count = "50"
+        self.user_lang = "pt"
 
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
@@ -123,7 +124,7 @@ class User:
     def update_attribute(self, attribute, new_value):
         setattr(self, attribute, new_value)
         Dynamo().update_entity(self.__dict__, attribute, new_value)
-        if attribute in ("user_name", "user_phone", "user_email") and self.user_stripe_customer_id:
+        if attribute in ("user_name", "user_phone", "user_email", "user_lang") and self.user_stripe_customer_id:
             StripeController().update_customer(self.user_stripe_customer_id, self)
 
     def generate_user_thumb_url(self):
