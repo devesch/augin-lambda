@@ -85,7 +85,6 @@ class PanelYourPlan(PanelPage):
         html.esc("user_subscription_currency_val", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
         html.esc("user_subscription_price_val", StrFormat().format_to_money("0000", self.user.user_cart_currency))
         html.esc("user_subscription_valid_until_val", self.translate("Ilimitado"))
-
         return str(html)
 
     def show_html_user_subscription(self, user_subscription, user_plan):
