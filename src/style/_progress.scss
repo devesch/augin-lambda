@@ -112,3 +112,26 @@ progress.failed::-moz-progress-bar {
     max-width: 700px;
     width: 100%;
 }
+
+.progress--panel-create-project.success::-webkit-progress-value,
+.progress--panel-create-project.failed::-webkit-progress-value {
+    background: colors.color("color-success-700");
+    border-radius: 0;
+    height: 100%;
+    background-image: linear-gradient( -45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent );
+    z-index: 1;
+    background-size: 25px 25px;
+    // border-top-right-radius: 8px;
+    // border-bottom-right-radius: 8px;
+    // border-top-left-radius: 20px;
+    // border-bottom-left-radius: 20px;
+    border-radius: 0;
+    overflow: hidden;
+    animation: progress-bar 3s linear infinite;
+    width: var(--progress-bar-after-width, 0%);
+    // transition: width 0.4s ease-in;
+}
+
+.progress--panel-create-project.failed::-webkit-progress-value {
+    background: colors.color("color-error-700");
+}
