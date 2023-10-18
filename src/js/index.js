@@ -74,10 +74,26 @@ export async function processStripeSubscriptionPayment(stripe_token, payment_typ
         const appearance = {
             theme: 'stripe',
         };
-        elements = stripe.elements({
-            appearance,
-            clientSecret
-        });
+
+        let languageInputValue = "";
+        const languageInput = document.getElementById("lang_val");
+        if (languageInput) {
+            languageInputValue = languageInput.value;
+        }
+
+        if (languageInputValue.length > 0) {
+            elements = stripe.elements({
+                appearance,
+                clientSecret,
+                locale: languageInputValue
+            });
+        } else {
+            elements = stripe.elements({
+                appearance,
+                clientSecret
+            });
+        }
+
         const linkAuthenticationElement = elements.create("linkAuthentication");
         linkAuthenticationElement.mount("#link-authentication-element");
         linkAuthenticationElement.on('change', (event) => {
