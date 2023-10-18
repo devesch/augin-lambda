@@ -2241,7 +2241,7 @@
     },
     "Filtrar tamanho": {
         "en": "Filter size",
-        "es": "Callarse la boca",
+        "es": "Filtrar tamaño",
         "pt": "Filtrar tamanho"
     },
     "Finalizado": {
@@ -3485,8 +3485,8 @@
         "pt": "Não compartilha"
     },
     "Não criado": {
-        "en": "Uninteed",
-        "es": "Invintivo",
+        "en": "Not created",
+        "es": "No creado",
         "pt": "Não criado"
     },
     "Não foi possível decoficar o email": {

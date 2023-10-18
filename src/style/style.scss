@@ -3150,7 +3150,7 @@ input[list]::-ms-clear {
 .backoffice-table-wrapper {
     overflow: auto;
     @media only screen and (min-width: 981px) {
-        max-width: calc(100vw - (350px + 2rem));
+        max-width: calc(100vw - 350px - 3rem);
     }
 }
 
@@ -3284,6 +3284,12 @@ input[list]::-ms-clear {
     margin-top: 3rem;
     display: flex;
     justify-content: center;
+}
+
+.backoffice-models-filters-container {
+    select {
+        width: fit-content;
+    }
 }
 /* Backoffice - End */
 
