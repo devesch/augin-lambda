@@ -14,7 +14,6 @@ class UpdateModelProcess(BasePage):
     def run(self):
         model = Dynamo().get_model(self.post["model_id"])
         if self.post.get("error"):
-            raise Exception("TODO ERROR")
             ModelController().mark_model_as_error(model, self.post["error"])
             return
 
