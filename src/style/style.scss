@@ -1962,6 +1962,10 @@ input[list]::-ms-clear {
         }
     }
 
+    select {
+        width: fit-content;
+    }
+
 }
 
 .model-in-processing {
