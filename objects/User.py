@@ -9,7 +9,6 @@ from objects.UserSubscription import UserSubscription
 from objects.UserDevice import UserDevice, reconnect_device
 from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
 from utils.utils.Sort import Sort
-from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.Config import lambda_constants
 import uuid
@@ -69,6 +68,8 @@ class User:
         Dynamo().put_entity(self.__dict__)
 
     def delete_account(self):
+        from python_web_frame.controllers.model_controller import ModelController
+
         user_dicts_folder = Dynamo().get_folder(self.user_dicts_folder_id)
         if user_dicts_folder:
             self.delete_folder(user_dicts_folder)
@@ -312,6 +313,8 @@ class User:
         return new_folder
 
     def delete_folder(self, folder):
+        from python_web_frame.controllers.model_controller import ModelController
+
         if folder["folders"]:
             for sub_folder_id in folder["folders"]:
                 sub_folder = Dynamo().get_folder(sub_folder_id)
@@ -341,6 +344,8 @@ class User:
         Dynamo().put_entity(user_folder)
 
     def remove_model_from_user_dicts(self, model, shared=False):
+        from python_web_frame.controllers.model_controller import ModelController
+
         model_folder = Dynamo().get_folder(model["model_folder_id"])
         if model_folder:
             remove_file_from_folder(model_folder, model["model_id"], model["model_filesize"])

@@ -1,7 +1,6 @@
 import os
 import time
 from objects.Model import Model
-from objects.User import load_user
 from objects.BackofficeData import increase_backoffice_data_total_count
 from utils.Config import lambda_constants
 from utils.AWS.S3 import S3
@@ -388,6 +387,8 @@ class ModelController:
         return new_model
 
     def check_if_file_uploaded_is_valid(self, uploaded_file, original_name, user):
+        from objects.User import load_user
+
         if not uploaded_file:
             return {"error": "no uploaded_file"}
 
