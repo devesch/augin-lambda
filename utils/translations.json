@@ -5149,6 +5149,11 @@
         "es": "Todos los dispositivos que estaban conectados se desconectaron con éxito",
         "pt": "Todos os dispositivos que estavam conectados foram desconetados com sucesso"
     },
+    "Todos os planos trials foram resetados com sucesso": {
+        "en": "All trial plans were successfully reset",
+        "es": "Todos los planes de prueba se restablecieron con éxito",
+        "pt": "Todos os planos trials foram resetados com sucesso"
+    },
     "Togo": {
         "en": "Togo",
         "es": "Togo",
@@ -5483,6 +5488,11 @@
         "en": "Last seen",
         "es": "Ultima vez visto",
         "pt": "Visto por último"
+    },
+    "Visualizar": {
+        "en": "To view",
+        "es": "Para ver",
+        "pt": "Visualizar"
     },
     "Visualizar detalhes": {
         "en": "View details",

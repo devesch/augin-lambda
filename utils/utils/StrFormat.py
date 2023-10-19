@@ -1,4 +1,5 @@
 from utils.Code import Code
+from utils.utils.JsonData import JsonData
 
 
 class StrFormat:
@@ -79,7 +80,7 @@ class StrFormat:
 
     def format_to_international_phone(self, alpha_2_country, mobile_phone_number):
         if mobile_phone_number:
-            return "(" + self.get_country_phone_code()[alpha_2_country] + ") " + mobile_phone_number
+            return "(" + JsonData().get_country_phone_code()[alpha_2_country] + ") " + mobile_phone_number
         return ""
 
     def format_to_cpf(self, cpf):

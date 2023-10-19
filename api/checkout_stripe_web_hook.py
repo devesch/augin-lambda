@@ -138,13 +138,12 @@ class CheckoutStripeWebHook(BasePage):
         return {"success": "Evento payment_intent_requires_action tratado."}
 
     def customer_subscription_updated(self):
-        ### TODO UNCOMENT THIS WHEN NOT USING CLOCK
-        # user_stripe_subscription = StripeController().get_subscription(self.post["data"]["object"]["id"])
-        # stripe_customer = StripeController().get_stripe_customer(user_stripe_subscription["customer"])
-        # self.user = load_user(stripe_customer["email"])
-        # invoice = StripeController().get_invoice(user_stripe_subscription["latest_invoice"])
-        # order = Dynamo().get_order(invoice["payment_intent"])
-        # self.user.update_subscription(order, user_stripe_subscription)
+        user_stripe_subscription = StripeController().get_subscription(self.post["data"]["object"]["id"])
+        stripe_customer = StripeController().get_stripe_customer(user_stripe_subscription["customer"])
+        self.user = load_user(stripe_customer["email"])
+        invoice = StripeController().get_invoice(user_stripe_subscription["latest_invoice"])
+        order = Dynamo().get_order(invoice["payment_intent"])
+        self.user.update_subscription(order, user_stripe_subscription)
         return {"success": "Evento customer_subscription_updated tratado."}
 
     ######################################################################################################

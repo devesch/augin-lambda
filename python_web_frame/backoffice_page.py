@@ -71,7 +71,7 @@ class BackofficePage(BasePage):
                 html.esc("model_used_in_federated_ids_val", model["model_used_in_federated_ids"])
                 html.esc("model_federated_required_ids_val", model["model_federated_required_ids"])
 
-                if model["model_upload_path_zip"]:
+                if model["model_upload_path_zip"] and not model["model_is_federated"]:
                     html.esc("model_upload_path_zip_val", lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"])
                     html.esc("model_upload_path_zip_filename_val", model["model_upload_path_zip"].split("/")[-1])
                 if model["model_upload_path_xml"]:

@@ -171,7 +171,7 @@ class User:
         user_subscription["subscription_status"] = stripe_subscription["status"]
         user_subscription["subscription_canceled_at"] = str(stripe_subscription["canceled_at"])
         if valid_until_now:
-            user_subscription["subscription_valid_until"] = str(time.time() + 90000)
+            user_subscription["subscription_valid_until"] = str(time.time())
         Dynamo().put_entity(user_subscription)
         if valid_until_now:
             self.update_attribute("user_subscription_valid_until", user_subscription["subscription_valid_until"])
