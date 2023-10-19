@@ -172,7 +172,7 @@ class PanelUserData(PanelPage, UserPage):
         html.esc("user_email_val", user_email)
         html.esc("new_user_email_val", new_user_email)
         html.esc("new_user_email_encoded_val", EncodeDecode().encode_to_b64(new_user_email))
-        Ses().send_email(new_user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Solicitação de troca de email"))
+        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Solicitação de troca de email"))
         return
 
     def show_html_physical_form(self):
