@@ -3291,6 +3291,12 @@ input[list]::-ms-clear {
         width: fit-content;
     }
 }
+
+.backoffice-order-last-error-message {
+    max-width: 25rem;
+    overflow: auto;
+    white-space: nowrap;
+}
 /* Backoffice - End */
 
 /* Print - Start */
