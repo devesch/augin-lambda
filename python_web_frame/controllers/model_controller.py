@@ -423,7 +423,7 @@ class ModelController:
 
         response = {"success": {"models_ids": [], "file_formats": {}, "message": "", "model_already_exists_name": ""}}
 
-        user = load_user(user["user_id"])
+        user = load_user(user.user_id)
         user_plan = user.get_user_actual_plan()
         files_hashes = []
 
@@ -474,6 +474,12 @@ class ModelController:
                 for model_in_processing in models_in_processing:
                     if model_in_processing.get("model_filehash") == file_hash:
                         return {"error": "Este mesmo arquivo já se encontra na fila de processamento."}
+
+            models_not_created = Dynamo().query_user_models_from_state(user, "not_created")
+            if models_not_created:
+                for model_not_created in models_not_created:
+                    if model_not_created.get("model_filehash") == file_hash:
+                        return {"error": "Este mesmo arquivo já se encontra na fila de upload."}
 
         if len(ifcs_locations) > 1:
             response["success"]["has_more_than_one_file"] = True
@@ -568,7 +574,7 @@ class ModelController:
             model["model_branch_url"] = branch_response["url"]
             model["model_branch_url_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png")
             Generate().generate_qr_code(model["model_branch_url"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png"))
-            user = load_user(user["user_id"])
+            user = load_user(user.user_id)
             user.increase_used_cloud_space_in_mbs(self.convert_model_filesize_to_mb(model["model_filesize"]))
             response["success"]["models_ids"].append(model["model_id"])
             Dynamo().put_entity(model)

@@ -548,7 +548,7 @@ def insert_items(items, project_id):
     files_per_page = 100
     total_pagination = str((len(items) + files_per_page - 1) // files_per_page)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=25) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         for index, chunk in enumerate(chunks(items, files_per_page)):
             part_number = str(index + 1)
             executor.submit(write_and_process_entry, chunk, part_number, total_pagination, lambda_constants, project_id)
@@ -630,7 +630,6 @@ def generate_fix_guid(new_guid):
                 break
             index += 1
         return new_guid + "-" + str(index)
-
 
 
 if os.environ.get("AWS_EXECUTION_ENV") is None:

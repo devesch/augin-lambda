@@ -9,10 +9,10 @@ class UserEmailChangedConfirm(UserPage):
     admin = False
 
     def render_get(self):
-        user = load_user(self.path["user_auth_token"])
-        user.update_attribute("user_email", self.path["new_user_email"])
+        self.user = load_user(self.path["user_auth_token"])
+        self.user.update_attribute("user_email", self.path["new_user_email"])
         html = super().parse_html()
-        html.esc("user_email_val", user.user_email)
+        html.esc("user_email_val", self.user.user_email)
         return str(html)
 
     def render_post(self):
