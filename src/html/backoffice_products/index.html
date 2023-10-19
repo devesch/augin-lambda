@@ -5,10 +5,10 @@
     <h1 class="my-plan__title">{{Produtos}}</h1>
     <a class="button" href="{{domain_name_url_val}}/backoffice_create_product">{{Criar produto}}</a>
     <div>
-        <div>
-            {{html_dropdown_select_user_pagination}}
-        </div>
         <section class="panel-explore-filters-container">
+            <div>
+                {{html_dropdown_select_user_pagination}}
+            </div>
             <div class="floating-input">
                 <input oninput="js.index.updateBackofficeProducts(), js.index.changeSearchIcon(this)" type="search" name="search_products_by_name_or_code_input" id="search_products_by_name_or_code_input" class="input-search" results="10" autosave="search_products_by_name_or_code_input" placeholder=" " autocomplete="off">
                 <label for="search_products_by_name_or_code_input">
