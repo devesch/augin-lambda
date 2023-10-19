@@ -854,6 +854,11 @@
         "es": "Tarjeta expirada",
         "pt": "Cartão expirado"
     },
+    "Cartão negado": {
+        "en": "Denied card",
+        "es": "Tarjeta negada",
+        "pt": "Cartão negado"
+    },
     "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.": {
         "en": "If you do not receive the code, check the email address entered and check your SPAM box.",
         "es": "Si no recibes el código, revisa la dirección de correo electrónico ingresada y revisa tu carpeta de SPAM.",
