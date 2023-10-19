@@ -3301,6 +3301,16 @@ input[list]::-ms-clear {
     overflow: auto;
     white-space: nowrap;
 }
+
+.backoffice-container__title-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
 /* Backoffice - End */
 
 /* Print - Start */
