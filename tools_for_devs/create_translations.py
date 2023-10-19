@@ -18,6 +18,18 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Incompleto",
+    "Pago",
+    "Não autorizado",
+    "Cartão negado",
+    "Cartão expirado",
+    "Cartão bloqueado",
+    "Cartão cancelado",
+    "Problemas no cartão",
+    "Excedeu o limite de tentativas",
+    "Reembolsado",
+    "Aguardando pagamento",
+    "Erro",
     "É necessário atualizar os seus dados para processeguir na compra",
     "É necessário confirmar os seus dados para processeguir na compra",
     "Em cancelamento",

@@ -37,7 +37,7 @@ def main_lambda_handler(event, context):
 
         import concurrent.futures
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
             future_to_item = {executor.submit(Dynamo().put_entity(item, table="web-data")): item for item in total_items}
             for future in concurrent.futures.as_completed(future_to_item):
                 item = future_to_item[future]

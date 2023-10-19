@@ -447,7 +447,7 @@ class PanelPage(BasePage):
             html.esc("order_created_at_val", Date().format_to_str_time(order["created_at"]))
             html.esc("order_currency_symbol_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
             html.esc("order_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
-            html.esc("order_status_val", translate_order_status(order["order_status"]))
+            html.esc("order_status_val", self.translate(translate_order_status(order["order_status"])))
 
             if order["order_status"] == "paid":
                 html.esc("order_status_class_val", "paid")
