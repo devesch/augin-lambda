@@ -2,9 +2,8 @@ from python_web_frame.panel_page import PanelPage
 from python_web_frame.controllers.model_controller import ModelController
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
-from utils.utils.Date import Date
+from utils.utils.Validation import Validation
 from utils.Config import lambda_constants
-import time
 
 
 class PanelCreateProject(PanelPage):
@@ -15,6 +14,16 @@ class PanelCreateProject(PanelPage):
 
     def render_get(self):
         html = super().parse_html()
+
+        if Validation().check_if_local_env():
+            models_in_the_cloud = Dynamo().query_user_models_from_state(self.user, "completed")
+            models_in_the_cloud.extend(Dynamo().query_user_models_from_state(self.user, "in_processing"))
+            models_in_the_cloud.extend(Dynamo().query_user_models_from_state(self.user, "not_created"))
+            user_used_cloud_space_in_mbs = 0
+            for model in models_in_the_cloud:
+                user_used_cloud_space_in_mbs += float(ModelController().convert_model_filesize_to_mb(model["model_filesize"]))
+
+            self.user.update_attribute("user_used_cloud_space_in_mbs", str(user_used_cloud_space_in_mbs))
 
         user_plan = self.user.get_user_actual_plan()
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))

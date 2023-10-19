@@ -1,6 +1,7 @@
 import os
 import time
 from objects.Model import Model
+from objects.User import load_user
 from objects.BackofficeData import increase_backoffice_data_total_count
 from utils.Config import lambda_constants
 from utils.AWS.S3 import S3
@@ -421,6 +422,7 @@ class ModelController:
 
         response = {"success": {"models_ids": [], "file_formats": {}, "message": "", "model_already_exists_name": ""}}
 
+        user = load_user(user["user_id"])
         user_plan = user.get_user_actual_plan()
         files_hashes = []
 
@@ -435,7 +437,6 @@ class ModelController:
                 return {"error": "Não é possível adicionar este arquivo aos seus projetos pois a some dos arquivos dentro dele excede o tamanho máximo disponível em sua cloud."}
 
         for index, ifc_location in enumerate(ifcs_locations):
-
             file_hash = ReadWrite().get_file_hash(ifc_location)
             if file_hash not in files_hashes:
                 files_hashes.append(file_hash)
@@ -566,6 +567,7 @@ class ModelController:
             model["model_branch_url"] = branch_response["url"]
             model["model_branch_url_qrcode"] = lambda_constants["processed_bucket_cdn"] + "/" + model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png")
             Generate().generate_qr_code(model["model_branch_url"], lambda_constants["processed_bucket"], model["model_upload_path_zip"].replace(model_uploaded_filename, "QRBRANCH-" + model_uploaded_filename).replace(".zip", ".png"))
+            user = load_user(user["user_id"])
             user.increase_used_cloud_space_in_mbs(self.convert_model_filesize_to_mb(model["model_filesize"]))
             response["success"]["models_ids"].append(model["model_id"])
             Dynamo().put_entity(model)
