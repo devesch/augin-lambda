@@ -2,15 +2,15 @@
 
 progress {
     position: relative;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
     flex-grow: 2;
     border: 2px solid colors.color("color-neutral-600");
     color: colors.color("color-primary-700");
     accent-color: colors.color("color-primary-700");
     background-color: colors.color("color-primary-50");
-    height: 1rem;
+    height: 1.5rem !important;
     width: 100%;
     vertical-align: unset;
     block-size: unset;
