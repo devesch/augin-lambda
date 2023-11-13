@@ -1,4 +1,5 @@
 import json
+import os
 from utils.Config import lambda_constants
 from utils.utils.Validation import Validation
 from utils.utils.StrFormat import StrFormat
@@ -191,7 +192,7 @@ class Http:
     def redirect(self, url):
         if url == "home":
             url = ""
-        return f"<script>function openPage() {{ window.location.replace('{lambda_constants['domain_name_url']}/{url}'); }} document.onload = openPage();</script>"
+        return f"<script>function openPage() {{ window.location.replace('/{url}'); }} document.onload = openPage();</script>"
 
     def redirect_to_another_url(self, url):
         if url == "home":
@@ -245,15 +246,18 @@ class Http:
         response["body"] = re.sub(r">\s+<", "><", response["body"])
         response["body"] = re.sub(r"<!--.*?-->", "", response["body"], flags=re.DOTALL)
 
-        if "dev" in event.get_prefix():
-            domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
+        # if "dev" in event.get_prefix():
+        #     domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
+        # else:
+        if os.environ.get("AWS_EXECUTION_ENV") is None:
+            domain = ".127.0.0.1:3000"
         else:
             domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
-            # domain = "tqs.com.br"
+        # domain = "tqs.com.br"
         if user_cookie:
             response["headers"]["Set-Cookie"] = f"__Secure-token={user.user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"
         if command == "login":
-            response["headers"]["Set-Cookie"] = f"__Secure-token={user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"
+            response["headers"]["Set-Cookie"] = f"__Secure-token={user_auth_token}; Secure; path=/; Max-Age=7776000;"
         elif command == "logout":
             response["headers"]["Set-Cookie"] = f"__Secure-token=; Secure; domain={domain}; path=/; Max-Age=-1;"
         elif command == "change_cookie_policy":

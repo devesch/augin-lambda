@@ -6,7 +6,7 @@
     </div>
     <div class="login__title-container">
         <h2>{{Bem vindo ao Augin, para prosseguir precisamos seus dados de login.}}</h2>
-        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <form action="/{{user_url_val}}" method="POST">
             <input hidden id="user_email" value="{{user_email_val}}">
             <div class="login__input-container floating-input">
                 <input type="password" name="user_password" value="{{user_password_val}}" id="password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">

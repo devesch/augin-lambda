@@ -3,7 +3,7 @@
 </button>
 <header class="header--my-plan" id="menu">
     <div class="header__title-close-container">
-        <a href="{{domain_name_url_val}}">
+        <a href="">
             <picture>
                 <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
                 <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
@@ -18,13 +18,13 @@
         <strong>{{Acesso}}</strong>
         <ul class="my-plan__nav__ul">
             <li class="{{user_login_active_val}}">
-                <a href="{{domain_name_url_val}}/user_login">
+                <a href="/user_login">
                     <img src="{{cdn_val}}/assets/icons/login.svg" alt="" width="24" height="24" />
                     <span>{{Fazer login}}</span>
                 </a>
             </li>
             <li class="{{user_email_register_active_val}}">
-                <a href="{{domain_name_url_val}}/user_email_register">
+                <a href="/user_email_register">
                     <img src="{{cdn_val}}/assets/icons/person_add.svg" alt="" width="24" height="24" />
                     <span>{{Criar conta}}</span>
                 </a>
@@ -51,7 +51,7 @@
         <section class="my-plan__profile">
             <menu class="my-plan__profile-menu">
                 <li>
-                    <form class="label-select-container" action="{{domain_name_url_val}}/home" method="POST">
+                    <form class="label-select-container" action="/home" method="POST">
                         <label class="button" for="select_translation">
                             <img src="{{cdn_val}}/assets/icons/translate.svg" alt="Trocar idioma" width="24" height="24">
                         </label>

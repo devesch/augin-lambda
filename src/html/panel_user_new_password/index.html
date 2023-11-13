@@ -4,7 +4,7 @@
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Altere sua senha}}</h1>
     </div>
-    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" class="create-account__form-container">
+    <form action="/{{user_url_val}}" method="POST" class="create-account__form-container">
         <h2>{{Digite sua atual senha e a nova senha desejada para}} {{user_email_val}}</h2>
         <div class="create-account__input-container floating-input">
             <input type="password" name="user_current_password" value="{{user_current_password_val}}" id="user_current_password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">

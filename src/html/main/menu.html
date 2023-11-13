@@ -1,23 +1,23 @@
 <header class="{{webview_class_val}}">
     <div class="header-container">
         <div>
-            <a href="{{domain_name_url_val}}/user_login/">
+            <a href="/user_login/">
                 <img src="{{cdn_val}}/assets/icons/project-logo.svg" width="95" height="19" alt="Logo {{project_name_val}}">
             </a>
         </div>
         <nav class="menu-desktop">
             <div>
-                <a class="{{processing_projects_active_val}}" href="{{domain_name_url_val}}/processing_projects">Fila <span class="projects-notification-number" id="in_processing_projects_amount_span" style="{{in_processing_projects_style_val}}">{{in_processing_projects_amount_val}}</span></a>
+                <a class="{{processing_projects_active_val}}" href="/processing_projects">Fila <span class="projects-notification-number" id="in_processing_projects_amount_span" style="{{in_processing_projects_style_val}}">{{in_processing_projects_amount_val}}</span></a>
             </div>
             <div>
-                <a class="{{pending_projects_active_val}}" href="{{domain_name_url_val}}/pending_projects">Pendências <span class="projects-notification-number" id="pending_projects_amount_span" style="{{pending_projects_style_val}}">{{pending_projects_amount_val}}</span></a>
+                <a class="{{pending_projects_active_val}}" href="/pending_projects">Pendências <span class="projects-notification-number" id="pending_projects_amount_span" style="{{pending_projects_style_val}}">{{pending_projects_amount_val}}</span></a>
             </div>
             <div class="profile-projects-container">
                 <button class="profile-projects-dropdown-toggle-button {{projects_active_val}}" onclick="js.index.toggleProfileDropdown(this, event)" aria-controls="profile_projects_dropdown" aria-expanded="false">
                     Projetos
                 </button>
                 <div id="profile_projects_dropdown" class="profile-projects-dropdown">
-                    <a class="profile-projects-dropdown-row {{my_projects_active_val}}" href="{{domain_name_url_val}}/projects/?order=created_at&reverse=False" aria-label="Meus projetos">
+                    <a class="profile-projects-dropdown-row {{my_projects_active_val}}" href="/projects/?order=created_at&reverse=False" aria-label="Meus projetos">
                         <div class="profile-projects-dropdown-column">
                             <img src="{{cdn_val}}/assets/icons/account_box.svg" alt="" width="18" height="18">
                         </div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="profile-logout-container">
-                        <a class="profile-logout-link" href="{{domain_name_url_val}}/user_exit">
+                        <a class="profile-logout-link" href="/user_exit">
                             <img src="{{cdn_val}}/assets/icons/logout.svg" alt="" width="24" height="24">
                             <span>{{Sair}}</span>
                         </a>
@@ -65,17 +65,17 @@
     <nav class="menu-mobile" id="menu_mobile" role="menu" aria-hidden="true" tabindex="0" hidden>
         <ul class="menu-mobile__list">
             <li class="menu-mobile__list__item" role="menu-item">
-                <a class="{{processing_projects_active_val}}" href="{{domain_name_url_val}}/processing_projects">{{Fila}} <span class="projects-notification-number" id="in_processing_projects_amount_span" style="{{in_processing_projects_style_val}}">{{in_processing_projects_amount_val}}</span></a>
+                <a class="{{processing_projects_active_val}}" href="/processing_projects">{{Fila}} <span class="projects-notification-number" id="in_processing_projects_amount_span" style="{{in_processing_projects_style_val}}">{{in_processing_projects_amount_val}}</span></a>
             </li>
             <li class="menu-mobile__list__item" role="menu-item">
-                <a class="{{pending_projects_active_val}}" href="{{domain_name_url_val}}/pending_projects">{{Pendências}} <span class="projects-notification-number" id="pending_projects_amount_span" style="{{pending_projects_style_val}}">{{pending_projects_amount_val}}</span></a>
+                <a class="{{pending_projects_active_val}}" href="/pending_projects">{{Pendências}} <span class="projects-notification-number" id="pending_projects_amount_span" style="{{pending_projects_style_val}}">{{pending_projects_amount_val}}</span></a>
             </li>
             <li class="menu-mobile__list__item" role="menu-item">
-                <a class="{{my_projects_active_val}}" href="{{domain_name_url_val}}/projects/?order=created_at">{{Meus projetos}}</a>
+                <a class="{{my_projects_active_val}}" href="/projects/?order=created_at">{{Meus projetos}}</a>
                 {{html_projects_customers_options}}
             </li>
             <li class="menu-mobile__list__item" role="menu-item">
-                <a class="profile-logout-link" href="{{domain_name_url_val}}/user_exit">
+                <a class="profile-logout-link" href="/user_exit">
                     <span>{{Sair}}</span>
                 </a>
             </li>

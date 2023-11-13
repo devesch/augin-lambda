@@ -1,6 +1,7 @@
 from json import dumps, loads
 from base64 import b64decode
 from urllib.parse import parse_qs
+import os
 
 
 class Event:
@@ -45,6 +46,7 @@ class Event:
                 if "__Secure-token" in cookie:
                     if parse_qs(cookie):
                         return parse_qs(cookie)["__Secure-token"][0]
+                    return self.cookies[cookie]
         if hasattr(self, "headers"):
             if "__secure-token" in self.headers:
                 return self.headers["__secure-token"]
@@ -116,6 +118,8 @@ class Event:
         return getattr(self, "headers", None)
 
     def get_user_ip(self):
+        if os.environ.get("AWS_EXECUTION_ENV") is None:
+            return "1.1.1.1"
         return self.headers.get("x-forwarded-for", None)
 
     def get_user_ua_mobile(self):

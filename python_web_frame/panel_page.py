@@ -114,8 +114,7 @@ class PanelPage(BasePage):
                         ModelController().mark_model_as_error(model, "Processamento interminável")
                 else:
                     html = ReadWrite().read_html("panel_explore_project/_codes/html_models_in_processing")
-                if "dev" in event.get_prefix():
-                    html.esc("model_was_processed_where_val", model["model_was_processed_where"])
+
                 html.esc("model_id_val", model["model_id"])
                 html.esc("model_filename_val", model["model_filename"])
                 html.esc("model_processing_percentage_val", model["model_processing_percentage"])
@@ -172,7 +171,6 @@ class PanelPage(BasePage):
                 user_folder = increase_folder_visualization_count(user_folder)
             user_folder = generate_folder_data(user_folder)
             if user_folder["folders"]:
-
                 for folder in user_folder["folders"]:
                     if folder["folder_user_id"] not in user_ids_name_dict:
                         owner_user = load_user(folder["folder_user_id"])

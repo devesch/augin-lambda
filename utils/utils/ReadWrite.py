@@ -55,7 +55,7 @@ class ReadWrite:
 
         global codes
         code = codes.get(filename)
-        if code:
+        if code and os.environ.get("AWS_EXECUTION_ENV"):
             new_code = copy.deepcopy(code)
             new_code.common_changes = common_changes
         else:

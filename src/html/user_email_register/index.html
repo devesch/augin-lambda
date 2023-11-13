@@ -8,7 +8,7 @@
     </div>
     <div class="login__title-container">
         <h2>{{Insira seu email, ele será usado para criar sua conta no Augin.}}</h2>
-        <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+        <form action="/{{user_url_val}}" method="POST">
             <div class="login__input-container">
                 <div class="floating-input">
                     <input type="email" name="user_email" value="{{user_email_val}}" id="login_input" placeholder=" " required autofocus maxlength="500">
@@ -20,7 +20,7 @@
                 {{error_msg_val}}
             </span>
             <div class="login__button-container">
-                <a href="{{domain_name_url_val}}/user_login" class="button ghost">{{Voltar}}</a>
+                <a href="/user_login" class="button ghost">{{Voltar}}</a>
                 <button type="submit">{{Validar Email}}</button>
             </div>
         </form>

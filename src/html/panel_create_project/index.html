@@ -30,7 +30,7 @@
         <input onchange="js.index.uploadModel(this)" class="upload-file-input" type="file" name="upload_new_project" id="upload_new_project" required accept=".IFC, .FBX, .GLB, .ZIP" multiple>
     </div>
 
-    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+    <form action="/{{user_url_val}}" method="POST">
         <input hidden id="uploading_index_input" value="{{uploading_index_input_val}}">
 
         <article id="uploading_div" class="panel-create-project-uploading-container">{{html_uploading_models}}</article>

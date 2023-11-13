@@ -4,7 +4,7 @@
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Criar conta}}</h1>
     </div>
-    <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST" class="create-account__form-container">
+    <form action="/{{user_url_val}}" method="POST" class="create-account__form-container">
         <h2>{{Estamos quase lá! Preencha as informações abaixo e vamos criar sua conta.}}</h2>
         <div class="create-account__input-container floating-input">
             <input readonly type="email" name="user_email" value="{{user_email_val}}" id="email-account_input" placeholder=" " required maxlength="500">
@@ -35,15 +35,15 @@
         <div class="checkbox-container">
             <div class="checkbox-default">
                 <input type="checkbox" id="user_aggre_with_terms" name="user_aggre_with_terms" required {{user_aggre_with_terms_checked_val}}>
-                <label for="user_aggre_with_terms">{{Eu li e concordo com o contrato de}} <a class="link--primary" href="{{domain_name_url_val}}/user_terms" target="_blank">{{Termos e condiçōes}}</a></label>
+                <label for="user_aggre_with_terms">{{Eu li e concordo com o contrato de}} <a class="link--primary" href="/user_terms" target="_blank">{{Termos e condiçōes}}</a></label>
             </div>
             <div class="checkbox-default">
                 <input type="checkbox" id="user_aggre_with_privacy_policy" name="user_aggre_with_privacy_policy" required {{user_aggre_with_privacy_policy_checked_val}}>
-                <label for="user_aggre_with_privacy_policy">{{Eu li e concordo com o contrato de}} <a class="link--primary" href="{{domain_name_url_val}}/user_privacy_policy" target="_blank">{{Política de privacidade}}</a></label>
+                <label for="user_aggre_with_privacy_policy">{{Eu li e concordo com o contrato de}} <a class="link--primary" href="/user_privacy_policy" target="_blank">{{Política de privacidade}}</a></label>
             </div>
             <div class="checkbox-default">
                 <input type="checkbox" id="user_aggre_with_cookies_policy" name="user_aggre_with_cookies_policy" required {{user_aggre_with_cookies_policy_checked_val}}>
-                <label for="user_aggre_with_cookies_policy">{{Eu li e concordo com o contrato de}} <a class="link--primary" href="{{domain_name_url_val}}/user_cookies_policy" target="_blank">{{Política de cookies}}</a></label>
+                <label for="user_aggre_with_cookies_policy">{{Eu li e concordo com o contrato de}} <a class="link--primary" href="/user_cookies_policy" target="_blank">{{Política de cookies}}</a></label>
             </div>
         </div>
 

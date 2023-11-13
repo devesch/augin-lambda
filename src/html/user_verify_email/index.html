@@ -8,7 +8,7 @@
         <h2>{{Insira abaixo o código que enviamos para o email}}</h2>
         <h3>{{user_email_val}}</h3>
         <p>{{Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM.}}</p>
-        <form class="page__box-email-verify__form" method="POST" action="{{domain_name_url_val}}/{{user_url_val}}">
+        <form class="page__box-email-verify__form" method="POST" action="/{{user_url_val}}">
             <div class="page__box-email-verify__form__entry__box-code">
                 <input id="verify_email_code_1" aria-label="{{Digite o primeiro dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_1" value="{{verify_email_code_1_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder=" " inputmode="numeric" required />
                 <input id="verify_email_code_2" aria-label="{{Digite o segundo dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_2" value="{{verify_email_code_2_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder=" " inputmode="numeric" required />
@@ -20,8 +20,8 @@
             <span class="error" style="{{error_msg_visibility_val}}">{{error_msg_val}}</span>
         </form>
         <div class="verify-code-button-container">
-            <a href="{{domain_name_url_val}}/user_email_register" class="button ghost">{{Alterar email}}</a>
-            <form action="{{domain_name_url_val}}/{{user_url_val}}" method="POST">
+            <a href="/user_email_register" class="button ghost">{{Alterar email}}</a>
+            <form action="/{{user_url_val}}" method="POST">
                 <input type="hidden" name="send_new_code" value="send_new_code">
                 <button id="resend_code_button" type="submit" class="button" disabled>{{Reenviar código}}</button>
             </form>

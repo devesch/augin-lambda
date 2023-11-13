@@ -2,7 +2,7 @@
 </body>
 
 <aside class="footer-cookies {{open_modal_cookie_policy_val}}">
-    <form action="{{domain_name_url_val}}/home" method="POST" id="form_cookie">
+    <form action="/home" method="POST" id="form_cookie">
         <input hidden="hidden" name="user_url" value="{{user_url_val}}">
         <input hidden="hidden" name="change_cookie_policy" value="true">
         <div class="footer-cookies-container open">
@@ -10,8 +10,8 @@
             <div class="footer-cookies__paragraph-container">
                 <p>{{Utilizamos cookies para otimizar nosso site e coletar estatísticas de uso}}.</p>
                 <p>
-                    <a class="policy-link" href="{{domain_name_url_val}}/privacy_policy" title="Política de Privacidade" target="_blank">{{Política de Privacidade}}</a> {{e}}
-                    <a class="policy-link" href="{{domain_name_url_val}}/cookies_policy" title="Política de Cookies" target="_blank">{{Política de Cookies}}</a>.
+                    <a class="policy-link" href="/privacy_policy" title="Política de Privacidade" target="_blank">{{Política de Privacidade}}</a> {{e}}
+                    <a class="policy-link" href="/cookies_policy" title="Política de Cookies" target="_blank">{{Política de Cookies}}</a>.
                 </p>
             </div>
             <div class="button--cookies-container">
