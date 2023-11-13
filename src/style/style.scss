@@ -2435,23 +2435,20 @@ input[list]::-ms-clear {
     cursor: pointer;
 }
 
-.label-select-container {
+.label-select-container,
+.my-plan__profile-menu a {
     position: relative;
     display: inline-block;
     width: 48px;
     height: 48px;
 
-    label {
+    label,
+    button {
         width: 100%;
         height: 100%;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-    }
-
-    button {
-        width: 100%;
-        height: 100%;
     }
 
     select {
