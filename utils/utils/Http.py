@@ -258,7 +258,7 @@ class Http:
         if user_cookie:
             response["headers"]["Set-Cookie"] = f"__Secure-token={user.user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"
         if command == "login":
-            response["headers"]["Set-Cookie"] = f"__Secure-token={user_auth_token}; Secure; path=/; Max-Age=7776000;"
+            response["headers"]["Set-Cookie"] = f"__Secure-token={user_auth_token}; Secure; domain={domain} path=/; Max-Age=7776000;"
         elif command == "logout":
             response["headers"]["Set-Cookie"] = f"__Secure-token=; Secure; domain={domain}; path=/; Max-Age=-1;"
         elif command == "change_cookie_policy":
