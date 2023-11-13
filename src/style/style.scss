@@ -1961,12 +1961,15 @@ input[list]::-ms-clear {
         @media only screen and (max-width: 1200px) {
             flex-grow: 1;
         }
+    }
 
+    select,
+    input {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         height: 48px;
     }
-
+    
     select {
         width: fit-content;
     }
