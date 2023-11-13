@@ -142,6 +142,9 @@ class Dynamo:
         return self.execute_query({"TableName": lambda_constants["table_project"], "KeyConditionExpression": "#bef90 = :bef90 And begins_with(#bef91, :bef91)", "ExpressionAttributeNames": {"#bef90": "pk", "#bef91": "sk"}, "ExpressionAttributeValues": {":bef90": {"S": "user#" + user_id}, ":bef91": {"S": "payment_method#"}}})
 
     ### USER ###
+    def get_valid_email(self, email):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "valid_email#" + email}, "sk": {"S": "valid_email#" + email}}})
+
     def query_users_with_ip(self, user_ip):
         query = self.execute_query({"TableName": lambda_constants["table_project"], "IndexName": "user_ip-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "user_ip"}, "ExpressionAttributeValues": {":bef90": {"S": user_ip}}})
         return self.execute_batch_get_item(query)

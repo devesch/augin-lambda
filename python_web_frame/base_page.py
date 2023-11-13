@@ -127,6 +127,8 @@ class BasePage:
 
     def render_menu_panel_no_icons(self, common_changes={}):
         html = ReadWrite().read_html("main/menu_panel_no_icons", common_changes)
+        if self.route == "error":
+            html.esc("access_visibility_val", "display:none;")
         html.esc("user_url_val", self.event.get_url())
 
         ### REMOVE THIS PARTE AND USE THE CODE BELOW

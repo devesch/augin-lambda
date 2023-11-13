@@ -1,6 +1,8 @@
 ﻿from python_web_frame.user_page import UserPage
 from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.Validation import Validation
+from objects.ValidEmail import ValidEmail
+from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from objects.User import load_user
 
@@ -23,6 +25,14 @@ class UserEmailRegister(UserPage):
             return self.render_get_with_error("Informe um email.")
         if not Validation().check_if_email(self.post["user_email"]):
             return self.render_get_with_error("Email inválido.")
+
+        valid_email = Dynamo().get_valid_email(self.post["user_email"])
+        if not valid_email:
+            if not Validation().check_if_email_valid_in_zerobounce(self.post["user_email"]):
+                return self.render_get_with_error("Email inválido por favor informe outro email.")
+            else:
+                valid_email = ValidEmail(self.post["user_email"]).__dict__
+                Dynamo().put_entity(valid_email)
 
         user = load_user(self.post["user_email"])
         if user:

@@ -30,12 +30,17 @@
 </main>
 {{footer}}
 
+<input id="allow_resend_button_input" value="{{allow_resend_button_val}}">
 <script>
     window.onload = async function () {
         focus_input = document.getElementById("{{focus_input_id_val}}");
         focus_input.focus();
         js.index.addEventListenerToVerificationCodeInputs();
-        await js.index.sleep(15000);
+
+        allow_resend_button_input = document.getElementById("allow_resend_button_input");
+        if (allow_resend_button_input.value == "False") {
+            await js.index.sleep(15000);
+        }
         let resend_code_button = document.getElementById("resend_code_button");
         resend_code_button.removeAttribute("disabled");
     };

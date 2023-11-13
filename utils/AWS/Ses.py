@@ -105,7 +105,7 @@ class Ses:
                     "Data": subject_data,
                 },
             },
-            Source=lambda_constants["email_sender"],
+            Source=f"Augin <{lambda_constants['email_sender']}>",
             ConfigurationSetName="Config",
         )
         return True

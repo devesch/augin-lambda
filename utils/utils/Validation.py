@@ -2,6 +2,7 @@ import os
 import json
 import re
 import uuid
+from utils.Config import lambda_constants
 
 
 class Validation:
@@ -11,6 +12,18 @@ class Validation:
         if cls._instance is None:
             cls._instance = super(Validation, cls).__new__(cls, *args, **kwargs)
         return cls._instance
+
+    def check_if_email_valid_in_zerobounce(self, email):
+        import requests
+
+        response = requests.get("https://api.zerobounce.net/v2/validate", params={"api_key": lambda_constants["zerobounce_apikey"], "email": email})
+        response = response.json()
+        if response["status"] == "valid":
+            return True
+        elif response["status"] == "invalid":
+            return False
+        else:
+            raise Exception("Verify ZEROBOUNCE")
 
     def check_if_is_b64_encoded(self, string):
         import base64

@@ -18,10 +18,12 @@ class UserVerifyEmail(UserPage):
         html.esc("user_email_val", self.path["user_email"])
         self.check_error_msg(html, self.error_msg)
         if self.post:
+            html.esc("allow_resend_button_val", "True")
             html.esc("focus_input_id_val", "verify_email_code_6")
             for param in self.post:
                 html.esc(param + "_val", self.post[param])
         else:
+            html.esc("allow_resend_button_val", "False")
             html.esc("focus_input_id_val", "verify_email_code_1")
 
         if self.path.get("change_email"):

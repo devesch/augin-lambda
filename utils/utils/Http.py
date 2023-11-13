@@ -111,11 +111,11 @@ class Http:
             if "city" in api_cep_response:
                 if "code" in api_cep_response["city"]:
                     cep_address_data = {
-                        "state": api_cep_response["state"],
-                        "city": api_cep_response["city"]["name"],
+                        "state": api_cep_response["state"].upper(),
+                        "city": api_cep_response["city"]["name"].title(),
                         "city_code": api_cep_response["city"]["code"],
-                        "neighborhood": api_cep_response["district"],
-                        "street": api_cep_response["streetSuffix"] + " " + api_cep_response["street"],
+                        "neighborhood": api_cep_response["district"].title(),
+                        "street": api_cep_response["streetSuffix"].title() + " " + api_cep_response["street"].title(),
                     }
         return cep_address_data
 
@@ -128,11 +128,11 @@ class Http:
             cnpj_address_data = {
                 "name": api_cnpj_response["success"]["name"],
                 "zip_code": api_cnpj_response["success"]["address"]["postalCode"].replace("-", ""),
-                "state": api_cnpj_response["success"]["address"]["state"],
-                "city": api_cnpj_response["success"]["address"]["city"]["name"],
+                "state": api_cnpj_response["success"]["address"]["state"].upper(),
+                "city": api_cnpj_response["success"]["address"]["city"]["name"].title(),
                 "city_code": api_cnpj_response["success"]["address"]["city"]["code"],
-                "neighborhood": api_cnpj_response["success"]["address"]["district"],
-                "street": api_cnpj_response["success"]["address"]["street"],
+                "neighborhood": api_cnpj_response["success"]["address"]["district"].title(),
+                "street": api_cnpj_response["success"]["address"]["street"].title(),
                 "street_number": api_cnpj_response["success"]["address"]["number"],
             }
         if api_cnpj_response["success"].get("complement"):
