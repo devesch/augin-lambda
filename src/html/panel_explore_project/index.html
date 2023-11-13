@@ -179,7 +179,7 @@
             <h1 class="modal-header-title">{{Compartilhar}}</h1>
             <div class="switch-container" id="folder_is_accessible_switch_div">
                 <div class="input-container">
-                    <input onclick="js.index.changeFolderAcessibleLabel(this)" type="checkbox" name="folder_is_accessible" id="folder_is_accessible_input">
+                    <input onclick="js.index.changeAcessibleLabel(this, 'folder')" type="checkbox" name="folder_is_accessible" id="folder_is_accessible_input">
                     <label class="switch" for="folder_is_accessible_input">
                         <div class="slider"></div>
                     </label>
@@ -248,12 +248,12 @@
             <h1 class="modal-header-title">{{Compartilhar}}</h1>
             <div class="switch-container" id="project_is_accessible_switch_div">
                 <div class="input-container">
-                    <input type="checkbox" name="project_is_accessible" id="project_is_accessible_input">
+                    <input onclick="js.index.changeAcessibleLabel(this, 'project')" type="checkbox" name="project_is_accessible" id="project_is_accessible_input">
                     <label class="switch" for="project_is_accessible_input">
                         <div class="slider"></div>
                     </label>
                 </div>
-                <label for="project_is_accessible_input">{{Link ativo}}</label>
+                <label for="project_is_accessible_input" id="project_is_accessible_label">{{Link ativo}}</label>
             </div>
         </div>
         <div class="modal-content">

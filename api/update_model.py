@@ -19,6 +19,11 @@ class UpdateModel(BasePage):
 
         return getattr(self, self.post["command"])(model)
 
+    def update_project_is_acessible(self, model):
+        model["model_is_accessible"] = self.post.get("model_is_accessible")
+        Dynamo().put_entity(model)
+        return {"success": "model acessible updated"}
+
     def remove_model_id_from_federated_model(self, model):
         ModelController().remove_model_id_from_federated_model(model, self.post["model_id_to_be_removed"])
         if model["model_folder_id"]:

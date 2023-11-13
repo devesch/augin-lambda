@@ -209,19 +209,18 @@ class UpdateUser(PanelPage):
         self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
         return {"success": "folder removed from shared"}
 
-    def update_make_folder_acessible(self):
-        folder = Dynamo().get_folder("c5f979e7ff59")
+    def update_folder_is_acessible(self):
+        folder = Dynamo().get_folder(self.post["folder_id"])
         if not folder:
             return {"error": "Nenhuma pasta encontrada com os dados fornecidos"}
         if folder["folder_user_id"] != self.user.user_id:
             return {"error": "Esta pasta não pertence a este usuário"}
 
         folder["folder_is_accessible"] = self.post.get("folder_is_accessible")
-
         Dynamo().put_entity(folder)
         return {"success": "folder acessible updated"}
 
-    def update_folder_is_accessible(self):
+    def update_folder_password(self):
         folder = Dynamo().get_folder(self.post["folder_id"])
         if not folder:
             return {"error": "Nenhuma pasta encontrada com os dados fornecidos"}
@@ -267,8 +266,6 @@ class UpdateUser(PanelPage):
             return {"error": "Informe um link para adicionar o arquivo à sua conta"}
         if "model_code" in self.post["shared_link"]:
             model = Dynamo().get_model_by_code(self.post["shared_link"].split("model_code=")[1])
-            if not model["model_user_id"] == self.user.user_id:
-                return {"error": "Este projeto pertence a este usuário"}
             if not model:
                 return {"error": "Nenhum projeto encontrado com o link fornecido"}
             if not model["model_is_accessible"]:
@@ -279,7 +276,7 @@ class UpdateUser(PanelPage):
                 return {"error": "A senha informada está incorreta"}
 
             if self.user:
-                if not folder["model_user_id"] == self.user.user_id:
+                if model["model_user_id"] == self.user.user_id:
                     return {"error": "Este modelo já pertence a este usuário"}
                 user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
                 if model["model_id"] not in user_shared_dicts["files"]:
@@ -302,7 +299,7 @@ class UpdateUser(PanelPage):
                 return {"error": "A senha informada está incorreta"}
 
             if self.user:
-                if not folder["folder_user_id"] == self.user.user_id:
+                if folder["folder_user_id"] == self.user.user_id:
                     return {"error": "Esta pasta já pertence a este usuário"}
                 user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
                 if folder["folder_id"] not in user_shared_dicts["folders"]:

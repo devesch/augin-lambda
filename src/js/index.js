@@ -12,9 +12,13 @@ import {
 
 
 
-export async function changeFolderAcessibleLabel(input) {
-    console.log(input.checked);
-    var folder_is_accessible_label = document.getElementById("folder_is_accessible_label");
+export async function changeAcessibleLabel(input, type) {
+    if (type == "folder") {
+        var accessible_label = document.getElementById("folder_is_accessible_label");
+    }
+    if (type == "project") {
+        var accessible_label = document.getElementById("project_is_accessible_label");
+    }
     if (input.checked == true) {
         var translate_response = await apiCaller("translate", {
             "key": "Link ativo"
@@ -24,8 +28,9 @@ export async function changeFolderAcessibleLabel(input) {
             "key": "Link inativo"
         });
     }
-    folder_is_accessible_label.innerHTML = translate_response["success"];
+    accessible_label.innerHTML = translate_response["success"];
 }
+
 
 
 export async function showSelectedPaymentPage(index) {
@@ -1242,13 +1247,13 @@ export async function openModalShareProject(model_id, model_name, model_visualiz
     let model_visualization_count_span = document.getElementById("model_visualization_count_span");
     let project_password_error_span = document.getElementById("project_password_error_span");
     let project_is_accessible_input = document.getElementById("project_is_accessible_input");
+    var project_is_accessible_label = document.getElementById("project_is_accessible_label");
 
     if (model_is_acessible == "True") {
         project_is_accessible_input.checked = "checked";
     } else {
         project_is_accessible_input.checked = "";
     }
-
 
     if (model_is_password_protected == "True") {
         project_is_password_protected_input.checked = "checked";
@@ -1269,6 +1274,22 @@ export async function openModalShareProject(model_id, model_name, model_visualiz
     copy_project_share_link_input.value = model_share_link;
     project_share_link_qrcode_img.src = model_share_link_qrcode;
     openModal('.modal.share-modal');
+
+    let update_model_response = await apiCaller("update_model", {
+        "command": "update_project_is_acessible",
+        "model_id": model_id,
+        "model_is_accessible": "true"
+    });
+
+    if ("success" in update_model_response) {
+        project_is_accessible_input.checked = "checked";
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Link ativo"
+        });
+
+        folder_is_accessible_label.innerText = translate_response["success"];
+    }
 }
 
 export async function openModalDeleteProject(model_id, model_name, model_used_in_federated_ids) {
@@ -2285,7 +2306,7 @@ export async function openModalShareFolder(folder_id, folder_name, folder_visual
     openModal('.modal.share-folder-modal');
 
     let update_user_response = await apiCaller("update_user", {
-        "command": "update_make_folder_acessible",
+        "command": "update_folder_is_acessible",
         "folder_id": folder_id,
         "folder_is_accessible": "true"
     });
