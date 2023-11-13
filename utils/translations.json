@@ -2839,6 +2839,11 @@
         "es": "Enlace o carpeta del proyecto",
         "pt": "Link do projeto ou pasta"
     },
+    "Link inativo": {
+        "en": "Inactive link",
+        "es": "Enlace inactivo",
+        "pt": "Link inativo"
+    },
     "Link para a Compra": {
         "en": "Link to purchase",
         "es": "Enlace para la compra",

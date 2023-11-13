@@ -12,6 +12,22 @@ import {
 
 
 
+export async function changeFolderAcessibleLabel(input) {
+    console.log(input.checked);
+    var folder_is_accessible_label = document.getElementById("folder_is_accessible_label");
+    if (input.checked == true) {
+        var translate_response = await apiCaller("translate", {
+            "key": "Link ativo"
+        });
+    } else {
+        var translate_response = await apiCaller("translate", {
+            "key": "Link inativo"
+        });
+    }
+    folder_is_accessible_label.innerHTML = translate_response["success"];
+}
+
+
 export async function showSelectedPaymentPage(index) {
     let decrease_history_page_button = document.getElementById("decrease_history_page_button");
     let increase_history_page_button = document.getElementById("increase_history_page_button");
@@ -2240,6 +2256,7 @@ export async function openModalShareFolder(folder_id, folder_name, folder_visual
     let folder_visualization_count_span = document.getElementById("folder_visualization_count_span");
     let folder_password_error_span = document.getElementById("folder_password_error_span");
     let folder_is_accessible_input = document.getElementById("folder_is_accessible_input");
+    var folder_is_accessible_label = document.getElementById("folder_is_accessible_label");
 
     if (folder_is_acessible == "True") {
         folder_is_accessible_input.checked = "checked";
@@ -2266,7 +2283,25 @@ export async function openModalShareFolder(folder_id, folder_name, folder_visual
     copy_folder_share_link_input.value = folder_share_link;
     folder_share_link_qrcode_img.src = folder_share_link_qrcode;
     openModal('.modal.share-folder-modal');
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "update_folder_is_accessible",
+        "folder_id": folder_id_input,
+        "folder_is_accessible": "True"
+    });
+
+    if ("success" in update_user_response) {
+        folder_is_accessible_input.checked = "checked";
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Link ativo"
+        });
+
+        folder_is_accessible_label.innerText = translate_response["success"];
+    }
 }
+
+
 export async function updateFolderPassword() {
     var folder_id_input = document.getElementById("update_folder_id_input");
     var folder_is_password_protected_input = document.getElementById("folder_is_password_protected_input");

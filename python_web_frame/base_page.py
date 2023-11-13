@@ -225,8 +225,11 @@ class BasePage:
 
     def show_html_menu_profile_section(self):
         html = ReadWrite().read_html("main/_codes/html_menu_profile_section")
-        html.esc("user_name_val", self.user.user_name)
         html.esc("user_email_val", self.user.user_email)
+        if len(self.user.user_name) < 25:
+            html.esc("user_name_val", self.user.user_name)
+        else:
+            html.esc("user_name_val", self.user.user_name[:25] + "...")
         html.esc("user_client_type_val", self.user.user_client_type)
         html.esc("user_thumb_val", self.user.generate_user_thumb_url())
         html.esc("user_url_val", self.event.get_url())

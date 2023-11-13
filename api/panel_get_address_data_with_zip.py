@@ -4,7 +4,6 @@ from utils.utils.Http import Http
 
 class PanelGetAddressDataWithZip(BasePage):
     def run(self):
-        # self.utils.send_payload_email(self.event, "CEP DATA")
         if not self.post.get("user_zip_code"):
             return {"error": "Nenhum código postal fornecido"}
         api_cep_response = Http().get_request_address_data_with_zip_code(self.post["user_zip_code"])

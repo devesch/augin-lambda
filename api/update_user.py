@@ -209,6 +209,15 @@ class UpdateUser(PanelPage):
         self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
         return {"success": "folder removed from shared"}
 
+    def update_folder_acessible(self):
+        folder = Dynamo().get_folder(self.post["folder_id"])
+        if not folder:
+            return {"error": "Nenhuma pasta encontrada com os dados fornecidos"}
+        if folder["folder_user_id"] != self.user.user_id:
+            return {"error": "Esta pasta não pertence a este usuário"}
+
+        raise Exception("TODO")
+
     def update_folder_password(self):
         folder = Dynamo().get_folder(self.post["folder_id"])
         if not folder:
