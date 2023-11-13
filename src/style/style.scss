@@ -2438,6 +2438,25 @@ input[list]::-ms-clear {
 .label-select-container {
     position: relative;
     display: inline-block;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        width: 100%;
+        height: 100%;
+    }
+
+    select {
+        width: 100%;
+        height: 100%;
+        max-width: 48px;
+        max-height: 48px;
+        z-index: 1;
+    }
+
 }
 
 .label-select-container:hover {
