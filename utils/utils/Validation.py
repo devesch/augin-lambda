@@ -96,7 +96,7 @@ class Validation:
     def check_if_email(self, email):
         import re
 
-        regex_email = r"([A-Za-z0-9]+[._])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+"
+        regex_email = r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
         return bool(re.fullmatch(regex_email, email))
 
     def check_if_password(self, password):
