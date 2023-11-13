@@ -2449,6 +2449,7 @@ input[list]::-ms-clear {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+        padding: 0;
     }
 
     select {
@@ -2457,6 +2458,7 @@ input[list]::-ms-clear {
         max-width: 48px;
         max-height: 48px;
         z-index: 1;
+        padding: 0;
     }
 
 }
