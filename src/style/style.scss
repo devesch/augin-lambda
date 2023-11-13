@@ -679,7 +679,8 @@ input[list]::-ms-clear {
 .my-plan__try-pro-10 {
     margin: auto;
     width: min(30rem, 100%);
-    padding: 1rem;
+    padding: 0.5rem 0.25rem;
+    gap: 0.5rem;
     background-color: colors.color("color-neutral-200");
     border-radius: 1rem;
     color: colors.color("color-black");
@@ -687,18 +688,17 @@ input[list]::-ms-clear {
 
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
 .my-plan__try-pro-10__description {
     max-width: 9rem;
     margin: auto;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 .my-plan__try-pro-10__title {
     font-weight: bold;
-    font-size: fonts.$font-heading-5-size;
+    font-size: 1.4rem;
 }
 
 .my-plan__try-pro-10__paragraph {
@@ -706,7 +706,8 @@ input[list]::-ms-clear {
 }
 
 .my-plan__try-pro-10__button {
-
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .my-plan__profile {
