@@ -715,26 +715,12 @@ input[list]::-ms-clear {
 
     button:hover,
     .button:hover {
-        background-color: colors.color("color-primary-700");
-        border-color: colors.color("color-primary-700");
-
-        svg,
-        img {
-            filter: grayscale(100) brightness(100);
-        }
-
+        background-color: colors.color("color-neutral-900") !important;
     }
 
     button:active,
     .button:active {
-        background-color: colors.color("color-primary-500");
-        border-color: colors.color("color-primary-500");
-
-        svg,
-        img {
-            filter: grayscale(100) brightness(100);
-        }
-
+        background-color: colors.color("color-neutral-700") !important;
     }
 
 }
