@@ -629,23 +629,48 @@ input[list]::-ms-clear {
         vertical-align: middle;
     }
 
+    // li {
+    //     position: relative;
+    //     padding-block: 0.5rem;
+    //     margin-inline: -2rem;
+    //     padding-inline: 2rem;
+    //     transition: background-color 0.5s ease;
+    // }
+
+    // li.active {
+    //     background-color: colors.color("color-neutral-700");
+    // }
+
+    // li:hover {
+    //     background-color: colors.color("color-black");
+    // }
+
     li {
+        padding: 0;
         position: relative;
-        padding-block: 0.5rem;
         margin-inline: -2rem;
-        padding-inline: 2rem;
+    }
+
+    li a,
+    li button {
+        width: 100%;
+        height: 100%;
+        padding: 0.5rem 2rem;
         transition: background-color 0.5s ease;
     }
 
-    li.active {
+    li a.active,
+    li button.active {
         background-color: colors.color("color-neutral-700");
     }
 
-    li:hover {
+    li a:hover,
+    li button:hover {
         background-color: colors.color("color-black");
     }
 
-    li.active::after {
+    li a.active::after,
+    li button.active::after {
         content: "";
         position: absolute;
         display: inline-block;
