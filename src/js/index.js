@@ -2285,9 +2285,9 @@ export async function openModalShareFolder(folder_id, folder_name, folder_visual
     openModal('.modal.share-folder-modal');
 
     let update_user_response = await apiCaller("update_user", {
-        "command": "update_folder_is_accessible",
-        "folder_id": folder_id_input,
-        "folder_is_accessible": "True"
+        "command": "update_make_folder_acessible",
+        "folder_id": folder_id,
+        "folder_is_accessible": "true"
     });
 
     if ("success" in update_user_response) {
