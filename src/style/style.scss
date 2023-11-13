@@ -830,6 +830,7 @@ input[list]::-ms-clear {
     justify-content: end;
     flex-wrap: wrap;
     gap: 1rem;
+    height: 48px;
 
     @media only screen and (max-width: breakpoints.$x-large) {
         order: -1;
@@ -1960,6 +1961,10 @@ input[list]::-ms-clear {
         @media only screen and (max-width: 1200px) {
             flex-grow: 1;
         }
+
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        height: 48px;
     }
 
     select {
@@ -2052,7 +2057,7 @@ input[list]::-ms-clear {
         img {
             position: absolute;
             right: 0.25rem;
-            top: 1rem;
+            top: 12px;
         }
 
     }
