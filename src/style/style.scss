@@ -2461,6 +2461,12 @@ input[list]::-ms-clear {
 
 }
 
+.my-plan__profile-menu a {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
 .label-select-container:hover {
     label {
         background-color: colors.color("color-primary-900");
