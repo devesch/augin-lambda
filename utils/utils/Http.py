@@ -250,7 +250,7 @@ class Http:
         #     domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
         # else:
         if os.environ.get("AWS_EXECUTION_ENV") is None:
-            domain = ".127.0.0.1:3000"
+            domain = ".127.0.0.1"
         else:
             domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
         # domain = "tqs.com.br"
@@ -258,7 +258,7 @@ class Http:
         if user_cookie:
             response["headers"]["Set-Cookie"] = f"__Secure-token={user.user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"
         if command == "login":
-            response["headers"]["Set-Cookie"] = f"__Secure-token={user_auth_token}; Secure; domain={domain} path=/; Max-Age=7776000;"
+            response["headers"]["Set-Cookie"] = f"__Secure-token={user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"
         elif command == "logout":
             response["headers"]["Set-Cookie"] = f"__Secure-token=; Secure; domain={domain}; path=/; Max-Age=-1;"
         elif command == "change_cookie_policy":
