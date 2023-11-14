@@ -4,20 +4,90 @@
     {{html_paneluserdata_div}}
     {{html_paneluserbox_div}}
     <div class="my-plan__title-container">
-        <h1 class="my-plan__title">{{Atualize seus dados}}</h1>
+        <h1 class="my-plan__title">{{Editar perfil}}</h1>
     </div>
-    <div class="panel-user-data__main-container">
-        <div class="upload-file-container {{panel_user_data_modal_visibility_val}}">
-            <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input" aria-label="{{Adicionar foto de perfil}}">
-                <img id="user_thumb_img" class="panel-user-data__file-image" src="{{user_thumb_url_val}}" width="24" height="24" alt="">
-                <img src="{{cdn_val}}/assets/icons/add-photo.svg" class="panel-user-data__hover-image" width="40" height="40" alt="">
-            </label>
-            <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
-            <span id="update_user_thumb_error_msg_span"></span>
-        </div>
+    <article>
         {{html_physical_or_company_form}}
 
-        {{html_change_password_link}}
+        <form action="/{{user_url_val}}" method="POST" id="form" class="panel-user-data__main-container">
+            <article>
+                <section>
+                    <section>
+                        <h2>Segurança e Privacidade</h2>
+                        <p>Informações de segurança e opções de privacidade.</p>
+                    </section>
+                    <section class="panel-user-data-container">
+                        <h2>{{Digite sua atual senha e a nova senha desejada para}} {{user_email_val}}</h2>
+                        <div class="create-account__input-container floating-input">
+                            <input type="password" name="user_current_password" value="{{user_current_password_val}}" id="user_current_password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                            <label for="user_current_password_input">{{Senha atual}}</label>
+                            <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_current_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                                <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
+                            </button>
+                        </div>
+                        <p class="error none">{{Deve conter apenas letras}}</p>
+                        
+                        <div class="create-account__input-container floating-input">
+                            <input type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                            <label for="user_password_input">{{Nova senha}}</label>
+                            <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
+                                <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
+                            </button>
+                        </div>
+                        <p class="input-hint">{{8 caracteres ou mais. Pode conter letras, números e símbolos.}}</p>
+                        <p class="error none">{{Senha inválida}}</p>
+
+                        <span class="error" style="{{error_msg_visibility_val}}">
+                            {{error_msg_val}}
+                        </span>
+                    </section>
+                </section>
+                <section>
+                    <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                        {{error_msg_val}}
+                    </span>
+                    <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserAccount();">
+                        Apagar minha conta
+                    </button>
+                    <button type="submit">
+                        Salvar alterações
+                    </button>
+                </section>
+            </article>
+        </form>
+
+        <form action="/{{user_url_val}}" method="POST" id="form" class="panel-user-data__main-container">
+            <article>
+                <section>
+                    <section>
+                        <h2>Imagem de perfil</h2>
+                        <p>Imagem representando você ou sua empresa. Imagens quadradas funcionam melhor.</p>
+                    </section>
+                    <section class="panel-user-data-container">
+                        <img id="user_thumb_img" class="panel-user-data__file-image" src="{{user_thumb_url_val}}" width="127" height="127" alt=""/>
+                        <div class="upload-file-container {{panel_user_data_modal_visibility_val}}">
+                            <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input" aria-label="{{Adicionar foto de perfil}}">
+                                <img src="{{cdn_val}}/assets/icons/upload_simple.svg" alt="" width="32" height="32">
+                                <p>Arraste ou clique aqui para enviar uma nova imagem de perfil. Formato JPG ou PNG.</p>
+                            </label>
+                            <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
+                            <span id="update_user_thumb_error_msg_span"></span>
+                        </div>     
+                    </section>
+                </section>
+                <section>
+                    <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                        {{error_msg_val}}
+                    </span>
+                    <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserImage();">
+                        Apagar imagem de perfil
+                    </button>
+                    <button type="submit">
+                        Salvar alterações
+                    </button>
+                </section>
+            </article>
+        </form>
 
         {{html_close_div}}
         {{html_close_div}}
@@ -27,7 +97,7 @@
             {{html_delete_account_button}}
             {{html_modify_cookies_configuration}}
         </div>
-    </div>
+    </article>
     {{html_modal_loader_spinner}}
 </main>
 {{html_delete_account_modal}}

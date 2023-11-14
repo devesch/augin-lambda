@@ -7,6 +7,7 @@ from flask import Flask, request
 import importlib
 import lambda_function
 import time
+import subprocess
 
 app = Flask(__name__)
 
@@ -68,6 +69,9 @@ def all_paths(path):
         "body": dict(request.form),
         "isBase64Encoded": False,
     }
+
+    subprocess.run(["python", "tools_for_devs/create_translations.py"])
+
     context = {}
 
     importlib.reload(lambda_function)

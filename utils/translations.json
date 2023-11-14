@@ -579,11 +579,6 @@
         "es": "Actualizar método de pago",
         "pt": "Atualizar forma de pagamento"
     },
-    "Atualize seus dados": {
-        "en": "Update your data",
-        "es": "Actualice sus datos",
-        "pt": "Atualize seus dados"
-    },
     "Atualmente você tem": {
         "en": "Currently you have",
         "es": "Actualmente tienes",
@@ -1354,6 +1349,16 @@
         "es": "DISPONIBLE",
         "pt": "DISPONÍVEL"
     },
+    "Dados básicos para acesso à conta e personalização do sistema.": {
+        "en": "Basic data for access to system access and customization.",
+        "es": "Datos básicos para el acceso al acceso y personalización del sistema.",
+        "pt": "Dados básicos para acesso à conta e personalização do sistema."
+    },
+    "Dados pessoais": {
+        "en": "Personal data",
+        "es": "Datos personales",
+        "pt": "Dados pessoais"
+    },
     "Data de criação": {
         "en": "Creation date",
         "es": "Fecha de creación",
@@ -1698,6 +1703,11 @@
         "en": "Edit",
         "es": "Editar",
         "pt": "Editar"
+    },
+    "Editar perfil": {
+        "en": "Edit profile",
+        "es": "Editar perfil",
+        "pt": "Editar perfil"
     },
     "Editor": {
         "en": "Editor",
