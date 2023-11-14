@@ -1217,10 +1217,22 @@ input[list]::-ms-clear {
 
 .panel-user-data__file-label {
     width: fit-content;
-    margin: 1rem auto;
+    margin: auto;
+    padding: 1rem 2rem;
     border-radius: 100%;
+    gap: 1rem;
+    border-radius: 1rem;
     transition: border-style 0.5s ease, background-color 0.5s ease;
-    padding: 0;
+    border-width: 4px;
+
+    p {
+        font-size: 1rem !important;
+        text-align: center;
+        font-weight: normal;
+        font-family: 'Raleway';
+        color: var(--color-black);
+    }
+
 }
 
 .panel-user-data__file-label:hover {
@@ -2581,13 +2593,6 @@ input[list]::-ms-clear {
     gap: 1rem;
 }
 
-.panel-user-data__main-container__row--image {
-    @media only screen and (max-width: 1300px) {
-        flex-direction: column;
-        -ms-flex-direction: column;
-    }
-}
-
 .panel-user-data-container {
     gap: 2rem;
 }
@@ -3306,6 +3311,27 @@ input[list]::-ms-clear {
 
     .order-info{
         display: block !important;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .panel-user-data__file-image-container {
+        max-width: 100%;
+    }
+
+    .panel-user-data__main-container__row--image {
+            flex-direction: column;
+            -ms-flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 676px) {
+    .panel-user-data__file-image-container {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-user-data__file-image {
+        margin: auto;
     }
 }
 /* Panel Order - End */
