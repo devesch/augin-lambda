@@ -1354,6 +1354,16 @@
         "es": "Datos básicos para el acceso al acceso y personalización del sistema.",
         "pt": "Dados básicos para acesso à conta e personalização do sistema."
     },
+    "Dados de faturamento": {
+        "en": "Billing data",
+        "es": "Datos de facturación",
+        "pt": "Dados de faturamento"
+    },
+    "Dados para emissão de notas-fiscais, invoices e boletos.": {
+        "en": "Data for issuance of fiscal notes, invoices and slips.",
+        "es": "Datos para la emisión de notas fiscales, facturas y resbalones.",
+        "pt": "Dados para emissão de notas-fiscais, invoices e boletos."
+    },
     "Dados pessoais": {
         "en": "Personal data",
         "es": "Datos personales",
@@ -4139,6 +4149,16 @@
         "es": "Buscar",
         "pt": "Pesquisar"
     },
+    "Pessoa física": {
+        "en": "Physical person",
+        "es": "Persona física",
+        "pt": "Pessoa física"
+    },
+    "Pessoa jurídica": {
+        "en": "Legal person",
+        "es": "Persona jurídica",
+        "pt": "Pessoa jurídica"
+    },
     "Philippines": {
         "en": "Philippines",
         "es": "Philippines",
@@ -4698,6 +4718,11 @@
         "en": "To save",
         "es": "Ahorrar",
         "pt": "Salvar"
+    },
+    "Salvar alterações": {
+        "en": "Save editions",
+        "es": "Guardar ediciones",
+        "pt": "Salvar alterações"
     },
     "Samoa": {
         "en": "Samoa",

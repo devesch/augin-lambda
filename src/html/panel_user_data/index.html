@@ -11,13 +11,12 @@
 
         <form action="/{{user_url_val}}" method="POST" id="form" class="panel-user-data__main-container">
             <article>
-                <section>
-                    <section>
-                        <h2>Segurança e Privacidade</h2>
+                <section class="panel-user-data__main-container__row">
+                    <section class="panel-user-data__main-container__column">
+                        <h2 class="panel-user-data__main-container__title">Segurança e Privacidade</h2>
                         <p>Informações de segurança e opções de privacidade.</p>
                     </section>
-                    <section class="panel-user-data-container">
-                        <h2>{{Digite sua atual senha e a nova senha desejada para}} {{user_email_val}}</h2>
+                    <section class="panel-user-data-container panel-user-data__main-container__column">
                         <div class="create-account__input-container floating-input">
                             <input type="password" name="user_current_password" value="{{user_current_password_val}}" id="user_current_password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
                             <label for="user_current_password_input">{{Senha atual}}</label>
@@ -42,10 +41,10 @@
                         </span>
                     </section>
                 </section>
-                <section>
-                    <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
-                        {{error_msg_val}}
-                    </span>
+                <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                    {{error_msg_val}}
+                </span>
+                <section class="panel-user-data__main-container__button-container">
                     <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserAccount();">
                         Apagar minha conta
                     </button>
@@ -58,12 +57,12 @@
 
         <form action="/{{user_url_val}}" method="POST" id="form" class="panel-user-data__main-container">
             <article>
-                <section>
-                    <section>
-                        <h2>Imagem de perfil</h2>
+                <section class="panel-user-data__main-container__row">
+                    <section class="panel-user-data__main-container__column">
+                        <h2 class="panel-user-data__main-container__title">Imagem de perfil</h2>
                         <p>Imagem representando você ou sua empresa. Imagens quadradas funcionam melhor.</p>
                     </section>
-                    <section class="panel-user-data-container">
+                    <section class="panel-user-data-containerpanel-user-data__main-container__column">
                         <img id="user_thumb_img" class="panel-user-data__file-image" src="{{user_thumb_url_val}}" width="127" height="127" alt=""/>
                         <div class="upload-file-container {{panel_user_data_modal_visibility_val}}">
                             <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input" aria-label="{{Adicionar foto de perfil}}">
@@ -75,10 +74,10 @@
                         </div>     
                     </section>
                 </section>
-                <section>
-                    <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
-                        {{error_msg_val}}
-                    </span>
+                <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                    {{error_msg_val}}
+                </span>
+                <section class="panel-user-data__main-container__button-container">
                     <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserImage();">
                         Apagar imagem de perfil
                     </button>
@@ -93,7 +92,7 @@
         {{html_close_div}}
         {{html_close_div}}
 
-        <div class="panel-user-data__sub-container {{panel_user_data_modal_visibility_val}}">
+        <div class="{{panel_user_data_modal_visibility_val}}">
             {{html_delete_account_button}}
             {{html_modify_cookies_configuration}}
         </div>
