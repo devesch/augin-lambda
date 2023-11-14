@@ -26,6 +26,12 @@ class PanelUserData(PanelPage, UserPage):
             return Http().redirect("panel_user_data/?user_client_type=" + self.user.user_client_type)
 
         html = super().parse_html()
+
+        html.esc("user_name_val", self.user.user_name)
+        html.esc("user_email_val", self.user.user_email)
+        html.esc("user_country_val", self.user.user_address_data["user_country"])
+        html.esc("user_phone_val", self.user.user_phone)
+
         user_country_alpha_2 = self.user.user_address_data["user_country"]
         html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
         html.esc("html_user_country_options", self.list_html_user_country_options(user_country_alpha_2))

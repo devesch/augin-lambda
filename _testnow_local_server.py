@@ -8,6 +8,8 @@ import importlib
 import lambda_function
 import time
 import subprocess
+import signal
+import sys
 
 app = Flask(__name__)
 
@@ -33,12 +35,16 @@ class FileChangeHandler(FileSystemEventHandler):
 
             global new_change
             new_change = time.time()
+        if ".py" in event.src_path:
+            global app
+
+            os.kill(os.getpid(), signal.SIGINT)
 
 
 def start_observer():
     filechange_handler = FileChangeHandler()
     observer = Observer()
-    observer.schedule(filechange_handler, path="./src/style/", recursive=True)
+    observer.schedule(filechange_handler, path="./", recursive=True)
     observer.start()
     observer.join()
 
@@ -76,7 +82,8 @@ def all_paths(path):
     context = {}
 
     importlib.reload(lambda_function)
-    response = lambda_function.main_lambda_handler(event, context)
+
+    response = lambda_function.lambda_handler(event, context)
     from utils.Config import lambda_constants
 
     global last_new_change, new_change

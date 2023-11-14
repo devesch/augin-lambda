@@ -9,14 +9,42 @@ import {
     request
 } from "./api.js";
 
-export async function updateUserPersonalData() {
-    var user_notifications_menu = document.getElementById("user_notifications_menu");
-    while (true) {
-        await sleep(10000);
-        let panel_explore_project_user_notifications_html_response = await apiCaller("panel_explore_project_user_notifications_html", {})
-        if ("success" in panel_explore_project_user_notifications_html_response) {
-            user_notifications_menu.innerHTML = panel_explore_project_user_notifications_html_response["success"];
-        }
+export async function formatToPhoneNumber(input) {
+    let numbers = input.value.replace(/\D/g, '');
+    if (numbers.length === 0) {
+        input.value = '';
+    } else if (numbers.length <= 2) {
+        input.value = `(${numbers}`;
+    } else if (numbers.length <= 7) {
+        input.value = `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+    } else {
+        input.value = `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
+    }
+}
+
+export async function saveUserPersonalData() {
+    var user_name_input = document.getElementById("user_name_input");
+    var user_email_input = document.getElementById("user_email_input");
+    var user_country_select = document.getElementById("user_country_select");
+    var user_country_code_input = document.getElementById("user_country_code_input");
+    var user_phone_input = document.getElementById("user_phone_input");
+    var personal_data_error_msg_span = document.getElementById("personal_data_error_msg_span");
+
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "update_personal_data",
+        "user_name_input": user_name_input.value,
+        "user_email_input": user_email_input.value,
+        "user_country_select": user_country_select.value,
+        "user_country_code_input": user_country_code_input.value,
+        "user_phone_input": user_phone_input.value,
+    })
+
+    if ("error" in update_user_response) {
+        personal_data_error_msg_span.innerHTML = update_user_response["error"];
+    }
+    if ("success" in update_user_response) {
+        personal_data_error_msg_span.innerHTML = update_user_response["success"];
     }
 }
 
@@ -279,33 +307,6 @@ export async function userRegisterGenerateCountryInput() {
     user_phone_div.innerHTML = user_country_phone_response.success;
 }
 
-export async function panelUserDataChangeCountryForm(user_client_type) {
-    let country_flag_img = document.getElementById("country_flag_img");
-    let user_country_select = document.getElementById("user_country");
-
-    country_flag_img.src = ProjectData.props.cdnVal + "/assets/images/flags/" + user_country_select.value.toLowerCase() + ".jpg";
-    let panel_user_data_change_country_response = await apiCaller("panel_user_data_change_country", {
-        "selected_country": user_country_select.value,
-        "user_client_type": user_client_type
-    });
-
-    if ("success" in panel_user_data_change_country_response) {
-        if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/panel_user_data")) {
-            window.location.href = panel_user_data_change_country_response["success"];
-        }
-        if (window.location.href.includes(ProjectData.props.domainNameUrlVal + "/checkout_upgrade_your_plan")) {
-            if (panel_user_data_change_country_response["success"].includes("physical")) {
-                showCheckoutPanelUserDataForm("physical")
-            }
-            if (panel_user_data_change_country_response["success"].includes("international")) {
-                showCheckoutPanelUserDataForm("international")
-            }
-        }
-    };
-    if ("error" in panel_user_data_change_country_response) {
-        userRegisterGenerateCountryInput();
-    };
-}
 
 export async function postCheckoutPanelUserDataForm(userClientType) {
     let panel_user_data_form_div = document.getElementById("panel_user_data_form_div");
