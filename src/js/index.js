@@ -9,6 +9,29 @@ import {
     request
 } from "./api.js";
 
+export async function updateUserNotificationsHtml() {
+    var user_notifications_menu = document.getElementById("user_notifications_menu");
+    while (true) {
+        await sleep(10000);
+        let panel_explore_project_user_notifications_html_response = await apiCaller("panel_explore_project_user_notifications_html", {})
+        if ("success" in panel_explore_project_user_notifications_html_response) {
+            user_notifications_menu.innerHTML = panel_explore_project_user_notifications_html_response["success"];
+        }
+    }
+}
+
+
+export async function saveDeleteNotification(notification_id) {
+    var notification_li = document.getElementById("notification_li_" + notification_id);
+    let update_user_response = await apiCaller("update_user", {
+        "command": "delete_notification",
+        "notification_id": notification_id
+    })
+    if ("success" in update_user_response) {
+        notification_li.remove();
+    }
+}
+
 
 export async function openModalSaveCancelSubscription() {
     closeModal('.modal.cancel-subscription-modal');

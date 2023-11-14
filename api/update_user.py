@@ -25,6 +25,15 @@ class UpdateUser(PanelPage):
 
         return getattr(self, self.post["command"])()
 
+    def delete_notification(self):
+        if not self.post.get("notification_id"):
+            return {"error": "Nenhum notification_id informado"}
+        notification = Dynamo().get_user_notification(self.user.user_id, self.post["notification_id"])
+        if not notification:
+            return {"error": "Nenhuma notificação encontrada"}
+        Dynamo().delete_entity(notification)
+        return {"success": "Notificação excluída"}
+
     def delete_account(self):
         # if self.user.user_subscription_valid_until and self.user.user_subscription_status and self.user.user_subscription_status != "canceled" and float(self.user.user_subscription_valid_until) > float(time.time()):
         #     return {"error": "Não é possível excluir a conta enquanto tiver uma assinatura que ainda se encontra dentro da data de validade"}

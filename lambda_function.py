@@ -109,47 +109,47 @@ def main_lambda_handler(event, context):
         return Http().respond(response, event, user)
 
 
-# import os
+import os
 
-# if os.environ.get("AWS_EXECUTION_ENV") is None and "eugen" in os.getcwd():
-#     with open("_testnow.json", "r") as read_file:
-#         event = json.load(read_file)
-#         html = main_lambda_handler(event, None)
-#     os.system("npm run dev")
-#     import codecs
+if os.environ.get("AWS_EXECUTION_ENV") is None and "eugen" in os.getcwd():
+    with open("_testnow.json", "r") as read_file:
+        event = json.load(read_file)
+        html = main_lambda_handler(event, None)
+    os.system("npm run dev")
+    import codecs
 
-#     with codecs.open("src/dist/style/style.css", "r", "utf-8-sig") as css:
-#         css = css.read()
-#     with codecs.open("src/dist/js/index.js", "r", "utf-8-sig") as js_index:
-#         js_index = js_index.read()
+    with codecs.open("src/dist/style/style.css", "r", "utf-8-sig") as css:
+        css = css.read()
+    with codecs.open("src/dist/js/index.js", "r", "utf-8-sig") as js_index:
+        js_index = js_index.read()
 
-#     import subprocess
+    import subprocess
 
-#     subprocess.run(["python", "tools_for_devs/create_translations.py"])
+    subprocess.run(["python", "tools_for_devs/create_translations.py"])
 
-#     # css = open("src/dist/style/style.css", "r").read()
-#     # js_index = open("src/dist/js/index.js", "r").read()
-#     replacements = {
-#         "local_js_index_val": f"<script> {js_index} </script>",
-#         "local_css_val": f"<style> {css} </style>",
-#     }
-#     links_to_remove = [
-#         f'<link rel="preload" href="{lambda_constants["cdn"]}/style/style.css" as="style">',
-#         f'<link rel="preload" href="{lambda_constants["cdn"]}/js/index.js" as="script">',
-#         f'<link defer rel="stylesheet" type="text/css" href="{lambda_constants["cdn"]}/style/style.css" />',
-#         f'<script defer src="{lambda_constants["cdn"]}/js/index.js"></script>',
-#     ]
-#     for key, value in replacements.items():
-#         html["body"] = html["body"].replace(key, value)
-#     for link in links_to_remove:
-#         html["body"] = html["body"].replace(link, "")
+    # css = open("src/dist/style/style.css", "r").read()
+    # js_index = open("src/dist/js/index.js", "r").read()
+    replacements = {
+        "local_js_index_val": f"<script> {js_index} </script>",
+        "local_css_val": f"<style> {css} </style>",
+    }
+    links_to_remove = [
+        f'<link rel="preload" href="{lambda_constants["cdn"]}/style/style.css" as="style">',
+        f'<link rel="preload" href="{lambda_constants["cdn"]}/js/index.js" as="script">',
+        f'<link defer rel="stylesheet" type="text/css" href="{lambda_constants["cdn"]}/style/style.css" />',
+        f'<script defer src="{lambda_constants["cdn"]}/js/index.js"></script>',
+    ]
+    for key, value in replacements.items():
+        html["body"] = html["body"].replace(key, value)
+    for link in links_to_remove:
+        html["body"] = html["body"].replace(link, "")
 
-#     import codecs
-#     import webbrowser
+    import codecs
+    import webbrowser
 
-#     with codecs.open("test_html.html", "w", "utf-8-sig") as write_file:
-#         write_file.write(html.get("body"))
-#         write_file.close()
+    with codecs.open("test_html.html", "w", "utf-8-sig") as write_file:
+        write_file.write(html.get("body"))
+        write_file.close()
 
-#     webbrowser.open("file://" + os.path.realpath(os.getcwd() + "/test_html.html"))
-#     print("END")
+    webbrowser.open("file://" + os.path.realpath(os.getcwd() + "/test_html.html"))
+    print("END")

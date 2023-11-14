@@ -17,6 +17,23 @@ class PanelPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def show_html_notifications_button(self):
+        html = ReadWrite().read_html("panel_explore_project/_codes/html_notifications_button")
+        user_notifications = Dynamo().query_user_notifications(self.user.user_id)
+        html.esc("html_notifications_li_items", self.list_html_notifications_li_items(user_notifications))
+        return str(html)
+
+    def list_html_notifications_li_items(self, user_notifications):
+        full_html = []
+        if user_notifications:
+            for notification in user_notifications:
+                html = ReadWrite().read_html("panel_explore_project/_codes/html_notifications_li_items")
+                html.esc("notification_message_val", notification["notification_message_" + self.lang])
+                html.esc("notification_redirect_val", notification["notification_redirect"])
+                html.esc("notification_id_val", notification["notification_id"])
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def generate_progress_class(self, user_used_cloud_space_in_mbs, plan_cloud_space_in_mbs):
         ratio = float(user_used_cloud_space_in_mbs) / float(plan_cloud_space_in_mbs)
         if float(ratio) < 0.75:

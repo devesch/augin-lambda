@@ -1,0 +1,12 @@
+<button onclick="js.index.toggleExploreMenu(this)" class="ghost my-plan__title-container__button" aria-controls="user_notifications_menu" aria-expanded="false">
+    <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="Notificações" width="24" height="24">
+</button>
+<menu id="user_notifications_menu" class="menu--explore-more-options none">
+    {{html_notifications_li_items}}
+</menu>
+
+<script>
+    window.onload = async function () {
+        await js.index.updateUserNotificationsHtml();
+    };
+</script>

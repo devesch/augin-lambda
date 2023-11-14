@@ -8,6 +8,7 @@ from utils.AWS.Dynamo import Dynamo
 from utils.AWS.S3 import S3
 from utils.Config import lambda_constants
 from objects.User import load_user
+from objects.UserNotification import create_notification_model_processed
 
 
 class UpdateModelProcess(BasePage):
@@ -107,6 +108,7 @@ class UpdateModelProcess(BasePage):
 
             user = load_user(model["model_user_id"])
             user.add_model_to_user_dicts(model)
+            create_notification_model_processed(model["model_user_id"], model["model_name"])
 
             if (float(model["model_processing_started_at"]) + 3600) > float(model["created_at"]):
                 check_and_save_user_registered_in_last_30d_and_published_analytics(user.created_at)
