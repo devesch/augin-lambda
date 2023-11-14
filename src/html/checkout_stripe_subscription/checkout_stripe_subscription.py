@@ -1,9 +1,10 @@
 from python_web_frame.controllers.stripe_controller import stripe_token
+from objects.UserNotification import create_notification_trial_started
 from objects.Plan import generate_plan_price_with_coupon_discount
 from python_web_frame.checkout_page import CheckoutPage
+from utils.utils.StrFormat import StrFormat
 from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
-from utils.utils.StrFormat import StrFormat
 
 
 class CheckoutStripeSubscription(CheckoutPage):
@@ -28,6 +29,7 @@ class CheckoutStripeSubscription(CheckoutPage):
                 return Http().redirect("checkout_upgrade_your_plan")
             trial_plan_version = Dynamo().get_plan(self.path["plan"]["plan_id"] + "-trial")
             if trial_plan_version and self.path["plan"]["plan_id"] + "-trial" not in self.user.user_used_trials:
+                create_notification_trial_started(self.user.user_id)
                 self.user.active_trial_plan(trial_plan_version)
                 return Http().redirect("panel_your_plan")
 

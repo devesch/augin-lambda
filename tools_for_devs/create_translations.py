@@ -18,6 +18,14 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Seu trial foi iniciado com sucesso.",
+    "Seu trial terminou, escolha seu plano.",
+    "Um novo dispositivo foi usado para acessar sua conta.",
+    "Um novo dispositivo foi usado para acessar sua conta.",
+    "Houve uma falha ao cobrar sua assinatura. Atualize seus métodos de pagamento.",
+    "Seu cartão",
+    "expira em breve, atualize seus métodos de pagamento.",
+    "Seu trial foi iniciado com sucesso.",
     "Seu arquivo",
     "foi processado com sucesso.",
     "Link ativo",

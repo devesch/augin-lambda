@@ -2549,6 +2549,11 @@
         "es": "Hong Kong",
         "pt": "Hong Kong"
     },
+    "Houve uma falha ao cobrar sua assinatura. Atualize seus métodos de pagamento.": {
+        "en": "There was a failure to charge your signature.Update your payment methods.",
+        "es": "Hubo no cargar su firma.Actualice sus métodos de pago.",
+        "pt": "Houve uma falha ao cobrar sua assinatura. Atualize seus métodos de pagamento."
+    },
     "Hungary": {
         "en": "Hungary",
         "es": "Hungría",
@@ -4859,6 +4864,11 @@
         "es": "Tu archivo",
         "pt": "Seu arquivo"
     },
+    "Seu cartão": {
+        "en": "Your card",
+        "es": "Tu tarjeta",
+        "pt": "Seu cartão"
+    },
     "Seu código de verficação de email": {
         "en": "Your email verification code",
         "es": "Su código de verificación por correo electrónico",
@@ -4938,6 +4948,16 @@
         "en": "Your phone",
         "es": "Su teléfono",
         "pt": "Seu telefone"
+    },
+    "Seu trial foi iniciado com sucesso.": {
+        "en": "Your trial has started successfully.",
+        "es": "Su prueba ha comenzado con éxito.",
+        "pt": "Seu trial foi iniciado com sucesso."
+    },
+    "Seu trial terminou, escolha seu plano.": {
+        "en": "Your trial ended, choose your plan.",
+        "es": "Su prueba terminó, elija su plan.",
+        "pt": "Seu trial terminou, escolha seu plano."
     },
     "Seus compartilhamentos (links e QR Codes) deixarão de funcionar": {
         "en": "Your shares (links and qr codes) will stop working",
@@ -5474,6 +5494,11 @@
         "es": "Se ha enviado un nuevo código a su correo electrónico",
         "pt": "Um novo código foi enviado para o seu email"
     },
+    "Um novo dispositivo foi usado para acessar sua conta.": {
+        "en": "A new device was used to access your account.",
+        "es": "Se utilizó un nuevo dispositivo para acceder a su cuenta.",
+        "pt": "Um novo dispositivo foi usado para acessar sua conta."
+    },
     "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento": {
         "en": "One or more of your files has an error, please delete the files with error to perform the processing",
         "es": "Uno o más de sus archivos tiene un error, elimine los archivos con error para realizar el procesamiento",
@@ -5953,6 +5978,11 @@
         "en": "in",
         "es": "en",
         "pt": "em"
+    },
+    "expira em breve, atualize seus métodos de pagamento.": {
+        "en": "expire soon, update your payment methods.",
+        "es": "expire pronto, actualice sus métodos de pago.",
+        "pt": "expira em breve, atualize seus métodos de pagamento."
     },
     "flag": {
         "en": "flag",

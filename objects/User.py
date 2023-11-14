@@ -8,6 +8,7 @@ from objects.UserAuthToken import UserAuthToken
 from objects.UserSubscription import UserSubscription
 from objects.UserDevice import UserDevice, reconnect_device
 from objects.UserFolder import UserFolder, add_file_to_folder, remove_file_from_folder, add_folder_to_folder, remove_folder_from_folder
+from objects.UserNotification import create_notification_trial_ended
 from utils.utils.Sort import Sort
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.Config import lambda_constants
@@ -193,6 +194,11 @@ class User:
         return is_valid
 
     def clear_not_valid_subscription(self):
+        user_plan = Dynamo().get_plan(self.user_plan_id)
+        if user_plan["plan_is_trial"]:
+            create_notification_trial_ended(self.user_id)
+
+        self.user_plan_id = ""
         self.user_subscription_id = ""
         self.user_subscription_status = "none"
         self.user_subscription_valid_until = ""
