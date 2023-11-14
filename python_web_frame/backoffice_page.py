@@ -13,6 +13,25 @@ class BackofficePage(BasePage):
         super().__init__()
         self.admin = True
 
+    def list_html_backoffice_cancel_subscriptions_table_rows(self, cancel_subscriptions):
+        full_html = []
+        if cancel_subscriptions:
+            for cancel_subscription in cancel_subscriptions:
+                html = ReadWrite().read_html("backoffice_cancel_subscriptions/_codes/html_backoffice_cancel_subscriptions_table_rows")
+                html.esc("cancel_subscription_subscription_id_val", cancel_subscription["cancel_subscription_subscription_id"])
+                html.esc("cancel_subscription_user_id_val", cancel_subscription["cancel_subscription_user_id"])
+                html.esc("cancel_subscription_found_a_better_val", cancel_subscription["cancel_subscription_found_a_better"])
+                html.esc("cancel_subscription_unhappy_service_val", cancel_subscription["cancel_subscription_unhappy_service"])
+                html.esc("cancel_subscription_technical_problems_val", cancel_subscription["cancel_subscription_technical_problems"])
+                html.esc("cancel_subscription_too_expensive_val", cancel_subscription["cancel_subscription_too_expensive"])
+                html.esc("cancel_subscription_too_expensive_val", cancel_subscription["cancel_subscription_too_expensive"])
+                html.esc("cancel_subscription_not_using_val", cancel_subscription["cancel_subscription_not_using"])
+                html.esc("cancel_subscription_other_reasons_val", cancel_subscription["cancel_subscription_other_reasons"])
+                html.esc("cancel_subscription_text_area_val", cancel_subscription["cancel_subscription_text_area"])
+                html.esc("created_at_val", Date().format_unixtime_to_br_date(cancel_subscription["created_at"]))
+                full_html.append(str(html))
+        return "".join(full_html)
+
     def list_html_backoffice_recurrence_failures_table_rows(self, recurrence_failures):
         full_html = []
         if recurrence_failures:

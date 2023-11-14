@@ -246,15 +246,11 @@ class Http:
         response["body"] = re.sub(r">\s+<", "><", response["body"])
         response["body"] = re.sub(r"<!--.*?-->", "", response["body"], flags=re.DOTALL)
 
-        # if "dev" in event.get_prefix():
-        #     domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
-        # else:
         if os.environ.get("AWS_EXECUTION_ENV") is None:
             domain = ".127.0.0.1"
         else:
             domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
-        # domain = "tqs.com.br"
-        # domain = "tqs.com.br"
+
         if user_cookie:
             response["headers"]["Set-Cookie"] = f"__Secure-token={user.user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"
         if command == "login":

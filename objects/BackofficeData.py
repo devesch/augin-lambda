@@ -13,6 +13,7 @@ class BackofficeData:
         self.backoffice_data_total_product_count = "0"
         self.backoffice_data_total_cart_abandonment_count = "0"
         self.backoffice_data_total_recurrence_failure_count = "0"
+        self.backoffice_data_total_cancel_subscription_count = "0"
         self.backoffice_data_total_page = {}
         self.created_at = str(time())
         self.entity = "backoffice_data"

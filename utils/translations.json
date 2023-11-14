@@ -474,6 +474,11 @@
         "es": "Apagar",
         "pt": "Apagar"
     },
+    "Apenas um Reference Tracker poderá ser configurado para cada projeto": {
+        "en": "Only a reference tracker can be configured for each project",
+        "es": "Solo se puede configurar un rastreador de referencia para cada proyecto",
+        "pt": "Apenas um Reference Tracker poderá ser configurado para cada projeto"
+    },
     "Aplicado durante quantos meses de recorrência": {
         "en": "Applied for how many months of recurrence",
         "es": "Solicitó cuántos meses de recurrencia",
@@ -543,6 +548,11 @@
         "en": "Signature not found",
         "es": "Firma no encontrada",
         "pt": "Assinatura não encontrada"
+    },
+    "Assinaturas canceladas": {
+        "en": "Canceled signatures",
+        "es": "Firmas canceladas",
+        "pt": "Assinaturas canceladas"
     },
     "Ativa": {
         "en": "Active",
@@ -789,6 +799,11 @@
         "es": "Camerún",
         "pt": "Camarões"
     },
+    "Campo opcional": {
+        "en": "Optional field",
+        "es": "Campo opcional",
+        "pt": "Campo opcional"
+    },
     "Canada": {
         "en": "Canada",
         "es": "Canadá",
@@ -863,6 +878,11 @@
         "en": "If you do not receive the code, check the email address entered and check your SPAM box.",
         "es": "Si no recibes el código, revisa la dirección de correo electrónico ingresada y revisa tu carpeta de SPAM.",
         "pt": "Caso não receba o código, confira o endereço de email inserido e verifique a sua caixa de SPAM."
+    },
+    "Caso o motivo para o cancelamento seja alguma dúvida sobre o funcionamento ou algum problema no uso da nossa plataforma, considere falar com nosso suporte prioritário antes do cancelamento": {
+        "en": "If the reason for cancellation is any questions about the operation or a problem in using our platform, consider talking to our priority support before cancellation",
+        "es": "Si el motivo de la cancelación es alguna pregunta sobre la operación o un problema al usar nuestra plataforma, considere hablar con nuestro soporte prioritario antes de la cancelación",
+        "pt": "Caso o motivo para o cancelamento seja alguma dúvida sobre o funcionamento ou algum problema no uso da nossa plataforma, considere falar com nosso suporte prioritário antes do cancelamento"
     },
     "Caso perca o acesso ao site, acesse a ": {
         "en": "If you lose access to the site, go to",
@@ -1053,6 +1073,11 @@
         "en": "Confirm project exclusion",
         "es": "Confirmar la exclusión del proyecto",
         "pt": "Confirmar exclusão do projeto"
+    },
+    "Confirmar o cancelamento": {
+        "en": "Confirm the cancellation",
+        "es": "Confirmar la cancelación",
+        "pt": "Confirmar o cancelamento"
     },
     "Confirme a renovação da sua assinatura": {
         "en": "Confirm the renewal of your signature",
@@ -1764,6 +1789,11 @@
         "es": "Empresa",
         "pt": "Empresa"
     },
+    "Encontrei um produto que melhor atende às minhas necessidades.": {
+        "en": "I found a product that best meets my needs.",
+        "es": "Encontré un producto que mejor satisface mis necesidades.",
+        "pt": "Encontrei um produto que melhor atende às minhas necessidades."
+    },
     "Endereço": {
         "en": "Address",
         "es": "Dirección",
@@ -1773,6 +1803,21 @@
         "en": "Address 2",
         "es": "Dirección 2",
         "pt": "Endereço 2"
+    },
+    "Enfrentei problemas técnicos ou bugs.": {
+        "en": "I faced technical problems or bugs.",
+        "es": "Me enfrenté a problemas técnicos o errores.",
+        "pt": "Enfrentei problemas técnicos ou bugs."
+    },
+    "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba": {
+        "en": "We understand that you want to cancel your signature.Before you finish this process, it is important that you know",
+        "es": "Entendemos que desea cancelar su firma.Antes de terminar este proceso, es importante que sepas",
+        "pt": "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba"
+    },
+    "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba:": {
+        "en": "We understand that you want to cancel your signature.Before you finish this process, it is important that you know:",
+        "es": "Entendemos que desea cancelar su firma.Antes de terminar este proceso, es importante que sepa:",
+        "pt": "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba:"
     },
     "Enviamos um código de acesso temporário para": {
         "en": "We send a temporary access code to",
@@ -2084,6 +2129,11 @@
         "es": "Estonia",
         "pt": "Estônia"
     },
+    "Estou insatisfeito com o serviço ou suporte.": {
+        "en": "I am dissatisfied with the service or support.",
+        "es": "No estoy satisfecho con el servicio o el soporte.",
+        "pt": "Estou insatisfeito com o serviço ou suporte."
+    },
     "Estrutural": {
         "en": "Structural",
         "es": "Estructural",
@@ -2158,6 +2208,11 @@
         "en": "Explore",
         "es": "Explorar",
         "pt": "Explorar"
+    },
+    "Falar com o suporte": {
+        "en": "Support",
+        "es": "Apoyo",
+        "pt": "Falar com o suporte"
     },
     "Falhas de recorrência": {
         "en": "Recurrence failures",
@@ -2934,6 +2989,11 @@
         "es": "Malta",
         "pt": "Malta"
     },
+    "Manter minha assinatura ativa": {
+        "en": "Keep my signature active",
+        "es": "Mantenga mi firma activa",
+        "pt": "Manter minha assinatura ativa"
+    },
     "Marshall Islands": {
         "en": "Marshall Islands",
         "es": "Islas Marshall",
@@ -3239,6 +3299,11 @@
         "es": "Usuario no encontrado.",
         "pt": "Nenhum usuário encontrado."
     },
+    "Nenhuma cobrança futura será efetuada": {
+        "en": "No future charge will be made",
+        "es": "No se realizará ningún cargo futuro",
+        "pt": "Nenhuma cobrança futura será efetuada"
+    },
     "Nenhuma key de imagem foi recebida": {
         "en": "No image key has been received",
         "es": "No se ha recibido ninguna tecla de imagen",
@@ -3409,6 +3474,11 @@
         "es": "Norway",
         "pt": "Norway"
     },
+    "Nos ajude a melhorar, deixe seu feedback.": {
+        "en": "Help us improve, leave your feedback.",
+        "es": "Ayúdanos a mejorar, deja tus comentarios.",
+        "pt": "Nos ajude a melhorar, deixe seu feedback."
+    },
     "Nossa equipe está trabalhando para resolver a situação o mais rápido possível.": {
         "en": "Our team is working to resolve the situation as soon as possible.",
         "es": "Nuestro equipo está trabajando para resolver la situación lo antes posible.",
@@ -3509,6 +3579,11 @@
         "es": "No creado",
         "pt": "Não criado"
     },
+    "Não estou usando o software com frequência.": {
+        "en": "I am not using the software frequently.",
+        "es": "No estoy usando el software con frecuencia.",
+        "pt": "Não estou usando o software com frequência."
+    },
     "Não foi possível decoficar o email": {
         "en": "It was not possible to decorate the email",
         "es": "No fue posible decorar el correo electrónico",
@@ -3573,6 +3648,16 @@
         "en": "Do not respond to this message.This email was sent by an automatic system that does not process answers.",
         "es": "No responda a este mensaje.Este correo electrónico fue enviado por un sistema automático que no procesa respuestas.",
         "pt": "Não responda a esta mensagem. Este e-mail foi enviado por um sistema automático que não processa respostas."
+    },
+    "Não será possível abrir projetos ou federados com mais de": {
+        "en": "It will not be possible to open projects or federates with more than",
+        "es": "No será posible abrir proyectos o federaciones con más de",
+        "pt": "Não será possível abrir projetos ou federados com mais de"
+    },
+    "Não será possível fazer download de seus arquivos": {
+        "en": "It will not be possible to download your files",
+        "es": "No será posible descargar sus archivos",
+        "pt": "Não será possível fazer download de seus arquivos"
     },
     "Não é possível adicionar este arquivo aos seus projetos pois a some dos arquivos dentro dele excede o tamanho máximo disponível em sua cloud.": {
         "en": "You cannot add this file to your projects as the files within it exceeds the maximum size available on your cloud.",
@@ -3724,6 +3809,11 @@
         "es": "El precio del plan USD mensual debe ser un número",
         "pt": "O preço do plano mensal em USD deve ser um número"
     },
+    "O preço do serviço está acima do que eu gostaria de pagar.": {
+        "en": "The service price is above what i would like to pay.",
+        "es": "El precio del servicio está por encima de lo que me gustaría pagar.",
+        "pt": "O preço do serviço está acima do que eu gostaria de pagar."
+    },
     "O projeto excede o tamanho máximo da suportado pela sua conta.": {
         "en": "The project exceeds the maximum size of the supported by your account.",
         "es": "El proyecto excede el tamaño máximo de los compatibles con su cuenta.",
@@ -3823,6 +3913,11 @@
         "en": "Others",
         "es": "Otros",
         "pt": "Outros"
+    },
+    "Outros motivos": {
+        "en": "Other reasons",
+        "es": "Otras razones",
+        "pt": "Outros motivos"
     },
     "PIX": {
         "en": "Pix",
@@ -4349,6 +4444,11 @@
         "es": "Proceder",
         "pt": "Prosseguir"
     },
+    "Prosseguir com o cancelamento": {
+        "en": "Proceed with cancellation",
+        "es": "Proceder con la cancelación",
+        "pt": "Prosseguir com o cancelamento"
+    },
     "Proteger Compartilhamento com Senha": {
         "en": "Protect password sharing",
         "es": "Proteger el intercambio de contraseñas",
@@ -4729,6 +4829,16 @@
         "es": "Su código de verificación expiró, confirme su correo electrónico nuevamente.",
         "pt": "Seu código de verificação expirou, confirme seu email novamente."
     },
+    "Seu espaço em nossa nuvem será reduzido para": {
+        "en": "Your space on our cloud will be reduced to",
+        "es": "Su espacio en nuestra nube se reducirá a",
+        "pt": "Seu espaço em nossa nuvem será reduzido para"
+    },
+    "Seu feedback é crucial para nós. Por favor, indique o motivo do cancelamento e deixe um comentário se desejar. Isso nos ajudará a melhorar nossos serviços.": {
+        "en": "Your feedback is crucial to us.Please indicate the reason for the cancellation and leave a comment if desired.This will help us improve our services.",
+        "es": "Sus comentarios son cruciales para nosotros.Indique el motivo de la cancelación y deje un comentario si lo desea.Esto nos ayudará a mejorar nuestros servicios.",
+        "pt": "Seu feedback é crucial para nós. Por favor, indique o motivo do cancelamento e deixe um comentário se desejar. Isso nos ajudará a melhorar nossos serviços."
+    },
     "Seu nome": {
         "en": "Your name",
         "es": "Su nombre",
@@ -4783,6 +4893,11 @@
         "en": "Your phone",
         "es": "Su teléfono",
         "pt": "Seu telefone"
+    },
+    "Seus compartilhamentos (links e QR Codes) deixarão de funcionar": {
+        "en": "Your shares (links and qr codes) will stop working",
+        "es": "Sus acciones (enlaces y códigos QR) dejarán de funcionar",
+        "pt": "Seus compartilhamentos (links e QR Codes) deixarão de funcionar"
     },
     "Seychelles": {
         "en": "Seychelles",
@@ -4908,6 +5023,11 @@
         "en": "Your signature",
         "es": "Su firma",
         "pt": "Sua Assinatura"
+    },
+    "Sua assinatura continuará ativa até o último dia do seu ciclo de cobrança atual, que termina em": {
+        "en": "Your signature will remain active until the last day of your current collection cycle, which ends in",
+        "es": "Su firma permanecerá activa hasta el último día de su ciclo de recolección actual, que termina en",
+        "pt": "Sua assinatura continuará ativa até o último dia do seu ciclo de cobrança atual, que termina em"
     },
     "Sua compra está sendo reembolsada": {
         "en": "Your purchase is being reimbursed",
@@ -5578,6 +5698,11 @@
         "en": "Are you having trouble remembering your password? Don't worry",
         "es": "¿Tiene problemas para recordar su contraseña? No se preocupe",
         "pt": "Você não está conseguindo se lembrar da sua senha? Não se preocupe"
+    },
+    "Você não poderá criar reuniões com o Teamplay": {
+        "en": "You will not be able to create meetings with Teamplay",
+        "es": "No podrás crear reuniones con TeamPlay",
+        "pt": "Você não poderá criar reuniões com o Teamplay"
     },
     "Você não possui as credenciais para acessar esta página": {
         "en": "You do not have the credentials to access this page",

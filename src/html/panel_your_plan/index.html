@@ -84,25 +84,62 @@
 <div id="cancel-subscription-modal" class="modal cancel-subscription-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
-            <h1 class="modal-header-title">{{Cancelando assinatura}}</h1>
+            <h1 class="modal-header-title">{{Cancelar assinatura}}</h1>
         </div>
         <div class="modal-content">
             <div class="delete-modal-container">
-                <p>{{Confirme o cancelamento da sua assinatura}}.</p>
+                <p>{{Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba}}:</p>
+                <p></p>
+                <p>{{Sua assinatura continuará ativa até o último dia do seu ciclo de cobrança atual, que termina em}} {{subscription_valid_until_val}}. {{Nenhuma cobrança futura será efetuada}}.</p>
+                <p>{{Seu espaço em nossa nuvem será reduzido para}} {{free_plan_cloud_space_in_gbs_val}}GB.</p>
+                <p>{{Seus compartilhamentos (links e QR Codes) deixarão de funcionar}}.</p>
+                <p>{{Não será possível abrir projetos ou federados com mais de}} {{free_plan_maxium_model_size_in_mbs_val}}Mb.</p>
+                <p>{{Apenas um Reference Tracker poderá ser configurado para cada projeto}}.</p>
+                <p>{{Não será possível fazer download de seus arquivos}}.</p>
+                <p>{{Você não poderá criar reuniões com o Teamplay}}.</p>
+                <p></p>
+                <p>{{Caso o motivo para o cancelamento seja alguma dúvida sobre o funcionamento ou algum problema no uso da nossa plataforma, considere falar com nosso suporte prioritário antes do cancelamento}}.</p>
             </div>
             <span class="error" id="cancel_subscription_error_span">
             </span>
             <div class="modal-button-container">
-                <button onclick="js.index.closeModal('.modal.cancel-subscription-modal')">{{Fechar}}</button>
-                <button onclick="js.index.saveCancelSubscription()" class="ghost">{{Cancelar assinatura}}</button>
+                <button onclick="js.index.openModalSaveCancelSubscription('.modal.cancel-subscription-modal')" class="ghost">{{Prosseguir com o cancelamento}}</button>
+                <a onclick="js.index.closeModal('.modal.cancel-subscription-modal')" href='https://wa.me/55{{wa_number_val}}' target='_blank'><button>{{Falar com o suporte}}</button></a>
             </div>
         </div>
     </div>
 </div>
 
-<script src="https://js.stripe.com/v3/"></script>
+<div id="save-cancel-subscription-modal" class="modal save-cancel-subscription-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Cancelar assinatura}}</h1>
+        </div>
+        <div class="modal-content">
+            <div class="delete-modal-container">
+                <p>{{Seu feedback é crucial para nós. Por favor, indique o motivo do cancelamento e deixe um comentário se desejar. Isso nos ajudará a melhorar nossos serviços.}}</p>
+                <p></p>
+                <label><input type="checkbox" name="cancel_subscription_found_a_better" id="cancel_subscription_found_a_better_checkbox">{{Encontrei um produto que melhor atende às minhas necessidades.}}</label>
+                <label><input type="checkbox" name="cancel_subscription_unhappy_service" id="cancel_subscription_unhappy_service_checkbox">{{Estou insatisfeito com o serviço ou suporte.}}</label>
+                <label><input type="checkbox" name="cancel_subscription_technical_problems" id="cancel_subscription_technical_problems_checkbox">{{Enfrentei problemas técnicos ou bugs.}}</label>
+                <label><input type="checkbox" name="cancel_subscription_too_expensive" id="cancel_subscription_too_expensive_checkbox">{{O preço do serviço está acima do que eu gostaria de pagar.}}</label>
+                <label><input type="checkbox" name="cancel_subscription_not_using" id="cancel_subscription_not_using_checkbox">{{Não estou usando o software com frequência.}}</label>
+                <label><input type="checkbox" name="cancel_subscription_other_reasons" id="cancel_subscription_other_reasons_checkbox">{{Outros motivos}}</label>
+                <textarea id="cancel_subscription_text_area" rows="3" placeholder="{{Nos ajude a melhorar, deixe seu feedback.}}"></textarea>
+                <p>{{Campo opcional}}</p>
+            </div>
+            <span class="error" id="save_cancel_subscription_error_span">
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.save-cancel-subscription-modal')" class="ghost">{{Manter minha assinatura ativa}}</button>
+                <button onclick="js.index.saveCancelSubscription()">{{Confirmar o cancelamento}}</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="add-payment-method-modal" class="modal add-payment-method-modal" aria-hidden="true">
+    <script src="https://js.stripe.com/v3/"></script>
     <input hidden id="stripe_token_input" value="{{stripe_token_val}}">
     <div class="content-modal max-width">
         <div class="modal-header">

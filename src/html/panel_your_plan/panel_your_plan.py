@@ -56,7 +56,11 @@ class PanelYourPlan(PanelPage):
             else:
                 html.esc("html_user_subscription", self.show_html_user_subscription(user_subscription, user_plan))
                 if user_subscription["subscription_status"] == "active":
+                    free_plan = Dynamo().get_free_plan()
                     html.esc("html_cancel_subscription_button", self.show_html_cancel_subscription_button())
+                    html.esc("subscription_valid_until_val", Date().format_to_str_time(user_subscription["subscription_valid_until"]))
+                    html.esc("free_plan_cloud_space_in_gbs_val", int(int(free_plan["plan_cloud_space_in_mbs"]) / 1000))
+                    html.esc("free_plan_maxium_model_size_in_mbs_val", free_plan["plan_maxium_model_size_in_mbs"])
                 else:
                     html.esc("html_upgrade_plan_button", str(ReadWrite().read_html("panel_your_plan/_codes/html_upgrade_plan_button")))
 

@@ -9,6 +9,8 @@ from utils.Config import lambda_constants
 from objects.UserFolder import check_if_folder_movement_is_valid
 from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices, generate_disconnected_devices_in_last_30d
 from objects.UserPaymentMethod import UserPaymentMethod
+from objects.CancelSubscription import CancelSubscription
+from objects.BackofficeData import increase_backoffice_data_total_count
 import time
 
 
@@ -192,6 +194,16 @@ class UpdateUser(PanelPage):
         if user_subscription["subscription_status"] != "active":
             return {"error": "A assinatura não se encontra ativa"}
         self.user.cancel_current_subscription()
+        canceled_subscription = CancelSubscription(user_subscription["subscription_id"], self.user.user_id).__dict__
+        canceled_subscription["cancel_subscription_found_a_better"] = self.post["cancel_subscription_found_a_better"]
+        canceled_subscription["cancel_subscription_unhappy_service"] = self.post["cancel_subscription_unhappy_service"]
+        canceled_subscription["cancel_subscription_technical_problems"] = self.post["cancel_subscription_technical_problems"]
+        canceled_subscription["cancel_subscription_too_expensive"] = self.post["cancel_subscription_too_expensive"]
+        canceled_subscription["cancel_subscription_not_using"] = self.post["cancel_subscription_not_using"]
+        canceled_subscription["cancel_subscription_other_reasons"] = self.post["cancel_subscription_other_reasons"]
+        canceled_subscription["cancel_subscription_text_area"] = self.post.get("cancel_subscription_text_area", "")
+        Dynamo().put_entity(canceled_subscription)
+        increase_backoffice_data_total_count("cancel_subscription")
         return {"success": "Assinatura cancelada"}
 
     def check_if_user_can_upgrade_his_plan(self):

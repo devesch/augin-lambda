@@ -97,12 +97,16 @@ class Dynamo:
         return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "coupon#" + coupon_code}, "sk": {"S": "user#" + user_id}}})
 
     def query_paginated_all_coupons(self, last_evaluated_key=None, limit=10):
-        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
-        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "coupon"}}}, limit, last_evaluated_key, key_schema)
-        return self.execute_batch_get_item(query), last_evaluated_key
+        return self.query_paginated_entity("coupon", last_evaluated_key, limit)
+
+    ### CANCEL SUBSCRIPTION ###
+    def get_cancel_subscription(self, subscription_id):
+        return self.execute_get_item({"TableName": lambda_constants["table_project"], "Key": {"pk": {"S": "cancel_subscription#" + subscription_id}, "sk": {"S": "cancel_subscription#" + subscription_id}}})
+
+    def query_paginated_all_cancel_subscriptions(self, last_evaluated_key=None, limit=10):
+        return self.query_paginated_entity("cancel_subscription", last_evaluated_key, limit)
 
     ### RECURRENCE FAILURE ###
-
     def query_paginated_all_recurrence_failure(self, last_evaluated_key=None, limit=10):
         key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
         query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": "recurrence_failure"}}}, limit, last_evaluated_key, key_schema)
@@ -364,6 +368,11 @@ class Dynamo:
         return self.execute_batch_get_item(query, table=lambda_constants["table_web_data"])
 
     ### DEFAULT ###
+
+    def query_paginated_entity(self, entity, last_evaluated_key=None, limit=10):
+        key_schema = {"entity": {"S": ""}, "sk": {"S": ""}, "created_at": {"S": ""}, "pk": {"S": ""}}
+        query, last_evaluated_key = self.execute_paginated_query({"TableName": lambda_constants["table_project"], "IndexName": "entity-created_at-index", "KeyConditionExpression": "#bef90 = :bef90", "ExpressionAttributeNames": {"#bef90": "entity"}, "ExpressionAttributeValues": {":bef90": {"S": entity}}}, limit, last_evaluated_key, key_schema)
+        return self.execute_batch_get_item(query), last_evaluated_key
 
     # def compress_python_obj(self, python_obj):
     #     compressed_python_obj = {}

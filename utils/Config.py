@@ -31,6 +31,7 @@ cdn_base_url = "https://" + cdn_bucket
 lambda_constants = {
     "hcaptcha_secret": "ES_1de692eba3a6418da02963406bee95f5",
     "hcaptcha_sitekey": "9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64",
+    "wa_number": "51999859355",
     "zerobounce_apikey": "4c69c9e1231f4de6ac0ff78a8e505f17",
     "brand_api_endpoint": "https://api.branch.io/v1/",
     "branch_key": "key_live_kbPDVR9iW4fdsvi1MNpMRlnetqjvZogI",

@@ -18,6 +18,10 @@ class PaginationQueries(BackofficePage, PanelPage):
         last_evaluated_key = loads(self.post["last_evaluated_key"])
         return getattr(self, self.post["query"])(last_evaluated_key)
 
+    def query_paginated_all_cancel_subscriptions(self, last_evaluated_key):
+        cancel_subscriptions, last_evaluated_key = Dynamo().query_paginated_all_cancel_subscriptions(last_evaluated_key, limit=int(self.user.user_pagination_count))
+        return {"success": self.list_html_backoffice_cancel_subscriptions_table_rows(cancel_subscriptions), "last_evaluated_key": last_evaluated_key, "new_itens_count": str(len(cancel_subscriptions))}
+
     def query_paginated_all_models(self, last_evaluated_key):
         models, last_evaluated_key = Dynamo().query_paginated_all_models(last_evaluated_key, limit=int(self.user.user_pagination_count))
         return {"success": self.list_html_backoffice_models_table_rows(models), "last_evaluated_key": last_evaluated_key, "new_itens_count": str(len(models))}

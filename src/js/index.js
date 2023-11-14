@@ -10,6 +10,10 @@ import {
 } from "./api.js";
 
 
+export async function openModalSaveCancelSubscription() {
+    closeModal('.modal.cancel-subscription-modal');
+    openModal('.modal.save-cancel-subscription-modal');
+}
 
 
 export async function changeAcessibleLabel(input, type) {
@@ -2411,14 +2415,28 @@ export async function openModalCancelSubscription() {
 
 
 export async function saveCancelSubscription() {
-    let cancel_subscription_error_span = document.getElementById("cancel_subscription_error_span");
+    let save_cancel_subscription_error_span = document.getElementById("save_cancel_subscription_error_span");
+    let cancel_subscription_found_a_better_checkbox = document.getElementById("cancel_subscription_found_a_better_checkbox");
+    let cancel_subscription_unhappy_service_checkbox = document.getElementById("cancel_subscription_unhappy_service_checkbox");
+    let cancel_subscription_technical_problems_checkbox = document.getElementById("cancel_subscription_technical_problems_checkbox");
+    let cancel_subscription_too_expensive_checkbox = document.getElementById("cancel_subscription_too_expensive_checkbox");
+    let cancel_subscription_not_using_checkbox = document.getElementById("cancel_subscription_not_using_checkbox");
+    let cancel_subscription_other_reasons_checkbox = document.getElementById("cancel_subscription_other_reasons_checkbox");
+    let cancel_subscription_text_area = document.getElementById("cancel_subscription_text_area");
 
     let update_user_response = await apiCaller("update_user", {
-        "command": "cancel_user_current_subscription"
+        "command": "cancel_user_current_subscription",
+        "cancel_subscription_found_a_better": cancel_subscription_found_a_better_checkbox.checked,
+        "cancel_subscription_unhappy_service": cancel_subscription_unhappy_service_checkbox.checked,
+        "cancel_subscription_technical_problems": cancel_subscription_technical_problems_checkbox.checked,
+        "cancel_subscription_too_expensive": cancel_subscription_too_expensive_checkbox.checked,
+        "cancel_subscription_not_using": cancel_subscription_not_using_checkbox.checked,
+        "cancel_subscription_other_reasons": cancel_subscription_other_reasons_checkbox.checked,
+        "cancel_subscription_text_area": cancel_subscription_text_area.value,
     });
 
     if ("erro" in update_user_response) {
-        cancel_subscription_error_span.innerHTML = update_user_response["error"];
+        save_cancel_subscription_error_span.innerHTML = update_user_response["error"];
     } else {
         location.reload();
     }
