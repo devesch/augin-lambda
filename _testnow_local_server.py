@@ -11,8 +11,11 @@ import subprocess
 
 app = Flask(__name__)
 
-css = None
-js_index = None
+
+last_new_change = 0
+new_change = 1
+# css = None
+# js_index = None
 
 
 # def reload_css_js(path):
@@ -21,23 +24,23 @@ js_index = None
 #         os.system("npm run dev")
 
 
-# class FileChangeHandler(FileSystemEventHandler):
-#     def on_modified(self, event):
-#         if ".json" in event.src_path or "dist" in event.src_path or "pyc" in event.src_path or "_testnow" in event.src_path or ".git" in event.src_path or "bin" in event.src_path:
-#             return None
+class FileChangeHandler(FileSystemEventHandler):
+    def on_modified(self, event):
+        if ".json" in event.src_path or "dist" in event.src_path or "pyc" in event.src_path or "_testnow" in event.src_path or ".git" in event.src_path or "bin" in event.src_path:
+            return None
+        if ".css" in event.src_path or ".scss" in event.src_path or ".js" in event.src_path:
+            print(f"File changed: {event.src_path}")
 
-#         print(f"File changed: {event.src_path}")
-#         reload_css_js(event.src_path)
-#         if ".py" in event.src_path or ".html" in event.src_path:
-#             importlib.reload(lambda_function)
+            global new_change
+            new_change = time.time()
 
 
-# def start_observer():
-#     filechange_handler = FileChangeHandler()
-#     observer = Observer()
-#     observer.schedule(filechange_handler, path="./", recursive=True)
-#     observer.start()
-#     # observer.join()
+def start_observer():
+    filechange_handler = FileChangeHandler()
+    observer = Observer()
+    observer.schedule(filechange_handler, path="./src/style/", recursive=True)
+    observer.start()
+    observer.join()
 
 
 @app.route("/", defaults={"path": ""})
@@ -69,16 +72,17 @@ def all_paths(path):
         "body": dict(request.form),
         "isBase64Encoded": False,
     }
-
     subprocess.run(["python", "tools_for_devs/create_translations.py"])
-
     context = {}
 
     importlib.reload(lambda_function)
     response = lambda_function.main_lambda_handler(event, context)
     from utils.Config import lambda_constants
 
-    if response["body"][:27] != "<script>function openPage()" and not "api/" in path:
+    global last_new_change, new_change
+
+    if response["body"][:27] != "<script>function openPage()" and not "api/" in path and last_new_change != new_change:
+        last_new_change = new_change
         os.system("npm run dev")
 
     with codecs.open("src/dist/style/style.css", "r", "utf-8-sig") as css:
@@ -109,8 +113,8 @@ def all_paths(path):
 
 
 if __name__ == "__main__":
-    # observer_thread = threading.Thread(target=start_observer)
-    # observer_thread.start()
+    observer_thread = threading.Thread(target=start_observer)
+    observer_thread.start()
     while True:
         try:
             app.run(debug=True, port=3000)
