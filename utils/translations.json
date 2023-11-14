@@ -3334,6 +3334,11 @@
         "es": "No hay cambio de URL necesario",
         "pt": "Nenhuma mudança de URL necessária"
     },
+    "Nenhuma notificação encontrada": {
+        "en": "No notification found",
+        "es": "No se encontró notificación",
+        "pt": "Nenhuma notificação encontrada"
+    },
     "Nenhuma ordem encontrada com os dados informados": {
         "en": "No order found with the data informed",
         "es": "No se encuentra ningún orden con los datos informados",
@@ -4849,6 +4854,11 @@
         "es": "Su e-mail",
         "pt": "Seu Email"
     },
+    "Seu arquivo": {
+        "en": "Your file",
+        "es": "Tu archivo",
+        "pt": "Seu arquivo"
+    },
     "Seu código de verficação de email": {
         "en": "Your email verification code",
         "es": "Su código de verificación por correo electrónico",
@@ -5948,6 +5958,11 @@
         "en": "flag",
         "es": "bandera",
         "pt": "flag"
+    },
+    "foi processado com sucesso.": {
+        "en": "it was successfully processed.",
+        "es": "fue procesado con éxito.",
+        "pt": "foi processado com sucesso."
     },
     "horas atrás": {
         "en": "hours ago",
