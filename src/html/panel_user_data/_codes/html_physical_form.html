@@ -49,25 +49,25 @@
     <article>
         <section class="panel-user-data__main-container__row">
             <section class="panel-user-data__main-container__column">
-                <div class="panel-user-billing-data-container">
-                    <h2 class="panel-user-data__main-container__title">{{Dados de faturamento}}</h2>
-                    <div>
-                        <a href="/panel_user_data/?user_client_type=company" class="{{user_client_company_active_val}}">{{Pessoa jurídica}}</a>
-                        <a href="/panel_user_data/?user_client_type=physical" class="{{user_client_physical_active_val}}">{{Pessoa física}}</a>
-                    </div>
-                </div>
+                <h2 class="panel-user-data__main-container__title">{{Dados de faturamento}}</h2>
                 <p>{{Dados para emissão de notas-fiscais, invoices e boletos.}}</p>
             </section>
             <section class="panel-user-data-container panel-user-data__main-container__column">
-                <div>
-                    <div class="input-default floating-input">
+                <div class="panel-user-billing-data-container">
+                    <div class="panel-user-data__user-client-container">
+                        <a href="/panel_user_data/?user_client_type=company">{{Pessoa jurídica}}</a>
+                        <span class="active">{{Pessoa física}}</span>
+                    </div>
+                </div>
+                <div class="panel-user-data__cpf-cep-container">
+                    <div class="input-default floating-input cpf-field">
                         <input hidden type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" maxlength="18">
                         <input type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
-                        <label for="user_cpf" class="floating-label">{{Seu CPF}}</label>
+                        <label for="user_cpf" class="floating-label">{{CPF}}</label>
                     </div>
-                    <div class="input-default floating-input">
+                    <div class="input-default floating-input cep-field">
                         <input type="text" name="user_zip_code" id="user_zip_code" class="floating" value="{{user_zip_code_val}}" oninput="js.index.showUserPhysicalAddressData()" minlength="9" maxlength="9" placeholder=" ">
-                        <label for="user_zip_code" class="floating-label">{{Seu CEP}}</label>
+                        <label for="user_zip_code" class="floating-label">{{CEP}}</label>
                     </div>
                 </div>
                 <div>

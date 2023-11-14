@@ -40,7 +40,6 @@ class PanelUserData(PanelPage, UserPage):
             ### TODO WHEN TIAGO LIBERATE COOKIE POLICY UNCOMMENT LINE BELOW
             # html.esc("html_modify_cookies_configuration", ReadWrite().read_html("panel_user_data/_codes/html_modify_cookies_configuration"))
             html.esc("html_close_div", ReadWrite().read_html("panel_user_data/_codes/html_close_div"))
-            html.esc("html_delete_account_button", ReadWrite().read_html("panel_user_data/_codes/html_delete_account_button"))
             html.esc("html_delete_account_modal", ReadWrite().read_html("panel_user_data/_codes/html_delete_account_modal"))
             html.esc("html_loader_modal", ReadWrite().read_html("panel_user_data/_codes/html_loader_modal"))
 

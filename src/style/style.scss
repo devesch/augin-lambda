@@ -2580,6 +2580,10 @@ input[list]::-ms-clear {
     gap: 1rem;
 }
 
+.panel-user-data-container {
+    gap: 2rem;
+}
+
 .panel-user-data__main-container__column {
     flex-grow: 1;
 
@@ -2620,6 +2624,52 @@ input[list]::-ms-clear {
         border: unset;
         color: colors.color("color-error-500");
     }
+}
+
+.panel-user-data__user-client-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: end;
+
+    a,
+    span {
+        display: inline-block;
+        padding: 0.25rem 1.5em;
+        border-radius: .75rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: colors.color("color-neutral-400");
+        text-align: center;
+    }
+
+    a.active,
+    span.active {
+        background-color: colors.color("color-neutral-200");
+        color: colors.color("color-black");
+    }
+
+}
+
+.panel-user-data__cpf-cep-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-between;
+    column-gap: 1rem;
+    row-gap: 2rem;
+}
+
+.cpf-field {
+    width: calc(65% - 0.5rem);
+}
+
+.cep-field {
+    width: calc(35% - 0.5rem);
 }
 
 .country-flag-container {

@@ -779,6 +779,16 @@
         "es": "Buscar usuarios",
         "pt": "Buscar usuários"
     },
+    "CEP": {
+        "en": "Zip code",
+        "es": "Código postal",
+        "pt": "CEP"
+    },
+    "CPF": {
+        "en": "CPF",
+        "es": "CPF",
+        "pt": "CPF"
+    },
     "Cabo Verde": {
         "en": "Cabo Verde",
         "es": "Cabo Verde",
@@ -4834,20 +4844,10 @@
         "es": "Sesión de inicio de sesión:",
         "pt": "Sessão de login:"
     },
-    "Seu CEP": {
-        "en": "Your zip code",
-        "es": "Su código postal",
-        "pt": "Seu CEP"
-    },
     "Seu CNPJ": {
         "en": "Your CNPJ",
         "es": "Tu CNPJ",
         "pt": "Seu CNPJ"
-    },
-    "Seu CPF": {
-        "en": "Your CPF",
-        "es": "Tu CPF",
-        "pt": "Seu CPF"
     },
     "Seu Email": {
         "en": "Your email",
