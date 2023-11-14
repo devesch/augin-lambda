@@ -32,6 +32,7 @@ class Event:
                 if "__Secure-lang" in cookie:
                     if parse_qs(cookie):
                         return parse_qs(cookie)["__Secure-lang"][0]
+                    return self.cookies[cookie]
 
     def check_if_has_debug(self):
         if hasattr(self, "cookies"):
@@ -58,6 +59,7 @@ class Event:
                 if "__Secure-projects-cookies" in cookie:
                     if parse_qs(cookie):
                         return loads(parse_qs(cookie)["__Secure-projects-cookies"][0].replace("'", '"'))
+                    return loads(self.cookies[cookie]["__Secure-projects-cookies"][0].replace("'", '"'))
         return {}
 
     def get_prefix(self):

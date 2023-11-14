@@ -78,7 +78,9 @@ def all_paths(path):
     response = lambda_function.main_lambda_handler(event, context)
     from utils.Config import lambda_constants
 
-    os.system("npm run dev")
+    if response["body"][:27] != "<script>function openPage()" and not "api/" in path:
+        os.system("npm run dev")
+
     with codecs.open("src/dist/style/style.css", "r", "utf-8-sig") as css:
         css = css.read()
     with codecs.open("src/dist/js/index.js", "r", "utf-8-sig") as js_index:
@@ -109,7 +111,11 @@ def all_paths(path):
 if __name__ == "__main__":
     # observer_thread = threading.Thread(target=start_observer)
     # observer_thread.start()
-    app.run(debug=True, port=3000)
+    while True:
+        try:
+            app.run(debug=True, port=3000)
+        except:
+            continue
 
 
 print("END")

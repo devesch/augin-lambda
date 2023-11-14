@@ -225,7 +225,7 @@ class Http:
         if not Validation().check_if_local_env():
             html = html.replace("local_js_index_val", "").replace("local_css_val", "")
 
-        if event.check_if_has_debug():
+        if event.check_if_has_debug() or os.environ.get("AWS_EXECUTION_ENV") is None:
             body = html + f"<div id='EVENT HERE MAN' style='display:none;'>{event}<br><br><br>{json.dumps(last_post_event)}</div>"
         else:
             body = html
