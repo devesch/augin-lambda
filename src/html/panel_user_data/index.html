@@ -76,12 +76,12 @@
                                 <label for="user_zip_code" class="floating-label">{{CEP}}</label>
                             </div>
                         </div>
-                        <div>
-                            <div class="input-default focus floating-input">
+                        <div class="panel-user-data__cpf-cep-container">
+                            <div class="input-default focus floating-input state-field">
                                 <input type="text" name="user_state" id="user_state" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
                                 <label for="user_state" class="floating-label">{{Estado}}</label>
                             </div>
-                            <div class="input-default focus floating-input">
+                            <div class="input-default focus floating-input city-field">
                                 <input type="text" name="user_city" id="user_city" value="{{user_city_val}}" class="floating" readonly required placeholder=" ">
                                 <label for="user_city" class="floating-label">{{Cidade}}</label>
                             </div>
@@ -98,12 +98,12 @@
                             <label for="user_street" class="floating-label">{{Rua}}</label>
                         </div>
 
-                        <div>
-                            <div class="input-default floating-input">
+                        <div class="panel-user-data__cpf-cep-container">
+                            <div class="input-default floating-input number-field">
                                 <input type="text" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" class="floating" oninput="js.index.maskToNumber(this)" placeholder=" ">
                                 <label for="user_street_number" class="floating-label">{{Número}}</label>
                             </div>
-                            <div class="input-default floating-input">
+                            <div class="input-default floating-input complement-field">
                                 <input type="text" name="user_complement" id="user_complement" class="floating" value="{{user_complement_val}}" placeholder=" ">
                                 <label for="user_complement" class="floating-label">{{Complemento}}</label>
                             </div>
@@ -146,12 +146,7 @@
                                 <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
                             </button>
                         </div>
-                        <p class="input-hint">{{8 caracteres ou mais. Pode conter letras, números e símbolos.}}</p>
                         <p class="error none">{{Senha inválida}}</p>
-
-                        <span class="error" style="{{error_msg_visibility_val}}">
-                            {{error_msg_val}}
-                        </span>
                     </section>
                 </section>
                 <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
@@ -170,12 +165,12 @@
 
         <form action="/{{user_url_val}}" method="POST" id="form" class="panel-user-data__main-container">
             <article>
-                <section class="panel-user-data__main-container__row">
+                <section class="panel-user-data__main-container__row panel-user-data__main-container__row--image">
                     <section class="panel-user-data__main-container__column">
                         <h2 class="panel-user-data__main-container__title">Imagem de perfil</h2>
                         <p>Imagem representando você ou sua empresa. Imagens quadradas funcionam melhor.</p>
                     </section>
-                    <section class="panel-user-data-containerpanel-user-data__main-container__column">
+                    <section class="panel-user-data__main-container__column panel-user-data__file-image-container">
                         <img id="user_thumb_img" class="panel-user-data__file-image" src="{{user_thumb_url_val}}" width="127" height="127" alt="" />
                         <div class="upload-file-container {{panel_user_data_modal_visibility_val}}">
                             <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input" aria-label="{{Adicionar foto de perfil}}">

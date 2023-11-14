@@ -1246,11 +1246,12 @@ input[list]::-ms-clear {
 }
 
 .panel-user-data__file-image {
-    width: 6rem;
-    height: 6rem;
+    width: 127px;
+    height: 127px;
     object-fit: cover;
     border-radius: 100%;
-
+    background-color: colors.color("color-neutral-200");
+    flex-shrink: 0;
     transition: filter 0.5s ease;
 
 }
@@ -2580,6 +2581,13 @@ input[list]::-ms-clear {
     gap: 1rem;
 }
 
+.panel-user-data__main-container__row--image {
+    @media only screen and (max-width: 1300px) {
+        flex-direction: column;
+        -ms-flex-direction: column;
+    }
+}
+
 .panel-user-data-container {
     gap: 2rem;
 }
@@ -2664,12 +2672,30 @@ input[list]::-ms-clear {
     row-gap: 2rem;
 }
 
-.cpf-field {
-    width: calc(65% - 0.5rem);
-}
+@media only screen and (min-width: 768px) {
+    .cpf-field {
+        width: calc(65% - 0.5rem) !important;
+    }
 
-.cep-field {
-    width: calc(35% - 0.5rem);
+    .cep-field {
+        width: calc(35% - 0.5rem) !important;
+    }
+
+    .state-field {
+        width: calc(25% - 0.5rem) !important;
+    }
+
+    .city-field {
+        width: calc(75% - 0.5rem) !important;
+    }
+
+    .number-field {
+        width: calc(45% - 0.5rem) !important;
+    }
+
+    .complement-field {
+        width: calc(55% - 0.5rem) !important;
+    }
 }
 
 .country-flag-container {
@@ -2681,6 +2707,14 @@ input[list]::-ms-clear {
 .panel-user-data-header {
     text-align: center;
     margin-bottom: 2rem;
+}
+
+.panel-user-data__file-image-container {
+    max-width: calc(100% - (300px + 1rem));
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: auto 1fr;
 }
 
 .link-page-new-password {

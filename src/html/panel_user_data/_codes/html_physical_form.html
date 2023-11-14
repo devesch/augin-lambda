@@ -70,7 +70,7 @@
                         <label for="user_zip_code" class="floating-label">{{CEP}}</label>
                     </div>
                 </div>
-                <div>
+                <div class="panel-user-data__cpf-cep-container">
                     <div class="input-default focus floating-input">
                         <input type="text" name="user_state" id="user_state" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
                         <label for="user_state" class="floating-label">{{Estado}}</label>
@@ -92,7 +92,7 @@
                     <label for="user_street" class="floating-label">{{Rua}}</label>
                 </div>
 
-                <div>
+                <div class="panel-user-data__cpf-cep-container">
                     <div class="input-default floating-input">
                         <input type="text" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" class="floating" oninput="js.index.maskToNumber(this)" placeholder=" ">
                         <label for="user_street_number" class="floating-label">{{Número}}</label>
