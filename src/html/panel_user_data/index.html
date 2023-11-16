@@ -6,47 +6,49 @@
     </div>
 
     <article>
-        <article>
-            <section class="panel-user-data__main-container__row">
-                <section class="panel-user-data__main-container__column">
-                    <h2 class="panel-user-data__main-container__title">{{Dados pessoais}}</h2>
-                    <p>{{Dados básicos para acesso à conta e personalização do sistema.}}</p>
+        <form>
+            <article>
+                <section class="panel-user-data__main-container__row">
+                    <section class="panel-user-data__main-container__column">
+                        <h2 class="panel-user-data__main-container__title">{{Dados pessoais}}</h2>
+                        <p>{{Dados básicos para acesso à conta e personalização do sistema.}}</p>
+                    </section>
+                    <section class="panel-user-data-container panel-user-data__main-container__column">
+                        <div class="input-default floating-input">
+                            <input oninput="js.index.maskToLetter(this)" type="text" name="user_name" id="user_name_input" value="{{user_name_val}}" class="floating" maxlength="50" minlength="1" required placeholder=" ">
+                            <label for="user_name" class="floating-label">{{Nome completo}}</label>
+                        </div>
+                        <div class="input-default focus floating-input">
+                            <input type="email" name="user_email" id="user_email_input" value="{{user_email_val}}" class="floating" minlength="3" maxlength="255" required placeholder=" ">
+                            <label for="user_email" class="floating-label">E-mail</label>
+                        </div>
+                        <div class="input-default floating-input">
+                            <section class="input-default country-flag-container">
+                                <select name="user_country" id="user_country_select" value="{{user_country_val}}" class="floating" required autocomplete="off">
+                                    {{html_user_country_options}}
+                                </select>
+                            </section>
+                        </div>
+                        <div class="input-default floating-input">
+                            <section class="input-default-icon focus" id="user_phone_div">
+                                <input type="text" name="user_country_code" id="user_country_code_input" class="input-country-code" value="+{{user_country_code_val}}" placeholder=" " readonly>
+                                <div class="floating-input">
+                                    <input oninput="js.index.formatToPhoneNumber(this)" type="text" name="user_phone" id="user_phone_input" value="{{user_phone_val}}" class="floating" placeholder=" ">
+                                    <label for="user-phone">{{Digite seu telefone}}</label>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
                 </section>
-                <section class="panel-user-data-container panel-user-data__main-container__column">
-                    <div class="input-default floating-input">
-                        <input oninput="js.index.maskToLetter(this)" type="text" name="user_name" id="user_name_input" value="{{user_name_val}}" class="floating" maxlength="50" minlength="1" required placeholder=" ">
-                        <label for="user_name" class="floating-label">{{Nome completo}}</label>
-                    </div>
-                    <div class="input-default focus floating-input">
-                        <input type="email" name="user_email" id="user_email_input" value="{{user_email_val}}" class="floating" minlength="3" maxlength="255" required placeholder=" ">
-                        <label for="user_email" class="floating-label">E-mail</label>
-                    </div>
-                    <div class="input-default floating-input">
-                        <section class="input-default country-flag-container">
-                            <select name="user_country" id="user_country_select" value="{{user_country_val}}" class="floating" required autocomplete="off">
-                                {{html_user_country_options}}
-                            </select>
-                        </section>
-                    </div>
-                    <div class="input-default floating-input">
-                        <section class="input-default-icon focus" id="user_phone_div">
-                            <input type="text" name="user_country_code" id="user_country_code_input" class="input-country-code" value="+{{user_country_code_val}}" placeholder=" " readonly>
-                            <div class="floating-input">
-                                <input oninput="js.index.formatToPhoneNumber(this)" type="text" name="user_phone" id="user_phone_input" value="{{user_phone_val}}" class="floating" placeholder=" ">
-                                <label for="user-phone">{{Digite seu telefone}}</label>
-                            </div>
-                        </section>
-                    </div>
+                <span class="error" style="" id="personal_data_error_msg_span">
+                </span>
+                <section class="panel-user-data__main-container__button-container">
+                    <button onclick="js.index.saveUserPersonalData()" type="submit">
+                        {{Salvar alterações}}
+                    </button>
                 </section>
-            </section>
-            <span class="error" style="" id="personal_data_error_msg_span">
-            </span>
-            <section class="panel-user-data__main-container__button-container">
-                <button onclick="js.index.saveUserPersonalData()" type="submit">
-                    {{Salvar alterações}}
-                </button>
-            </section>
-        </article>
+            </article>
+        </form>
 
         <form action="/panel_user_data/?user_client_type=physical" method="POST" id="form" class="panel-user-data__main-container">
             <article>
