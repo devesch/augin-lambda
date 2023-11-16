@@ -6,7 +6,7 @@
     </div>
 
     <article>
-        <article class="panel-user-data__main-container">
+        <section class="panel-user-data__main-container">
             <section class="panel-user-data__main-container__row">
                 <section class="panel-user-data__main-container__column">
                     <h2 class="panel-user-data__main-container__title">{{Dados pessoais}}</h2>
@@ -46,9 +46,9 @@
                     {{Salvar alterações}}
                 </button>
             </section>
-        </article>
+        </section>
 
-        <form action="/panel_user_data/?user_client_type=physical" method="POST" id="form" class="panel-user-data__main-container">
+        <section action="/panel_user_data/?user_client_type=physical" method="POST" id="form" class="panel-user-data__main-container">
             <article>
                 <section class="panel-user-data__main-container__row">
                     <section class="panel-user-data__main-container__column">
@@ -117,9 +117,9 @@
                     </button>
                 </section>
             </article>
-        </form>
+        </section>
 
-        <form action="/{{user_url_val}}" method="POST" id="form" class="panel-user-data__main-container">
+        <section class="panel-user-data__main-container">
             <article>
                 <section class="panel-user-data__main-container__row">
                     <section class="panel-user-data__main-container__column">
@@ -158,9 +158,9 @@
                     </button>
                 </section>
             </article>
-        </form>
+        </section>
 
-        <form action="/{{user_url_val}}" method="POST" id="form" class="panel-user-data__main-container">
+        <section class="panel-user-data__main-container">
             <article>
                 <section class="panel-user-data__main-container__row panel-user-data__main-container__row--image">
                     <section class="panel-user-data__main-container__column">
@@ -191,7 +191,7 @@
                     </button>
                 </section>
             </article>
-        </form>
+        </section>
         {{html_close_div}}
         {{html_close_div}}
         {{html_close_div}}
