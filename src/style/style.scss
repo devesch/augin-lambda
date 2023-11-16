@@ -1203,6 +1203,10 @@ input[list]::-ms-clear {
 
     }
 
+
+    &:hover {
+        background-color: colors.color("color-neutral-100");
+    }
     
 
 }
