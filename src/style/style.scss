@@ -1207,6 +1207,11 @@ input[list]::-ms-clear {
 
 }
 
+.panel-user-data__file-label p {
+    font-size: 1rem !important;
+    font-family: "Raleway";
+}
+
 .panel-user-data__hover-image {
     opacity: 0;
     margin: auto;
@@ -1261,11 +1266,16 @@ input[list]::-ms-clear {
     width: 127px;
     height: 127px;
     object-fit: cover;
-    border-radius: 100%;
     background-color: colors.color("color-neutral-200");
     flex-shrink: 0;
     transition: filter 0.5s ease;
 
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    gap: 1rem;
+    margin: 0 auto;
+    text-align: center;
+    border-width: 4px;
 }
 
 @keyframes spin {
