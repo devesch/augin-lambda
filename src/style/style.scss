@@ -734,7 +734,9 @@ input[list]::-ms-clear {
     }
 
     button:active,
-    .button:active {
+    .button:active,
+    button.active,
+    .button.active {
         background-color: colors.color("color-neutral-700") !important;
     }
 
@@ -2733,7 +2735,8 @@ input[list]::-ms-clear {
     width: 100%;
     display: grid;
     gap: 1rem;
-    grid-template-columns: auto 1fr;
+    // grid-template-columns: auto 1fr;
+    grid-template-columns: auto auto;
 }
 
 .link-page-new-password {
@@ -3328,8 +3331,15 @@ input[list]::-ms-clear {
     }
 }
 
+@media only screen and (min-width: 1301px) {
+    .panel-user-data__file-image-container {
+        justify-content: start;
+    }
+}
+
 @media only screen and (max-width: 1300px) {
     .panel-user-data__file-image-container {
+        grid-template-columns: auto 1fr;
         max-width: 100%;
     }
 

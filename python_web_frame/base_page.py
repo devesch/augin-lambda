@@ -233,4 +233,5 @@ class BasePage:
         html.esc("user_client_type_val", self.user.user_client_type)
         html.esc("user_thumb_val", self.user.generate_user_thumb_url())
         html.esc("user_url_val", self.event.get_url())
+        html.esc(self.route + "_active_val", "active")
         return str(html)
