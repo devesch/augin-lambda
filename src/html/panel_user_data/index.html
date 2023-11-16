@@ -42,7 +42,7 @@
             <span class="error" style="" id="personal_data_error_msg_span">
             </span>
             <section class="panel-user-data__main-container__button-container">
-                <button onclick="js.index.saveUserPersonalData()" type="submit">
+                <button onclick="js.index.saveUserPersonalData()" type="submit" disabled>
                     {{Salvar alterações}}
                 </button>
             </section>
@@ -112,7 +112,7 @@
                     {{error_msg_val}}
                 </span>
                 <section class="panel-user-data__main-container__button-container">
-                    <button type="submit">
+                    <button type="submit" disabled>
                         {{Salvar alterações}}
                     </button>
                 </section>
@@ -153,7 +153,7 @@
                     <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserAccount();">
                         Apagar minha conta
                     </button>
-                    <button type="submit">
+                    <button type="submit" disabled>
                         Salvar alterações
                     </button>
                 </section>
@@ -186,7 +186,7 @@
                     <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserImage();">
                         Apagar imagem de perfil
                     </button>
-                    <button type="submit">
+                    <button type="submit" disabled>
                         Salvar alterações
                     </button>
                 </section>
