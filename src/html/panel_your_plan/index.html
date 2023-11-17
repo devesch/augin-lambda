@@ -143,7 +143,7 @@
     <input hidden id="stripe_token_input" value="{{stripe_token_val}}">
     <div class="content-modal max-width">
         <div class="modal-header">
-            <h1 class="modal-header-title">{{Adicionando novo método de pagamento}}</h1>
+            <h1 class="modal-header-title">{{Adicionar método de pagamento}}</h1>
         </div>
         <div class="modal-content">
             <form id="payment-form">
@@ -151,7 +151,7 @@
                 </div>
                 <div id="card-errors" role="alert"></div>
                 <div class="modal-button-container">
-                    <button onclick="js.index.closeModal('.modal.add-payment-method-modal')" class="ghost">{{Fechar}}</button>
+                    <button onclick="js.index.closeModal('.modal.add-payment-method-modal')" class="ghost">{{Cancelar}}</button>
                     <button id="submit">{{Adicionar}}</button>
                 </div>
             </form>
@@ -163,17 +163,24 @@
 <div id="delete-payment-method-modal" class="modal delete-payment-method-modal" aria-hidden="true">
     <div class="content-modal max-width">
         <div class="modal-header">
-            <h1 class="modal-header-title">{{Excluindo método de pagamento}}</h1>
+            <h1 class="modal-header-title">{{Remover método de pagamento}}</h1>
         </div>
         <div class="modal-content">
             <div class="delete-modal-container">
-                <p>{{Você tem certeza que deseja excluir este método de pagamento}}?</p>
+                <p>{{Removê-lo significa que você não poderá usar esse método de pagamento para outros produtos e serviços da Augin sem adicioná-lo novamente}}?</p>
+                <section class="delete-modal-payment-method-row">
+                    <img src="" class="js-payment-brand-image" alt="" width="48" height="35">
+                    <div>
+                        <span class="js-payment-brand-name mr-05"></span>
+                        <span class="js-payment-brand-code"></span>
+                    </div>
+                </section>
             </div>
             <span class="error" id="delete_payment_method_error_span">
             </span>
             <div class="modal-button-container">
                 <input hidden id="delete_payment_method_input">
-                <button onclick="js.index.closeModal('.modal.delete-payment-method-modal')">{{Fechar}}</button>
+                <button onclick="js.index.closeModal('.modal.delete-payment-method-modal')">{{Cancelar}}</button>
                 <button onclick="js.index.saveDeletePaymentMethod()" class="ghost">{{Remover}}</button>
             </div>
         </div>

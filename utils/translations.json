@@ -259,10 +259,10 @@
         "es": "Tarjeta activa",
         "pt": "Active card"
     },
-    "Adicionando novo método de pagamento": {
-        "en": "Adding new payment method",
-        "es": "Agregar un nuevo método de pago",
-        "pt": "Adicionando novo método de pagamento"
+    "Adicionar método de pagamento": {
+        "en": "Add payment method",
+        "es": "Agregar un método de pago",
+        "pt": "Adicionar método de pagamento"
     },
     "Adicionar": {
         "en": "To add",
@@ -273,11 +273,6 @@
         "en": "Add profile photo",
         "es": "Añadir foto de perfil",
         "pt": "Adicionar foto de perfil"
-    },
-    "Adicionar método de pagamento": {
-        "en": "Add payment method",
-        "es": "Añadir método de pago",
-        "pt": "Adicionar método de pagamento"
     },
     "Adicionar projeto ao federado": {
         "en": "Add project to the federate",
@@ -2193,11 +2188,6 @@
         "en": "Exceeded the limit of attempts",
         "es": "Excedió el límite de intentos",
         "pt": "Excedeu o limite de tentativas"
-    },
-    "Excluindo método de pagamento": {
-        "en": "Deleting payment method",
-        "es": "Eliminar el método de pago",
-        "pt": "Excluindo método de pagamento"
     },
     "Excluir modelo": {
         "en": "Delete template",
@@ -4639,6 +4629,16 @@
         "es": "Eliminar",
         "pt": "Remover"
     },
+    "Remover método de pagamento": {
+        "en": "Remove payment method",
+        "es": "Eliminar el método de pago",
+        "pt": "Remover método de pagamento"
+    },
+    "Removê-lo significa que você não poderá usar esse método de pagamento para outros produtos e serviços da Augin sem adicioná-lo novamente": {
+        "en": "Removing it means that you will not be able to use this payment method for other Augin products and services without adding it again",
+        "es": "Eliminarlo significa que no podrá utilizar este método de pago para otros productos y servicios de Augin sin agregarlo nuevamente",
+        "pt": "Removê-lo significa que você não poderá usar esse método de pagamento para outros produtos e serviços da Augin sem adicioná-lo novamente"
+    },
     "Renomear": {
         "en": "Rename",
         "es": "Rebautizar",
@@ -5808,11 +5808,6 @@
         "en": "You need to be logged in to access this page hide password",
         "es": "Debe registrarse para acceder a esta página Ocultar contraseña",
         "pt": "Você precisa estar logado para acessar esta páginaOcultar senha"
-    },
-    "Você tem certeza que deseja excluir este método de pagamento": {
-        "en": "Are you sure you want to delete this payment method",
-        "es": "Está seguro de que desea eliminar este método de pago",
-        "pt": "Você tem certeza que deseja excluir este método de pagamento"
     },
     "Você utilizou": {
         "en": "You used",

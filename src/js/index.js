@@ -2724,11 +2724,14 @@ export async function updateUserPaginationCount(select_input) {
     });
     location.reload();
 }
-export async function openModalDeletePaymentMethod(payment_method_id) {
+export async function openModalDeletePaymentMethod(payment_method_id, payment_index) {
     let delete_payment_method_input = document.getElementById("delete_payment_method_input");
     let delete_payment_method_error_span = document.getElementById("delete_payment_method_error_span");
     delete_payment_method_error_span.innerHTML = "";
     delete_payment_method_input.value = payment_method_id;
+    document.querySelector(".js-payment-brand-image").src = document.querySelector((".js-get-payment-brand-image-" + payment_index)).src;
+    document.querySelector(".js-payment-brand-name").innerText = document.querySelector((".js-get-payment-brand-name-" + payment_index)).innerText;
+    document.querySelector(".js-payment-brand-code").innerText = document.querySelector((".js-get-payment-brand-code-" + payment_index)).innerText;
     openModal('.modal.delete-payment-method-modal')
 }
 
