@@ -23,9 +23,15 @@ else:
         s3_put_user_secret_access_key = env_var.get("s3_put_user_secret_access_key")
         tmp_path = "tmp/"
 
-base_url = f"https://{prefix_name}{domain_name}{sufix_name}"
+base_url = f"https://{domain_name}{sufix_name}"
 cdn_bucket = "cdn." + domain_name + sufix_name
 cdn_base_url = "https://" + cdn_bucket
+css_js_location = cdn_base_url
+
+if os.environ.get("AWS_EXECUTION_ENV") is None:
+    base_url = f"http://127.0.0.1:3000"
+    cdn_base_url = "/static"
+    css_js_location = "/static/dist"
 
 ### TODO CHANGE CNPJ TO AUGIN
 lambda_constants = {
@@ -64,6 +70,7 @@ lambda_constants = {
     "lambda_move_deleted_model_files": "move_deleted_model_files",
     "lambda_check_model_uploaded_file": "check_model_uploaded_file",
     "maxium_ifc_project_filesize": "1073741824",
+    "css_js_location": css_js_location,
     "prefix_name": prefix_name,
     "sufix_name": sufix_name,
     "domain_name": domain_name,

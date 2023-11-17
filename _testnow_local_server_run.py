@@ -8,20 +8,23 @@ from watchdog.events import PatternMatchingEventHandler
 
 def load_environment_variables():
     with open(".vscode/launch.json", "r", encoding="utf-8") as file:
-        launch = file.read()
+        launch = json.load(file)
 
     with open(".vscode/enviroment_variables.json", "r", encoding="utf-8") as file:
         enviroment_variables = json.load(file)
 
-    os.environ["AWS_ACCESS_KEY_ID"] = launch.split('"AWS_ACCESS_KEY_ID": ')[1].split(",")[0].replace('"', "")
-    os.environ["AWS_SECRET_ACCESS_KEY"] = launch.split('"AWS_SECRET_ACCESS_KEY": ')[1].split(",")[0].replace('"', "")
-    os.environ["AWS_DEFAULT_REGION"] = enviroment_variables["region"]
-    os.environ["LOCAL_SERVER"] = enviroment_variables["region"]
+    os.environ["AWS_ACCESS_KEY_ID"] = launch["configurations"][0]["env"]["AWS_ACCESS_KEY_ID"]
+    os.environ["AWS_SECRET_ACCESS_KEY"] = launch["configurations"][0]["env"]["AWS_SECRET_ACCESS_KEY"]
+    os.environ["AWS_DEFAULT_REGION"] = launch["configurations"][0]["env"]["AWS_DEFAULT_REGION"]
+    os.environ["LOCAL_SERVER"] = launch["configurations"][0]["env"]["AWS_DEFAULT_REGION"]
 
 
 def run_subprocess():
     file_to_run = "_testnow_local_server.py"
-    process = subprocess.Popen(["python", file_to_run], env=os.environ)
+    if "bernardo" in os.getcwd():
+        process = subprocess.Popen(["python3", file_to_run], env=os.environ)
+    else:
+        process = subprocess.Popen(["python", file_to_run], env=os.environ)
     return process
 
 

@@ -27,10 +27,10 @@ class PanelUserData(PanelPage, UserPage):
 
         html = super().parse_html()
 
-        html.esc("user_name_val", self.user.user_name)
-        html.esc("user_email_val", self.user.user_email)
+        # html.esc("user_name_val", self.user.user_name)
+        # html.esc("user_email_val", self.user.user_email)
         html.esc("user_country_val", self.user.user_address_data["user_country"])
-        html.esc("user_phone_val", self.user.user_phone)
+        # html.esc("user_phone_val", self.user.user_phone)
 
         user_country_alpha_2 = self.user.user_address_data["user_country"]
         html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
