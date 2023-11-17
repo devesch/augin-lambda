@@ -3544,3 +3544,7 @@ input[list]::-ms-clear {
     }
 }
 /* Print - End */
+
+.dropzone--over {
+    background-color: colors.color("black") !important;
+}

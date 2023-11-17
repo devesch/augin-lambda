@@ -3132,6 +3132,7 @@ export async function checkIfShareFolderIsAvailable() {
 
 
 export async function uploadUserThumb(input) {
+    console.log(input);
     openModal('.modal.modal-loader-spinner')
     var user_thumb_img = document.getElementById("user_thumb_img");
     var update_user_thumb_error_msg_span = document.getElementById("update_user_thumb_error_msg_span");
@@ -3268,4 +3269,29 @@ export async function toggleTooltip(event, tooltip_id) {
     tooltip.classList.add("tooltip--open");
     await sleep(5000);
     tooltip.classList.remove("tooltip--open")
+}
+
+export async function activateFileUploadDragAndDrop(elementClass, inputId) {
+    const element = document.querySelector(elementClass);
+    const input = document.querySelector(inputId);
+    element.addEventListener("dragover", function(e) {
+        console.log("dragover");
+        element.classList.add("dropzone--over");
+    });
+
+    element.addEventListener("drop", function(e) {
+        console.log("drop");
+        console.log(e.dataTransfer);
+        console.log(e.dataTransfer.files);
+        if (e.dataTransfer.files.length) {
+            input.files = e.dataTransfer.files;
+        }
+    });
+
+    ["dragleave", "dragend"].forEach(type => {
+        console.log("dragleave dragend");
+        element.addEventListener(type, function(e) {
+            element.classList.remove("dropzone--over");
+        });
+    });
 }
