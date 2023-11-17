@@ -105,6 +105,12 @@ input[readonly] {
     background-color: colors.color("color-neutral-200");
 }
 
+input[type="file"],
+input[type="file"]:read-only,
+input[type="file"][readonly] {
+    cursor: pointer;
+}
+
 .input:read-only + label,
 .input[readonly] + label,
 input[type="text"]:read-only + label,

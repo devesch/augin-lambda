@@ -36,6 +36,8 @@ class PanelUserData(PanelPage, UserPage):
         html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
         html.esc("html_user_country_options", self.list_html_user_country_options(user_country_alpha_2))
 
+        html.esc("html_loader_modal", ReadWrite().read_html("panel_user_data/_codes/html_loader_modal"))
+
         return str(html)
         # self.check_error_msg(html, self.error_msg)
         # if self.user.user_client_type != self.path["user_client_type"]:

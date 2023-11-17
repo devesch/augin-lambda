@@ -3274,30 +3274,3 @@ export async function toggleTooltip(event, tooltip_id) {
     await sleep(5000);
     tooltip.classList.remove("tooltip--open")
 }
-
-export async function activateFileUploadDragAndDrop(elementClass, inputId) {
-    const element = document.querySelector(elementClass);
-    const input = document.querySelector(inputId);
-    console.log("teste");
-    element.addEventListener("dragover", function(e) {
-        console.log("dragover");
-        element.classList.add("dropzone--over");
-    });
-
-    element.addEventListener("drop", function(e) {
-        console.log("drop");
-        console.log(e.dataTransfer);
-        console.log(e.dataTransfer.files);
-        if (e.dataTransfer.files.length) {
-            input.files = e.dataTransfer.files;
-        }
-    });
-
-    ["dragleave", "dragend"].forEach(type => {
-        console.log("dragleave dragend");
-        element.addEventListener(type, function(e) {
-            console.log(type);
-            element.classList.remove("dropzone--over");
-        });
-    });
-}
