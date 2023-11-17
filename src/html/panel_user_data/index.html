@@ -199,7 +199,9 @@
     {{html_modal_loader_spinner}}
 
     <script>
-        js.index.activateFileUploadDragAndDrop(".upload-file-label", "#upload_user_thumb_input");
+        document.addEventListener('DOMContentLoaded', async function () {
+            js.index.activateFileUploadDragAndDrop(".upload-file-label", "#upload_user_thumb_input");
+        });
     </script>
 </main>
 {{html_delete_account_modal}}

@@ -9,6 +9,10 @@ import {
     request
 } from "./api.js";
 
+if (window.location.href.includes("http://127.0.0.1:3000")) {
+    ProjectData.props.domainNameUrlVal = "http://127.0.0.1:3000";
+}
+
 export async function formatToPhoneNumber(input) {
     let numbers = input.value.replace(/\D/g, '');
     if (numbers.length === 0) {
@@ -3274,6 +3278,7 @@ export async function toggleTooltip(event, tooltip_id) {
 export async function activateFileUploadDragAndDrop(elementClass, inputId) {
     const element = document.querySelector(elementClass);
     const input = document.querySelector(inputId);
+    console.log("teste");
     element.addEventListener("dragover", function(e) {
         console.log("dragover");
         element.classList.add("dropzone--over");
@@ -3291,6 +3296,7 @@ export async function activateFileUploadDragAndDrop(elementClass, inputId) {
     ["dragleave", "dragend"].forEach(type => {
         console.log("dragleave dragend");
         element.addEventListener(type, function(e) {
+            console.log(type);
             element.classList.remove("dropzone--over");
         });
     });
