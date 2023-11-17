@@ -76,7 +76,6 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                         html.esc("current_plan_active_val", "active")
                     elif user_subscription and (user_subscription.get("subscription_plan_id") + "-" + user_subscription.get("subscription_recurrency") in plans_hierarchy) and (int(plans_hierarchy[user_subscription.get("subscription_plan_id") + "-" + user_subscription.get("subscription_recurrency")]) > int(plans_hierarchy[plan["plan_id"] + "-" + recurrency])):
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency, "downgrade"))
-                        html.esc("current_plan_active_val", "active")
                     else:
                         html.esc("html_your_plan_button_or_upgrade_plan_button", self.show_html_upgrade_plan_button(plan["plan_id"], recurrency, "upgrade"))
 
