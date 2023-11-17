@@ -1516,15 +1516,6 @@ input[list]::-ms-clear {
         font-size: 1.25rem;
     }
 
-    section {
-        background-color: colors.color("color-neutral-50");
-        padding: 1rem 2rem;
-        border: 2px solid colors.color("color-primary-700");
-        border-radius: 1rem;
-        max-width: 400px;
-        flex-grow: 1;
-    }
-
     ul {
         font-size: .9rem;
         margin-top: 2rem;
@@ -1543,6 +1534,16 @@ input[list]::-ms-clear {
 .change-plan__subscription__item {
     display: flex;
     flex-direction: column;
+    background-color: colors.color("color-neutral-50");
+    padding: 1rem 2rem;
+    border: 2px solid colors.color("color-neutral-50");
+    border-radius: 1rem;
+    max-width: 400px;
+    flex-grow: 1;
+}
+
+.change-plan__subscription__item.active {
+    border-color: colors.color("color-primary-700");
 }
 
 .change-plan__price-container {
