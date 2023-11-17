@@ -7,25 +7,16 @@
             <h1 class="my-plan__title">{{Informaçōes do pedido}} #{{order_short_id_val}}</h1>
         </div>
 
+        <div class="order__settings">
+            <a class="button">
+                <img src="{{cdn_val}}/assets/images/download.svg" alt="" width="16" height="16">
+            </a>
+            <a class="button">
+                <img src="{{cdn_val}}/assets/images/print.svg" alt="" width="16" height="16">
+            </a>
+        </div>
+
         <div class="order__title-container">
-            <div class="order-info">
-                <picture>
-                    <source srcset="{{cdn_val}}/assets/images/augin_logo.avif" type="image/avif">
-                    <source srcset="{{cdn_val}}/assets/images/augin_logo.webp" type="image/webp">
-                    <img src="{{cdn_val}}/assets/images/augin_logo.png" alt="Logo" width="120" height="43" class="print-hide">
-                </picture>
-
-                <picture>
-                    <source srcset="{{cdn_val}}/assets/images/augin_logo_dark.avif" type="image/avif">
-                    <source srcset="{{cdn_val}}/assets/images/augin_logo_dark.webp" type="image/webp">
-                    <img src="{{cdn_val}}/assets/images/augin_logo_dark.png" alt="Logo" width="120" height="43" class="print-show logo-container">
-                </picture>
-
-                <div class="order-info__address">
-                    <p>{{company_full_address_val}}</p>
-                    <p>CNPJ {{company_formated_cnpj_val}}</p>
-                </div>
-            </div>
             <div class="order-body">
                 <div class="order-column">
                     <div class="order-column__row">
@@ -45,6 +36,24 @@
                         <strong>{{order_status_val}}</strong>
                     </div>
                 </div>
+                <div class="order-column">
+                    <div class="order-column__row">
+                        <p>{{Cliente}}:</p>
+                    </div>
+                    <div class="order-column__row">
+                        <p>{{client_name_val}}</p>
+                    </div>
+                    <div class="order-column__row">
+                        <p>{{client_email_val}}</p>
+                    </div>
+                    <div class="order-column__row">
+                        <p>{{client_phone_number_val}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order__title-container">
+            <div class="order-body">
                 <div class="order-column">
                     <p>{{Tipo de compra}}</p>
                     <div class="">
