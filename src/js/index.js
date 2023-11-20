@@ -10,6 +10,182 @@ import {
 } from "./api.js";
 
 
+export async function saveUserInternationalData() {
+    var user_zip_code_input = document.getElementById("international_user_zip_code_input");
+    var user_state_input = document.getElementById("international_user_state_input");
+    var user_city_input = document.getElementById("international_user_city_input");
+    var user_neighborhood_input = document.getElementById("international_user_neighborhood_input");
+    var user_street_input = document.getElementById("international_user_street_input");
+    var international_data_error_msg_span = document.getElementById("international_data_error_msg_span");
+    var save_international_data_button = document.getElementById("save_international_data_button");
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "update_international_data",
+        "user_zip_code": user_zip_code_input.value,
+        "user_state": user_state_input.value,
+        "user_city": user_city_input.value,
+        "user_city_code": user_city_code_input.value,
+        "user_neighborhood": user_neighborhood_input.value,
+        "user_street": user_street_input.value,
+    })
+    if ("error" in update_user_response) {
+        international_data_error_msg_span.innerHTML = update_user_response["error"];
+    }
+    if ("success" in update_user_response) {
+        if (location.href.includes("checkout_upgrade_your_plan")) {
+            selected_plan_redirect_url_input = document.getElementById("selected_plan_redirect_url_input");
+            location.href = selected_plan_redirect_url_input.value;
+        }
+        
+        international_data_error_msg_span.innerHTML = "";
+        save_international_data_button.innerHTML = update_user_response["success"];
+        await sleep(7000);
+        let translate_response = await apiCaller("translate", {
+            "key": "Salvar alterações"
+        })
+        save_international_data_button.innerHTML = translate_response["success"];
+    }
+}
+
+
+export async function makeSaveUserInternationalDataAvailable() {
+    var user_zip_code_input = document.getElementById("international_user_zip_code_input");
+    var user_state_input = document.getElementById("international_user_state_input");
+    var user_city_input = document.getElementById("international_user_city_input");
+    var user_neighborhood_input = document.getElementById("international_user_neighborhood_input");
+    var user_street_input = document.getElementById("international_user_street_input");
+    var save_international_data_button = document.getElementById("save_international_data_button");
+
+    if (user_zip_code_input.value.length > 0 && user_state_input.value.length > 0 && user_city_input.value.length > 0 && user_neighborhood_input.value.length > 0 && user_street_input.value.length > 0 ){
+        save_international_data_button.disabled = false;
+    }
+    else {
+        save_international_data_button.disabled = true;
+    }
+}
+
+
+export async function updateUserClientTypeForm(){
+    var user_country_select = document.getElementById("user_country_select");
+    if (user_country_select.value == "BR"){
+        toggleBrAddressForms("physical_span");
+    }else{
+        toggleBrAddressForms("international_span");
+    }
+}
+
+export async function saveUserCNPJData() {
+    var user_cnpj_input = document.getElementById("user_cnpj_input");
+    var user_zip_code_input = document.getElementById("cnpj_user_zip_code_input");
+    var user_state_input = document.getElementById("cnpj_user_state_input");
+    var user_city_input = document.getElementById("cnpj_user_city_input");
+    var user_city_code_input = document.getElementById("cnpj_user_city_code_input");
+    var user_neighborhood_input = document.getElementById("cnpj_user_neighborhood_input");
+    var user_street_input = document.getElementById("cnpj_user_street_input");
+    var user_street_number_input = document.getElementById("cnpj_user_street_number_input");
+    var user_complement_input = document.getElementById("cnpj_user_complement_input");
+
+    var save_cnpj_data_button = document.getElementById("save_cnpj_data_button");
+    var cnpj_data_error_msg_span = document.getElementById("cnpj_data_error_msg_span");
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "update_cnpj_data",
+        "user_cnpj": user_cnpj_input.value,
+        "user_zip_code": user_zip_code_input.value,
+        "user_state": user_state_input.value,
+        "user_city": user_city_input.value,
+        "user_city_code": user_city_code_input.value,
+        "user_neighborhood": user_neighborhood_input.value,
+        "user_street": user_street_input.value,
+        "user_street_number": user_street_number_input.value,
+        "user_complement": user_complement_input.value
+    })
+    if ("error" in update_user_response) {
+        cnpj_data_error_msg_span.innerHTML = update_user_response["error"];
+    }
+    if ("success" in update_user_response) {
+        if (location.href.includes("checkout_upgrade_your_plan")) {
+            selected_plan_redirect_url_input = document.getElementById("selected_plan_redirect_url_input");
+            location.href = selected_plan_redirect_url_input.value;
+        }
+
+        cnpj_data_error_msg_span.innerHTML = "";
+        save_cnpj_data_button.innerHTML = update_user_response["success"];
+        await sleep(7000);
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Salvar alterações"
+        })
+        save_cnpj_data_button.innerHTML = translate_response["success"];
+    }
+}
+
+
+export async function makeSaveUserCNPJDataAvailable() {
+    var user_cnpj_input = document.getElementById("user_cnpj_input");
+    var user_zip_code_input = document.getElementById("cnpj_user_zip_code_input");
+    var user_state_input = document.getElementById("cnpj_user_state_input");
+    var user_city_input = document.getElementById("cnpj_user_city_input");
+    var user_city_code_input = document.getElementById("cnpj_user_city_code_input");
+    var user_neighborhood_input = document.getElementById("cnpj_user_neighborhood_input");
+    var user_street_input = document.getElementById("cnpj_user_street_input");
+    var user_street_number_input = document.getElementById("cnpj_user_street_number_input");
+    var user_complement_input = document.getElementById("cnpj_user_complement_input");
+
+    var save_cnpj_data_button = document.getElementById("save_cnpj_data_button");
+    if (user_cnpj_input.value.length >= 18 && user_cpf_input.value.length > 0 && user_zip_code_input.value.length > 0 && user_state_input.value.length > 0 && user_city_input.value.length > 0 && user_city_code_input.value.length > 0 && user_neighborhood_input.value.length > 0 && user_street_input.value.length > 0 && user_street_number_input.value.length > 0 && user_complement_input.value.length > 0) {
+        save_cnpj_data_button.disabled = false;
+    } else {
+        save_cnpj_data_button.disabled = true;
+    }
+}
+
+export async function toggleBrAddressForms(active_span_id) {
+    var company_span = document.getElementById("company_span");
+    var physical_span = document.getElementById("physical_span");
+    if (active_span_id == "physical_span" || active_span_id == "company_span") {
+        var active_span = document.getElementById(active_span_id);
+        company_span.classList.remove("active");
+        physical_span.classList.remove("active");
+        active_span.classList.add("active");
+    }
+    var physical_address_div = document.getElementById("physical_address_div");
+    var physical_address_submit_div = document.getElementById("physical_address_submit_div");
+    var company_address_div = document.getElementById("company_address_div");
+    var company_address_submit_div = document.getElementById("company_address_submit_div");
+    var international_address_div = document.getElementById("international_address_div");
+    var international_address_submit_div = document.getElementById("international_address_submit_div");
+    var client_type_spans_div = document.getElementById("client_type_spans_div");
+
+    if (active_span_id == "company_span"){
+        physical_address_div.style.display = "none";
+        physical_address_submit_div.style.display = "none";
+        company_address_div.style.display = "";
+        company_address_submit_div.style.display = "";
+        international_address_div.style.display = "none";
+        international_address_submit_div.style.display = "none";
+        client_type_spans_div.style.display = "";
+    }
+    if (active_span_id == "physical_span") {
+        physical_address_div.style.display = "";
+        physical_address_submit_div.style.display = "";
+        company_address_div.style.display = "none";
+        company_address_submit_div.style.display = "none";
+        international_address_div.style.display = "none";
+        international_address_submit_div.style.display = "none";
+        client_type_spans_div.style.display = "";
+    }
+    if (active_span_id == "international_span") {
+        physical_address_div.style.display = "none";
+        physical_address_submit_div.style.display = "none";
+        company_address_div.style.display = "none";
+        company_address_submit_div.style.display = "none";
+        international_address_div.style.display = "";
+        international_address_submit_div.style.display = "";
+        client_type_spans_div.style.display = "none";
+    }
+}
+
 
 export async function saveDeleteUserThumb(){
     var delete_thumb_img_error_span = document.getElementById("delete_thumb_img_error_span");
@@ -490,11 +666,15 @@ export async function showCheckoutPanelUserDataForm(userClientType, error_msg = 
     }, {}, false);
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
 
-    var user_cpf_input = document.getElementById("user_cpf_input")
-    formatToCPF(user_cpf_input);
+    formatToCPF(document.getElementById("user_cpf_input"));
+    formatToCNPJ(document.getElementById("user_cnpj_input"));
     formatToZIP(document.getElementById("user_zip_code_input"));
+    formatToZIP(document.getElementById("cnpj_user_zip_code_input"));
     formatToNumbers(document.getElementById("user_street_number_input"))
+    formatToNumbers(document.getElementById("cnpj_user_street_number_input"))
     makeSaveUserCPFDataAvailable();
+    makeSaveUserCNPJDataAvailable();
+    makeSaveUserInternationalDataAvailable();
     openModal('#panel_user_data_modal');
 }
 
@@ -615,6 +795,7 @@ export async function showUserPhysicalAddressData() {
             user_street_input.value = api_response.success.street
             cpf_data_error_msg_span.innerHTML = ""
             cpf_data_error_msg_span.style = "display: none;"
+            makeSaveUserCPFDataAvailable();
             return
         }
         if ("error" in api_response) {
@@ -633,60 +814,51 @@ export async function showUserPhysicalAddressData() {
 
 
 export async function showUserCompanyAddressData() {
-    console.log("Running showUserCompanyAddressData")
-    let error_msg = document.getElementById("error_msg");
-    let user_cnpj = document.getElementById("user_cnpj");
-    let user_name = document.getElementById("user_name");
-    let user_zip_code = document.getElementById("user_zip_code");
-    let user_state = document.getElementById("user_state");
-    let user_city = document.getElementById("user_city");
-    let user_city_code = document.getElementById("user_city_code");
-    let user_neighborhood = document.getElementById("user_neighborhood");
-    let user_street = document.getElementById("user_street");
-    let user_street_number = document.getElementById("user_street_number");
-    let user_complement = document.getElementById("user_complement");
+    let user_cnpj_input = document.getElementById("user_cnpj_input");
+    let user_zip_code_input = document.getElementById("cnpj_user_zip_code_input");
+    let user_state_input = document.getElementById("cnpj_user_state_input");
+    let user_city_input = document.getElementById("cnpj_user_city_input");
+    let user_city_code_input = document.getElementById("cnpj_user_city_code_input");
+    let user_neighborhood_input = document.getElementById("cnpj_user_neighborhood_input");
+    let user_street_input = document.getElementById("cnpj_user_street_input");
+    let user_street_number_input = document.getElementById("cnpj_user_street_number_input");
+    let cpf_data_error_msg_span = document.getElementById("cnpj_data_error_msg_span");
 
-    await formatToCNPJ(user_cnpj)
-    let box_inputs = document.querySelector(".page-user__box-user-data__box-inputs__box-adress");
-    if (user_cnpj.value.length == 18) {
-        openModal('.modal.modal-loader-spinner')
+    if (user_cnpj_input.value.length == 18) {
+        openModal(".modal-loader-spinner.address");
         let api_response = await apiCaller("panel_get_company_data_with_cnpj", {
-            'user_cnpj': user_cnpj.value.replace(".", "").replace(".", "").replace("-", "").replace("/", "")
+            'user_cnpj': user_cnpj_input.value.replace(".", "").replace("-", "").replace("/", "")
         });
-        closeModal('.modal.modal-loader-spinner')
+        closeModal(".modal-loader-spinner.address");
         if ("success" in api_response) {
-            user_name.value = api_response.success.name
-            user_zip_code.value = api_response.success.zip_code
-            user_state.value = api_response.success.state
-            user_city.value = api_response.success.city
-            user_city_code.value = api_response.success.city_code
-            user_neighborhood.value = api_response.success.neighborhood
-            user_street.value = api_response.success.street
-            user_street_number.value = api_response.success.street_number
-            if ("complement" in api_response.success) {
-                user_complement.value = api_response.success.complement
-            }
-            box_inputs.style = ""
-            error_msg.innerHTML = ""
-            error_msg.style = "display: none;"
+            user_zip_code_input.value = api_response.success.zip_code
+            user_state_input.value = api_response.success.state
+            user_city_input.value = api_response.success.city
+            user_city_code_input.value = api_response.success.city_code
+            user_neighborhood_input.value = api_response.success.neighborhood
+            user_street_input.value = api_response.success.street
+            user_street_number_input.value = api_response.success.street_number
+            cpf_data_error_msg_span.innerHTML = ""
+            cpf_data_error_msg_span.style = "display: none;"
+            formatToZIP(user_zip_code_input);
+            formatToNumbers(user_street_number_input);
+            makeSaveUserCNPJDataAvailable();
             return
         }
         if ("error" in api_response) {
-            error_msg.innerHTML = api_response.error
-            error_msg.style = "color:#FF0000;"
+            cpf_data_error_msg_span.innerHTML = api_response.error
+            cpf_data_error_msg_span.style = "color:#FF0000;"
             return
         }
     }
-    user_name.value = ""
-    user_zip_code.value = ""
-    user_state.value = ""
-    user_city.value = ""
-    user_city_code.value = ""
-    user_neighborhood.value = ""
-    user_street.value = ""
-    user_street_number.value = ""
-    user_complement.value = ""
-    box_inputs.style = "display: none;"
+    user_zip_code_input.value =  "";
+    user_state_input.value =  "";
+    user_city_input.value =  "";
+    user_city_code_input.value =  "";
+    user_neighborhood_input.value =  "";
+    user_street_input.value =  "";
+    user_street_number_input.value =  "";
+    makeSaveUserCNPJDataAvailable();
 }
 
 export function sleep(ms) {

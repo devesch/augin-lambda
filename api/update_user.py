@@ -44,6 +44,70 @@ class UpdateUser(UserPage, PanelPage):
         self.user.update_password(self.post["user_password"], Generate().generate_salt(9))
         return {"success": "Senha alterada com sucesso"}
 
+    def update_international_data(self):
+        if not self.post.get("user_zip_code"):
+            return {"error": "É necessário informar um código ZIP."}
+        if not self.post.get("user_state"):
+            return {"error": "É necessário informar um estado."}
+        if not self.post.get("user_city"):
+            return {"error": "É necessário informar uma cidade."}
+        if not self.post.get("user_city_code"):
+            return {"error": "É necessário informar um código de cidade."}
+        if not self.post.get("user_neighborhood"):
+            return {"error": "É necessário informar um bairro."}
+        if not self.post.get("user_street"):
+            return {"error": "É necessário informar uma rua."}
+
+        self.user.user_address_data["user_zip_code"] = self.post["user_zip_code"]
+        self.user.user_address_data["user_state"] = self.post["user_state"].upper()
+        self.user.user_address_data["user_city"] = self.post["user_city"].title()
+        self.user.user_address_data["user_city_code"] = self.post["user_city_code"].capitalize()
+        self.user.user_address_data["user_neighborhood"] = self.post["user_neighborhood"].title()
+        self.user.user_address_data["user_street"] = self.post["user_street"].title()
+        self.user.user_client_type = "international"
+        self.user_address_data_last_update = str(time.time())
+        Dynamo().put_entity(self.user.__dict__)
+        return {"success": "Dados atualizados com sucesso"}
+
+    def update_cnpj_data(self):
+        if not self.post.get("user_cnpj"):
+            return {"error": "É necessário informar um CNPJ."}
+        if not self.post.get("user_zip_code"):
+            return {"error": "É necessário informar um código ZIP."}
+        if not self.post.get("user_state"):
+            return {"error": "É necessário informar um estado."}
+        if not self.post.get("user_city"):
+            return {"error": "É necessário informar uma cidade."}
+        if not self.post.get("user_city_code"):
+            return {"error": "É necessário informar um código de cidade."}
+        if not self.post.get("user_neighborhood"):
+            return {"error": "É necessário informar um bairro."}
+        if not self.post.get("user_street"):
+            return {"error": "É necessário informar uma rua."}
+        if not self.post.get("user_street_number"):
+            return {"error": "É necessário informar o número da rua."}
+        if not self.post.get("user_complement"):
+            return {"error": "É necessário informar um complemento."}
+
+        if not Validation().check_if_cnpj(self.post["user_cnpj"]):
+            return {"error": "Digite um CNPJ válido"}
+        if not Validation().check_if_number(self.post["user_zip_code"]):
+            return {"error": "Digite um ZIP válido"}
+
+        self.user.user_cnpj = self.post["user_cnpj"]
+        self.user.user_address_data["user_zip_code"] = self.post["user_zip_code"]
+        self.user.user_address_data["user_state"] = self.post["user_state"].upper()
+        self.user.user_address_data["user_city"] = self.post["user_city"].title()
+        self.user.user_address_data["user_city_code"] = self.post["user_city_code"].capitalize()
+        self.user.user_address_data["user_neighborhood"] = self.post["user_neighborhood"].title()
+        self.user.user_address_data["user_street"] = self.post["user_street"].title()
+        self.user.user_address_data["user_street_number"] = self.post["user_street_number"]
+        self.user.user_address_data["user_complement"] = self.post["user_complement"].title()
+        self.user.user_client_type = "company"
+        self.user_address_data_last_update = str(time.time())
+        Dynamo().put_entity(self.user.__dict__)
+        return {"success": "Dados atualizados com sucesso"}
+
     def update_cpf_data(self):
         if not self.post.get("user_cpf"):
             return {"error": "É necessário informar um CPF."}
@@ -67,7 +131,7 @@ class UpdateUser(UserPage, PanelPage):
         if not Validation().check_if_cpf(self.post["user_cpf"]):
             return {"error": "Digite um CPF válido"}
         if not Validation().check_if_number(self.post["user_zip_code"]):
-            return {"error": "Digite um CPF válido"}
+            return {"error": "Digite um ZIP válido"}
 
         self.user.user_cpf = self.post["user_cpf"]
         self.user.user_address_data["user_zip_code"] = self.post["user_zip_code"]
@@ -78,6 +142,7 @@ class UpdateUser(UserPage, PanelPage):
         self.user.user_address_data["user_street"] = self.post["user_street"].title()
         self.user.user_address_data["user_street_number"] = self.post["user_street_number"]
         self.user.user_address_data["user_complement"] = self.post["user_complement"].title()
+        self.user.user_client_type = "physical"
         self.user_address_data_last_update = str(time.time())
         Dynamo().put_entity(self.user.__dict__)
         return {"success": "Dados atualizados com sucesso"}
