@@ -5,7 +5,6 @@ var props = {
     cdnVal: `https://cdn.augin.app`,
 }
 
-
 if (location.href.includes("dev-")) {
     props = {
         domainNameUrlVal: `https://web.augin.app`,
@@ -14,8 +13,10 @@ if (location.href.includes("dev-")) {
 }
 
 if (window.location.href.includes("http://127.0.0.1:3000")) {
-    props["domainNameUrlVal"] = "http://127.0.0.1:3000";
-    props["cdnVal"] = "/static";
+    props = {
+        domainNameUrlVal: `http://127.0.0.1:3000`,
+        cdnVal: `/static`,
+    }
 }
 
 

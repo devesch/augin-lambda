@@ -9,9 +9,57 @@ import {
     request
 } from "./api.js";
 
-if (window.location.href.includes("http://127.0.0.1:3000")) {
-    ProjectData.props.domainNameUrlVal = "http://127.0.0.1:3000";
+
+
+export async function saveDeleteUserThumb(){
+    var delete_thumb_img_error_span = document.getElementById("delete_thumb_img_error_span");
+    var user_thumb_img = document.getElementById("user_thumb_img");
+    var panel_menu_user_thumb_img = document.getElementById("panel_menu_user_thumb_img");
+
+    let update_user_response = await apiCaller('update_user', {
+        "command": "delete_user_thumb"
+    });
+
+    if ("error" in update_user_response) {
+        delete_thumb_img_error_span.innerHTML = update_user_response["error"];
+    }else{
+        user_thumb_img.src = ProjectData.props.cdnVal + "/assets/icons/person_square.svg";
+        panel_menu_user_thumb_img.src = user_thumb_img.src;
+        closeModal('.modal.delete-thumb-modal');
+    }
 }
+
+export async function saveUserThumb(){
+    openModal('.modal.modal-loader-spinner.uploaded');
+    var user_thumb_input = document.getElementById("user_thumb_input");
+    var user_thumb_img = document.getElementById("user_thumb_img");
+    var save_thumb_button = document.getElementById("save_thumb_button");
+    var panel_menu_user_thumb_img = document.getElementById("panel_menu_user_thumb_img");
+    var update_user_thumb_error_msg_span = document.getElementById("update_user_thumb_error_msg_span");
+
+    let update_user_response = await apiCaller('update_user', {
+        "command": "update_user_thumb",
+        "thumb_key": user_thumb_input.value
+    });
+    closeModal('.modal.modal-loader-spinner.uploaded');
+
+    if ("error" in update_user_response) {
+        update_user_thumb_error_msg_span.innerHTML = update_user_response["error"];
+    } else {
+        update_user_thumb_error_msg_span.innerHTML = "";
+        user_thumb_img.src = "https://processed.augin.app/" + update_user_response["user_thumb"];
+        panel_menu_user_thumb_img.src = user_thumb_img.src;
+
+        save_thumb_button.innerHTML = update_user_response["success"];
+        await sleep(7000);
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Salvar alterações"
+        })
+        save_thumb_button.innerHTML = translate_response["success"];
+    }
+}
+
 
 export async function saveUserPasswordData() {
     var user_current_password_input = document.getElementById("user_current_password_input");
@@ -36,6 +84,15 @@ export async function saveUserPasswordData() {
     }
 }
 
+export async function makeSaveUserThumbAvailable() {
+    var user_thumb_input = document.getElementById("user_thumb_input");
+
+    if (user_thumb_input.value.length >= 16) {
+        save_thumb_button.disabled = false;
+    } else {
+        save_thumb_button.disabled = true;
+    }
+}
 
 export async function makeSaveUserPasswordAvailable() {
     var user_current_password_input = document.getElementById("user_current_password_input");
@@ -78,6 +135,11 @@ export async function saveUserCPFData(){
         cpf_data_error_msg_span.innerHTML = update_user_response["error"];
     }
     if ("success" in update_user_response) {
+        if (location.href.includes("checkout_upgrade_your_plan")){
+            selected_plan_redirect_url_input = document.getElementById("selected_plan_redirect_url_input");
+            location.href = selected_plan_redirect_url_input.value;
+        }
+
         cpf_data_error_msg_span.innerHTML = "";
         save_cpf_data_button.innerHTML = update_user_response["success"];
         await sleep(7000);
@@ -393,10 +455,17 @@ export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = fal
     let user_selected_plan_id_input = document.getElementById("user_selected_plan_id_input");
     let user_selected_plan_recurrency_input = document.getElementById("user_selected_plan_recurrency_input");
     let user_selected_plan_is_trial_input = document.getElementById("user_selected_plan_is_trial_input");
+    let selected_plan_redirect_url_input = document.getElementById("selected_plan_redirect_url_input");
 
     user_selected_plan_id_input.value = plan_id
     user_selected_plan_recurrency_input.value = recurrency
     user_selected_plan_is_trial_input.value = trial
+
+    if (user_selected_plan_is_trial_input.value == "true") {
+        selected_plan_redirect_url_input.value = ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True";
+    } else {
+        selected_plan_redirect_url_input.value = ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value;
+    }
 
     let update_user_response = await apiCaller("update_user", {
         "command": "check_if_user_can_upgrade_his_plan",
@@ -406,11 +475,7 @@ export async function checkIfUserCanUpgradePlan(plan_id, recurrency, trial = fal
     if ("error" in update_user_response) {
         showCheckoutPanelUserDataForm(update_user_response["user_client_type"], update_user_response["error"]);
     } else {
-        if (user_selected_plan_is_trial_input.value == "true") {
-            window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value + "&plan_trial=True")
-        } else {
-            window.location.replace(ProjectData.props.domainNameUrlVal + "/checkout_stripe_subscription/?plan_id=" + user_selected_plan_id_input.value + "&plan_recurrency=" + user_selected_plan_recurrency_input.value)
-        }
+        window.location = selected_plan_redirect_url_input.value
     }
 }
 
@@ -424,6 +489,12 @@ export async function showCheckoutPanelUserDataForm(userClientType, error_msg = 
         "Content-Type": "text/html; charset=utf-8",
     }, {}, false);
     panel_user_data_form_div.innerHTML = panel_user_data_page_response;
+
+    var user_cpf_input = document.getElementById("user_cpf_input")
+    formatToCPF(user_cpf_input);
+    formatToZIP(document.getElementById("user_zip_code_input"));
+    formatToNumbers(document.getElementById("user_street_number_input"))
+    makeSaveUserCPFDataAvailable();
     openModal('#panel_user_data_modal');
 }
 
@@ -1895,8 +1966,8 @@ export async function openReturnFolder() {
         "command": "get_root_folder",
         "folder_id": folder_id_input.value
     });
-    if (update_user_response["success"]["folder_path"] != "") {
-        openFolder(update_user_response["success"]["folder_id"], update_user_response["success"]["folder_path"], true)
+    if (update_user_response["root_folder"]["folder_path"] != "") {
+        openFolder(update_user_response["root_folder"]["folder_id"], update_user_response["root_folder"]["folder_path"], true)
     } else {
         openFolder("", "")
     }
@@ -1996,7 +2067,7 @@ export async function refreshUpdateModal(folder_id) {
             "command": "get_folder",
             "folder_id": folder_id
         });
-        update_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        update_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
         update_modal_folder_path_span.style.display = "";
         update_modal_return_folder_span.style.display = "";
     } else {
@@ -2013,8 +2084,8 @@ export async function openReturnFolderModalUpdate() {
         "command": "get_root_folder",
         "folder_id": update_modal_folder_id.value
     });
-    if (update_user_response["success"]["folder_path"] != "") {
-        refreshUpdateModal(update_user_response["success"]["folder_id"]);
+    if (update_user_response["root_folder"]["folder_path"] != "") {
+        refreshUpdateModal(update_user_response["root_folder"]["folder_id"]);
     } else {
         refreshUpdateModal("");
     }
@@ -2089,7 +2160,7 @@ export async function refreshMoveFolderModal(folder_id) {
             "folder_id": folder_id
         });
         move_folder_modal_return_folder_span.style.display = "";
-        move_folder_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        move_folder_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
         move_folder_modal_folder_path_span.style.display = "";
     } else {
         move_folder_modal_return_folder_span.style.display = "none";
@@ -2108,8 +2179,8 @@ export async function openReturnFolderModalMoveFolder() {
         "command": "get_root_folder",
         "folder_id": move_folder_modal_folder_id.value
     });
-    if (update_user_response["success"]["folder_path"] != "") {
-        refreshMoveFolderModal(update_user_response["success"]["folder_id"]);
+    if (update_user_response["root_folder"]["folder_path"] != "") {
+        refreshMoveFolderModal(update_user_response["root_folder"]["folder_id"]);
     } else {
         refreshMoveFolderModal("");
     }
@@ -2156,7 +2227,7 @@ export async function refreshMoveModal(folder_id) {
             "folder_id": folder_id
         });
         move_modal_return_folder_span.style.display = "";
-        move_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        move_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
         move_modal_folder_path_span.style.display = "";
     } else {
         move_modal_return_folder_span.style.display = "none";
@@ -2173,8 +2244,8 @@ export async function openReturnFolderModalMove() {
         "command": "get_root_folder",
         "folder_id": move_modal_folder_id.value
     });
-    if (update_user_response["success"]["folder_path"] != "") {
-        refreshMoveModal(update_user_response["success"]["folder_id"]);
+    if (update_user_response["root_folder"]["folder_path"] != "") {
+        refreshMoveModal(update_user_response["root_folder"]["folder_id"]);
     } else {
         refreshMoveModal("");
     }
@@ -2211,7 +2282,7 @@ export async function downloadFolders(folder_id) {
     });
 
     if ("success" in update_user_response) {
-        downloadFileFromList(update_user_response["success"])
+        downloadFileFromList(update_user_response["download_links"])
         closeModal(".modal.generate-download-folder-modal");
     } else {
         generate_download_folder_error_span.innerHTML = update_user_response["error"];
@@ -2258,7 +2329,7 @@ export async function openModalDownloadProject(model_id) {
     });
 
     if ("success" in update_user_response) {
-        downloadFileFromList(update_user_response["success"])
+        downloadFileFromList(update_user_response["download_links"])
         closeModal(".modal.generate-download-modal");
     } else {
         generate_download_error_span.innerHTML = update_user_response["error"];
@@ -2316,8 +2387,8 @@ export async function openReturnFolderModalCreateFederated() {
         "command": "get_root_folder",
         "folder_id": create_federated_modal_folder_id.value
     });
-    if (update_user_response["success"]["folder_path"] != "") {
-        refreshCreateFederatedModal(update_user_response["success"]["folder_id"]);
+    if (update_user_response["root_folder"]["folder_path"] != "") {
+        refreshCreateFederatedModal(update_user_response["root_folder"]["folder_id"]);
     } else {
         refreshCreateFederatedModal("");
     }
@@ -2340,7 +2411,7 @@ export async function refreshCreateFederatedModal(folder_id) {
             "command": "get_folder",
             "folder_id": folder_id
         });
-        create_federated_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        create_federated_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
         create_federated_modal_folder_path_span.style.display = "";
         create_federated_modal_return_folder_span.style.display = "";
     } else {
@@ -3070,7 +3141,7 @@ export async function refreshEditFederatedProjectModal(folder_id) {
             "folder_id": folder_id
         });
         add_model_to_federated_modal_return_folder_span.style.display = "";
-        add_model_to_federated_modal_folder_path_span.innerHTML = update_user_response["success"]["folder_path"];
+        add_model_to_federated_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
         add_model_to_federated_modal_folder_path_span.style.display = "";
     } else {
         add_model_to_federated_modal_return_folder_span.style.display = "none";
@@ -3096,8 +3167,8 @@ export async function openReturnFolderModalAddModelToFederated() {
         "command": "get_root_folder",
         "folder_id": folder_id_add_model_to_federated_modal_input.value
     });
-    if (update_user_response["success"]["folder_path"] != "") {
-        refreshEditFederatedProjectModal(update_user_response["success"]["folder_id"]);
+    if (update_user_response["root_folder"]["folder_path"] != "") {
+        refreshEditFederatedProjectModal(update_user_response["root_folder"]["folder_id"]);
     } else {
         refreshEditFederatedProjectModal("");
     }
@@ -3266,13 +3337,9 @@ export async function checkIfShareFolderIsAvailable() {
 
 
 export async function uploadUserThumb(input) {
-    console.log(input);
     openModal('.modal.modal-loader-spinner.uploaded')
+    var user_thumb_input = document.getElementById("user_thumb_input");
     var user_thumb_img = document.getElementById("user_thumb_img");
-    var update_user_thumb_error_msg_span = document.getElementById("update_user_thumb_error_msg_span");
-    var panel_menu_user_thumb_img = document.getElementById("panel_menu_user_thumb_img");
-
-    update_user_thumb_error_msg_span.innerHTML = "";
 
     var files = input.files;
     var process_to_bucket = "upload.augin.app";
@@ -3297,20 +3364,15 @@ export async function uploadUserThumb(input) {
 
     await uploadWithoutProgressBar(panel_get_aws_upload_keys_response["success"]['url'], post_data);
 
-    let update_user_response = await apiCaller('update_user', {
-        "command": "update_user_thumb",
-        "thumb_key": panel_get_aws_upload_keys_response["success"]['key']
-    });
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        user_thumb_img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
 
-    if ("error" in update_user_response) {
-        update_user_thumb_error_msg_span.innerHTML = update_user_response["error"];
-    } else {
-        console.log("updating user_thumb image in src");
-        let new_source_for_image = "https://processed.augin.app/" + update_user_response["user_thumb"];
-        panel_menu_user_thumb_img.src = new_source_for_image;
-        user_thumb_img.src = new_source_for_image;
-    }
-    closeModal('.modal.modal-loader-spinner.uploaded')
+    user_thumb_input.value = panel_get_aws_upload_keys_response["success"]['key'];
+    closeModal('.modal.modal-loader-spinner.uploaded');
+    makeSaveUserThumbAvailable();
 }
 
 

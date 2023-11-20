@@ -29,6 +29,10 @@ class UpdateUser(UserPage, PanelPage):
 
         return getattr(self, self.post["command"])()
 
+    def delete_user_thumb(self):
+        self.user.update_attribute("user_thumb", "")
+        return {"success": "Thumb removida com sucesso"}
+
     def update_password(self):
         if not self.post.get("user_current_password"):
             return {"error": "É necessário informar a senha atual."}
@@ -68,10 +72,10 @@ class UpdateUser(UserPage, PanelPage):
         self.user.user_cpf = self.post["user_cpf"]
         self.user.user_address_data["user_zip_code"] = self.post["user_zip_code"]
         self.user.user_address_data["user_state"] = self.post["user_state"].upper()
-        self.user.user_address_data["user_city"] = self.post["user_city"].capitalize()
+        self.user.user_address_data["user_city"] = self.post["user_city"].title()
         self.user.user_address_data["user_city_code"] = self.post["user_city_code"].capitalize()
-        self.user.user_address_data["user_neighborhood"] = self.post["user_neighborhood"].capitalize()
-        self.user.user_address_data["user_street"] = self.post["user_street"].capitalize()
+        self.user.user_address_data["user_neighborhood"] = self.post["user_neighborhood"].title()
+        self.user.user_address_data["user_street"] = self.post["user_street"].title()
         self.user.user_address_data["user_street_number"] = self.post["user_street_number"]
         self.user.user_address_data["user_complement"] = self.post["user_complement"].title()
         self.user_address_data_last_update = str(time.time())
@@ -99,7 +103,7 @@ class UpdateUser(UserPage, PanelPage):
 
         self.user.user_address_data["user_country"] = self.post["user_country"]
         self.user.user_name = self.post["user_name"].title()
-        self.user.user_phone = self.post["user_phone"].title()
+        self.user.user_phone = self.post["user_phone"]
 
         Dynamo().put_entity(self.user.__dict__)
         if self.user.user_email != self.post["user_email"]:
@@ -315,7 +319,7 @@ class UpdateUser(UserPage, PanelPage):
 
     def remove_folder_from_shared(self):
         self.user.remove_folder_from_user_shared_dicts(self.post["folder_id"])
-        return {"success": "folder removed from shared"}
+        return {"success": "Pasta removida dos compartilhamentos"}
 
     def update_folder_is_acessible(self):
         folder = Dynamo().get_folder(self.post["folder_id"])
@@ -326,7 +330,7 @@ class UpdateUser(UserPage, PanelPage):
 
         folder["folder_is_accessible"] = self.post.get("folder_is_accessible")
         Dynamo().put_entity(folder)
-        return {"success": "folder acessible updated"}
+        return {"success": "Acessibilidade da pasta atualizada"}
 
     def update_folder_password(self):
         folder = Dynamo().get_folder(self.post["folder_id"])
@@ -346,7 +350,7 @@ class UpdateUser(UserPage, PanelPage):
         folder["folder_is_password_protected"] = folder_is_password_protected
 
         Dynamo().put_entity(folder)
-        return {"success": "folder password updated"}
+        return {"success": "Senha da pasta atualizada"}
 
     def remove_model_from_shared(self):
         model = Dynamo().get_model(self.post["model_id"])
@@ -360,14 +364,14 @@ class UpdateUser(UserPage, PanelPage):
             self.user.remove_model_id_from_favorites(self.post["model_id"])
         else:
             self.user.add_model_id_to_favorites(self.post["model_id"])
-        return {"success": "user favorites updated"}
+        return {"success": "Favoritos do usuário atualizados"}
 
     def add_folder_to_user_favorites(self):
         if self.post["folder_is_favorite"] == "False":
             self.user.remove_folder_id_from_favorites(self.post["folder_id"])
         else:
             self.user.add_folder_id_to_favorites(self.post["folder_id"])
-        return {"success": "user favorites updated"}
+        return {"success": "Favoritos do usuário atualizados"}
 
     def add_shared(self):
         if not self.post.get("shared_link"):
@@ -419,7 +423,7 @@ class UpdateUser(UserPage, PanelPage):
             return {"error": "É necessário informar um nome para o novo diretório"}
 
         self.user.create_new_folder(self.post["folder_name"], self.post.get("folder_id"))
-        return {"success": "User updated."}
+        return {"success": "Usuário atualizado"}
 
     def download_folder(self):
         download_links = []
@@ -439,7 +443,7 @@ class UpdateUser(UserPage, PanelPage):
                         model = Dynamo().get_model(model_id)
                         if model:
                             download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": ModelController().generate_model_download_link(model)})
-            return {"success": download_links}
+            return {"success": "Links gerados", "download_links": download_links}
         return {"error": "Nenhuma pasta"}
 
     def download_model(self):
@@ -457,13 +461,13 @@ class UpdateUser(UserPage, PanelPage):
                 download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": lambda_generate_folder_zip_reponse["success"]})
             else:
                 download_links.append({"model_save_name": model["model_name"] + ".zip", "model_link": ModelController().generate_model_download_link(model)})
-            return {"success": download_links}
+            return {"success": "Links gerados", "download_links": download_links}
         return {"error": "Nenhuma pasta"}
 
     def get_folder(self):
         folder = Dynamo().get_folder(self.post["folder_id"])
         if folder:
-            return {"success": folder}
+            return {"success": "Folder encontrado", "folder": folder}
         return {"error": "Nenhuma pasta"}
 
     def get_root_folder(self):
@@ -472,7 +476,7 @@ class UpdateUser(UserPage, PanelPage):
         folder = Dynamo().get_folder(self.post["folder_id"])
         root_folder = Dynamo().get_folder(folder["folder_root_id"])
         if root_folder:
-            return {"success": root_folder}
+            return {"success": "Folder encontrado", "root_folder": root_folder}
         return {"error": "Sem root folder"}
 
     def delete_folder(self):
@@ -481,7 +485,7 @@ class UpdateUser(UserPage, PanelPage):
             return {"error": "Esta pasta não pertence a este usuário"}
 
         self.user.delete_folder(folder)
-        return {"success": "folder deleted"}
+        return {"success": "Folder deletado"}
 
     def rename_folder(self):
         folder = Dynamo().get_folder(self.post["folder_id"])
@@ -493,7 +497,7 @@ class UpdateUser(UserPage, PanelPage):
         folder["folder_path"] = folder["folder_path"].replace(folder["folder_name"], self.post["folder_new_name"].strip())
         folder["folder_name"] = self.post["folder_new_name"].strip()
         Dynamo().put_entity(folder)
-        return {"success": "folder renamed"}
+        return {"success": "Folder renomeado"}
 
     def move_model_folder(self):
         model = Dynamo().get_model(self.post["model_id"])
@@ -506,7 +510,7 @@ class UpdateUser(UserPage, PanelPage):
             self.user.move_model_to_another_folder(model, folder)
         else:
             self.user.move_model_to_another_folder(model)
-        return {"success": "model moved"}
+        return {"success": "Modelo movido"}
 
     def move_folder_to_another_folder(self):
         folder = Dynamo().get_folder(self.post["folder_id"])
@@ -526,4 +530,4 @@ class UpdateUser(UserPage, PanelPage):
                     return {"error": "Não é possível mover uma pasta para dentro dela própria"}
 
         self.user.move_folder_to_another_folder(folder, selected_folder)
-        return {"success": "folder moved to another folder"}
+        return {"success": "Folder movido para outro folder"}

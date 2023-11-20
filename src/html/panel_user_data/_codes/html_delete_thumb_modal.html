@@ -1,0 +1,16 @@
+<div id="delete-thumb-modal" class="modal delete-thumb-modal" aria-hidden="true">
+    <div class="content-modal max-width">
+        <div class="modal-header">
+            <h1 class="modal-header-title">{{Confirmar exclusão de imagem de perfil}}</h1>
+        </div>
+        <div class="modal-content">
+            <p>{{Esta ação irá excluir a sua imagem de perfil}}</p>
+            <span class="error" id="delete_thumb_img_error_span">
+            </span>
+            <div class="modal-button-container">
+                <button onclick="js.index.closeModal('.modal.delete-thumb-modal')">{{Voltar}}</button>
+                <button onclick="js.index.saveDeleteUserThumb()" class="ghost">{{Excluir foto de perfil}}</button>
+            </div>
+        </div>
+    </div>
+</div>

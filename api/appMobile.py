@@ -12,3 +12,4 @@ class appMobile(BasePage):
 
     def increase_app_openings(self):
         Dynamo().put_entity(AnalyticsAppOpening().__dict__)
+        return {"success": "Analytics contabilizado"}

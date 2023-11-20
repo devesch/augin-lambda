@@ -249,6 +249,16 @@
         "es": "Acceder a mi cuenta",
         "pt": "Acessar minha conta"
     },
+    "Acessibilidade da pasta atualizada": {
+        "en": "Accessibility of the updated folder",
+        "es": "Accesibilidad de la carpeta actualizada",
+        "pt": "Acessibilidade da pasta atualizada"
+    },
+    "Acessibilidade do modelo atualizada": {
+        "en": "Accessibility of the updated model",
+        "es": "Accesibilidad del modelo actualizado",
+        "pt": "Acessibilidade do modelo atualizada"
+    },
     "Acesso": {
         "en": "Access",
         "es": "Acceso",
@@ -429,6 +439,11 @@
         "es": "Samoa Americana",
         "pt": "Samoa Americana"
     },
+    "Analytics contabilizado": {
+        "en": "Accounting analytics",
+        "es": "Análisis de contabilidad",
+        "pt": "Analytics contabilizado"
+    },
     "Andorra": {
         "en": "Andorra",
         "es": "Andorra",
@@ -544,6 +559,11 @@
         "es": "Archivo de procesamiento",
         "pt": "Arquivo em processamento"
     },
+    "Arquivos do modelo atualizados": {
+        "en": "Updated model files",
+        "es": "Archivos de modelo actualizados",
+        "pt": "Arquivos do modelo atualizados"
+    },
     "Arraste e solte seu arquivo (IFC, FBX, GLB ou ZIP) aqui ou": {
         "en": "Drag and release your file (IFC, FBX, GLB or ZIP) here or",
         "es": "Arrastre y suelte su archivo (IFC, FBX, GLB o ZIP) aquí o",
@@ -563,6 +583,11 @@
         "en": "Signature",
         "es": "Firma",
         "pt": "Assinatura"
+    },
+    "Assinatura cancelada": {
+        "en": "Canceled signature",
+        "es": "Firma cancelada",
+        "pt": "Assinatura cancelada"
     },
     "Assinatura não encontrada": {
         "en": "Signature not found",
@@ -1029,6 +1054,11 @@
         "es": "Categoría",
         "pt": "Categoria"
     },
+    "Categoria do modelo atualizada": {
+        "en": "Updated model category",
+        "es": "Categoría de modelo actualizado",
+        "pt": "Categoria do modelo atualizada"
+    },
     "Cayman Islands": {
         "en": "Cayman Islands",
         "es": "Islas Caimán",
@@ -1198,6 +1228,11 @@
         "en": "Confirm account exclusion",
         "es": "Confirmar la exclusión de la cuenta",
         "pt": "Confirmar exclusão de conta"
+    },
+    "Confirmar exclusão de imagem de perfil": {
+        "en": "Confirm profile image exclusion",
+        "es": "Confirmar la exclusión de la imagen del perfil",
+        "pt": "Confirmar exclusão de imagem de perfil"
     },
     "Confirmar exclusão de pasta": {
         "en": "Confirm folder exclusion",
@@ -1404,6 +1439,11 @@
         "es": "Creación",
         "pt": "Criação"
     },
+    "Criação de federado concluída": {
+        "en": "Creation of federated completed",
+        "es": "Creación de federado completado",
+        "pt": "Criação de federado concluída"
+    },
     "Crie projetos de até": {
         "en": "Create projects of up to",
         "es": "Crear proyectos de hasta",
@@ -1428,6 +1468,16 @@
         "en": "Coupon",
         "es": "Cupón",
         "pt": "Cupom"
+    },
+    "Cupom adicionado": {
+        "en": "Added coupon",
+        "es": "Cupón agregado",
+        "pt": "Cupom adicionado"
+    },
+    "Cupom removido do usuário": {
+        "en": "Coupon removed from the user",
+        "es": "Cupón eliminado del usuario",
+        "pt": "Cupom removido do usuário"
     },
     "Cupom:": {
         "en": "Coupon:",
@@ -1503,6 +1553,11 @@
         "en": "AVAILABLE",
         "es": "DISPONIBLE",
         "pt": "DISPONÍVEL"
+    },
+    "Dados atualizados com sucesso": {
+        "en": "Updated data successfully",
+        "es": "Datos actualizados con éxito",
+        "pt": "Dados atualizados com sucesso"
     },
     "Dados básicos para acesso à conta e personalização do sistema.": {
         "en": "Basic data for access to system access and customization.",
@@ -1819,6 +1874,16 @@
         "es": "Tiempo limitado disponible",
         "pt": "Disponível por tempo limitado"
     },
+    "Dispositivo atualizado com sucesso": {
+        "en": "Successful device successfully",
+        "es": "Dispositivo exitoso con éxito",
+        "pt": "Dispositivo atualizado com sucesso"
+    },
+    "Dispositivo disconectado com sucesso": {
+        "en": "Successful device successfully",
+        "es": "Dispositivo exitoso con éxito",
+        "pt": "Dispositivo disconectado com sucesso"
+    },
     "Dispositivos": {
         "en": "Devices",
         "es": "Dispositivos",
@@ -1948,6 +2013,11 @@
         "en": "Email",
         "es": "Correo electrónico",
         "pt": "Email"
+    },
+    "Email de reset de senha enviado com sucesso.": {
+        "en": "Successful password reset email.",
+        "es": "Correo electrónico exitoso de restablecimiento de contraseña.",
+        "pt": "Email de reset de senha enviado com sucesso."
     },
     "Email inválido": {
         "en": "Invalid email",
@@ -2108,6 +2178,11 @@
         "en": "These cookies resemble their language preferences, ensuring that you view our site in your favorite language during your browsing session.",
         "es": "Estas cookies se parecen a sus preferencias de idioma, asegurando que vea nuestro sitio en su idioma favorito durante su sesión de navegación.",
         "pt": "Esses cookies lembram suas preferências de idioma, garantindo que você visualize nosso site em seu idioma preferido durante sua sessão de navegação."
+    },
+    "Esta ação irá excluir a sua imagem de perfil": {
+        "en": "This action will delete your profile image",
+        "es": "Esta acción eliminará su imagen de perfil",
+        "pt": "Esta ação irá excluir a sua imagem de perfil"
     },
     "Esta ação irá excluir todos os dados da sua conta e não pode ser revertida": {
         "en": "This action will delete all data from your account and cannot be reversed",
@@ -2359,6 +2434,11 @@
         "es": "Excedió el límite de intentos",
         "pt": "Excedeu o limite de tentativas"
     },
+    "Excluir foto de perfil": {
+        "en": "Delete profile photo",
+        "es": "Foto de perfil de eliminación",
+        "pt": "Excluir foto de perfil"
+    },
     "Excluir modelo": {
         "en": "Delete template",
         "es": "Eliminar plantilla",
@@ -2433,6 +2513,11 @@
         "en": "Favorites",
         "es": "Favoritos",
         "pt": "Favoritos"
+    },
+    "Favoritos do usuário atualizados": {
+        "en": "Updated user favorites",
+        "es": "Favoritos de usuario actualizados",
+        "pt": "Favoritos do usuário atualizados"
     },
     "Fazer login": {
         "en": "Login",
@@ -2518,6 +2603,21 @@
         "en": "Fire",
         "es": "Fuego",
         "pt": "Fogo"
+    },
+    "Folder deletado": {
+        "en": "Deleted folder",
+        "es": "Carpeta eliminada",
+        "pt": "Folder deletado"
+    },
+    "Folder movido para outro folder": {
+        "en": "Folder moved to another folder",
+        "es": "Carpeta movida a otra carpeta",
+        "pt": "Folder movido para outro folder"
+    },
+    "Folder renomeado": {
+        "en": "Renamed folder",
+        "es": "Carpeta renombrada",
+        "pt": "Folder renomeado"
     },
     "Forma de pagamento": {
         "en": "Form of payment",
@@ -3249,6 +3349,26 @@
         "es": "Micronesia, estados federados de",
         "pt": "Micronésia, estados federados de"
     },
+    "Model changed state to error": {
+        "en": "Model changed state to error",
+        "es": "Modelo cambiado de estado a error",
+        "pt": "Model changed state to error"
+    },
+    "Modelo adicionado aos compartilhados": {
+        "en": "Model added to shared",
+        "es": "Modelo agregado a compartido",
+        "pt": "Modelo adicionado aos compartilhados"
+    },
+    "Modelo deletado": {
+        "en": "Deleted model",
+        "es": "Modelo eliminado",
+        "pt": "Modelo deletado"
+    },
+    "Modelo movido": {
+        "en": "Model",
+        "es": "Modelo",
+        "pt": "Modelo movido"
+    },
     "Modelos": {
         "en": "Models",
         "es": "Modelos",
@@ -3348,6 +3468,16 @@
         "en": "Method",
         "es": "Método",
         "pt": "Método"
+    },
+    "Método de pagamento da assinatura atual alterado": {
+        "en": "Current signature payment method changed",
+        "es": "Método de pago de firma actual cambiado",
+        "pt": "Método de pagamento da assinatura atual alterado"
+    },
+    "Método de pagamento deletado": {
+        "en": "Deleted payment method",
+        "es": "Método de pago eliminado",
+        "pt": "Método de pagamento deletado"
     },
     "Método de pagamento:": {
         "en": "Payment method:",
@@ -3664,6 +3794,11 @@
         "es": "nombre federado",
         "pt": "Nome do federado"
     },
+    "Nome do modelo atualizado": {
+        "en": "Updated model name",
+        "es": "Nombre del modelo actualizado",
+        "pt": "Nome do modelo atualizado"
+    },
     "Nome do plano": {
         "en": "Plan name",
         "es": "Nombre del plan",
@@ -3719,6 +3854,11 @@
         "es": "Nota fiscal",
         "pt": "Nota Fiscal"
     },
+    "Notificação excluída": {
+        "en": "Notification deleted",
+        "es": "Notificación eliminada",
+        "pt": "Notificação excluída"
+    },
     "Notificações": {
         "en": "Notifications",
         "es": "Notificaciones",
@@ -3738,6 +3878,11 @@
         "en": "New",
         "es": "Nuevo",
         "pt": "Novo"
+    },
+    "Novo método de pagamento adicionado": {
+        "en": "New payment method added",
+        "es": "Nuevo método de pago agregado",
+        "pt": "Novo método de pagamento adicionado"
     },
     "Novo nome da pasta": {
         "en": "New folder name",
@@ -3859,6 +4004,11 @@
         "es": "No fue posible enviar el correo electrónico, comunicarse con el soporte.",
         "pt": "Não foi possível enviar o email, entre em contato com o suporte."
     },
+    "Não foi possível reembolsar a ordem no stripe": {
+        "en": "It was not possible to refund the order on the stripe",
+        "es": "No fue posible reembolsar el pedido de la raya",
+        "pt": "Não foi possível reembolsar a ordem no stripe"
+    },
     "Não possui TeamPlay": {
         "en": "No Teamplay",
         "es": "Sin juego de equipo",
@@ -3979,6 +4129,11 @@
         "es": "El código postal informado no es válido.",
         "pt": "O código postal informado é inválido."
     },
+    "O model não existe": {
+        "en": "The model does not exist",
+        "es": "El modelo no existe",
+        "pt": "O model não existe"
+    },
     "O modelo não se encontra no estado completo": {
         "en": "The model is not in the full state",
         "es": "El modelo no está en el estado completo",
@@ -4084,6 +4239,11 @@
         "es": "El tamaño máximo en la nube debe ser un número",
         "pt": "O tamanho máximo em núvem deve ser um número"
     },
+    "O usuário pode trocar o seu plano atual": {
+        "en": "The user can exchange their current plan",
+        "es": "El usuario puede intercambiar su plan actual",
+        "pt": "O usuário pode trocar o seu plano atual"
+    },
     "Ocultar senha": {
         "en": "Hide password",
         "es": "Contraseña oculta",
@@ -4118,6 +4278,11 @@
         "en": "Order found but is not paid.",
         "es": "Orden encontrado pero no se paga.",
         "pt": "Ordem encontrada porém não se encontra paga."
+    },
+    "Ordem paga": {
+        "en": "Paid order",
+        "es": "Pedido pagado",
+        "pt": "Ordem paga"
     },
     "Os arquivos dentro da pasta também serão excluídos.": {
         "en": "Files inside the folder will also be deleted.",
@@ -4163,6 +4328,11 @@
         "en": "Direct payment",
         "es": "Pago directo",
         "pt": "Pagamento Direto"
+    },
+    "Pagamento Stripe reembolsado com sucesso": {
+        "en": "Stripe payment successful",
+        "es": "Pago de rayas exitoso",
+        "pt": "Pagamento Stripe reembolsado com sucesso"
     },
     "Pagamento Stripe reembolsado com sucesso.": {
         "en": "PAYMENT STRIPE SUCCESSFULLY REFACTED.",
@@ -4349,6 +4519,11 @@
         "es": "La carpeta de origen no pertenece a este usuario.",
         "pt": "Pasta de origem não pertence a este usuário."
     },
+    "Pasta removida dos compartilhamentos": {
+        "en": "Folder removed from shares",
+        "es": "Carpeta eliminada de las acciones",
+        "pt": "Pasta removida dos compartilhamentos"
+    },
     "País": {
         "en": "Country",
         "es": "País",
@@ -4369,10 +4544,20 @@
         "es": "Pendencias",
         "pt": "Pendências"
     },
+    "Percentagem do modelo atualizada com sucesso": {
+        "en": "Percentage of the model successfully updated",
+        "es": "Porcentaje del modelo actualizado con éxito",
+        "pt": "Percentagem do modelo atualizada com sucesso"
+    },
     "Perfil atualizado com sucesso": {
         "en": "Profile updated successfully",
         "es": "Perfil actualizado con éxito",
         "pt": "Perfil atualizado com sucesso"
+    },
+    "Perfil atualizado porém o email selecionado para alteração já possui uma conta vinculada": {
+        "en": "Updated profile but the selected email for change already has a linked account",
+        "es": "Perfil actualizado pero el correo electrónico seleccionado para el cambio ya tiene una cuenta vinculada",
+        "pt": "Perfil atualizado porém o email selecionado para alteração já possui uma conta vinculada"
     },
     "Perfil atualizado porém para alterar o seu email é necessário confirmar o email que enviamos para o novo email solicitado": {
         "en": "Updated profile but to change your email you need to confirm the email we send to the new email",
@@ -4713,6 +4898,11 @@
         "en": "Project",
         "es": "Proyecto",
         "pt": "Projeto"
+    },
+    "Projeto removido dos compartilhados": {
+        "en": "Project removed from shared",
+        "es": "Proyecto eliminado de compartido",
+        "pt": "Projeto removido dos compartilhados"
     },
     "Projetos": {
         "en": "Projects",
@@ -5084,10 +5274,25 @@
         "es": "Contraseña actual",
         "pt": "Senha Atual"
     },
+    "Senha alterada com sucesso": {
+        "en": "Password changed successfully",
+        "es": "Contraseña alterada con éxito",
+        "pt": "Senha alterada com sucesso"
+    },
     "Senha atual": {
         "en": "Current password",
         "es": "Contraseña actual",
         "pt": "Senha atual"
+    },
+    "Senha da pasta atualizada": {
+        "en": "Updated folder password",
+        "es": "Contraseña de carpeta actualizada",
+        "pt": "Senha da pasta atualizada"
+    },
+    "Senha do modelo atualizada": {
+        "en": "Updated model password",
+        "es": "Contraseña de modelo actualizado",
+        "pt": "Senha do modelo atualizada"
     },
     "Senha incorreta.": {
         "en": "Incorrect password.",
@@ -5489,6 +5694,11 @@
         "es": "Tamaño del proyecto",
         "pt": "Tamanho de projeto"
     },
+    "Tamanho de página de usuário atualizado": {
+        "en": "Updated user page size",
+        "es": "Tamaño de página de usuario actualizado",
+        "pt": "Tamanho de página de usuário atualizado"
+    },
     "Tamanho máximo do federado em Mbs": {
         "en": "Maximum federated size in MBs",
         "es": "Tamaño máximo federado en MBs",
@@ -5549,10 +5759,20 @@
         "es": "Aplicación de tiempo fuera de línea",
         "pt": "Tempo offline do APP"
     },
+    "Tentativa de emitir nota fiscal concluída": {
+        "en": "Attempted to issue an invoice completed",
+        "es": "Intentó emitir una factura completada",
+        "pt": "Tentativa de emitir nota fiscal concluída"
+    },
     "Tentativa de emitir nota fiscal concluída.": {
         "en": "Attempted to issue an invoice completed.",
         "es": "Intentó emitir una factura completada.",
         "pt": "Tentativa de emitir nota fiscal concluída."
+    },
+    "Tentativa de emitir nota fiscal em PDF concluída": {
+        "en": "Attempt to issue invoice on a completed PDF",
+        "es": "Intente emitir factura en un PDF completado",
+        "pt": "Tentativa de emitir nota fiscal em PDF concluída"
     },
     "Tentativa de emitir nota fiscal em PDF concluída.": {
         "en": "Attempted to issue PDF invoice completed.",
@@ -5599,6 +5819,11 @@
         "es": "Thailand",
         "pt": "Thailand"
     },
+    "Thumb removida com sucesso": {
+        "en": "Thumb successfully removed",
+        "es": "El pulgar eliminado con éxito",
+        "pt": "Thumb removida com sucesso"
+    },
     "Timor-Leste": {
         "en": "Timor-Leste",
         "es": "Timor-Leste",
@@ -5623,6 +5848,11 @@
         "en": "All",
         "es": "Todo",
         "pt": "Todas"
+    },
+    "Todas as periodic actions foram realizadas": {
+        "en": "All periodic actions were performed",
+        "es": "Se realizaron todas las acciones periódicas",
+        "pt": "Todas as periodic actions foram realizadas"
     },
     "Todos": {
         "en": "All",
@@ -5864,10 +6094,20 @@
         "es": "Use su cuenta en hasta",
         "pt": "Use sua conta em até"
     },
+    "User updated.": {
+        "en": "User updated.",
+        "es": "Usuario actualizado.",
+        "pt": "User updated."
+    },
     "Usuário": {
         "en": "User",
         "es": "Usuario",
         "pt": "Usuário"
+    },
+    "Usuário atualizado": {
+        "en": "Updated user",
+        "es": "Usuario actualizado",
+        "pt": "Usuário atualizado"
     },
     "Usuário inexistente.": {
         "en": "Nonexistent user.",
@@ -6289,6 +6529,21 @@
         "es": "fue procesado con éxito.",
         "pt": "foi processado com sucesso."
     },
+    "folder acessible updated": {
+        "en": "folder Accessible Updated",
+        "es": "carpeta Accesible actualizada",
+        "pt": "folder acessible updated"
+    },
+    "folder password updated": {
+        "en": "password Updated Folder",
+        "es": "carpeta actualizada de contraseña",
+        "pt": "folder password updated"
+    },
+    "folder removed from shared": {
+        "en": "folder Removed from Shared",
+        "es": "carpeta eliminada de compartido",
+        "pt": "folder removed from shared"
+    },
     "horas atrás": {
         "en": "hours ago",
         "es": "horas atras",
@@ -6518,6 +6773,11 @@
         "en": "total",
         "es": "total",
         "pt": "total"
+    },
+    "user favorites updated": {
+        "en": "user Favorites Updated",
+        "es": "favoritos de usuario actualizado",
+        "pt": "user favorites updated"
     },
     "Åland Islands": {
         "en": "Åland Islands",

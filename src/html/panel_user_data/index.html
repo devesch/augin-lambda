@@ -1,11 +1,12 @@
 ﻿{{header}}
 {{menu_panel}}
 <main class="my-plan__main">
-    <div class="my-plan__title-container">
+    <div class="my-plan__title-container" style="{{render_props_visibility_val}}">
         <h1 class="my-plan__title">{{Editar perfil}}</h1>
     </div>
     <article>
-        <section class="panel-user-data__main-container">
+
+        <section class="panel-user-data__main-container" style="{{render_props_visibility_val}}">
             <section class="panel-user-data__main-container__row">
                 <section class="panel-user-data__main-container__column">
                     <h2 class="panel-user-data__main-container__title">{{Dados pessoais}}</h2>
@@ -113,7 +114,7 @@
             </article>
         </section>
 
-        <section class="panel-user-data__main-container">
+        <section class="panel-user-data__main-container" style="{{render_props_visibility_val}}">
             <article>
                 <section class="panel-user-data__main-container__row">
                     <section class="panel-user-data__main-container__column">
@@ -129,7 +130,6 @@
                             </button>
                         </div>
                         <p class="error none">{{Deve conter apenas letras}}</p>
-
                         <div class="create-account__input-container floating-input">
                             <input oninput="js.index.makeSaveUserPasswordAvailable()" type="password" name="user_password" id="user_password_input" value="{{user_password_val}}" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
                             <label for="user_password_input">{{Nova senha}}</label>
@@ -154,7 +154,7 @@
             </article>
         </section>
 
-        <section class="panel-user-data__main-container">
+        <section class="panel-user-data__main-container" style="{{render_props_visibility_val}}">
             <article>
                 <section class="panel-user-data__main-container__row panel-user-data__main-container__row--image">
                     <section class="panel-user-data__main-container__column">
@@ -171,23 +171,26 @@
                             <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
                             <span id="update_user_thumb_error_msg_span"></span>
                         </div>
+                        <input hidden id="user_thumb_input" value="{{user_thumb_val}}">
                     </section>
                 </section>
                 <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
                     {{error_msg_val}}
                 </span>
                 <section class="panel-user-data__main-container__button-container">
-                    <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserImage();">
+                    <button type="submit" class="black ghost" onclick="js.index.openModal('.modal.delete-thumb-modal');">
                         {{Apagar imagem de perfil}}
                     </button>
-                    <button type="submit" disabled>
+                    <button onclick="js.index.saveUserThumb()" type="submit" id="save_thumb_button" disabled>
                         {{Salvar alterações}}
                     </button>
                 </section>
             </article>
         </section>
+        
     </article>
     {{html_delete_account_modal}}
+    {{html_delete_thumb_modal}}
     {{html_loader_modal_searching_address}}
     {{html_loader_modal_delete_account}}
     {{html_loader_modal_process_uploaded_image}}
@@ -209,6 +212,7 @@
         js.index.makeSaveUserCPFDataAvailable();
 
         js.index.makeSaveUserPasswordAvailable()
+        js.index.makeSaveUserThumbAvailable()
 
     };
 </script>

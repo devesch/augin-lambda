@@ -119,4 +119,4 @@ class UpdateModelProcess(BasePage):
                 if federated_model:
                     user.add_model_to_user_dicts(federated_model)
 
-        return {"success": "Model updated successfully to percentage"}
+        return {"success": "Percentagem do modelo atualizada com sucesso"}

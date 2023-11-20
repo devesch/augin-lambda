@@ -239,7 +239,10 @@ for file in os.listdir(api_source_path):
         pattern = r'return \{"error": "([^"]*)"\}'
         result = re.findall(pattern, html_file)
         filtered_placeholders.extend(result)
-
+        if not "translate" in api_source_path and not "_html" in api_source_path and not "checkout_stripe_generate_payload" in api_source_path and not "pagination_queries " in api_source_path and not "panel_create_project_check_file" in api_source_path and not "panel_get_address_data_with_zip" in api_source_path and not "panel_get_aws_upload_keys" in api_source_path and not "panel_get_company_data_with_cnpj" in api_source_path and not "panel_get_country_phone_code" in api_source_path and not "panel_user_data_change_country" in api_source_path:
+            pattern = r'return \{"success": "([^"]*)"\}'
+            result = re.findall(pattern, html_file)
+            filtered_placeholders.extend(result)
 
 translator = Translator()
 

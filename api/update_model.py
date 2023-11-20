@@ -22,7 +22,7 @@ class UpdateModel(BasePage):
     def update_project_is_acessible(self, model):
         model["model_is_accessible"] = self.post.get("model_is_accessible")
         Dynamo().put_entity(model)
-        return {"success": "model acessible updated"}
+        return {"success": "Acessibilidade do modelo atualizada"}
 
     def remove_model_id_from_federated_model(self, model):
         ModelController().remove_model_id_from_federated_model(model, self.post["model_id_to_be_removed"])
@@ -70,13 +70,13 @@ class UpdateModel(BasePage):
         federated_model = ModelController().generate_new_model(self.user, filename=self.post["federated_name"].strip(), federated=True, federated_required_ids=federated_required_ids)
         federated_model = ModelController().publish_federated_model(federated_model["model_id"])
         self.user.add_model_to_user_dicts(federated_model)
-        return {"success": "create_federated completed"}
+        return {"success": "Criação de federado concluída"}
 
     def delete_model(self, model):
         if not model:
-            return {"success": "model does not exist"}
+            return {"success": "O model não existe"}
         ModelController().delete_model(model, self.user)
-        return {"success": "model deleted"}
+        return {"success": "Modelo deletado"}
 
     def update_model_files(self, model):
         selected_model = Dynamo().get_model(self.post["selected_model_id"])
@@ -87,7 +87,7 @@ class UpdateModel(BasePage):
         if (model["model_format"] == "ifc" and selected_model["model_format"] != "ifc") and (model["model_format"] in ["fbx", "glb"] and selected_model["model_format"] == "ifc"):
             return {"error": "É necessário escolher um arquivo do mesmo formato para a substitução"}
         ModelController().update_model_files(model, selected_model, self.user)
-        return {"success": "model files updated"}
+        return {"success": "Arquivos do modelo atualizados"}
 
     def update_category(self, model):
         if model["model_is_federated"]:
@@ -99,12 +99,12 @@ class UpdateModel(BasePage):
                 Dynamo().update_entity(model, "model_category", model["model_category"])
             else:
                 return {"error": "A categoria selecionada é inválida"}
-        return {"success": "model category updated"}
+        return {"success": "Categoria do modelo atualizada"}
 
     def update_name(self, model):
         model["model_name"] = self.post.get("model_name").strip()
         Dynamo().update_entity(model, "model_name", model["model_name"])
-        return {"success": "model name updated"}
+        return {"success": "Nome do modelo atualizado"}
 
     def update_password(self, model):
         model_is_accessible = self.post.get("model_is_accessible")
@@ -118,4 +118,4 @@ class UpdateModel(BasePage):
         model["model_is_password_protected"] = model_is_password_protected
 
         Dynamo().put_entity(model)
-        return {"success": "model password updated"}
+        return {"success": "Senha do modelo atualizada"}

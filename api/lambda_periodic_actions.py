@@ -25,7 +25,7 @@ class LambdaPeriodicActions(BasePage):
         if datetime.today().day == 1:
             BillingController().generate_and_send_orders_nfses()
             self.fix_total_count()
-        return {"success": "all periodic actions completed"}
+        return {"success": "Todas as periodic actions foram realizadas"}
 
     def check_for_cart_abandonments(self):
         checked_pending_users = []

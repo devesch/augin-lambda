@@ -12,3 +12,4 @@ class appHub(BasePage):
 
     def increase_software_openings(self):
         Dynamo().put_entity(AnalyticsSoftwareOpening().__dict__)
+        return {"success": "Analytics contabilizado"}
