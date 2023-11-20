@@ -43,6 +43,7 @@ class CheckoutStripeWebHook(BasePage):
             order = Dynamo().get_order(self.post["data"]["object"]["id"])
 
         Dynamo().update_entity(order, "order_status", StripeController().convert_stripe_status_code_to_status(self.post["data"]["object"]["status"]))
+        Dynamo().update_entity(order, "order_paid_at", str(time.time()))
 
         if self.post["data"]["object"]["status"] == "succeeded":
             if order["order_type"] == "unique":

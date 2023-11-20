@@ -37,47 +37,35 @@ class PanelOrder(PanelPage):
         html.esc("order_status_val", translate_order_status(self.path["order"]["order_status"]))
         html.esc("order_currency_val", StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]))
         html.esc("order_total_price_val", StrFormat().format_to_money(self.path["order"]["order_total_price"], self.path["order"]["order_currency"]))
+        html.esc("order_sub_total_price_val", StrFormat().format_to_money(self.path["order"]["order_sub_total_" + self.path["order"]["order_currency"] + "_price"], self.path["order"]["order_currency"]))
+        html.esc("order_discount_price_val", StrFormat().format_to_money(self.path["order"]["order_" + self.path["order"]["order_currency"] + "_discount"], self.path["order"]["order_currency"]))
+        html.esc("order_total_price_val", StrFormat().format_to_money(self.path["order"]["order_total_price"], self.path["order"]["order_currency"]))
 
         order_plan = Dynamo().get_plan(self.path["order"]["order_plan_id"])
-        html.esc("html_table_rows", self.list_html_table_rows(self.path["order"], order_plan))
-        if self.path["order"]["order_user_cart_coupon_code"]:
-            html.esc("html_order_coupon", self.show_html_order_coupon())
-        if self.path["order"]["order_status"] != "paid":
+        html.esc("html_order_table_rows", self.list_html_order_table_rows(self.path["order"], order_plan))
+
+        if self.path["order"]["order_nfse_status"] != "issued":
             html.esc("nfse_visibilty_val", "display:none;")
-        if self.path["order"]["order_status"] == "paid":
-            html.esc("html_print_payment_button", self.show_html_print_payment_button())
-            if self.path["order"]["order_nfse_xml_link"]:
-                if self.path["order"]["order_currency"] == "brl":
-                    html.esc("html_download_xml_invoice_button", self.show_html_download_xml_invoice_button(self.path["order"]["order_nfse_xml_link"]))
-            if self.path["order"]["order_nfse_pdf_link"]:
-                html.esc("html_download_pdf_invoice_button", self.show_html_download_pdf_invoice_button(self.path["order"]["order_nfse_pdf_link"]))
-            if not self.path["order"]["order_nfse_xml_link"] and not self.path["order"]["order_nfse_pdf_link"]:
-                html.esc("nfse_visibilty_val", "display:none;")
+        else:
+            html.esc("order_nfse_pdf_link_val", self.path["order"]["order_nfse_pdf_link"])
+
+        if not self.path["order"]["order_payment_stripe_receipt_url"]:
+            html.esc("order_payment_stripe_receipt_url_visibility_val", "display:none;")
+        else:
+            html.esc("order_payment_stripe_receipt_url_val", self.path["order"]["order_payment_stripe_receipt_url"])
+            html.esc("order_payment_service_id_val", self.path["order"]["order_payment_service_id"])
+            if self.path["order"]["order_currency"] == "brl" and self.path["order"].get("order_paid_at"):
+                html.esc("order_paid_at_val", Date().format_unixtime_to_br_datetime(self.path["order"]["order_paid_at"]))
+            elif self.path["order"]["order_currency"] == "usd" and self.path["order"].get("order_paid_at"):
+                html.esc("order_paid_at_val", Date().format_unixtime_to_inter_datetime(self.path["order"]["order_paid_at"]))
+
         if self.path["order"]["order_payment_stripe_boleto_url"]:
-            html.esc("html_download_boleto_button", self.show_html_download_boleto_button(self.path["order"]["order_payment_stripe_boleto_url"]))
+            html.esc("order_payment_stripe_boleto_url_val", self.path["order"]["order_payment_stripe_boleto_url"])
+
         return str(html)
 
     def render_post(self):
         return self.render_get()
-
-    def show_html_print_payment_button(self):
-        html = ReadWrite().read_html("panel_order/_codes/html_print_payment_button")
-        return str(html)
-
-    def show_html_download_boleto_button(self, order_payment_stripe_boleto_url):
-        html = ReadWrite().read_html("panel_order/_codes/html_download_boleto_button")
-        html.esc("order_payment_stripe_boleto_url_val", order_payment_stripe_boleto_url)
-        return str(html)
-
-    def show_html_download_xml_invoice_button(self, order_nfse_xml_link):
-        html = ReadWrite().read_html("panel_order/_codes/html_download_xml_invoice_button")
-        html.esc("order_nfse_xml_link_val", order_nfse_xml_link)
-        return str(html)
-
-    def show_html_download_pdf_invoice_button(self, order_nfse_pdf_link):
-        html = ReadWrite().read_html("panel_order/_codes/html_download_pdf_invoice_button")
-        html.esc("order_nfse_pdf_link_val", order_nfse_pdf_link)
-        return str(html)
 
     def show_html_order_coupon(self):
         html = ReadWrite().read_html("panel_order/_codes/html_order_coupon")
@@ -90,31 +78,23 @@ class PanelOrder(PanelPage):
             html.esc("order_coupon_feature_val", "- " + StrFormat().format_currency_to_symbol(self.path["order"]["order_currency"]) + " " + StrFormat().format_to_money(self.path["order"]["order_usd_discount"], "usd"))
         return str(html)
 
-    def list_html_table_rows(self, order, order_plan):
+    def list_html_order_table_rows(self, order, order_plan):
         # full_html = []
         # for product_address, product in order_updated_cart.items():
-        html = ReadWrite().read_html("panel_order/_codes/html_table_rows")
+        html = ReadWrite().read_html("panel_order/_codes/html_order_table_rows")
         html.esc("product_name_val", order_plan["plan_name_" + self.lang])
-        # html.esc("product_quantity_val", "1")
+        html.esc("product_quantity_val", "1")
         html.esc("product_currency_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
         html.esc("product_total_price", StrFormat().format_to_money(order["order_sub_total_" + order["order_currency"] + "_price"], order["order_currency"]))
+        html.esc("product_starting_date_val", Date().format_to_str_time(order["created_at"], without_year=True))
+        if order["order_plan_recurrency"] == "annually":
+            html.esc("product_until_date_val", Date().format_to_str_time(float(order["created_at"]) + 2628000))
+        if order["order_plan_recurrency"] == "monthly":
+            html.esc("product_until_date_val", Date().format_to_str_time(float(order["created_at"]) + 31536000))
         return str(html)
-        #     if self.check_if_product_is_available(product_address, product["product_recurrency"]):
-        #         if self.check_if_product_is_unique(product):
-        #             html.esc("html_buy_again", self.show_html_buy_again(product_address))
-        #     full_html.append(str(html))
-        # return "".join(full_html)
 
     def check_if_product_is_unique(self, product_recurrency):
-        if product_recurrency == "unique":
-            return True
-        return False
-
-    # def show_html_buy_again(self, product_address):
-    #     html = ReadWrite().read_html("panel_order/_codes/html_buy_again")
-    #     html.esc("product_address_val", product_address)
-    #     html.esc("user_auth_token_val", self.user.user_auth_token)
-    #     return str(html)
+        return product_recurrency == "unique"
 
     def check_if_product_is_available(self, product_address, product):
         product = self.dynamo.get_product(product_address)
