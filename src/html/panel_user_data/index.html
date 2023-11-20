@@ -55,14 +55,14 @@
                         <p>{{Dados para emissão de notas-fiscais, invoices e boletos.}}</p>
                     </section>
                     <section class="panel-user-data-container panel-user-data__main-container__column">
-                        <div class="panel-user-billing-data-container" id="client_type_spans_div" style="{{client_type_spans_div_visibility_val}}">
+                        <div class="panel-user-billing-data-container" id="client_type_spans_div" class="panel-user-data-container" style="{{client_type_spans_div_visibility_val}}">
                             <div class="panel-user-data__user-client-container">
                                 <span onclick="js.index.toggleBrAddressForms('company_span')" class="{{company_active_val}}" id="company_span">{{Pessoa jurídica}}</span>
                                 <span onclick="js.index.toggleBrAddressForms('physical_span')" class="{{physical_active_val}}" id="physical_span">{{Pessoa física}}</span>
                             </div>
                         </div>
                         
-                        <div id="physical_address_div" style="{{physical_address_div_visibility_val}}">
+                        <div id="physical_address_div" class="panel-user-data-container" style="{{physical_address_div_visibility_val}}">
                             <div class="panel-user-data__cpf-cep-container">
                                 <div class="input-default floating-input cpf-field">
                                     <input oninput="js.index.formatToCPF(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_cpf" id="user_cpf_input" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
