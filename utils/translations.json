@@ -789,6 +789,11 @@
         "es": "Descargar XML",
         "pt": "Baixar XML"
     },
+    "Baixar invoice": {
+        "en": "Download invoice",
+        "es": "Descargar factura",
+        "pt": "Baixar invoice"
+    },
     "Baixe seus IFCs em qualquer lugar": {
         "en": "Download your IFCs anywhere",
         "es": "Descarga tus IFC en cualquier lugar",
@@ -4983,6 +4988,11 @@
         "en": "Qatar",
         "es": "Katar",
         "pt": "Catar"
+    },
+    "Qt.": {
+        "en": "Qt.",
+        "es": "Qt.",
+        "pt": "Qt."
     },
     "Qtd": {
         "en": "QTD",

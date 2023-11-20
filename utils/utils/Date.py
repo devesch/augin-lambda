@@ -36,9 +36,12 @@ class Date:
         years = months // 12
         return Code().translate("1 ano atrás") if years == 1 else str(int(years)) + " " + Code().translate("anos atrás")
 
-    def format_to_str_time(self, unix_time):
+    def format_to_str_time(self, unix_time, without_year=False):
         dt_object = datetime.fromtimestamp(float(unix_time))
-        formatted_date = dt_object.strftime("%b %d, %Y")
+        if without_year:
+            formatted_date = dt_object.strftime("%b %d")
+        else:
+            formatted_date = dt_object.strftime("%b %d, %Y")
         if lambda_constants["current_language"] == "en":
             return formatted_date
         if lambda_constants["current_language"] == "es":

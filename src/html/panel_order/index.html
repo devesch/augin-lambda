@@ -55,56 +55,42 @@
                 <table class="order-table-description">
                     <thead>
                         <th>{{Descrição}}</th>
-                        <th>Qt.</th>
+                        <th>{{Qt.}}</th>
                         <th>{{Preço unitário}}</th>
                         <th>{{Total}}</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <span>Augin PRO 10</span><br/>
-                                <small>(Nov 7 - Dez 7, 2023)</small>
-                            </td>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                R$ 185,00
-                            </td>
-                            <td>
-                                R$ 185,00
-                            </td>
-                        </tr>
+                        {{html_order_table_rows}}
                     </tbody>
                 </table>
                 <table class="order-table-total">
                     <tr>
                         <td><strong>{{Subtotal}}</strong></td>
-                        <td>R$ 185,00</td>
+                        <td>{{order_currency_val}} {{order_sub_total_price_val}}</td>
                     </tr>
                     <tr>
                         <td><strong>{{Descontos}}</strong></td>
-                        <td>R$ 0,00</td>
+                        <td>{{order_currency_val}} {{order_discount_price_val}}</td>
                     </tr>
                     <tr>
                         <td><strong>{{Total do pedido}}</strong></td>
-                        <td>R$ 185,00</td>
+                        <td>{{order_currency_val}} {{order_total_price_val}}</td>
                     </tr>
                 </table>
             </div>
         </div>
 
-        <div class="order__title-container">
+        <div class="order__title-container" style="{{nfse_visibilty_val}}">
             <div class="order-body">
                 <div class="order-column">
                     <div class="order-column__row">
                         {{Número da nota-fiscal}}: <strong>NFSE0001</strong>
                     </div>
                     <div class="order-column__row">
-                        {{Data de emissão}}: <strong>09/10/23</strong>
+                        {{Data de emissão}}: <strong>werwerwer</strong>
                     </div>
                 </div>
-                <div class="order-column order-column--action print-hide"> <!-- style="{{nfse_visibilty_val}}" -->
+                <div class="order-column order-column--action print-hide">
                     <div class="order-button-container">
                         <a href="{{order_nfse_pdf_link_val}}" class="button black">
                             {{Baixar PDF}}
@@ -113,72 +99,27 @@
                             {{Baixar XML}}
                         </a>
                     </div>
-                    
-                    <!-- {{html_download_xml_invoice_button}}
-                    {{html_download_pdf_invoice_button}} -->
                 </div>
             </div>
         </div>
 
-        <div class="order__title-container">
+        <div class="order__title-container" style="{{order_payment_stripe_receipt_url_visibility_val}}">
             <div class="order-body">
                 <div class="order-column">
                     <div class="order-column__row">
-                       {{Número do invoice}}: <strong>48B540EA-0005</strong>
+                        {{Número do invoice}}: <strong>{{order_payment_service_id_val}}</strong>
                     </div>
                     <div class="order-column__row">
-                        {{Data de emissão}}: <strong>09/10/23</strong>
+                        {{Data de emissão}}: <strong>{{order_paid_at_val}}</strong>
                     </div>
                 </div>
                 <div class="order-column order-column--action">
-                    {{html_download_pdf_invoice_button}}
+                    <a href="{{order_payment_stripe_receipt_url_val}}" class="button black">
+                        {{Baixar invoice}}
+                    </a>
                 </div>
             </div>
         </div>
-
-        <!-- <div class="order__title-container">
-            <div class="order-body">
-                <div class="order-column">
-                    <p>{{Tipo de compra}}</p>
-                    <div class="">
-                        <strong>{{order_type_val}}</strong>
-                    </div>
-                </div>
-                {{html_download_boleto_button}}
-                <div class="order-column">
-                    <p>{{Itens da Compra}}</p>
-                    <div class="table">
-                        <table>
-                            <thead>
-                                <th>{{Produto}}</th>
-                                <th>{{Total}}</th>
-                                <th class="buy-again"></th>
-                            </thead>
-                            <tbody>
-                                {{html_table_rows}}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="box-total-order">
-                        {{html_order_coupon}}
-                        <div class="total-order total">
-                            <p>{{Total}}:</p>
-                            <strong>{{order_currency_val}} {{order_total_price_val}}</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-column print-hide" style="{{nfse_visibilty_val}}">
-                    <div class="box-invoce-download">
-                        <p>{{Nota Fiscal}}:</p>
-                        <div class="invoce-download">
-                            {{html_download_xml_invoice_button}}
-                            {{html_download_pdf_invoice_button}}
-                        </div>
-                    </div>
-                    {{html_print_payment_button}}
-                </div>
-            </div>
-        </div> -->
     </div>
 </main>
 {{footer}}
