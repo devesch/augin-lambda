@@ -1,11 +1,10 @@
 ﻿{{header}}
 {{menu_panel}}
-<main class="my-plan__main">
+<main class="{{my_plan_main_class_val}}">
     <div class="my-plan__title-container" style="{{render_props_visibility_val}}">
         <h1 class="my-plan__title">{{Editar perfil}}</h1>
     </div>
     <article>
-
         <section class="panel-user-data__main-container" style="{{render_props_visibility_val}}">
             <section class="panel-user-data__main-container__row">
                 <section class="panel-user-data__main-container__column">
@@ -23,7 +22,7 @@
                     </div>
                     <div class="input-default floating-input">
                         <section class="input-default country-flag-container">
-                            <select onchange="js.index.updateUserPhoneInputWithCountry(); js.index.makeSaveUserPersonalDataAvailable();" name="user_country" id="user_country_select" value="{{user_country_val}}" class="floating" required autocomplete="off">
+                            <select onchange="js.index.updateUserClientTypeForm(); js.index.updateUserPhoneInputWithCountry(); js.index.makeSaveUserPersonalDataAvailable();" name="user_country" id="user_country_select" value="{{user_country_val}}" class="floating" required autocomplete="off">
                                 {{html_user_country_options}}
                             </select>
                         </section>
@@ -56,61 +55,160 @@
                         <p>{{Dados para emissão de notas-fiscais, invoices e boletos.}}</p>
                     </section>
                     <section class="panel-user-data-container panel-user-data__main-container__column">
-                        <div class="panel-user-billing-data-container">
+                        <div class="panel-user-billing-data-container" id="client_type_spans_div" style="{{client_type_spans_div_visibility_val}}">
                             <div class="panel-user-data__user-client-container">
-                                <a href="/panel_user_data/?user_client_type=company">{{Pessoa jurídica}}</a>
-                                <span class="active">{{Pessoa física}}</span>
+                                <span onclick="js.index.toggleBrAddressForms('company_span')" class="{{company_active_val}}" id="company_span">{{Pessoa jurídica}}</span>
+                                <span onclick="js.index.toggleBrAddressForms('physical_span')" class="{{physical_active_val}}" id="physical_span">{{Pessoa física}}</span>
                             </div>
                         </div>
-                        <div class="panel-user-data__cpf-cep-container">
-                            <div class="input-default floating-input cpf-field">
-                                <input oninput="js.index.formatToCPF(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_cpf" id="user_cpf_input" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
-                                <label for="user_cpf" class="floating-label">{{CPF}}</label>
+                        
+                        <div id="physical_address_div" style="{{physical_address_div_visibility_val}}">
+                            <div class="panel-user-data__cpf-cep-container">
+                                <div class="input-default floating-input cpf-field">
+                                    <input oninput="js.index.formatToCPF(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_cpf" id="user_cpf_input" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
+                                    <label for="user_cpf" class="floating-label">{{CPF}}</label>
+                                </div>
+                                <div class="input-default floating-input cep-field">
+                                    <input oninput="js.index.formatToZIP(this); js.index.showUserPhysicalAddressData(); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_zip_code" id="user_zip_code_input" value="{{user_zip_code_val}}" class="floating" minlength="9" maxlength="9" placeholder=" ">
+                                    <label for="user_zip_code" class="floating-label">{{CEP}}</label>
+                                </div>
                             </div>
-                            <div class="input-default floating-input cep-field">
-                                <input oninput="js.index.formatToZIP(this); js.index.showUserPhysicalAddressData(); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_zip_code" id="user_zip_code_input" value="{{user_zip_code_val}}" class="floating" minlength="9" maxlength="9" placeholder=" ">
-                                <label for="user_zip_code" class="floating-label">{{CEP}}</label>
+                            <div class="panel-user-data__cpf-cep-container" >
+                                <div class="input-default focus floating-input state-field">
+                                    <input type="text" name="user_state" id="user_state_input" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
+                                    <label for="user_state" class="floating-label">{{Estado}}</label>
+                                </div>
+                                <div class="input-default focus floating-input city-field">
+                                    <input type="text" name="user_city" id="user_city_input" value="{{user_city_val}}" class="floating" readonly required placeholder=" ">
+                                    <label for="user_city" class="floating-label">{{Cidade}}</label>
+                                </div>
+                            </div>
+                            <input hidden name="user_city_code" id="user_city_code_input" value="{{user_city_code_val}}" readonly>
+                            <div class="input-default focus floating-input">
+                                <input type="text" name="user_neighborhood" id="user_neighborhood_input" value="{{user_neighborhood_val}}" class="floating" readonly required placeholder=" ">
+                                <label for="user_neighborhood" class="floating-label">{{Bairro}}</label>
+                            </div>
+                            <div class="input-default focus floating-input">
+                                <input type="text" name="user_street" id="user_street_input" value="{{user_street_val}}" class="floating" readonly required placeholder=" ">
+                                <label for="user_street" class="floating-label">{{Rua}}</label>
+                            </div>
+                            <div class="panel-user-data__cpf-cep-container">
+                                <div class="input-default floating-input number-field">
+                                    <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_street_number" id="user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this)" placeholder=" ">
+                                    <label for="user_street_number" class="floating-label">{{Número}}</label>
+                                </div>
+                                <div class="input-default floating-input complement-field">
+                                    <input oninput="js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_complement" id="user_complement_input" class="floating" value="{{user_complement_val}}" placeholder=" ">
+                                    <label for="user_complement" class="floating-label">{{Complemento}}</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="panel-user-data__cpf-cep-container" >
-                            <div class="input-default focus floating-input state-field">
-                                <input type="text" name="user_state" id="user_state_input" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
-                                <label for="user_state" class="floating-label">{{Estado}}</label>
+
+
+                        <div id="company_address_div" style="{{company_address_div_visibility_val}}">
+                            <div class="panel-user-data__cpf-cep-container">
+                                <div class="input-default floating-input cpf-field">
+                                    <input oninput="js.index.formatToCNPJ(this); js.index.showUserCompanyAddressData(); js.index.makeSaveUserCNPJDataAvailable();" type="text" name="user_cnpj" id="user_cnpj_input" value="{{user_cnpj_val}}" class="floating" minlength="18" maxlength="18" placeholder=" ">
+                                    <label for="user_cnpj" class="floating-label">{{CNPJ}}</label>
+                                </div>
+                                <div class="input-default floating-input cep-field">
+                                    <input oninput="js.index.formatToZIP(this);" type="text" name="user_zip_code" id="cnpj_user_zip_code_input" value="{{user_zip_code_val}}" class="floating" readonly minlength="9" maxlength="9" placeholder=" ">
+                                    <label for="user_zip_code" class="floating-label">{{CEP}}</label>
+                                </div>
                             </div>
-                            <div class="input-default focus floating-input city-field">
-                                <input type="text" name="user_city" id="user_city_input" value="{{user_city_val}}" class="floating" readonly required placeholder=" ">
-                                <label for="user_city" class="floating-label">{{Cidade}}</label>
+                            <div class="panel-user-data__cpf-cep-container">
+                                <div class="input-default focus floating-input state-field">
+                                    <input type="text" name="user_state" id="cnpj_user_state_input" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
+                                    <label for="user_state" class="floating-label">{{Estado}}</label>
+                                </div>
+                                <div class="input-default focus floating-input city-field">
+                                    <input type="text" name="user_city" id="cnpj_user_city_input" value="{{user_city_val}}" class="floating" readonly required placeholder=" ">
+                                    <label for="user_city" class="floating-label">{{Cidade}}</label>
+                                </div>
+                            </div>
+                            <input hidden name="user_city_code" id="cnpj_user_city_code_input" value="{{user_city_code_val}}" readonly>
+                            <div class="input-default focus floating-input">
+                                <input type="text" name="user_neighborhood" id="cnpj_user_neighborhood_input" value="{{user_neighborhood_val}}" class="floating" readonly required placeholder=" ">
+                                <label for="user_neighborhood" class="floating-label">{{Bairro}}</label>
+                            </div>
+                            <div class="input-default focus floating-input">
+                                <input type="text" name="user_street" id="cnpj_user_street_input" value="{{user_street_val}}" class="floating" readonly required placeholder=" ">
+                                <label for="user_street" class="floating-label">{{Rua}}</label>
+                            </div>
+                            <div class="panel-user-data__cpf-cep-container">
+                                <div class="input-default floating-input number-field">
+                                    <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCNPJDataAvailable();" type="text" name="user_street_number" id="cnpj_user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this)" placeholder=" ">
+                                    <label for="user_street_number" class="floating-label">{{Número}}</label>
+                                </div>
+                                <div class="input-default floating-input complement-field">
+                                    <input oninput="js.index.makeSaveUserCNPJDataAvailable();" type="text" name="user_complement" id="cnpj_user_complement_input" class="floating" value="{{user_complement_val}}" placeholder=" ">
+                                    <label for="user_complement" class="floating-label">{{Complemento}}</label>
+                                </div>
                             </div>
                         </div>
-                        <input hidden name="user_city_code" id="user_city_code_input" value="{{user_city_code_val}}" readonly>
-                        <div class="input-default focus floating-input">
-                            <input type="text" name="user_neighborhood" id="user_neighborhood_input" value="{{user_neighborhood_val}}" class="floating" readonly required placeholder=" ">
-                            <label for="user_neighborhood" class="floating-label">{{Bairro}}</label>
-                        </div>
-                        <div class="input-default focus floating-input">
-                            <input type="text" name="user_street" id="user_street_input" value="{{user_street_val}}" class="floating" readonly required placeholder=" ">
-                            <label for="user_street" class="floating-label">{{Rua}}</label>
-                        </div>
-                        <div class="panel-user-data__cpf-cep-container">
-                            <div class="input-default floating-input number-field">
-                                <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_street_number" id="user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this)" placeholder=" ">
-                                <label for="user_street_number" class="floating-label">{{Número}}</label>
+
+                        <div id="international_address_div" style="{{international_address_div_visibility_val}}">
+                            <div class="panel-user-data__cpf-cep-container">
+                                <div class="input-default floating-input cep-field">
+                                    <input oninput="js.index.makeSaveUserInternationalDataAvailable();" type="text" name="user_zip_code" id="international_user_zip_code_input" value="{{user_zip_code_val}}" class="floating" minlength="" maxlength="" placeholder=" ">
+                                    <label for="user_zip_code" class="floating-label">{{Código ZIP}}</label>
+                                </div>
                             </div>
-                            <div class="input-default floating-input complement-field">
-                                <input oninput="js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_complement" id="user_complement_input" class="floating" value="{{user_complement_val}}" placeholder=" ">
-                                <label for="user_complement" class="floating-label">{{Complemento}}</label>
+                            <div class="panel-user-data__cpf-cep-container">
+                                <div class="input-default focus floating-input state-field">
+                                    <input oninput="js.index.makeSaveUserInternationalDataAvailable();" type="text" name="user_state" id="international_user_state_input" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
+                                    <label for="user_state" class="floating-label">{{Estado/Região/Provincia}}</label>
+                                </div>
+                                <div class="input-default focus floating-input city-field">
+                                    <input oninput="js.index.makeSaveUserInternationalDataAvailable();" type="text" name="user_city" id="international_user_city_input" value="{{user_city_val}}" class="floating" readonly required placeholder=" ">
+                                    <label for="user_city" class="floating-label">{{Cidade}}</label>
+                                </div>
+                            </div>
+                            <div class="input-default focus floating-input">
+                                <input oninput="js.index.makeSaveUserInternationalDataAvailable();" type="text" name="user_neighborhood" id="international_user_neighborhood_input" value="{{user_neighborhood_val}}" class="floating" readonly required placeholder=" ">
+                                <label for="user_neighborhood" class="floating-label">{{Endereço}}</label>
+                            </div>
+                            <div class="input-default focus floating-input">
+                                <input oninput="js.index.makeSaveUserInternationalDataAvailable();"  type="text" name="user_street" id="international_user_street_input" value="{{user_street_val}}" class="floating" readonly required placeholder=" ">
+                                <label for="user_street" class="floating-label">{{Endereço 2}}</label>
                             </div>
                         </div>
                     </section>
                 </section>
-                <span class="error" style="{{error_msg_visibility_val}}" id="cpf_data_error_msg_span">
-                    {{error_msg_val}}
-                </span>
-                <section class="panel-user-data__main-container__button-container">
-                    <button onclick="js.index.saveUserCPFData()" type="submit" id="save_cpf_data_button" disabled>
-                        {{Salvar alterações}}
-                    </button>
-                </section>
+
+                <div id="physical_address_submit_div" style="{{physical_address_submit_div_visibility_val}}">
+                    <span class="error" style="{{error_msg_visibility_val}}" id="cpf_data_error_msg_span">
+                        {{error_msg_val}}
+                    </span>
+                    <section class="panel-user-data__main-container__button-container">
+                        <button onclick="js.index.saveUserCPFData()" type="submit" id="save_cpf_data_button" disabled>
+                            {{Salvar alterações}}
+                        </button>
+                    </section>
+                </div>
+
+                <div id="company_address_submit_div" style="{{company_address_submit_div_visibility_val}}">
+                    <span class="error" style="{{error_msg_visibility_val}}" id="cnpj_data_error_msg_span">
+                        {{error_msg_val}}
+                    </span>
+                    <section class="panel-user-data__main-container__button-container">
+                        <button onclick="js.index.saveUserCNPJData()" type="submit" id="save_cnpj_data_button" disabled>
+                            {{Salvar alterações}}
+                        </button>
+                    </section>
+                </div>
+
+                <div id="international_address_submit_div" style="{{international_address_submit_div_visibility_val}}">
+                    <span class="error" style="{{error_msg_visibility_val}}" id="international_data_error_msg_span">
+                        {{error_msg_val}}
+                    </span>
+                    <section class="panel-user-data__main-container__button-container">
+                        <button onclick="js.index.saveUserInternationalData()" type="submit" id="save_international_data_button" disabled>
+                            {{Salvar alterações}}
+                        </button>
+                    </section>
+                </div>
+
             </article>
         </section>
 
@@ -200,17 +298,21 @@
 <script>
     window.onload = async function () {
         var user_country_select = document.getElementById("user_country_select");
-        var user_cpf_input = document.getElementById("user_cpf_input")
         if (user_country_select.value == "BR"){
             js.index.formatToPhoneNumber(document.getElementById("user_phone_input"));
         };
+        js.index.updateUserPhoneInputWithCountry();
         js.index.makeSaveUserPersonalDataAvailable();
 
-        js.index.formatToCPF(user_cpf_input);
+        js.index.formatToCPF(document.getElementById("user_cpf_input"));
+        js.index.formatToCNPJ(document.getElementById("user_cnpj_input"));
         js.index.formatToZIP(document.getElementById("user_zip_code_input"));
+        js.index.formatToZIP(document.getElementById("cnpj_user_zip_code_input"));
         js.index.formatToNumbers(document.getElementById("user_street_number_input"))
+        js.index.formatToNumbers(document.getElementById("cnpj_user_street_number_input"))
         js.index.makeSaveUserCPFDataAvailable();
-
+        js.index.makeSaveUserCNPJDataAvailable();
+        js.index.makeSaveUserInternationalDataAvailable();
         js.index.makeSaveUserPasswordAvailable()
         js.index.makeSaveUserThumbAvailable()
 

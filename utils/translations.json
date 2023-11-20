@@ -929,6 +929,11 @@
         "es": "Código postal",
         "pt": "CEP"
     },
+    "CNPJ": {
+        "en": "CNPJ",
+        "es": "CNPJ",
+        "pt": "CNPJ"
+    },
     "CPF": {
         "en": "CPF",
         "es": "CPF",
@@ -1809,10 +1814,20 @@
         "es": "Ingrese su nueva contraseña para",
         "pt": "Digite sua nova senha para"
     },
+    "Digite um CNPJ válido": {
+        "en": "Enter a valid CNPJ",
+        "es": "Ingrese un CNPJ válido",
+        "pt": "Digite um CNPJ válido"
+    },
     "Digite um CPF válido": {
         "en": "Enter a valid CPF",
         "es": "Ingrese un CPF válido",
         "pt": "Digite um CPF válido"
+    },
+    "Digite um ZIP válido": {
+        "en": "Enter a valid zip",
+        "es": "Ingrese un zip válido",
+        "pt": "Digite um ZIP válido"
     },
     "Disponível anual": {
         "en": "Available annual",
@@ -6848,6 +6863,11 @@
         "en": "It is necessary to inform the discount value of R $ and U $ when the total discount is active",
         "es": "Es necesario informar el valor de descuento de R $ y u $ cuando el descuento total está activo",
         "pt": "É necessário informar o valor de desconto em R$ e U$ quando o desconto de valor total está ativo"
+    },
+    "É necessário informar um CNPJ.": {
+        "en": "It is necessary to inform a CNPJ.",
+        "es": "Es necesario informar a un CNPJ.",
+        "pt": "É necessário informar um CNPJ."
     },
     "É necessário informar um CPF": {
         "en": "It is necessary to inform a CPF",

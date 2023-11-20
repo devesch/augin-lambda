@@ -22,9 +22,6 @@ class PanelUserData(PanelPage, UserPage):
         if self.path.get("render_props") == "False":
             self.render_props = False
 
-        if not self.path.get("user_client_type"):
-            return Http().redirect("panel_user_data/?user_client_type=" + self.user.user_client_type)
-
         html = super().parse_html()
 
         html.esc("user_name_val", self.user.user_name)
@@ -37,7 +34,37 @@ class PanelUserData(PanelPage, UserPage):
         html.esc("user_country_code_val", JsonData().get_country_phone_code()[self.user.user_address_data["user_country"]])
         html.esc("user_phone_val", self.user.user_phone)
 
+        if self.user.user_client_type == "physical":
+            html.esc("physical_active_val", "active")
+            html.esc("physical_address_div_visibility_val", "")
+            html.esc("physical_address_submit_div_visibility_val", "")
+            html.esc("company_address_div_visibility_val", "display:none;")
+            html.esc("company_address_submit_div_visibility_val", "display:none;")
+            html.esc("international_address_div_visibility_val", "display:none;")
+            html.esc("international_address_submit_div_visibility_val", "display:none;")
+            html.esc("client_type_spans_div_visibility_val", "")
+
+        if self.user.user_client_type == "company":
+            html.esc("company_active_val", "active")
+            html.esc("physical_address_div_visibility_val", "display:none;")
+            html.esc("physical_address_submit_div_visibility_val", "display:none;")
+            html.esc("company_address_div_visibility_val", "")
+            html.esc("company_address_submit_div_visibility_val", "")
+            html.esc("international_address_div_visibility_val", "display:none;")
+            html.esc("international_address_submit_div_visibility_val", "display:none;")
+            html.esc("client_type_spans_div_visibility_val", "")
+
+        if self.user.user_client_type == "international":
+            html.esc("physical_address_div_visibility_val", "display:none;")
+            html.esc("physical_address_submit_div_visibility_val", "display:none;")
+            html.esc("company_address_div_visibility_val", "display:none;")
+            html.esc("company_address_submit_div_visibility_val", "display:none;")
+            html.esc("international_address_div_visibility_val", "")
+            html.esc("international_address_submit_div_visibility_val", "")
+            html.esc("client_type_spans_div_visibility_val", "display:none;")
+
         html.esc("user_cpf_val", self.user.user_cpf)
+        html.esc("user_cnpj_val", self.user.user_cnpj)
         html.esc("user_zip_code_val", self.user.user_address_data["user_zip_code"])
         html.esc("user_state_val", self.user.user_address_data["user_state"])
         html.esc("user_city_val", self.user.user_address_data["user_city"])
@@ -55,6 +82,9 @@ class PanelUserData(PanelPage, UserPage):
         html.esc("html_loader_modal_searching_address", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_searching_address")))
         html.esc("html_loader_modal_delete_account", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_delete_account")))
         html.esc("html_loader_modal_process_uploaded_image", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_process_uploaded_image")))
+
+        if self.render_props:
+            html.esc("my_plan_main_class_val", "my-plan__main")
 
         if not self.render_props:
             html.esc("render_props_visibility_val", "display:none;")
