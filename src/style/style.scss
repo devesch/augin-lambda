@@ -3382,8 +3382,21 @@ input[list]::-ms-clear {
         border-color: colors.color("color-neutral-100");
         background-color: colors.color("color-neutral-100");
         border-radius: 100%;
-        padding: .25rem .5rem;
+        padding: .5rem;
         height: 100%;
+        line-height: 0;
+        display: inline-block;
+        transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+        &:hover {
+            border-color: colors.color("color-neutral-200");
+            background-color: colors.color("color-neutral-200");
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
     }
 }
 

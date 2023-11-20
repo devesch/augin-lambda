@@ -7,13 +7,13 @@
             <h1 class="my-plan__title">{{Informaçōes do pedido}} #{{order_short_id_val}}</h1>
         </div>
 
-        <div class="order__settings">
+        <div class="order__settings print-hide">
             <a class="button">
-                <img src="{{cdn_val}}/assets/images/download.svg" alt="" width="16" height="16">
+                <img src="{{cdn_val}}/assets/icons/download.svg" alt="" width="24" height="24">
             </a>
-            <a class="button">
-                <img src="{{cdn_val}}/assets/images/print.svg" alt="" width="16" height="16">
-            </a>
+            <button class="button" onclick="window.print();">
+                <img src="{{cdn_val}}/assets/icons/print-v2.svg" alt="" width="24" height="24">
+            </button>
         </div>
 
         <div class="order__title-container">
