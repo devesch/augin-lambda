@@ -2692,11 +2692,19 @@ input[list]::-ms-clear {
         text-decoration: none;
         color: colors.color("color-neutral-400");
         background-color: unset;
+        border: 0;
         text-align: center;
     }
 
     a.active,
     button.active {
+        background-color: colors.color("color-neutral-200");
+        color: colors.color("color-black");
+        border: 0;
+    }
+
+    a:hover,
+    button:hover {
         background-color: colors.color("color-neutral-200");
         color: colors.color("color-black");
     }
