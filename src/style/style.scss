@@ -2674,6 +2674,18 @@ input[list]::-ms-clear {
     }
 }
 
+.modal-cancel-button {
+    display: none;
+}
+
+.modal .modal-cancel-button {
+    display: inline-block;
+}
+
+.modal .panel-user-data__main-container__button-container {
+    justify-content: center;
+}
+
 .panel-user-data__user-client-container {
     display: flex;
     flex-direction: row;
