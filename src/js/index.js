@@ -13,6 +13,42 @@ if (window.location.href.includes("http://127.0.0.1:3000")) {
     ProjectData.props.domainNameUrlVal = "http://127.0.0.1:3000";
 }
 
+export async function saveUserPasswordData() {
+    var user_current_password_input = document.getElementById("user_current_password_input");
+    var user_password_input = document.getElementById("user_password_input");
+    let update_user_response = await apiCaller("update_user", {
+        "command": "update_password",
+        "user_current_password": user_current_password_input.value,
+        "user_password": user_password_input.value
+    })
+    if ("error" in update_user_response) {
+        password_error_msg_span.innerHTML = update_user_response["error"];
+    }
+    if ("success" in update_user_response) {
+        password_error_msg_span.innerHTML = "";
+        save_password_button.innerHTML = update_user_response["success"];
+        await sleep(7000);
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Salvar alterações"
+        })
+        save_password_button.innerHTML = translate_response["success"];
+    }
+}
+
+
+export async function makeSaveUserPasswordAvailable() {
+    var user_current_password_input = document.getElementById("user_current_password_input");
+    var user_password_input = document.getElementById("user_password_input");
+    var save_password_button = document.getElementById("save_password_button");
+    if (user_current_password_input.value.length >= 8 && user_password_input.value.length >= 8) {
+        save_password_button.disabled = false;
+    } else {
+        save_password_button.disabled = true;
+    }
+}
+
+
 export async function saveUserCPFData(){
     var user_cpf_input = document.getElementById("user_cpf_input");
     var user_zip_code_input = document.getElementById("user_zip_code_input");
@@ -88,7 +124,7 @@ export async function makeSaveUserCPFDataAvailable() {
         save_cpf_data_button.disabled = false;
     }
     else {
-        save_personal_data_button.disabled = true;
+        save_cpf_data_button.disabled = true;
     }
 }
 
@@ -486,7 +522,6 @@ export async function openCookiesConfiguration() {
 }
 
 export async function showUserPhysicalAddressData() {
-    console.log("Running showUserPhysicalAddressData")
     let user_zip_code_input = document.getElementById("user_zip_code_input");
     let user_state_input = document.getElementById("user_state_input");
     let user_city_input = document.getElementById("user_city_input");
@@ -3232,7 +3267,7 @@ export async function checkIfShareFolderIsAvailable() {
 
 export async function uploadUserThumb(input) {
     console.log(input);
-    openModal('.modal.modal-loader-spinner')
+    openModal('.modal.modal-loader-spinner.uploaded')
     var user_thumb_img = document.getElementById("user_thumb_img");
     var update_user_thumb_error_msg_span = document.getElementById("update_user_thumb_error_msg_span");
     var panel_menu_user_thumb_img = document.getElementById("panel_menu_user_thumb_img");
@@ -3275,7 +3310,7 @@ export async function uploadUserThumb(input) {
         panel_menu_user_thumb_img.src = new_source_for_image;
         user_thumb_img.src = new_source_for_image;
     }
-    closeModal('.modal.modal-loader-spinner')
+    closeModal('.modal.modal-loader-spinner.uploaded')
 }
 
 

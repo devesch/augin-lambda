@@ -1,19 +1,20 @@
-from python_web_frame.user_page import UserPage
-from python_web_frame.panel_page import PanelPage
-from python_web_frame.controllers.model_controller import ModelController
+from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices, generate_disconnected_devices_in_last_30d
 from python_web_frame.controllers.stripe_controller import StripeController
+from python_web_frame.controllers.model_controller import ModelController
+from objects.BackofficeData import increase_backoffice_data_total_count
+from objects.UserFolder import check_if_folder_movement_is_valid
+from objects.CancelSubscription import CancelSubscription
+from objects.UserPaymentMethod import UserPaymentMethod
+from python_web_frame.panel_page import PanelPage
 from utils.utils.EncodeDecode import EncodeDecode
+from python_web_frame.user_page import UserPage
 from utils.utils.Validation import Validation
+from utils.utils.Generate import Generate
+from utils.Config import lambda_constants
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
-from utils.AWS.S3 import S3
-from utils.Config import lambda_constants
-from objects.UserFolder import check_if_folder_movement_is_valid
-from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices, generate_disconnected_devices_in_last_30d
-from objects.UserPaymentMethod import UserPaymentMethod
-from objects.CancelSubscription import CancelSubscription
 from objects.User import load_user
-from objects.BackofficeData import increase_backoffice_data_total_count
+from utils.AWS.S3 import S3
 import time
 
 
@@ -28,25 +29,36 @@ class UpdateUser(UserPage, PanelPage):
 
         return getattr(self, self.post["command"])()
 
+    def update_password(self):
+        if not self.post.get("user_current_password"):
+            return {"error": "É necessário informar a senha atual."}
+        if not self.post.get("user_password"):
+            return {"error": "É necessário informar a nova senha."}
+        if not Validation().check_if_password(self.post["user_password"]):
+            return {"error": "A senha deve ter entre 8 e 45 caracteres."}
+
+        self.user.update_password(self.post["user_password"], Generate().generate_salt(9))
+        return {"success": "Senha alterada com sucesso"}
+
     def update_cpf_data(self):
         if not self.post.get("user_cpf"):
-            return {"error": "É necessário informar um CPF"}
+            return {"error": "É necessário informar um CPF."}
         if not self.post.get("user_zip_code"):
-            return {"error": "É necessário informar um código ZIP"}
+            return {"error": "É necessário informar um código ZIP."}
         if not self.post.get("user_state"):
-            return {"error": "É necessário informar um estado"}
+            return {"error": "É necessário informar um estado."}
         if not self.post.get("user_city"):
-            return {"error": "É necessário informar uma cidade"}
+            return {"error": "É necessário informar uma cidade."}
         if not self.post.get("user_city_code"):
-            return {"error": "É necessário informar um código de cidade"}
+            return {"error": "É necessário informar um código de cidade."}
         if not self.post.get("user_neighborhood"):
-            return {"error": "É necessário informar um bairro"}
+            return {"error": "É necessário informar um bairro."}
         if not self.post.get("user_street"):
-            return {"error": "É necessário informar uma rua"}
+            return {"error": "É necessário informar uma rua."}
         if not self.post.get("user_street_number"):
-            return {"error": "É necessário informar o número da rua"}
+            return {"error": "É necessário informar o número da rua."}
         if not self.post.get("user_complement"):
-            return {"error": "É necessário informar um complemento"}
+            return {"error": "É necessário informar um complemento."}
 
         if not Validation().check_if_cpf(self.post["user_cpf"]):
             return {"error": "Digite um CPF válido"}
@@ -62,23 +74,23 @@ class UpdateUser(UserPage, PanelPage):
         self.user.user_address_data["user_street"] = self.post["user_street"].capitalize()
         self.user.user_address_data["user_street_number"] = self.post["user_street_number"]
         self.user.user_address_data["user_complement"] = self.post["user_complement"].title()
-
+        self.user_address_data_last_update = str(time.time())
         Dynamo().put_entity(self.user.__dict__)
         return {"success": "Dados atualizados com sucesso"}
 
     def update_personal_data(self):
         if not self.post.get("user_name"):
-            return {"error": "É necessárion informar um nome"}
+            return {"error": "É necessárion informar um nome."}
         if not self.post.get("user_email"):
-            return {"error": "É necessárion informar um email"}
+            return {"error": "É necessárion informar um email."}
         if not self.post.get("user_country"):
-            return {"error": "É necessárion informar um país"}
+            return {"error": "É necessárion informar um país."}
         if not self.post.get("user_phone"):
-            return {"error": "É necessárion informar um telefone"}
+            return {"error": "É necessárion informar um telefone."}
         if not " " in self.post.get("user_name"):
             return {"error": "É necessárion informar o seu nome completo"}
-        if Validation().check_if_phone(self.post["user_phone"], self.post["user_country"].lower()):
-            return {"error": "É necessárion informar o seu nome completo"}
+        if not Validation().check_if_phone(self.post["user_phone"], self.post["user_country"].upper()):
+            return {"error": "É necessárion um número de telefone válido"}
 
         if self.post["user_country"] == "BR" and self.user.user_client_type not in ("physical", "company"):
             self.user.user_client_type = "physical"
@@ -128,7 +140,7 @@ class UpdateUser(UserPage, PanelPage):
 
     def disconnect_device(self):
         if not self.post.get("device_id"):
-            return {"error": "Nenhum device_id informado no formulário"}
+            return {"error": "Nenhum device_id informado no formulário."}
         user_device = Dynamo().get_user_device(self.user.user_id, self.post["device_id"])
         if not user_device:
             return {"error": "Este usuário não possui este dispositivo"}

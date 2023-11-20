@@ -122,7 +122,7 @@
                     </section>
                     <section class="panel-user-data-container panel-user-data__main-container__column">
                         <div class="create-account__input-container floating-input">
-                            <input type="password" name="user_current_password" value="{{user_current_password_val}}" id="user_current_password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                            <input oninput="js.index.makeSaveUserPasswordAvailable()" type="password" name="user_current_password" id="user_current_password_input" value="{{user_current_password_val}}" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
                             <label for="user_current_password_input">{{Senha atual}}</label>
                             <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_current_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
                                 <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
@@ -131,7 +131,7 @@
                         <p class="error none">{{Deve conter apenas letras}}</p>
 
                         <div class="create-account__input-container floating-input">
-                            <input type="password" name="user_password" value="{{user_password_val}}" id="user_password_input" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
+                            <input oninput="js.index.makeSaveUserPasswordAvailable()" type="password" name="user_password" id="user_password_input" value="{{user_password_val}}" placeholder=" " required autocapitalize="off" autocorrect="off" minlength="8" maxlength="500">
                             <label for="user_password_input">{{Nova senha}}</label>
                             <button type="button" onclick="js.index.togglePasswordVisibility(this)" aria-controls="user_password_input" aria-label="{{Exibir senha}}" title="{{Exibir senha}}">
                                 <img src="{{cdn_val}}/assets/icons/visibility_off.svg" alt="" width="24" height="24">
@@ -140,15 +140,15 @@
                         <p class="error none">{{Senha inválida}}</p>
                     </section>
                 </section>
-                <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                <span class="error" style="{{error_msg_visibility_val}}" id="password_error_msg_span">
                     {{error_msg_val}}
                 </span>
                 <section class="panel-user-data__main-container__button-container">
                     <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserAccount();">
-                        Apagar minha conta
+                        {{Apagar minha conta}}
                     </button>
-                    <button type="submit" disabled>
-                        Salvar alterações
+                    <button onclick="js.index.saveUserPasswordData()" type="submit" id="save_password_button" disabled>
+                        {{Salvar alterações}}
                     </button>
                 </section>
             </article>
@@ -158,15 +158,15 @@
             <article>
                 <section class="panel-user-data__main-container__row panel-user-data__main-container__row--image">
                     <section class="panel-user-data__main-container__column">
-                        <h2 class="panel-user-data__main-container__title">Imagem de perfil</h2>
-                        <p>Imagem representando você ou sua empresa. Imagens quadradas funcionam melhor.</p>
+                        <h2 class="panel-user-data__main-container__title">{{Imagem de perfil}}</h2>
+                        <p>{{Imagem representando você ou sua empresa. Imagens quadradas funcionam melhor.}}</p>
                     </section>
                     <section class="panel-user-data__main-container__column panel-user-data__file-image-container">
                         <img id="user_thumb_img" class="panel-user-data__file-image" src="{{user_thumb_url_val}}" width="127" height="127" alt="" />
                         <div class="upload-file-container {{panel_user_data_modal_visibility_val}}">
                             <label class="upload-file-label panel-user-data__file-label" for="upload_user_thumb_input" aria-label="{{Adicionar foto de perfil}}">
                                 <img src="{{cdn_val}}/assets/icons/upload_simple.svg" alt="" width="32" height="32">
-                                <p>Arraste ou clique aqui para enviar uma nova imagem de perfil. Formato JPG ou PNG.</p>
+                                <p>{{Arraste ou clique aqui para enviar uma nova imagem de perfil. Formato JPG ou PNG.}}</p>
                             </label>
                             <input onchange="js.index.uploadUserThumb(this)" class="" type="file" name="upload_user_thumb_input" id="upload_user_thumb_input" accept=".jpg">
                             <span id="update_user_thumb_error_msg_span"></span>
@@ -178,16 +178,19 @@
                 </span>
                 <section class="panel-user-data__main-container__button-container">
                     <button type="submit" class="black ghost" onclick="js.index.openModalDeleteUserImage();">
-                        Apagar imagem de perfil
+                        {{Apagar imagem de perfil}}
                     </button>
                     <button type="submit" disabled>
-                        Salvar alterações
+                        {{Salvar alterações}}
                     </button>
                 </section>
             </article>
         </section>
     </article>
-    {{html_modal_loader_spinner}}
+    {{html_delete_account_modal}}
+    {{html_loader_modal_searching_address}}
+    {{html_loader_modal_delete_account}}
+    {{html_loader_modal_process_uploaded_image}}
 </main>
 {{footer}}
 
@@ -205,6 +208,7 @@
         js.index.formatToNumbers(document.getElementById("user_street_number_input"))
         js.index.makeSaveUserCPFDataAvailable();
 
+        js.index.makeSaveUserPasswordAvailable()
 
     };
 </script>

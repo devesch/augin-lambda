@@ -46,8 +46,11 @@ class PanelUserData(PanelPage, UserPage):
         html.esc("user_street_val", self.user.user_address_data["user_street"])
         html.esc("user_street_number_val", self.user.user_address_data["user_street_number"])
         html.esc("user_complement_val", self.user.user_address_data["user_complement"])
+
+        html.esc("html_delete_account_modal", str(ReadWrite().read_html("panel_user_data/_codes/html_delete_account_modal")))
         html.esc("html_loader_modal_searching_address", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_searching_address")))
         html.esc("html_loader_modal_delete_account", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_delete_account")))
+        html.esc("html_loader_modal_process_uploaded_image", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_process_uploaded_image")))
 
         return str(html)
         # self.check_error_msg(html, self.error_msg)

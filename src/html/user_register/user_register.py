@@ -41,7 +41,10 @@ class UserRegister(UserPage):
             user_country_alpha_2 = self.post["user_country"]
         else:
             ip_data = Http().get_request_ip_data(self.event.get_user_ip())
-            user_country_alpha_2 = ip_data["country_code"].upper()
+            if ip_data.get("country_code"):
+                user_country_alpha_2 = ip_data.get("country_code").upper()
+            else:
+                user_country_alpha_2 = "BR"
 
         html.esc("html_user_country_options", self.list_html_user_country_options(user_country_alpha_2))
 
@@ -67,6 +70,8 @@ class UserRegister(UserPage):
 
         if not self.post.get("user_name"):
             return self.render_get_with_error("Por favor informe um nome.")
+        if not " " in self.post["user_name"]:
+            return self.render_get_with_error("Por favor informe o nome completo.")
         if not self.post.get("user_password"):
             return self.render_get_with_error("Por favor informe uma Senha.")
         if not Validation().check_if_password(self.post["user_password"]):

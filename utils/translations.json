@@ -334,6 +334,11 @@
         "es": "Espere mientras procesamos su pedido y generamos una carpeta comprimida.",
         "pt": "Aguarde enquanto processamos seu pedido e geramos uma pasta compactada."
     },
+    "Aguarde enquanto processamos sua imagem": {
+        "en": "Wait while we process your image",
+        "es": "Espera mientras procesamos tu imagen",
+        "pt": "Aguarde enquanto processamos sua imagem"
+    },
     "Aguarde o prazo estabelecido pelo banco para verificar o status do seu reembolso": {
         "en": "Wait for the deadline established by the bank to verify the status of your reimbursement",
         "es": "Espere la fecha límite establecida por el banco para verificar el estado de su reembolso",
@@ -474,6 +479,16 @@
         "es": "Apagar",
         "pt": "Apagar"
     },
+    "Apagar imagem de perfil": {
+        "en": "Delete profile image",
+        "es": "Eliminar imagen de perfil",
+        "pt": "Apagar imagem de perfil"
+    },
+    "Apagar minha conta": {
+        "en": "Delete my account",
+        "es": "Borrar mi cuenta",
+        "pt": "Apagar minha conta"
+    },
     "Apenas um Reference Tracker poderá ser configurado para cada projeto": {
         "en": "Only a reference tracker can be configured for each project",
         "es": "Solo se puede configurar un rastreador de referencia para cada proyecto",
@@ -533,6 +548,11 @@
         "en": "Drag and release your file (IFC, FBX, GLB or ZIP) here or",
         "es": "Arrastre y suelte su archivo (IFC, FBX, GLB o ZIP) aquí o",
         "pt": "Arraste e solte seu arquivo (IFC, FBX, GLB ou ZIP) aqui ou"
+    },
+    "Arraste ou clique aqui para enviar uma nova imagem de perfil. Formato JPG ou PNG.": {
+        "en": "Drag or click here to send a new profile image.JPG or PNG format.",
+        "es": "Arrastre o haga clic aquí para enviar una nueva imagen de perfil.JPG o formato PNG.",
+        "pt": "Arraste ou clique aqui para enviar uma nova imagem de perfil. Formato JPG ou PNG."
     },
     "Aruba": {
         "en": "Aruba",
@@ -733,6 +753,16 @@
         "en": "Download",
         "es": "Bajar",
         "pt": "Baixar"
+    },
+    "Baixar PDF": {
+        "en": "Download pdf",
+        "es": "Descargar PDF",
+        "pt": "Baixar PDF"
+    },
+    "Baixar XML": {
+        "en": "Download xml",
+        "es": "Descargar XML",
+        "pt": "Baixar XML"
     },
     "Baixe seus IFCs em qualquer lugar": {
         "en": "Download your IFCs anywhere",
@@ -1499,6 +1529,11 @@
         "es": "Fecha de creación",
         "pt": "Data de criação"
     },
+    "Data de emissão": {
+        "en": "Date of issue",
+        "es": "Fecha de emisión",
+        "pt": "Data de emissão"
+    },
     "Data de início": {
         "en": "Start date",
         "es": "Fecha de inicio",
@@ -1608,6 +1643,11 @@
         "en": "Percentage discount",
         "es": "Descuento porcentual",
         "pt": "Desconto percentual"
+    },
+    "Descontos": {
+        "en": "Discounts",
+        "es": "Descuentos",
+        "pt": "Descontos"
     },
     "Descrição": {
         "en": "Description",
@@ -2723,6 +2763,16 @@
         "en": "Unlimited",
         "es": "Ilimitado",
         "pt": "Ilimitado"
+    },
+    "Imagem de perfil": {
+        "en": "Profile image",
+        "es": "Imagen de perfil",
+        "pt": "Imagem de perfil"
+    },
+    "Imagem representando você ou sua empresa. Imagens quadradas funcionam melhor.": {
+        "en": "Image representing you or your business.Square images work better.",
+        "es": "Imagen que te representa a ti oa tu negocio.Las imágenes cuadradas funcionan mejor.",
+        "pt": "Imagem representando você ou sua empresa. Imagens quadradas funcionam melhor."
     },
     "Importar novo projeto": {
         "en": "Import new project",
@@ -3894,6 +3944,16 @@
         "es": "Número",
         "pt": "Número"
     },
+    "Número da nota-fiscal": {
+        "en": "Invoice number",
+        "es": "Número de factura",
+        "pt": "Número da nota-fiscal"
+    },
+    "Número do invoice": {
+        "en": "Invoice number",
+        "es": "Número de factura",
+        "pt": "Número do invoice"
+    },
     "O .zip contem arquivos duplicados.": {
         "en": "O .zip contains duplicate files.",
         "es": "O .zip contiene archivos duplicados.",
@@ -4434,6 +4494,11 @@
         "es": "Por favor, introduzca su contraseña.",
         "pt": "Por favor informe a sua senha."
     },
+    "Por favor informe o nome completo.": {
+        "en": "Please enter the full name.",
+        "es": "Ingrese el nombre completo.",
+        "pt": "Por favor informe o nome completo."
+    },
     "Por favor informe um CNPJ.": {
         "en": "Please enter a CNPJ.",
         "es": "Por favor ingrese un CNPJ.",
@@ -4613,6 +4678,11 @@
         "en": "USD monthly price",
         "es": "Precio mensual de USD",
         "pt": "Preço mensal USD"
+    },
+    "Preço unitário": {
+        "en": "Unit price",
+        "es": "Precio unitario",
+        "pt": "Preço unitário"
     },
     "Problema temporário": {
         "en": "Temporary problem",
@@ -5339,6 +5409,11 @@
         "es": "Total parcial:",
         "pt": "Sub-total:"
     },
+    "Subtotal": {
+        "en": "Subtotal",
+        "es": "Total parcial",
+        "pt": "Subtotal"
+    },
     "Sudan": {
         "en": "Sudan",
         "es": "Sudán",
@@ -5608,6 +5683,11 @@
         "en": "Total of",
         "es": "Total de",
         "pt": "Total de"
+    },
+    "Total do pedido": {
+        "en": "Total order",
+        "es": "Orden total",
+        "pt": "Total do pedido"
     },
     "Trinidad and Tobago": {
         "en": "Trinidad and Tobago",
@@ -6064,6 +6144,11 @@
         "es": "Zimbabue",
         "pt": "Zimbábue"
     },
+    "alvar alterações": {
+        "en": "alvar changes",
+        "es": "cambios de Alvar",
+        "pt": "alvar alterações"
+    },
     "ano": {
         "en": "year",
         "es": "año",
@@ -6469,15 +6554,30 @@
         "es": "Es necesario enviar los archivos",
         "pt": "É necessário fazer o envio dos arquivos"
     },
+    "É necessário informar a nova senha.": {
+        "en": "It is necessary to inform the new password.",
+        "es": "Es necesario informar la nueva contraseña.",
+        "pt": "É necessário informar a nova senha."
+    },
     "É necessário informar a quantidade máxima de usos do cupom quando ele está limitado em quantidade": {
         "en": "It is necessary to inform the maximum amount of coupon uses when it is limited in quantity",
         "es": "Es necesario informar la cantidad máxima de usos de cupón cuando está limitado en cantidad",
         "pt": "É necessário informar a quantidade máxima de usos do cupom quando ele está limitado em quantidade"
     },
+    "É necessário informar a senha atual.": {
+        "en": "It is necessary to inform the current password.",
+        "es": "Es necesario informar la contraseña actual.",
+        "pt": "É necessário informar a senha atual."
+    },
     "É necessário informar o número da rua": {
         "en": "It is necessary to inform the street number",
         "es": "Es necesario informar el número de la calle",
         "pt": "É necessário informar o número da rua"
+    },
+    "É necessário informar o número da rua.": {
+        "en": "It is necessary to inform the street number.",
+        "es": "Es necesario informar el número de la calle.",
+        "pt": "É necessário informar o número da rua."
     },
     "É necessário informar o percentual de desconto": {
         "en": "It is necessary to inform the discount percentage",
@@ -6494,15 +6594,30 @@
         "es": "Es necesario informar un CPF",
         "pt": "É necessário informar um CPF"
     },
+    "É necessário informar um CPF.": {
+        "en": "It is necessary to inform a CPF.",
+        "es": "Es necesario informar un CPF.",
+        "pt": "É necessário informar um CPF."
+    },
     "É necessário informar um bairro": {
         "en": "It is necessary to inform a neighborhood",
         "es": "Es necesario informar a un vecindario",
         "pt": "É necessário informar um bairro"
     },
+    "É necessário informar um bairro.": {
+        "en": "It is necessary to inform a neighborhood.",
+        "es": "Es necesario informar a un vecindario.",
+        "pt": "É necessário informar um bairro."
+    },
     "É necessário informar um complemento": {
         "en": "It is necessary to inform a complement",
         "es": "Es necesario informar un complemento",
         "pt": "É necessário informar um complemento"
+    },
+    "É necessário informar um complemento.": {
+        "en": "It is necessary to inform a complement.",
+        "es": "Es necesario informar un complemento.",
+        "pt": "É necessário informar um complemento."
     },
     "É necessário informar um código": {
         "en": "It is necessary to inform a code",
@@ -6514,10 +6629,20 @@
         "es": "Es necesario ingresar un código postal",
         "pt": "É necessário informar um código ZIP"
     },
+    "É necessário informar um código ZIP.": {
+        "en": "It is necessary to enter a zip code.",
+        "es": "Es necesario ingresar un código postal.",
+        "pt": "É necessário informar um código ZIP."
+    },
     "É necessário informar um código de cidade": {
         "en": "It is necessary to inform a city code",
         "es": "Es necesario informar un código de la ciudad",
         "pt": "É necessário informar um código de cidade"
+    },
+    "É necessário informar um código de cidade.": {
+        "en": "It is necessary to inform a city code.",
+        "es": "Es necesario informar un código de la ciudad.",
+        "pt": "É necessário informar um código de cidade."
     },
     "É necessário informar um email de usuário.": {
         "en": "It is necessary to inform a user email.",
@@ -6528,6 +6653,11 @@
         "en": "It is necessary to inform a state",
         "es": "Es necesario informar a un estado",
         "pt": "É necessário informar um estado"
+    },
+    "É necessário informar um estado.": {
+        "en": "It is necessary to inform a state.",
+        "es": "Es necesario informar a un estado.",
+        "pt": "É necessário informar um estado."
     },
     "É necessário informar um nome": {
         "en": "It is necessary to inform a name",
@@ -6564,6 +6694,11 @@
         "es": "Es necesario informar a una ciudad",
         "pt": "É necessário informar uma cidade"
     },
+    "É necessário informar uma cidade.": {
+        "en": "It is necessary to inform a city.",
+        "es": "Es necesario informar a una ciudad.",
+        "pt": "É necessário informar uma cidade."
+    },
     "É necessário informar uma data de início e de término quando o cupom for por tempo ilimitado": {
         "en": "It is necessary to enter a start and end date when the coupon is unlimited time",
         "es": "Es necesario ingresar una fecha de inicio y finalización cuando el cupón es tiempo ilimitado",
@@ -6578,6 +6713,11 @@
         "en": "It is necessary to inform a street",
         "es": "Es necesario informar una calle",
         "pt": "É necessário informar uma rua"
+    },
+    "É necessário informar uma rua.": {
+        "en": "It is necessary to inform a street.",
+        "es": "Es necesario informar una calle.",
+        "pt": "É necessário informar uma rua."
     },
     "É necessário informar uma senha": {
         "en": "It is necessary to enter a password",
@@ -6644,6 +6784,11 @@
         "es": "Debes informar un correo electrónico",
         "pt": "É necessárion informar um email"
     },
+    "É necessárion informar um email.": {
+        "en": "You must enter an email.",
+        "es": "Debe ingresar un correo electrónico.",
+        "pt": "É necessárion informar um email."
+    },
     "É necessárion informar um nome": {
         "en": "It is necessary to inform a name",
         "es": "Es necesario informar un nombre",
@@ -6664,15 +6809,30 @@
         "es": "Debes informar un nombre en PT",
         "pt": "É necessárion informar um nome em PT"
     },
+    "É necessárion informar um nome.": {
+        "en": "It is necessary to inform a name.",
+        "es": "Es necesario informar un nombre.",
+        "pt": "É necessárion informar um nome."
+    },
     "É necessárion informar um país": {
         "en": "It is necessary to inform a country",
         "es": "Es necesario informar a un país",
         "pt": "É necessárion informar um país"
     },
+    "É necessárion informar um país.": {
+        "en": "It is necessary to inform a country.",
+        "es": "Es necesario informar a un país.",
+        "pt": "É necessárion informar um país."
+    },
     "É necessárion informar um telefone": {
         "en": "You must inform a phone",
         "es": "Debes informar un teléfono",
         "pt": "É necessárion informar um telefone"
+    },
+    "É necessárion informar um telefone.": {
+        "en": "It is necessary to inform a phone.",
+        "es": "Es necesario informar un teléfono.",
+        "pt": "É necessárion informar um telefone."
     },
     "É necessárion informar uma descrição em EN": {
         "en": "It is necessary to inform a description in en",
@@ -6688,6 +6848,11 @@
         "en": "It is necessary to inform a description in PT",
         "es": "Es necesario informar una descripción en PT",
         "pt": "É necessárion informar uma descrição em PT"
+    },
+    "É necessárion um número de telefone válido": {
+        "en": "A valid phone number is required",
+        "es": "Un número de teléfono valido es requerido",
+        "pt": "É necessárion um número de telefone válido"
     },
     "É trial": {
         "en": "It's trial",

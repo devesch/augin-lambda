@@ -39,6 +39,9 @@ class FileChangeHandler(FileSystemEventHandler):
 
             modified_files.add(event.src_path)
 
+        if ".hmlt" or ".py" in event.src_path:
+            subprocess.run(["python", "tools_for_devs/create_translations.py"])
+
         if ".py" in event.src_path:
             global app
 
@@ -95,7 +98,6 @@ def all_paths(path):
         with open("_testnow.json", "w", encoding="utf-8") as json_file:
             json.dump(event, json_file, sort_keys=True, ensure_ascii=False, indent=4)
 
-    subprocess.run(["python", "tools_for_devs/create_translations.py"])
     context = {}
 
     importlib.reload(lambda_function)
