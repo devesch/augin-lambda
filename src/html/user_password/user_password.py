@@ -41,9 +41,9 @@ class UserPassword(UserPage):
             if not self.post.get("h-captcha-response"):
                 return self.render_get_with_error("Por favor preencha o captcha")
 
-            captacha_response = Http().verify_hcaptcha(self.post["h-captcha-response"], self.event.get_user_ip())
-            if not captacha_response["success"]:
-                return self.render_get_with_error("Captacha inválido")
+            # captacha_response = Http().verify_hcaptcha(self.post["h-captcha-response"], self.event.get_user_ip())
+            # if not captacha_response["success"]:
+            #     return self.render_get_with_error("Captacha inválido")
 
         if not self.post.get("user_password"):
             return self.render_get_with_error("Por favor informe a sua senha.")

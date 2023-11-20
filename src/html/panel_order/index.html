@@ -2,11 +2,9 @@
 {{menu_panel}}
 <main class="my-plan__main">
     <div class="page-user page-mobile" id="panelOrder">
-        {{html_admin_using_another_account_advisory}}
         <div class="my-plan__title-container">
             <h1 class="my-plan__title">{{Informaçōes do pedido}} #{{order_short_id_val}}</h1>
         </div>
-
         <div class="order__settings print-hide">
             <a class="button">
                 <img src="{{cdn_val}}/assets/icons/download.svg" alt="" width="24" height="24">
@@ -15,7 +13,6 @@
                 <img src="{{cdn_val}}/assets/icons/print-v2.svg" alt="" width="24" height="24">
             </button>
         </div>
-
         <div class="order__title-container">
             <div class="order-body">
                 <div class="order-column">
@@ -41,13 +38,13 @@
                         <strong>{{Cliente}}</strong>
                     </div>
                     <div class="order-column__row">
-                        <p>Anderson Silva{{client_name_val}}</p>
+                        <p>{{user_name_val}}</p>
                     </div>
                     <div class="order-column__row">
-                        <p>engenheirosilva@gmail.com{{client_email_val}}</p>
+                        <p>{{user_email_val}}</p>
                     </div>
                     <div class="order-column__row">
-                        <p>+55 51 91991-9090{{client_phone_number_val}}</p>
+                        <p>+{{user_country_code_val}} {{user_phone_val}}</p>
                     </div>
                 </div>
             </div>

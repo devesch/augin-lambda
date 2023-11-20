@@ -249,7 +249,7 @@ class Http:
         if os.environ.get("AWS_EXECUTION_ENV") is None:
             domain = ".127.0.0.1"
         else:
-            domain = (lambda_constants["domain_name_url"]).replace("https://" + lambda_constants["prefix_name"], ".")
+            domain = "." + lambda_constants["domain_name"] + lambda_constants["sufix_name"]
 
         if user_cookie:
             response["headers"]["Set-Cookie"] = f"__Secure-token={user.user_auth_token}; Secure; domain={domain}; path=/; Max-Age=7776000;"

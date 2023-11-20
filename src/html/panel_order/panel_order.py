@@ -1,10 +1,11 @@
-from python_web_frame.panel_page import PanelPage
 from objects.Order import generate_order_short_id, translate_order_payment_method, translate_order_type, translate_order_status
+from python_web_frame.panel_page import PanelPage
+from utils.utils.StrFormat import StrFormat
+from utils.utils.ReadWrite import ReadWrite
+from utils.utils.JsonData import JsonData
+from utils.AWS.Dynamo import Dynamo
 from utils.utils.Http import Http
 from utils.utils.Date import Date
-from utils.utils.ReadWrite import ReadWrite
-from utils.utils.StrFormat import StrFormat
-from utils.AWS.Dynamo import Dynamo
 
 
 class PanelOrder(PanelPage):
@@ -21,6 +22,10 @@ class PanelOrder(PanelPage):
 
         html = super().parse_html()
         html.esc("user_name_val", self.user.user_name)
+        html.esc("user_email_val", self.user.user_email)
+        html.esc("user_country_code_val", JsonData().get_country_phone_code()[self.user.user_address_data["user_country"]])
+        html.esc("user_phone_val", self.user.user_phone)
+
         html.esc("order_short_id_val", generate_order_short_id(self.path["order"]["order_id"]))
         html.esc("order_id_val", self.path["order"]["order_id"])
         html.esc("order_payment_method", translate_order_payment_method(self.path["order"]["order_payment_method"]))
