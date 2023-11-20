@@ -3254,6 +3254,7 @@ input[list]::-ms-clear {
     background-color: colors.color("color-neutral-50");
     border-radius: 1rem;
     word-break: break-all;
+    font-size: 1.125rem;
 
     strong {
         font-weight: bold;
@@ -3263,6 +3264,7 @@ input[list]::-ms-clear {
 
 .order-body {
     padding: 2rem;
+    gap: 2rem;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
     display: flex;
@@ -3273,6 +3275,10 @@ input[list]::-ms-clear {
     -ms-flex-wrap: wrap;
 }
 
+.order-body--description {
+    justify-content: end;
+}
+
 .order-column {
     padding-bottom: 1rem;
     display: flex;
@@ -3280,6 +3286,56 @@ input[list]::-ms-clear {
     text-align: center;
     padding-top: 1rem;
     gap: 0;
+}
+
+.order-column--action {
+    flex-grow: 1;
+}
+
+.order-table-description {
+    width: 100%;
+
+    thead {
+        text-align: left;
+        font-weight: bold;
+        border-bottom: 2px solid colors.color("color-neutral-600");
+        line-height: 2;
+
+        th:last-of-type {
+            text-align: right;
+        }
+    }
+
+    tbody {
+        td {
+            padding-top: 1rem;
+        }
+
+        td:last-of-type {
+            text-align: right;
+        }
+    }
+
+    small {
+        font-size: 1rem;
+    }
+}
+
+.order-table-total {
+    width: 100%;
+    max-width: 40rem;
+
+    tr {
+        border-top: 1px solid colors.color("color-neutral-600");
+    }
+
+    tr td:last-of-type {
+        text-align: right;
+    }
+
+    td {
+        padding: .5rem 0;
+    }
 }
 
 .order-column .table {
@@ -3329,6 +3385,16 @@ input[list]::-ms-clear {
         padding: .25rem .5rem;
         height: 100%;
     }
+}
+
+.order-button-container {
+    display: flex;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: end;
 }
 
 .total-order {
