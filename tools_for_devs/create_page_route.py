@@ -22,11 +22,11 @@ inputs = [
     # {"input_name": "email_file", "input_placeholder": "Arquivo", "input_js": "uploadFile", "input_type": "file", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_py_verification": "", "input_required": False, "input_sex": "M"},
     # {"input_name": "email_file_filename", "input_placeholder": "Nome do arquivo do email", "input_js": "", "input_type": "hidden", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_py_verification": "check_if_file_exists", "input_required": False, "input_sex": "M"},
     # {"input_name": "user_email", "input_placeholder": "Email", "input_js": "", "input_type": "email", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_py_verification": "check_if_email", "input_required": True, "input_sex": "M"},
-    # {"input_name": "user_name", "input_placeholder": "Nome", "input_js": "maskToLetter", "input_type": "text", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_py_verification": "", "input_required": True, "input_sex": "M"},
-    # {"input_name": "user_last_name", "input_placeholder": "Sobrenome", "input_js": "maskToLetter", "input_type": "text", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_py_verification": "", "input_required": True, "input_sex": "M"},
-    # {"input_name": "user_phone", "input_placeholder": "Telefone", "input_js": "maskToPhone", "input_type": "text", "input_min_lenght": "15", "input_max_lenght": "15", "input_render_with_py_function": "format_to_phone", "input_py_verification": "check_if_br_phone", "input_required": True, "input_sex": "M"},
-    # {"input_name": "user_cpf", "input_placeholder": "CPF", "input_js": "maskToCPF", "input_type": "text", "input_min_lenght": "14", "input_max_lenght": "14", "input_render_with_py_function": "format_to_cpf", "input_py_verification": "check_if_cpf", "input_required": True, "input_sex": "M"},
-    # {"input_name": "user_cnpj", "input_placeholder": "CNPJ", "input_js": "maskToCNPJ", "input_type": "text", "input_min_lenght": "18", "input_max_lenght": "18", "input_render_with_py_function": "format_to_cnpj", "input_py_verification": "check_if_cnpj", "input_required": True, "input_sex": "M"},
+    # {"input_name": "user_name", "input_placeholder": "Nome", "input_js": "formatToLetter", "input_type": "text", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_py_verification": "", "input_required": True, "input_sex": "M"},
+    # {"input_name": "user_last_name", "input_placeholder": "Sobrenome", "input_js": "formatToLetter", "input_type": "text", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_py_verification": "", "input_required": True, "input_sex": "M"},
+    # {"input_name": "user_phone", "input_placeholder": "Telefone", "input_js": "formatToPhone", "input_type": "text", "input_min_lenght": "15", "input_max_lenght": "15", "input_render_with_py_function": "format_to_phone", "input_py_verification": "check_if_br_phone", "input_required": True, "input_sex": "M"},
+    # {"input_name": "user_cpf", "input_placeholder": "CPF", "input_js": "formatToCPF", "input_type": "text", "input_min_lenght": "14", "input_max_lenght": "14", "input_render_with_py_function": "format_to_cpf", "input_py_verification": "check_if_cpf", "input_required": True, "input_sex": "M"},
+    # {"input_name": "user_cnpj", "input_placeholder": "CNPJ", "input_js": "formatToCNPJ", "input_type": "text", "input_min_lenght": "18", "input_max_lenght": "18", "input_render_with_py_function": "format_to_cnpj", "input_py_verification": "check_if_cnpj", "input_required": True, "input_sex": "M"},
     # {"input_name": "user_password", "input_placeholder": "Senha", "input_js": "", "input_min_lenght": "8", "input_max_lenght": "", "input_render_with_py_function": "", "input_type": "password", "input_py_verification": "check_if_password", "input_required": True, "input_sex": "F"},
     # {"input_name": "model_password", "input_placeholder": "Senha", "input_js": "", "input_min_lenght": "", "input_max_lenght": "", "input_render_with_py_function": "", "input_type": "password", "input_py_verification": "", "input_required": True, "input_sex": "F"},
     # {"input_name": "user_password_confirm", "input_placeholder": "Confirmação de Senha", "input_js": "", "input_min_lenght": "8", "input_max_lenght": "", "input_render_with_py_function": "", "input_type": "password", "input_py_verification": "check_if_password", "input_required": True, "input_sex": "F"},
@@ -230,7 +230,6 @@ if not default_inputs:
     py_page = py_page.replace("default_inputs_replace_val", "")
 
 if default_inputs:
-
     default_inputs_replace = []
     for default_input in default_inputs:
         input_py = utils.read_file_with_codecs("tools_for_devs/py_samples/default_inputs_replace.py")

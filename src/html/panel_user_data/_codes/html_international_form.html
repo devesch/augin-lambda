@@ -5,7 +5,7 @@
             <label for="user_email" class="floating-label">{{Seu Email}}</label>
         </div>
         <div class="input-default floating-input">
-            <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.maskToLetter(this)" maxlength="50" minlength="1" required placeholder=" ">
+            <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.formatToLetter(this)" maxlength="50" minlength="1" required placeholder=" ">
             <label for="user_name" class="floating-label">{{Seu nome}}</label>
         </div>
         <div class="input-default floating-input country-flag-container">
@@ -22,10 +22,10 @@
         </div>
         <!-- <div class="input-default floating-input">
             <input hidden type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" maxlength="18" placeholder=" ">
-            <input hidden type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14">
+            <input hidden type="text" name="user_cpf" id="user_cpf" oninput="js.index.formatToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14">
         </div> -->
         <div class="input-default floating-input">
-            <input type="text" name="user_zip_code" id="user_zip_code" value="{{user_zip_code_val}}" class="floating" oninput="js.index.maskToNumber(this)" maxlength="18" placeholder=" ">
+            <input type="text" name="user_zip_code" id="user_zip_code" value="{{user_zip_code_val}}" class="floating" oninput="js.index.formatToNumber(this)" maxlength="18" placeholder=" ">
             <label for="user_zip_code" class="floating-label">{{Código ZIP}}</label>
         </div>
         <div class="input-default floating-input">
@@ -46,7 +46,7 @@
             <label for="user_street" class="floating-label">{{Endereço 2}}</label>
         </div>
         <div class="input-default">
-            <input hidden type="text" placeholder="{{Número}}" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" oninput="js.index.maskToNumber(this)">
+            <input hidden type="text" placeholder="{{Número}}" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" oninput="js.index.formatToNumber(this)">
         </div>
         <div class="input-default">
             <input hidden type="text" placeholder="{{Complemento}}" name="user_complement" id="user_complement" value="{{user_complement_val}}">

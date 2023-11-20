@@ -13,6 +13,100 @@ if (window.location.href.includes("http://127.0.0.1:3000")) {
     ProjectData.props.domainNameUrlVal = "http://127.0.0.1:3000";
 }
 
+export async function saveUserCPFData(){
+    var user_cpf_input = document.getElementById("user_cpf_input");
+    var user_zip_code_input = document.getElementById("user_zip_code_input");
+    var user_state_input = document.getElementById("user_state_input");
+    var user_city_input = document.getElementById("user_city_input");
+    var user_city_code_input = document.getElementById("user_city_code_input");
+    var user_neighborhood_input = document.getElementById("user_neighborhood_input");
+    var user_street_input = document.getElementById("user_street_input");
+    var user_street_number_input = document.getElementById("user_street_number_input");
+    var user_complement_input = document.getElementById("user_complement_input");
+    var cpf_data_error_msg_span = document.getElementById("cpf_data_error_msg_span");
+    var save_cpf_data_button = document.getElementById("save_cpf_data_button");
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "update_cpf_data",
+        "user_cpf" : user_cpf_input.value,
+        "user_zip_code" : user_zip_code_input.value,
+        "user_state" : user_state_input.value,
+        "user_city" : user_city_input.value,
+        "user_city_code" : user_city_code_input.value,
+        "user_neighborhood" : user_neighborhood_input.value,
+        "user_street" : user_street_input.value,
+        "user_street_number" : user_street_number_input.value,
+        "user_complement" : user_complement_input.value
+    })
+    if ("error" in update_user_response) {
+        cpf_data_error_msg_span.innerHTML = update_user_response["error"];
+    }
+    if ("success" in update_user_response) {
+        cpf_data_error_msg_span.innerHTML = "";
+        save_cpf_data_button.innerHTML = update_user_response["success"];
+        await sleep(7000);
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Salvar alterações"
+        })
+        save_cpf_data_button.innerHTML = translate_response["success"];
+    }
+}
+
+export async function updateUserPhoneInputWithCountry() {
+    var user_country_select = document.getElementById("user_country_select");
+    var user_country_code_input = document.getElementById("user_country_code_input");
+    var user_phone_input = document.getElementById("user_phone_input");
+
+    let panel_get_country_phone_code_response = await apiCaller("panel_get_country_phone_code", {
+        "user_country_alpha_2": user_country_select.value
+    })
+    user_country_code_input.value = "+" + panel_get_country_phone_code_response["success"];
+    if (user_country_select.value == "BR") {
+        document.getElementById('user_phone_input').setAttribute('oninput', 'js.index.formatToPhoneNumber(this); js.index.makeSaveUserPersonalDataAvailable();');
+        formatToPhoneNumber(user_phone_input);
+    }
+    else{
+        document.getElementById('user_phone_input').setAttribute('oninput', 'js.index.makeSaveUserPersonalDataAvailable();');
+        user_phone_input.value = user_phone_input.value.replace(/\(/g, "").replace(/\)/g, "").replace(/ /g, "").replace(/-/g, "");
+    }
+}
+
+export async function makeSaveUserCPFDataAvailable() {
+    var user_cpf_input = document.getElementById("user_cpf_input");
+    var user_zip_code_input = document.getElementById("user_zip_code_input");
+    var user_state_input = document.getElementById("user_state_input");
+    var user_city_input = document.getElementById("user_city_input");
+    var user_city_code_input = document.getElementById("user_city_code_input");
+    var user_neighborhood_input = document.getElementById("user_neighborhood_input");
+    var user_street_input = document.getElementById("user_street_input");
+    var user_street_number_input = document.getElementById("user_street_number_input");
+    var user_complement_input = document.getElementById("user_complement_input");
+
+    var save_cpf_data_button = document.getElementById("save_cpf_data_button");
+    if (user_cpf_input.value.length > 0 && user_zip_code_input.value.length > 0 && user_state_input.value.length > 0 && user_city_input.value.length > 0 && user_city_code_input.value.length > 0 && user_neighborhood_input.value.length > 0 && user_street_input.value.length > 0 && user_street_number_input.value.length > 0 && user_complement_input.value.length > 0){
+        save_cpf_data_button.disabled = false;
+    }
+    else {
+        save_personal_data_button.disabled = true;
+    }
+}
+
+export async function makeSaveUserPersonalDataAvailable(){
+    var save_personal_data_button = document.getElementById("save_personal_data_button");
+    var user_name_input = document.getElementById("user_name_input");
+    var user_email_input = document.getElementById("user_email_input");
+    var user_country_select = document.getElementById("user_country_select");
+    var user_phone_input = document.getElementById("user_phone_input");
+
+    if (user_name_input.value.length > 0 && user_email_input.value.length > 0 && user_country_select.value.length > 0 && user_phone_input.value.length > 0) {
+        save_personal_data_button.disabled = false;
+    }
+    else{
+        save_personal_data_button.disabled = true;
+    }
+}
+
 export async function formatToPhoneNumber(input) {
     let numbers = input.value.replace(/\D/g, '');
     if (numbers.length === 0) {
@@ -32,23 +126,29 @@ export async function saveUserPersonalData() {
     var user_country_select = document.getElementById("user_country_select");
     var user_country_code_input = document.getElementById("user_country_code_input");
     var user_phone_input = document.getElementById("user_phone_input");
+    var save_personal_data_button = document.getElementById("save_personal_data_button");
     var personal_data_error_msg_span = document.getElementById("personal_data_error_msg_span");
-
 
     let update_user_response = await apiCaller("update_user", {
         "command": "update_personal_data",
-        "user_name_input": user_name_input.value,
-        "user_email_input": user_email_input.value,
-        "user_country_select": user_country_select.value,
-        "user_country_code_input": user_country_code_input.value,
-        "user_phone_input": user_phone_input.value,
+        "user_name": user_name_input.value,
+        "user_email": user_email_input.value,
+        "user_country": user_country_select.value,
+        "user_country_code": user_country_code_input.value,
+        "user_phone": user_phone_input.value,
     })
-
     if ("error" in update_user_response) {
         personal_data_error_msg_span.innerHTML = update_user_response["error"];
     }
     if ("success" in update_user_response) {
-        personal_data_error_msg_span.innerHTML = update_user_response["success"];
+        personal_data_error_msg_span.innerHTML = "";
+        save_personal_data_button.innerHTML = update_user_response["success"];
+        await sleep(7000);
+
+        let translate_response = await apiCaller("translate", {
+            "key": "Salvar alterações"
+        })
+        save_personal_data_button.innerHTML = translate_response["success"];
     }
 }
 
@@ -107,8 +207,6 @@ export async function showSelectedPaymentPage(index) {
     let decrease_history_page_button = document.getElementById("decrease_history_page_button");
     let increase_history_page_button = document.getElementById("increase_history_page_button");
     let payment_history_pages_count_input = document.getElementById("payment_history_pages_count_input");
-
-
     let current_button = document.getElementById("payment_history_page_button_" + index);
     let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
     let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
@@ -389,48 +487,42 @@ export async function openCookiesConfiguration() {
 
 export async function showUserPhysicalAddressData() {
     console.log("Running showUserPhysicalAddressData")
-    let error_msg = document.getElementById("error_msg");
-    let user_zip_code = document.getElementById("user_zip_code");
-    let user_state = document.getElementById("user_state");
-    let user_city = document.getElementById("user_city");
-    let user_city_code = document.getElementById("user_city_code");
-    let user_neighborhood = document.getElementById("user_neighborhood");
-    let user_street = document.getElementById("user_street");
-    let box_inputs = document.querySelector(".page-user__box-user-data__box-inputs__box-adress");
-    await maskToZipCode(user_zip_code)
+    let user_zip_code_input = document.getElementById("user_zip_code_input");
+    let user_state_input = document.getElementById("user_state_input");
+    let user_city_input = document.getElementById("user_city_input");
+    let user_city_code_input = document.getElementById("user_city_code_input");
+    let user_neighborhood_input = document.getElementById("user_neighborhood_input");
+    let user_street_input = document.getElementById("user_street_input");
+    let cpf_data_error_msg_span = document.getElementById("cpf_data_error_msg_span");
 
-    if (user_zip_code.value.length == 9) {
-        openModal(".modal.modal-loader-spinner");
+    if (user_zip_code_input.value.length == 9) {
+        openModal(".modal-loader-spinner.address");
         let api_response = await apiCaller("panel_get_address_data_with_zip", {
-            'user_zip_code': user_zip_code.value.replace(".", "").replace("-", "")
+            'user_zip_code': user_zip_code_input.value.replace(".", "").replace("-", "")
         });
-        console.log("api_response " + api_response);
-        closeModal(".modal.modal-loader-spinner");
+        closeModal(".modal-loader-spinner.address");
         if ("success" in api_response) {
-            user_state.value = api_response.success.state
-            user_city.value = api_response.success.city
-            user_city_code.value = api_response.success.city_code
-            user_neighborhood.value = api_response.success.neighborhood
-            user_street.value = api_response.success.street
-            box_inputs.style = ""
-            error_msg.innerHTML = ""
-            error_msg.style = "display: none;"
+            user_state_input.value = api_response.success.state
+            user_city_input.value = api_response.success.city
+            user_city_code_input.value = api_response.success.city_code
+            user_neighborhood_input.value = api_response.success.neighborhood
+            user_street_input.value = api_response.success.street
+            cpf_data_error_msg_span.innerHTML = ""
+            cpf_data_error_msg_span.style = "display: none;"
             return
         }
         if ("error" in api_response) {
-            error_msg.innerHTML = api_response.error
-            error_msg.style = "color:#FF0000;"
+            cpf_data_error_msg_span.innerHTML = api_response.error
+            cpf_data_error_msg_span.style = "color:#FF0000;"
             return
         }
     }
-    user_state.value = ""
-    user_city.value = ""
-    user_city_code.value = ""
-    user_neighborhood.value = ""
-    user_street.value = ""
-    user_street_number.value = ""
-    user_complement.value = ""
-    box_inputs.style = "display: none;"
+    user_state_input.value = ""
+    user_city_input.value = ""
+    user_city_code_input.value = ""
+    user_neighborhood_input.value = ""
+    user_street_input.value = ""
+    makeSaveUserCPFDataAvailable();
 }
 
 
@@ -448,7 +540,7 @@ export async function showUserCompanyAddressData() {
     let user_street_number = document.getElementById("user_street_number");
     let user_complement = document.getElementById("user_complement");
 
-    await maskToCNPJ(user_cnpj)
+    await formatToCNPJ(user_cnpj)
     let box_inputs = document.querySelector(".page-user__box-user-data__box-inputs__box-adress");
     if (user_cnpj.value.length == 18) {
         openModal('.modal.modal-loader-spinner')
@@ -495,26 +587,26 @@ export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function maskToNumber(input) {
+export function formatToNumber(input) {
     input.value = input.value.replace(/\D/g, "");
 }
 
-export function maskToLetter(input) {
+export function formatToLetter(input) {
     input.value = input.value.replace(/[0-9]/g, '');;
 }
 
-export async function maskToZipCode(input) {
+export function formatToZIP(input) {
     input.value = input.value.replace(/\D/g, "");
     input.value = input.value.replace(/^(\d{5})(\d)/, "$1-$2");
 }
 
-export function maskToCPF(input) {
+export function formatToCPF(input) {
     input.value = input.value.replace(/\D/g, "");
     input.value = input.value.replace(/(\d{3})(\d)/, "$1.$2");
     input.value = input.value.replace(/(\d{3})(\d)/, "$1.$2");
     input.value = input.value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
 }
-export function maskToCNPJ(input) {
+export function formatToCNPJ(input) {
     input.value = input.value.replace(/\D/g, "");
     input.value = input.value.replace(/(\d{2})(\d)/, "$1.$2");
     input.value = input.value.replace(/(\d{3})(\d)/, "$1.$2");
@@ -522,7 +614,7 @@ export function maskToCNPJ(input) {
     input.value = input.value.replace(/(\d{4})(\d)/, "$1-$2");
 }
 
-export function maskToPhone(input) {
+export function formatToPhone(input) {
     input.value = input.value.replace(/\D/g, "");
     input.value = input.value.replace(/^(\d{2})(\d)/g, "($1) $2");
     input.value = input.value.replace(/(\d)(\d{4})$/, "$1-$2");

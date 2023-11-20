@@ -175,16 +175,16 @@ for key, val in country_data.items():
 
 for sub_dirs in os.listdir(html_source_path):
     if sub_dirs[0] != ".":
-        for file in os.listdir(html_source_path + "/" + sub_dirs):
+        for file in os.listdir(os.path.join(html_source_path, sub_dirs)):
             if file[0] != ".":
                 if file == "_codes":
-                    for _codes_file in os.listdir(html_source_path + "/" + sub_dirs + "/_codes"):
+                    for _codes_file in os.listdir(os.path.join(html_source_path, sub_dirs, "_codes")):
                         if _codes_file[0] != ".":
-                            file_path = os.path.join(html_source_path + "/" + sub_dirs + "/_codes", _codes_file)
+                            file_path = os.path.join(html_source_path, sub_dirs, "_codes", _codes_file)
                             if os.path.isfile(file_path):
                                 with codecs.open(file_path, "r", "utf-8-sig") as read_file:
                                     html_file = read_file.read()
-                                ### GET PLACEHOLDERS STUFF ###
+                                ## GET PLACEHOLDERS STUFF ##
                                 placeholders = html_file.split("{{")
                                 for index, placeholder in enumerate(placeholders):
                                     if placeholder:
@@ -193,9 +193,8 @@ for sub_dirs in os.listdir(html_source_path):
                                     if placeholder:
                                         if not "_val" in placeholder and not "html_" in placeholder and not "js." in placeholder and not "_" in placeholder and not "<" in placeholder and not "header" in placeholder and not "menu" in placeholder and not "footer" in placeholder and placeholder not in filtered_placeholders:
                                             filtered_placeholders.append(placeholder)
-                    break
                 else:
-                    file_path = os.path.join(html_source_path + "/" + sub_dirs, file)
+                    file_path = os.path.join(html_source_path, sub_dirs, file)
                     if os.path.isfile(file_path):
                         with codecs.open(file_path, "r", "utf-8-sig") as read_file:
                             html_file = read_file.read()
@@ -213,6 +212,25 @@ for sub_dirs in os.listdir(html_source_path):
                             placeholders = re.findall(pattern, html_file)
                             filtered_placeholders.extend(placeholders)
 
+                            pattern = r'self\.translate\("([^"]*)"\)'
+                            placeholders = re.findall(pattern, html_file)
+                            filtered_placeholders.extend(placeholders)
+
+                            pattern = r'name\s*=\s*"([^"]*)"'
+                            placeholders = re.findall(pattern, html_file)
+                            filtered_placeholders.extend(placeholders)
+
+for file in os.listdir(api_source_path):
+    if os.path.isfile(os.path.join(api_source_path, file)):
+        with codecs.open(os.path.join(api_source_path, file), "r", "utf-8-sig") as read_file:
+            html_file = read_file.read()
+        pattern = r'return \{"error": "([^"]*)"\}'
+        result = re.findall(pattern, html_file)
+        filtered_placeholders.extend(result)
+
+        pattern = r'self\.translate\("([^"]*)"\)'
+        placeholders = re.findall(pattern, html_file)
+        filtered_placeholders.extend(placeholders)
 
 for file in os.listdir(api_source_path):
     if os.path.isfile(api_source_path + "/" + file):

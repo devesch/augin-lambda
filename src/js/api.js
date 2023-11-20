@@ -2,18 +2,11 @@ import {
     ProjectData
 } from "./classes/ProjectData.js";
 
+
 export async function apiCaller(apiFunction, postData) {
-    if (window.location.href.includes("http://127.0.0.1:3000")) {
-        console.log("Calling local API");
-        var response = await request("http://127.0.0.1:3000/api/" + apiFunction, "POST", {
-            "Content-Type": "application/x-www-form-urlencoded"
-        }, postData, true);
-    } else {
-        console.log("Calling AWS API");
-        var response = await request(ProjectData.props.domainNameUrlVal + "/api/" + apiFunction, "POST", {
-            "Content-Type": "application/x-www-form-urlencoded"
-        }, postData, true);
-    }
+    var response = await request(ProjectData.props.domainNameUrlVal + "/api/" + apiFunction, "POST", {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }, postData, true);
 
     if ("success" in response) {
         console.log(apiFunction + " RESPONSE SUCCESS -> " + response["success"])

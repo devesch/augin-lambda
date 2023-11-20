@@ -1,7 +1,9 @@
+from python_web_frame.user_page import UserPage
 from python_web_frame.panel_page import PanelPage
 from python_web_frame.controllers.model_controller import ModelController
 from python_web_frame.controllers.stripe_controller import StripeController
 from utils.utils.EncodeDecode import EncodeDecode
+from utils.utils.Validation import Validation
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Lambda import Lambda
 from utils.AWS.S3 import S3
@@ -10,11 +12,12 @@ from objects.UserFolder import check_if_folder_movement_is_valid
 from objects.UserDevice import disconnect_device, generate_connected_and_disconnected_devices, generate_disconnected_devices_in_last_30d
 from objects.UserPaymentMethod import UserPaymentMethod
 from objects.CancelSubscription import CancelSubscription
+from objects.User import load_user
 from objects.BackofficeData import increase_backoffice_data_total_count
 import time
 
 
-class UpdateUser(PanelPage):
+class UpdateUser(UserPage, PanelPage):
     def run(self):
         if not self.post.get("command"):
             return {"error": "Nenhum command no post"}
@@ -24,6 +27,78 @@ class UpdateUser(PanelPage):
                 return {"error": "Nenhum usuário encontrado"}
 
         return getattr(self, self.post["command"])()
+
+    def update_cpf_data(self):
+        if not self.post.get("user_cpf"):
+            return {"error": "É necessário informar um CPF"}
+        if not self.post.get("user_zip_code"):
+            return {"error": "É necessário informar um código ZIP"}
+        if not self.post.get("user_state"):
+            return {"error": "É necessário informar um estado"}
+        if not self.post.get("user_city"):
+            return {"error": "É necessário informar uma cidade"}
+        if not self.post.get("user_city_code"):
+            return {"error": "É necessário informar um código de cidade"}
+        if not self.post.get("user_neighborhood"):
+            return {"error": "É necessário informar um bairro"}
+        if not self.post.get("user_street"):
+            return {"error": "É necessário informar uma rua"}
+        if not self.post.get("user_street_number"):
+            return {"error": "É necessário informar o número da rua"}
+        if not self.post.get("user_complement"):
+            return {"error": "É necessário informar um complemento"}
+
+        if not Validation().check_if_cpf(self.post["user_cpf"]):
+            return {"error": "Digite um CPF válido"}
+        if not Validation().check_if_number(self.post["user_zip_code"]):
+            return {"error": "Digite um CPF válido"}
+
+        self.user.user_cpf = self.post["user_cpf"]
+        self.user.user_address_data["user_zip_code"] = self.post["user_zip_code"]
+        self.user.user_address_data["user_state"] = self.post["user_state"].upper()
+        self.user.user_address_data["user_city"] = self.post["user_city"].capitalize()
+        self.user.user_address_data["user_city_code"] = self.post["user_city_code"].capitalize()
+        self.user.user_address_data["user_neighborhood"] = self.post["user_neighborhood"].capitalize()
+        self.user.user_address_data["user_street"] = self.post["user_street"].capitalize()
+        self.user.user_address_data["user_street_number"] = self.post["user_street_number"]
+        self.user.user_address_data["user_complement"] = self.post["user_complement"].title()
+
+        Dynamo().put_entity(self.user.__dict__)
+        return {"success": "Dados atualizados com sucesso"}
+
+    def update_personal_data(self):
+        if not self.post.get("user_name"):
+            return {"error": "É necessárion informar um nome"}
+        if not self.post.get("user_email"):
+            return {"error": "É necessárion informar um email"}
+        if not self.post.get("user_country"):
+            return {"error": "É necessárion informar um país"}
+        if not self.post.get("user_phone"):
+            return {"error": "É necessárion informar um telefone"}
+        if not " " in self.post.get("user_name"):
+            return {"error": "É necessárion informar o seu nome completo"}
+        if Validation().check_if_phone(self.post["user_phone"], self.post["user_country"].lower()):
+            return {"error": "É necessárion informar o seu nome completo"}
+
+        if self.post["user_country"] == "BR" and self.user.user_client_type not in ("physical", "company"):
+            self.user.user_client_type = "physical"
+        if self.post["user_country"] != "BR" and self.user.user_client_type in ("physical", "company"):
+            self.user.user_client_type = "international"
+
+        self.user.user_address_data["user_country"] = self.post["user_country"]
+        self.user.user_name = self.post["user_name"].title()
+        self.user.user_phone = self.post["user_phone"].title()
+
+        Dynamo().put_entity(self.user.__dict__)
+        if self.user.user_email != self.post["user_email"]:
+            check_user = load_user(self.post["user_email"])
+            if load_user(self.post["user_email"]):
+                return {"success": "Perfil atualizado porém o email selecionado para alteração já possui uma conta vinculada"}
+            self.user.update_auth_token()
+            self.send_email_modified_email(self.user.user_email, self.user.user_auth_token, self.post["user_email"])
+            return {"success": "Perfil atualizado porém para alterar o seu email é necessário seguir as instruções que acabamos de enviar para o seu email atual"}
+
+        return {"success": "Dados atualizados com sucesso"}
 
     def delete_notification(self):
         if not self.post.get("notification_id"):
@@ -219,7 +294,7 @@ class UpdateUser(PanelPage):
         plan = Dynamo().get_plan(self.post["plan_id"])
         if not plan:
             return {"error": "Nenhum plano encontrado com este plan_id", "user_client_type": self.user.user_client_type}
-        if not self.user.check_if_is_payment_ready():
+        if not self.user.check_if_payment_ready():
             return {"error": "É necessário atualizar os seus dados para processeguir na compra", "user_client_type": self.user.user_client_type}
         if float(self.user.user_address_data_last_update) < float(time.time() - 3600):
             return {"error": "É necessário confirmar os seus dados para processeguir na compra", "user_client_type": self.user.user_client_type}

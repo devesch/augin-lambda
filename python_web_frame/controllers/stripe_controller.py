@@ -132,7 +132,7 @@ class StripeController:
     def get_subscription(self, subscription_id):
         stripe_subscription = self.stripe.Subscription.retrieve(subscription_id)
         if stripe_subscription["metadata"].get("plan"):
-            if Validation().check_if_is_b64_encoded(stripe_subscription["metadata"]["plan"]):
+            if Validation().check_if_b64_encoded(stripe_subscription["metadata"]["plan"]):
                 stripe_subscription["metadata"]["plan"] = self.decompress_plan_data(stripe_subscription["metadata"]["plan"])
         return stripe_subscription
 

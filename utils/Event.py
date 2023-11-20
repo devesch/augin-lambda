@@ -152,7 +152,7 @@ class Event:
             return self.get_first_param_in_raw_path() + "/" + params
         return self.get_first_param_in_raw_path()
 
-    def check_if_is_mobile(self):
+    def check_if_mobile(self):
         try:
             if "windows" in self.headers["user-agent"].lower() or "mac" in self.headers["user-agent"].lower():
                 return False

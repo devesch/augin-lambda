@@ -165,7 +165,7 @@ class Http:
                         if dangerous_character in value:
                             post[param] = self.format_post_value_without_dangerous_character(post[param], dangerous_character)
                         if param not in self.acceptable_json_fields:
-                            if Validation().check_if_is_json(value):
+                            if Validation().check_if_json(value):
                                 post[param] = ""
 
         for param, value in post.items():

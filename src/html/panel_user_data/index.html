@@ -4,7 +4,6 @@
     <div class="my-plan__title-container">
         <h1 class="my-plan__title">{{Editar perfil}}</h1>
     </div>
-
     <article>
         <section class="panel-user-data__main-container">
             <section class="panel-user-data__main-container__row">
@@ -14,7 +13,7 @@
                 </section>
                 <section class="panel-user-data-container panel-user-data__main-container__column">
                     <div class="input-default floating-input">
-                        <input oninput="js.index.maskToLetter(this)" type="text" name="user_name" id="user_name_input" value="{{user_name_val}}" class="floating" maxlength="50" minlength="1" required placeholder=" ">
+                        <input oninput="js.index.formatToLetter(this); js.index.makeSaveUserPersonalDataAvailable();" type="text" name="user_name" id="user_name_input" value="{{user_name_val}}" class="floating" maxlength="50" minlength="1" required placeholder=" ">
                         <label for="user_name" class="floating-label">{{Nome completo}}</label>
                     </div>
                     <div class="input-default focus floating-input">
@@ -23,7 +22,7 @@
                     </div>
                     <div class="input-default floating-input">
                         <section class="input-default country-flag-container">
-                            <select name="user_country" id="user_country_select" value="{{user_country_val}}" class="floating" required autocomplete="off">
+                            <select onchange="js.index.updateUserPhoneInputWithCountry(); js.index.makeSaveUserPersonalDataAvailable();" name="user_country" id="user_country_select" value="{{user_country_val}}" class="floating" required autocomplete="off">
                                 {{html_user_country_options}}
                             </select>
                         </section>
@@ -32,7 +31,7 @@
                         <section class="input-default-icon focus" id="user_phone_div">
                             <input type="text" name="user_country_code" id="user_country_code_input" class="input-country-code" value="+{{user_country_code_val}}" placeholder=" " readonly>
                             <div class="floating-input">
-                                <input oninput="js.index.formatToPhoneNumber(this)" type="text" name="user_phone" id="user_phone_input" value="{{user_phone_val}}" class="floating" placeholder=" ">
+                                <input oninput="js.index.formatToPhoneNumber(this); js.index.makeSaveUserPersonalDataAvailable();" type="text" name="user_phone" id="user_phone_input" value="{{user_phone_val}}" class="floating" placeholder=" ">
                                 <label for="user-phone">{{Digite seu telefone}}</label>
                             </div>
                         </section>
@@ -42,13 +41,13 @@
             <span class="error" style="" id="personal_data_error_msg_span">
             </span>
             <section class="panel-user-data__main-container__button-container">
-                <button onclick="js.index.saveUserPersonalData()" type="submit" disabled>
+                <button onclick="js.index.saveUserPersonalData()" type="submit" id="save_personal_data_button" disabled>
                     {{Salvar alterações}}
                 </button>
             </section>
         </section>
 
-        <section action="/panel_user_data/?user_client_type=physical" method="POST" id="form" class="panel-user-data__main-container">
+        <section class="panel-user-data__main-container">
             <article>
                 <section class="panel-user-data__main-container__row">
                     <section class="panel-user-data__main-container__column">
@@ -64,55 +63,50 @@
                         </div>
                         <div class="panel-user-data__cpf-cep-container">
                             <div class="input-default floating-input cpf-field">
-                                <input hidden type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" maxlength="18">
-                                <input type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
+                                <input oninput="js.index.formatToCPF(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_cpf" id="user_cpf_input" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
                                 <label for="user_cpf" class="floating-label">{{CPF}}</label>
                             </div>
                             <div class="input-default floating-input cep-field">
-                                <input type="text" name="user_zip_code" id="user_zip_code" class="floating" value="{{user_zip_code_val}}" oninput="js.index.showUserPhysicalAddressData()" minlength="9" maxlength="9" placeholder=" ">
+                                <input oninput="js.index.formatToZIP(this); js.index.showUserPhysicalAddressData(); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_zip_code" id="user_zip_code_input" value="{{user_zip_code_val}}" class="floating" minlength="9" maxlength="9" placeholder=" ">
                                 <label for="user_zip_code" class="floating-label">{{CEP}}</label>
                             </div>
                         </div>
-                        <div class="panel-user-data__cpf-cep-container">
+                        <div class="panel-user-data__cpf-cep-container" >
                             <div class="input-default focus floating-input state-field">
-                                <input type="text" name="user_state" id="user_state" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
+                                <input type="text" name="user_state" id="user_state_input" value="{{user_state_val}}" class="floating" readonly required placeholder=" ">
                                 <label for="user_state" class="floating-label">{{Estado}}</label>
                             </div>
                             <div class="input-default focus floating-input city-field">
-                                <input type="text" name="user_city" id="user_city" value="{{user_city_val}}" class="floating" readonly required placeholder=" ">
+                                <input type="text" name="user_city" id="user_city_input" value="{{user_city_val}}" class="floating" readonly required placeholder=" ">
                                 <label for="user_city" class="floating-label">{{Cidade}}</label>
                             </div>
                         </div>
-
-                        <input type="text" name="user_city_code" id="user_city_code" value="{{user_city_code_val}}" readonly style="display:none;">
+                        <input hidden name="user_city_code" id="user_city_code_input" value="{{user_city_code_val}}" readonly>
                         <div class="input-default focus floating-input">
-                            <input type="text" name="user_neighborhood" id="user_neighborhood" value="{{user_neighborhood_val}}" class="floating" readonly required placeholder=" ">
+                            <input type="text" name="user_neighborhood" id="user_neighborhood_input" value="{{user_neighborhood_val}}" class="floating" readonly required placeholder=" ">
                             <label for="user_neighborhood" class="floating-label">{{Bairro}}</label>
                         </div>
-
                         <div class="input-default focus floating-input">
-                            <input type="text" name="user_street" id="user_street" value="{{user_street_val}}" class="floating" readonly required placeholder=" ">
+                            <input type="text" name="user_street" id="user_street_input" value="{{user_street_val}}" class="floating" readonly required placeholder=" ">
                             <label for="user_street" class="floating-label">{{Rua}}</label>
                         </div>
-
                         <div class="panel-user-data__cpf-cep-container">
                             <div class="input-default floating-input number-field">
-                                <input type="text" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" class="floating" oninput="js.index.maskToNumber(this)" placeholder=" ">
+                                <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_street_number" id="user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this)" placeholder=" ">
                                 <label for="user_street_number" class="floating-label">{{Número}}</label>
                             </div>
                             <div class="input-default floating-input complement-field">
-                                <input type="text" name="user_complement" id="user_complement" class="floating" value="{{user_complement_val}}" placeholder=" ">
+                                <input oninput="js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_complement" id="user_complement_input" class="floating" value="{{user_complement_val}}" placeholder=" ">
                                 <label for="user_complement" class="floating-label">{{Complemento}}</label>
                             </div>
                         </div>
-
                     </section>
                 </section>
-                <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                <span class="error" style="{{error_msg_visibility_val}}" id="cpf_data_error_msg_span">
                     {{error_msg_val}}
                 </span>
                 <section class="panel-user-data__main-container__button-container">
-                    <button type="submit" disabled>
+                    <button onclick="js.index.saveUserCPFData()" type="submit" id="save_cpf_data_button" disabled>
                         {{Salvar alterações}}
                     </button>
                 </section>
@@ -123,8 +117,8 @@
             <article>
                 <section class="panel-user-data__main-container__row">
                     <section class="panel-user-data__main-container__column">
-                        <h2 class="panel-user-data__main-container__title">Segurança e Privacidade</h2>
-                        <p>Informações de segurança e opções de privacidade.</p>
+                        <h2 class="panel-user-data__main-container__title">{{Segurança e Privacidade}}</h2>
+                        <p>{{Informações de segurança e opções de privacidade}}.</p>
                     </section>
                     <section class="panel-user-data-container panel-user-data__main-container__column">
                         <div class="create-account__input-container floating-input">
@@ -192,13 +186,25 @@
                 </section>
             </article>
         </section>
-        {{html_close_div}}
-        {{html_close_div}}
-        {{html_close_div}}
     </article>
     {{html_modal_loader_spinner}}
 </main>
-{{html_delete_account_modal}}
-{{html_delete_user_image_modal}}
-{{html_loader_modal}}
 {{footer}}
+
+<script>
+    window.onload = async function () {
+        var user_country_select = document.getElementById("user_country_select");
+        var user_cpf_input = document.getElementById("user_cpf_input")
+        if (user_country_select.value == "BR"){
+            js.index.formatToPhoneNumber(document.getElementById("user_phone_input"));
+        };
+        js.index.makeSaveUserPersonalDataAvailable();
+
+        js.index.formatToCPF(user_cpf_input);
+        js.index.formatToZIP(document.getElementById("user_zip_code_input"));
+        js.index.formatToNumbers(document.getElementById("user_street_number_input"))
+        js.index.makeSaveUserCPFDataAvailable();
+
+
+    };
+</script>

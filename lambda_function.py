@@ -18,7 +18,9 @@ def lambda_handler(event, context):
         return main_lambda_handler(event, context)
     except Exception as e:
         event = Event(event)
-        Ses().send_error_email(event, lambda_constants["domain_name"] + str(event.get_prefix()) + " pages lambda", e)
+        if not os.getenv("LOCAL_SERVER"):
+            Ses().send_error_email(event, lambda_constants["domain_name"] + str(event.get_prefix()) + " pages lambda", e)
+
         lang = event.get_lang() or "pt"
         page = "error"
 

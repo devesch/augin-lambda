@@ -27,16 +27,27 @@ class PanelUserData(PanelPage, UserPage):
 
         html = super().parse_html()
 
-        # html.esc("user_name_val", self.user.user_name)
-        # html.esc("user_email_val", self.user.user_email)
+        html.esc("user_name_val", self.user.user_name)
+        html.esc("user_email_val", self.user.user_email)
         html.esc("user_country_val", self.user.user_address_data["user_country"])
-        # html.esc("user_phone_val", self.user.user_phone)
 
         user_country_alpha_2 = self.user.user_address_data["user_country"]
         html.esc("user_country_alpha_2_lower_val", user_country_alpha_2.lower())
         html.esc("html_user_country_options", self.list_html_user_country_options(user_country_alpha_2))
+        html.esc("user_country_code_val", JsonData().get_country_phone_code()[self.user.user_address_data["user_country"]])
+        html.esc("user_phone_val", self.user.user_phone)
 
-        html.esc("html_loader_modal", ReadWrite().read_html("panel_user_data/_codes/html_loader_modal"))
+        html.esc("user_cpf_val", self.user.user_cpf)
+        html.esc("user_zip_code_val", self.user.user_address_data["user_zip_code"])
+        html.esc("user_state_val", self.user.user_address_data["user_state"])
+        html.esc("user_city_val", self.user.user_address_data["user_city"])
+        html.esc("user_city_code_val", self.user.user_address_data["user_city_code"])
+        html.esc("user_neighborhood_val", self.user.user_address_data["user_neighborhood"])
+        html.esc("user_street_val", self.user.user_address_data["user_street"])
+        html.esc("user_street_number_val", self.user.user_address_data["user_street_number"])
+        html.esc("user_complement_val", self.user.user_address_data["user_complement"])
+        html.esc("html_loader_modal_searching_address", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_searching_address")))
+        html.esc("html_loader_modal_delete_account", str(ReadWrite().read_html("panel_user_data/_codes/html_loader_modal_delete_account")))
 
         return str(html)
         # self.check_error_msg(html, self.error_msg)
@@ -158,7 +169,7 @@ class PanelUserData(PanelPage, UserPage):
         self.user.user_aggre_with_communication = bool(self.post.get("user_aggre_with_communication"))
 
         self.user.update_cart_currency()
-        self.user.check_if_is_payment_ready()
+        self.user.check_if_payment_ready()
         self.user.update_attribute("user_address_data_last_update", str(time.time()))
         Dynamo().put_entity(self.user.__dict__)
 
@@ -172,12 +183,3 @@ class PanelUserData(PanelPage, UserPage):
             return self.render_get_with_error("Perfil atualizado porém para alterar o seu email é necessário seguir as instruções que acabamos de enviar para o seu email atual")
 
         return self.render_get_with_error("Perfil atualizado com sucesso")
-
-    def send_email_modified_email(self, user_email, user_auth_token, new_user_email):
-        html = ReadWrite().read_html("main/emails/html_email_modified_email")
-        html.esc("user_auth_token_val", user_auth_token)
-        html.esc("user_email_val", user_email)
-        html.esc("new_user_email_val", new_user_email)
-        html.esc("new_user_email_encoded_val", EncodeDecode().encode_to_b64(new_user_email))
-        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Solicitação de troca de email"))
-        return

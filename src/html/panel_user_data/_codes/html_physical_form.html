@@ -11,7 +11,7 @@
             </section>
             <section class="panel-user-data-container panel-user-data__main-container__column">
                 <div class="input-default floating-input">
-                    <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.maskToLetter(this)" maxlength="50" minlength="1" required placeholder=" ">
+                    <input type="text" name="user_name" id="user_name" value="{{user_name_val}}" class="floating" oninput="js.index.formatToLetter(this)" maxlength="50" minlength="1" required placeholder=" ">
                     <label for="user_name" class="floating-label">{{Nome completo}}</label>
                 </div>
                 <div class="input-default focus floating-input">
@@ -62,7 +62,7 @@
                 <div class="panel-user-data__cpf-cep-container">
                     <div class="input-default floating-input cpf-field">
                         <input hidden type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" maxlength="18">
-                        <input type="text" name="user_cpf" id="user_cpf" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
+                        <input type="text" name="user_cpf" id="user_cpf" oninput="js.index.formatToCPF(this);" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
                         <label for="user_cpf" class="floating-label">{{CPF}}</label>
                     </div>
                     <div class="input-default floating-input cep-field">
@@ -94,7 +94,7 @@
 
                 <div class="panel-user-data__cpf-cep-container">
                     <div class="input-default floating-input">
-                        <input type="text" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" class="floating" oninput="js.index.maskToNumber(this)" placeholder=" ">
+                        <input type="text" name="user_street_number" id="user_street_number" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this)" placeholder=" ">
                         <label for="user_street_number" class="floating-label">{{Número}}</label>
                     </div>
                     <div class="input-default floating-input">

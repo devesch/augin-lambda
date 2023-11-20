@@ -9,13 +9,13 @@
             <label for="user_email" class="floating-label">{{Seu Email}}</label>
         </div>
         <div class="input-default floating-input">
-            <input type="text" name="user_phone" id="user_phone" id="user-phone" value="{{user_phone_val}}" class="floating" oninput="js.index.maskToPhone(this)" placeholder=" " maxlength="15">
+            <input type="text" name="user_phone" id="user_phone" id="user-phone" value="{{user_phone_val}}" class="floating" oninput="js.index.formatToPhone(this)" placeholder=" " maxlength="15">
             <label for="user_phone" class="floating-label">{{Seu telefone}}</label>
         </div>
         <div class="input-default focus floating-input">
             <input type="text" oninput="js.index.showUserCompanyAddressData()" name="user_cnpj" id="user_cnpj" value="{{user_cnpj_val}}" required maxlength="18" placeholder=" ">
             <label for="user_cnpj" class="floating-label">{{Seu CNPJ}}</label>
-            <input hidden type="text" name="user_cpf" id="user_cpf" class="floating" oninput="js.index.maskToCPF(this);" value="{{user_cpf_val}}" minlength="14" maxlength="14">
+            <input hidden type="text" name="user_cpf" id="user_cpf" class="floating" oninput="js.index.formatToCPF(this);" value="{{user_cpf_val}}" minlength="14" maxlength="14">
         </div>
         <div class="page-user__box-user-data__box-inputs__box-adress panel-user-data-container" style="{{box_inputs_style_val}}">
             <div class="input-default floating-input">

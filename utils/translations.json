@@ -259,11 +259,6 @@
         "es": "Tarjeta activa",
         "pt": "Active card"
     },
-    "Adicionar método de pagamento": {
-        "en": "Add payment method",
-        "es": "Agregar un método de pago",
-        "pt": "Adicionar método de pagamento"
-    },
     "Adicionar": {
         "en": "To add",
         "es": "Para agregar",
@@ -273,6 +268,11 @@
         "en": "Add profile photo",
         "es": "Añadir foto de perfil",
         "pt": "Adicionar foto de perfil"
+    },
+    "Adicionar método de pagamento": {
+        "en": "Add payment method",
+        "es": "Agregar un método de pago",
+        "pt": "Adicionar método de pagamento"
     },
     "Adicionar projeto ao federado": {
         "en": "Add project to the federate",
@@ -313,6 +313,11 @@
         "en": "Wait while we delete all your data",
         "es": "Espera mientras eliminemos todos tus datos",
         "pt": "Aguarde enquanto deletamos todos os seus dados"
+    },
+    "Aguarde enquanto encontramos os dados do seu endereço": {
+        "en": "Wait while we find the data from your address",
+        "es": "Espere mientras encontremos los datos de su dirección",
+        "pt": "Aguarde enquanto encontramos os dados do seu endereço"
     },
     "Aguarde enquanto processamos o seu pagamento": {
         "en": "Wait while we process your payment",
@@ -579,6 +584,11 @@
         "es": "Actualmente tienes",
         "pt": "Atualmente você tem"
     },
+    "Augin": {
+        "en": "Augin",
+        "es": "Augin",
+        "pt": "Augin"
+    },
     "Augin - Seu código de verficação chegou": {
         "en": "Augin - Your Verification Code has arrived",
         "es": "Augin: ha llegado su código de verificación",
@@ -618,6 +628,91 @@
         "en": "Azerbaijan",
         "es": "Azerbaiyán",
         "pt": "Azerbaijão"
+    },
+    "Backoffice": {
+        "en": "Backoffice",
+        "es": "Backofici",
+        "pt": "Backoffice"
+    },
+    "Backoffice - Abandonos de carrinho": {
+        "en": "BACKOFFICE - Cart Abandonment",
+        "es": "Backoffice - abandono del carrito",
+        "pt": "Backoffice - Abandonos de carrinho"
+    },
+    "Backoffice - Analytics": {
+        "en": "Backoffice - Analytics",
+        "es": "Backoffice - Analytics",
+        "pt": "Backoffice - Analytics"
+    },
+    "Backoffice - Assinaturas canceladas": {
+        "en": "Backoffice - Canceled Subscriptions",
+        "es": "BackOffice - suscripciones canceladas",
+        "pt": "Backoffice - Assinaturas canceladas"
+    },
+    "Backoffice - Criar Cupom": {
+        "en": "BACKOFFICE - Create coupon",
+        "es": "BackOffice - Crear cupón",
+        "pt": "Backoffice - Criar Cupom"
+    },
+    "Backoffice - Criar Plano": {
+        "en": "Backoffice - Create Plan",
+        "es": "BackOffice - Crear plan",
+        "pt": "Backoffice - Criar Plano"
+    },
+    "Backoffice - Cupons": {
+        "en": "BACKOFFICE - Coupons",
+        "es": "BackOffice - cupones",
+        "pt": "Backoffice - Cupons"
+    },
+    "Backoffice - Falhas de recorrência": {
+        "en": "Backoffice - Recurrence Failures",
+        "es": "BackOffice - Fallas de recurrencia",
+        "pt": "Backoffice - Falhas de recorrência"
+    },
+    "Backoffice - Home": {
+        "en": "Backoffice - Home",
+        "es": "Backoffice - Inicio",
+        "pt": "Backoffice - Home"
+    },
+    "Backoffice - Logs": {
+        "en": "Backoffice - logs",
+        "es": "Backofice - registros",
+        "pt": "Backoffice - Logs"
+    },
+    "Backoffice - Modelos": {
+        "en": "Backoffice - models",
+        "es": "Backoffice - Modelos",
+        "pt": "Backoffice - Modelos"
+    },
+    "Backoffice - Ordens NFSE": {
+        "en": "BACKOFFICE - NFSE Orders",
+        "es": "Backoffice - órdenes de NFSE",
+        "pt": "Backoffice - Ordens NFSE"
+    },
+    "Backoffice - Pagamentos": {
+        "en": "Backoffice - Payments",
+        "es": "Backoffice - Pagos",
+        "pt": "Backoffice - Pagamentos"
+    },
+    "Backoffice - Planos": {
+        "en": "Backoffice - plans",
+        "es": "Backoffice - Planes",
+        "pt": "Backoffice - Planos"
+    },
+    "Backoffice - Produtos": {
+        "en": "Backoffice - Products",
+        "es": "Backoffice - Productos",
+        "pt": "Backoffice - Produtos"
+    },
+    "Backoffice - Usuário": {
+        "en": "Backoffice - User",
+        "es": "Backofice - Usuario",
+        "pt": "Backoffice - Usuário"
+    },
+    "Backoffice - Usuários": {
+        "en": "BACKOFFICE - Users",
+        "es": "Backofice - Usuarios",
+        "pt": "Backoffice - Usuários"
     },
     "Bahamas": {
         "en": "Bahamas",
@@ -789,6 +884,11 @@
         "es": "Cabo Verde",
         "pt": "Cabo Verde"
     },
+    "Cadastro": {
+        "en": "Register",
+        "es": "Registro",
+        "pt": "Cadastro"
+    },
     "Cambodia": {
         "en": "Cambodia",
         "es": "Camboya",
@@ -919,6 +1019,11 @@
         "es": "Chad",
         "pt": "Chad"
     },
+    "Checkout - Pagamento realizado com sucesso": {
+        "en": "Checkout - Payment made successfully",
+        "es": "Deciente: pago realizado con éxito",
+        "pt": "Checkout - Pagamento realizado com sucesso"
+    },
     "Chegou o seu código de verificação, copie e cole para confirmar a troca do seu email": {
         "en": "Your verification code has arrived, copy and paste to confirm the exchange of your email",
         "es": "Su código de verificación ha llegado, copia y pegue para confirmar el intercambio de su correo electrónico",
@@ -948,6 +1053,11 @@
         "en": "City",
         "es": "Ciudad",
         "pt": "Cidade"
+    },
+    "Cliente": {
+        "en": "Client",
+        "es": "Cliente",
+        "pt": "Cliente"
     },
     "Clique no link a seguir para confirmar a troca do seu email na sua conta Augin": {
         "en": "Click on the following link to confirm your email exchange on your Augin account",
@@ -1078,6 +1188,16 @@
         "en": "Confirm the cancellation",
         "es": "Confirmar la cancelación",
         "pt": "Confirmar o cancelamento"
+    },
+    "Confirmação de Email": {
+        "en": "Email confirmation",
+        "es": "Confirmación de correo electrónico",
+        "pt": "Confirmação de Email"
+    },
+    "Confirmação de troca de email": {
+        "en": "Email exchange confirmation",
+        "es": "Confirmación de intercambio de correo electrónico",
+        "pt": "Confirmação de troca de email"
     },
     "Confirme a renovação da sua assinatura": {
         "en": "Confirm the renewal of your signature",
@@ -1594,6 +1714,11 @@
         "es": "Ingrese su nueva contraseña para",
         "pt": "Digite sua nova senha para"
     },
+    "Digite um CPF válido": {
+        "en": "Enter a valid CPF",
+        "es": "Ingrese un CPF válido",
+        "pt": "Digite um CPF válido"
+    },
     "Disponível anual": {
         "en": "Available annual",
         "es": "Disponible anual",
@@ -2008,6 +2133,11 @@
         "en": "State/Region/Province",
         "es": "Estado/Región/Provincia",
         "pt": "Estado/Região/Provincia"
+    },
+    "Estamos com dificuldades": {
+        "en": "We are having difficulty",
+        "es": "Estamos teniendo dificultades",
+        "pt": "Estamos com dificuldades"
     },
     "Estamos enfrentando um contratempo em nosso site, que está temporariamente indisponível.": {
         "en": "We are facing a setback on our website, which is temporarily unavailable.",
@@ -2643,6 +2773,11 @@
         "en": "Indonesia",
         "es": "Indonesia",
         "pt": "Indonesia"
+    },
+    "Informações de segurança e opções de privacidade": {
+        "en": "Security information and privacy options",
+        "es": "Información de seguridad y opciones de privacidad",
+        "pt": "Informações de segurança e opções de privacidade"
     },
     "Informações do usuário": {
         "en": "User information",
@@ -3283,6 +3418,11 @@
         "en": "No payment method found in the stripe with the informed data",
         "es": "No se encuentra el método de pago en la franja con los datos informados",
         "pt": "Nenhum método de pagamento encontrado no Stripe com os dados informados"
+    },
+    "Nenhum país fornecido": {
+        "en": "No provided country",
+        "es": "No se proporciona país",
+        "pt": "Nenhum país fornecido"
     },
     "Nenhum projeto encontrado com o link fornecido": {
         "en": "No projects found with the link provided",
@@ -3999,6 +4139,56 @@
         "es": "Pagar ahora",
         "pt": "Pague Agora"
     },
+    "Painel - Compartilhados Projetos": {
+        "en": "Panel - Shared Projects",
+        "es": "Panel - Proyectos compartidos",
+        "pt": "Painel - Compartilhados Projetos"
+    },
+    "Painel - Confirme a compra do seu plano": {
+        "en": "Panel - Confirm the purchase of your plan",
+        "es": "Panel: confirme la compra de su plan",
+        "pt": "Painel - Confirme a compra do seu plano"
+    },
+    "Painel - Criação de Projeto": {
+        "en": "Panel - Project Creation",
+        "es": "Panel - Creación de proyectos",
+        "pt": "Painel - Criação de Projeto"
+    },
+    "Painel - Dispositivos": {
+        "en": "Panel - Devices",
+        "es": "Panel - Dispositivos",
+        "pt": "Painel - Dispositivos"
+    },
+    "Painel - Explorar Projetos": {
+        "en": "Panel - Explore projects",
+        "es": "Panel - Explorar proyectos",
+        "pt": "Painel - Explorar Projetos"
+    },
+    "Painel - Melhore Seu Plano": {
+        "en": "Panel - Improve your plan",
+        "es": "Panel - Mejora tu plan",
+        "pt": "Painel - Melhore Seu Plano"
+    },
+    "Painel - Nova Senha do Usuário": {
+        "en": "Panel - New User Password",
+        "es": "Panel - Contraseña de nuevo usuario",
+        "pt": "Painel - Nova Senha do Usuário"
+    },
+    "Painel - Ordem": {
+        "en": "Panel - Order",
+        "es": "Panel - Pedido",
+        "pt": "Painel - Ordem"
+    },
+    "Painel - Perfil do Usuário": {
+        "en": "Panel - User Profile",
+        "es": "Panel - Perfil de usuario",
+        "pt": "Painel - Perfil do Usuário"
+    },
+    "Painel - Seu Plano": {
+        "en": "Panel - Your Plan",
+        "es": "Panel - Tu plan",
+        "pt": "Painel - Seu Plano"
+    },
     "Pakistan": {
         "en": "Pakistan",
         "es": "Pakistán",
@@ -4619,6 +4809,11 @@
         "es": "Rastreadores de referencia",
         "pt": "Reference Trackers"
     },
+    "Registro": {
+        "en": "Record",
+        "es": "Registro",
+        "pt": "Registro"
+    },
     "Regras": {
         "en": "Rules",
         "es": "Normas",
@@ -4658,6 +4853,11 @@
         "en": "Reprocess",
         "es": "Reprocesar",
         "pt": "Reprocessar"
+    },
+    "Resetar Senha": {
+        "en": "Password",
+        "es": "Contraseña",
+        "pt": "Resetar Senha"
     },
     "Resetar trials": {
         "en": "Reset trials",
@@ -4773,6 +4973,11 @@
         "en": "Following",
         "es": "Siguiente",
         "pt": "Seguinte"
+    },
+    "Segurança e Privacidade": {
+        "en": "Security and Privacy",
+        "es": "Seguridad y privacidad",
+        "pt": "Segurança e Privacidade"
     },
     "Selecionar arquivos para federado": {
         "en": "Select files for federate",
@@ -5284,6 +5489,11 @@
         "es": "Termina en",
         "pt": "Termina em"
     },
+    "Termos de Uso": {
+        "en": "Terms of use",
+        "es": "Terminos de uso",
+        "pt": "Termos de Uso"
+    },
     "Termos e condiçōes": {
         "en": "Terms and conditions",
         "es": "Términos y condiciones",
@@ -5703,6 +5913,11 @@
         "en": "To view",
         "es": "Para ver",
         "pt": "Visualizar"
+    },
+    "Visualizar Pasta": {
+        "en": "View folder",
+        "es": "Ver folder",
+        "pt": "Visualizar Pasta"
     },
     "Visualizar detalhes": {
         "en": "View details",
@@ -6259,6 +6474,11 @@
         "es": "Es necesario informar la cantidad máxima de usos de cupón cuando está limitado en cantidad",
         "pt": "É necessário informar a quantidade máxima de usos do cupom quando ele está limitado em quantidade"
     },
+    "É necessário informar o número da rua": {
+        "en": "It is necessary to inform the street number",
+        "es": "Es necesario informar el número de la calle",
+        "pt": "É necessário informar o número da rua"
+    },
     "É necessário informar o percentual de desconto": {
         "en": "It is necessary to inform the discount percentage",
         "es": "Es necesario informar el porcentaje de descuento",
@@ -6269,15 +6489,45 @@
         "es": "Es necesario informar el valor de descuento de R $ y u $ cuando el descuento total está activo",
         "pt": "É necessário informar o valor de desconto em R$ e U$ quando o desconto de valor total está ativo"
     },
+    "É necessário informar um CPF": {
+        "en": "It is necessary to inform a CPF",
+        "es": "Es necesario informar un CPF",
+        "pt": "É necessário informar um CPF"
+    },
+    "É necessário informar um bairro": {
+        "en": "It is necessary to inform a neighborhood",
+        "es": "Es necesario informar a un vecindario",
+        "pt": "É necessário informar um bairro"
+    },
+    "É necessário informar um complemento": {
+        "en": "It is necessary to inform a complement",
+        "es": "Es necesario informar un complemento",
+        "pt": "É necessário informar um complemento"
+    },
     "É necessário informar um código": {
         "en": "It is necessary to inform a code",
         "es": "Es necesario informar un código",
         "pt": "É necessário informar um código"
     },
+    "É necessário informar um código ZIP": {
+        "en": "It is necessary to enter a zip code",
+        "es": "Es necesario ingresar un código postal",
+        "pt": "É necessário informar um código ZIP"
+    },
+    "É necessário informar um código de cidade": {
+        "en": "It is necessary to inform a city code",
+        "es": "Es necesario informar un código de la ciudad",
+        "pt": "É necessário informar um código de cidade"
+    },
     "É necessário informar um email de usuário.": {
         "en": "It is necessary to inform a user email.",
         "es": "Es necesario informar al correo electrónico de un usuario.",
         "pt": "É necessário informar um email de usuário."
+    },
+    "É necessário informar um estado": {
+        "en": "It is necessary to inform a state",
+        "es": "Es necesario informar a un estado",
+        "pt": "É necessário informar um estado"
     },
     "É necessário informar um nome": {
         "en": "It is necessary to inform a name",
@@ -6309,6 +6559,11 @@
         "es": "Es necesario informar un nombre para el proyecto federado",
         "pt": "É necessário informar um nome para o projeto federado"
     },
+    "É necessário informar uma cidade": {
+        "en": "It is necessary to inform a city",
+        "es": "Es necesario informar a una ciudad",
+        "pt": "É necessário informar uma cidade"
+    },
     "É necessário informar uma data de início e de término quando o cupom for por tempo ilimitado": {
         "en": "It is necessary to enter a start and end date when the coupon is unlimited time",
         "es": "Es necesario ingresar una fecha de inicio y finalización cuando el cupón es tiempo ilimitado",
@@ -6318,6 +6573,11 @@
         "en": "It is necessary to inform a description",
         "es": "Es necesario informar una descripción",
         "pt": "É necessário informar uma descrição"
+    },
+    "É necessário informar uma rua": {
+        "en": "It is necessary to inform a street",
+        "es": "Es necesario informar una calle",
+        "pt": "É necessário informar uma rua"
     },
     "É necessário informar uma senha": {
         "en": "It is necessary to enter a password",
@@ -6374,6 +6634,21 @@
         "es": "Debe seleccionar qué archivos servirán como base de la federación.",
         "pt": "É necessário selecionar quais arquivos servirão como base do federado."
     },
+    "É necessárion informar o seu nome completo": {
+        "en": "You must inform your full name",
+        "es": "Debes informar tu nombre completo",
+        "pt": "É necessárion informar o seu nome completo"
+    },
+    "É necessárion informar um email": {
+        "en": "You must inform an email",
+        "es": "Debes informar un correo electrónico",
+        "pt": "É necessárion informar um email"
+    },
+    "É necessárion informar um nome": {
+        "en": "It is necessary to inform a name",
+        "es": "Es necesario informar un nombre",
+        "pt": "É necessárion informar um nome"
+    },
     "É necessárion informar um nome em EN": {
         "en": "It is necessary to inform a name in en",
         "es": "Es necesario informar un nombre en EN",
@@ -6388,6 +6663,16 @@
         "en": "You must inform a name in PT",
         "es": "Debes informar un nombre en PT",
         "pt": "É necessárion informar um nome em PT"
+    },
+    "É necessárion informar um país": {
+        "en": "It is necessary to inform a country",
+        "es": "Es necesario informar a un país",
+        "pt": "É necessárion informar um país"
+    },
+    "É necessárion informar um telefone": {
+        "en": "You must inform a phone",
+        "es": "Debes informar un teléfono",
+        "pt": "É necessárion informar um telefone"
     },
     "É necessárion informar uma descrição em EN": {
         "en": "It is necessary to inform a description in en",

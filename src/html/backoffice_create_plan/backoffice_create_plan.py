@@ -135,54 +135,54 @@ class BackofficeCreatePlan(BackofficePage):
         #     return self.render_get_with_error("É necessárion informar uma descrição em ES")
 
         if self.post.get("plan_price_annually_brl"):
-            if not Validation().check_if_is_number(self.post["plan_price_annually_brl"]):
+            if not Validation().check_if_number(self.post["plan_price_annually_brl"]):
                 return self.render_get_with_error("O preço do plano anual em BRL deve ser um número")
         if self.post.get("plan_price_annually_brl_actual"):
-            if not Validation().check_if_is_number(self.post["plan_price_annually_brl_actual"]):
+            if not Validation().check_if_number(self.post["plan_price_annually_brl_actual"]):
                 return self.render_get_with_error("O preço atual do plano anual em BRL deve ser um número")
 
         if self.post.get("plan_price_annually_usd"):
-            if not Validation().check_if_is_number(self.post["plan_price_annually_usd"]):
+            if not Validation().check_if_number(self.post["plan_price_annually_usd"]):
                 return self.render_get_with_error("O preço do plano anual em USD deve ser um número")
         if self.post.get("plan_price_annually_usd_actual"):
-            if not Validation().check_if_is_number(self.post["plan_price_annually_usd_actual"]):
+            if not Validation().check_if_number(self.post["plan_price_annually_usd_actual"]):
                 return self.render_get_with_error("O preço atual do plano anual em USD deve ser um número")
 
         if self.post.get("plan_price_monthly_brl"):
-            if not Validation().check_if_is_number(self.post["plan_price_monthly_brl"]):
+            if not Validation().check_if_number(self.post["plan_price_monthly_brl"]):
                 return self.render_get_with_error("O preço do plano mensal em BRL deve ser um número")
         if self.post.get("plan_price_monthly_brl_actual"):
-            if not Validation().check_if_is_number(self.post["plan_price_monthly_brl_actual"]):
+            if not Validation().check_if_number(self.post["plan_price_monthly_brl_actual"]):
                 return self.render_get_with_error("O preço atual do plano mensal em BRL deve ser um número")
 
         if self.post.get("plan_price_monthly_usd"):
-            if not Validation().check_if_is_number(self.post["plan_price_monthly_usd"]):
+            if not Validation().check_if_number(self.post["plan_price_monthly_usd"]):
                 return self.render_get_with_error("O preço do plano mensal em USD deve ser um número")
         if self.post.get("plan_price_monthly_usd_actual"):
-            if not Validation().check_if_is_number(self.post["plan_price_monthly_usd_actual"]):
+            if not Validation().check_if_number(self.post["plan_price_monthly_usd_actual"]):
                 return self.render_get_with_error("O preço atual do plano mensal em USD deve ser um número")
 
         if self.post.get("plan_cloud_space_in_mbs"):
-            if not Validation().check_if_is_number(self.post["plan_cloud_space_in_mbs"]):
+            if not Validation().check_if_number(self.post["plan_cloud_space_in_mbs"]):
                 return self.render_get_with_error("O tamanho máximo em núvem deve ser um número")
         if self.post.get("plan_maxium_model_size_in_mbs"):
-            if not Validation().check_if_is_number(self.post["plan_maxium_model_size_in_mbs"]):
+            if not Validation().check_if_number(self.post["plan_maxium_model_size_in_mbs"]):
                 return self.render_get_with_error("O tamanho do modelo máximo deve ser um número")
         if self.post.get("plan_maxium_federated_size_in_mbs"):
-            if not Validation().check_if_is_number(self.post["plan_maxium_federated_size_in_mbs"]):
+            if not Validation().check_if_number(self.post["plan_maxium_federated_size_in_mbs"]):
                 return self.render_get_with_error("O tamanho de federado máximo deve ser um número")
         if self.post.get("plan_maxium_devices_available"):
-            if not Validation().check_if_is_number(self.post["plan_maxium_devices_available"]):
+            if not Validation().check_if_number(self.post["plan_maxium_devices_available"]):
                 return self.render_get_with_error("A quantidade máxima de dispositivos deve ser um número")
         if self.post.get("plan_maxium_devices_changes_in_30d"):
-            if not Validation().check_if_is_number(self.post["plan_maxium_devices_changes_in_30d"]):
+            if not Validation().check_if_number(self.post["plan_maxium_devices_changes_in_30d"]):
                 return self.render_get_with_error("A quantidade máxima de troca de dispositivos deve ser um número")
         if self.post.get("plan_trial_duration_in_days"):
-            if not Validation().check_if_is_number(self.post["plan_trial_duration_in_days"]):
+            if not Validation().check_if_number(self.post["plan_trial_duration_in_days"]):
                 return self.render_get_with_error("A duração do plano trial em dias deve ser um número")
 
         if self.post.get("plan_app_can_be_offline_in_days"):
-            if not Validation().check_if_is_number(self.post["plan_app_can_be_offline_in_days"]):
+            if not Validation().check_if_number(self.post["plan_app_can_be_offline_in_days"]):
                 return self.render_get_with_error("A duração do APP offline em dias deve ser um número")
 
         if not self.post.get("plan_trial_duration_in_days"):

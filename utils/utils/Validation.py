@@ -25,7 +25,7 @@ class Validation:
         else:
             raise Exception("Verify ZEROBOUNCE")
 
-    def check_if_is_b64_encoded(self, string):
+    def check_if_b64_encoded(self, string):
         import base64
         import re
 
@@ -43,7 +43,7 @@ class Validation:
                 return False
         return False
 
-    def check_if_is_uuid4(self, uuid4):
+    def check_if_uuid4(self, uuid4):
         if not uuid4:
             return False
         regex = re.compile(r"^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\Z", re.I)
@@ -76,7 +76,7 @@ class Validation:
                 raise
         return False
 
-    def check_if_is_json(self, value):
+    def check_if_json(self, value):
         try:
             post_dict = json.loads(value)
             return isinstance(post_dict, dict)
@@ -92,14 +92,14 @@ class Validation:
         except:
             return False
 
-    def check_if_is_number(self, number):
+    def check_if_number(self, number):
         try:
             int(number)
             return True
         except:
             return False
 
-    def check_if_is_money(self, money):
+    def check_if_money(self, money):
         try:
             int(money.replace(".", "").replace(",", ""))
             return True

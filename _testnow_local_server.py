@@ -11,6 +11,7 @@ import subprocess
 import signal
 import sys
 import random
+import json
 
 app = Flask(__name__, static_folder="src/")
 
@@ -64,10 +65,6 @@ def start_modified():
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE"])
 def all_paths(path):
-    print(f"Request Path: {path}")
-    print(f"Request Method: {request.method}")
-    print(f"Request Headers: {request.headers}")
-    print(f"Request Body: {request.data}")
     headers_dict = dict(request.headers)
     headers_dict["user-agent"] = headers_dict["User-Agent"]
     event = {
@@ -94,7 +91,11 @@ def all_paths(path):
     if path.startswith("static/"):
         return send_from_directory(app.static_folder, path[len("static/") :])
 
-    # subprocess.run(["python", "tools_for_devs/create_translations.py"])
+    if not "api/translate" in path:
+        with open("_testnow.json", "w", encoding="utf-8") as json_file:
+            json.dump(event, json_file, sort_keys=True, ensure_ascii=False, indent=4)
+
+    subprocess.run(["python", "tools_for_devs/create_translations.py"])
     context = {}
 
     importlib.reload(lambda_function)

@@ -13,6 +13,15 @@ class UserPage(BasePage):
     def __init__(self) -> None:
         super().__init__()
 
+    def send_email_modified_email(self, user_email, user_auth_token, new_user_email):
+        html = ReadWrite().read_html("main/emails/html_email_modified_email")
+        html.esc("user_auth_token_val", user_auth_token)
+        html.esc("user_email_val", user_email)
+        html.esc("new_user_email_val", new_user_email)
+        html.esc("new_user_email_encoded_val", EncodeDecode().encode_to_b64(new_user_email))
+        Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Solicitação de troca de email"))
+        return
+
     def show_html_captcha_verification(self):
         return str(ReadWrite().read_html("main/_codes/html_captcha_verification"))
 

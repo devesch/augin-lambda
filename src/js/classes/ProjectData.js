@@ -13,8 +13,13 @@ if (location.href.includes("dev-")) {
     }
 }
 
+if (window.location.href.includes("http://127.0.0.1:3000")) {
+    props["domainNameUrlVal"] = "http://127.0.0.1:3000";
+    props["cdnVal"] = "/static";
+}
+
+
 export class ProjectData {
-    // GENERAL //
     static props = {
         domainNameUrlVal: props["domainNameUrlVal"],
         cdnVal: props["cdnVal"],

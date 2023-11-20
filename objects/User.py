@@ -363,7 +363,7 @@ class User:
         if int(float(self.user_last_login_at)) + 3000 < float(time.time()):
             self.update_attribute("user_last_login_at", str(time.time()))
 
-    def check_if_is_payment_ready(self):
+    def check_if_payment_ready(self):
         self.user_payment_ready = True
 
         if not self.user_name:
@@ -482,7 +482,7 @@ def sort_user_folders(user, user_folders, sort_attribute="folder_name", sort_rev
 def load_user(user_id):
     if not user_id:
         return None
-    if Validation().check_if_is_uuid4(user_id):
+    if Validation().check_if_uuid4(user_id):
         auth_token_item = Dynamo().get_auth_token(user_id)
         if auth_token_item:
             user_id = auth_token_item["auth_user_id"]
