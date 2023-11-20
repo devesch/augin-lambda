@@ -2684,18 +2684,19 @@ input[list]::-ms-clear {
     justify-content: end;
 
     a,
-    span {
+    button {
         display: inline-block;
         padding: 0.25rem 1.5em;
         border-radius: .75rem;
         font-weight: bold;
         text-decoration: none;
         color: colors.color("color-neutral-400");
+        background-color: unset;
         text-align: center;
     }
 
     a.active,
-    span.active {
+    button.active {
         background-color: colors.color("color-neutral-200");
         color: colors.color("color-black");
     }
