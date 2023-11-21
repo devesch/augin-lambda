@@ -23,12 +23,13 @@ else:
         s3_put_user_secret_access_key = env_var.get("s3_put_user_secret_access_key")
         tmp_path = "tmp/"
 
-base_url = f"https://{domain_name}{sufix_name}"
+base_url = f"https://{prefix_name}{domain_name}{sufix_name}"
 cdn_bucket = "cdn." + domain_name + sufix_name
 cdn_base_url = "https://" + cdn_bucket
 css_js_location = cdn_base_url
+original_domain_name_url = base_url
 
-if os.environ.get("AWS_EXECUTION_ENV") is None:
+if os.environ.get("AWS_EXECUTION_ENV") is None and os.getenv("LOCAL_SERVER"):
     base_url = f"http://127.0.0.1:3000"
     cdn_base_url = "/static"
     css_js_location = "/static/dist"
@@ -75,6 +76,7 @@ lambda_constants = {
     "sufix_name": sufix_name,
     "domain_name": domain_name,
     "domain_name_url": base_url,
+    "original_domain_name_url": original_domain_name_url,
     "table_web_data": "web-data",
     "table_project": domain_name,
     "region": region,

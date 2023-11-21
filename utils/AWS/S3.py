@@ -60,7 +60,7 @@ class S3:
         self.get_s3_client().download_file(bucket_name, object_key, file_path)
 
     def download_file(self, bucket, key, file_path, region=lambda_constants["region"]):
-        if region == "us_east_1":
+        if region == "us-east-1":
             self.get_us_s3_client().download_file(bucket, key, file_path)
         else:
             self.get_s3_client().download_file(bucket, key, file_path)

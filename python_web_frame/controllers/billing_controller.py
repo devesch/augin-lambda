@@ -202,24 +202,25 @@ class BillingController:
         return
 
     def generate_international_pdf_bill_of_sale(self, order):
-        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"]))
-        self.generate_pdf_bill_of_sale(order["order_id"], order["created_at"])
+        if self.generate_pdf_bill_of_sale(order["order_id"], order["created_at"]):
+            Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_pdf_nfse_processed_bucket_key(order["order_id"]))
         S3().download_file(lambda_constants["processed_bucket"], self.generate_pdf_nfse_processed_bucket_key(order["order_id"]), lambda_constants["tmp_path"] + "order_pdf.pdf")
         S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"], extension=".pdf"), lambda_constants["tmp_path"] + "order_pdf.pdf")
         return
 
     def cancel_international_pdf_bill_of_sale(self, order):
-        Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_canceled_processed_bucket_key(order["order_id"], extension=".pdf"))
         S3().delete_file(lambda_constants["processed_bucket"], self.generate_nfse_processed_bucket_key(order["order_id"], order["created_at"], extension=".pdf"))
-        self.generate_pdf_bill_of_sale(order["order_id"], order["created_at"])
+        if self.generate_pdf_bill_of_sale(order["order_id"], order["created_at"]):
+            Dynamo().update_entity(order, "order_nfse_pdf_link", lambda_constants["processed_bucket_cdn"] + "/" + self.generate_nfse_canceled_processed_bucket_key(order["order_id"], extension=".pdf"))
         S3().download_file(lambda_constants["processed_bucket"], self.generate_pdf_nfse_processed_bucket_key(order["order_id"], order["created_at"]), lambda_constants["tmp_path"] + "order_pdf.pdf")
         S3().upload_file(lambda_constants["processed_bucket"], self.generate_nfse_canceled_processed_bucket_key(order["order_id"], extension=".pdf"), lambda_constants["tmp_path"] + "order_pdf.pdf")
         return
 
     def generate_pdf_bill_of_sale(self, order_id, order_nfse_created_at):
         lambda_generate_pdf_response = Lambda().invoke("lambda_generate_pdf", "RequestResponse", {"input_url": lambda_constants["domain_name_url"] + "/backoffice_order_nfse_pdf/?order_id=" + order_id, "output_bucket": lambda_constants["processed_bucket"], "output_key": self.generate_pdf_nfse_processed_bucket_key(order_id, order_nfse_created_at)})
-        print(lambda_generate_pdf_response)
-        return
+        if "error" in lambda_generate_pdf_response:
+            return False
+        return True
 
     def generate_get_nfe_with_data(self, order):
         xml = ReadWrite().read_file("xmls/get_nfe_no_data.xml")

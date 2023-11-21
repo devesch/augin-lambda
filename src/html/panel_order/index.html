@@ -1,15 +1,15 @@
 {{header}}
 {{menu_panel}}
-<main class="my-plan__main">
+<main class="{{my_plan_main_class_val}}">
     <div class="page-user page-mobile" id="panelOrder">
         <div class="my-plan__title-container">
             <h1 class="my-plan__title">{{Informaçōes do pedido}} #{{order_short_id_val}}</h1>
         </div>
-        <div class="order__settings print-hide">
-            <a class="button">
+        <div class="order__settings print-hide" style="{{download_print_page_buttons_visibility_val}}">
+            <a class="button" onclick="js.index.generatePanelOrderPagePdf('{{order_id_val}}', 'download')">
                 <img src="{{cdn_val}}/assets/icons/download.svg" alt="" width="24" height="24">
             </a>
-            <button class="button" onclick="window.print();">
+            <button class="button" onclick="js.index.generatePanelOrderPagePdf('{{order_id_val}}', 'print')">
                 <img src="{{cdn_val}}/assets/icons/print-v2.svg" alt="" width="24" height="24">
             </button>
         </div>
@@ -80,14 +80,31 @@
             </div>
         </div>
 
+        <div class="order__title-container" style="{{order_payment_stripe_boleto_visibility_val}}">
+            <div class="order-body">
+                <div class="order-column">
+                    <div class="order-column__row">
+                        {{Boleto}}
+                    </div>
+                </div>
+                <div class="order-column order-column--action print-hide">
+                    <div class="order-button-container">
+                        <a href="{{order_payment_stripe_boleto_url_val}}" class="button black">
+                            {{Baixar boleto}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="order__title-container" style="{{nfse_visibilty_val}}">
             <div class="order-body">
                 <div class="order-column">
                     <div class="order-column__row">
-                        {{Número da nota-fiscal}}: <strong>NFSE0001</strong>
+                        {{Número da nota-fiscal}}: <strong>{{order_nfse_number_val}}</strong>
                     </div>
                     <div class="order-column__row">
-                        {{Data de emissão}}: <strong>werwerwer</strong>
+                        {{Data de emissão}}: <strong>{{order_nfse_created_at_val}}</strong>
                     </div>
                 </div>
                 <div class="order-column order-column--action print-hide">

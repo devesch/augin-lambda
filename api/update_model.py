@@ -11,11 +11,14 @@ class UpdateModel(BasePage):
         if not self.post.get("command"):
             return {"error": "Nenhum command no post"}
 
+        if not self.user:
+            return {"error": "Nenhum usuário encontrado"}
+
         model = None
         if self.post.get("model_id"):
             model = Dynamo().get_model(self.post["model_id"])
             if model["model_user_id"] != self.user.user_id and self.user.user_crendential != "admin":
-                return {"error": "Este model_id não pertence ao usuário"}
+                return {"error": "Este modelo não pertence ao usuário"}
 
         return getattr(self, self.post["command"])(model)
 

@@ -4,26 +4,37 @@ from utils.utils.StrFormat import StrFormat
 from utils.utils.ReadWrite import ReadWrite
 from utils.utils.JsonData import JsonData
 from utils.AWS.Dynamo import Dynamo
+from objects.User import load_user
 from utils.utils.Http import Http
 from utils.utils.Date import Date
 
 
 class PanelOrder(PanelPage):
     name = "Painel - Ordem"
-    public = False
+    public = True
     bypass = False
     admin = False
 
     def render_get(self):
         if not self.path.get("order"):
             return Http().redirect("panel_explore_project")
+        if self.path.get("not_render_menu"):
+            self.user = load_user(self.path["order"]["order_user_id"])
         if (self.path["order"]["order_user_id"] != self.user.user_id) and (self.user.user_credential != "admin"):
             return Http().redirect("panel_explore_project")
 
         html = super().parse_html()
+        if self.path.get("not_render_menu"):
+            html.esc("download_print_page_buttons_visibility_val", "display:none;")
+        if not self.path or not self.path.get("not_render_menu"):
+            html.esc("my_plan_main_class_val", "my-plan__main")
+
+        html.esc("order_id_val", self.path["order"]["order_id"])
         html.esc("user_name_val", self.user.user_name)
         html.esc("user_email_val", self.user.user_email)
         html.esc("user_country_code_val", JsonData().get_country_phone_code()[self.user.user_address_data["user_country"]])
+        if self.user.user_address_data["user_country"] == "BR":
+            html.esc("user_phone_val", StrFormat().format_to_phone(self.user.user_phone))
         html.esc("user_phone_val", self.user.user_phone)
 
         html.esc("order_short_id_val", generate_order_short_id(self.path["order"]["order_id"]))
@@ -47,7 +58,10 @@ class PanelOrder(PanelPage):
         if self.path["order"]["order_nfse_status"] != "issued":
             html.esc("nfse_visibilty_val", "display:none;")
         else:
+            html.esc("order_nfse_number_val", self.path["order"]["order_nfse_number"])
+            html.esc("order_nfse_created_at_val", Date().format_unixtime_to_br_datetime(self.path["order"]["order_nfse_created_at"]))
             html.esc("order_nfse_pdf_link_val", self.path["order"]["order_nfse_pdf_link"])
+            html.esc("order_nfse_xml_link_val", self.path["order"]["order_nfse_xml_link"])
 
         if not self.path["order"]["order_payment_stripe_receipt_url"]:
             html.esc("order_payment_stripe_receipt_url_visibility_val", "display:none;")
@@ -59,7 +73,9 @@ class PanelOrder(PanelPage):
             elif self.path["order"]["order_currency"] == "usd" and self.path["order"].get("order_paid_at"):
                 html.esc("order_paid_at_val", Date().format_unixtime_to_inter_datetime(self.path["order"]["order_paid_at"]))
 
-        if self.path["order"]["order_payment_stripe_boleto_url"]:
+        if not self.path["order"]["order_payment_stripe_boleto_url"]:
+            html.esc("order_payment_stripe_boleto_visibility_val", "display:none;")
+        else:
             html.esc("order_payment_stripe_boleto_url_val", self.path["order"]["order_payment_stripe_boleto_url"])
 
         return str(html)

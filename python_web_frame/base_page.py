@@ -35,14 +35,15 @@ class BasePage:
         if self.render_props:
             if "header" in html.placeholders:
                 html.esc("header", self.render_header(common_changes))
-            if "menu_panel" in html.placeholders:
-                html.esc("menu_panel", self.render_menu_panel(common_changes))
-            if "menu_panel_no_icons" in html.placeholders:
-                html.esc("menu_panel_no_icons", self.render_menu_panel_no_icons(common_changes))
-            if "menu_backoffice" in html.placeholders:
-                html.esc("menu_backoffice", self.render_backoffice_menu(common_changes))
-            if "menu" in html.placeholders:
-                html.esc("menu", self.render_menu(common_changes))
+            if not self.path or not self.path.get("not_render_menu"):
+                if "menu_panel" in html.placeholders:
+                    html.esc("menu_panel", self.render_menu_panel(common_changes))
+                if "menu_panel_no_icons" in html.placeholders:
+                    html.esc("menu_panel_no_icons", self.render_menu_panel_no_icons(common_changes))
+                if "menu_backoffice" in html.placeholders:
+                    html.esc("menu_backoffice", self.render_backoffice_menu(common_changes))
+                if "menu" in html.placeholders:
+                    html.esc("menu", self.render_menu(common_changes))
             if "footer" in html.placeholders:
                 html.esc("footer", self.render_footer(common_changes))
         if "user_url_val" in html.placeholders:

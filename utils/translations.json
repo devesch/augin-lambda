@@ -789,6 +789,11 @@
         "es": "Descargar XML",
         "pt": "Baixar XML"
     },
+    "Baixar boleto": {
+        "en": "Download boleto",
+        "es": "Descargar boleto",
+        "pt": "Baixar boleto"
+    },
     "Baixar invoice": {
         "en": "Download invoice",
         "es": "Descargar factura",
@@ -2209,6 +2214,11 @@
         "es": "Esta acción eliminará todos los datos de su cuenta y no se puede revertir",
         "pt": "Esta ação irá excluir todos os dados da sua conta e não pode ser revertida"
     },
+    "Esta ordem não pertence ao usuário": {
+        "en": "This order does not belong to the user",
+        "es": "Este pedido no pertenece al usuario",
+        "pt": "Esta ordem não pertence ao usuário"
+    },
     "Esta pasta já pertence a este usuário": {
         "en": "This folder already belongs to this user",
         "es": "Esta carpeta ya pertenece a este usuario",
@@ -2363,6 +2373,11 @@
         "en": "This model does not belong to this user",
         "es": "Este modelo no pertenece a este usuario",
         "pt": "Este modelo não pertence a este usuário"
+    },
+    "Este modelo não pertence ao usuário": {
+        "en": "This model does not belong to the user",
+        "es": "Este modelo no pertenece al usuario",
+        "pt": "Este modelo não pertence ao usuário"
     },
     "Este projeto não se encontra acessível através de compartilhamento": {
         "en": "This project is not accessible through sharing",
