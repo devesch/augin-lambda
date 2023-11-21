@@ -118,16 +118,18 @@
         <div class="modal-content">
             <div class="delete-modal-container">
                 <p>{{Seu feedback é crucial para nós. Por favor, indique o motivo do cancelamento e deixe um comentário se desejar. Isso nos ajudará a melhorar nossos serviços.}}</p>
-                <div>
+                <div class="save-cancel-subscription-inputs">
                     <label><input type="checkbox" name="cancel_subscription_found_a_better" id="cancel_subscription_found_a_better_checkbox">{{Encontrei um produto que melhor atende às minhas necessidades.}}</label>
                     <label><input type="checkbox" name="cancel_subscription_unhappy_service" id="cancel_subscription_unhappy_service_checkbox">{{Estou insatisfeito com o serviço ou suporte.}}</label>
                     <label><input type="checkbox" name="cancel_subscription_technical_problems" id="cancel_subscription_technical_problems_checkbox">{{Enfrentei problemas técnicos ou bugs.}}</label>
                     <label><input type="checkbox" name="cancel_subscription_too_expensive" id="cancel_subscription_too_expensive_checkbox">{{O preço do serviço está acima do que eu gostaria de pagar.}}</label>
                     <label><input type="checkbox" name="cancel_subscription_not_using" id="cancel_subscription_not_using_checkbox">{{Não estou usando o software com frequência.}}</label>
                     <label><input type="checkbox" name="cancel_subscription_other_reasons" id="cancel_subscription_other_reasons_checkbox">{{Outros motivos}}</label>
-                    <textarea id="cancel_subscription_text_area" rows="3" placeholder="{{Nos ajude a melhorar, deixe seu feedback.}}"></textarea>
+                    <div class="textarea-container">
+                        <textarea id="cancel_subscription_text_area" rows="3" placeholder="{{Nos ajude a melhorar, deixe seu feedback.}}"></textarea>
+                        <p>{{Campo opcional}}</p>
+                    </div>
                 </div>
-                <p>{{Campo opcional}}</p>
             </div>
             <span class="error" id="save_cancel_subscription_error_span">
             </span>
