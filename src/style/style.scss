@@ -2700,7 +2700,8 @@ input[list]::-ms-clear {
     }
 }
 
-.cancel-subscription-modal {
+.cancel-subscription-modal,
+.save-cancel-subscription-modal {
     .content-modal {
         max-width: 700px;
     }
