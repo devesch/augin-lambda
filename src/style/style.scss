@@ -2686,6 +2686,26 @@ input[list]::-ms-clear {
     justify-content: center;
 }
 
+.cancel-subscription-list {
+    margin: 2rem 1rem;
+
+    li {
+        display: flex;
+        gap: 1rem;
+        text-align: left;
+    }
+
+    li + li {
+        margin-top: 1.5rem;
+    }
+}
+
+.cancel-subscription-modal {
+    .content-modal {
+        max-width: 700px;
+    }
+}
+
 .panel-user-data__user-client-container {
     display: flex;
     flex-direction: row;

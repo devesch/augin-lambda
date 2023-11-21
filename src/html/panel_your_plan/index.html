@@ -89,15 +89,15 @@
         <div class="modal-content">
             <div class="delete-modal-container">
                 <p>{{Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba}}:</p>
-                <p></p>
-                <p>{{Sua assinatura continuará ativa até o último dia do seu ciclo de cobrança atual, que termina em}} {{subscription_valid_until_val}}. {{Nenhuma cobrança futura será efetuada}}.</p>
-                <p>{{Seu espaço em nossa nuvem será reduzido para}} {{free_plan_cloud_space_in_gbs_val}}GB.</p>
-                <p>{{Seus compartilhamentos (links e QR Codes) deixarão de funcionar}}.</p>
-                <p>{{Não será possível abrir projetos ou federados com mais de}} {{free_plan_maxium_model_size_in_mbs_val}}Mb.</p>
-                <p>{{Apenas um Reference Tracker poderá ser configurado para cada projeto}}.</p>
-                <p>{{Não será possível fazer download de seus arquivos}}.</p>
-                <p>{{Você não poderá criar reuniões com o Teamplay}}.</p>
-                <p></p>
+                <ul class="cancel-subscription-list">
+                    <li><img src="{{cdn_val}}/assets/icons/calendar_month.svg"/> {{Sua assinatura continuará ativa até o último dia do seu ciclo de cobrança atual, que termina em}} {{subscription_valid_until_val}}. {{Nenhuma cobrança futura será efetuada}}.</li>
+                    <li><img src="{{cdn_val}}/assets/icons/cloud.svg"/> {{Seu espaço em nossa nuvem será reduzido para}} {{free_plan_cloud_space_in_gbs_val}}GB.</li>
+                    <li><img src="{{cdn_val}}/assets/icons/share.svg"/> {{Seus compartilhamentos (links e QR Codes) deixarão de funcionar}}.</li>
+                    <li><img src="{{cdn_val}}/assets/icons/file_open.svg"/> {{Não será possível abrir projetos ou federados com mais de}} {{free_plan_maxium_model_size_in_mbs_val}}Mb.</li>
+                    <li><img src="{{cdn_val}}/assets/icons/point_scan.svg"/> {{Apenas um Reference Tracker poderá ser configurado para cada projeto}}.</li>
+                    <li><img src="{{cdn_val}}/assets/icons/download.svg"/> {{Não será possível fazer download de seus arquivos}}.</li>
+                    <li><img src="{{cdn_val}}/assets/icons/groups.svg"/> {{Você não poderá criar reuniões com o Teamplay}}.</li>
+                </ul>
                 <p>{{Caso o motivo para o cancelamento seja alguma dúvida sobre o funcionamento ou algum problema no uso da nossa plataforma, considere falar com nosso suporte prioritário antes do cancelamento}}.</p>
             </div>
             <span class="error" id="cancel_subscription_error_span">
