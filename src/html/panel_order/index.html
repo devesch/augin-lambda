@@ -52,31 +52,35 @@
 
         <div class="order__title-container">
             <div class="order-body order-body--description">
-                <table class="order-table-description">
-                    <thead>
-                        <th>{{Descrição}}</th>
-                        <th>{{Qt.}}</th>
-                        <th>{{Preço unitário}}</th>
-                        <th>{{Total}}</th>
-                    </thead>
-                    <tbody>
-                        {{html_order_table_rows}}
-                    </tbody>
-                </table>
-                <table class="order-table-total">
-                    <tr>
-                        <td><strong>{{Subtotal}}</strong></td>
-                        <td>{{order_currency_val}} {{order_sub_total_price_val}}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{Descontos}}</strong></td>
-                        <td>{{order_currency_val}} {{order_discount_price_val}}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>{{Total do pedido}}</strong></td>
-                        <td>{{order_currency_val}} {{order_total_price_val}}</td>
-                    </tr>
-                </table>
+                <section class="order-body--description__table-container">
+                    <table class="order-table-description">
+                        <thead>
+                            <th>{{Descrição}}</th>
+                            <th>{{Qt.}}</th>
+                            <th>{{Preço unitário}}</th>
+                            <th>{{Total}}</th>
+                        </thead>
+                        <tbody>
+                            {{html_order_table_rows}}
+                        </tbody>
+                    </table>
+                </section>
+                <section class="order-body--description__table-container">
+                    <table class="order-table-total">
+                        <tr>
+                            <td><strong>{{Subtotal}}</strong></td>
+                            <td>{{order_currency_val}} {{order_sub_total_price_val}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{{Descontos}}</strong></td>
+                            <td>{{order_currency_val}} {{order_discount_price_val}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{{Total do pedido}}</strong></td>
+                            <td>{{order_currency_val}} {{order_total_price_val}}</td>
+                        </tr>
+                    </table>
+                </section>
             </div>
         </div>
 
@@ -131,9 +135,11 @@
                     </div>
                 </div>
                 <div class="order-column order-column--action">
-                    <a href="{{order_payment_stripe_receipt_url_val}}" class="button black">
-                        {{Baixar invoice}}
-                    </a>
+                    <div class="order-button-container">
+                        <a href="{{order_payment_stripe_receipt_url_val}}" class="button black">
+                            {{Baixar invoice}}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

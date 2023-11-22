@@ -3353,9 +3353,14 @@ input[list]::-ms-clear {
     flex-wrap: wrap;
     -ms-flex-wrap: wrap;
 }
-
+/**/
 .order-body--description {
     justify-content: end;
+}
+
+.order-body--description__table-container {
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .order-column {
@@ -3373,6 +3378,7 @@ input[list]::-ms-clear {
 
 .order-table-description {
     width: 100%;
+    overflow: auto;
 
     thead {
         text-align: left;
@@ -3380,7 +3386,12 @@ input[list]::-ms-clear {
         border-bottom: 2px solid colors.color("color-neutral-600");
         line-height: 2;
 
+        th {
+            padding-right: .5rem;
+        }
+
         th:last-of-type {
+            padding-right: 0;
             text-align: right;
         }
     }
@@ -3403,6 +3414,7 @@ input[list]::-ms-clear {
 .order-table-total {
     width: 100%;
     max-width: 40rem;
+    overflow: auto;
 
     tr {
         border-top: 1px solid colors.color("color-neutral-600");
