@@ -3359,8 +3359,11 @@ input[list]::-ms-clear {
 }
 
 .order-body--description__table-container {
+    width: 100%;
     overflow: auto;
     white-space: nowrap;
+    display: flex;
+    justify-content: end;
 }
 
 .order-column {

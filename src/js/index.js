@@ -17,10 +17,6 @@ export async function startDownloadFromUrl(url) {
     document.body.removeChild(a);
 }
 
-export async function startPrintFromUrl(url) {
-    console.log("TODO PRINT FROM URL")
-};
-
 export async function generatePanelOrderPagePdf(order_id, format) {
     var update_order_response = await apiCaller("update_order", {
         "command": "generate_page_pdf_download_link",
@@ -30,9 +26,6 @@ export async function generatePanelOrderPagePdf(order_id, format) {
     if ("success" in update_order_response) {
         if (format == "download"){
             startDownloadFromUrl(update_order_response["pdf_download_link"])
-        }
-        if (format == "print") {
-            startPrintFromUrl(update_order_response["pdf_download_link"]);
         }
     }
 }
