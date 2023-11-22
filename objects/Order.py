@@ -2,6 +2,7 @@ from python_web_frame.controllers.stripe_controller import StripeController
 from objects.BackofficeData import increase_backoffice_data_total_count
 from objects.Plan import generate_plan_price_with_coupon_discount
 from utils.utils.StrFormat import StrFormat
+from utils.utils.Sort import Sort
 from utils.AWS.Dynamo import Dynamo
 from utils.Code import Code
 from time import time
@@ -116,6 +117,7 @@ def remove_pendings_from_orders(orders):
     filtered_orders = []
     first_incompleted = False
     if orders:
+        orders = Sort().sort_dict_list(orders, "created_at", reverse=True, integer=True)
         for order in orders:
             if order["order_status"] != "pending":
                 filtered_orders.append(order)
