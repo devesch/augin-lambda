@@ -3724,6 +3724,28 @@ input[list]::-ms-clear {
 }
 
 @media print {
+    html {
+        font-size: 12px !important;
+    }
+
+    .order-body {
+        padding: 0;
+        gap: 1rem;
+        row-gap: 0;
+    }
+
+    .order-column {
+        padding: 0;
+    }
+
+    .order-column + .order-column {
+        padding-top: 1rem;
+    }
+
+    .order__title-container {
+        margin-top: 3rem;
+    }
+
     .print-hide {
         display: none;       
     }
