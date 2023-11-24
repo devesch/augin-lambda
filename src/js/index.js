@@ -2872,17 +2872,49 @@ export async function saveCancelSubscription() {
 }
 
 export async function openModalAddPaymentMethod() {
-    stripe_token_input = document.getElementById("stripe_token_input");
+    let stripe_token_input = document.getElementById("stripe_token_input");
 
     const stripe = Stripe(stripe_token_input.value);
     const appearance = {
         theme: 'stripe',
+
+        variables: {
+            colorPrimary: '#0570de',
+            backgroundColor: '#FF00FF',
+            colorText: '#30313d',
+            colorDanger: '#df1b41',
+            fontFamily: 'Ideal Sans, system-ui, sans-serif',
+            spacingUnit: '2px',
+            borderRadius: '4px',
+            // See all possible variables below
+            
+        },
+
+        base: {
+            fontSize: '16px',
+            color: '#0000FF',
+            fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+            '::placeholder': {
+                color: 'rgba(0, 0, 0, 0.6)',
+            },
+        },
+        invalid: {
+            color: '#00FF00',
+        },
+
+        rules: {
+            ".InputElement, .Input, .Input--invalid, .Input--empty, .StripeElement": {
+                backgroundColor: "#FF00FF"
+            }
+        }
     };
     const elements = stripe.elements({
+        locale: document.getElementById("lang_input").value,
         appearance,
-        locale: document.getElementById("lang_input").value
     })
-    const card = elements.create('card');
+    const card = elements.create('card', {
+        style: appearance
+    });
     card.mount('#card-element');
     card.addEventListener('change', function (event) {
         const displayError = document.getElementById('card-errors');
