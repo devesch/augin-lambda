@@ -1,5 +1,281 @@
 {{header}}
 {{menu_panel}}
+
+<style>
+    /* Panel Order - Start */
+    .page-user {
+        text-align: left;
+    }
+
+    .linkAnnotation {
+        display: none !important;
+    }
+
+    .order__title-container {
+        margin-top: 1rem;
+        background-color: #F7F2F0;
+        border-radius: 1rem;
+        word-break: break-all;
+        font-size: 1.125rem;
+
+        strong {
+            font-weight: bold;
+        }
+
+    }
+
+    .order-body {
+        padding: 2rem;
+        gap: 2rem;
+        border-bottom-left-radius: .5rem;
+        border-bottom-right-radius: .5rem;
+        display: flex;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        align-items: start;
+        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+    }
+    /**/
+    .order-body--description {
+        justify-content: end;
+    }
+
+    .order-body--description__table-container {
+        width: 100%;
+        overflow: auto;
+        white-space: nowrap;
+        display: flex;
+        justify-content: end;
+    }
+
+    .order-column {
+        padding-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 1rem;
+        gap: 0;
+    }
+
+    .order-column--action {
+        flex-grow: 1;
+    }
+
+    .order-table-description {
+        width: 100%;
+        overflow: auto;
+
+        thead {
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #73706F;
+            line-height: 2;
+
+            th {
+                padding-right: .5rem;
+            }
+
+            th:last-of-type {
+                padding-right: 0;
+                text-align: right;
+            }
+        }
+
+        tbody {
+            td {
+                padding-top: 1rem;
+            }
+
+            td:last-of-type {
+                text-align: right;
+            }
+        }
+
+        small {
+            font-size: 1rem;
+        }
+    }
+
+    .order-table-total {
+        width: 100%;
+        max-width: 40rem;
+        overflow: auto;
+
+        tr {
+            border-top: 1px solid #73706F;
+        }
+
+        tr td:last-of-type {
+            text-align: right;
+        }
+
+        td {
+            padding: .5rem 0;
+        }
+    }
+
+    .order-column .table {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            padding-right: .5rem;
+        }
+
+        td {
+            font-weight: bold;
+        }
+
+    }
+
+    .order-column__row {
+        display: flex;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: left;
+        gap: 0.5rem;
+        row-gap: 0;
+    }
+
+    .order__settings {
+        display: flex;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        justify-content: end;
+        align-items: center;
+        gap: 2rem;
+
+        .button {
+            border-color: #EBE6E4;
+            background-color: #EBE6E4;
+            border-radius: 100%;
+            padding: .5rem;
+            height: 100%;
+            line-height: 0;
+            display: inline-block;
+            transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+            &:hover {
+                border-color: #DBD6D5;
+                background-color: #DBD6D5;
+            }
+
+            img {
+                vertical-align: middle;
+            }
+
+        }
+    }
+
+    .order-button-container {
+        display: flex;
+        flex-direction: row;
+        -ms-flex-direction: row;
+        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: end;
+    }
+
+    .total-order {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: .5rem;
+        background-color: #FFD9B2;
+        padding: 1rem 2rem;
+        width: fit-content;
+        margin: 1rem auto 0;
+    }
+
+    @media print {
+        .buy-again {
+            visibility: hidden;
+        }
+
+        .buy-again {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 1301px) {
+        .panel-user-data__file-image-container {
+            justify-content: start;
+        }
+    }
+
+    @media only screen and (max-width: 1300px) {
+        .panel-user-data__file-image-container {
+            grid-template-columns: auto 1fr;
+            max-width: 100%;
+        }
+
+        .panel-user-data__main-container__row--image {
+                flex-direction: column;
+                -ms-flex-direction: column;
+        }
+    }
+
+    @media only screen and (max-width: 676px) {
+        .panel-user-data__file-image-container {
+            grid-template-columns: 1fr;
+        }
+
+        .panel-user-data__file-image {
+            margin: auto;
+        }
+    }
+    /* Panel Order - End */
+
+    @media print {
+        html {
+            font-size: 12px !important;
+        }
+
+        .order-body {
+            padding: 0;
+            gap: 1rem;
+            row-gap: 0;
+        }
+
+        .order-column {
+            padding: 0;
+        }
+
+        .order-column + .order-column {
+            padding-top: 1rem;
+        }
+
+        .order__title-container {
+            margin-top: 3rem;
+        }
+
+        .print-hide {
+            display: none;       
+        }
+
+        .print-show {
+            display: block;
+            margin: auto;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+    }
+    /* Print - End */
+</style>
+
 <main class="{{my_plan_main_class_val}}">
     <div class="page-user page-mobile" id="panelOrder">
         <div class="my-plan__title-container">
