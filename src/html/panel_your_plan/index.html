@@ -151,6 +151,26 @@
         <div class="modal-content">
             <form id="payment-form">
                 <div id="card-element">
+                    <div class="floating-input">
+                        <input type="text" name="card-fullname" placeholder=" "/>
+                        <label for="card-fullname">Nome do Titular</label>
+                    </div>
+                    <div class="floating-input">
+                        <div id="card-number-element">
+                        </div>
+                        <label for="card-number-element">Número do cartão</label>
+                    </div>
+                    <div class="floating-input">
+                        <div id="card-expiry-element">
+                        </div>
+                        <label for="card-expiry-element">Validade</label>
+                    </div>
+                    <div class="floating-input">
+                        <div id="card-cvc-element">
+                        
+                        </div>
+                        <label for="card-cvc-element">CVC</label>
+                    </div>
                 </div>
                 <div id="card-errors" role="alert"></div>
                 <div class="modal-button-container">
@@ -191,11 +211,4 @@
 </div>
 
 <input hidden id="lang_input" name="lang_input" type="text" value="{{lang_val}}" />
-
-<style>
-    .Input {
-        background-color: #FF00FF !important;
-    } 
-</style>
-
 {{footer}}

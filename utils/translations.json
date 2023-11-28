@@ -3824,6 +3824,11 @@
         "es": "Nombre del proyecto",
         "pt": "Nome do Projeto"
     },
+    "Nome do Titular": {
+        "en": "Cardholder Name",
+        "es": "Nombre del titular de la tarjeta",
+        "pt": "Nome do Titular"
+    },
     "Nome do federado": {
         "en": "federate name",
         "es": "nombre federado",

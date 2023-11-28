@@ -2877,53 +2877,125 @@ export async function openModalAddPaymentMethod() {
     const stripe = Stripe(stripe_token_input.value);
     const appearance = {
         theme: 'stripe',
+        labels: "floating",
 
         variables: {
-            colorPrimary: '#0570de',
-            backgroundColor: '#FF00FF',
-            colorText: '#30313d',
+            colorPrimary: '#ff0000',
+            colorBackground: '#ff0000',
+            colorText: '#ff00ff',
             colorDanger: '#df1b41',
-            fontFamily: 'Ideal Sans, system-ui, sans-serif',
+            fontFamily: 'Raleway, Helvetica, system-ui, sans-serif',
             spacingUnit: '2px',
-            borderRadius: '4px',
+            // borderRadius: '100px',
             // See all possible variables below
-            
-        },
+          },
 
-        base: {
-            fontSize: '16px',
-            color: '#0000FF',
-            fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
-            '::placeholder': {
-                color: 'rgba(0, 0, 0, 0.6)',
-            },
-        },
-        invalid: {
-            color: '#00FF00',
-        },
+        // base: {
+        //     fontSize: '16px',
+        //     color: '#0000FF',
+        //     fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+        //     '::placeholder': {
+        //         color: 'rgba(0, 0, 0, 0.6)',
+        //     },
+        // },
+        // invalid: {
+        //     color: '#00FF00',
+        // },
 
         rules: {
-            ".InputElement, .Input, .Input--invalid, .Input--empty, .StripeElement": {
-                backgroundColor: "#FF00FF"
+            ".Input": {
+                // border: '2px solid #8C8988',
+                // borderRadius: '20px',
+                boxShadow: '0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 6px rgba(18, 42, 66, 0.02)',
+                // padding: "16px 32px",
             }
         }
     };
     const elements = stripe.elements({
         locale: document.getElementById("lang_input").value,
         appearance,
+        loader: "always",
+        fonts: [{
+            family: 'Raleway',
+            src: 'url({{cdn_val}}/assets/fonts/raleway-regular-webfont.woff2)',
+            weight: '400',
+            display: 'swap',
+        }]
     })
-    const card = elements.create('card', {
-        style: appearance
+    
+    // const card = elements.create('card', {
+    //     style: appearance
+    // });
+    // card.mount('#card-element'); 
+    // card.addEventListener('change', function (event) {
+    //     const displayError = document.getElementById('card-errors');
+    //     if (event.error) {
+    //         displayError.textContent = event.error.message;
+    //     } else {
+    //         displayError.textContent = '';
+    //     }
+    // });
+
+    const style = {
+        base: {
+            iconColor: '#666EE8',
+            lineHeight: '16px',
+            fontWeight: 300,
+            fontFamily: '"Raleway"',
+            backgroundColor: '#F7F2F0',
+            borderRadius: '40px',
+            // padding: '20px',
+            
+            '::placeholder': {
+                color: '#595757',
+            },
+        },
+    }
+
+    var cardNumberElement = elements.create('cardNumber', {
+        style: style,
+        placeholder: '',
+        classes: {
+            base: 'stripe-card-input-custom-style',
+        },
     });
-    card.mount('#card-element');
-    card.addEventListener('change', function (event) {
+    cardNumberElement.mount('#card-number-element');
+      
+    var cardExpiryElement = elements.create('cardExpiry', {
+        style: style,
+        placeholder: '',
+        classes: {
+            base: 'stripe-card-input-custom-style'
+        },
+    });
+    cardExpiryElement.mount('#card-expiry-element');
+      
+    var cardCvcElement = elements.create('cardCvc', {
+        style: style,
+        placeholder: '',
+        classes: {
+            base: 'stripe-card-input-custom-style'
+        },
+    });
+    cardCvcElement.mount('#card-cvc-element');
+
+    function setupCardInputEventListener(cardElement) {
         const displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
+    
+        cardElement.addEventListener('change', function (event) {
+            console.log(event);
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = "";
+            }
+        });
+    }    
+
+    setupCardInputEventListener(cardNumberElement);
+    setupCardInputEventListener(cardExpiryElement);
+    setupCardInputEventListener(cardCvcElement);
+
     const form = document.getElementById('payment-form');
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -2945,6 +3017,17 @@ export async function openModalAddPaymentMethod() {
     });
 
     openModal(".modal.add-payment-method-modal");
+
+    document.querySelectorAll('iframe').forEach( item => {
+        console.log(item.contentWindow.document.body.querySelectorAll('.Input'));
+        const creditCardInputs = item.contentWindow.document.body.querySelectorAll('.Input');
+        console.log(creditCardInputs);
+        creditCardInputs.forEach(input => {
+            console.log(input);
+            input.style.borderRadius = "1rem";
+        });
+    });
+
 }
 
 export async function saveAddPaymentMethod(new_payment_method_id) {

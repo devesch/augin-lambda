@@ -3764,3 +3764,46 @@ input[list]::-ms-clear {
 .dropzone--over {
     background-color: colors.color("black") !important;
 }
+
+.stripe-card-input-custom-style {
+    outline: none;
+    background-color: colors.color("color-neutral-50");
+    border: 2px solid colors.color("color-neutral-500");
+    color: colors.color("color-neutral-900");
+    border-radius: 0.25rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1rem;
+    overflow: hidden;
+
+    & + label {
+        color: colors.color("color-neutral-700");
+        font-size: 0.9rem;
+        transform: translateY(calc(-50% - 1.5rem));
+    }
+
+    &.StripeElement--empty {
+        & + label {
+            transform: translateY(-50%);
+            font-size: 1rem;
+        }
+    }
+
+    &.StripeElement--focus {
+        border-color: colors.color("color-primary-500");
+        color: colors.color("color-primary-500");
+        & + label {
+            transform: translateY(calc(-50% - 1.5rem));
+            color: colors.color("color-primary-500");
+        }
+    }
+
+    &.StripeElement--invalid {
+        border-color: colors.color("color-error-500");
+        color: colors.color("color-error-500");
+        & + label {
+            color: colors.color("color-error-500");
+        }
+    }
+}
