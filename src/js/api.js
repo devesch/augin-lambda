@@ -8,6 +8,8 @@ export async function apiCaller(apiFunction, postData) {
         "Content-Type": "application/x-www-form-urlencoded"
     }, postData, true);
 
+    console.log(response);
+
     if ("success" in response) {
         console.log(apiFunction + " RESPONSE SUCCESS -> " + response["success"])
     }

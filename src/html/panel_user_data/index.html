@@ -94,7 +94,7 @@
                             </div>
                             <div class="panel-user-data__cpf-cep-container">
                                 <div class="input-default floating-input number-field">
-                                    <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_street_number" id="user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this)" placeholder=" ">
+                                    <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_street_number" id="user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this);" placeholder=" ">
                                     <label for="user_street_number" class="floating-label">{{Número}}</label>
                                 </div>
                                 <div class="input-default floating-input complement-field">
@@ -137,7 +137,7 @@
                             </div>
                             <div class="panel-user-data__cpf-cep-container">
                                 <div class="input-default floating-input number-field">
-                                    <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCNPJDataAvailable();" type="text" name="user_street_number" id="cnpj_user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this)" placeholder=" ">
+                                    <input oninput="js.index.formatToNumbers(this); js.index.makeSaveUserCNPJDataAvailable();" type="text" name="user_street_number" id="cnpj_user_street_number_input" value="{{user_street_number_val}}" class="floating" oninput="js.index.formatToNumber(this);" placeholder=" ">
                                     <label for="user_street_number" class="floating-label">{{Número}}</label>
                                 </div>
                                 <div class="input-default floating-input complement-field">
@@ -311,12 +311,12 @@
         js.index.formatToCNPJ(document.getElementById("user_cnpj_input"));
         js.index.formatToZIP(document.getElementById("user_zip_code_input"));
         js.index.formatToZIP(document.getElementById("cnpj_user_zip_code_input"));
-        js.index.formatToNumbers(document.getElementById("user_street_number_input"))
-        js.index.formatToNumbers(document.getElementById("cnpj_user_street_number_input"))
+        js.index.formatToNumbers(document.getElementById("user_street_number_input"));
+        js.index.formatToNumbers(document.getElementById("cnpj_user_street_number_input"));
         js.index.makeSaveUserCPFDataAvailable();
         js.index.makeSaveUserCNPJDataAvailable();
         js.index.makeSaveUserInternationalDataAvailable();
-        js.index.makeSaveUserPasswordAvailable()
-        js.index.makeSaveUserThumbAvailable()
+        js.index.makeSaveUserPasswordAvailable();
+        js.index.makeSaveUserThumbAvailable();
     };
 </script>

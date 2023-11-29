@@ -539,7 +539,9 @@ export async function showSelectedPaymentPage(index) {
 
 
 export async function processStripeSubscriptionPayment(stripe_token, payment_type, plan_id, plan_recurrency) {
-    const stripe = Stripe(stripe_token);
+    const stripe = Stripe(stripe_token, {
+        locale: 'pt-BR',
+    });
     let continue_button = document.getElementById("submit");
     let box_payment_loader = document.getElementById("box_payment_loader");
     let elements = '';
@@ -2972,17 +2974,26 @@ export async function openModalAddPaymentMethod() {
 
     const userCountry = document.getElementById("country_input").value;
 
-    var cardPostalCodeElement = elements.create('postalCode', {
-        style: style,
-        placeholder: '',
-        classes: {
-            base: 'stripe-card-input-custom-style',
-        },
-    });
-    cardPostalCodeElement.mount('#card-postalcode-element');
-    cardPostalCodeElement.on('input', function(){
-        formatToCEP(cardPostalCodeElement);
-    });
+    // var cardPostalCodeElement = elements.create('postalCode', {
+    //     style: style,
+    //     placeholder: '',
+    //     classes: {
+    //         base: 'stripe-card-input-custom-style',
+    //     },
+    // });
+    // cardPostalCodeElement.mount('#card-postalcode-element');
+    // cardPostalCodeElement.on('input', function(){
+    //     formatToCEP(this);
+    // });
+
+    const userPostalCode = document.getElementById("card-postalcode-element");
+    if (userCountry == "BR") {
+        userPostalCode.setAttribute("minlength", 10);
+        userPostalCode.setAttribute("maxlength", 10);
+        userPostalCode.addEventListener("input", function(){
+            formatToCEP(this);
+        });
+    }
 
     var cardNumberElement = elements.create('cardNumber', {
         style: style,
@@ -3024,7 +3035,7 @@ export async function openModalAddPaymentMethod() {
         });
     }    
 
-    setupCardInputEventListener(cardPostalCodeElement);
+    // setupCardInputEventListener(cardPostalCodeElement);
     setupCardInputEventListener(cardNumberElement);
     setupCardInputEventListener(cardExpiryElement);
     setupCardInputEventListener(cardCvcElement);
@@ -3033,17 +3044,42 @@ export async function openModalAddPaymentMethod() {
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
+        const cardFullname = document.getElementById("card-fullname-element").value;
+        const cardEmail = document.getElementById("card-email-element").value;
+        const cardPhone = document.getElementById("card-phone-element").value;
+        const cardPostalCode = document.getElementById("card-postalcode-element").value;
+        const cardAddress = document.getElementById("card-address-element").value;
+        const cardComplement = document.getElementById("card-complement-element").value;
+        const cardCity = document.getElementById("card-city-element").value;
+        const cardState = document.getElementById("card-state-element").value;
+        const cardCountry = document.getElementById("card-country-element").value;
+
         stripe.createPaymentMethod({
             type: 'card',
-            card: card
+            billing_details: {
+                address: {
+                    line1: cardAddress,
+                    line2: cardComplement,
+                    city: cardCity,
+                    state: cardState,
+                    postal_code: cardPostalCode,
+                    country: cardCountry,
+                },
+                name: cardFullname,
+                email: cardEmail,
+                phone: cardPhone,
+            },
+            card: cardNumberElement
         }).then(function (result) {
             if (result.error) {
                 // Inform the user if there was an error.
                 const errorElement = document.getElementById('card-errors');
                 errorElement.textContent = result.error.message;
             } else {
+                console.log(result.paymentMethod);
                 // Send the PaymentMethod ID to your server for further processing.
                 // For this step, you'd typically make an AJAX call to your backend.
+                
                 saveAddPaymentMethod(result.paymentMethod.id);
             }
         });
@@ -3793,5 +3829,38 @@ export async function toggleTooltip(event, tooltip_id) {
     let tooltip = document.getElementById(tooltip_id);
     tooltip.classList.add("tooltip--open");
     await sleep(5000);
-    tooltip.classList.remove("tooltip--open")
+    tooltip.classList.remove("tooltip--open");
+}
+
+export async function updateStripeCustomerLanguage(event, select) {
+    let user_lang = "en-US";
+    console.log(select.value);
+    if (select.value.toLowerCase() === "pt") {
+        user_lang = "pt-BR";
+    };
+    if (select.value.toLowerCase() === "en") {
+        user_lang = "en-US";
+    };
+    if (select.value.toLowerCase() === "es") {
+        user_lang = "es-ES";
+    };
+
+    let update_user_response = await apiCaller("update_user", {
+        "command": "update_stripe_preferred_locales",
+        "preferred_locales": user_lang
+    });
+
+    const form = select.form;
+    
+    alert(update_user_response);
+    if ("error" in update_user_response) {
+        alert(update_user_response["error"]);
+    }
+
+    if (form) {
+        // Submit the form
+        form.submit();
+    } else {
+        console.error("Select element is not inside a form.");
+    }
 }

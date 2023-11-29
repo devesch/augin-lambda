@@ -54,6 +54,7 @@ class User:
         self.user_payment_ready = False
         self.user_pagination_count = "50"
         self.user_lang = "pt"
+        self.user_preferred_locales = "pt-BR"
 
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
