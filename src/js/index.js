@@ -2998,6 +2998,7 @@ export async function openModalAddPaymentMethod() {
     var cardNumberElement = elements.create('cardNumber', {
         style: style,
         placeholder: '',
+        showIcon: true,
         classes: {
             base: 'stripe-card-input-custom-style',
         },
