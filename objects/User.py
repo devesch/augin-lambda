@@ -54,11 +54,20 @@ class User:
         self.user_payment_ready = False
         self.user_pagination_count = "50"
         self.user_lang = "pt"
-        self.user_preferred_locales = "pt-BR"
 
         self.user_last_login_at = str(time.time())
         self.created_at = str(time.time())
         self.entity = "user"
+
+    def generate_user_preferred_locales(self, new_lang):
+        if new_lang == "pt":
+            return "pt-BR"
+        elif new_lang == "en":
+            return "en-US"
+        elif new_lang == "es":
+            return "es-ES"
+        else:
+            raise Exception("Invalid language")
 
     def reset_used_trials(self):
         self.user_used_trials = []
