@@ -5,6 +5,9 @@ import {
     ProjectData
 } from './classes/ProjectData.js';
 import {
+    formatToCEP
+} from './utils.js';
+import {
     apiCaller,
     request
 } from "./api.js";
@@ -2917,7 +2920,8 @@ export async function openModalAddPaymentMethod() {
         loader: "always",
         fonts: [{
             family: 'Raleway',
-            src: 'url({{cdn_val}}/assets/fonts/raleway-regular-webfont.woff2)',
+            // src: 'url(' + ProjectData.props.cdnVal + '/assets/fonts/raleway-regular-webfont.woff)',
+            src: 'url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff2") format("woff2"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff") format("woff"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.ttf") format("truetype")',
             weight: '400',
             display: 'swap',
         }]
@@ -2939,11 +2943,16 @@ export async function openModalAddPaymentMethod() {
     const style = {
         base: {
             iconColor: '#666EE8',
-            lineHeight: '16px',
+            fontSize: '16px',
+            lineHeight: '1',
             fontWeight: 300,
             fontFamily: '"Raleway"',
             backgroundColor: '#F7F2F0',
             borderRadius: '40px',
+            textRendering: 'optimizeLegibility',
+            fontSmoothing: 'grayscale',
+            textTransform: 'none',
+            color: 'var(--color-neutral-900, #262525)',
             // padding: '20px',
             
             '::placeholder': {
@@ -2951,6 +2960,29 @@ export async function openModalAddPaymentMethod() {
             },
         },
     }
+
+    // var cardNameElement = elements.create('name', {
+    //     style: style,
+    //     placeholder: '',
+    //     classes: {
+    //         base: 'stripe-card-input-custom-style',
+    //     },
+    // });
+    // cardNameElement.mount('#card-fullname-element');
+
+    const userCountry = document.getElementById("country_input").value;
+
+    var cardPostalCodeElement = elements.create('postalCode', {
+        style: style,
+        placeholder: '',
+        classes: {
+            base: 'stripe-card-input-custom-style',
+        },
+    });
+    cardPostalCodeElement.mount('#card-postalcode-element');
+    cardPostalCodeElement.on('input', function(){
+        formatToCEP(cardPostalCodeElement);
+    });
 
     var cardNumberElement = elements.create('cardNumber', {
         style: style,
@@ -2992,6 +3024,7 @@ export async function openModalAddPaymentMethod() {
         });
     }    
 
+    setupCardInputEventListener(cardPostalCodeElement);
     setupCardInputEventListener(cardNumberElement);
     setupCardInputEventListener(cardExpiryElement);
     setupCardInputEventListener(cardCvcElement);
@@ -3017,17 +3050,6 @@ export async function openModalAddPaymentMethod() {
     });
 
     openModal(".modal.add-payment-method-modal");
-
-    document.querySelectorAll('iframe').forEach( item => {
-        console.log(item.contentWindow.document.body.querySelectorAll('.Input'));
-        const creditCardInputs = item.contentWindow.document.body.querySelectorAll('.Input');
-        console.log(creditCardInputs);
-        creditCardInputs.forEach(input => {
-            console.log(input);
-            input.style.borderRadius = "1rem";
-        });
-    });
-
 }
 
 export async function saveAddPaymentMethod(new_payment_method_id) {

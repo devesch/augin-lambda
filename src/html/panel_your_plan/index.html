@@ -152,8 +152,13 @@
             <form id="payment-form">
                 <div id="card-element">
                     <div class="floating-input">
-                        <input type="text" name="card-fullname" placeholder=" "/>
-                        <label for="card-fullname">Nome do Titular</label>
+                        <input type="text" name="card-fullname-element" placeholder=" "/>
+                        <!-- <div id="card-fullname-element"></div> -->
+                        <label for="card-fullname-element">Nome do Titular</label>
+                    </div>
+                    <div class="floating-input">
+                        <div id="card-postalcode-element"></div>
+                        <label for="card-postalcode-element">CEP do Titular</label>
                     </div>
                     <div class="floating-input">
                         <div id="card-number-element">
@@ -211,4 +216,5 @@
 </div>
 
 <input hidden id="lang_input" name="lang_input" type="text" value="{{lang_val}}" />
+<input hidden id="country_input" name="country_input" type="text" value="{{country_val}}" />
 {{footer}}

@@ -39,7 +39,7 @@ function formatToCPF(string) {
   return string.value;
 }
 
-function formatToCEP(string) {
+export async function formatToCEP(string) {
   // Remove tudo o que não é dígito
   string.value = string.value.replace(/\D/g, "");
   // Coloca um ponto entre o segundo e terceiro dígitos e um hífen entre o quinto e sexto.

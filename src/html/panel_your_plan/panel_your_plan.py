@@ -74,6 +74,7 @@ class PanelYourPlan(PanelPage):
 
         html.esc("stripe_token_val", stripe_token)
         html.esc("lang_val", self.lang)
+        html.esc("country_val", self.user.user_address_data["user_country"])
         return str(html)
 
     def render_post(self):
