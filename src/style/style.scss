@@ -3830,6 +3830,10 @@ input[list]::-ms-clear {
             color: colors.color("color-error-500");
             font-size: 0.9rem;
         }
+
+        &.StripeElement--empty + label {
+            font-size: 1rem;
+        }
     }
 }
 

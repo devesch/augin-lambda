@@ -2956,11 +2956,13 @@ export async function openModalAddPaymentMethod() {
             textTransform: 'none',
             color: 'var(--color-neutral-900, #262525)',
             // padding: '20px',
+            iconColor: 'transparent',
             
-            '::placeholder': {
-                color: '#595757',
+            ':focus': {
+                iconColor: 'var(--color-neutral-900, #262525)',
             },
         },
+        
     }
 
     // var cardNameElement = elements.create('name', {
@@ -3004,6 +3006,42 @@ export async function openModalAddPaymentMethod() {
         },
     });
     cardNumberElement.mount('#card-number-element');
+
+    // var cardBrandToPfClass = {
+    //     'visa': 'pf-visa',
+    //     'mastercard': 'pf-mastercard',
+    //     'amex': 'pf-american-express',
+    //     'discover': 'pf-discover',
+    //     'diners': 'pf-diners',
+    //     'jcb': 'pf-jcb',
+    //     'unknown': 'pf-credit-card',
+    // }
+
+    // function setBrandIcon(brand) {
+    //     var brandIconElement = document.getElementById('brand-icon');
+    //     var pfClass = 'pf-credit-card';
+    //     if (brand in cardBrandToPfClass) {
+    //         pfClass = cardBrandToPfClass[brand];
+    //     }
+    //     for (var i = brandIconElement.classList.length - 1; i >= 0; i--) {
+    //         brandIconElement.classList.remove(brandIconElement.classList[i]);
+    //     }
+    //     brandIconElement.classList.add('pf');
+    //     brandIconElement.classList.add(pfClass);
+    // }
+
+    // cardNumberElement.on('load', function(event) {
+    //     if (event.brand) {
+    //         setBrandIcon(event.brand);
+    //     }
+    // });
+
+    // cardNumberElement.on('change', function(event) {
+    //     // Switch brand logo
+    //     if (event.brand) {
+    //         setBrandIcon(event.brand);
+    //     }
+    // });
       
     var cardExpiryElement = elements.create('cardExpiry', {
         style: style,
