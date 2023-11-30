@@ -2903,9 +2903,9 @@ export async function openModalAddPaymentMethod() {
         //         color: 'rgba(0, 0, 0, 0.6)',
         //     },
         // },
-        // invalid: {
-        //     color: '#00FF00',
-        // },
+        invalid: {
+            color: '#00FF00',
+        },
 
         rules: {
             ".Input": {

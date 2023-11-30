@@ -2040,8 +2040,8 @@
         "pt": "Email"
     },
     "Email de reset de senha enviado com sucesso.": {
-        "en": "Successful password reset email.",
-        "es": "Correo electrónico exitoso de restablecimiento de contraseña.",
+        "en": "Successfully sent password reset email.",
+        "es": "Correo electrónico de restablecimiento de contraseña exitoso.",
         "pt": "Email de reset de senha enviado com sucesso."
     },
     "Email inválido": {

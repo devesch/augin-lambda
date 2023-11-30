@@ -1593,6 +1593,7 @@ input[list]::-ms-clear {
 }
 
 .checkout_upgrade_your_plan {
+    margin-top: 1rem;
     text-align: center;
 }
 /* Change plan - End */
@@ -3830,4 +3831,9 @@ input[list]::-ms-clear {
             font-size: 0.9rem;
         }
     }
+}
+
+#card-errors {
+    text-align: center;
+    color: colors.color("color-error-500");
 }
