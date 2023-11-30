@@ -2962,6 +2962,9 @@ export async function openModalAddPaymentMethod() {
                 iconColor: 'var(--color-neutral-900, #262525)',
             },
         },
+        invalid: {
+            iconColor: 'var(--color-error-500, #D92616)',
+        }
         
     }
 
