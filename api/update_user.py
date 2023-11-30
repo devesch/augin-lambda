@@ -149,17 +149,17 @@ class UpdateUser(UserPage, PanelPage):
 
     def update_personal_data(self):
         if not self.post.get("user_name"):
-            return {"error": "É necessárion informar um nome."}
+            return {"error": "É necessário informar um nome."}
         if not self.post.get("user_email"):
-            return {"error": "É necessárion informar um email."}
+            return {"error": "É necessário informar um email."}
         if not self.post.get("user_country"):
-            return {"error": "É necessárion informar um país."}
+            return {"error": "É necessário informar um país."}
         if not self.post.get("user_phone"):
-            return {"error": "É necessárion informar um telefone."}
+            return {"error": "É necessário informar um telefone."}
         if not " " in self.post.get("user_name"):
-            return {"error": "É necessárion informar o seu nome completo"}
+            return {"error": "É necessário informar o seu nome completo"}
         if not Validation().check_if_phone(self.post["user_phone"], self.post["user_country"].upper()):
-            return {"error": "É necessárion um número de telefone válido"}
+            return {"error": "É necessário um número de telefone válido"}
 
         if self.post["user_country"] == "BR" and self.user.user_client_type not in ("physical", "company"):
             self.user.user_client_type = "physical"

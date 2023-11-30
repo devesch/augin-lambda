@@ -122,17 +122,17 @@ class BackofficeCreatePlan(BackofficePage):
 
     def render_post(self):
         if not self.post.get("plan_name_pt"):
-            return self.render_get_with_error("É necessárion informar um nome em PT")
+            return self.render_get_with_error("É necessário informar um nome em PT")
         if not self.post.get("plan_name_en"):
-            return self.render_get_with_error("É necessárion informar um nome em EN")
+            return self.render_get_with_error("É necessário informar um nome em EN")
         if not self.post.get("plan_name_es"):
-            return self.render_get_with_error("É necessárion informar um nome em ES")
+            return self.render_get_with_error("É necessário informar um nome em ES")
         if not self.post.get("plan_description_pt"):
-            return self.render_get_with_error("É necessárion informar uma descrição em PT")
+            return self.render_get_with_error("É necessário informar uma descrição em PT")
         # if not self.post.get("plan_description_en"):
-        #     return self.render_get_with_error("É necessárion informar uma descrição em EN")
+        #     return self.render_get_with_error("É necessário informar uma descrição em EN")
         # if not self.post.get("plan_description_es"):
-        #     return self.render_get_with_error("É necessárion informar uma descrição em ES")
+        #     return self.render_get_with_error("É necessário informar uma descrição em ES")
 
         if self.post.get("plan_price_annually_brl"):
             if not Validation().check_if_number(self.post["plan_price_annually_brl"]):

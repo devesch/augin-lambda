@@ -6889,6 +6889,11 @@
         "es": "Es necesario informar el porcentaje de descuento",
         "pt": "É necessário informar o percentual de desconto"
     },
+    "É necessário informar o seu nome completo": {
+        "en": "You must inform your full name",
+        "es": "Debes informar tu nombre completo",
+        "pt": "É necessário informar o seu nome completo"
+    },
     "É necessário informar o valor de desconto em R$ e U$ quando o desconto de valor total está ativo": {
         "en": "It is necessary to inform the discount value of R $ and U $ when the total discount is active",
         "es": "Es necesario informar el valor de descuento de R $ y u $ cuando el descuento total está activo",
@@ -6954,10 +6959,20 @@
         "es": "Es necesario informar un código de la ciudad.",
         "pt": "É necessário informar um código de cidade."
     },
+    "É necessário informar um email": {
+        "en": "You must inform an email",
+        "es": "Debes informar un correo electrónico",
+        "pt": "É necessário informar um email"
+    },
     "É necessário informar um email de usuário.": {
         "en": "It is necessary to inform a user email.",
         "es": "Es necesario informar al correo electrónico de un usuario.",
         "pt": "É necessário informar um email de usuário."
+    },
+    "É necessário informar um email.": {
+        "en": "You must enter an email.",
+        "es": "Debe ingresar un correo electrónico.",
+        "pt": "É necessário informar um email."
     },
     "É necessário informar um estado": {
         "en": "It is necessary to inform a state",
@@ -6973,6 +6988,21 @@
         "en": "It is necessary to inform a name",
         "es": "Es necesario informar un nombre",
         "pt": "É necessário informar um nome"
+    },
+    "É necessário informar um nome em EN": {
+        "en": "It is necessary to inform a name in en",
+        "es": "Es necesario informar un nombre en EN",
+        "pt": "É necessário informar um nome em EN"
+    },
+    "É necessário informar um nome em ES": {
+        "en": "It is necessary to inform a name in ES",
+        "es": "Es necesario informar un nombre en ES",
+        "pt": "É necessário informar um nome em ES"
+    },
+    "É necessário informar um nome em PT": {
+        "en": "You must inform a name in PT",
+        "es": "Debes informar un nombre en PT",
+        "pt": "É necessário informar um nome em PT"
     },
     "É necessário informar um nome para o federado": {
         "en": "It is necessary to inform a name for the federate",
@@ -6999,6 +7029,31 @@
         "es": "Es necesario informar un nombre para el proyecto federado",
         "pt": "É necessário informar um nome para o projeto federado"
     },
+    "É necessário informar um nome.": {
+        "en": "It is necessary to inform a name.",
+        "es": "Es necesario informar un nombre.",
+        "pt": "É necessário informar um nome."
+    },
+    "É necessário informar um país": {
+        "en": "It is necessary to inform a country",
+        "es": "Es necesario informar a un país",
+        "pt": "É necessário informar um país"
+    },
+    "É necessário informar um país.": {
+        "en": "It is necessary to inform a country.",
+        "es": "Es necesario informar a un país.",
+        "pt": "É necessário informar um país."
+    },
+    "É necessário informar um telefone": {
+        "en": "You must inform a phone",
+        "es": "Debes informar un teléfono",
+        "pt": "É necessário informar um telefone"
+    },
+    "É necessário informar um telefone.": {
+        "en": "It is necessary to inform a phone.",
+        "es": "Es necesario informar un teléfono.",
+        "pt": "É necessário informar um telefone."
+    },
     "É necessário informar uma cidade": {
         "en": "It is necessary to inform a city",
         "es": "Es necesario informar a una ciudad",
@@ -7018,6 +7073,21 @@
         "en": "It is necessary to inform a description",
         "es": "Es necesario informar una descripción",
         "pt": "É necessário informar uma descrição"
+    },
+    "É necessário informar uma descrição em EN": {
+        "en": "It is necessary to inform a description in en",
+        "es": "Es necesario informar una descripción en EN",
+        "pt": "É necessário informar uma descrição em EN"
+    },
+    "É necessário informar uma descrição em ES": {
+        "en": "It is necessary to inform a description in ES",
+        "es": "Es necesario informar una descripción en ES",
+        "pt": "É necessário informar uma descrição em ES"
+    },
+    "É necessário informar uma descrição em PT": {
+        "en": "It is necessary to inform a description in PT",
+        "es": "Es necesario informar una descripción en PT",
+        "pt": "É necessário informar uma descrição em PT"
     },
     "É necessário informar uma rua": {
         "en": "It is necessary to inform a street",
@@ -7084,85 +7154,10 @@
         "es": "Debe seleccionar qué archivos servirán como base de la federación.",
         "pt": "É necessário selecionar quais arquivos servirão como base do federado."
     },
-    "É necessárion informar o seu nome completo": {
-        "en": "You must inform your full name",
-        "es": "Debes informar tu nombre completo",
-        "pt": "É necessárion informar o seu nome completo"
-    },
-    "É necessárion informar um email": {
-        "en": "You must inform an email",
-        "es": "Debes informar un correo electrónico",
-        "pt": "É necessárion informar um email"
-    },
-    "É necessárion informar um email.": {
-        "en": "You must enter an email.",
-        "es": "Debe ingresar un correo electrónico.",
-        "pt": "É necessárion informar um email."
-    },
-    "É necessárion informar um nome": {
-        "en": "It is necessary to inform a name",
-        "es": "Es necesario informar un nombre",
-        "pt": "É necessárion informar um nome"
-    },
-    "É necessárion informar um nome em EN": {
-        "en": "It is necessary to inform a name in en",
-        "es": "Es necesario informar un nombre en EN",
-        "pt": "É necessárion informar um nome em EN"
-    },
-    "É necessárion informar um nome em ES": {
-        "en": "It is necessary to inform a name in ES",
-        "es": "Es necesario informar un nombre en ES",
-        "pt": "É necessárion informar um nome em ES"
-    },
-    "É necessárion informar um nome em PT": {
-        "en": "You must inform a name in PT",
-        "es": "Debes informar un nombre en PT",
-        "pt": "É necessárion informar um nome em PT"
-    },
-    "É necessárion informar um nome.": {
-        "en": "It is necessary to inform a name.",
-        "es": "Es necesario informar un nombre.",
-        "pt": "É necessárion informar um nome."
-    },
-    "É necessárion informar um país": {
-        "en": "It is necessary to inform a country",
-        "es": "Es necesario informar a un país",
-        "pt": "É necessárion informar um país"
-    },
-    "É necessárion informar um país.": {
-        "en": "It is necessary to inform a country.",
-        "es": "Es necesario informar a un país.",
-        "pt": "É necessárion informar um país."
-    },
-    "É necessárion informar um telefone": {
-        "en": "You must inform a phone",
-        "es": "Debes informar un teléfono",
-        "pt": "É necessárion informar um telefone"
-    },
-    "É necessárion informar um telefone.": {
-        "en": "It is necessary to inform a phone.",
-        "es": "Es necesario informar un teléfono.",
-        "pt": "É necessárion informar um telefone."
-    },
-    "É necessárion informar uma descrição em EN": {
-        "en": "It is necessary to inform a description in en",
-        "es": "Es necesario informar una descripción en EN",
-        "pt": "É necessárion informar uma descrição em EN"
-    },
-    "É necessárion informar uma descrição em ES": {
-        "en": "It is necessary to inform a description in ES",
-        "es": "Es necesario informar una descripción en ES",
-        "pt": "É necessárion informar uma descrição em ES"
-    },
-    "É necessárion informar uma descrição em PT": {
-        "en": "It is necessary to inform a description in PT",
-        "es": "Es necesario informar una descripción en PT",
-        "pt": "É necessárion informar uma descrição em PT"
-    },
-    "É necessárion um número de telefone válido": {
+    "É necessário um número de telefone válido": {
         "en": "A valid phone number is required",
         "es": "Un número de teléfono valido es requerido",
-        "pt": "É necessárion um número de telefone válido"
+        "pt": "É necessário um número de telefone válido"
     },
     "É trial": {
         "en": "It's trial",

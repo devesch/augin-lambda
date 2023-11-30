@@ -1486,6 +1486,7 @@ input[list]::-ms-clear {
 
     @media only screen and (max-width: 620px) {
         justify-content: center;
+        padding: 1rem;
 
         label {
             flex-grow: 1;
@@ -2792,20 +2793,34 @@ input[list]::-ms-clear {
 }
 
 @media only screen and (min-width: 768px) {
-    .cpf-field {
-        width: calc(65% - 0.5rem) !important;
+    .panel-user-data-container .floating-input.cpf-field {
+        width: calc(65% - 0.5rem);
     }
 
-    .cep-field {
-        width: calc(35% - 0.5rem) !important;
+    .panel-user-data-container .floating-input.cep-field {
+        width: calc(35% - 0.5rem);
     }
 
-    .state-field {
-        width: calc(25% - 0.5rem) !important;
+    .panel-user-data-container .floating-input.state-field {
+        width: calc(25% - 0.5rem);
     }
 
-    .city-field {
-        width: calc(75% - 0.5rem) !important;
+    .panel-user-data-container .floating-input.city-field {
+        width: calc(75% - 0.5rem);
+    }
+
+    #international_address_div {
+        .floating-input.cep-field {
+            width: 100%;
+        }
+    
+        .floating-input.state-field {
+            width: calc(50% - 0.5rem);
+        }
+    
+        .floating-input.city-field {
+            width: calc(50% - 0.5rem);
+        }
     }
 
     .number-field {
