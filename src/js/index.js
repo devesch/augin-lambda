@@ -2847,7 +2847,6 @@ export async function openModalCancelSubscription() {
     openModal(".modal.cancel-subscription-modal");
 }
 
-
 export async function saveCancelSubscription() {
     let save_cancel_subscription_error_span = document.getElementById("save_cancel_subscription_error_span");
     let cancel_subscription_found_a_better_checkbox = document.getElementById("cancel_subscription_found_a_better_checkbox");
@@ -2992,13 +2991,39 @@ export async function openModalAddPaymentMethod() {
     // });
 
     const userPostalCode = document.getElementById("card-postalcode-element");
-    if (userCountry == "BR") {
+    const cardPhone = document.getElementById("card-phone-element");
+
+    if (userCountry.toLowerCase() === "br") {
         userPostalCode.setAttribute("minlength", 10);
         userPostalCode.setAttribute("maxlength", 10);
-        userPostalCode.addEventListener("input", function(){
-            formatToCEP(this);
-        });
+
+        formatToCEP(userPostalCode);
+        formatToPhoneNumber(cardPhone);
+
+        userPostalCode.setAttribute("oninput", "js.index.formatToCEP(this)");
+        cardPhone.setAttribute("oninput", "js.index.formatToPhoneNumber(this)");
     }
+
+    let cardCountryElement = document.getElementById("card-country-element");
+    cardCountryElement.addEventListener("input", function() {
+
+        console.log(cardCountryElement);
+        console.log(cardCountryElement.value);
+
+        if (cardCountryElement.value.toLowerCase() === "br") {
+            formatToCEP(userPostalCode);
+            formatToPhoneNumber(cardPhone);
+            userPostalCode.setAttribute("minlength", 10);
+            userPostalCode.setAttribute("maxlength", 10);
+            userPostalCode.setAttribute("oninput", "js.index.formatToCEP(this)");
+            cardPhone.setAttribute("oninput", "js.index.formatToPhoneNumber(this)");
+        } else {
+            userPostalCode.removeAttribute("oninput");
+            cardPhone.removeAttribute("oninput");
+            userPostalCode.removeAttribute("minlength");
+            userPostalCode.removeAttribute("maxlength");
+        }
+    });
 
     var cardNumberElement = elements.create('cardNumber', {
         style: style,
