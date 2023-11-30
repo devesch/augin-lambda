@@ -3018,6 +3018,8 @@ export async function openModalAddPaymentMethod() {
             userPostalCode.setAttribute("oninput", "js.index.formatToCEP(this)");
             cardPhone.setAttribute("oninput", "js.index.formatToPhoneNumber(this)");
         } else {
+            formatToNumber(userPostalCode);
+            formatToNumber(cardPhone);
             userPostalCode.removeAttribute("oninput");
             cardPhone.removeAttribute("oninput");
             userPostalCode.removeAttribute("minlength");
