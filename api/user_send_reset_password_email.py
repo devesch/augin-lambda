@@ -24,7 +24,7 @@ class UserSendResetPasswordEmail(UserPage):
             html.esc("user_name_val", user_name)
             html.esc("user_encoded_email_val", EncodeDecode().encode_to_b64(user_email))
             html.esc("user_auth_token_val", user_auth_token)
-            Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data="Augin - Definir nova senha")
+            Ses().send_email(user_email, body_html=str(html), body_text=str(html), subject_data=self.translate("Augin - Definir nova senha"))
             return True
         except:
             return False

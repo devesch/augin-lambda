@@ -31,7 +31,7 @@
                         <section class="input-default-icon focus" id="user_phone_div">
                             <input type="text" name="user_country_code" id="user_country_code_input" class="input-country-code" value="+{{user_country_code_val}}" placeholder=" " readonly>
                             <div class="floating-input">
-                                <input oninput="js.index.formatToPhoneNumber(this); js.index.makeSaveUserPersonalDataAvailable();" type="text" name="user_phone" id="user_phone_input" value="{{user_phone_val}}" class="floating" placeholder=" ">
+                                <input oninput="js.index.formatToPhoneNumber(this); js.index.makeSaveUserPersonalDataAvailable();" type="tel" name="user_phone" id="user_phone_input" value="{{user_phone_val}}" class="floating" placeholder=" ">
                                 <label for="user-phone">{{Digite seu telefone}}</label>
                             </div>
                         </section>

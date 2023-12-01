@@ -70,6 +70,13 @@ input[type="tel"]:focus + label {
     transform: translateY(calc(-50% - 1.5rem));
 }
 
+.floating-select:focus + label {
+    color: colors.color("color-primary-500");
+    font-size: .9rem;
+    // transform: translateY(calc(-50% + -1rem));
+    transform: translateY(calc(-50% - 1.5rem));
+}
+
 .input:not(:placeholder-shown) + label,
 input[type="text"]:not(:placeholder-shown) + label,
 input[type="search"]:not(:placeholder-shown) + label,
@@ -122,7 +129,8 @@ input[type="email"][readonly] + label
 input[type="password"]:read-only + label,
 input[type="password"][readonly] + label,
 input[type="tel"]:read-only + label,
-input[type="tel"][readonly] + label {
+input[type="tel"][readonly] + label,
+.floating-select + label {
     background-color: colors.color("color-neutral-200");
 }
 
@@ -144,6 +152,11 @@ input[type="tel"][readonly] + label {
     pointer-events: none;
     padding: 0 .25rem;
 }
+
+.floating-select + label {
+    font-size: .9rem;
+    transform: translateY(calc(-50% - 1.5rem));
+} 
 
 .page__box-email-verify__form {
     margin-top: 3rem;

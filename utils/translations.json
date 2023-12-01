@@ -634,6 +634,11 @@
         "es": "Augin",
         "pt": "Augin"
     },
+    "Augin - Definir nova senha": {
+        "en": "Augin - Set new password",
+        "es": "Augin - Establecer una nueva contraseña",
+        "pt": "Augin - Definir nova senha"
+    },
     "Augin - Seu código de verficação chegou": {
         "en": "Augin - Your Verification Code has arrived",
         "es": "Augin: ha llegado su código de verificación",
@@ -938,6 +943,11 @@
         "en": "Zip code",
         "es": "Código postal",
         "pt": "CEP"
+    },
+    "CEP do Titular": {
+        "en": "CEP of the holder",
+        "es": "CEP del titular",
+        "pt": "CEP do Titular"
     },
     "CNPJ": {
         "en": "CNPJ",
@@ -2043,6 +2053,11 @@
         "en": "Successfully sent password reset email.",
         "es": "Correo electrónico de restablecimiento de contraseña exitoso.",
         "pt": "Email de reset de senha enviado com sucesso."
+    },
+    "Email do Titular": {
+        "en": "Holder Email",
+        "es": "Correo electrónico del titular",
+        "pt": "Email do Titular"
     },
     "Email inválido": {
         "en": "Invalid email",
@@ -4139,6 +4154,11 @@
         "es": "Número de factura",
         "pt": "Número da nota-fiscal"
     },
+    "Número do cartão": {
+        "en": "Card number",
+        "es": "Numero de tarjeta",
+        "pt": "Número do cartão"
+    },
     "Número do invoice": {
         "en": "Invoice number",
         "es": "Número de factura",
@@ -5794,6 +5814,11 @@
         "es": "Teléfono",
         "pt": "Telefone"
     },
+    "Telefone do Titular": {
+        "en": "Holder's phone",
+        "es": "Teléfono del titular",
+        "pt": "Telefone do Titular"
+    },
     "Tem certeza que deseja continuar?": {
         "en": "Are you sure you want to continue?",
         "es": "Estás seguro de que quieres continuar?",
@@ -6198,6 +6223,11 @@
         "en": "Uzbekistan",
         "es": "Uzbekistán",
         "pt": "Uzbequistão"
+    },
+    "Validade": {
+        "en": "Validity",
+        "es": "Validez",
+        "pt": "Validade"
     },
     "Validar Email": {
         "en": "Validate Email",

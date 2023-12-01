@@ -2967,31 +2967,17 @@ export async function openModalAddPaymentMethod() {
         
     }
 
-    // var cardNameElement = elements.create('name', {
-    //     style: style,
-    //     placeholder: '',
-    //     classes: {
-    //         base: 'stripe-card-input-custom-style',
-    //     },
-    // });
-    // cardNameElement.mount('#card-fullname-element');
-
     const userCountry = document.getElementById("country_input").value;
-
-    // var cardPostalCodeElement = elements.create('postalCode', {
-    //     style: style,
-    //     placeholder: '',
-    //     classes: {
-    //         base: 'stripe-card-input-custom-style',
-    //     },
-    // });
-    // cardPostalCodeElement.mount('#card-postalcode-element');
-    // cardPostalCodeElement.on('input', function(){
-    //     formatToCEP(this);
-    // });
-
     const userPostalCode = document.getElementById("card-postalcode-element");
     const cardPhone = document.getElementById("card-phone-element");
+
+    function applyFormatToCEP() {
+        formatToCEP(userPostalCode);
+    }
+
+    function applyPhoneNumber() {
+        formatToPhoneNumber(cardPhone);
+    }
 
     if (userCountry.toLowerCase() === "br") {
         userPostalCode.setAttribute("minlength", 10);
@@ -3000,28 +2986,24 @@ export async function openModalAddPaymentMethod() {
         formatToCEP(userPostalCode);
         formatToPhoneNumber(cardPhone);
 
-        userPostalCode.setAttribute("oninput", "js.index.formatToCEP(this)");
-        cardPhone.setAttribute("oninput", "js.index.formatToPhoneNumber(this)");
+        userPostalCode.addEventListener("input", applyFormatToCEP);
+        cardPhone.addEventListener("input", applyPhoneNumber);
     }
 
     let cardCountryElement = document.getElementById("card-country-element");
     cardCountryElement.addEventListener("input", function() {
-
-        console.log(cardCountryElement);
-        console.log(cardCountryElement.value);
-
         if (cardCountryElement.value.toLowerCase() === "br") {
             formatToCEP(userPostalCode);
             formatToPhoneNumber(cardPhone);
             userPostalCode.setAttribute("minlength", 10);
             userPostalCode.setAttribute("maxlength", 10);
-            userPostalCode.setAttribute("oninput", "js.index.formatToCEP(this)");
-            cardPhone.setAttribute("oninput", "js.index.formatToPhoneNumber(this)");
+            userPostalCode.addEventListener("input", applyFormatToCEP);
+            cardPhone.addEventListener("input", applyPhoneNumber);
         } else {
             formatToNumber(userPostalCode);
             formatToNumber(cardPhone);
-            userPostalCode.removeAttribute("oninput");
-            cardPhone.removeAttribute("oninput");
+            userPostalCode.removeEventListener("input", applyFormatToCEP);
+            cardPhone.removeEventListener("input", applyPhoneNumber);
             userPostalCode.removeAttribute("minlength");
             userPostalCode.removeAttribute("maxlength");
         }

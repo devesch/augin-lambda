@@ -154,50 +154,56 @@
                     <div class="floating-input">
                         <input type="text" id="card-fullname-element" name="card-fullname-element" placeholder=" "/>
                         <!-- <div id="card-fullname-element"></div> -->
-                        <label for="card-fullname-element">Nome do Titular</label>
+                        <label for="card-fullname-element">{{Nome do Titular}}</label>
                     </div>
                     <div class="floating-input">
                         <input type="email" id="card-email-element" name="card-email-element" placeholder=" "/>
-                        <label for="card-email-element">Email do Titular</label>
+                        <label for="card-email-element">{{Email do Titular}}</label>
                     </div>
                     <div class="floating-input">
-                        <input type="text" id="card-country-element" name="card-country-element" placeholder=" "/>
+                        <!-- <input type="text" id="card-country-element" name="card-country-element" placeholder=" "/> -->
+                        <select id="card-country-element" class="floating-select floating" name="card-country-element" value="{{user_country_val}}" required autocomplete="off">
+                            <option value="" selected="" disabled="">Selecione o país</option>
+                            <option value="br">Brasil</option>
+                            <option value="us">United States</option>
+                            <option value="es">España</option>
+                        </select>
+                        <label for="card-country-element">{{País}}</label>
                         <!-- <div id="card-country-element"></div> -->
-                        <label for="card-country-element">País</label>
                     </div>
                     <div class="floating-input">
-                        <input type="text" id="card-phone-element" name="card-phone-element" placeholder=" " inputmode="numeric"/>
-                        <label for="card-phone-element">Telefone do Titular</label>
+                        <input type="tel" id="card-phone-element" name="card-phone-element" placeholder=" " inputmode="numeric"/>
+                        <label for="card-phone-element">{{Telefone do Titular}}</label>
                     </div>
                     <div class="floating-input">
                         <input type="text" id="card-postalcode-element" name="card-postalcode-element" placeholder=" " inputmode="numeric"/>
                         <!-- <div id="card-postalcode-element"></div> -->
-                        <label for="card-postalcode-element">CEP do Titular</label>
+                        <label for="card-postalcode-element">{{CEP do Titular}}</label>
                     </div>
                     <div class="floating-input">
                         <input type="text" id="card-address-element" name="card-address-element" placeholder=" "/>
                         <!-- <div id="card-address-element"></div> -->
-                        <label for="card-address-element">Endereço</label>
+                        <label for="card-address-element">{{Endereço}}</label>
                     </div>
                     <div class="floating-input">
                         <input type="text" id="card-complement-element" name="card-complement-element" placeholder=" "/>
                         <!-- <div id="card-complement-element"></div> -->
-                        <label for="card-complement-element">Complemento</label>
+                        <label for="card-complement-element">{{Complemento}}</label>
                     </div>
                     <div class="floating-input">
                         <input type="text" id="card-city-element" name="card-city-element" placeholder=" "/>
                         <!-- <div id="card-city-element"></div> -->
-                        <label for="card-city-element">Cidade</label>
+                        <label for="card-city-element">{{Cidade}}</label>
                     </div>
                     <div class="floating-input">
                         <input type="text" id="card-state-element" name="card-state-element" placeholder=" "/>
                         <!-- <div id="card-state-element"></div> -->
-                        <label for="card-state-element">Estado</label>
+                        <label for="card-state-element">{{Estado}}</label>
                     </div>
                     <div class="floating-input">
                         <div id="card-number-element">
                         </div>
-                        <label for="card-number-element">Número do cartão</label>
+                        <label for="card-number-element">{{Número do cartão}}</label>
                         <span class="brand">
                             <i class="pf pf-credit-card" id="brand-icon"></i>
                         </span>
@@ -205,7 +211,7 @@
                     <div class="floating-input">
                         <div id="card-expiry-element">
                         </div>
-                        <label for="card-expiry-element">Validade</label>
+                        <label for="card-expiry-element">{{Validade}}</label>
                     </div>
                     <div class="floating-input">
                         <div id="card-cvc-element">
