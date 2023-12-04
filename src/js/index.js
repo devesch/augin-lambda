@@ -3025,12 +3025,13 @@ export async function openModalAddPaymentMethod() {
     //     }
     // });
 
+    const stripeAcceptedCardBrands = ["amex", "diners", "discover", "eftpos", "elo", "jcb", "mastercard", "unionpay", "visa"];
+
     cardNumberElement.on('change', function(event) {
         let cardNumberIcon = document.querySelector(".card-number-icon");
 
 
         if (event.empty === true) {
-            console.log(event.empty === true);
             cardNumberIcon.classList.add("none");
             return;
         }
@@ -3039,20 +3040,29 @@ export async function openModalAddPaymentMethod() {
         cardNumberIcon.classList.remove("none"); 
 
         if ((typeof event.error) === "object") {
-            console.log((typeof event.error) === "object");
             cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card_off.svg";
             return;
         }
 
-        if (event.brand === "unknown") {
+        let brand = event.brand;
+
+        if (brand === "unknown") {
             cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
             return;
         }
 
-        if (event.brand) {
-            console.log(event.brand);
-            cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/" + event.brand + ".svg";
-            return;
+        if (brand) {
+            console.log(brand);
+            console.log(stripeAcceptedCardBrands);
+            if (stripeAcceptedCardBrands.indexOf(brand) !== -1) {
+                console.log(`${brand} is in the array.`);
+                cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/" + brand + ".svg";
+                return;
+            } else {
+                console.log(`${brand} is not in the array.`);
+                cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
+                return;
+            }
         }
     });
       
