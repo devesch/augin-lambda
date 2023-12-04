@@ -163,7 +163,7 @@
                     <div class="floating-input">
                         <!-- <input type="text" id="card-country-element" name="card-country-element" placeholder=" "/> -->
                         <select id="card-country-element" class="floating-select floating" name="card-country-element" value="{{user_country_val}}" required autocomplete="off">
-                            <option value="" selected="" disabled="">Selecione o país</option>
+                            <option value="" selected="" disabled="">{{Selecione o país}}</option>
                             <option value="br">Brasil</option>
                             <option value="us">United States</option>
                             <option value="es">España</option>
@@ -204,9 +204,9 @@
                         <div id="card-number-element">
                         </div>
                         <label for="card-number-element">{{Número do cartão}}</label>
-                        <span class="brand">
-                            <i class="pf pf-credit-card" id="brand-icon"></i>
-                        </span>
+                        <div class="card-number-icon-container">
+                            <img src="{{cdn_val}}/assets/icons/credit_card_brands/credit_card.svg" class="card-number-icon none" alt="" width="24" height="24" loading="lazy">
+                        </div>
                     </div>
                     <div class="floating-input">
                         <div id="card-expiry-element">

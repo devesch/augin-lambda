@@ -3841,3 +3841,14 @@ input[list]::-ms-clear {
     text-align: center;
     color: colors.color("color-error-500");
 }
+
+.card-number-icon-container {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    transform: translateY(50%);
+}
+
+.card-number-icon {
+    vertical-align: middle;
+}

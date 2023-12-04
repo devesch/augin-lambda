@@ -3012,35 +3012,12 @@ export async function openModalAddPaymentMethod() {
     var cardNumberElement = elements.create('cardNumber', {
         style: style,
         placeholder: '',
-        showIcon: true,
+        // showIcon: true,
         classes: {
             base: 'stripe-card-input-custom-style',
         },
     });
     cardNumberElement.mount('#card-number-element');
-
-    // var cardBrandToPfClass = {
-    //     'visa': 'pf-visa',
-    //     'mastercard': 'pf-mastercard',
-    //     'amex': 'pf-american-express',
-    //     'discover': 'pf-discover',
-    //     'diners': 'pf-diners',
-    //     'jcb': 'pf-jcb',
-    //     'unknown': 'pf-credit-card',
-    // }
-
-    // function setBrandIcon(brand) {
-    //     var brandIconElement = document.getElementById('brand-icon');
-    //     var pfClass = 'pf-credit-card';
-    //     if (brand in cardBrandToPfClass) {
-    //         pfClass = cardBrandToPfClass[brand];
-    //     }
-    //     for (var i = brandIconElement.classList.length - 1; i >= 0; i--) {
-    //         brandIconElement.classList.remove(brandIconElement.classList[i]);
-    //     }
-    //     brandIconElement.classList.add('pf');
-    //     brandIconElement.classList.add(pfClass);
-    // }
 
     // cardNumberElement.on('load', function(event) {
     //     if (event.brand) {
@@ -3048,12 +3025,36 @@ export async function openModalAddPaymentMethod() {
     //     }
     // });
 
-    // cardNumberElement.on('change', function(event) {
-    //     // Switch brand logo
-    //     if (event.brand) {
-    //         setBrandIcon(event.brand);
-    //     }
-    // });
+    cardNumberElement.on('change', function(event) {
+        let cardNumberIcon = document.querySelector(".card-number-icon");
+
+
+        if (event.empty === true) {
+            console.log(event.empty === true);
+            cardNumberIcon.classList.add("none");
+            return;
+        }
+
+        // Switch brand logo
+        cardNumberIcon.classList.remove("none"); 
+
+        if ((typeof event.error) === "object") {
+            console.log((typeof event.error) === "object");
+            cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card_off.svg";
+            return;
+        }
+
+        if (event.brand === "unknown") {
+            cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
+            return;
+        }
+
+        if (event.brand) {
+            console.log(event.brand);
+            cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/" + event.brand + ".svg";
+            return;
+        }
+    });
       
     var cardExpiryElement = elements.create('cardExpiry', {
         style: style,
