@@ -2876,7 +2876,15 @@ export async function saveCancelSubscription() {
 }
 
 export async function openModalAddPaymentMethod() {
-    let stripe_token_input = document.getElementById("stripe_token_input");
+    const stripe_token_input = document.getElementById("stripe_token_input");
+    const cardCountryElement = document.getElementById("card-country-element");
+    const userCountry = document.getElementById("country_input").value;
+    const userLang = document.getElementById("lang_input").value;
+    const userPostalCode = document.getElementById("card-postalcode-element");
+    const cardPhone = document.getElementById("card-phone-element");
+    const form = document.getElementById('payment-form');
+    const stripeAcceptedCardBrands = ["amex", "diners", "discover", "eftpos", "elo", "jcb", "mastercard", "unionpay", "visa"];
+    const cardNumberIcon = document.querySelector(".card-number-icon");
 
     const stripe = Stripe(stripe_token_input.value);
     const appearance = {
@@ -2890,56 +2898,22 @@ export async function openModalAddPaymentMethod() {
             colorDanger: '#df1b41',
             fontFamily: 'Raleway, Helvetica, system-ui, sans-serif',
             spacingUnit: '2px',
-            // borderRadius: '100px',
-            // See all possible variables below
           },
-
-        // base: {
-        //     fontSize: '16px',
-        //     color: '#0000FF',
-        //     fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
-        //     '::placeholder': {
-        //         color: 'rgba(0, 0, 0, 0.6)',
-        //     },
-        // },
         invalid: {
             color: '#00FF00',
         },
-
-        rules: {
-            ".Input": {
-                // border: '2px solid #8C8988',
-                // borderRadius: '20px',
-                boxShadow: '0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 6px rgba(18, 42, 66, 0.02)',
-                // padding: "16px 32px",
-            }
-        }
     };
     const elements = stripe.elements({
-        locale: document.getElementById("lang_input").value,
+        locale: userLang,
         appearance,
         loader: "always",
         fonts: [{
             family: 'Raleway',
-            // src: 'url(' + ProjectData.props.cdnVal + '/assets/fonts/raleway-regular-webfont.woff)',
             src: 'url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff2") format("woff2"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff") format("woff"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.ttf") format("truetype")',
             weight: '400',
             display: 'swap',
         }]
-    })
-    
-    // const card = elements.create('card', {
-    //     style: appearance
-    // });
-    // card.mount('#card-element'); 
-    // card.addEventListener('change', function (event) {
-    //     const displayError = document.getElementById('card-errors');
-    //     if (event.error) {
-    //         displayError.textContent = event.error.message;
-    //     } else {
-    //         displayError.textContent = '';
-    //     }
-    // });
+    });
 
     const style = {
         base: {
@@ -2965,47 +2939,43 @@ export async function openModalAddPaymentMethod() {
             iconColor: 'var(--color-error-500, #D92616)',
         }
         
-    }
-
-    const userCountry = document.getElementById("country_input").value;
-    const userPostalCode = document.getElementById("card-postalcode-element");
-    const cardPhone = document.getElementById("card-phone-element");
+    };
 
     function applyFormatToCEP() {
         formatToCEP(userPostalCode);
     }
 
-    function applyPhoneNumber() {
+    function applyFormatPhoneNumber() {
         formatToPhoneNumber(cardPhone);
+    }
+
+    function applyBRFormatToFields() {
+        userPostalCode.setAttribute("minlength", 10);
+        userPostalCode.setAttribute("maxlength", 10);
+        formatToCEP(userPostalCode);
+        formatToPhoneNumber(cardPhone);
+        userPostalCode.addEventListener("input", applyFormatToCEP);
+        cardPhone.addEventListener("input", applyFormatPhoneNumber);
+    }
+
+    function removeBRFormatFromFields() {
+        userPostalCode.removeAttribute("minlength");
+        userPostalCode.removeAttribute("maxlength");
+        formatToNumber(userPostalCode);
+        formatToNumber(cardPhone);
+        userPostalCode.removeEventListener("input", applyFormatToCEP);
+        cardPhone.removeEventListener("input", applyFormatPhoneNumber);
     }
 
     if (userCountry.toLowerCase() === "br") {
-        userPostalCode.setAttribute("minlength", 10);
-        userPostalCode.setAttribute("maxlength", 10);
-
-        formatToCEP(userPostalCode);
-        formatToPhoneNumber(cardPhone);
-
-        userPostalCode.addEventListener("input", applyFormatToCEP);
-        cardPhone.addEventListener("input", applyPhoneNumber);
+        applyBRFormatToFields();
     }
 
-    let cardCountryElement = document.getElementById("card-country-element");
     cardCountryElement.addEventListener("input", function() {
         if (cardCountryElement.value.toLowerCase() === "br") {
-            formatToCEP(userPostalCode);
-            formatToPhoneNumber(cardPhone);
-            userPostalCode.setAttribute("minlength", 10);
-            userPostalCode.setAttribute("maxlength", 10);
-            userPostalCode.addEventListener("input", applyFormatToCEP);
-            cardPhone.addEventListener("input", applyPhoneNumber);
+            applyBRFormatToFields();
         } else {
-            formatToNumber(userPostalCode);
-            formatToNumber(cardPhone);
-            userPostalCode.removeEventListener("input", applyFormatToCEP);
-            cardPhone.removeEventListener("input", applyPhoneNumber);
-            userPostalCode.removeAttribute("minlength");
-            userPostalCode.removeAttribute("maxlength");
+            removeBRFormatFromFields();
         }
     });
 
@@ -3019,32 +2989,20 @@ export async function openModalAddPaymentMethod() {
     });
     cardNumberElement.mount('#card-number-element');
 
-    // cardNumberElement.on('load', function(event) {
-    //     if (event.brand) {
-    //         setBrandIcon(event.brand);
-    //     }
-    // });
-
-    const stripeAcceptedCardBrands = ["amex", "diners", "discover", "eftpos", "elo", "jcb", "mastercard", "unionpay", "visa"];
-
     cardNumberElement.on('change', function(event) {
-        let cardNumberIcon = document.querySelector(".card-number-icon");
-
+        let brand = event.brand;
 
         if (event.empty === true) {
             cardNumberIcon.classList.add("none");
             return;
         }
 
-        // Switch brand logo
         cardNumberIcon.classList.remove("none"); 
 
         if ((typeof event.error) === "object") {
             cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card_off.svg";
             return;
         }
-
-        let brand = event.brand;
 
         if (brand === "unknown") {
             cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
@@ -3102,7 +3060,6 @@ export async function openModalAddPaymentMethod() {
     setupCardInputEventListener(cardExpiryElement);
     setupCardInputEventListener(cardCvcElement);
 
-    const form = document.getElementById('payment-form');
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
