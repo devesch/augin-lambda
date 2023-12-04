@@ -3324,6 +3324,11 @@
         "es": "Mas opciones",
         "pt": "Mais opções"
     },
+    "Mais opções do método de pagamento": {
+        "en": "More payment method options",
+        "es": "Más opciones de método de pago",
+        "pt": "Mais opções do método de pagamento"
+    },
     "Malawi": {
         "en": "Malawi",
         "es": "Malawi",
@@ -6328,6 +6333,11 @@
         "en": "View purchase details",
         "es": "Ver detalles de compra",
         "pt": "Visualizar detalhes da compra"
+    },
+    "Visualizar informações do pedido": {
+        "en": "View order information",
+        "es": "Ver información de pedido",
+        "pt": "Visualizar informações do pedido"
     },
     "Visualizações": {
         "en": "Views",

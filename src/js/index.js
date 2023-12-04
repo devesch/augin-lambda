@@ -2876,235 +2876,243 @@ export async function saveCancelSubscription() {
 }
 
 export async function openModalAddPaymentMethod() {
-    const stripe_token_input = document.getElementById("stripe_token_input");
-    const cardCountryElement = document.getElementById("card-country-element");
-    const userCountry = document.getElementById("country_input").value;
-    const userLang = document.getElementById("lang_input").value;
-    const userPostalCode = document.getElementById("card-postalcode-element");
-    const cardPhone = document.getElementById("card-phone-element");
-    const form = document.getElementById('payment-form');
-    const stripeAcceptedCardBrands = ["amex", "diners", "discover", "eftpos", "elo", "jcb", "mastercard", "unionpay", "visa"];
-    const cardNumberIcon = document.querySelector(".card-number-icon");
+    try {
+        const stripe_token_input = document.getElementById("stripe_token_input");
+        // const cardCountryElement = document.getElementById("card-country-element");
+        // const userCountry = document.getElementById("country_input").value;
+        // const userLang = document.getElementById("lang_input").value;
+        // const userPostalCode = document.getElementById("card-postalcode-element");
+        // const cardPhone = document.getElementById("card-phone-element");
+        // const form = document.getElementById('payment-form');
+        // const stripeAcceptedCardBrands = ["amex", "diners", "discover", "eftpos", "elo", "jcb", "mastercard", "unionpay", "visa"];
+        // const cardNumberIcon = document.querySelector(".card-number-icon");
 
-    const stripe = Stripe(stripe_token_input.value);
-    const appearance = {
-        theme: 'stripe',
-        labels: "floating",
+        const stripe = Stripe(stripe_token_input.value);
+        const appearance = {
+            theme: 'stripe',
+            labels: "floating",
 
-        variables: {
-            colorPrimary: '#ff0000',
-            colorBackground: '#ff0000',
-            colorText: '#ff00ff',
-            colorDanger: '#df1b41',
-            fontFamily: 'Raleway, Helvetica, system-ui, sans-serif',
-            spacingUnit: '2px',
-          },
-        invalid: {
-            color: '#00FF00',
-        },
-    };
-    const elements = stripe.elements({
-        locale: userLang,
-        appearance,
-        loader: "always",
-        fonts: [{
-            family: 'Raleway',
-            src: 'url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff2") format("woff2"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff") format("woff"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.ttf") format("truetype")',
-            weight: '400',
-            display: 'swap',
-        }]
-    });
-
-    const style = {
-        base: {
-            iconColor: '#666EE8',
-            fontSize: '16px',
-            lineHeight: '1',
-            fontWeight: 300,
-            fontFamily: '"Raleway"',
-            backgroundColor: '#F7F2F0',
-            borderRadius: '40px',
-            textRendering: 'optimizeLegibility',
-            fontSmoothing: 'grayscale',
-            textTransform: 'none',
-            color: 'var(--color-neutral-900, #262525)',
-            // padding: '20px',
-            iconColor: 'transparent',
-            
-            ':focus': {
-                iconColor: 'var(--color-neutral-900, #262525)',
+            variables: {
+                colorPrimary: '#ff0000',
+                colorBackground: '#ff0000',
+                colorText: '#ff00ff',
+                colorDanger: '#df1b41',
+                fontFamily: 'Raleway, Helvetica, system-ui, sans-serif',
+                spacingUnit: '2px',
             },
-        },
-        invalid: {
-            iconColor: 'var(--color-error-500, #D92616)',
+            invalid: {
+                color: '#00FF00',
+            },
+        };
+        const elements = stripe.elements({
+            locale: userLang,
+            appearance,
+            loader: "always",
+            fonts: [{
+                family: 'Raleway',
+                src: 'url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff2") format("woff2"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.woff") format("woff"), url("https://cdn.augin.app/assets/fonts/raleway-regular-webfont.ttf") format("truetype")',
+                weight: '400',
+                display: 'swap',
+            }]
+        });
+
+        const style = {
+            base: {
+                iconColor: '#666EE8',
+                fontSize: '16px',
+                lineHeight: '1',
+                fontWeight: 300,
+                fontFamily: '"Raleway"',
+                backgroundColor: '#F7F2F0',
+                borderRadius: '40px',
+                textRendering: 'optimizeLegibility',
+                fontSmoothing: 'grayscale',
+                textTransform: 'none',
+                color: 'var(--color-neutral-900, #262525)',
+                // padding: '20px',
+                iconColor: 'transparent',
+                
+                ':focus': {
+                    iconColor: 'var(--color-neutral-900, #262525)',
+                },
+            },
+            invalid: {
+                iconColor: 'var(--color-error-500, #D92616)',
+            }
+            
+        };
+
+        function applyFormatToCEP() {
+            formatToCEP(userPostalCode);
         }
-        
-    };
 
-    function applyFormatToCEP() {
-        formatToCEP(userPostalCode);
-    }
+        function applyFormatPhoneNumber() {
+            formatToPhoneNumber(cardPhone);
+        }
 
-    function applyFormatPhoneNumber() {
-        formatToPhoneNumber(cardPhone);
-    }
+        function applyBRFormatToFields() {
+            userPostalCode.setAttribute("minlength", 10);
+            userPostalCode.setAttribute("maxlength", 10);
+            formatToCEP(userPostalCode);
+            formatToPhoneNumber(cardPhone);
+            userPostalCode.addEventListener("input", applyFormatToCEP);
+            cardPhone.addEventListener("input", applyFormatPhoneNumber);
+        }
 
-    function applyBRFormatToFields() {
-        userPostalCode.setAttribute("minlength", 10);
-        userPostalCode.setAttribute("maxlength", 10);
-        formatToCEP(userPostalCode);
-        formatToPhoneNumber(cardPhone);
-        userPostalCode.addEventListener("input", applyFormatToCEP);
-        cardPhone.addEventListener("input", applyFormatPhoneNumber);
-    }
+        function removeBRFormatFromFields() {
+            userPostalCode.removeAttribute("minlength");
+            userPostalCode.removeAttribute("maxlength");
+            formatToNumber(userPostalCode);
+            formatToNumber(cardPhone);
+            userPostalCode.removeEventListener("input", applyFormatToCEP);
+            cardPhone.removeEventListener("input", applyFormatPhoneNumber);
+        }
 
-    function removeBRFormatFromFields() {
-        userPostalCode.removeAttribute("minlength");
-        userPostalCode.removeAttribute("maxlength");
-        formatToNumber(userPostalCode);
-        formatToNumber(cardPhone);
-        userPostalCode.removeEventListener("input", applyFormatToCEP);
-        cardPhone.removeEventListener("input", applyFormatPhoneNumber);
-    }
-
-    if (userCountry.toLowerCase() === "br") {
-        applyBRFormatToFields();
-    }
-
-    cardCountryElement.addEventListener("input", function() {
-        if (cardCountryElement.value.toLowerCase() === "br") {
+        if (userCountry.toLowerCase() === "br") {
             applyBRFormatToFields();
-        } else {
-            removeBRFormatFromFields();
-        }
-    });
-
-    var cardNumberElement = elements.create('cardNumber', {
-        style: style,
-        placeholder: '',
-        // showIcon: true,
-        classes: {
-            base: 'stripe-card-input-custom-style',
-        },
-    });
-    cardNumberElement.mount('#card-number-element');
-
-    cardNumberElement.on('change', function(event) {
-        let brand = event.brand;
-
-        if (event.empty === true) {
-            cardNumberIcon.classList.add("none");
-            return;
         }
 
-        cardNumberIcon.classList.remove("none"); 
-
-        if ((typeof event.error) === "object") {
-            cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card_off.svg";
-            return;
-        }
-
-        if (brand === "unknown") {
-            cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
-            return;
-        }
-
-        if (brand) {
-            console.log(brand);
-            console.log(stripeAcceptedCardBrands);
-            if (stripeAcceptedCardBrands.indexOf(brand) !== -1) {
-                console.log(`${brand} is in the array.`);
-                cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/" + brand + ".svg";
-                return;
+        cardCountryElement.addEventListener("input", function() {
+            if (cardCountryElement.value.toLowerCase() === "br") {
+                applyBRFormatToFields();
             } else {
-                console.log(`${brand} is not in the array.`);
+                removeBRFormatFromFields();
+            }
+        });
+
+        var cardNumberElement = elements.create('cardNumber', {
+            style: style,
+            placeholder: '',
+            // showIcon: true,
+            classes: {
+                base: 'stripe-card-input-custom-style',
+            },
+        });
+        cardNumberElement.mount('#card-number-element');
+
+        cardNumberElement.on('change', function(event) {
+            let brand = event.brand;
+
+            if (event.empty === true) {
+                cardNumberIcon.classList.add("none");
+                return;
+            }
+
+            cardNumberIcon.classList.remove("none"); 
+
+            if ((typeof event.error) === "object") {
+                cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card_off.svg";
+                return;
+            }
+
+            if (brand === "unknown") {
                 cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
                 return;
             }
-        }
-    });
-      
-    var cardExpiryElement = elements.create('cardExpiry', {
-        style: style,
-        placeholder: '',
-        classes: {
-            base: 'stripe-card-input-custom-style'
-        },
-    });
-    cardExpiryElement.mount('#card-expiry-element');
-      
-    var cardCvcElement = elements.create('cardCvc', {
-        style: style,
-        placeholder: '',
-        classes: {
-            base: 'stripe-card-input-custom-style'
-        },
-    });
-    cardCvcElement.mount('#card-cvc-element');
 
-    function setupCardInputEventListener(cardElement) {
-        const displayError = document.getElementById('card-errors');
-    
-        cardElement.addEventListener('change', function (event) {
-            console.log(event);
-            if (event.error) {
-                displayError.textContent = event.error.message;
-            } else {
-                displayError.textContent = "";
+            if (brand) {
+                console.log(brand);
+                console.log(stripeAcceptedCardBrands);
+                if (stripeAcceptedCardBrands.indexOf(brand) !== -1) {
+                    console.log(`${brand} is in the array.`);
+                    cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/" + brand + ".svg";
+                    return;
+                } else {
+                    console.log(`${brand} is not in the array.`);
+                    cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
+                    return;
+                }
             }
         });
-    }    
-
-    // setupCardInputEventListener(cardPostalCodeElement);
-    setupCardInputEventListener(cardNumberElement);
-    setupCardInputEventListener(cardExpiryElement);
-    setupCardInputEventListener(cardCvcElement);
-
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const cardFullname = document.getElementById("card-fullname-element").value;
-        const cardEmail = document.getElementById("card-email-element").value;
-        const cardPhone = document.getElementById("card-phone-element").value;
-        const cardPostalCode = document.getElementById("card-postalcode-element").value;
-        const cardAddress = document.getElementById("card-address-element").value;
-        const cardComplement = document.getElementById("card-complement-element").value;
-        const cardCity = document.getElementById("card-city-element").value;
-        const cardState = document.getElementById("card-state-element").value;
-        const cardCountry = document.getElementById("card-country-element").value;
-
-        stripe.createPaymentMethod({
-            type: 'card',
-            billing_details: {
-                address: {
-                    line1: cardAddress,
-                    line2: cardComplement,
-                    city: cardCity,
-                    state: cardState,
-                    postal_code: cardPostalCode,
-                    country: cardCountry,
-                },
-                name: cardFullname,
-                email: cardEmail,
-                phone: cardPhone,
+        
+        var cardExpiryElement = elements.create('cardExpiry', {
+            style: style,
+            placeholder: '',
+            classes: {
+                base: 'stripe-card-input-custom-style'
             },
-            card: cardNumberElement
-        }).then(function (result) {
-            if (result.error) {
-                // Inform the user if there was an error.
-                const errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                console.log(result.paymentMethod);
-                // Send the PaymentMethod ID to your server for further processing.
-                // For this step, you'd typically make an AJAX call to your backend.
-                
-                saveAddPaymentMethod(result.paymentMethod.id);
-            }
         });
-    });
+        cardExpiryElement.mount('#card-expiry-element');
+        
+        var cardCvcElement = elements.create('cardCvc', {
+            style: style,
+            placeholder: '',
+            classes: {
+                base: 'stripe-card-input-custom-style'
+            },
+        });
+        cardCvcElement.mount('#card-cvc-element');
 
-    openModal(".modal.add-payment-method-modal");
+        function setupCardInputEventListener(cardElement) {
+            const displayError = document.getElementById('card-errors');
+        
+            cardElement.addEventListener('change', function (event) {
+                console.log(event);
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = "";
+                }
+            });
+        }    
+
+        // setupCardInputEventListener(cardPostalCodeElement);
+        setupCardInputEventListener(cardNumberElement);
+        setupCardInputEventListener(cardExpiryElement);
+        setupCardInputEventListener(cardCvcElement);
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const cardFullname = document.getElementById("card-fullname-element").value;
+            const cardEmail = document.getElementById("card-email-element").value;
+            const cardPhone = document.getElementById("card-phone-element").value;
+            const cardPostalCode = document.getElementById("card-postalcode-element").value;
+            const cardAddress = document.getElementById("card-address-element").value;
+            const cardComplement = document.getElementById("card-complement-element").value;
+            const cardCity = document.getElementById("card-city-element").value;
+            const cardState = document.getElementById("card-state-element").value;
+            const cardCountry = document.getElementById("card-country-element").value;
+
+            stripe.createPaymentMethod({
+                type: 'card',
+                billing_details: {
+                    address: {
+                        line1: cardAddress,
+                        line2: cardComplement,
+                        city: cardCity,
+                        state: cardState,
+                        postal_code: cardPostalCode,
+                        country: cardCountry,
+                    },
+                    name: cardFullname,
+                    email: cardEmail,
+                    phone: cardPhone,
+                },
+                card: cardNumberElement
+            }).then(function (result) {
+                if (result.error) {
+                    // Inform the user if there was an error.
+                    const errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    console.log(result.paymentMethod);
+                    // Send the PaymentMethod ID to your server for further processing.
+                    // For this step, you'd typically make an AJAX call to your backend.
+                    
+                    saveAddPaymentMethod(result.paymentMethod.id);
+                }
+            });
+        });
+
+        openModal(".modal.add-payment-method-modal");
+
+    } catch(error) {
+        alert(error);
+        let panel_your_plan_send_payment_method_error_response = await apiCaller("panel_your_plan_send_payment_method_error", {
+            "error": error,
+        });
+    }
 }
 
 export async function saveAddPaymentMethod(new_payment_method_id) {
