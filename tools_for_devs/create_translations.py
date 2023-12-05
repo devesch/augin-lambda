@@ -18,6 +18,7 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Teste.",
     "Seu trial foi iniciado com sucesso.",
     "Seu trial terminou, escolha seu plano.",
     "Um novo dispositivo foi usado para acessar sua conta.",
@@ -246,52 +247,39 @@ for file in os.listdir(api_source_path):
 
 translator = Translator()
 
-# translated_keys = []
+translator = Translator()
 
-# for key, val in country_data.items():
-#     if val["name"] not in translated_keys and val["name"] not in ["Argentina"]:
-#         print("Getting translation for " + val["name"])
-#         translations[val["name"]] = {"pt": "", "es": "", "en": val["name"]}
-#         try:
-#             translations[val["name"]]["pt"] = translator.translate(text=val["name"], src="en", dest="pt").text
-#             translations[val["name"]]["es"] = translator.translate(text=val["name"], src="en", dest="es").text
-#         except:
-#             translations[val["name"]]["pt"] = val["name"]
-#             translations[val["name"]]["es"] = val["name"]
-#         translated_keys.append(val["name"])
 
-for placeholder in filtered_placeholders:
-    if not "_val" in placeholder and not "html_" in placeholder and not "js." in placeholder and not "_" in placeholder and not "<" in placeholder and not "header" in placeholder and not "menu" in placeholder and not "footer" in placeholder:
+def process_placeholder(placeholder):
+    if not any(substr in placeholder for substr in ["_val", "html_", "js.", "_", "<", "header", "footer"]) and placeholder not in ("Backoffice prompts", "menu", ""):
         if placeholder not in translations:
             print("getting translation for: " + placeholder)
             translations[placeholder] = {"pt": placeholder, "es": "", "en": ""}
             translations[placeholder]["es"] = translator.translate(text=placeholder, src="pt", dest="es").text
             translations[placeholder]["en"] = translator.translate(text=placeholder, src="pt", dest="en").text
 
-        if placeholder[0].isupper():
-            translations[placeholder]["pt"] = translations[placeholder]["pt"][0].upper() + translations[placeholder]["pt"][1:]
-            translations[placeholder]["es"] = translations[placeholder]["es"][0].upper() + translations[placeholder]["es"][1:]
-            translations[placeholder]["en"] = translations[placeholder]["en"][0].upper() + translations[placeholder]["en"][1:]
-        else:
-            translations[placeholder]["pt"] = translations[placeholder]["pt"][0].lower() + translations[placeholder]["pt"][1:]
-            translations[placeholder]["es"] = translations[placeholder]["es"][0].lower() + translations[placeholder]["es"][1:]
-            translations[placeholder]["en"] = translations[placeholder]["en"][0].lower() + translations[placeholder]["en"][1:]
+        first_char = placeholder[0]
+        for lang in ["pt", "es", "en"]:
+            if first_char.isupper():
+                translations[placeholder][lang] = translations[placeholder][lang][0].upper() + translations[placeholder][lang][1:]
+            else:
+                translations[placeholder][lang] = translations[placeholder][lang][0].lower() + translations[placeholder][lang][1:]
 
-        if placeholder == placeholder.capitalize():
-            translations[placeholder]["pt"] = translations[placeholder]["pt"].capitalize()
-            translations[placeholder]["es"] = translations[placeholder]["es"].capitalize()
-            translations[placeholder]["en"] = translations[placeholder]["en"].capitalize()
+        if placeholder == placeholder.title():
+            for lang in ["pt", "es", "en"]:
+                translations[placeholder][lang] = translations[placeholder][lang].title()
 
-        if (translations[placeholder]["es"] == translations[placeholder]["es"].upper()) and (placeholder != placeholder.upper()):
-            translations[placeholder]["es"] = translations[placeholder]["es"].capitalize()
-        if (translations[placeholder]["en"] == translations[placeholder]["en"].upper()) and (placeholder != placeholder.upper()):
-            translations[placeholder]["en"] = translations[placeholder]["en"].capitalize()
+    # for key, translation in translations.items():
+    #     translation["pt"] = translation["pt"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
+    #     translation["es"] = translation["es"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
+    #     translation["en"] = translation["en"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
 
 
-for key, translation in translations.items():
-    translation["pt"] = translation["pt"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
-    translation["es"] = translation["es"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
-    translation["en"] = translation["en"].replace("augin", "Augin").replace("AUGIN", "Augin").replace("(MBS)", "(MBs)").replace("(Mbs)", "(MBs)").replace("(mbs)", "(MBs)").replace(" MBS", " MBs").replace(" Mbs", " MBs").replace(" mbs", " MBs")
+from concurrent.futures import ThreadPoolExecutor
+
+with ThreadPoolExecutor(max_workers=10) as executor:
+    executor.map(process_placeholder, filtered_placeholders)
+
 
 with open("utils/translations.json", "w", encoding="utf-8") as json_file:
     json.dump(translations, json_file, sort_keys=True, ensure_ascii=False, indent=4)

@@ -16,12 +16,12 @@
     },
     "1 ano atrás": {
         "en": "1 year ago",
-        "es": "Hace 1 año",
+        "es": "hace 1 año",
         "pt": "1 ano atrás"
     },
     "1 dia atrás": {
         "en": "1 day ago",
-        "es": "Hace 1 día",
+        "es": "hace 1 día",
         "pt": "1 dia atrás"
     },
     "1 hora atrás": {
@@ -31,12 +31,12 @@
     },
     "1 minuto atrás": {
         "en": "1 minute ago",
-        "es": "Hace 1 minuto",
+        "es": "hace 1 minuto",
         "pt": "1 minuto atrás"
     },
     "1 mês atrás": {
         "en": "1 month ago",
-        "es": "Hace 1 mes",
+        "es": "hace 1 mes",
         "pt": "1 mês atrás"
     },
     "1 segundo atrás": {
@@ -235,8 +235,8 @@
         "pt": "Aceita pix anualmente"
     },
     "Aceitar Tudo": {
-        "en": "Accept everything",
-        "es": "Aceptar todo",
+        "en": "Accept Everything",
+        "es": "Aceptar Todo",
         "pt": "Aceitar Tudo"
     },
     "Acessar a minha conta": {
@@ -270,8 +270,8 @@
         "pt": "Active card"
     },
     "Adicionar": {
-        "en": "To add",
-        "es": "Para agregar",
+        "en": "To Add",
+        "es": "Para Agregar",
         "pt": "Adicionar"
     },
     "Adicionar foto de perfil": {
@@ -355,9 +355,9 @@
         "pt": "Aguarde o prazo estabelecido pelo banco para verificar o status do seu reembolso"
     },
     "Air Conditioning": {
-        "en": "Air conditioning",
-        "es": "Aire acondicionado",
-        "pt": "Ar condicionado"
+        "en": "Air Conditioning",
+        "es": "Aire Acondicionado",
+        "pt": "Ar Condicionado"
     },
     "Albania": {
         "en": "Albania",
@@ -700,18 +700,18 @@
         "pt": "Backoffice - Assinaturas canceladas"
     },
     "Backoffice - Criar Cupom": {
-        "en": "BACKOFFICE - Create coupon",
-        "es": "BackOffice - Crear cupón",
+        "en": "Backoffice - Create Coupon",
+        "es": "Backoffice - Crear Cupón",
         "pt": "Backoffice - Criar Cupom"
     },
     "Backoffice - Criar Plano": {
         "en": "Backoffice - Create Plan",
-        "es": "BackOffice - Crear plan",
+        "es": "Backoffice - Crear Plan",
         "pt": "Backoffice - Criar Plano"
     },
     "Backoffice - Cupons": {
-        "en": "BACKOFFICE - Coupons",
-        "es": "BackOffice - cupones",
+        "en": "Backoffice - Coupons",
+        "es": "Backoffice - Cupones",
         "pt": "Backoffice - Cupons"
     },
     "Backoffice - Falhas de recorrência": {
@@ -725,12 +725,12 @@
         "pt": "Backoffice - Home"
     },
     "Backoffice - Logs": {
-        "en": "Backoffice - logs",
-        "es": "Backofice - registros",
+        "en": "Backoffice - Logs",
+        "es": "Backofice - Registros",
         "pt": "Backoffice - Logs"
     },
     "Backoffice - Modelos": {
-        "en": "Backoffice - models",
+        "en": "Backoffice - Models",
         "es": "Backoffice - Modelos",
         "pt": "Backoffice - Modelos"
     },
@@ -745,7 +745,7 @@
         "pt": "Backoffice - Pagamentos"
     },
     "Backoffice - Planos": {
-        "en": "Backoffice - plans",
+        "en": "Backoffice - Plans",
         "es": "Backoffice - Planes",
         "pt": "Backoffice - Planos"
     },
@@ -760,7 +760,7 @@
         "pt": "Backoffice - Usuário"
     },
     "Backoffice - Usuários": {
-        "en": "BACKOFFICE - Users",
+        "en": "Backoffice - Users",
         "es": "Backofice - Usuarios",
         "pt": "Backoffice - Usuários"
     },
@@ -856,7 +856,7 @@
     },
     "Bermuda": {
         "en": "Bermuda",
-        "es": "Islas bermudas",
+        "es": "Islas Bermudas",
         "pt": "Bermudas"
     },
     "Bhutan": {
@@ -896,7 +896,7 @@
     },
     "Bouvet Island": {
         "en": "Bouvet Island",
-        "es": "Isla bouvet",
+        "es": "Isla Bouvet",
         "pt": "Ilha Bouvet"
     },
     "Brazil": {
@@ -906,8 +906,8 @@
     },
     "British Indian Ocean Territory": {
         "en": "British Indian Ocean Territory",
-        "es": "Territorio Británico del Océano Índico",
-        "pt": "Território do Oceano Índico Britânico"
+        "es": "Territorio Británico Del Océano Índico",
+        "pt": "Território Do Oceano Índico Britânico"
     },
     "Brunei Darussalam": {
         "en": "Brunei Darussalam",
@@ -1092,7 +1092,7 @@
     "Central African Republic": {
         "en": "Central African Republic",
         "es": "República Centroafricana",
-        "pt": "República da África Central"
+        "pt": "República Da África Central"
     },
     "Central de ajuda": {
         "en": "Help center",
@@ -1131,8 +1131,8 @@
     },
     "Christmas Island": {
         "en": "Christmas Island",
-        "es": "Isla de Navidad",
-        "pt": "Ilha do Natal"
+        "es": "Isla De Navidad",
+        "pt": "Ilha Do Natal"
     },
     "Cidade": {
         "en": "City",
@@ -1340,8 +1340,8 @@
         "pt": "Ilhas Cook"
     },
     "Cookies Essenciais": {
-        "en": "Essential cookies",
-        "es": "Galletas esenciales",
+        "en": "Essential Cookies",
+        "es": "Galletas Esenciales",
         "pt": "Cookies Essenciais"
     },
     "Cookies de Funcionalidade": {
@@ -1376,7 +1376,7 @@
     },
     "Copiado!": {
         "en": "Copied!",
-        "es": "¡copiado!",
+        "es": "¡Copiado!",
         "pt": "Copiado!"
     },
     "Copiar": {
@@ -1541,7 +1541,7 @@
     },
     "Código Completo:": {
         "en": "Full Code:",
-        "es": "Código completo:",
+        "es": "Código Completo:",
         "pt": "Código Completo:"
     },
     "Código ZIP": {
@@ -1636,17 +1636,17 @@
     },
     "Datetime": {
         "en": "Datetime",
-        "es": "Fecha y hora",
+        "es": "Fecha Y Hora",
         "pt": "Datetime"
     },
     "Definir Nova Senha": {
         "en": "Set New Password",
-        "es": "Establecer nueva contraseña",
+        "es": "Establecer Nueva Contraseña",
         "pt": "Definir Nova Senha"
     },
     "Definir Nova Senha.": {
         "en": "Set New Password.",
-        "es": "Establecer nueva contraseña.",
+        "es": "Establecer Nueva Contraseña.",
         "pt": "Definir Nova Senha."
     },
     "Definir nova senha": {
@@ -2046,7 +2046,7 @@
     },
     "Email": {
         "en": "Email",
-        "es": "Correo electrónico",
+        "es": "Correo Electrónico",
         "pt": "Email"
     },
     "Email de erro enviado com sucesso": {
@@ -2135,8 +2135,8 @@
         "pt": "Enviando arquivo, aguarde"
     },
     "Enviar Permissões": {
-        "en": "Send permissions",
-        "es": "Enviar permisos",
+        "en": "Send Permissions",
+        "es": "Enviar Permisos",
         "pt": "Enviar Permissões"
     },
     "Equatorial Guinea": {
@@ -2691,13 +2691,13 @@
     },
     "French Polynesia": {
         "en": "French Polynesia",
-        "es": "Polinesia francés",
+        "es": "Polinesia Francés",
         "pt": "Polinésia Francesa"
     },
     "French Southern Territories": {
         "en": "French Southern Territories",
-        "es": "Territorios Franceses del Sur",
-        "pt": "Territórios do Sul da França"
+        "es": "Territorios Franceses Del Sur",
+        "pt": "Territórios Do Sul Da França"
     },
     "Gabon": {
         "en": "Gabon",
@@ -2730,8 +2730,8 @@
         "pt": "Gerando pasta compactada..."
     },
     "Gerenciando Cookies": {
-        "en": "Managing cookies",
-        "es": "Gestión de cookies",
+        "en": "Managing Cookies",
+        "es": "Gestión De Cookies",
         "pt": "Gerenciando Cookies"
     },
     "Gerencie seus dispositivos": {
@@ -2802,7 +2802,7 @@
     "Guinea-Bissau": {
         "en": "Guinea-Bissau",
         "es": "Guinea-Bissau",
-        "pt": "Guiné-bissau"
+        "pt": "Guiné-Bissau"
     },
     "Guyana": {
         "en": "Guyana",
@@ -2946,12 +2946,12 @@
     },
     "Incompleta/Expirada": {
         "en": "Incomplete/Expired",
-        "es": "Incompleto/caducado",
+        "es": "Incompleto/Caducado",
         "pt": "Incompleta/Expirada"
     },
     "Incomplete/Expired": {
         "en": "Incomplete/Expired",
-        "es": "Incompleto/caducado",
+        "es": "Incompleto/Caducado",
         "pt": "Incompleta/Expirada"
     },
     "Incompleto": {
@@ -3390,8 +3390,8 @@
         "pt": "Mayotte"
     },
     "Meus Projetos": {
-        "en": "My projects",
-        "es": "Mis proyectos",
+        "en": "My Projects",
+        "es": "Mis Proyectos",
         "pt": "Meus Projetos"
     },
     "Meus projetos": {
@@ -3491,7 +3491,7 @@
     },
     "Mover": {
         "en": "Move",
-        "es": "Para mover",
+        "es": "Para Mover",
         "pt": "Mover"
     },
     "Mover aqui": {
@@ -3776,7 +3776,7 @@
     },
     "Netherlands": {
         "en": "Netherlands",
-        "es": "Países bajos",
+        "es": "Países Bajos",
         "pt": "Holanda"
     },
     "New Caledonia": {
@@ -3887,17 +3887,17 @@
     "Norfolk Island": {
         "en": "Norfolk Island",
         "es": "Isla Norfolk",
-        "pt": "Ilha de Norfolk"
+        "pt": "Ilha De Norfolk"
     },
     "North Macedonia": {
         "en": "North Macedonia",
-        "es": "Macedonia del Norte",
-        "pt": "Macedônia do Norte"
+        "es": "Macedonia Del Norte",
+        "pt": "Macedônia Do Norte"
     },
     "Northern Mariana Islands": {
         "en": "Northern Mariana Islands",
-        "es": "Islas Marianas del Norte",
-        "pt": "Ilhas do norte da Mariana"
+        "es": "Islas Marianas Del Norte",
+        "pt": "Ilhas Do Norte Da Mariana"
     },
     "Norway": {
         "en": "Norway",
@@ -3926,7 +3926,7 @@
     },
     "Nota Fiscal": {
         "en": "Invoice",
-        "es": "Nota fiscal",
+        "es": "Nota Fiscal",
         "pt": "Nota Fiscal"
     },
     "Notificação excluída": {
@@ -3941,7 +3941,7 @@
     },
     "Nova Senha": {
         "en": "New Password",
-        "es": "Nueva contraseña",
+        "es": "Nueva Contraseña",
         "pt": "Nova Senha"
     },
     "Nova senha": {
@@ -3995,8 +3995,8 @@
         "pt": "Não Emitida"
     },
     "Não Federados": {
-        "en": "Non -federated",
-        "es": "No federado",
+        "en": "Non -Federated",
+        "es": "No Federado",
         "pt": "Não Federados"
     },
     "Não autorizado": {
@@ -4405,8 +4405,8 @@
         "pt": "Pagamento Backoffice reembolsado com sucesso."
     },
     "Pagamento Direto": {
-        "en": "Direct payment",
-        "es": "Pago directo",
+        "en": "Direct Payment",
+        "es": "Pago Directo",
         "pt": "Pagamento Direto"
     },
     "Pagamento Stripe reembolsado com sucesso": {
@@ -4440,18 +4440,18 @@
         "pt": "Pagamentos"
     },
     "Pago": {
-        "en": "Paid out",
+        "en": "Paid Out",
         "es": "Pagado",
         "pt": "Pago"
     },
     "Pague Agora": {
-        "en": "Pay now",
-        "es": "Pagar ahora",
+        "en": "Pay Now",
+        "es": "Pagar Ahora",
         "pt": "Pague Agora"
     },
     "Painel - Compartilhados Projetos": {
         "en": "Panel - Shared Projects",
-        "es": "Panel - Proyectos compartidos",
+        "es": "Panel - Proyectos Compartidos",
         "pt": "Painel - Compartilhados Projetos"
     },
     "Painel - Confirme a compra do seu plano": {
@@ -4470,13 +4470,13 @@
         "pt": "Painel - Dispositivos"
     },
     "Painel - Explorar Projetos": {
-        "en": "Panel - Explore projects",
-        "es": "Panel - Explorar proyectos",
+        "en": "Panel - Explore Projects",
+        "es": "Panel - Explorar Proyectos",
         "pt": "Painel - Explorar Projetos"
     },
     "Painel - Melhore Seu Plano": {
-        "en": "Panel - Improve your plan",
-        "es": "Panel - Mejora tu plan",
+        "en": "Panel - Improve Your Plan",
+        "es": "Panel - Mejora Tu Plan",
         "pt": "Painel - Melhore Seu Plano"
     },
     "Painel - Nova Senha do Usuário": {
@@ -4496,7 +4496,7 @@
     },
     "Painel - Seu Plano": {
         "en": "Panel - Your Plan",
-        "es": "Panel - Tu plan",
+        "es": "Panel - Tu Plan",
         "pt": "Painel - Seu Plano"
     },
     "Pakistan": {
@@ -5275,12 +5275,12 @@
         "pt": "Saint Vincent and the Grenadines"
     },
     "Sair": {
-        "en": "To go out",
+        "en": "To Go Out",
         "es": "Salir",
         "pt": "Sair"
     },
     "Salvar": {
-        "en": "To save",
+        "en": "To Save",
         "es": "Ahorrar",
         "pt": "Salvar"
     },
@@ -5541,7 +5541,7 @@
     },
     "Short Cód": {
         "en": "Short Code",
-        "es": "Código corto",
+        "es": "Código Corto",
         "pt": "Short Cód"
     },
     "Sierra Leone": {
@@ -5602,7 +5602,7 @@
     "South Africa": {
         "en": "South Africa",
         "es": "Sudáfrica",
-        "pt": "África do Sul"
+        "pt": "África Do Sul"
     },
     "South Georgia and the South Sandwich Islands": {
         "en": "South Georgia and the South Sandwich Islands",
@@ -5655,8 +5655,8 @@
         "pt": "Estrutural"
     },
     "Sua Assinatura": {
-        "en": "Your signature",
-        "es": "Su firma",
+        "en": "Your Signature",
+        "es": "Su Firma",
         "pt": "Sua Assinatura"
     },
     "Sua assinatura continuará ativa até o último dia do seu ciclo de cobrança atual, que termina em": {
@@ -5706,7 +5706,7 @@
     },
     "Subtotal": {
         "en": "Subtotal",
-        "es": "Total parcial",
+        "es": "Total Parcial",
         "pt": "Subtotal"
     },
     "Sudan": {
@@ -5742,7 +5742,7 @@
     "Syrian Arab Republic": {
         "en": "Syrian Arab Republic",
         "es": "República Árabe Siria",
-        "pt": "República Árabe da Síria"
+        "pt": "República Árabe Da Síria"
     },
     "São amplamente utilizados para fazer com que os sites funcionem, ou funcionem com mais eficiência, bem como para fornecer informações aos proprietários do site": {
         "en": "They are widely used to make sites work, or work more efficiently, as well as to provide information to the site owners",
@@ -5908,6 +5908,11 @@
         "en": "Test by",
         "es": "Evaluar",
         "pt": "Teste por"
+    },
+    "Teste.": {
+        "en": "Test.",
+        "es": "Prueba.",
+        "pt": "Teste."
     },
     "Thailand": {
         "en": "Thailand",
@@ -6256,7 +6261,7 @@
     },
     "Validar Email": {
         "en": "Validate Email",
-        "es": "Validar correo electrónico",
+        "es": "Validar Correo Electrónico",
         "pt": "Validar Email"
     },
     "Validar seu email": {
@@ -6300,8 +6305,8 @@
         "pt": "Venezuela, República Bolivariana de"
     },
     "Ver Mais": {
-        "en": "View more",
-        "es": "Ver más",
+        "en": "View More",
+        "es": "Ver Más",
         "pt": "Ver Mais"
     },
     "Verificando arquivos...": {
@@ -6330,13 +6335,13 @@
         "pt": "Visto por último"
     },
     "Visualizar": {
-        "en": "To view",
-        "es": "Para ver",
+        "en": "To View",
+        "es": "Para Ver",
         "pt": "Visualizar"
     },
     "Visualizar Pasta": {
-        "en": "View folder",
-        "es": "Ver folder",
+        "en": "View Folder",
+        "es": "Ver Folder",
         "pt": "Visualizar Pasta"
     },
     "Visualizar detalhes": {
@@ -6356,7 +6361,7 @@
     },
     "Visualizações": {
         "en": "Views",
-        "es": "Puntos de vista",
+        "es": "Puntos De Vista",
         "pt": "Visualizações"
     },
     "Você acabou de iniciar uma assinatura, por favor revise as suas informações": {
@@ -6456,7 +6461,7 @@
     },
     "Voltar": {
         "en": "Return",
-        "es": "Para volver",
+        "es": "Para Volver",
         "pt": "Voltar"
     },
     "Válida até": {
@@ -7250,8 +7255,8 @@
         "pt": "Ícone sucesso"
     },
     "Último Login": {
-        "en": "Last login",
-        "es": "Último acceso",
+        "en": "Last Login",
+        "es": "Último Acceso",
         "pt": "Último Login"
     },
     "Último erro": {
