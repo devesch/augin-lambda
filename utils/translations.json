@@ -2049,6 +2049,11 @@
         "es": "Correo electrónico",
         "pt": "Email"
     },
+    "Email de erro enviado com sucesso": {
+        "en": "Error email sent successfully",
+        "es": "Error correo electrónico enviado correctamente",
+        "pt": "Email de erro enviado com sucesso"
+    },
     "Email de reset de senha enviado com sucesso.": {
         "en": "Successfully sent password reset email.",
         "es": "Correo electrónico de restablecimiento de contraseña exitoso.",
@@ -3624,10 +3629,20 @@
         "es": "No se encontraron datos para el CNPJ informado.",
         "pt": "Nenhum dado encontrado para o CNPJ informado."
     },
+    "Nenhum email de destino enviado no post": {
+        "en": "No destination email sent in the post",
+        "es": "No se envía un correo electrónico de destino en la publicación",
+        "pt": "Nenhum email de destino enviado no post"
+    },
     "Nenhum email enviado no formulário.": {
         "en": "No email sent on the form.",
         "es": "No se envía correo electrónico en el formulario.",
         "pt": "Nenhum email enviado no formulário."
+    },
+    "Nenhum erro enviado no post": {
+        "en": "No error sent in the post",
+        "es": "No se envía ningún error en la publicación",
+        "pt": "Nenhum erro enviado no post"
     },
     "Nenhum modelo": {
         "en": "No model",

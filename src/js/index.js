@@ -3109,8 +3109,9 @@ export async function openModalAddPaymentMethod() {
 
     } catch(error) {
         alert(error);
-        let panel_your_plan_send_payment_method_error_response = await apiCaller("panel_your_plan_send_payment_method_error", {
+        let send_error_email_response = await apiCaller("send_error_email", {
             "error": error,
+            "email_destination": "matheus@devesch.com.br",
         });
     }
 }
