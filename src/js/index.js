@@ -2878,14 +2878,14 @@ export async function saveCancelSubscription() {
 export async function openModalAddPaymentMethod() {
     try {
         const stripe_token_input = document.getElementById("stripe_token_input");
-        // const cardCountryElement = document.getElementById("card-country-element");
-        // const userCountry = document.getElementById("country_input").value;
-        // const userLang = document.getElementById("lang_input").value;
-        // const userPostalCode = document.getElementById("card-postalcode-element");
-        // const cardPhone = document.getElementById("card-phone-element");
-        // const form = document.getElementById('payment-form');
-        // const stripeAcceptedCardBrands = ["amex", "diners", "discover", "eftpos", "elo", "jcb", "mastercard", "unionpay", "visa"];
-        // const cardNumberIcon = document.querySelector(".card-number-icon");
+        const cardCountryElement = document.getElementById("card-country-element");
+        const userCountry = document.getElementById("country_input").value;
+        const userLang = document.getElementById("lang_input").value;
+        const userPostalCode = document.getElementById("card-postalcode-element");
+        const cardPhone = document.getElementById("card-phone-element");
+        const form = document.getElementById('payment-form');
+        const stripeAcceptedCardBrands = ["amex", "diners", "discover", "eftpos", "elo", "jcb", "mastercard", "unionpay", "visa"];
+        const cardNumberIcon = document.querySelector(".card-number-icon");
 
         const stripe = Stripe(stripe_token_input.value);
         const appearance = {
@@ -3005,21 +3005,18 @@ export async function openModalAddPaymentMethod() {
                 return;
             }
 
-            if (brand === "unknown") {
-                cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
-                return;
-            }
-
             if (brand) {
                 console.log(brand);
                 console.log(stripeAcceptedCardBrands);
                 if (stripeAcceptedCardBrands.indexOf(brand) !== -1) {
-                    console.log(`${brand} is in the array.`);
                     cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/" + brand + ".svg";
                     return;
                 } else {
-                    console.log(`${brand} is not in the array.`);
                     cardNumberIcon.src = ProjectData.props.cdnVal + "/assets/icons/credit_card_brands/credit_card.svg";
+                    let send_error_email_response = apiCaller("send_error_email", {
+                        "error": "A marca do cartão de crédito " + brand + " precisa ser acrescentada para receber uma logo",
+                        "email_destination": "matheus@devesch.com.br",
+                    });
                     return;
                 }
             }
