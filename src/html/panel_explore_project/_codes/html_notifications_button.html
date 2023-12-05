@@ -2,9 +2,9 @@
     <button onclick="js.index.toggleExploreMenu(this)" class="ghost my-plan__title-container__button" aria-controls="user_notifications_menu" aria-expanded="false">
         <img src="{{cdn_val}}/assets/icons/notifications.svg" alt="Notificações" width="24" height="24">
     </button>
-    <span class="notification-number none"></span>
+    <button class="notification-number none" onclick="js.index.toggleExploreMenu(this)" aria-controls="user_notifications_menu" aria-expanded="false"></button>
 </div>
-<menu id="user_notifications_menu" class="menu--explore-more-options none">
+<menu id="user_notifications_menu" class="menu--notifications none">
     {{html_notifications_li_items}}
 </menu>
 

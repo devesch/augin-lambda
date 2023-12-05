@@ -1,3 +1,11 @@
-<li id="notification_li_{{notification_id_val}}">
-    <a href="/{{notification_redirect_val}}"><span>{{notification_message_val}}</span></a><button onclick="js.index.saveDeleteNotification('{{notification_id_val}}')">X</button>
+<li id="notification_li_{{notification_id_val}}" class="notification-item">
+    <div>
+        <span class="notification-date">Hoje</span>
+        <a href="/{{notification_redirect_val}}">
+            <span>{{notification_message_val}}</span>
+        </a>
+    </div>
+    <button onclick="js.index.saveDeleteNotification('{{notification_id_val}}')" class="notification-remove-button" aria-label="{{Excluir notificação}}">
+        <img src="{{cdn_val}}/assets/icons/close.svg" width="20" height="20" alt="" loading="lazy" />
+    </button>
 </li>

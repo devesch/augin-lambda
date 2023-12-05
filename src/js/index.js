@@ -452,26 +452,35 @@ export async function saveUserPersonalData() {
 export async function updateUserNotificationsHtml() {
     var user_notifications_menu = document.getElementById("user_notifications_menu");
     var user_notifications_number = document.querySelector(".notification-number");
-    while (true) {
+    // while (true) {
         await sleep(10000);
         let panel_explore_project_user_notifications_html_response = await apiCaller("panel_explore_project_user_notifications_html", {})
         if ("success" in panel_explore_project_user_notifications_html_response) {
             user_notifications_menu.innerHTML = panel_explore_project_user_notifications_html_response["success"];
-            user_notifications_number.innerText = "1";
-            user_notifications_number.classList.remove("none");
+            if (parseInt(panel_explore_project_user_notifications_html_response["notifications_count"]) > 0) {
+                user_notifications_number.innerText = panel_explore_project_user_notifications_html_response["notifications_count"];
+                user_notifications_number.classList.remove("none");
+            } else {
+                user_notifications_number.classList.add("none");
+            }
         }
-    }
+    // }
 }
 
 
 export async function saveDeleteNotification(notification_id) {
     var notification_li = document.getElementById("notification_li_" + notification_id);
+    var user_notifications_number = document.querySelector(".notification-number");
     let update_user_response = await apiCaller("update_user", {
         "command": "delete_notification",
         "notification_id": notification_id
     })
     if ("success" in update_user_response) {
         notification_li.remove();
+        user_notifications_number.innerText = (parseInt(user_notifications_number.innerText) - 1);
+        if (parseInt(panel_explore_project_user_notifications_html_response["notifications_count"]) === 0) {
+            user_notifications_number.classList.add("none");
+        }
     }
 }
 

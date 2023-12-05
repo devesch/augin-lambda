@@ -2499,6 +2499,11 @@
         "es": "Eliminar plantilla",
         "pt": "Excluir modelo"
     },
+    "Excluir notificação": {
+        "en": "Delete Notification",
+        "es": "Eliminar notificación",
+        "pt": "Excluir notificação"
+    },
     "Excluir todos os dados": {
         "en": "Delete all data",
         "es": "Eliminar todos los datos",
