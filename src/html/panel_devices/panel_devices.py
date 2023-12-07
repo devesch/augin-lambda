@@ -16,6 +16,7 @@ class PanelDevices(PanelPage):
         html = super().parse_html()
         user_plan = self.user.get_user_actual_plan()
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
+        html.esc("html_notifications_button", self.show_html_notifications_button())
         if user_plan["plan_id"] == lambda_constants["free_plan_id"]:
             html.esc("make_and_upgrade_phrase_val", self.translate("Faça um upgrade para aumentar esse limite."))
 

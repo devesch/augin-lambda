@@ -72,3 +72,12 @@ def create_notification_card_will_expire(user_id, card_number):
     notification["notification_message_es"] = Code().translate("Seu cartão" + " " + card_number + " " + "expira em breve, atualize seus métodos de pagamento.", "es")
     notification["notification_redirect"] = "panel_devices"
     Dynamo().put_entity(notification)
+
+
+def create_notification_card(user_id):
+    notification = UserNotification(user_id, Generate().generate_long_id()).__dict__
+    notification["notification_message_pt"] = Code().translate("Seu pagamento foi realizado com sucesso.", "pt")
+    notification["notification_message_en"] = Code().translate("Seu pagamento foi realizado com sucesso.", "en")
+    notification["notification_message_es"] = Code().translate("Seu pagamento foi realizado com sucesso.", "es")
+    notification["notification_redirect"] = "panel_your_plan"
+    Dynamo().put_entity(notification)

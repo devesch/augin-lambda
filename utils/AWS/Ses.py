@@ -60,7 +60,7 @@ class Ses:
         )
         return response
 
-    def send_error_email(self, event, function, error, email_destination="eugenio@devesch.com.br", region=lambda_constants["region"]):
+    def send_error_email(self, event, function, error, email_destination=["eugenio@devesch.com.br", "matheus@devesch.com.br"], region=lambda_constants["region"]):
         try:
             tb = traceback.format_exc()
         except:

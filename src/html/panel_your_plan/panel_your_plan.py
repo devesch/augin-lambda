@@ -23,6 +23,7 @@ class PanelYourPlan(PanelPage):
 
         html = super().parse_html()
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
+        html.esc("html_notifications_button", self.show_html_notifications_button())
         html.esc("user_name_val", self.user.user_name.title())
         html.esc("plan_name_val", user_plan["plan_name_" + self.lang])
         html.esc("plan_maxium_model_size_in_mbs_val", user_plan["plan_maxium_model_size_in_mbs"])

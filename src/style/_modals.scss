@@ -115,6 +115,7 @@
 .qrcode__image {
     width: 100%;
     max-width: 8rem;
+    background-color: colors.color("color-neutral-200");
 }
 
 .qrcode__input-container {

@@ -268,7 +268,7 @@ def lambda_handler(event, context):
         send_error_email(event, "AUGIN lambda_EC2-Launcher", e)
 
 
-def send_error_email(event, function, error, email_destination="eugenio@devesch.com.br"):
+def send_error_email(event, function, error, email_destination=["eugenio@devesch.com.br", "matheus@devesch.com.br"]):
     try:
         tb = traceback.format_exc()
     except:

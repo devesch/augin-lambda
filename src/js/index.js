@@ -450,21 +450,42 @@ export async function saveUserPersonalData() {
 }
 
 export async function updateUserNotificationsHtml() {
-    var user_notifications_menu = document.getElementById("user_notifications_menu");
-    var user_notifications_number = document.querySelector(".notification-number");
-    // while (true) {
-        await sleep(10000);
-        let panel_explore_project_user_notifications_html_response = await apiCaller("panel_explore_project_user_notifications_html", {})
-        if ("success" in panel_explore_project_user_notifications_html_response) {
-            user_notifications_menu.innerHTML = panel_explore_project_user_notifications_html_response["success"];
-            if (parseInt(panel_explore_project_user_notifications_html_response["notifications_count"]) > 0) {
-                user_notifications_number.innerText = panel_explore_project_user_notifications_html_response["notifications_count"];
-                user_notifications_number.classList.remove("none");
-            } else {
-                user_notifications_number.classList.add("none");
+    try {
+        var user_notifications_menu = document.getElementById("user_notifications_menu");
+        var user_notifications_number = document.querySelector(".notification-number");
+        while (true) {
+            await sleep(10000);
+            let panel_explore_project_user_notifications_html_response = await apiCaller("panel_explore_project_user_notifications_html", {})
+            if ("success" in panel_explore_project_user_notifications_html_response) {
+                user_notifications_menu.innerHTML = panel_explore_project_user_notifications_html_response["success"];
+                if (parseInt(panel_explore_project_user_notifications_html_response["notifications_count"]) > 0) {
+                    user_notifications_number.innerText = panel_explore_project_user_notifications_html_response["notifications_count"];
+                    user_notifications_number.classList.remove("none");
+
+                    // if (Notification.permission === 'granted') {
+                    //     console.log("Notifications are available");
+                    //     const img = "/assets/images/augin_logo_dark.png";
+                    //     const text = `HEY! Your task Project Process is now overdue.`;
+                    //     const notification = new Notification("To do list", {
+                    //         body: text,
+                    //         icon: img,
+                    //         vibrate: [200, 100, 200],
+                    //     });
+                    //     console.log(notification);
+
+                    //     notification.onclick = {
+
+                    //     };
+                    // }
+
+                } else {
+                    user_notifications_number.classList.add("none");
+                }
             }
         }
-    // }
+    } catch(error) {
+        console.error(error);
+    };
 }
 
 
@@ -3899,5 +3920,25 @@ export async function updateStripeCustomerLanguage(event, select) {
         form.submit();
     } else {
         console.error("Select element is not inside a form.");
+    }
+}
+
+export async function sendBrowserNotifications() {
+    Notification.requestPermission();
+    if (!("Notification") in window) {
+        console.warn("This browser does not support notifications.");
+    } else {
+        if (Notification.permission === 'granted') {
+            console.log("Notifications are available");
+            const greeting = new Notification('Hi, How are you?');
+            // const img = "/assets/images/augin_logo_dark.png";
+            // const text = `HEY! Your task Project Process is now overdue.`;
+            // const notification = new Notification("To do list", {
+            //     body: text,
+            //     icon: img,
+            //     vibrate: [200, 100, 200],
+            // });
+            // console.log(notification);
+        }
     }
 }

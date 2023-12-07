@@ -19,6 +19,7 @@ class PanelSharedProject(PanelPage):
         user_plan = self.user.get_user_actual_plan()
         html.esc("html_filter_and_search_section", self.show_html_filter_and_search_section())
         html.esc("html_upgrade_button", self.show_html_upgrade_button(user_plan))
+        html.esc("html_notifications_button", self.show_html_notifications_button())
 
         if self.path.get("folder"):
             user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
