@@ -1749,6 +1749,13 @@ input[list]::-ms-clear {
     top: 0;
     right: calc(100% + .5rem);
     // padding: 1rem 1rem 1rem 2rem;
+
+    @media only screen and (max-width: 1200px) {
+        top: 100%;
+        right: 0;
+        width: 100%;
+    }
+
 }
 
 .menu--notifications .notification-remove-button {

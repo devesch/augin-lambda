@@ -20,6 +20,16 @@ class UserNotification:
         self.entity = "notification"
 
 
+# TODO: matheus function
+def create_notification_model_processing(user_id, model_name):
+    notification = UserNotification(user_id, Generate().generate_long_id()).__dict__
+    notification["notification_message_pt"] = Code().translate("Seu arquivo", "pt") + " " + model_name + " " + Code().translate("está sendo processado. Você será notificado quando estiver concluído.", "pt")
+    notification["notification_message_en"] = Code().translate("Seu arquivo", "en") + " " + model_name + " " + Code().translate("está sendo processado. Você será notificado quando estiver concluído.", "en")
+    notification["notification_message_es"] = Code().translate("Seu arquivo", "es") + " " + model_name + " " + Code().translate("está sendo processado. Você será notificado quando estiver concluído.", "es")
+    notification["notification_redirect"] = "panel_explore_project"
+    Dynamo().put_entity(notification)
+
+
 def create_notification_model_processed(user_id, model_name):
     notification = UserNotification(user_id, Generate().generate_long_id()).__dict__
     notification["notification_message_pt"] = Code().translate("Seu arquivo", "pt") + " " + model_name + " " + Code().translate("foi processado com sucesso.", "pt")
@@ -56,6 +66,7 @@ def create_notification_new_device_accessed(user_id):
     Dynamo().put_entity(notification)
 
 
+# TODO:
 def create_notification_payment_failed(user_id):
     notification = UserNotification(user_id, Generate().generate_long_id()).__dict__
     notification["notification_message_pt"] = Code().translate("Houve uma falha ao cobrar sua assinatura. Atualize seus métodos de pagamento.", "pt")
@@ -64,7 +75,15 @@ def create_notification_payment_failed(user_id):
     notification["notification_redirect"] = "panel_devices"
     Dynamo().put_entity(notification)
 
+def create_notification_payment_success(user_id):
+    notification = UserNotification(user_id, Generate().generate_long_id()).__dict__
+    notification["notification_message_pt"] = Code().translate("Seu pagamento foi realizado com sucesso.", "pt")
+    notification["notification_message_en"] = Code().translate("Seu pagamento foi realizado com sucesso.", "en")
+    notification["notification_message_es"] = Code().translate("Seu pagamento foi realizado com sucesso.", "es")
+    notification["notification_redirect"] = "panel_your_plan"
+    Dynamo().put_entity(notification)
 
+# TODO:
 def create_notification_card_will_expire(user_id, card_number):
     notification = UserNotification(user_id, Generate().generate_long_id()).__dict__
     notification["notification_message_pt"] = Code().translate("Seu cartão" + " " + card_number + " " + "expira em breve, atualize seus métodos de pagamento.", "pt")
@@ -73,11 +92,10 @@ def create_notification_card_will_expire(user_id, card_number):
     notification["notification_redirect"] = "panel_devices"
     Dynamo().put_entity(notification)
 
-
-def create_notification_card(user_id):
+def create_notification_model_shared_with_me(user_id, model_name):
     notification = UserNotification(user_id, Generate().generate_long_id()).__dict__
-    notification["notification_message_pt"] = Code().translate("Seu pagamento foi realizado com sucesso.", "pt")
-    notification["notification_message_en"] = Code().translate("Seu pagamento foi realizado com sucesso.", "en")
-    notification["notification_message_es"] = Code().translate("Seu pagamento foi realizado com sucesso.", "es")
-    notification["notification_redirect"] = "panel_your_plan"
+    notification["notification_message_pt"] = Code().translate("Arquivo", "pt") + " " + model_name + " " + Code().translate("foi adicionado aos projetos compartilhados.", "pt")
+    notification["notification_message_en"] = Code().translate("Arquivo", "en") + " " + model_name + " " + Code().translate("foi adicionado aos projetos compartilhados.", "en")
+    notification["notification_message_es"] = Code().translate("Arquivo", "es") + " " + model_name + " " + Code().translate("foi adicionado aos projetos compartilhados.", "es")
+    notification["notification_redirect"] = "panel_shared_project"
     Dynamo().put_entity(notification)

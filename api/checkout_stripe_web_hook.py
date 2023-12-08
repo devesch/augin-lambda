@@ -14,6 +14,8 @@ from objects.User import load_user
 from utils.AWS.Ses import Ses
 import time
 import json
+# from objects.UserNotification import create_notification_payment_success
+
 
 ### TODO REMOVE BEFORE PROD
 working_on_sub_id = "sub_1O1tpMA9OIVeHB9ymACRQukE"
@@ -30,6 +32,7 @@ class CheckoutStripeWebHook(BasePage):
 
     def payment_intent_succeeded(self):
         stripe_customer = StripeController().get_stripe_customer(self.post["data"]["object"]["customer"])
+
         self.user = load_user(stripe_customer["email"])
         order = Dynamo().get_order(self.post["data"]["object"]["id"])
         stripe_subscription = None
@@ -71,10 +74,14 @@ class CheckoutStripeWebHook(BasePage):
                 if self.post["data"]["object"]["description"] != "Subscription update":
                     self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_id)
                     self.user.remove_user_cart_coupon_code()
-
+                
                 self.send_payment_success_email(order)
+                # TODO: matheus function
+                # create_notification_payment_success(stripe_customer["email"])
 
         # raise Exception("TODO PAYMENT SUCCESS")
+        
+       
         return {"success": "Evento payment_intent_succeeded tratado."}
 
     def charge_succeeded(self):

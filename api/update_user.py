@@ -16,6 +16,7 @@ from utils.AWS.Lambda import Lambda
 from objects.User import load_user
 from utils.AWS.S3 import S3
 import time
+# from objects.UserNotification import create_notification_model_shared_with_me
 
 
 class UpdateUser(UserPage, PanelPage):
@@ -458,6 +459,9 @@ class UpdateUser(UserPage, PanelPage):
                 user_shared_dicts = Dynamo().get_folder(self.user.user_shared_dicts_folder_id)
                 if model["model_id"] not in user_shared_dicts["files"]:
                     self.user.add_model_to_user_dicts(model, shared=True)
+            
+            # TODO: matheus function
+            # create_notification_model_shared_with_me(self.user.user_id, model["model_name"])
             return {"success": "Modelo adicionado aos compartilhados"}
 
         else:

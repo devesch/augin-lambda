@@ -18,6 +18,8 @@ html_source_path = os.path.normpath(os.getcwd() + "/src/html")
 api_source_path = os.path.normpath(os.getcwd() + "/api")
 
 filtered_placeholders = [
+    "Arquivo",
+    "foi adicionado aos projetos compartilhados.",
     "Teste.",
     "Seu trial foi iniciado com sucesso.",
     "Seu trial terminou, escolha seu plano.",

@@ -549,6 +549,11 @@
         "es": "Arquitectura",
         "pt": "Arquitetura"
     },
+    "Arquivo": {
+        "en": "File",
+        "es": "Archivo",
+        "pt": "Arquivo"
+    },
     "Arquivo IFC ou FBX encontrado porém se não é válido.": {
         "en": "IFC or FBX file found but if it is not valid.",
         "es": "El archivo IFC o FBX se encuentra, pero si no es válido.",
@@ -6638,6 +6643,11 @@
         "en": "flag",
         "es": "bandera",
         "pt": "flag"
+    },
+    "foi adicionado aos projetos compartilhados.": {
+        "en": "it was added to shared projects.",
+        "es": "se agregó a proyectos compartidos.",
+        "pt": "foi adicionado aos projetos compartilhados."
     },
     "foi processado com sucesso.": {
         "en": "it was successfully processed.",
