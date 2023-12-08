@@ -1,0 +1,21 @@
+{{header}}
+{{menu_backoffice}}
+<main class="my-plan__main">
+    <div>
+        <section class="backoffice-container__title-container">
+            <h1 class="my-plan__title">{{Ordem}}</h1>
+        </section>
+        <div class="my-plan__main-container__item">
+            <h2 class="backoffice__subtitle">{{Informações da ordem}}</h2>
+            <article class="backoffice__table">
+                {{html_key_val_section}}
+            </article>
+        </div>
+    </div>
+    <span class="error" id="backoffice_order_error_span"></span>
+    {{html_issue_order_nfse_button}}
+    {{html_refund_order_button}}
+</main>
+{{footer}}
+
+<input id="order_id_input" value="{{order_id_val}}">

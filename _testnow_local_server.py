@@ -1,17 +1,16 @@
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-import threading
-import os
-import codecs
-from flask import Flask, request, send_from_directory
 import importlib
-import lambda_function
-import time
-import subprocess
-import signal
-import sys
-import random
 import json
+import os
+import signal
+import threading
+import time
+
+from flask import Flask, request, send_from_directory
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
+
+import lambda_function
+from utils.utils.ReadWrite import ReadWrite
 
 app = Flask(__name__, static_folder="src/")
 
@@ -24,6 +23,33 @@ observer_thread = None
 modified_thread = None
 
 
+def clear_js_and_scss():
+    ReadWrite().write_file("src/js/index.js", "")
+    ReadWrite().write_file("src/style/style.scss", "")
+
+
+def concatenate_js():
+    main_js = ReadWrite().read_file("src/js/index_base.js")
+    for sub_dirs in os.listdir("src/html/"):
+        if sub_dirs[0] != ".":
+            for file in os.listdir(os.path.join("src/html/", sub_dirs)):
+                if file[0] != ".":
+                    if ".js" in file:
+                        main_js += ReadWrite().read_file(os.path.join("src/html/", sub_dirs + "/" + file))
+    ReadWrite().write_file("src/js/index.js", main_js)
+
+
+def concatenate_scss():
+    main_scss = ReadWrite().read_file("src/style/style_base.scss")
+    for sub_dirs in os.listdir("src/html/"):
+        if sub_dirs[0] != ".":
+            for file in os.listdir(os.path.join("src/html/", sub_dirs)):
+                if file[0] != ".":
+                    if ".scss" in file:
+                        main_scss += "\n" + ReadWrite().read_file(os.path.join("src/html/", sub_dirs + "/" + file))
+    ReadWrite().write_file("src/style/style.scss", main_scss)
+
+
 def static_files(filename):
     return send_from_directory(app.static_folder, filename)
 
@@ -34,15 +60,13 @@ class FileChangeHandler(FileSystemEventHandler):
 
         if ".json" in event.src_path or "node_modules" in event.src_path or "dist" in event.src_path or "pyc" in event.src_path or "_testnow" in event.src_path or ".git" in event.src_path or "bin" in event.src_path:
             return None
+
         if ".css" in event.src_path or ".scss" in event.src_path or ".js" in event.src_path:
             print(f"File changed: {event.src_path}")
 
             modified_files.add(event.src_path)
 
-        if ".hmlt" or ".py" in event.src_path:
-            subprocess.run(["python", "tools_for_devs/create_translations.py"])
-
-        if ".py" in event.src_path:
+        if ".py" in event.src_path or ".json" in event.src_path or ".html" in event.src_path:
             global app
 
             os.kill(os.getpid(), signal.SIGINT)
@@ -62,12 +86,19 @@ def start_modified():
         time.sleep(1)
         if modified_files:
             modified_files = set()
+            # concatenate_js()
+            # concatenate_scss()
             os.system("npm run dev")
+            # clear_js_and_scss()
 
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE"])
 def all_paths(path):
+    print(f"Request Path: {path}")
+    print(f"Request Method: {request.method}")
+    print(f"Request Headers: {request.headers}")
+    print(f"Request Body: {request.data}")
     headers_dict = dict(request.headers)
     headers_dict["user-agent"] = headers_dict["User-Agent"]
     event = {
@@ -94,33 +125,13 @@ def all_paths(path):
     if path.startswith("static/"):
         return send_from_directory(app.static_folder, path[len("static/") :])
 
-    if not "api/translate" in path:
-        with open("_testnow.json", "w", encoding="utf-8") as json_file:
-            json.dump(event, json_file, sort_keys=True, ensure_ascii=False, indent=4)
+    with open("_testnow.json", "w", encoding="utf-8") as json_file:
+        json.dump(event, json_file, sort_keys=True, ensure_ascii=False, indent=4)
 
     context = {}
-
     importlib.reload(lambda_function)
-
     response = lambda_function.lambda_handler(event, context)
-    from utils.Config import lambda_constants
-
-    global last_new_change, new_change
-
-    # if response["body"][:27] != "<script>function openPage()" and not "api/" in path and last_new_change != new_change:
-    #     last_new_change = new_change
-    #     os.system("npm run dev")
-
-    with codecs.open("src/dist/style/style.css", "r", "utf-8-sig") as css:
-        css = css.read()
-    with codecs.open("src/dist/js/index.js", "r", "utf-8-sig") as js_index:
-        js_index = js_index.read()
-
-    return (
-        response["body"],
-        response["statusCode"],
-        response["headers"] if "headers" in response else {},
-    )
+    return (response["body"], response["statusCode"], response["headers"] if "headers" in response else {})
 
 
 if __name__ == "__main__":
@@ -134,6 +145,7 @@ if __name__ == "__main__":
 
     while True:
         try:
+            # clear_js_and_scss()
             app.run(debug=True, port=3000, use_reloader=False)
         except:
             continue

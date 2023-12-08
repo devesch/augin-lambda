@@ -1,6 +1,6 @@
 <tr>
-    <td>{{order_user_id_val}}</td>
-    <td>{{order_short_id_val}}</td>
+    <td><a href="{{domain_name_url_val}}/backoffice_user/?user_id={{order_user_id_val}}">{{order_user_id_val}}</a></td>
+    <td><a href="{{domain_name_url_val}}/backoffice_order/?order_id={{order_id_val}}">{{order_short_id_val}}</a></td>
     <td>{{order_payment_method}}</td>
     <td>{{order_datetime_val}}</td>
     <td>{{order_type_val}}</td>
@@ -16,10 +16,5 @@
         <div style="{{order_link_visibility_val}}">
             <a href="{{order_nfse_xml_link_val}}">XML</a> / <a href="{{order_nfse_pdf_link_val}}">PDF</a> - {{order_nfse_status_val}}
         </div>
-    </td>
-    <td>
-        {{html_re_issue_order_nfse}}
-        <!-- {{html_re_issue_order_nfse_pdf}} -->
-        {{html_refund_order}}
     </td>
 </tr>

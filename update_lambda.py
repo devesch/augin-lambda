@@ -159,7 +159,7 @@ def clean_html_in_folder(folder):
 
 
 def upload_lambda():
-    root_dirs = ["utils/", "objects/", "src/html", "api/", "python_web_frame/", "xmls/"]
+    root_dirs = ["utils/", "objects/", "src/html", "api/", "python_web_frame/", "xmls/", "signxml/"]
     upload_project_folder = root_folder.replace((root_folder.split("/")[-2] + "/"), "") + "build_" + str(root_folder.split("/")[-2])
     dest_folder = upload_project_folder + "/tmp_augin-lambda/"
     if not path.exists(upload_project_folder):

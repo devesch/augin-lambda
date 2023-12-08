@@ -7,14 +7,14 @@
         </div>
         <nav class="menu-desktop">
             <div>
-                <a class="{{processing_projects_active_val}}" href="/processing_projects">Fila <span class="projects-notification-number" id="in_processing_projects_amount_span" style="{{in_processing_projects_style_val}}">{{in_processing_projects_amount_val}}</span></a>
+                <a class="{{processing_projects_active_val}}" href="/processing_projects">{{Fila}} <span class="projects-notification-number" id="in_processing_projects_amount_span" style="{{in_processing_projects_style_val}}">{{in_processing_projects_amount_val}}</span></a>
             </div>
             <div>
-                <a class="{{pending_projects_active_val}}" href="/pending_projects">Pendências <span class="projects-notification-number" id="pending_projects_amount_span" style="{{pending_projects_style_val}}">{{pending_projects_amount_val}}</span></a>
+                <a class="{{pending_projects_active_val}}" href="/pending_projects">{{Pendências}} <span class="projects-notification-number" id="pending_projects_amount_span" style="{{pending_projects_style_val}}">{{pending_projects_amount_val}}</span></a>
             </div>
             <div class="profile-projects-container">
                 <button class="profile-projects-dropdown-toggle-button {{projects_active_val}}" onclick="js.index.toggleProfileDropdown(this, event)" aria-controls="profile_projects_dropdown" aria-expanded="false">
-                    Projetos
+                    {{Projetos}}
                 </button>
                 <div id="profile_projects_dropdown" class="profile-projects-dropdown">
                     <a class="profile-projects-dropdown-row {{my_projects_active_val}}" href="/projects/?order=created_at&reverse=False" aria-label="Meus projetos">

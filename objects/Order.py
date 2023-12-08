@@ -52,6 +52,15 @@ class Order:
         self.entity = "order"
 
 
+def generate_order_nfse_pre_number(order, length=15):
+    order["order_nfse_number"] = order["created_at"].replace(".", "")
+    if len(order["order_nfse_number"]) > length:
+        order["order_nfse_number"] = order["order_nfse_number"][:length]
+    elif len(order["order_nfse_number"]) < length:
+        order["order_nfse_number"] = "0" * (length - len(order["order_nfse_number"])) + order["order_nfse_number"]
+    return order
+
+
 def generate_order_descrimination(product_name, product_brl_price):
     order_descrimination = []
     total_price = StrFormat().format_to_brl_money(product_brl_price)

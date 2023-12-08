@@ -13,6 +13,22 @@ class ReadWrite:
             cls._instance = super(ReadWrite, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
+    def write_bytes(self, bytes_content, output_file_path):
+        with open(output_file_path, "wb") as pdf_file:
+            pdf_file.write(bytes_content)
+
+    def read_file_with_codecs(self, file_path):
+        import codecs
+
+        with codecs.open(file_path, "r", "utf-8-sig") as read_file:
+            return read_file.read()
+
+    def write_file_with_codecs(self, file_path, file_data):
+        import codecs
+
+        with codecs.open(file_path, "w", "utf-8-sig") as write_file:
+            write_file.write(file_data)
+
     def find_file_with_extension_in_directory(self, root_directory, extensions):
         import os
 

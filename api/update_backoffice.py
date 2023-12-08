@@ -64,26 +64,3 @@ class UpdateBackoffice(BackofficePage):
                 refunded_user.cancel_current_subscription(valid_until_now=True)
         self.send_refund_order_email(refunded_user.user_email, order["order_id"])
         return {"success": "Pagamento Stripe reembolsado com sucesso"}
-
-    def re_issue_order_nfse_pdf(self):
-        order = Dynamo().get_order(self.post["order_id"])
-        if not order:
-            return {"error": "Nenhuma ordem encontrada com os dados informados"}
-        if order["order_status"] != "paid":
-            return {"error": "A ordem não se encontra paga para emitir a NFSE em PDF"}
-        BillingController().generate_only_pdf_nfse(order)
-        return {"success": "Tentativa de emitir nota fiscal em PDF concluída"}
-
-    def re_issue_order_nfse(self):
-        order = Dynamo().get_order(self.post["order_id"])
-        if not order:
-            return {"error": "Nenhuma ordem encontrada com os dados informados"}
-        if order["order_nfse_status"] != "not_issued":
-            return {"error": "A ordem não se encontra em um estado de not_issued"}
-        if order["order_status"] != "paid":
-            return {"error": "A ordem não se encontra paga para emitir a NFSE"}
-        refunded_user = load_user(order["order_user_id"])
-        if not refunded_user:
-            return {"error": "Nenhum usuário encontrado como dono da ordem"}
-        BillingController().generate_bill_of_sale(refunded_user, order)
-        return {"success": "Tentativa de emitir nota fiscal concluída"}

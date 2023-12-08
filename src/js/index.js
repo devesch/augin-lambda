@@ -18,6 +18,23 @@ export async function startDownloadFromUrl(url) {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+} 
+
+export async function saveRefundOrder() {
+    var order_id_input = document.getElementById("order_id_input");
+    var backoffice_order_error_span = document.getElementById("backoffice_order_error_span");
+
+    var update_backoffice_response = await apiCaller("update_backoffice", {
+        "command": "refund_order",
+        "order_id": order_id_input.value
+    })
+
+    if ("error" in update_backoffice_response){
+        backoffice_order_error_span.innerHTML = update_backoffice_response["error"];
+    } 
+    if ("success" in update_order_response) {
+        backoffice_order_error_span.innerHTML = update_backoffice_response["success"];
+    }
 }
 
 export async function generatePanelOrderPagePdf(order_id, format) {
@@ -496,6 +513,8 @@ export async function saveDeleteNotification(notification_id) {
         "command": "delete_notification",
         "notification_id": notification_id
     })
+
+    var panel_explore_project_user_notifications_html_response = await apiCaller("panel_explore_project_user_notifications_html", {})
     if ("success" in update_user_response) {
         notification_li.remove();
         user_notifications_number.innerText = (parseInt(user_notifications_number.innerText) - 1);
@@ -3204,7 +3223,7 @@ export async function loadMoreOnScroll(query) {
                     do_not_call_api = false;
                 }
             }
-        }
+        } 
     };
 
     window.onwheel = async function () {

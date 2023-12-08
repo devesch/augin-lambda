@@ -13,8 +13,8 @@ from utils.AWS.Dynamo import Dynamo
 from objects.User import load_user
 from utils.AWS.Ses import Ses
 import time
-import json
-# from objects.UserNotification import create_notification_payment_success
+
+from objects.UserNotification import create_notification_payment_success
 
 
 ### TODO REMOVE BEFORE PROD
@@ -61,7 +61,8 @@ class CheckoutStripeWebHook(BasePage):
 
             if order["order_nfse_status"] != "issued":
                 if order["order_currency"] == "brl":
-                    BillingController().generate_bill_of_sale(self.user, order)
+                    # BillingController().generate_bill_of_sale(self.user, order)
+                    pass
                 elif order["order_currency"] == "usd":
                     BillingController().generate_international_pdf_bill_of_sale(order)
 
@@ -74,14 +75,12 @@ class CheckoutStripeWebHook(BasePage):
                 if self.post["data"]["object"]["description"] != "Subscription update":
                     self.mark_coupon_as_used_and_update_coupon_count(order, self.user.user_id)
                     self.user.remove_user_cart_coupon_code()
-                
-                self.send_payment_success_email(order)
-                # TODO: matheus function
-                # create_notification_payment_success(stripe_customer["email"])
+
+            self.send_payment_success_email(order)
+            create_notification_payment_success(self.user.user_id, order["order_id"])
 
         # raise Exception("TODO PAYMENT SUCCESS")
-        
-       
+
         return {"success": "Evento payment_intent_succeeded tratado."}
 
     def charge_succeeded(self):

@@ -5,13 +5,23 @@ from utils.utils.Date import Date
 from utils.AWS.Dynamo import Dynamo
 from utils.AWS.Ses import Ses
 from utils.Config import lambda_constants
-from objects.Order import generate_order_short_id, translate_order_type, translate_order_status, check_if_order_is_in_refund_time, translate_order_nfse_status
+from objects.Order import generate_order_short_id, translate_order_type, translate_order_status, translate_order_nfse_status
 
 
 class BackofficePage(BasePage):
     def __init__(self) -> None:
         super().__init__()
         self.admin = True
+
+    def list_html_key_val_section(self, order):
+        full_html = []
+        if order:
+            for key, val in order.items():
+                html = ReadWrite().read_html("main/_codes/html_key_val_section")
+                html.esc("key_val", key)
+                html.esc("val_val", val)
+                full_html.append(str(html))
+        return "".join(full_html)
 
     def list_html_backoffice_cancel_subscriptions_table_rows(self, cancel_subscriptions):
         full_html = []
@@ -261,6 +271,7 @@ class BackofficePage(BasePage):
                     if (self.post["search_order_status"] != order["order_status"]) and (self.post["search_order_status"] != "all"):
                         continue
                 html = ReadWrite().read_html("backoffice_orders/_codes/html_backoffice_orders_table_rows")
+                html.esc("order_id_val", order["order_id"])
                 html.esc("order_user_id_val", order["order_user_id"])
                 html.esc("order_short_id_val", generate_order_short_id(order["order_id"]))
                 html.esc("order_last_error_message_val", order.get("order_last_error_message"))
@@ -278,15 +289,9 @@ class BackofficePage(BasePage):
                 html.esc("order_currency_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
                 html.esc("order_total_price_val", StrFormat().format_to_money(order["order_total_price"], order["order_currency"]))
                 html.esc("order_status_val", translate_order_status(order["order_status"]))
-                if order["order_status"] == "paid" and order["order_payment_method"] == "card" and check_if_order_is_in_refund_time(order["created_at"]):
-                    html.esc("html_refund_order", self.show_html_refund_order(order["order_id"]))
                 html.esc("order_nfse_xml_link_val", order["order_nfse_xml_link"])
                 html.esc("order_nfse_pdf_link_val", order["order_nfse_pdf_link"])
                 html.esc("order_nfse_status_val", translate_order_nfse_status(order.get("order_nfse_status", "")))
-                if order["order_status"] == "paid" and order["order_nfse_status"] == "not_issued":
-                    html.esc("html_re_issue_order_nfse", self.show_html_re_issue_order_nfse(order["order_id"]))
-                if order["order_status"] == "paid" and order["order_nfse_pdf_link"] == "":
-                    html.esc("html_re_issue_order_nfse_pdf", self.show_html_re_issue_order_nfse_pdf(order["order_id"]))
                 if order["order_status"] not in ["paid", "refunded"]:
                     html.esc("order_link_visibility_val", "display:none;")
                 full_html.append(str(html))

@@ -1,0 +1,17 @@
+<pedRegEvento versao="1.00">
+    <PedReg versao="1.00" xmlns="http://www.sped.fazenda.gov.br/nfse">
+        <infPedReg Id="PRE{{order_nfse_id_val}}101101">
+            <tpAmb>{{tpAmb_val}}</tpAmb>
+            <verAplic>{{verAplic_val}}</verAplic>
+            <dhEvento>{{actual_billing_time_val}}-03:00</dhEvento>
+            <CNPJAutor>{{cnpj_val}}</CNPJAutor>
+            <chNFSe>{{order_nfse_id_val}}</chNFSe>
+            <nPedRegEvento>1</nPedRegEvento>
+            <e101101>
+                <xDesc>Cancelamento de NFS-e</xDesc>
+                <cMotivo>2</cMotivo>
+                <xMotivo>Servico nao prestado</xMotivo>
+            </e101101>
+        </infPedReg>
+    </PedReg>
+</pedRegEvento>

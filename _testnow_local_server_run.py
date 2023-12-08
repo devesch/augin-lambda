@@ -1,17 +1,22 @@
-import subprocess
-import os
 import json
+import os
+import subprocess
 import time
-from watchdog.observers import Observer
+
 from watchdog.events import PatternMatchingEventHandler
+from watchdog.observers import Observer
+
+
+def create_translations():
+    try:
+        subprocess.run(["python3.11", "create_translations.py"])
+    except:
+        subprocess.run(["python", "create_translations.py"])
 
 
 def load_environment_variables():
     with open(".vscode/launch.json", "r", encoding="utf-8") as file:
         launch = json.load(file)
-
-    with open(".vscode/enviroment_variables.json", "r", encoding="utf-8") as file:
-        enviroment_variables = json.load(file)
 
     os.environ["AWS_ACCESS_KEY_ID"] = launch["configurations"][0]["env"]["AWS_ACCESS_KEY_ID"]
     os.environ["AWS_SECRET_ACCESS_KEY"] = launch["configurations"][0]["env"]["AWS_SECRET_ACCESS_KEY"]
@@ -20,11 +25,12 @@ def load_environment_variables():
 
 
 def run_subprocess():
-    file_to_run = "_testnow_local_server.py"
-    if "bernardo" in os.getcwd():
-        process = subprocess.Popen(["python3", file_to_run], env=os.environ)
+    if "bernardo" in os.getcwd() or "/Users/devesch" in os.getcwd():
+        create_translations()
+        process = subprocess.Popen(["python3", "_testnow_local_server.py"], env=os.environ)
     else:
-        process = subprocess.Popen(["python", file_to_run], env=os.environ)
+        create_translations()
+        process = subprocess.Popen(["python", "_testnow_local_server.py"], env=os.environ)
     return process
 
 
@@ -50,7 +56,7 @@ class OnMyWatch:
 
 
 class Handler(PatternMatchingEventHandler):
-    patterns = ["*.py"]
+    patterns = ["*.py", "*.html"]
 
     def __init__(self):
         super().__init__()

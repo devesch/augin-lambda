@@ -744,6 +744,11 @@
         "es": "Backoffice - órdenes de NFSE",
         "pt": "Backoffice - Ordens NFSE"
     },
+    "Backoffice - Pagamento": {
+        "en": "Backoffice - Payment",
+        "es": "Backoffice - Pago",
+        "pt": "Backoffice - Pagamento"
+    },
     "Backoffice - Pagamentos": {
         "en": "Backoffice - Payments",
         "es": "Backoffice - Pagos",
@@ -2094,6 +2099,11 @@
         "es": "Asunto",
         "pt": "Emitir"
     },
+    "Emitir NFSE": {
+        "en": "Issue NFSE",
+        "es": "Emitir NFSE",
+        "pt": "Emitir NFSE"
+    },
     "Empresa": {
         "en": "Company",
         "es": "Empresa",
@@ -2988,6 +2998,11 @@
         "en": "Indonesia",
         "es": "Indonesia",
         "pt": "Indonesia"
+    },
+    "Informações da ordem": {
+        "en": "Order Information",
+        "es": "Información del pedido",
+        "pt": "Informações da ordem"
     },
     "Informações de segurança e opções de privacidade": {
         "en": "Security information and privacy options",
@@ -4359,6 +4374,11 @@
         "es": "Opcional: complete para proteger su enlace",
         "pt": "Opcional: Preencha para proteger seu link"
     },
+    "Ordem": {
+        "en": "Order",
+        "es": "Orden",
+        "pt": "Ordem"
+    },
     "Ordem encontrada porém não se encontra paga": {
         "en": "Order found but not paid",
         "es": "Orden encontrado pero no pagado",
@@ -5493,6 +5513,11 @@
         "en": "Your new email will change from",
         "es": "Su nuevo correo electrónico cambiará de",
         "pt": "Seu novo email será alterado de "
+    },
+    "Seu pagamento foi realizado com sucesso.": {
+        "en": "Your payment was successfully made.",
+        "es": "Su pago se realizó con éxito.",
+        "pt": "Seu pagamento foi realizado com sucesso."
     },
     "Seu plano": {
         "en": "Your plan",

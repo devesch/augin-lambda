@@ -36,6 +36,7 @@ if os.environ.get("AWS_EXECUTION_ENV") is None and os.getenv("LOCAL_SERVER"):
 
 ### TODO CHANGE CNPJ TO AUGIN
 lambda_constants = {
+    "project_name": "Augin",
     "hcaptcha_secret": "ES_1de692eba3a6418da02963406bee95f5",
     "hcaptcha_sitekey": "9cc05442-d6d0-45aa-9ac2-f4ce3d6f8b64",
     "wa_number": "51999859355",
@@ -55,6 +56,7 @@ lambda_constants = {
     "company_full_address": "Av. Mariland 403, Sala 802 - Porto Alegre, RS",
     "company_formated_cnpj": "34.804.848/0001-95",
     "cnpj": "34804848000195",
+    "phone": "51999999999",
     "municipal_inscription": "62586920",
     # "company_formated_cnpj": "31.758.054/0001-44",
     # "cnpj": "31758054000144",
