@@ -19,6 +19,14 @@ class BackofficeData:
         self.entity = "backoffice_data"
 
 
+def fix_backoffice_data_total_count(backoffice_data):
+    for key, val in backoffice_data.items():
+        if "backoffice_data_total_" in key:
+            every_object_from_entity = Dynamo().query_entity(key.replace("backoffice_data_total_", "").replace("_count", ""))
+            backoffice_data[key] = str(len(every_object_from_entity))
+    Dynamo().put_entity(backoffice_data)
+
+
 def increase_backoffice_data_total_count(entity):
     backoffice_data = get_backoffice_data()
     key = "backoffice_data_total_" + entity + "_count"

@@ -56,7 +56,7 @@ lambda_constants = {
     "company_full_address": "Av. Mariland 403, Sala 802 - Porto Alegre, RS",
     "company_formated_cnpj": "34.804.848/0001-95",
     "cnpj": "34804848000195",
-    "phone": "51999999999",
+    "phone": "51999859355",
     "municipal_inscription": "62586920",
     # "company_formated_cnpj": "31.758.054/0001-44",
     # "cnpj": "31758054000144",

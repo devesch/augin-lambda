@@ -14,8 +14,7 @@
             <fone>{{phone_val}}</fone>
             <email>{{email_sender_val}}</email>
             <regTrib>
-                <opSimpNac>3</opSimpNac>
-                <regApTribSN>1</regApTribSN>
+                <opSimpNac>1</opSimpNac>
                 <regEspTrib>0</regEspTrib>
             </regTrib>
         </prest>
@@ -40,6 +39,7 @@
             <cServ>
                 <cTribNac>010701</cTribNac>
                 <xDescServ>Venda de produto digital</xDescServ>
+                <cNBS>111042000</cNBS>
             </cServ>
         </serv>
         <valores>
@@ -51,11 +51,15 @@
                     <tribISSQN>1</tribISSQN>
                     <tpRetISSQN>1</tpRetISSQN>
                 </tribMun>
+                <tribFed>
+                    <piscofins>
+                        <CST>08</CST>
+                    </piscofins>
+                </tribFed>
                 <totTrib>
-                    <pTotTribSN>11.00</pTotTribSN>
+                    <pTotTribSN>15.45</pTotTribSN>
                 </totTrib>
             </trib>
         </valores>
     </infDPS>
-
 </DPS>

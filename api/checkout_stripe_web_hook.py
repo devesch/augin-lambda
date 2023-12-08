@@ -61,8 +61,7 @@ class CheckoutStripeWebHook(BasePage):
 
             if order["order_nfse_status"] != "issued":
                 if order["order_currency"] == "brl":
-                    # BillingController().generate_bill_of_sale(self.user, order)
-                    pass
+                    BillingController().generate_bill_of_sale(self.user, order)
                 elif order["order_currency"] == "usd":
                     BillingController().generate_international_pdf_bill_of_sale(order)
 

@@ -26,7 +26,7 @@ verAplic = "SefinNac_Pre_1.0.0"
 cert_path = "xmls/augin_certificate.pem"
 key_path = "xmls/augin_decrypted_privatekey.pem"
 pfx_path = "xmls/augin_key.pfx"
-pfx_password = "639764418"
+pfx_password = "Augin2019"
 
 
 class BillingController:
@@ -128,12 +128,13 @@ class BillingController:
             Dynamo().put_entity(PendingNfse(order["order_id"], order["order_user_id"]).__dict__)
             return
 
-        order["order_nfse_id"] = emit_nfse["chaveAcesso"]
-        Dynamo().update_entity(order, "order_nfse_id", emit_nfse["chaveAcesso"])
-        Dynamo().update_entity(order, "order_nfse_status", "issued")
-        Dynamo().update_entity(order, "order_nfse_created_at", str(time.time()))
-        self.save_bill_of_sale_pdf(order)
-        self.save_bill_of_sale_xml(order)
+        if emit_nfse.get("chaveAcesso"):
+            order["order_nfse_id"] = emit_nfse["chaveAcesso"]
+            Dynamo().update_entity(order, "order_nfse_id", emit_nfse["chaveAcesso"])
+            Dynamo().update_entity(order, "order_nfse_status", "issued")
+            Dynamo().update_entity(order, "order_nfse_created_at", str(time.time()))
+            self.save_bill_of_sale_pdf(order)
+            self.save_bill_of_sale_xml(order)
 
     def generate_new_emit_nfse(self, user, order):
         xml = ReadWrite().read_file_with_codecs("xmls/new_emit_nfse_no_data.xml")
@@ -147,7 +148,9 @@ class BillingController:
         xml = xml.replace("{{actual_billing_date_val}}", self.format_unix_to_billing_time(time.time(), date_only=True))
 
         if user.user_client_type == "physical":
-            xml = xml.replace("{{CNPJ_or_CPF_val}}", "<CPF>" + user.user_cpf + "</CPF>")
+            ### TODO RETURN TO CPF WHEN PROD
+            # xml = xml.replace("{{CNPJ_or_CPF_val}}", "<CPF>" + user.user_cpf + "</CPF>")
+            xml = xml.replace("{{CNPJ_or_CPF_val}}", "<CNPJ>40178198000112</CNPJ>")
         elif user.user_client_type == "company":
             xml = xml.replace("{{CNPJ_or_CPF_val}}", "<CNPJ>" + user.user_cnpj + "</CNPJ>")
 
