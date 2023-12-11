@@ -696,6 +696,10 @@ input[list]::-ms-clear {
         background-color: colors.color("color-neutral-700") !important;
     }
 
+    @media only screen and (max-width: 980px) {
+        padding-bottom: 7rem;
+    }
+
 }
 
 .my-plan__table {
@@ -3767,7 +3771,7 @@ input[list]::-ms-clear {
 
 .notification-number {
     position: absolute;
-    z-index: 1;
+    // z-index: 1;
     background-color: colors.color("color-primary-500");
     color: colors.color("color-white");
     font-weight: bold;
