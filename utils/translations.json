@@ -6379,6 +6379,11 @@
         "es": "Ver Folder",
         "pt": "Visualizar Pasta"
     },
+    "Visualizar a próxima página": {
+        "en": "View the next page",
+        "es": "Ver la página siguiente",
+        "pt": "Visualizar a próxima página"
+    },
     "Visualizar detalhes": {
         "en": "View details",
         "es": "Ver detalles",
@@ -6393,6 +6398,11 @@
         "en": "View order information",
         "es": "Ver información de pedido",
         "pt": "Visualizar informações do pedido"
+    },
+    "Visualizar página anterior": {
+        "en": "View previous page",
+        "es": "Ver página anterior",
+        "pt": "Visualizar página anterior"
     },
     "Visualizações": {
         "en": "Views",

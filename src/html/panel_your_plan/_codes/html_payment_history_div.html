@@ -12,14 +12,15 @@
         <input hidden id="payment_history_current_page_input" value="1">
         <ul>
             <li>
-                <button onclick="js.index.changePaymentHistoryPage('decrease')" id="decrease_history_page_button" class="button--arrow left-arrow disabled">
+                <button onclick="js.index.changePaymentHistoryPage('decrease')" id="decrease_history_page_button" class="button--arrow left-arrow disabled" aria-label="{{Visualizar página anterior}}">
                     <div></div>
                 </button>
             </li>
             {{html_payment_history_pages_buttons}}
-            <button onclick="js.index.changePaymentHistoryPage('increase')" id="increase_history_page_button" class="button--arrow right-arrow">
-                <div></div>
-            </button>
+            <li>
+                <button onclick="js.index.changePaymentHistoryPage('increase')" id="increase_history_page_button" class="button--arrow right-arrow" aria-label="{{Visualizar a próxima página}}">
+                    <div></div>
+                </button>
             </li>
         </ul>
     </nav>
