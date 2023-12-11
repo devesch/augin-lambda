@@ -81,6 +81,9 @@ def main_lambda_handler(event, context):
     path = get_path_data(event.get_path(), user)
     project_cookies = event.get_project_cookies()
 
+    if page == "robots.txt":
+        return Http().text_response("User-agent: *\nDisallow:\nAllow: /home")
+
     if page == "api":
         class_instance = initialize_api_class_instance(event)
         set_instance_attributes(class_instance, event, page, cookie_policy, path, post, lang, user, project_cookies, path.get("error_msg"))

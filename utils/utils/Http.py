@@ -205,6 +205,10 @@ class Http:
     def json_response(self, body):
         return {"statusCode": 200, "body": json.dumps(body), "headers": {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}}
 
+    def text_response(self, body):
+        return {"statusCode": 200, "body": body, "headers": {"Content-Type": "text/plain", "Access-Control-Allow-Origin": "*"}}
+
+
     def respond(self, html, event, user=None, user_cookie=False, status_code=200):
         import re
 

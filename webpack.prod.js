@@ -18,10 +18,8 @@ module.exports = (env) => {
 
     if (env.production) {
         cdn_val = `https://cdn.augin.app/`;
-        webpack_mode = "development";
-        minimize_webpack = false;
-        // webpack_mode = "production";
-        // minimize_webpack = true;
+        webpack_mode = "production";
+        minimize_webpack = true;
     } else {
         cdn_val = `https://cdn.augin.app/`;
         webpack_mode = "development";
