@@ -25,10 +25,10 @@
 
 $font-family: 'Manrope';
 $font-path: $cdn_val + 'assets/fonts/';
-@include font-face($font-family, '#{$font-path}manrope-semibold-webfont', 400, normal);
-@include font-face($font-family, '#{$font-path}manrope-extrabold-webfont', 700, normal);
-@include font-face('Raleway', '#{$font-path}raleway-regular-webfont', 400, normal);
-@include font-face('Raleway', '#{$font-path}raleway-bold-webfont', 700, normal);
+@include font-face($font-family, '#{$font-path}manrope-semibold-webfont-v2', 400, normal);
+@include font-face($font-family, '#{$font-path}manrope-extrabold-webfont-v2', 700, normal);
+@include font-face('Raleway', '#{$font-path}raleway-regular-webfont-v2', 400, normal);
+@include font-face('Raleway', '#{$font-path}raleway-bold-webfont-v2', 700, normal);
 
 
 // RESET - START
