@@ -282,10 +282,10 @@
             <h1 class="my-plan__title">{{Informaçōes do pedido}} #{{order_short_id_val}}</h1>
         </div>
         <div class="order__settings print-hide" style="{{download_print_page_buttons_visibility_val}}">
-            <a class="button" onclick="js.index.generatePanelOrderPagePdf('{{order_id_val}}', 'download')">
+            <button class="button" onclick="js.index.generatePanelOrderPagePdf('{{order_id_val}}', 'download')" aria-label="{{Baixar página como PDF}}">
                 <img src="{{cdn_val}}/assets/icons/download.svg" alt="" width="24" height="24">
-            </a>
-            <button class="button" onclick="window.print()">
+            </button>
+            <button class="button" onclick="window.print()" aria-label="{{Imprimir página}}">
                 <img src="{{cdn_val}}/assets/icons/print-v2.svg" alt="" width="24" height="24">
             </button>
         </div>

@@ -814,6 +814,11 @@
         "es": "Descargar factura",
         "pt": "Baixar invoice"
     },
+    "Baixar página como PDF": {
+        "en": "Download Page as PDF",
+        "es": "Descargar página como PDF",
+        "pt": "Baixar página como PDF"
+    },
     "Baixe seus IFCs em qualquer lugar": {
         "en": "Download your IFCs anywhere",
         "es": "Descarga tus IFC en cualquier lugar",
@@ -2958,6 +2963,11 @@
         "en": "Import your file",
         "es": "Importa tu archivo",
         "pt": "Importe seu arquivo"
+    },
+    "Imprimir página": {
+        "en": "Print Page",
+        "es": "Imprimir página",
+        "pt": "Imprimir página"
     },
     "Incompleta": {
         "en": "Incomplete",
