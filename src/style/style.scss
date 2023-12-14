@@ -3823,3 +3823,14 @@ input[list]::-ms-clear {
     font-size: 0.9rem;
     color: colors.color("color-neutral-600");
 }
+
+.screen-reader-only {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    margin: -1px;
+}

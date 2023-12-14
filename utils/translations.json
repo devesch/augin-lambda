@@ -1619,6 +1619,11 @@
         "es": "Datos personales",
         "pt": "Dados pessoais"
     },
+    "Data": {
+        "en": "Date",
+        "es": "Fecha",
+        "pt": "Data"
+    },
     "Data de criação": {
         "en": "Creation date",
         "es": "Fecha de creación",
@@ -2135,13 +2140,13 @@
         "pt": "Enfrentei problemas técnicos ou bugs."
     },
     "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba": {
-        "en": "We understand that you want to cancel your signature.Before you finish this process, it is important that you know",
-        "es": "Entendemos que desea cancelar su firma.Antes de terminar este proceso, es importante que sepas",
+        "en": "We understand that you want to cancel your signature. Before you finish this process, it is important that you know",
+        "es": "Entendemos que desea cancelar su firma. Antes de terminar este proceso, es importante que sepas",
         "pt": "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba"
     },
     "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba:": {
-        "en": "We understand that you want to cancel your signature.Before you finish this process, it is important that you know:",
-        "es": "Entendemos que desea cancelar su firma.Antes de terminar este proceso, es importante que sepa:",
+        "en": "We understand that you want to cancel your signature. Before you finish this process, it is important that you know:",
+        "es": "Entendemos que desea cancelar su firma. Antes de terminar este proceso, es importante que sepa:",
         "pt": "Entendemos que você deseja cancelar sua assinatura. Antes de finalizar este processo, é importante que você saiba:"
     },
     "Enviamos um código de acesso temporário para": {
@@ -5500,8 +5505,8 @@
         "pt": "Seu espaço em nossa nuvem será reduzido para"
     },
     "Seu feedback é crucial para nós. Por favor, indique o motivo do cancelamento e deixe um comentário se desejar. Isso nos ajudará a melhorar nossos serviços.": {
-        "en": "Your feedback is crucial to us.Please indicate the reason for the cancellation and leave a comment if desired.This will help us improve our services.",
-        "es": "Sus comentarios son cruciales para nosotros.Indique el motivo de la cancelación y deje un comentario si lo desea.Esto nos ayudará a mejorar nuestros servicios.",
+        "en": "Your feedback is crucial to us. Please indicate the reason for the cancellation and leave a comment if desired. This will help us improve our services.",
+        "es": "Sus comentarios son cruciales para nosotros. Indique el motivo de la cancelación y deje un comentario si lo desea. Esto nos ayudará a mejorar nuestros servicios.",
         "pt": "Seu feedback é crucial para nós. Por favor, indique o motivo do cancelamento e deixe um comentário se desejar. Isso nos ajudará a melhorar nossos serviços."
     },
     "Seu nome": {
