@@ -7,18 +7,18 @@
     <div class="change-plan__upgrade-plan-button-container">
         {{html_your_plan_button_or_upgrade_plan_button}}
         {{html_trial_button}}
-        <button onclick="js.index.showPlansThumbs('annually')" class="button--save-25" style="{{save_on_annually_visibility_val}}">
+        <button onclick="js.index.showPlansThumbs('annually')" class="button--save-25 {{save_on_annually_visibility_val}}">
             <p>{{Economize com pagamento anual}} ({{plan_annually_savings}}% off) <img src="{{cdn_val}}/assets/icons/arrow_forward.svg" width="20" height="20" alt="" /></p>
         </button>
     </div>
     <ul>
         <li>{{Crie projetos de até}} {{plan_maxium_model_size_in_mbs_val}}Mb</li>
         <li>{{Armazenamento de até}} {{plan_cloud_space_in_gbs_val}}Gb</li>
-        <li style="{{plan_share_files_visibility_val}}">{{Compartilhe por QR Code ou link}}</li>
+        <li class="{{plan_share_files_visibility_val}}">{{Compartilhe por QR Code ou link}}</li>
         <li>Reference Trackers {{plan_reference_tracker_val}}</li>
         <li>{{Projetos federados de até}} {{plan_maxium_federated_size_in_mbs_val}}Mb</li>
         <li>{{Use sua conta em até}} {{plan_maxium_devices_available_val}} {{dispositivos}}</li>
-        <li style="{{plan_download_files_visibility_val}}">{{Baixe seus arquivos em qualquer lugar}}</li>
-        <li style="{{plan_team_play_participants_visibility_val}}">{{TeamPlay para até }} {{plan_team_play_participants_val}} {{pessoas}}</li>
+        <li class="{{plan_download_files_visibility_val}}">{{Baixe seus arquivos em qualquer lugar}}</li>
+        <li class="{{plan_team_play_participants_visibility_val}}">{{TeamPlay para até }} {{plan_team_play_participants_val}} {{pessoas}}</li>
     </ul>
 </section>

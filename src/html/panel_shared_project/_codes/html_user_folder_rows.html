@@ -14,7 +14,7 @@
         {{model_filesize_val}} Mb
         {{html_need_to_upgrade_your_plan}}
     </td>
-    <td class="relative" colspan="1" style="{{actions_visibility_val}}">
+    <td class="relative {{actions_visibility_val}}" colspan="1">
         <button class="button--explore-more-options button--icon" aria-controls="explore_table_item_menu_{{index_val}}" aria-expanded="false" onclick="js.index.toggleExploreMenu(this)">
             <img src="{{cdn_val}}/assets/icons/more_vert.svg" alt="" width="24" height="24">
         </button>
@@ -24,7 +24,7 @@
                     <img src="{{cdn_val}}/assets/icons/{{favorite_icon_val}}.svg" width="24" height="24" alt="" loading="lazy"> <span>{{favorite_or_unfavorite_val}}</span>
                 </button>
             </li>
-            <li style="{{remove_model_visibility_val}}">
+            <li class="{{remove_model_visibility_val}}">
                 <button onclick="js.index.openModalRemoveProject('{{model_id_val}}', '{{model_name_val}}')">
                     <img src="{{cdn_val}}/assets/icons/delete_ghost.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Remover}}</span>
                 </button>

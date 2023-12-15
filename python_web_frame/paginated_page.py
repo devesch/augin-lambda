@@ -18,13 +18,13 @@ class PaginatedPage:
         if self.post.get("showing_total_count"):
             html.esc("last_scroll_position_val", self.post.get("last_scroll_position", "0"))
         if not itens_total_count:
-            html.esc("pagination_visibility_val", "display: none;")
+            html.esc("pagination_visibility_val", "none")
         elif not last_evaluated_key:
-            html.esc("pagination_visibility_val", "display: none;")
+            html.esc("pagination_visibility_val", "none")
         else:
             html.esc("last_evaluated_key_val", json.dumps(last_evaluated_key))
             if str(itens_actual_count) == "0" or str(itens_total_count) == "0":
-                html.esc("pagination_visibility_val", "display: none;")
+                html.esc("pagination_visibility_val", "none")
             if int(itens_actual_count) == int(itens_total_count):
-                html.esc("pagination_visibility_val", "display: none;")
+                html.esc("pagination_visibility_val", "none")
         return str(html)

@@ -11,6 +11,7 @@ import {
     apiCaller,
     request
 } from "./api.js";
+import { showSelectedPaymentPage } from "./showSelectedPaymentPage.js";
 
 export async function startDownloadFromUrl(url) {
     var a = document.createElement('a');
@@ -198,31 +199,55 @@ export async function toggleBrAddressForms(active_span_id) {
     var client_type_spans_div = document.getElementById("client_type_spans_div");
 
     if (active_span_id == "company_span"){
-        physical_address_div.style.display = "none";
-        physical_address_submit_div.style.display = "none";
-        company_address_div.style.display = "";
-        company_address_submit_div.style.display = "";
-        international_address_div.style.display = "none";
-        international_address_submit_div.style.display = "none";
-        client_type_spans_div.style.display = "";
+        // physical_address_div.style.display = "none";
+        // physical_address_submit_div.style.display = "none";
+        // company_address_div.style.display = "";
+        // company_address_submit_div.style.display = "";
+        // international_address_div.style.display = "none";
+        // international_address_submit_div.style.display = "none";
+        // client_type_spans_div.style.display = "";
+
+        physical_address_div.classList.add("none");
+        physical_address_submit_div.classList.add("none");
+        company_address_div.classList.remove("none");
+        company_address_submit_div.classList.remove("none");
+        international_address_div.classList.add("none");
+        international_address_submit_div.classList.add("none");
+        client_type_spans_div.classList.remove("none");
     }
     if (active_span_id == "physical_span") {
-        physical_address_div.style.display = "";
-        physical_address_submit_div.style.display = "";
-        company_address_div.style.display = "none";
-        company_address_submit_div.style.display = "none";
-        international_address_div.style.display = "none";
-        international_address_submit_div.style.display = "none";
-        client_type_spans_div.style.display = "";
+        // physical_address_div.style.display = "";
+        // physical_address_submit_div.style.display = "";
+        // company_address_div.style.display = "none";
+        // company_address_submit_div.style.display = "none";
+        // international_address_div.style.display = "none";
+        // international_address_submit_div.style.display = "none";
+        // client_type_spans_div.style.display = "";
+
+        physical_address_div.classList.remove("none");
+        physical_address_submit_div.classList.remove("none");
+        company_address_div.classList.add("none");
+        company_address_submit_div.classList.add("none");
+        international_address_div.classList.add("none");
+        international_address_submit_div.classList.add("none");
+        client_type_spans_div.classList.remove("none");
     }
     if (active_span_id == "international_span") {
-        physical_address_div.style.display = "none";
-        physical_address_submit_div.style.display = "none";
-        company_address_div.style.display = "none";
-        company_address_submit_div.style.display = "none";
-        international_address_div.style.display = "";
-        international_address_submit_div.style.display = "";
-        client_type_spans_div.style.display = "none";
+        // physical_address_div.style.display = "none";
+        // physical_address_submit_div.style.display = "none";
+        // company_address_div.style.display = "none";
+        // company_address_submit_div.style.display = "none";
+        // international_address_div.style.display = "";
+        // international_address_submit_div.style.display = "";
+        // client_type_spans_div.style.display = "none";
+
+        physical_address_div.classList.add("none");
+        physical_address_submit_div.classList.add("none");
+        company_address_div.classList.add("none");
+        company_address_submit_div.classList.add("none");
+        international_address_div.classList.remove("none");
+        international_address_submit_div.classList.remove("none");
+        client_type_spans_div.classList.add("none");
     }
 }
 
@@ -348,7 +373,7 @@ export async function saveUserCPFData(){
         "user_complement" : user_complement_input.value
     })
     if ("error" in update_user_response) {
-        cpf_data_error_msg_span.innerHTML = update_user_response["error"];
+        cpf_data_error_msg_span.innerText = update_user_response["error"];
     }
     if ("success" in update_user_response) {
         if (location.href.includes("checkout_upgrade_your_plan")){
@@ -356,7 +381,7 @@ export async function saveUserCPFData(){
             location.href = selected_plan_redirect_url_input.value;
         }
 
-        cpf_data_error_msg_span.innerHTML = "";
+        cpf_data_error_msg_span.innerText = "";
         save_cpf_data_button.innerHTML = update_user_response["success"];
         await sleep(7000);
 
@@ -552,44 +577,6 @@ export async function changeAcessibleLabel(input, type) {
 
 
 
-export async function showSelectedPaymentPage(index) {
-    let decrease_history_page_button = document.getElementById("decrease_history_page_button");
-    let increase_history_page_button = document.getElementById("increase_history_page_button");
-    let payment_history_pages_count_input = document.getElementById("payment_history_pages_count_input");
-    let current_button = document.getElementById("payment_history_page_button_" + index);
-    let payment_history_current_page_input = document.getElementById("payment_history_current_page_input");
-    let payment_history_page_buttons = document.querySelectorAll('[id^="payment_history_page_button_"]');
-    let payment_history_rows = document.querySelectorAll('[class^="payment_history_row_page_"]');
-
-    payment_history_current_page_input.value = index;
-
-    for (let payment_history_row of payment_history_rows) {
-        if (payment_history_row.classList.contains("payment_history_row_page_" + index)) {
-            payment_history_row.style.display = "";
-        } else {
-            payment_history_row.style.display = "none";
-        }
-    }
-
-    for (let payment_history_page_button of payment_history_page_buttons) {
-        payment_history_page_button.classList.remove("selected-page")
-    }
-    current_button.classList.add("selected-page");
-
-    if (index == payment_history_pages_count_input.value) {
-        increase_history_page_button.classList.add("disabled");
-    } else {
-        increase_history_page_button.classList.remove("disabled");
-    }
-    if (index == "1") {
-        decrease_history_page_button.classList.add("disabled");
-    } else {
-        decrease_history_page_button.classList.remove("disabled");
-    }
-}
-
-
-
 export async function processStripeSubscriptionPayment(stripe_token, payment_type, plan_id, plan_recurrency) {
     const stripe = Stripe(stripe_token, {
         locale: 'pt-BR',
@@ -633,7 +620,8 @@ export async function processStripeSubscriptionPayment(stripe_token, payment_typ
         paymentElement.mount("#payment-element");
         await sleep(200);
         box_payment_loader.style.display = "none";
-        continue_button.style.display = "";
+        // continue_button.style.display = "";
+        continue_button.classList.remove("none");
     }
     async function handleSubmit(e) {
         e.preventDefault();
@@ -870,14 +858,16 @@ export async function showUserPhysicalAddressData() {
             user_city_code_input.value = api_response.success.city_code
             user_neighborhood_input.value = api_response.success.neighborhood
             user_street_input.value = api_response.success.street
-            cpf_data_error_msg_span.innerHTML = ""
-            cpf_data_error_msg_span.style = "display: none;"
+            cpf_data_error_msg_span.innerText = ""
+            cpf_data_error_msg_span.classList.add("none");
+            cpf_data_error_msg_span.classList.remove("color-error-500");
             makeSaveUserCPFDataAvailable();
             return
         }
         if ("error" in api_response) {
-            cpf_data_error_msg_span.innerHTML = api_response.error
-            cpf_data_error_msg_span.style = "color:#FF0000;"
+            cpf_data_error_msg_span.innerText = api_response.error
+            cpf_data_error_msg_span.classList.remove("none");
+            cpf_data_error_msg_span.classList.add("color-error-500");
             return
         }
     }
@@ -915,16 +905,18 @@ export async function showUserCompanyAddressData() {
             user_neighborhood_input.value = api_response.success.neighborhood
             user_street_input.value = api_response.success.street
             user_street_number_input.value = api_response.success.street_number
-            cpf_data_error_msg_span.innerHTML = ""
-            cpf_data_error_msg_span.style = "display: none;"
+            cpf_data_error_msg_span.innerText = ""
+            cpf_data_error_msg_span.classList.add("none");
+            cpf_data_error_msg_span.classList.remove("color-error-500");
             formatToZIP(user_zip_code_input);
             formatToNumbers(user_street_number_input);
             makeSaveUserCNPJDataAvailable();
             return
         }
         if ("error" in api_response) {
-            cpf_data_error_msg_span.innerHTML = api_response.error
-            cpf_data_error_msg_span.style = "color:#FF0000;"
+            cpf_data_error_msg_span.innerText = api_response.error
+            cpf_data_error_msg_span.classList.remove("none");
+            cpf_data_error_msg_span.classList.add("color-error-500");
             return
         }
     }
@@ -979,9 +971,11 @@ export function formatToPhone(input) {
 export async function toogleDiv(checkbox_input, div_id) {
     var div = document.getElementById(div_id);
     if (checkbox_input.checked) {
-        div.style.display = "";
+        // div.style.display = "";
+        div.classList.remove("none");
     } else {
-        div.style.display = "none";
+        // div.style.display = "none";
+        div.classList.add("none");
     }
 }
 
@@ -1052,9 +1046,11 @@ export async function processingProjectsUpdateUl() {
     models_in_process_ul.innerHTML = panel_explore_projects_models_in_processing_html_response["success"];
 
     if (panel_explore_projects_models_in_processing_html_response["success"]) {
-        models_in_processing_section.style.display = "";
+        // models_in_processing_section.style.display = "";
+        models_in_processing_section.classList.remove("none");
     } else {
-        models_in_processing_section.style.display = "none";
+        // models_in_processing_section.style.display = "none";
+        models_in_processing_section.classList.add("none");
     }
 
     let amount_of_models_in_processing_after_update = models_in_process_ul.getElementsByTagName("li").length;
@@ -1260,10 +1256,12 @@ export function checkIfCreateProjectIsFederated(checkbox = true) {
     }
 
     if (create_federated_project_with_processed_files_checkbox.checked) {
-        federated_name_div.style.display = "";
+        // federated_name_div.style.display = "";
+        federated_name_div.classList.remove("none");
         federated_name_input.required = true;
     } else {
-        federated_name_div.style.display = "none";
+        // federated_name_div.style.display = "none";
+        federated_name_div.classList.add("none");
         federated_name_input.required = false;
     }
 }
@@ -1281,7 +1279,8 @@ export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable 
                 "key": "Um ou mais de seus arquivos possui um erro, por favor exclua os arquivos com erro para realizar o processamento"
             });
             create_project_error_span.innerHTML = translate_response["success"];
-            create_project_error_span.style.display = "";
+            // create_project_error_span.style.display = "";
+            create_project_error_span.classList.remove("none");
             return
         }
     }
@@ -1290,7 +1289,8 @@ export async function checkIfCreateProjectSubmitButtonIsAvailable(is_submitable 
         if (has_errors.length > 0) {
             submit_form_button.removeAttribute("disabled");
             create_project_error_span.innerHTML = "";
-            create_project_error_span.style.display = "none";
+            // create_project_error_span.style.display = "none";
+            create_project_error_span.classList.add("none");
             return
         }
     }
@@ -1613,14 +1613,18 @@ export function showPlansThumbs(recurrency) {
     if (recurrency == "monthly") {
         monthly_augin_plan_input.checked = true;
         yearly_augin_plan_input.checked = false;
-        monthly_subscription_container.style.display = ""
-        yearly_subscription_container.style.display = "none"
+        // monthly_subscription_container.style.display = ""
+        // yearly_subscription_container.style.display = "none"
+        monthly_subscription_container.classList.remove("none");
+        yearly_subscription_container.classList.add("none");
     }
     if (recurrency == "annually") {
         monthly_augin_plan_input.checked = false;
         yearly_augin_plan_input.checked = true;
-        monthly_subscription_container.style.display = "none"
-        yearly_subscription_container.style.display = ""
+        // monthly_subscription_container.style.display = "none"
+        // yearly_subscription_container.style.display = ""
+        monthly_subscription_container.classList.add("none");
+        yearly_subscription_container.classList.remove("none");
     }
 }
 
@@ -1747,11 +1751,15 @@ export async function openModalShareProject(model_id, model_name, model_visualiz
 
     if (model_is_password_protected == "True") {
         project_is_password_protected_input.checked = "checked";
-        project_password_div.style.display = "block";
+        // project_password_div.style.display = "block";
+        project_password_div.classList.add("block");
+        project_password_div.classList.remove("none");
         project_password_div.classList.add("open");
     } else {
         project_is_password_protected_input.checked = "";
-        project_password_div.style.display = "none";
+        // project_password_div.style.display = "none";
+        project_password_div.classList.remove("block");
+        project_password_div.classList.add("none");
         project_password_div.classList.remove("open");
     }
 
@@ -1790,9 +1798,11 @@ export async function openModalDeleteProject(model_id, model_name, model_used_in
 
     console.log("model_used_in_federated_ids", model_used_in_federated_ids);
     if (model_used_in_federated_ids === "True") {
-        delete_model_used_in_federated_ids_span.style.display = "";
+        // delete_model_used_in_federated_ids_span.style.display = "";
+        delete_model_used_in_federated_ids_span.classList.remove("none");
     } else {
-        delete_model_used_in_federated_ids_span.style.display = "none";
+        // delete_model_used_in_federated_ids_span.style.display = "none";
+        delete_model_used_in_federated_ids_span.classList.add("none");
     }
     delete_model_name_span.innerText = model_name;
     model_id_delete_input.value = model_id;
@@ -1820,9 +1830,13 @@ export function showHideElement(element_id) {
     var element = document.getElementById(element_id);
     element.classList.toggle("open");
     if (element.classList.contains("open")) {
-        element.style.display = "block";
+        // element.style.display = "block";
+        element.classList.add("block");
+        element.classList.remove("none");
     } else {
-        element.style.display = "none";
+        // element.style.display = "none";
+        element.classList.remove("block");
+        element.classList.add("none");
     }
 }
 
@@ -1867,15 +1881,18 @@ export async function showUserDicts() {
     if (location.href.includes("view_folder")) {
         var shared_folder_id_input = document.getElementById("shared_folder_id_input");
         if (shared_folder_id_input.value == folder_id_input.value) {
-            user_dicts_return_to_root_span.style.display = "none";
+            // user_dicts_return_to_root_span.style.display = "none";
+            user_dicts_return_to_root_span.classList.add("none");
             return
         }
     }
 
     if (folder_path_input.value) {
-        user_dicts_return_to_root_span.style.display = "";
+        // user_dicts_return_to_root_span.style.display = "";
+        user_dicts_return_to_root_span.classList.remove("none");
     } else {
-        user_dicts_return_to_root_span.style.display = "none";
+        // user_dicts_return_to_root_span.style.display = "none";
+        user_dicts_return_to_root_span.classList.add("none");
     }
 }
 
@@ -1990,9 +2007,11 @@ export async function sortProjectsBy(sort_attribute) {
     var sort_images = document.querySelectorAll('[id$="_sort_image"]');
     for (let image of sort_images) {
         if (sort_image.id != image.id) {
-            image.style.display = "none";
+            // image.style.display = "none";
+            image.classList.add("none");
         } else {
-            image.style.display = "";
+            // image.style.display = "";
+            image.classList.remove("none");
         }
     }
     await showUserDicts();
@@ -2065,8 +2084,10 @@ export async function openModalUpdateProject(model_id) {
     var update_modal_return_folder_span = document.getElementById("update_modal_return_folder_span");
     var update_modal_folder_path_span = document.getElementById("update_modal_folder_path_span");
 
-    update_modal_return_folder_span.style.display = "none";
-    update_modal_folder_path_span.style.display = "none";
+    // update_modal_return_folder_span.style.display = "none";
+    // update_modal_folder_path_span.style.display = "none";
+    update_modal_return_folder_span.classList.add("none");
+    update_modal_folder_path_span.classList.add("none");
 
     var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "model_html": "update",
@@ -2317,11 +2338,15 @@ export async function refreshUpdateModal(folder_id) {
             "folder_id": folder_id
         });
         update_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
-        update_modal_folder_path_span.style.display = "";
-        update_modal_return_folder_span.style.display = "";
+        // update_modal_folder_path_span.style.display = "";
+        // update_modal_return_folder_span.style.display = "";
+        update_modal_folder_path_span.classList.remove("none");
+        update_modal_return_folder_span.classList.remove("none");
     } else {
-        update_modal_folder_path_span.style.display = "none";
-        update_modal_return_folder_span.style.display = "none";
+        // update_modal_folder_path_span.style.display = "none";
+        // update_modal_return_folder_span.style.display = "none";
+        update_modal_folder_path_span.classList.add("none");
+        update_modal_return_folder_span.classList.add("none");
     }
     update_modal_folder_id.value = folder_id;
     update_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
@@ -2349,8 +2374,10 @@ export async function openModalMoveProject(model_id) {
     var move_modal_folder_path_span = document.getElementById("move_modal_folder_path_span");
     var move_modal_folder_id = document.getElementById("move_modal_folder_id");
 
-    move_modal_return_folder_span.style.display = "none";
-    move_modal_folder_path_span.style.display = "none";
+    // move_modal_return_folder_span.style.display = "none";
+    // move_modal_folder_path_span.style.display = "none";
+    move_modal_return_folder_span.classList.add("none");
+    move_modal_folder_path_span.classList.add("none");
 
     var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "model_html": "move"
@@ -2374,8 +2401,10 @@ export async function openModalMoveFolder(folder_id) {
     var move_folder_modal_folder_path_span = document.getElementById("move_folder_modal_folder_path_span");
     var move_folder_modal_folder_id = document.getElementById("move_folder_modal_folder_id");
 
-    move_folder_modal_return_folder_span.style.display = "none";
-    move_folder_modal_folder_path_span.style.display = "none";
+    // move_folder_modal_return_folder_span.style.display = "none";
+    // move_folder_modal_folder_path_span.style.display = "none";
+    move_folder_modal_return_folder_span.classList.add("none");
+    move_folder_modal_folder_path_span.classList.add("none");
 
     var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "model_html": "move_folder"
@@ -2408,12 +2437,16 @@ export async function refreshMoveFolderModal(folder_id) {
             "command": "get_folder",
             "folder_id": folder_id
         });
-        move_folder_modal_return_folder_span.style.display = "";
         move_folder_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
-        move_folder_modal_folder_path_span.style.display = "";
+        // move_folder_modal_return_folder_span.style.display = "";
+        // move_folder_modal_folder_path_span.style.display = "";
+        move_folder_modal_return_folder_span.classList.remove("none");
+        move_folder_modal_folder_path_span.classList.remove("none");
     } else {
-        move_folder_modal_return_folder_span.style.display = "none";
-        move_folder_modal_folder_path_span.style.display = "none";
+        // move_folder_modal_return_folder_span.style.display = "none";
+        // move_folder_modal_folder_path_span.style.display = "none";
+        move_folder_modal_return_folder_span.classList.add("none");
+        move_folder_modal_folder_path_span.classList.add("none");
     }
 
     move_folder_modal_folder_id.value = folder_id;
@@ -2475,12 +2508,16 @@ export async function refreshMoveModal(folder_id) {
             "command": "get_folder",
             "folder_id": folder_id
         });
-        move_modal_return_folder_span.style.display = "";
         move_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
-        move_modal_folder_path_span.style.display = "";
+        // move_modal_return_folder_span.style.display = "";
+        // move_modal_folder_path_span.style.display = "";
+        move_modal_return_folder_span.classList.remove("none");
+        move_modal_folder_path_span.classList.remove("none");
     } else {
-        move_modal_return_folder_span.style.display = "none";
-        move_modal_folder_path_span.style.display = "none";
+        // move_modal_return_folder_span.style.display = "none";
+        // move_modal_folder_path_span.style.display = "none";
+        move_modal_return_folder_span.classList.add("none");
+        move_modal_folder_path_span.classList.add("none");
     }
 
     move_modal_folder_id.value = folder_id;
@@ -2550,7 +2587,8 @@ export async function downloadFileFromList(download_list) {
                 const blob = await response.blob();
                 const blobUrl = URL.createObjectURL(blob);
                 const anchor = document.createElement('a');
-                anchor.style.display = 'none';
+                // anchor.style.display = 'none';
+                anchor.classList.add("none");
                 anchor.href = blobUrl;
                 anchor.download = modelName;
                 document.body.appendChild(anchor);
@@ -2598,7 +2636,8 @@ export async function saveCreateFederatedProject() {
     })
     federated_required_ids_list = [];
     create_federated_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
-    create_federated_modal_return_folder_span.style.display = "none";
+    // create_federated_modal_return_folder_span.style.display = "none";
+    create_federated_modal_return_folder_span.classList.add("none");
     closeModal(".modal.create-federated-modal");
     openModal(".modal.create-federated-select-models-modal");
 
@@ -2661,11 +2700,15 @@ export async function refreshCreateFederatedModal(folder_id) {
             "folder_id": folder_id
         });
         create_federated_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
-        create_federated_modal_folder_path_span.style.display = "";
-        create_federated_modal_return_folder_span.style.display = "";
+        // create_federated_modal_folder_path_span.style.display = "";
+        // create_federated_modal_return_folder_span.style.display = "";
+        create_federated_modal_folder_path_span.classList.remove("none");
+        create_federated_modal_return_folder_span.classList.remove("none");
     } else {
-        create_federated_modal_folder_path_span.style.display = "none";
-        create_federated_modal_return_folder_span.style.display = "none";
+        // create_federated_modal_folder_path_span.style.display = "none";
+        // create_federated_modal_return_folder_span.style.display = "none";
+        create_federated_modal_folder_path_span.classList.add("none");
+        create_federated_modal_return_folder_span.classList.add("none");
     }
     create_federated_modal_folder_id.value = folder_id;
     create_federated_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
@@ -2777,11 +2820,15 @@ export async function openModalShareFolder(folder_id, folder_name, folder_visual
 
     if (folder_is_password_protected == "True") {
         folder_is_password_protected_input.checked = "checked";
-        folder_password_div.style.display = "block";
+        // folder_password_div.style.display = "block";
+        folder_password_div.classList.add("block");
+        folder_password_div.classList.remove("none");
         folder_password_div.classList.add("open");
     } else {
         folder_is_password_protected_input.checked = "";
-        folder_password_div.style.display = "none";
+        // folder_password_div.style.display = "none";
+        folder_password_div.classList.add("none");
+        folder_password_div.classList.remove("block");
         folder_password_div.classList.remove("open");
     }
 
@@ -3256,8 +3303,10 @@ export async function loadMoreCallApiPagination() {
     console.log("running loadMorePagination");
     let loadingPaginationMessage = document.getElementById("pagination_loading_more_message_p");
     let countPagination = document.getElementById("pagination_itens_count_p");
-    countPagination.style.display = "none";
-    loadingPaginationMessage.style.display = "block";
+    // countPagination.style.display = "none";
+    // loadingPaginationMessage.style.display = "block";
+    countPagination.classList.add("none");
+    loadingPaginationMessage.classList.add("block");
 
     let query_filter_input = document.getElementById("query_filter");
     let query_filter_value = ""
@@ -3284,17 +3333,23 @@ export async function loadMoreCallApiPagination() {
 
     console.log("updating last_evaluated_key with ", pagination_queries_response["last_evaluated_key"]);
     last_evaluated_key_input.value = JSON.stringify(pagination_queries_response["last_evaluated_key"]);
-    pagination_actual_itens_count_span.innerHTML = parseInt(pagination_actual_itens_count_span.innerHTML) + parseInt(pagination_queries_response["new_itens_count"])
+    pagination_actual_itens_count_span.innerText = parseInt(pagination_actual_itens_count_span.innerHTML) + parseInt(pagination_queries_response["new_itens_count"])
     progress_bar.style = 'width:' + parseInt((parseInt(pagination_actual_itens_count_span.innerHTML) / parseInt(pagination_total_itens_count_span.innerHTML)) * 100) + "%; color:transparent";
-    showing_total_count_input.value = pagination_actual_itens_count_span.innerHTML;
+    showing_total_count_input.value = pagination_actual_itens_count_span.innerText;
 
     if (parseInt(pagination_actual_itens_count_span.innerHTML) == parseInt(pagination_total_itens_count_span.innerHTML)) {
         let load_more_pagination_button = document.getElementById("load_more_pagination_button");
-        load_more_pagination_button.style.display = "none";
+        // load_more_pagination_button.style.display = "none";
+        load_more_pagination_button.classList.add("none");
+        load_more_pagination_button.classList.remove("block");
     }
 
-    countPagination.style.display = "block";
-    loadingPaginationMessage.style.display = "none";
+    // countPagination.style.display = "block";
+    // loadingPaginationMessage.style.display = "none";
+    countPagination.classList.add("block");
+    countPagination.classList.remove("none");
+    loadingPaginationMessage.classList.remove("block");
+    loadingPaginationMessage.classList.add("none");
 
 }
 
@@ -3433,16 +3488,20 @@ export async function showCouponDiscountFields() {
     let coupon_percentage_discount_input = document.getElementById("coupon_percentage_discount_input");
 
     if (coupon_discount_type_select.value == "percentage") {
-        total_discount_div.style.display = "none";
-        percentage_discount_div.style.display = "";
+        // total_discount_div.style.display = "none";
+        // percentage_discount_div.style.display = "";
+        total_discount_div.classList.add("none");
+        percentage_discount_div.classList.remove("none");
 
         coupon_brl_discount_input.removeAttribute("required");
         coupon_usd_discount_input.removeAttribute("required");
         coupon_percentage_discount_input.setAttribute("required", "required");
 
     } else if (coupon_discount_type_select.value == "total") {
-        total_discount_div.style.display = "";
-        percentage_discount_div.style.display = "none";
+        // total_discount_div.style.display = "";
+        // percentage_discount_div.style.display = "none";
+        total_discount_div.classList.remove("none");
+        percentage_discount_div.classList.add("none");
 
         coupon_brl_discount_input.setAttribute("required", "required");
         coupon_usd_discount_input.setAttribute("required", "required");
@@ -3513,8 +3572,10 @@ export async function openModalAddModelToFederatedProject(folder_id) {
     var add_model_to_federated_modal_folder_path_span = document.getElementById("add_model_to_federated_modal_folder_path_span");
     var add_model_to_federated_modal_folder_id = document.getElementById("add_model_to_federated_modal_folder_id");
 
-    add_model_to_federated_modal_return_folder_span.style.display = "none";
-    add_model_to_federated_modal_folder_path_span.style.display = "none";
+    // add_model_to_federated_modal_return_folder_span.style.display = "none";
+    // add_model_to_federated_modal_folder_path_span.style.display = "none";
+    add_model_to_federated_modal_return_folder_span.classList.add("none");
+    add_model_to_federated_modal_folder_path_span.classList.add("none");
 
     var panel_explore_project_user_dicts_html_response = await apiCaller("panel_explore_project_user_dicts_html", {
         "model_html": "add_project_to_federated",
@@ -3522,7 +3583,7 @@ export async function openModalAddModelToFederatedProject(folder_id) {
     })
 
     folder_id_add_model_to_federated_modal_input.value = folder_id;
-    add_model_to_federated_modal_error_span.innerHTML = "";
+    add_model_to_federated_modal_error_span.innerText = "";
     add_model_to_federated_modal_folder_id.value = "";
     add_model_to_federated_model_user_folder_rows_tbody.innerHTML = panel_explore_project_user_dicts_html_response["success"];
 
@@ -3582,12 +3643,16 @@ export async function refreshEditFederatedProjectModal(folder_id) {
             "command": "get_folder",
             "folder_id": folder_id
         });
-        add_model_to_federated_modal_return_folder_span.style.display = "";
         add_model_to_federated_modal_folder_path_span.innerHTML = update_user_response["folder"]["folder_path"];
-        add_model_to_federated_modal_folder_path_span.style.display = "";
+        // add_model_to_federated_modal_return_folder_span.style.display = "";
+        // add_model_to_federated_modal_folder_path_span.style.display = "";
+        add_model_to_federated_modal_return_folder_span.classList.remove("none");
+        add_model_to_federated_modal_folder_path_span.classList.remove("none");
     } else {
-        add_model_to_federated_modal_return_folder_span.style.display = "none";
-        add_model_to_federated_modal_folder_path_span.style.display = "none";
+        // add_model_to_federated_modal_return_folder_span.style.display = "none";
+        // add_model_to_federated_modal_folder_path_span.style.display = "none";
+        add_model_to_federated_modal_return_folder_span.classList.add("none");
+        add_model_to_federated_modal_folder_path_span.classList.add("none");
     }
 
     folder_id_add_model_to_federated_modal_input.value = folder_id;
@@ -3680,7 +3745,7 @@ export async function checkIfCouponIsStillValid() {
 export async function callBackofficeApi(order_id, command) {
     openModal(".modal.modal-loader-spinner");
     let backoffice_orders_error_span = document.getElementById("backoffice_orders_error_span");
-    backoffice_orders_error_span.innerHTML = ""
+    backoffice_orders_error_span.innerText = ""
 
     let update_backoffice_response = await apiCaller('update_backoffice', {
         "command": command,
@@ -3688,11 +3753,12 @@ export async function callBackofficeApi(order_id, command) {
     });
 
     if ("error" in update_backoffice_response) {
-        backoffice_orders_error_span.innerHTML = update_backoffice_response["error"]
+        backoffice_orders_error_span.innerText = update_backoffice_response["error"]
     } else {
-        backoffice_orders_error_span.innerHTML = update_backoffice_response["success"]
+        backoffice_orders_error_span.innerText = update_backoffice_response["success"]
     }
-    backoffice_orders_error_span.style.display = "";
+    // backoffice_orders_error_span.style.display = "";
+    backoffice_orders_error_span.classList.remove("none");
     updateBackofficeOrders()
     closeModal(".modal.modal-loader-spinner");
 }

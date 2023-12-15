@@ -1,11 +1,11 @@
 ﻿{{header}}
 {{menu_panel}}
 <main class="{{my_plan_main_class_val}}">
-    <div class="my-plan__title-container" style="{{render_props_visibility_val}}">
+    <div class="my-plan__title-container {{render_props_visibility_val}}">
         <h1 class="my-plan__title">{{Editar perfil}}</h1>
     </div>
     <article>
-        <section class="panel-user-data__main-container" style="{{render_props_visibility_val}}">
+        <section class="panel-user-data__main-container {{render_props_visibility_val}}">
             <section class="panel-user-data__main-container__row">
                 <section class="panel-user-data__main-container__column">
                     <h2 class="panel-user-data__main-container__title">{{Dados pessoais}}</h2>
@@ -55,14 +55,14 @@
                         <p>{{Dados para emissão de notas-fiscais, invoices e boletos.}}</p>
                     </section>
                     <section class="panel-user-data-container panel-user-data__main-container__column">
-                        <div class="panel-user-billing-data-container" id="client_type_spans_div" class="panel-user-data-container" style="{{client_type_spans_div_visibility_val}}">
+                        <div id="client_type_spans_div" class="panel-user-billing-data-container panel-user-data-container {{client_type_spans_div_visibility_val}}">
                             <div class="panel-user-data__user-client-container">
                                 <button onclick="js.index.toggleBrAddressForms('company_span')" class="{{company_active_val}}" id="company_span">{{Pessoa jurídica}}</button>
                                 <button onclick="js.index.toggleBrAddressForms('physical_span')" class="{{physical_active_val}}" id="physical_span">{{Pessoa física}}</button>
                             </div>
                         </div>
                         
-                        <div id="physical_address_div" class="panel-user-data-container" style="{{physical_address_div_visibility_val}}">
+                        <div id="physical_address_div" class="panel-user-data-container {{physical_address_div_visibility_val}}">
                             <div class="panel-user-data__cpf-cep-container">
                                 <div class="input-default floating-input cpf-field">
                                     <input oninput="js.index.formatToCPF(this); js.index.makeSaveUserCPFDataAvailable();" type="text" name="user_cpf" id="user_cpf_input" value="{{user_cpf_val}}" class="floating" minlength="14" maxlength="14" placeholder=" ">
@@ -105,7 +105,7 @@
                         </div>
 
 
-                        <div id="company_address_div" class="panel-user-data-container" style="{{company_address_div_visibility_val}}">
+                        <div id="company_address_div" class="panel-user-data-container {{company_address_div_visibility_val}}">
                             <div class="panel-user-data__cpf-cep-container">
                                 <div class="input-default floating-input cpf-field">
                                     <input oninput="js.index.formatToCNPJ(this); js.index.showUserCompanyAddressData(); js.index.makeSaveUserCNPJDataAvailable();" type="text" name="user_cnpj" id="user_cnpj_input" value="{{user_cnpj_val}}" class="floating" minlength="18" maxlength="18" placeholder=" ">
@@ -147,7 +147,7 @@
                             </div>
                         </div>
 
-                        <div id="international_address_div" class="panel-user-data-container" style="{{international_address_div_visibility_val}}">
+                        <div id="international_address_div" class="panel-user-data-container {{international_address_div_visibility_val}}">
                             <div class="panel-user-data__cpf-cep-container">
                                 <div class="input-default floating-input cep-field">
                                     <input oninput="js.index.makeSaveUserInternationalDataAvailable();" type="text" name="user_zip_code" id="international_user_zip_code_input" value="{{user_zip_code_val}}" class="floating" minlength="" maxlength="" placeholder=" ">
@@ -176,8 +176,8 @@
                     </section>
                 </section>
 
-                <div id="physical_address_submit_div" style="{{physical_address_submit_div_visibility_val}}">
-                    <span class="error" style="{{error_msg_visibility_val}}" id="cpf_data_error_msg_span">
+                <div id="physical_address_submit_div" class="{{physical_address_submit_div_visibility_val}}">
+                    <span class="error {{error_msg_visibility_val}}" id="cpf_data_error_msg_span">
                         {{error_msg_val}}
                     </span>
                     <section class="panel-user-data__main-container__button-container">
@@ -190,8 +190,8 @@
                     </section>
                 </div>
 
-                <div id="company_address_submit_div" style="{{company_address_submit_div_visibility_val}}">
-                    <span class="error" style="{{error_msg_visibility_val}}" id="cnpj_data_error_msg_span">
+                <div id="company_address_submit_div" class="{{company_address_submit_div_visibility_val}}">
+                    <span class="error {{error_msg_visibility_val}}" id="cnpj_data_error_msg_span">
                         {{error_msg_val}}
                     </span>
                     <section class="panel-user-data__main-container__button-container">
@@ -204,8 +204,8 @@
                     </section>
                 </div>
 
-                <div id="international_address_submit_div" style="{{international_address_submit_div_visibility_val}}">
-                    <span class="error" style="{{error_msg_visibility_val}}" id="international_data_error_msg_span">
+                <div id="international_address_submit_div" class="{{international_address_submit_div_visibility_val}}">
+                    <span class="error {{error_msg_visibility_val}}" id="international_data_error_msg_span">
                         {{error_msg_val}}
                     </span>
                     <section class="panel-user-data__main-container__button-container">
@@ -221,7 +221,7 @@
             </article>
         </section>
 
-        <section class="panel-user-data__main-container" style="{{render_props_visibility_val}}">
+        <section class="panel-user-data__main-container {{render_props_visibility_val}}">
             <article>
                 <section class="panel-user-data__main-container__row">
                     <section class="panel-user-data__main-container__column">
@@ -247,7 +247,7 @@
                         <p class="error none">{{Senha inválida}}</p>
                     </section>
                 </section>
-                <span class="error" style="{{error_msg_visibility_val}}" id="password_error_msg_span">
+                <span class="error {{error_msg_visibility_val}}" id="password_error_msg_span">
                     {{error_msg_val}}
                 </span>
                 <section class="panel-user-data__main-container__button-container">
@@ -261,7 +261,7 @@
             </article>
         </section>
 
-        <section class="panel-user-data__main-container" style="{{render_props_visibility_val}}">
+        <section class="panel-user-data__main-container {{render_props_visibility_val}}">
             <article>
                 <section class="panel-user-data__main-container__row panel-user-data__main-container__row--image">
                     <section class="panel-user-data__main-container__column">
@@ -281,7 +281,7 @@
                         <input hidden id="user_thumb_input" value="{{user_thumb_val}}">
                     </section>
                 </section>
-                <span class="error" style="{{error_msg_visibility_val}}" id="error_msg">
+                <span class="error {{error_msg_visibility_val}}" id="error_msg">
                     {{error_msg_val}}
                 </span>
                 <section class="panel-user-data__main-container__button-container">

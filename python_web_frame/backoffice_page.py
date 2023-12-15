@@ -173,7 +173,7 @@ class BackofficePage(BasePage):
                 html.esc("model_error_msg_val", model["model_error_msg"])
                 html.esc("created_at_val", Date().format_unixtime_to_br_date(model["created_at"]))
                 if (model["model_state"] not in ["completed", "error", "in_processing"]) or model["model_category"] == "federated":
-                    html.esc("reprocess_button_visitility_val", "display:none;")
+                    html.esc("reprocess_button_visitility_val", "none")
                 full_html.append(str(html))
         return "".join(full_html)
 
@@ -293,7 +293,7 @@ class BackofficePage(BasePage):
                 html.esc("order_nfse_pdf_link_val", order["order_nfse_pdf_link"])
                 html.esc("order_nfse_status_val", translate_order_nfse_status(order.get("order_nfse_status", "")))
                 if order["order_status"] not in ["paid", "refunded"]:
-                    html.esc("order_link_visibility_val", "display:none;")
+                    html.esc("order_link_visibility_val", "none")
                 full_html.append(str(html))
         return "".join(full_html)
 
@@ -329,7 +329,7 @@ class BackofficePage(BasePage):
             for plan in plans:
                 html = ReadWrite().read_html("backoffice_plans/_codes/html_backoffice_plans_table_rows")
                 if plan["plan_is_trial"]:
-                    html.esc("edit_plan_visibility_val", "display:none;")
+                    html.esc("edit_plan_visibility_val", "none")
                 html.esc("plan_id_val", plan["plan_id"])
                 html.esc("plan_name_pt_val", plan["plan_name_pt"])
                 html.esc("plan_name_en_val", plan["plan_name_en"])
@@ -373,12 +373,12 @@ class BackofficePage(BasePage):
         if self.post.get("showing_total_count"):
             html.esc("last_scroll_position_val", self.post.get("last_scroll_position", "0"))
         if not itens_total_count:
-            html.esc("pagination_visibility_val", "display: none;")
+            html.esc("pagination_visibility_val", "none")
         elif not last_evaluated_key:
-            html.esc("pagination_visibility_val", "display: none;")
+            html.esc("pagination_visibility_val", "none")
         else:
             if str(itens_actual_count) == "0" or str(itens_total_count) == "0":
-                html.esc("pagination_visibility_val", "display: none;")
+                html.esc("pagination_visibility_val", "none")
             if int(itens_actual_count) == int(itens_total_count):
-                html.esc("pagination_visibility_val", "display: none;")
+                html.esc("pagination_visibility_val", "none")
         return str(html)

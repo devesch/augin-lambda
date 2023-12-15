@@ -13,7 +13,7 @@
     <section class="explore__table-container">
         <div class="explore__table-container__title-container relative">
             <div class="explore__table-container__button-container">
-                <button class="ghost" id="user_dicts_return_to_root_span" onclick="js.index.openReturnFolder()" style="display: none;">
+                <button id="user_dicts_return_to_root_span" class="ghost none" onclick="js.index.openReturnFolder()">
                     <img src="{{cdn_val}}/assets/icons/arrow_back_black.svg" width="20" height="20" alt="{{Voltar}}" />
                 </button>
                 <button onclick="js.index.openFolder('', '')" class="button--user-folders">
@@ -44,17 +44,17 @@
                         </th>
                         <th colspan="1">
                             <button onclick="js.index.sortProjectsBy('owners_name')" class="button--user-folders">
-                                {{Properietário}} <img id="owners_name_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
+                                {{Properietário}} <img id="owners_name_sort_image" class="none" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                             </button>
                         </th>
                         <th colspan="1">
                             <button onclick="js.index.sortProjectsBy('created_at')" class="button--user-folders">
-                                {{Criação}} <img id="created_at_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
+                                {{Criação}} <img id="created_at_sort_image" class="none" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                             </button>
                         </th>
                         <th colspan="2">
                             <button onclick="js.index.sortProjectsBy('model_filesize')" class="button--user-folders">
-                                {{Tamanho}} <img id="model_filesize_sort_image" style="display:none;" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
+                                {{Tamanho}} <img id="model_filesize_sort_image" class="none" src="{{cdn_val}}/assets/icons/arrow_downward_alt.svg" alt="{{Ícone de seta pra baixo}}" width="24" height="24" />
                             </button>
                         </th>
                     </tr>

@@ -26,7 +26,7 @@
             <label for="coupon_available_for_limited_time_input">{{Disponível por tempo limitado}}</label>
         </div>
 
-        <div id="coupon_available_for_limited_time_div" style="{{coupon_available_for_limited_time_div_visibility_val}}">
+        <div id="coupon_available_for_limited_time_div" class="{{coupon_available_for_limited_time_div_visibility_val}}">
             <div class="floating-input">
                 <input type="date" name="coupon_start_date" value="{{coupon_start_date_val}}" id="coupon_start_date_input" placeholder=" " maxlength="500">
                 <label for="coupon_start_date_input">{{Inicia em}}</label>
@@ -48,7 +48,7 @@
             <label for="coupon_has_limited_uses_count_input">{{Limitar a quantidade de usos}}</label>
         </div>
 
-        <div id="coupon_has_limited_uses_count_div" style="{{coupon_has_limited_uses_count_div_visibility_val}}">
+        <div id="coupon_has_limited_uses_count_div" class="{{coupon_has_limited_uses_count_div_visibility_val}}">
             <div class="floating-input">
                 <input type="text" oninput="js.index.formatToNumbers(this)" name="coupon_maxium_uses_count" value="{{coupon_maxium_uses_count_val}}" id="coupon_maxium_uses_count_input" placeholder=" " maxlength="10">
                 <label for="coupon_maxium_uses_count_input">{{Quantidade total de utilizações}}</label>
@@ -100,7 +100,7 @@
         <input type="checkbox" name="coupon_available_in_usd" id="coupon_available_in_usd_input" {{coupon_available_in_usd_checked_val}}>
         <label for="coupon_available_in_usd_input">{{Disponível em compras internacionais}}</label>
 
-        <span class="error" style="{{error_msg_visibility_val}}">
+        <span class="error {{error_msg_visibility_val}}">
             {{error_msg_val}}
         </span>
 

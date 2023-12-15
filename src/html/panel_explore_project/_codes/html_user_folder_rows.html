@@ -17,12 +17,12 @@
         </button>
         <menu id="explore_table_item_menu_{{index_val}}" class="menu--explore-more-options none">
             {{html_share_project_button}}
-            <li style="{{model_update_visibility_val}}">
+            <li class="{{model_update_visibility_val}}">
                 <button onclick="js.index.openModalUpdateProject('{{model_id_val}}')">
                     <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Atualizar}}</span>
                 </button>
             </li>
-            <li style="{{model_edit_federated_visibility_val}}">
+            <li class="{{model_edit_federated_visibility_val}}">
                 <input hidden id="federated_required_ids_{{model_id_val}}" value="{{model_federated_required_ids_val}}">
                 <button onclick="js.index.openModalEditFederatedProject('{{model_id_val}}')">
                     <img src="{{cdn_val}}/assets/icons/update.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Editar}}</span>
@@ -33,7 +33,7 @@
                     <img src="{{cdn_val}}/assets/icons/{{favorite_icon_val}}.svg" width="24" height="24" alt="" loading="lazy"> <span>{{favorite_or_unfavorite_val}}</span>
                 </button>
             </li>
-            <li style="{{model_category_visibility_val}}">
+            <li class="{{model_category_visibility_val}}">
                 <button onclick="js.index.openModalCategoryProject('{{model_id_val}}', '{{model_category_val}}')">
                     <img src="{{cdn_val}}/assets/icons/category.svg" width="24" height="24" alt="" loading="lazy"> <span>{{Selecionar categoria}}</span>
                 </button>

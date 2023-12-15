@@ -34,7 +34,7 @@
         <article id="uploading_div" class="panel-create-project-uploading-container">{{html_uploading_models}}</article>
 
         <div class="form-main-button-container">
-            <div class="switch-container" id="federated_switch_div" style="{{federated_switch_div_visibility_val}}">
+            <div id="federated_switch_div" class="switch-container {{federated_switch_div_visibility_val}}">
                 <section class="tooltip-container">
                     <div class="input-container">
                         <input onchange="js.index.checkIfCreateProjectIsFederated(true)" type="checkbox" name="create_federated_project_with_processed_files" id="create_federated_project_with_processed_files">
@@ -55,15 +55,15 @@
                 </section>
             </div>
 
-            <div class="floating-input" style="display:none;" id="federated_name_div">
+            <div class="floating-input none" id="federated_name_div">
                 <input type="text" name="federated_name" value="{{federated_name_val}}" id="federated_name_input" placeholder=" " required maxlength="50">
                 <label for="federated_name_input">{{Nome do projeto federado}}</label>
             </div>
 
-            <span class="error" style="{{error_msg_visibility_val}}" id="create_project_error_span">
+            <span id="create_project_error_span" class="error {{error_msg_visibility_val}}">
                 {{error_msg_val}}
             </span>
-            <button type="submit" class="form-main-button" id="submit_form_button" disabled>
+            <button type="submit" id="submit_form_button" class="form-main-button" disabled>
                 {{Processar arquivo}}
             </button>
         </div>

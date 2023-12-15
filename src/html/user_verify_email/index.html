@@ -17,7 +17,7 @@
                 <input id="verify_email_code_5" aria-label="{{Digite o quinto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_5" value="{{verify_email_code_5_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder=" " inputmode="numeric" required />
                 <input id="verify_email_code_6" aria-label="{{Digite o sexto dígito do código de verificação que foi enviado ao seu e-mail.}}" oninput="js.index.getAllVerificationCodeInputs()" class="page__box-email-verify__form__entry__box-code__code" name="verify_email_code_6" value="{{verify_email_code_6_val}}" type="text" maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" placeholder=" " inputmode="numeric" required />
             </div>
-            <span class="error" style="{{error_msg_visibility_val}}">{{error_msg_val}}</span>
+            <span class="error {{error_msg_visibility_val}}">{{error_msg_val}}</span>
         </form>
         <div class="verify-code-button-container">
             <a href="/user_email_register" class="button ghost">{{Alterar email}}</a>

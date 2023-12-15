@@ -129,7 +129,7 @@ class BasePage:
     def render_menu_panel_no_icons(self, common_changes={}):
         html = ReadWrite().read_html("main/menu_panel_no_icons", common_changes)
         if self.route == "error":
-            html.esc("access_visibility_val", "display:none;")
+            html.esc("access_visibility_val", "none")
         html.esc("user_url_val", self.event.get_url())
 
         ### REMOVE THIS PARTE AND USE THE CODE BELOW
@@ -191,11 +191,11 @@ class BasePage:
             else:
                 html.esc("error_msg_val", error_msg)
             if "sucesso" in error_msg:
-                html.esc("error_msg_visibility_val", "color:#0FA958;")
+                html.esc("error_msg_visibility_val", "color-success-900")
             else:
-                html.esc("error_msg_visibility_val", "color:#FF0000;")
+                html.esc("error_msg_visibility_val", "color-error-500")
         else:
-            html.esc("error_msg_visibility_val", "display:none;")
+            html.esc("error_msg_visibility_val", "none")
 
     def render_html_tawk_code(self, common_changes={}):
         html = ReadWrite().read_html("main/_codes/html_tawk_code", common_changes)

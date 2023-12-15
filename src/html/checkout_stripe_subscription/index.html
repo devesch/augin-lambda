@@ -170,6 +170,9 @@
         }
     }
 </style>
+
+<style src="{{cdn_val}}"></style>
+
 <main class="my-plan__main checkout-container">
     <div class="stripe">
         <form id="payment-form">
@@ -180,7 +183,7 @@
             </div>
             <div id="payment-element" class="mt-1">
             </div>
-            <button id="submit" style="display:none;">
+            <button id="submit" class="none">
                 <div class="spinner hidden" id="spinner"></div>
                 <span id="button-text">{{Pague Agora}}</span>
             </button>
@@ -220,8 +223,8 @@
                                 <strong>{{plan_price_val}}</strong>
                                 /<span class="lowercase">{{plan_recurrency_phrase_val}}</span>
                             </p>
-                            <p style="{{coupon_discount_visibility_val}}" class="order-summary__discount-container"><strong>- </strong> <small>{{user_cart_currency_symbol}} </small> <strong></strong>{{discount_value_val}}</strong></p>
-                            <p style="{{coupon_discount_visibility_val}}"><small>{{user_cart_currency_symbol}} </small> <strong>{{plan_discounted_price_val}}</strong></p>
+                            <p class="order-summary__discount-container {{coupon_discount_visibility_val}}"><strong>- </strong> <small>{{user_cart_currency_symbol}} </small> <strong></strong>{{discount_value_val}}</strong></p>
+                            <p class="{{coupon_discount_visibility_val}}"><small>{{user_cart_currency_symbol}} </small> <strong>{{plan_discounted_price_val}}</strong></p>
                         </div>
                     </div>
                     <div class="floating-input">

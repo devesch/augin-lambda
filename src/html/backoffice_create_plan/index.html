@@ -56,7 +56,7 @@
                     <label for="plan_available_annually_input">{{Habilitado}}</label>
                 </div>
             </div>
-            <div id="annually_div" style="{{annually_div_visibility_val}}">
+            <div id="annually_div" class="{{annually_div_visibility_val}}">
                 <section class="backoffice__form__price-container">
                     <div class="floating-input">
                         <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_annually_brl" value="{{plan_price_annually_brl_val}}" id="plan_price_annually_brl_input" placeholder=" " maxlength="500">
@@ -108,7 +108,7 @@
                     <label for="plan_available_monthly_input">{{Habilitado}}</label>
                 </div>
             </div>
-            <div id="monthly_div" style="{{monthly_div_visibility_val}}">
+            <div id="monthly_div" class="{{monthly_div_visibility_val}}">
                 <section class="backoffice__form__price-container">
                     <div class="floating-input">
                         <input oninput="js.index.formatToMoney(this)" type="text" name="plan_price_monthly_brl" value="{{plan_price_monthly_brl_val}}" id="plan_price_monthly_brl_input" placeholder=" " maxlength="500">
@@ -232,7 +232,7 @@
                 </div>
                 <label for="plan_has_trial_input">{{Disponível em trial}}</label>
             </div>
-            <div id="trial_div" style="{{trial_div_visibility_val}}">
+            <div id="trial_div" class="{{trial_div_visibility_val}}">
                 <div class="floating-input">
                     <input oninput="js.index.formatToNumbers(this)" type="text" name="plan_trial_duration_in_days" value="{{plan_trial_duration_in_days_val}}" id="plan_trial_duration_in_days_input" placeholder=" " maxlength="500">
                     <label for="plan_trial_duration_in_days_input">{{Duração do trial em dias}}</label>
@@ -240,7 +240,7 @@
             </div>
         </section>
 
-        <span class="error" style="{{error_msg_visibility_val}}">
+        <span class="error {{error_msg_visibility_val}}">
             {{error_msg_val}}
         </span>
         <div class="backoffice__button-container">

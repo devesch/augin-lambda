@@ -81,7 +81,7 @@ class ReadWrite:
         # if lambda_constants["debug"]:
         #     new_code.esc("show_only_when_debug_val", "")
         # else:
-        #     new_code.esc("show_only_when_debug_val", "display:none;")
+        #     new_code.esc("show_only_when_debug_val", "none")
         return new_code
 
     def extract_zip_file(self, zip_file_path, extract_path):

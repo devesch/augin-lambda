@@ -281,7 +281,7 @@
         <div class="my-plan__title-container">
             <h1 class="my-plan__title">{{Informaçōes do pedido}} #{{order_short_id_val}}</h1>
         </div>
-        <div class="order__settings print-hide" style="{{download_print_page_buttons_visibility_val}}">
+        <div class="order__settings print-hide {{download_print_page_buttons_visibility_val}}">
             <button class="button" onclick="js.index.generatePanelOrderPagePdf('{{order_id_val}}', 'download')" aria-label="{{Baixar página como PDF}}">
                 <img src="{{cdn_val}}/assets/icons/download.svg" alt="" width="24" height="24">
             </button>
@@ -360,7 +360,7 @@
             </div>
         </div>
 
-        <div class="order__title-container" style="{{order_payment_stripe_boleto_visibility_val}}">
+        <div class="order__title-container {{order_payment_stripe_boleto_visibility_val}}">
             <div class="order-body">
                 <div class="order-column">
                     <div class="order-column__row">
@@ -377,7 +377,7 @@
             </div>
         </div>
 
-        <div class="order__title-container" style="{{nfse_visibilty_val}}">
+        <div class="order__title-container {{nfse_visibilty_val}}">
             <div class="order-body">
                 <div class="order-column">
                     <div class="order-column__row">
@@ -400,7 +400,7 @@
             </div>
         </div>
 
-        <div class="order__title-container" style="{{order_payment_stripe_receipt_url_visibility_val}}">
+        <div class="order__title-container {{order_payment_stripe_receipt_url_visibility_val}}">
             <div class="order-body">
                 <div class="order-column">
                     <div class="order-column__row">

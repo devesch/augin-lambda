@@ -109,9 +109,9 @@ class PanelYourPlan(PanelPage):
             html.esc("user_subscription_payment_method_val", "-")
 
         if user_subscription["subscription_status"] == "active":
-            html.esc("user_subscription_valid_until_visibility_val", "display:none;")
+            html.esc("user_subscription_valid_until_visibility_val", "none")
         else:
-            html.esc("user_subscription_active_visibility_val", "display:none;")
+            html.esc("user_subscription_active_visibility_val", "none")
         return str(html)
 
     def show_html_user_subscription_is_trial(self, user_subscription, user_plan):

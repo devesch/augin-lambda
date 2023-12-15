@@ -3,7 +3,7 @@
 
 <main class="my-plan__main">
     <div>
-        <div id="success_message_div" style="display:none;">
+        <div id="success_message_div none">
             <div>
                 <img src="{{cdn_val}}/assets/icons/icon-success.svg" alt="{{Ícone sucesso}}">
                 <h1>{{Pedido}} <a href="/panel_order/?order_id={{order_id_val}}">#{{order_short_id_val}}</a> {{Finalizado}}! :)</h1>
@@ -44,6 +44,6 @@
             }
         }
         let success_message_div = document.getElementById("success_message_div");
-        success_message_div.style = "";
+        success_message_div.classList.remove("none");
     };
 </script>

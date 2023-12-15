@@ -3834,3 +3834,11 @@ input[list]::-ms-clear {
     width: 1px;
     margin: -1px;
 }
+
+.color-success-900 {
+    color: colors.color("color-success-900");
+}
+
+.color-error-500 {
+    color: colors.color("color-error-500")
+}

@@ -58,7 +58,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                         html.esc("plan_recurrency_phrase_val", self.translate("Cobrado mensalmente"))
 
                         if not plan["plan_available_annually"]:
-                            html.esc("save_on_annually_visibility_val", "display:none;")
+                            html.esc("save_on_annually_visibility_val", "none")
                         else:
                             if self.user.user_cart_currency == "brl":
                                 html.esc("plan_annually_savings", 100 - int(int(plan["plan_price_annually_brl_actual"]) / (int(plan["plan_price_monthly_brl_actual"]) * 12) * 100))
@@ -67,7 +67,7 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
 
                     if recurrency == "annually":
                         html.esc("plan_recurrency_val", self.translate("ano"))
-                        html.esc("save_on_annually_visibility_val", "display:none;")
+                        html.esc("save_on_annually_visibility_val", "none")
                         html.esc("plan_recurrency_val", self.translate("ano"))
                         html.esc("plan_recurrency_phrase_val", self.translate("Cobrado anualmente"))
 
@@ -87,23 +87,23 @@ class CheckoutUpgradeYourPlan(CheckoutPage):
                     html.esc("plan_maxium_model_size_in_mbs_val", plan["plan_maxium_model_size_in_mbs"])
                     html.esc("plan_cloud_space_in_gbs_val", int(int(plan["plan_cloud_space_in_mbs"]) / 1000))
                     if not plan["plan_share_files"]:
-                        html.esc("plan_share_files_visibility_val", "display:none;")
+                        html.esc("plan_share_files_visibility_val", "none")
                     else:
-                        html.esc("not_plan_share_files_visibility_val", "display:none;")
+                        html.esc("not_plan_share_files_visibility_val", "none")
 
                     html.esc("plan_reference_tracker_val", self.translate(translate_reference_tracker(plan["plan_reference_tracker"])))
                     html.esc("plan_maxium_federated_size_in_mbs_val", plan["plan_maxium_federated_size_in_mbs"])
                     html.esc("plan_maxium_devices_available_val", plan["plan_maxium_devices_available"])
                     if not plan["plan_download_files"]:
-                        html.esc("plan_download_files_visibility_val", "display:none;")
+                        html.esc("plan_download_files_visibility_val", "none")
                     else:
-                        html.esc("not_plan_download_files_visibility_val", "display:none;")
+                        html.esc("not_plan_download_files_visibility_val", "none")
 
                     if plan["plan_team_play_participants"] == "0":
-                        html.esc("plan_team_play_participants_visibility_val", "display:none;")
+                        html.esc("plan_team_play_participants_visibility_val", "none")
                     else:
                         html.esc("plan_team_play_participants_val", plan["plan_team_play_participants"])
-                        html.esc("not_plan_team_play_participants_visibility_val", "display:none;")
+                        html.esc("not_plan_team_play_participants_visibility_val", "none")
 
                     full_html.append(str(html))
         return "".join(full_html)

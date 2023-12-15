@@ -65,7 +65,7 @@ class CheckoutStripeSubscription(CheckoutPage):
             html.esc("discount_value_val", StrFormat().format_to_money(discount_value, self.user.user_cart_currency))
             html.esc("plan_discounted_price_val", StrFormat().format_to_money(plan_discounted_price, self.user.user_cart_currency))
         else:
-            html.esc("coupon_discount_visibility_val", "display:none;")
+            html.esc("coupon_discount_visibility_val", "none")
 
         html.esc("user_cart_currency_symbol", StrFormat().format_currency_to_symbol(self.user.user_cart_currency))
         html.esc("stripe_token_val", stripe_token)

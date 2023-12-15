@@ -42,7 +42,7 @@ class BackofficeCreatePlan(BackofficePage):
             if self.post.get("plan_available_annually"):
                 html.esc("plan_available_annually_checked_val", "checked='checked'")
             else:
-                html.esc("annually_div_visibility_val", "display:none;")
+                html.esc("annually_div_visibility_val", "none")
             if self.post.get("plan_price_annually_brl"):
                 html.esc("plan_price_annually_brl_val", self.post["plan_price_annually_brl"])
             if self.post.get("plan_price_annually_brl_actual"):
@@ -62,7 +62,7 @@ class BackofficeCreatePlan(BackofficePage):
             if self.post.get("plan_available_monthly"):
                 html.esc("plan_available_monthly_checked_val", "checked='checked'")
             else:
-                html.esc("monthly_div_visibility_val", "display:none;")
+                html.esc("monthly_div_visibility_val", "none")
             if self.post.get("plan_price_monthly_brl"):
                 html.esc("plan_price_monthly_brl_val", self.post["plan_price_monthly_brl"])
             if self.post.get("plan_price_monthly_brl_actual"):
@@ -97,7 +97,7 @@ class BackofficeCreatePlan(BackofficePage):
             if self.post.get("plan_has_trial"):
                 html.esc("plan_has_trial_checked_val", "checked='checked'")
             else:
-                html.esc("trial_div_visibility_val", "display:none;")
+                html.esc("trial_div_visibility_val", "none")
             if self.post.get("plan_trial_duration_in_days"):
                 html.esc("plan_trial_duration_in_days_val", self.post["plan_trial_duration_in_days"])
             if self.post.get("plan_team_play_participants"):

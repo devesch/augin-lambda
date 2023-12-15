@@ -74,7 +74,7 @@ class PanelPage(BasePage):
         html = ReadWrite().read_html("panel_explore_project/_codes/html_filter_and_search_section")
         html.esc("html_project_filter_options", self.list_html_project_filter_options())
         if not show_search:
-            html.esc("search_project_visibility_val", "display:none;")
+            html.esc("search_project_visibility_val", "none")
         return str(html)
 
     def list_html_project_filter_options(self):
@@ -202,7 +202,7 @@ class PanelPage(BasePage):
                                 continue
                             html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows_folders")
                             if not self.user:
-                                html.esc("actions_visibility_val", "display:none;")
+                                html.esc("actions_visibility_val", "none")
                         else:
                             html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows_folders")
                             if user_plan and user_plan.get("plan_share_files"):
@@ -226,7 +226,7 @@ class PanelPage(BasePage):
                     elif model_html == "add_project_to_federated":
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_add_project_to_federated_model_user_folder_rows_folders")
                     if shared and folder_id:
-                        html.esc("remove_folder_visibility_val", "display:none;")
+                        html.esc("remove_folder_visibility_val", "none")
 
                     html.esc("folder_path_val", folder["folder_path"])
                     html.esc("folder_name_val", folder["folder_name"])
@@ -279,7 +279,7 @@ class PanelPage(BasePage):
                             continue
                         html = ReadWrite().read_html("panel_shared_project/_codes/html_user_folder_rows")
                         if not self.user:
-                            html.esc("actions_visibility_val", "display:none;")
+                            html.esc("actions_visibility_val", "none")
                     else:
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_user_folder_rows")
                         if user_plan and user_plan.get("plan_share_files"):
@@ -313,7 +313,7 @@ class PanelPage(BasePage):
                         html = ReadWrite().read_html("panel_explore_project/_codes/html_add_project_to_federated_model_user_folder_rows")
 
                 if shared and folder_id:
-                    html.esc("remove_model_visibility_val", "display:none;")
+                    html.esc("remove_model_visibility_val", "none")
 
                 html.esc("index_val", str(index))
                 html.esc("model_id_val", model["model_id"])
@@ -322,12 +322,12 @@ class PanelPage(BasePage):
 
                 if model["model_is_federated"]:
                     html.esc("model_icon_val", "note_stack")
-                    html.esc("model_update_visibility_val", "display:none;")
-                    html.esc("model_category_visibility_val", "display:none;")
+                    html.esc("model_update_visibility_val", "none")
+                    html.esc("model_category_visibility_val", "none")
                     html.esc("model_federated_required_ids_val", ",".join(model["model_federated_required_ids"]))
 
                 else:
-                    html.esc("model_edit_federated_visibility_val", "display:none;")
+                    html.esc("model_edit_federated_visibility_val", "none")
                     if model["model_category"]:
                         html.esc("model_icon_val", model["model_category"] + "_category")
                     else:
@@ -436,7 +436,7 @@ class PanelPage(BasePage):
         html.esc("payment_history_pages_count_val", pages_amount)
         html.esc("html_payment_history_pages_buttons", self.list_html_payment_history_pages_buttons(pages_amount))
         if int(pages_amount) == 1:
-            html.esc("payment_history_pagination_visibility_val", "display:none;")
+            html.esc("payment_history_pagination_visibility_val", "none")
         return str(html)
 
     def list_html_payment_history_pages_buttons(self, pages_amount):
@@ -457,7 +457,7 @@ class PanelPage(BasePage):
             page_index = math.ceil((index + 1) / int(lambda_constants["user_orders_page_size"]))
             html.esc("page_index_val", page_index)
             if page_index > 1:
-                html.esc("row_visility_val", "display:none;")
+                html.esc("row_visility_val", "none")
 
             html.esc("order_created_at_val", Date().format_to_str_time(order["created_at"]))
             html.esc("order_currency_symbol_val", StrFormat().format_currency_to_symbol(order["order_currency"]))
@@ -491,9 +491,9 @@ class PanelPage(BasePage):
             html.esc("payment_method_id_val", payment_method["payment_method_id"])
             html.esc("index_val", (index + 1))
             if not user_subscription or user_subscription["subscription_status"] != "active":
-                html.esc("make_default_payement_method_visibility_val", "display:none;")
+                html.esc("make_default_payement_method_visibility_val", "none")
             if (user_subscription) and (user_subscription.get("subscription_default_payment_method") == payment_method["payment_method_id"]):
-                html.esc("make_default_payement_method_visibility_val", "display:none;")
+                html.esc("make_default_payement_method_visibility_val", "none")
                 html.esc("html_active_method_icon", self.show_html_active_method_icon())
                 html.esc("button_disabled_val", "disabled")
             else:
@@ -505,11 +505,11 @@ class PanelPage(BasePage):
                 html.esc("exp_month_val", payment_method["payment_method_card"]["exp_month"])
                 html.esc("exp_year_val", payment_method["payment_method_card"]["exp_year"])
             if payment_method["payment_method_type"] == "boleto":
-                html.esc("make_default_payement_method_visibility_val", "display:none;")
+                html.esc("make_default_payement_method_visibility_val", "none")
                 html.esc("brand_val", "boleto")
                 html.esc("title_brand_val", self.translate("Boleto").title())
                 html.esc("colspan_val", "colspan='2'")
-                html.esc("expires_in_visibility_val", "display:none;")
+                html.esc("expires_in_visibility_val", "none")
             full_html.append(str(html))
         return "".join(full_html)
 

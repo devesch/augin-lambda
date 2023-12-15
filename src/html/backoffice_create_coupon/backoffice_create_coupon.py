@@ -34,7 +34,7 @@ class BackofficeCreateCoupon(BackofficePage):
             if self.post.get("coupon_available_for_limited_time"):
                 html.esc("coupon_available_for_limited_time_checked_val", "checked='checked'")
             else:
-                html.esc("coupon_available_for_limited_time_div_visibility_val", "display:none;")
+                html.esc("coupon_available_for_limited_time_div_visibility_val", "none")
 
             if self.post.get("coupon_start_date"):
                 html.esc("coupon_start_date_val", self.post["coupon_start_date"])
@@ -46,7 +46,7 @@ class BackofficeCreateCoupon(BackofficePage):
                 if self.post.get("coupon_maxium_uses_count"):
                     html.esc("coupon_maxium_uses_count_val", self.post["coupon_maxium_uses_count"])
             else:
-                html.esc("coupon_has_limited_uses_count_div_visibility_val", "display:none;")
+                html.esc("coupon_has_limited_uses_count_div_visibility_val", "none")
 
             if self.post.get("coupon_discount_type"):
                 html.esc("coupon_discount_type_val", self.post["coupon_discount_type"])
@@ -72,8 +72,8 @@ class BackofficeCreateCoupon(BackofficePage):
             if self.post.get("coupon_available_in_usd"):
                 html.esc("coupon_available_in_usd_checked_val", "checked='checked'")
         else:
-            html.esc("coupon_available_for_limited_time_div_visibility_val", "display:none;")
-            html.esc("coupon_has_limited_uses_count_div_visibility_val", "display:none;")
+            html.esc("coupon_available_for_limited_time_div_visibility_val", "none")
+            html.esc("coupon_has_limited_uses_count_div_visibility_val", "none")
 
         plans = Dynamo().query_entity("plan")
         html.esc("html_coupon_available_plans", self.list_html_coupon_available_plans(plans))

@@ -39,7 +39,7 @@ class PanelCreateProject(PanelPage):
             html.esc("html_make_an_upgrade_link", self.show_html_make_an_upgrade_link())
 
         if user_plan["plan_maxium_federated_size_in_mbs"] == "0":
-            html.esc("federated_switch_div_visibility_val", "display:none;")
+            html.esc("federated_switch_div_visibility_val", "none")
 
         self.check_error_msg(html, self.error_msg)
         already_uploaded_models = ModelController().get_already_uploaded_models(self.user)

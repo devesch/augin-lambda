@@ -38,30 +38,30 @@ class PanelUserData(PanelPage, UserPage):
             html.esc("physical_active_val", "active")
             html.esc("physical_address_div_visibility_val", "")
             html.esc("physical_address_submit_div_visibility_val", "")
-            html.esc("company_address_div_visibility_val", "display:none;")
-            html.esc("company_address_submit_div_visibility_val", "display:none;")
-            html.esc("international_address_div_visibility_val", "display:none;")
-            html.esc("international_address_submit_div_visibility_val", "display:none;")
+            html.esc("company_address_div_visibility_val", "none")
+            html.esc("company_address_submit_div_visibility_val", "none")
+            html.esc("international_address_div_visibility_val", "none")
+            html.esc("international_address_submit_div_visibility_val", "none")
             html.esc("client_type_spans_div_visibility_val", "")
 
         if self.user.user_client_type == "company":
             html.esc("company_active_val", "active")
-            html.esc("physical_address_div_visibility_val", "display:none;")
-            html.esc("physical_address_submit_div_visibility_val", "display:none;")
+            html.esc("physical_address_div_visibility_val", "none")
+            html.esc("physical_address_submit_div_visibility_val", "none")
             html.esc("company_address_div_visibility_val", "")
             html.esc("company_address_submit_div_visibility_val", "")
-            html.esc("international_address_div_visibility_val", "display:none;")
-            html.esc("international_address_submit_div_visibility_val", "display:none;")
+            html.esc("international_address_div_visibility_val", "none")
+            html.esc("international_address_submit_div_visibility_val", "none")
             html.esc("client_type_spans_div_visibility_val", "")
 
         if self.user.user_client_type == "international":
-            html.esc("physical_address_div_visibility_val", "display:none;")
-            html.esc("physical_address_submit_div_visibility_val", "display:none;")
-            html.esc("company_address_div_visibility_val", "display:none;")
-            html.esc("company_address_submit_div_visibility_val", "display:none;")
+            html.esc("physical_address_div_visibility_val", "none")
+            html.esc("physical_address_submit_div_visibility_val", "none")
+            html.esc("company_address_div_visibility_val", "none")
+            html.esc("company_address_submit_div_visibility_val", "none")
             html.esc("international_address_div_visibility_val", "")
             html.esc("international_address_submit_div_visibility_val", "")
-            html.esc("client_type_spans_div_visibility_val", "display:none;")
+            html.esc("client_type_spans_div_visibility_val", "none")
 
         html.esc("user_cpf_val", self.user.user_cpf)
         html.esc("user_cnpj_val", self.user.user_cnpj)
@@ -87,7 +87,7 @@ class PanelUserData(PanelPage, UserPage):
             html.esc("my_plan_main_class_val", "my-plan__main")
 
         if not self.render_props:
-            html.esc("render_props_visibility_val", "display:none;")
+            html.esc("render_props_visibility_val", "none")
 
         return str(html)
         # self.check_error_msg(html, self.error_msg)

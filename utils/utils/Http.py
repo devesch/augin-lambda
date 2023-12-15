@@ -230,7 +230,7 @@ class Http:
             html = html.replace("local_js_index_val", "").replace("local_css_val", "")
 
         if event.check_if_has_debug() or os.environ.get("AWS_EXECUTION_ENV") is None:
-            body = html + f"<div id='EVENT HERE MAN' style='display:none;'>{event}<br><br><br>{json.dumps(last_post_event)}</div>"
+            body = html + f"<div id='EVENT HERE MAN' class='none'>{event}<br><br><br>{json.dumps(last_post_event)}</div>"
         else:
             body = html
 
@@ -243,6 +243,8 @@ class Http:
                 "X-XSS-Protection": "1; mode=block",
                 "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
                 "X-Frame-Options": "DENY",
+                "X-Content-Type-Options": "nosniff",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
                 "Permissions-Policy": "microphone=()",
             },
         }

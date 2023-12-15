@@ -25,7 +25,7 @@ class PanelOrder(PanelPage):
 
         html = super().parse_html()
         if self.path.get("not_render_menu"):
-            html.esc("download_print_page_buttons_visibility_val", "display:none;")
+            html.esc("download_print_page_buttons_visibility_val", "none")
         if not self.path or not self.path.get("not_render_menu"):
             html.esc("my_plan_main_class_val", "my-plan__main")
 
@@ -56,7 +56,7 @@ class PanelOrder(PanelPage):
         html.esc("html_order_table_rows", self.list_html_order_table_rows(self.path["order"], order_plan))
 
         if self.path["order"]["order_nfse_status"] != "issued":
-            html.esc("nfse_visibilty_val", "display:none;")
+            html.esc("nfse_visibilty_val", "none")
         else:
             html.esc("order_nfse_number_val", self.path["order"]["order_nfse_number"])
             html.esc("order_nfse_created_at_val", Date().format_unixtime_to_br_datetime(self.path["order"]["order_nfse_created_at"]))
@@ -64,7 +64,7 @@ class PanelOrder(PanelPage):
             html.esc("order_nfse_xml_link_val", self.path["order"]["order_nfse_xml_link"])
 
         if not self.path["order"]["order_payment_stripe_receipt_url"]:
-            html.esc("order_payment_stripe_receipt_url_visibility_val", "display:none;")
+            html.esc("order_payment_stripe_receipt_url_visibility_val", "none")
         else:
             html.esc("order_payment_stripe_receipt_url_val", self.path["order"]["order_payment_stripe_receipt_url"])
             html.esc("order_payment_service_id_val", self.path["order"]["order_payment_service_id"])
@@ -74,7 +74,7 @@ class PanelOrder(PanelPage):
                 html.esc("order_paid_at_val", Date().format_unixtime_to_inter_datetime(self.path["order"]["order_paid_at"]))
 
         if not self.path["order"]["order_payment_stripe_boleto_url"]:
-            html.esc("order_payment_stripe_boleto_visibility_val", "display:none;")
+            html.esc("order_payment_stripe_boleto_visibility_val", "none")
         else:
             html.esc("order_payment_stripe_boleto_url_val", self.path["order"]["order_payment_stripe_boleto_url"])
 

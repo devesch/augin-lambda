@@ -27,7 +27,7 @@ class PanelExploreProject(PanelPage):
         if models_in_processing:
             html.esc("html_models_in_processing", self.list_html_models_in_processing(self.event, models_in_processing))
         else:
-            html.esc("models_in_processing_visibility_val", "display:none;")
+            html.esc("models_in_processing_visibility_val", "none")
         html.esc("html_user_folder_rows", self.list_html_user_folder_rows(user_plan))
         return str(html)
 
