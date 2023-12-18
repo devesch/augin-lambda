@@ -737,7 +737,7 @@ class ModelController:
             return first_line in ["ISO-10303-21", "ISO-10303-21;"]
 
     def is_acceptable_ifc_format(self, file_path):
-        acceptable_versions = ["IFC2X3", "IFC4"]
+        acceptable_versions = ["IFC2X3", "IFC4", "IFC4X3_RC2"]
 
         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
             for line in f:

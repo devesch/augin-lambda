@@ -1,6 +1,7 @@
 import json
 import os
 import importlib
+
 from utils.Event import Event
 from objects.User import load_user
 from utils.AWS.Dynamo import Dynamo
@@ -11,6 +12,9 @@ from utils.utils.Http import Http
 from utils.utils.EncodeDecode import EncodeDecode
 from utils.utils.StrFormat import StrFormat
 from python_web_frame.verify_path import get_path_data
+
+available_routes = os.listdir("src/html")
+available_routes.append("api")
 
 
 def lambda_handler(event, context):
@@ -68,8 +72,8 @@ def main_lambda_handler(event, context):
 
     if method not in ("get", "post"):
         return Http().respond("", event, status_code=405)
-    # if page not in ["api", "error", "login", "no_projects_yet", "pending_projects", "processing_projects", "projects_customer", "projects", "project_create", "project_create_upload_file", "user_exit", "user_login", "user_password", "user_password_reset", "user_register", "user_set_auth_token", "user_terms", "webview", "webview_password"]:
-    #     return Http().respond("", event)
+    if page not in available_routes:
+        return Http().respond("", event, status_code=405)
 
     post = Http().format_post_data(event.get_post_data())
     # Config().update_lambda_contants(event.get_prefix(), post)
